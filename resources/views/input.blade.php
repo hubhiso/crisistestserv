@@ -63,6 +63,9 @@
                     <label class="radio">
                         {{ Form::radio('sex', '2' , false) }}
                         หญิง </label>
+                    <label class="radio">
+                        {{ Form::radio('sex', '3' , false) }}
+                        สาวประเภทสอง </label>
                 </p>
             </div>
             <div class="field">
@@ -98,9 +101,10 @@
                 <p class="control"> <span class="select">
         <select id ="problem_case" name="problem_case">
      <option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
-     <option value="1"  >บังคับตรวจการติดเชื้อเอชไอวี</option>
-     <option value="2"  >เปิดเผยสถานะผู้ติดเชื้อเอชไอวี</option>
-     <option value="3" >เลือกปฏิบัติอันเนื่องมาจาการติดเชื้อเอชไอวี</option>
+     <option value="1"  >บังคับตรวจเอชไอวี</option>
+     <option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
+     <option value="3" >เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
+     <option value="4" >ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
         </select>
         {{--Form::select('problem_case', array(
                         'บังคับตรวจการติดเชื้อเอชไอวี' => array('110' =>'ผู้ติดชื้อ HIV',
@@ -189,7 +193,10 @@
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
                 $('#sub_problem').append('<option value="1" style="width:250px">เป็นผู้ติดเชื้อ HIV</option>');
-                $('#sub_problem').append('<option value="2" style="width:250px">เป็นกลุ่มเปราะบาง</option>');
+            }else if(prob_id==4){
+                $('#sub_problem').empty();
+                $('#sub_problem').removeAttr('disabled');
+                $('#sub_problem').append('<option value="1" style="width:250px">เป็นกลุ่มเปราะบาง</option>');
             }else{
                 $('#sub_problem').empty();
                 $('#sub_problem').attr('disabled', 'disabled');
@@ -203,7 +210,9 @@
                 $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
                 $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ HIV</option>');
                 $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
-                $('#group_code').append('<option value="4" style="width:250px">แรงงานข้ามชาติ</option>');
+                $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
+                $('#group_code').append('<option value="5" style="width:250px">ผู้ต้องขัง</option>');
+                $('#group_code').append('<option value="6" style="width:250px">เยาวชนในสถานพินิจ</option>');
 
             }else{
                 $('#group_code').empty();
