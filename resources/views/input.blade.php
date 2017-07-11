@@ -201,7 +201,7 @@
                 $('#group_code').removeAttr('disabled');
                 $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
                 $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ HIV</option>');
-                $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด111</option>');
+                $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
                 $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
                 $('#group_code').append('<option value="5" style="width:250px">ผู้ต้องขัง</option>');
                 $('#group_code').append('<option value="6" style="width:250px">เยาวชนในสถานพินิจ</option>');
