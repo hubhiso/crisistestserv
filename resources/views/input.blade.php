@@ -199,7 +199,7 @@
                 $('#sub_problem').append('<option value="1" style="width:250px">เป็นกลุ่มเปราะบาง</option>');
                 $('#group_code').empty();
                 $('#group_code').removeAttr('disabled');
-                $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
+                $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ2</option>');
                 $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ HIV</option>');
                 $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
                 $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
