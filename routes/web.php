@@ -20,3 +20,6 @@ Route::get('officer', function () {
 Route::get('ajax-amphur/{prov_id}','case_controller@ajax_amphur');
 
 Route::resource('case_inputs','case_controller');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
