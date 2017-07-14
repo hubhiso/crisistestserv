@@ -17,6 +17,9 @@ Route::get('/', function () {
 Route::get('officer', function () {
     return view('officer.home');
 });
+Route::get('manage', function () {
+    return view('officer.manageCase');
+});
 Route::get('ajax-amphur/{prov_id}','case_controller@ajax_amphur');
 
 Route::resource('case_inputs','case_controller');
