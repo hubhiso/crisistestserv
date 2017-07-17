@@ -20,6 +20,15 @@ Route::get('officer', function () {
 Route::get('manage', function () {
     return view('officer.manageCase');
 });
+Route::get('detail1', function () {
+    return view('officer.detail1');
+});
+Route::get('detail2', function () {
+    return view('officer.detail2');
+});
+Route::get('activities', function () {
+    return view('officer.activities');
+});
 Route::get('ajax-amphur/{prov_id}','case_controller@ajax_amphur');
 
 Route::resource('case_inputs','case_controller');
