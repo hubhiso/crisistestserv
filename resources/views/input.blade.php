@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ asset('bulma/css/bulma-doc.css') }}" rel="stylesheet">
+    <link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 </head>
@@ -28,18 +29,224 @@
         <div class="container">
             <nav class="tabs is-boxed">
                 <ul>
-                    <li class="is-active"> <a href="{{ url('/') }}">หน้าหลัก</a> </li>
+                    <li class="is-active"> <a href="{{ url('/') }}">แบบฟอร์มบันทึกข้อมูล</a> </li>
                 </ul>
             </nav>
         </div>
     </div>
-
 </section>
-<section class="section">
-    <div class="box">
+
+<div class="container">
+	<section class="section">
+  		<h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>
+  		
+   		<div class="box" id="data-agent">
+			<div class="field is-horizontal">
+				<div class="field-label ">
+					<!-- Left empty for spacing -->
+				</div>
+			</div>
+			<label class="checkbox ">
+  				<input type="checkbox" class="is-medium"> กรุณาระบุหากท่านเป็น <a >ผู้แจ้งแทน</a></label>
+			<hr>
+			<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">ชื่อ</label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded has-icons-left ">
+								{!! Form::text('name',null,['class'=>'input','placeholder'=>'ชื่อเรียก']) !!}
+								<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+						</div>
+						<div class="field-label is-normal">
+							<label class="label">เบอร์ติดต่อ</label>
+						</div>
+						<div class="field">
+							<p class="control is-expanded has-icons-left">
+								{!! Form::text('phone',null,['class'=>'input','placeholder'=>'ตัวอย่าง : 0123456789']) !!}
+								<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
+							</p>
+						</div>
+					</div>
+				</div>
+				
+				
+			<div class="field is-horizontal">
+				<div class="field-label">
+					<!-- Left empty for spacing -->
+				</div>
+			</div>
+		</div>
+			
+   		<div class="box" id="data-person">
+       		<div class="field is-horizontal">
+				<div class="field-label ">
+					<!-- Left empty for spacing -->
+				</div>
+			</div>
+       		<label >ข้อมูลผู้ถูกกระทำ</</label>
+			<hr>
+      		@if($errors->any())
+                <ul class="notification is-warning">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+       		<div class="field is-horizontal">
+				<div class="field-label is-normal">
+					<label class="label">ชื่อ</label>
+				</div>
+				<div class="field-body">
+					<div class="field is-grouped">
+						<p class="control is-expanded has-icons-left ">
+							{!! Form::text('name',null,['class'=>'input','placeholder'=>'ชื่อเรียก']) !!}
+							<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+					</div>
+					<div class="field-label is-normal">
+						<label class="label">เบอร์ติดต่อ</label>
+					</div>
+					<div class="field">
+						<p class="control is-expanded has-icons-left">
+								{!! Form::text('phone',null,['class'=>'input','placeholder'=>'ตัวอย่าง : 0123456789']) !!}
+							<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
+						</p>
+					</div>
+				</div>
+			</div>
+    
+     		
+     		<div class="field is-horizontal">
+				<div class="field-label is-normal">
+					<label class="label">เพศ</label>
+				</div>
+				<div class="field-body">
+					<div class="field is-grouped">
+						<p class="control is-expanded has-icons-left ">
+							<label class="radio">
+      							{{ Form::radio('sex', '1' , true) }} 
+      							ชาย
+    						</label>
+   							<label class="radio">
+     							{{ Form::radio('sex', '2' , false) }} หญิง
+    						</label>
+    						<label class="radio">
+     							{{ Form::radio('sex', '3' , false) }} สาวประเภทสอง
+    						</label>
+						</p>
+					</div>
+				</div>
+			</div>
+      		
+       		<div class="field is-horizontal">
+				<div class="field-label is-normal">
+					<label class="label">จังหวัดที่เกิดเหตุ</label>
+				</div>
+				<div class="field-body">
+					<div class="field is-grouped">
+						<p class="control is-expanded  ">
+							<span class="select">
+							<select style='width:200px' name="prov_id" id="prov_id">
+								@foreach($provinces as $province)
+               	 					<option value="{{ $province->PROVINCE_ID }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
+           					 	@endforeach
+           					</select>
+					</div>
+					<div class="field-label is-normal">
+						<label class="label">อำเภอ</label>
+					</div>
+					<div class="field is-grouped">
+						<p class="control is-expanded  ">
+							<span class="select">
+							<select style='width:200px' name="amphur_id" id="amphur_id">
+								@foreach($amphurs as $amphur)
+               	 					<option value="{{ $amphur->AMPHUR_CODE }}" style="width:250px">{{ $amphur->AMPHUR_NAME }}</option>
+           					 	@endforeach
+           					</select>
+					</div>
+				</div>
+			</div>
+      
+        	<div class="field is-horizontal">
+				<div class="field-label ">
+					<!-- Left empty for spacing -->
+				</div>
+			</div>
+           <div class="field is-horizontal">
+				<div class="field-label ">
+					<!-- Left empty for spacing -->
+				</div>
+			</div>
+            
+       
+       		<div class="field is-horizontal">
+				<div class="field-label is-normal">
+					<label class="label">ปัญหาที่พบ</label>
+				</div>
+				<div class="field-body">
+					<div class="field is-grouped">
+						<p class="control is-expanded  ">
+							<span class="select">
+							<select id ="problem_case" name="problem_case">
+								<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
+     							<option value="1"  >บังคับตรวจเอชไอวี</option>
+     							<option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
+    				 			<option value="3" >เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
+     							<option value="4" >ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
+							</select>
+							
+							{{--Form::select('problem_case', array(
+                        	'บังคับตรวจการติดเชื้อเอชไอวี' => array('110' =>'ผู้ติดชื้อ HIV',
+                                                          '120' =>'กลุ่มเปราะบาง',
+                                                          '130' =>'ประชาชนทั่วไป'),
+                        	'เปิดเผยสถานะการติดเชื้อเชื้อเอชไอวี' => array('210' => 'เป็นผู้ติดเชื้อ HIV'),
+                        	'เลือกปฏิบัติอัน' => array('310' => 'ผู้ติดเชื้อ HIV',
+                                              '320' => 'กลุ่มเปราะบาง'),
+        					))--}}
+        					</span>
+						</p>
+					</div>
+				</div>
+			</div>
+       
+       
+       		<div class="field is-horizontal">
+				<div class="field-label is-normal">
+					<label class="label">ประเภทกลุ่ม</label>
+				</div>
+				<div class="field-body">
+					<div class="field is-grouped">
+						<p class="control is-expanded  ">
+							<span class="select">
+							<select id ="sub_problem" name="sub_problem" disabled="true">
+                			</select>
+                			{{--Form::select('sub_problem', array(
+                       			'001' => 'กลุ่มหลากหลายทางเพศ',
+                        		'002' => 'พนักงานบริการ',
+                        		'003' => 'ผู้ใช้สารเสพติด',
+                        		'004' => 'แรงงานข้ามชาติ',
+        					)) --}}
+						</p>
+					</div>
+					<div class="field-label is-normal">
+						<label class="label">level2</label>
+					</div>
+					<div class="field is-grouped">
+						<p class="control is-expanded  ">
+							<span class="select">
+							<select id ="group_code" name="group_code" disabled="true">
+                			</select>
+						</p>
+					</div>
+				</div>
+			</div>
+        
+        
+        
+        <!--
         <div class="container">
-            <h2 class="subtitle">กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง</h2>
-            <hr>
+        	<label>ข้อมูลผู้ถูกกระทำ</label>
 
             @if($errors->any())
                 <ul class="notification is-warning">
@@ -91,11 +298,18 @@
 
         </span> </p>
             </div>
+         
             <div class="field">
                 <label class="label">เบอร์โทรศัพท์</label>
             {!! Form::text('tel',null,['class'=>'input']) !!}
+             -->
+            
             <!-- <p class="help is-success">เบอร์โทรศัพท์ถูกต้อง</p> -->
+            <!--
+            
             </div>
+           
+            
             <div class="field">
                 <label class="label">ปัญหาที่พบ</label>
                 <p class="control"> <span class="select">
@@ -138,6 +352,8 @@
                 </select>
                 </span> </p></div>
             </div>
+            
+            
             <div class="field is-grouped">
                 <p class="control">
                     {!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
@@ -146,16 +362,22 @@
                     <button class="button is-link"><a href="{{ '/' }}">ยกเลิก</a></button>
                 </p>
             </div>
-        </div>
-    </div>
-    <hr>
-    <p class="theme1">
-        <b>มูลนิธิศูนย์คุ้มครองสิทธิด้านเอดส์ (Aidsrightsthailand)</b>
-    </p>
-    <p class="theme1">
-        133/235 หมู่บ้านรื่นฤดี3 ถนนหทัยราษฎร์ แขวงมีนบุรี เขตมีนบุรี กทม 10510 โทรศัพท์ 02-171-5135-6 โทรสาร 02-1715124
-    </p>
+            -->
+        	</div>
+		
+			<div class="field is-grouped">
+                <p class="control">
+                    {!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
+                </p>
+                <p class="control">
+                    <button class="button is-link"><a href="{{ '/' }}">ยกเลิก</a></button>
+                </p>
+            </div>
+		</div>
 </section>
+</div>
+
+
 {!!   Form::close() !!}
 <script>
         $('#prov_id').on('change', function (e) {
@@ -229,5 +451,28 @@
             }
         });
 </script>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3">
+                <div id="about" class="content"> <strong xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Crisis Response</strong> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://jgthms.com" property="cc:attributionName" rel="cc:attributionURL">Aidsrightsthailand</a>. </div>
+            </div>
+            <div class="column is-5">
+                <div id="share" class="content"> </div>
+            </div>
+            <div class="column is-4">
+                <div id="sister">
+                    <p><small> <strong>ที่อยู่</strong> : </small></p>
+                    <p><small>133/235 หมู่บ้านรื่นฤดี3 ถนนหทัยราษฎร์ แขวงมีนบุรี เขตมีนบุรี กทม 10510 โทรศัพท์ 02-171-5135-6 โทรสาร 02-1715124 </small></p>
+                </div>
+            </div>
+        </div>
+        <p id="tsp"> <small> Source code licensed <a href="http://opensource.org/licenses/mit-license.php">HISO</a>. <br>
+                Website content licensed <a rel="license" href="http://www.hiso.or.th">www.hiso.or.th</a>. </small> </p>
+    </div>
+</footer>
+
+
 </body>
 </html>
