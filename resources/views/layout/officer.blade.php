@@ -11,33 +11,35 @@
 <section class="hero is-medium has-text-centered">
   <div class="hero-head">
     <div class="container">
-      <nav class="nav">
-        <!--div class="nav-left"> <a class="nav-item is-brand" href="http://bulma.io"> <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox">Crisis Response </a> </div-->
-        <div class="nav-left">
-          <a class="nav-item is-active" href="http://hiso.or.th/"> Crisis Response </a>
-        </div>
-        
-        <div class="nav-center"> <a class="nav-item" href="https://github.com/jgthms/bulma"> <span class="icon"> <i class="fa fa-github"></i> </span> </a> <a class="nav-item" href="https://twitter.com/jgthms"> <span class="icon"> <i class="fa fa-twitter"></i> </span> </a> </div>
-        <span id="nav-toggle" class="nav-toggle"> <span></span> <span></span> <span></span> </span>
-        <div id="nav-menu" class="nav-right nav-menu"> <a class="nav-item is-active" href="http://bulma.io/"> User  </a> <!--a class="is-hidden nav-item  " href="http://bulma.io/templates/"> <span>Templates</span> <span class="tag is-small is-success">New!</span> </a--> <a class="nav-item  " href="/documentation/overview/start/"> Noppon </a> <a class="nav-item " href="http://bulma.io/blog/"> Kumpdetch </a>
-          <div class="nav-item">
-            <div class="field is-grouped">
-              <p class="control"> <a id="twitter"
-            class="button"
-            data-social-network="Twitter"
-            data-social-action="tweet"
-            data-social-target="http://bulma.io"
-            target="_blank"
-            href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&url=http://bulma.io&via=jgthms"> <!--span class="icon"> <i class="fa fa-twitter"></i> </span--> <span>100 case</span> </a> </p>
-              <p class="control"> 
-                <!--a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.4.2.zip"> <span class="icon"> <i class="fa fa-download"></i> </span> <span>Download</span> </a--> 
-                <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.4.2.zip">  <span>Logout</span> </a> 
-              </p>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
+				<nav class="navbar ">
+					<div class="navbar-brand">
+						<!--a class="nav-item is-active" href="#">Crisis Response</a-->
+						<div class="nav-item">
+							<div class="field is-grouped">
+								<p class="control"> <a id="i-receive" class="button" href="#"> <span>ไม่รับเรื่อง 100</span> </a> </p>
+								<p class="control"> <a id="i-additional" class="button" href="#"> <span>ไม่บันทึก 20</span> </a> </p>
+								<p class="control"> <a id="i-process" class="button" href="#"> <span>ไม่ดำเนินการ 30</span> </a> </p>
+							</div>
+						</div>
+
+						<div class="navbar-burger burger" data-target="navMenuDocumentation">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+
+					<div id="navMenuDocumentation" class="navbar-menu">
+						<div class="navbar-end">
+							<a class="nav-item is-active" href="#"> Username : </a>
+							<div class="nav-item">
+								<p class="control"> <a class="button is-primary" href="#"> <span>Logout</span> </a> </p>
+							</div>
+						</div>
+					</div>
+				</nav>
+
+			</div>
   </div>
   <div class="hero-body">
     <div class="container">
