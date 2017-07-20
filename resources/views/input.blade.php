@@ -243,137 +243,17 @@
 			</div>
         
         
-        
-        <!--
-        <div class="container">
-        	<label>ข้อมูลผู้ถูกกระทำ</label>
-
-            @if($errors->any())
-                <ul class="notification is-warning">
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
-
-            <div class="field body">
-                <label class="label">ผู้แจ้ง</label>
-                <p class="control">
-                    {!! Form::text('name',null,['class'=>'input']) !!}
-                </p>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <label class="radio">
-                        {{ Form::radio('sex', '1' , true) }}
-                        ชาย </label>
-                    <label class="radio">
-                        {{ Form::radio('sex', '2' , false) }}
-                        หญิง </label>
-                    <label class="radio">
-                        {{ Form::radio('sex', '3' , false) }}
-                        สาวประเภทสอง </label>
-                </p>
-            </div>
-            <div class="field">
-                <label class="label">จังหวัด</label>
-                <p class="control"> <span class="select">
-        <select style='width:200px' name="prov_id" id="prov_id">
-            @foreach($provinces as $province)
-                <option value="{{ $province->PROVINCE_ID }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
-            @endforeach
-        </select>
-
-
-        </span> </p>
-            </div>
-            <div class="field">
-                <label class="label">อำเภอ</label>
-                <p class="control"> <span class="select">
-        <select style='width:200px' name="amphur_id" id="amphur_id">
-          @foreach($amphurs as $amphur)
-                <option value="{{ $amphur->AMPHUR_CODE }}" style="width:250px">{{ $amphur->AMPHUR_NAME }}</option>
-          @endforeach
-        </select>
-
-        </span> </p>
-            </div>
-         
-            <div class="field">
-                <label class="label">เบอร์โทรศัพท์</label>
-            {!! Form::text('tel',null,['class'=>'input']) !!}
-             -->
-            
-            <!-- <p class="help is-success">เบอร์โทรศัพท์ถูกต้อง</p> -->
-            <!--
-            
-            </div>
-           
-            
-            <div class="field">
-                <label class="label">ปัญหาที่พบ</label>
-                <p class="control"> <span class="select">
-        <select id ="problem_case" name="problem_case">
-     <option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
-     <option value="1"  >บังคับตรวจเอชไอวี</option>
-     <option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
-     <option value="3" >เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
-     <option value="4" >ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
-        </select>
-        {{--Form::select('problem_case', array(
-                        'บังคับตรวจการติดเชื้อเอชไอวี' => array('110' =>'ผู้ติดชื้อ HIV',
-                                                          '120' =>'กลุ่มเปราะบาง',
-                                                          '130' =>'ประชาชนทั่วไป'),
-                        'เปิดเผยสถานะการติดเชื้อเชื้อเอชไอวี' => array('210' => 'เป็นผู้ติดเชื้อ HIV'),
-                        'เลือกปฏิบัติอัน' => array('310' => 'ผู้ติดเชื้อ HIV',
-                                              '320' => 'กลุ่มเปราะบาง'),
-        ))--}}
-        </span> </p>
-            </div>
-            <div class="field body">
-                <div class="field">
-                <label class="label">ประเภทกลุ่ม</label>
-                <p class="control"> <span class="select">
-                <select id ="sub_problem" name="sub_problem" disabled="true">
-                </select>
-
-        {{--Form::select('sub_problem', array(
-                        '001' => 'กลุ่มหลากหลายทางเพศ',
-                        '002' => 'พนักงานบริการ',
-                        '003' => 'ผู้ใช้สารเสพติด',
-                        '004' => 'แรงงานข้ามชาติ',
-        )) --}}
-                </span> </p>
-                </div>
-                <div class="field">
-                <label class="label"> </label>
-                <p class="control"> <span class="select">
-                <select id ="group_code" name="group_code" disabled="true">
-                </select>
-                </span> </p></div>
-            </div>
-            
-            
-            <div class="field is-grouped">
-                <p class="control">
-                    {!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
-                </p>
-                <p class="control">
-                    <button class="button is-link"><a href="{{ '/' }}">ยกเลิก</a></button>
-                </p>
-            </div>
-            -->
-        	</div>
+        </div>
 		
-			<div class="field is-grouped">
-                <p class="control">
-                    {!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
-                </p>
-                <p class="control">
-                    <button class="button is-link"><a href="{{ '/' }}">ยกเลิก</a></button>
-                </p>
-            </div>
-		</div>
+		<div class="field is-grouped">
+        	<p class="control">
+            	{!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
+            </p>
+            <p class="control">
+            	<button class="button is-link"><a href="{{ '/' }}">ยกเลิก</a></button>
+            </p>
+        </div>
+	</div>
 </section>
 </div>
 
