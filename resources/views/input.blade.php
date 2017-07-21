@@ -64,7 +64,7 @@
 						</div>
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-								{!! Form::text('phone',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
+								{!! Form::text('tel',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
 								<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
 							</p>
 						</div>
@@ -85,7 +85,7 @@
 					<!-- Left empty for spacing -->
 				</div>
 			</div>
-       		<label >ข้อมูลผู้ถูกกระทำ</</label>
+       		<label >ข้อมูลผู้ถูกกระทำ</label>
 			<hr>
       		@if($errors->any())
                 <ul class="notification is-warning">
@@ -109,7 +109,7 @@
 					</div>
 					<div class="field">
 						<p class="control is-expanded has-icons-left">
-								{!! Form::text('phone',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
+								{!! Form::text('tel',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
 							<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
 						</p>
 					</div>
