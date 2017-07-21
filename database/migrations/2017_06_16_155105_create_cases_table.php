@@ -24,6 +24,7 @@ class CreateCasesTable extends Migration
             $table->integer('sub_problem');
             $table->integer('group_code');
             $table->text('case_id');
+            $table->text('sender_case');
             $table->text('sender');
             $table->text('reciver');
             $table->text('status');
