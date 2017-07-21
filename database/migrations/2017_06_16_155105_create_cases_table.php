@@ -19,14 +19,16 @@ class CreateCasesTable extends Migration
             $table->integer('sex');
             $table->integer('prov_id');
             $table->integer('amphur_id');
-            $table->text('tel');
+            $table->text('agent_tel')->nullable();
+            $table->text('victim_tel')->nullable();
             $table->integer('problem_case');
             $table->integer('sub_problem');
-            $table->integer('group_code');
-            $table->text('case_id');
-            $table->text('sender');
-            $table->text('reciver');
-            $table->text('status');
+            $table->integer('group_code')->nullable();
+            $table->text('case_id')->nullable();
+            $table->text('sender_case')->nullable();
+            $table->text('sender')->nullable();
+            $table->text('receiver')->nullable();
+            $table->text('status')->nullable();
             $table->timestamps();
         });
     }
