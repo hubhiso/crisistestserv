@@ -64,7 +64,7 @@
 						</div>
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-								{!! Form::text('phone',null,['class'=>'input','placeholder'=>'ตัวอย่าง : 0123456789']) !!}
+								{!! Form::text('phone',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
 								<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
 							</p>
 						</div>
@@ -109,7 +109,7 @@
 					</div>
 					<div class="field">
 						<p class="control is-expanded has-icons-left">
-								{!! Form::text('phone',null,['class'=>'input','placeholder'=>'ตัวอย่าง : 0123456789']) !!}
+								{!! Form::text('phone',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
 							<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
 						</p>
 					</div>
@@ -154,7 +154,7 @@
            					</select>
 					</div>
 					<div class="field-label is-normal">
-						<label class="label">อำเภอ</label>
+						<label class="label">อำเภอที่เกิดเหตุ</label>
 					</div>
 					<div class="field is-grouped">
 						<p class="control is-expanded  ">
@@ -189,7 +189,7 @@
 						<p class="control is-expanded  ">
 							<span class="select">
 							<select id ="problem_case" name="problem_case">
-								<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
+								<!--option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option-->
      							<option value="1"  >บังคับตรวจเอชไอวี</option>
      							<option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
     				 			<option value="3" >เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
@@ -197,12 +197,12 @@
 							</select>
 							
 							{{--Form::select('problem_case', array(
-                        	'บังคับตรวจการติดเชื้อเอชไอวี' => array('110' =>'ผู้ติดชื้อ HIV',
+                        	'บังคับตรวจเอชไอวี' => array('110' =>'ผู้ติดเชื้อเอชไอวี',
                                                           '120' =>'กลุ่มเปราะบาง',
                                                           '130' =>'ประชาชนทั่วไป'),
-                        	'เปิดเผยสถานะการติดเชื้อเชื้อเอชไอวี' => array('210' => 'เป็นผู้ติดเชื้อ HIV'),
-                        	'เลือกปฏิบัติอัน' => array('310' => 'ผู้ติดเชื้อ HIV',
-                                              '320' => 'กลุ่มเปราะบาง'),
+                        	'เปิดเผยสถานะการติดเชื้อเชื้อเอชไอวี' => array('210' => 'ผู้ติดเชื้อเอชไอวี'),
+                        	'เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี' => array('310' => 'ผู้ติดเชื้อเอชไอวี'),
+                        	'ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง' => array('410' => 'กลุ่มเปราะบาง'),
         					))--}}
         					</span>
 						</p>
@@ -225,12 +225,14 @@
                        			'001' => 'กลุ่มหลากหลายทางเพศ',
                         		'002' => 'พนักงานบริการ',
                         		'003' => 'ผู้ใช้สารเสพติด',
-                        		'004' => 'แรงงานข้ามชาติ',
+                        		'004' => 'ประชากรข้ามชาติ',
+                        		'005' => 'ผู้ต้องขัง',
+                        		'006' => 'เยาวชนในสถานพินิจ',
         					)) --}}
 						</p>
 					</div>
 					<div class="field-label is-normal">
-						<label class="label">level2</label>
+						<label class="label">ประเภทกลุ่มย่อย</label>
 					</div>
 					<div class="field is-grouped">
 						<p class="control is-expanded  ">
@@ -284,26 +286,25 @@
             if(prob_id==1){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" style="width:250px">เป็นผู้ติดเชื้อ HIV</option>');
-                $('#sub_problem').append('<option value="2" style="width:250px">เป็นกลุ่มเปราะบาง</option>');
-                $('#sub_problem').append('<option value="3" style="width:250px">เป็นประชาชนทั่วไป</option>');
+                $('#sub_problem').append('<option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>');
+                $('#sub_problem').append('<option value="2" style="width:250px">กลุ่มเปราะบาง</option>');
+                $('#sub_problem').append('<option value="3" style="width:250px">ประชาชนทั่วไป</option>');
             }else if(prob_id==2){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" style="width:250px">เป็นผู้ติดเชื้อ HIV</option>');
+                $('#sub_problem').append('<option value="1" style="width:250px">ติดเชื้อเอชไอวี</option>');
             }else if(prob_id==3){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" style="width:250px">เป็นผู้ติดเชื้อ HIV</option>');
+                $('#sub_problem').append('<option value="1" style="width:250px">ติดเชื้อเอชไอวี</option>');
             }else if(prob_id==4){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" style="width:250px">เป็นกลุ่มเปราะบาง</option>');
+                $('#sub_problem').append('<option value="1" style="width:250px">กลุ่มเปราะบาง</option>');
                 $('#group_code').empty();
                 $('#group_code').removeAttr('disabled');
                 $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
-                $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ HIV</option>');
-                $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด111333</option>');
+                $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ </option>');
                 $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
                 $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
                 $('#group_code').append('<option value="5" style="width:250px">ผู้ต้องขัง</option>');
