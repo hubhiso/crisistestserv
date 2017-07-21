@@ -19,7 +19,8 @@ class CreateCasesTable extends Migration
             $table->integer('sex');
             $table->integer('prov_id');
             $table->integer('amphur_id');
-            $table->text('tel');
+            $table->text('agent_tel');
+            $table->text('victim_tel');
             $table->integer('problem_case');
             $table->integer('sub_problem');
             $table->integer('group_code');

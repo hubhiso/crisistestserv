@@ -109,7 +109,7 @@
 					</div>
 					<div class="field">
 						<p class="control is-expanded has-icons-left">
-								{!! Form::text('tel',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
+								{!! Form::text('victim_tel',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
 							<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
 						</p>
 					</div>
