@@ -51,20 +51,20 @@
 			<hr>
 			<div class="field is-horizontal">
 					<div class="field-label is-normal">
-						<label class="label">ชื่อ</label>
+						<label class="label">ชื่อผู้แจ้ง</label>
 					</div>
 					<div class="field-body">
 						<div class="field is-grouped">
 							<p class="control is-expanded has-icons-left ">
-								{!! Form::text('name',null,['class'=>'input','placeholder'=>'ชื่อเรียก']) !!}
+								{!! Form::text('agentname',null,['class'=>'input','placeholder'=>'ชื่อเรียก']) !!}
 								<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
 						</div>
 						<div class="field-label is-normal">
-							<label class="label">เบอร์ติดต่อ</label>
+							<label class="label">เบอร์มือถือผู้แจ้ง</label>
 						</div>
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-								{!! Form::text('phone',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
+								{!! Form::text('agentphone',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
 								<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
 							</p>
 						</div>
@@ -96,7 +96,7 @@
             @endif
        		<div class="field is-horizontal">
 				<div class="field-label is-normal">
-					<label class="label">ชื่อ</label>
+					<label class="label">ชื่อผู้ถูกกระทำ</label>
 				</div>
 				<div class="field-body">
 					<div class="field is-grouped">
@@ -105,7 +105,7 @@
 							<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
 					</div>
 					<div class="field-label is-normal">
-						<label class="label">เบอร์ติดต่อ</label>
+						<label class="label">เบอร์มือถือ</label>
 					</div>
 					<div class="field">
 						<p class="control is-expanded has-icons-left">
@@ -189,7 +189,7 @@
 						<p class="control is-expanded  ">
 							<span class="select">
 							<select id ="problem_case" name="problem_case">
-								<!--option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option-->
+								<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
      							<option value="1"  >บังคับตรวจเอชไอวี</option>
      							<option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
     				 			<option value="3" >เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
@@ -213,7 +213,7 @@
        
        		<div class="field is-horizontal">
 				<div class="field-label is-normal">
-					<label class="label">ประเภทกลุ่ม</label>
+					<label class="label"> ประเภทกลุ่ม </label>
 				</div>
 				<div class="field-body">
 					<div class="field is-grouped">
@@ -231,17 +231,26 @@
         					)) --}}
 						</p>
 					</div>
-					<div class="field-label is-normal">
-						<label class="label">ประเภทกลุ่มย่อย</label>
-					</div>
+					
+				</div>
+			</div>
+      		 <div class="field is-horizontal">
+      		 	<div class="field-label is-normal">
+					<label class="label">ประเภทกลุ่มย่อย</label>
+				</div>
+				<div class="field-body">
 					<div class="field is-grouped">
 						<p class="control is-expanded  ">
+							<span class="select">
 							<span class="select">
 							<select id ="group_code" name="group_code" disabled="true">
                 			</select>
 						</p>
 					</div>
+					
 				</div>
+				
+					
 			</div>
         
         
@@ -292,11 +301,11 @@
             }else if(prob_id==2){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" style="width:250px">ติดเชื้อเอชไอวี</option>');
+                $('#sub_problem').append('<option value="1" >ผู้ติดเชื้อเอชไอวี</option>');
             }else if(prob_id==3){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" style="width:250px">ติดเชื้อเอชไอวี</option>');
+                $('#sub_problem').append('<option value="1" >ผู้ติดเชื้อเอชไอวี</option>');
             }else if(prob_id==4){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
