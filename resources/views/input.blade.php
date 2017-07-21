@@ -47,7 +47,18 @@
 				</div>
 			</div>
 			<label class="checkbox ">
-  				<input type="checkbox" class="is-medium"> กรุณาระบุหากท่านเป็น <a >ผู้แจ้งแทน</a></label>
+
+			<div class="field is-grouped">
+				<p class="control is-expanded has-icons-left ">
+					กรุณาระบุสถาณะของท่าน 
+					<label class="radio">
+						{{ Form::radio('sender_case', '1' , true) }}  <a >ผู้ถูกกระทำ</a>
+					</label>
+					<label class="radio">
+						{{ Form::radio('sender_case', '2' , false) }} <a >ผู้แจ้งแทน</a>
+					</label>
+				</p>
+			</div>
 			<hr>
 			<div class="field is-horizontal">
 					<div class="field-label is-normal">
