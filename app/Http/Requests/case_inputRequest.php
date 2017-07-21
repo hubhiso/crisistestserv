@@ -34,7 +34,7 @@ class case_inputRequest extends FormRequest
     {
         return[
             'name.required' => 'ท่านยังไม่ได้ระบุชื่อ',
-            'tel.required'  => 'ท่านยังไม่ได้ระบุเบอร์โทรศัพ',
+            'tel.required'  => 'ท่านยังไม่ได้ระบุเบอร์มือถือ',
             'tel.numeric'   => 'เบอร์โทรศัพท์ผิดพลาด',
             'tel.digits'    => 'ระบุเบอร์โทรศัพท์มือถือ 10 หลัก',
             'sub_problem.required'    => 'ท่านยังไม่ได้เลือกประเภทปัญหา',
