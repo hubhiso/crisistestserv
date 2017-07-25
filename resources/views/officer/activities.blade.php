@@ -7,7 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--meta name="description" content="Bulma is an open source CSS framework based on Flexbox and built with Sass. It's 100% responsive, fully modular, and available for free."-->
 	<title>Crisis Response</title>
-	<link rel="stylesheet" href="bulma/css/bulma.css">
+	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
 	<!--meta name="msapplication-config" content="http://bulma.io/favicons/browserconfig.xml?v=201701041855"-->
 	<meta name="theme-color" content="#cc99cc"/>
@@ -28,7 +29,7 @@
 								<p class="control"> <a id="i-" class="button" href="#"> <span>100 case</span> </a> </p>
 							</div>
 						</div>
-						<div class="nav-center"> <a class="nav-item" href="#"> <span class="icon"> <i class="fa fa-github"></i> </span> </a> <a class="nav-item" href="#"> <span class="icon"> <i class="fa fa-twitter"></i> </span> </a> </div>
+
 						<span id="nav-toggle" class="nav-toggle"> <span></span> <span></span> <span></span> </span>
 						<div id="nav-menu" class="nav-right nav-menu"> <a class="nav-item is-active" href="#"> Username : </a>
 							<div class="nav-item">
@@ -38,9 +39,51 @@
 				</nav>
 				</div>
 			</div>
-			<div class="column is-one-third ">
-				<p> <a href="Home.php">Home</a> >> <a>การดำเนินงาน</a> </p>
+
+
+
+			<div class="container">
+				<div class="field is-horizontal">
+					<div class="field-label">
+						<!-- Left empty for spacing -->
+					</div>
+				</div>
+				<nav class="breadcrumb">
+					<ul>
+						<li><a><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+						</li>
+						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-search"></i></span><span>  การดำเนินการ </span></a>
+						</li>
+					</ul>
+				</nav>
+				<div class="field is-horizontal">
+					<div class="field-label">
+						<!-- Left empty for spacing -->
+					</div>
+				</div>
 			</div>
+
+
+			<div class="tabs is-centered is-boxed">
+				<ul>
+					<li >
+						<a>
+        					<span class="icon is-small"><i class="fa fa-image"></i></span>
+        					<span> ข้อมูลเพิ่มเติม </span>
+      					</a>
+					
+					</li>
+					<li class="is-active">
+						<a>
+        					<span class="icon is-small"><i class="fa fa-music"></i></span>
+       						<span> การดำเนินงาน </span>
+      					</a>
+					
+					</li>
+				</ul>
+				<hr>
+			</div>
+
 			<h1 id="title" class="title"> การดำเนินงาน </h1>
 			<div class="container">
 				<div class="notification">
@@ -172,11 +215,15 @@
  				ให้คำปรึกษา
 			</label>
 								
+
+
 									<label class="checkbox">
   				<input type="checkbox" >
  				เจรจาเป็นรายบุคคล
 			</label>
 								
+
+
 
 							</div>
 						</div>
@@ -194,11 +241,15 @@
  				เจรจาระดับนโยบายขององค์กร
 			</label>
 								
+
+
 									<label class="checkbox">
   				<input type="checkbox" >
  				ดำเนินคดี
 			</label>
 								
+
+
 							</div>
 						</div>
 					</div>
@@ -264,6 +315,8 @@
                 <option> ดำเนินการเสร็จสิ้น </option>
                 <option> ดำเนินการแล้วส่งต่อ </option>
 			   </select> </span>
+								
+
 								</p>
 							</div>
 							<div class="field-label is-normal">
@@ -276,6 +329,8 @@
                 <option> ไม่สำเร็จ </option>
                 <option> ตาย </option>
               </select> </span>
+								
+
 								</p>
 							</div>
 						</div>
@@ -325,12 +380,12 @@
 						<!-- Left empty for spacing -->
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</section>
 	<br>
-	
+
 	<footer class="footer">
 		<div class="container">
 			<div class="columns">

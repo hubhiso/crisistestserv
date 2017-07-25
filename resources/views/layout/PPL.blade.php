@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="column is-narrow">
-        <p class="title" align="center"><a id="btn_new2" class="button"><strong>สถานะการดำเนินงาน</strong></a></p>
+        <p class="title" align="center"><a id="btn_new2" class="button" href="{{ 'status' }}"><strong>สถานะการดำเนินงาน</strong></a></p>
       </div>
     </div>
     <hr>

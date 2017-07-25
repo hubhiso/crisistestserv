@@ -14,6 +14,11 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('status', function () {
+    return view('layout.status');
+});
+
 Route::get('officer', function () {
     return view('officer.home');
 });
