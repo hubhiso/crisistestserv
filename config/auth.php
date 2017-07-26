@@ -45,6 +45,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'officer' => [
+            'driver' => 'session',
+            'provider' => 'officers',
+        ],
     ],
 
     /*
@@ -68,6 +73,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'officers' => [
+            'driver' => 'eloquent',
+            'model' => App\Officer::class,
         ],
 
         // 'users' => [
@@ -94,6 +104,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'officers' => [
+            'provider' => 'officers',
             'table' => 'password_resets',
             'expire' => 60,
         ],
