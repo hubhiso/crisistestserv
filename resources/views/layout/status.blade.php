@@ -45,6 +45,15 @@
 					</li>
 				</ul>
 			</nav>
+			
+			{{--@extends('layout.officer')--}}
+
+			@extends('layout.PPL')
+			
+			
+			{{--@extends('agentinput')--}}
+
+			@extends('agentinput')
 
 
 

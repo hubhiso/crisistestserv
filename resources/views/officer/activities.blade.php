@@ -5,17 +5,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--meta name="description" content="Bulma is an open source CSS framework based on Flexbox and built with Sass. It's 100% responsive, fully modular, and available for free."-->
 	<title>Crisis Response</title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
 	<!--meta name="msapplication-config" content="http://bulma.io/favicons/browserconfig.xml?v=201701041855"-->
 	<meta name="theme-color" content="#cc99cc"/>
-	<script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
-	<script src="http://bulma.io/javascript/clipboard.min.js"></script>
-	<script src="http://bulma.io/javascript/bulma.js"></script>
-	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script>
 </head>
 
 <body class="layout-default">
@@ -66,25 +61,50 @@
 
 			<div class="tabs is-centered is-boxed">
 				<ul>
-					<li >
+					<li>
 						<a>
         					<span class="icon is-small"><i class="fa fa-image"></i></span>
         					<span> ข้อมูลเพิ่มเติม </span>
       					</a>
 					
+
 					</li>
 					<li class="is-active">
 						<a>
         					<span class="icon is-small"><i class="fa fa-music"></i></span>
-       						<span> การดำเนินงาน </span>
+       						<span> การดำเนินการ </span>
       					</a>
 					
+
 					</li>
 				</ul>
-				<hr>
 			</div>
 
-			<h1 id="title" class="title"> การดำเนินงาน </h1>
+			<section>
+				<div class="container">
+					<div class="tabs is-centered is-toggle">
+						<ul>
+							<li>
+								<a>
+								<span class="icon is-small"><i class="fa fa-image"></i></span>
+								<span> ข้อมูลเพิ่มเติม </span>
+							  </a>
+							
+							</li>
+							<li class="is-active">
+								<a>
+									<span class="icon is-small"><i class="fa fa-music"></i></span>
+									<span> การดำเนินการ </span>
+								  </a>
+							
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<h1 id="title" class="title"> การดำเนินการ </h1>
 			<div class="container">
 				<div class="notification">
 					<!--This container is <strong>centered</strong> on desktop. -->
@@ -101,7 +121,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
 									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="สมชาย" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								</p>
 							</div>
 							<div class="field-label is-normal">
 								<label class="label">ID-Code</label>
@@ -217,11 +237,13 @@
 								
 
 
+
 									<label class="checkbox">
   				<input type="checkbox" >
  				เจรจาเป็นรายบุคคล
 			</label>
 								
+
 
 
 
@@ -243,11 +265,13 @@
 								
 
 
+
 									<label class="checkbox">
   				<input type="checkbox" >
  				ดำเนินคดี
 			</label>
 								
+
 
 
 							</div>
@@ -317,6 +341,7 @@
 			   </select> </span>
 								
 
+
 								</p>
 							</div>
 							<div class="field-label is-normal">
@@ -330,6 +355,7 @@
                 <option> ตาย </option>
               </select> </span>
 								
+
 
 								</p>
 							</div>
@@ -390,7 +416,7 @@
 		<div class="container">
 			<div class="columns">
 				<div class="column is-3">
-					<div id="about" class="content"> <strong xmlns:dct="#" href="#" property="dct:title" rel="dct:type">Crisis Response</strong> by <a xmlns:cc="#" href="#" property="cc:attributionName" rel="cc:attributionURL">Aidsrightsthailand</a>. </div>
+					<div id="about" class="content"> <strong xmlns:dct="#" href="#" property="dct:title" rel="dct:type">Crisis Response</strong> by <a xmlns:cc="#" href="#" property="cc:attributionName" rel="cc:attributionURL"> มูลนิธิศูนย์คุ้มครองสิทธิด้านเอดส์ (Aidsrightsthailand) </a>. </div>
 				</div>
 				<div class="column is-5">
 					<div id="share" class="content"> </div>
