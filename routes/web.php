@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/officer', 'AdminController@index');
-
+Auth::routes();
+Route::prefix('officer')->group(function () {
+    Route::get('/', 'OfficerController@index')->name('officer.main');
+    Route::get('/login', 'Auth\OfficerLoginController@ShowLoginForm')->name('officer.login');
+    Route::post('/login', 'Auth\OfficerLoginController@login')->name('officer.login.submit');
+});
 Route::get('manage', function () {
     return view('officer.manageCase');
 });
@@ -32,10 +36,7 @@ Route::get('activities', function () {
 Route::get('ajax-amphur/{prov_id}','case_controller@ajax_amphur');
 
 Route::resource('case_inputs','case_controller');
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

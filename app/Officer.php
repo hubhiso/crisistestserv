@@ -14,6 +14,8 @@ class Officer extends Authenticatable
      *
      * @var array
      */
+    protected $guard = 'officer';
+
     protected $fillable = [
         'name', 'tel', 'password', 'position', 'prov_id',
     ];
