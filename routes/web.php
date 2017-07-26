@@ -15,13 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('status', function () {
-    return view('layout.status');
-});
+Route::get('/officer', 'AdminController@index');
 
-Route::get('officer', function () {
-    return view('officer.home');
-});
 Route::get('manage', function () {
     return view('officer.manageCase');
 });
