@@ -75,11 +75,8 @@
 						</div>
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-<<<<<<< HEAD
 								{!! Form::text('agentphone',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
-=======
 								{!! Form::text('agent_tel',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
->>>>>>> 451acc010b6cab0a845ace7472686bbf6bd9226a
 								<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
 							</p>
 						</div>
