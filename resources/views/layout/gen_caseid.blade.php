@@ -39,7 +39,7 @@
                 {{ $new_id }}
             </div>
             @if(Auth::guard('officer')->check())
-                <a class="button is-success" href="{{ route('officer') }}">กลับสู้หน้าหลัก</a>
+                <a class="button is-success" href="{{ route('officer.main') }}">กลับสู้หน้าหลัก</a>
             @else
             <a class="button is-success" href="{{ url('/') }}">กลับสู้หน้าหลัก</a>
             @endif

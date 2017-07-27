@@ -9,7 +9,6 @@ use App\amphur;
 use App\case_input;
 use Request;
 use Auth;
-use App\Http\Controllers\Auth\OfficerLoginController;
 
 
 class OfficerInputController extends Controller
@@ -93,14 +92,7 @@ class OfficerInputController extends Controller
         return view('officer.OfficerManageCase',compact('cases'));
 
     }
-    public function confirm($id)
-    {
-        //
-        $cases = case_input::where('id','=',$id);
 
-        return view('officer.detail1',compact('cases'));
-
-    }
 
     /**
      * Show the form for editing the specified resource.
