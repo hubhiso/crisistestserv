@@ -45,7 +45,8 @@ class OfficerInputController extends Controller
         //$caseinputs = new case_input();
         $provinces = province::all();
         $amphurs= amphur::where('PROVINCE_ID', '=', 1)->get();
-        return view('officer.input_case',compact('provinces','amphurs'));    }
+        return view('officer.input_case',compact('provinces','amphurs'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -84,9 +85,21 @@ class OfficerInputController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show()
     {
         //
+        $cases = case_input::all();
+
+        return view('officer.OfficerManageCase',compact('cases'));
+
+    }
+    public function confirm($id)
+    {
+        //
+        $cases = case_input::where('id','=',$id);
+
+        return view('officer.detail1',compact('cases'));
+
     }
 
     /**

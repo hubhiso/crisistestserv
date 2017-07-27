@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::prefix('officer')->group(function () {
     Route::get('/', 'OfficerController@index')->name('officer.main');
+    Route::get('/show', 'OfficerInputController@show')->name('officer.show');
     Route::get('/login', 'Auth\OfficerLoginController@ShowLoginForm')->name('officer.login');
     Route::post('/login', 'Auth\OfficerLoginController@login')->name('officer.login.submit');
     Route::post('/logout', 'Auth\OfficerLoginController@logout')->name('officer.logout');
