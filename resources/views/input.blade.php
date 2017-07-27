@@ -46,10 +46,11 @@
 					<!-- Left empty for spacing -->
 				</div>
 			</div>
-			<label class="checkbox ">
-
-			<div class="field is-grouped">
-				<p class="control is-expanded has-icons-left ">
+			
+			<div class="field is-horizontal">
+				<label class="checkbox ">
+				<div class="field is-grouped">
+					<p class="control is-expanded has-icons-left ">
 					กรุณาระบุสถาณะของท่าน 
 					<label class="radio">
 						{{ Form::radio('sender_case', '1' , true) }}  <a >ผู้ถูกกระทำ</a>
@@ -57,7 +58,8 @@
 					<label class="radio">
 						{{ Form::radio('sender_case', '2' , false) }} <a >ผู้แจ้งแทน</a>
 					</label>
-				</p>
+					</p>
+				</div>
 			</div>
 			<hr>
 			<div class="field is-horizontal">
@@ -75,7 +77,6 @@
 						</div>
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-								{!! Form::text('agentphone',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
 
 								{!! Form::text('agent_tel',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
 								<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
