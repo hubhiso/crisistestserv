@@ -38,7 +38,11 @@
                 รหัสที่ใช้ติดตามข้อมูลของท่านคือ
                 {{ $new_id }}
             </div>
+            @if(Auth::guard('officer')->check())
+                <a class="button is-success" href="{{ route('officer') }}">กลับสู้หน้าหลัก</a>
+            @else
             <a class="button is-success" href="{{ url('/') }}">กลับสู้หน้าหลัก</a>
+            @endif
         </div>
     </div>
 </div>

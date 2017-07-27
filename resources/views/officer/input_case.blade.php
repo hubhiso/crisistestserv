@@ -231,7 +231,7 @@
                 {!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
             </p>
             <p class="control">
-                <button class="button is-link"><a href="{{ '/' }}">ยกเลิก</a></button>
+                <button class="button is-link"><a href="{{ route('officer') }}">ยกเลิก</a></button>
             </p>
         </div>
 </div>
