@@ -9,9 +9,10 @@ use App\amphur;
 use App\case_input;
 use Request;
 use Auth;
+use App\Http\Controllers\Auth\OfficerLoginController;
 
 
-class case_controller extends Controller
+class OfficerInputController extends Controller
 {
     //
     /**
@@ -19,7 +20,10 @@ class case_controller extends Controller
      *
      * @return Response
      */
-
+    public function __construct()
+    {
+        $this->middleware('auth:officer');
+    }
     public function ajax_amphur($prov_id) {
         $prov_id    = $prov_id;
         $category = amphur::where('PROVINCE_ID', '=', $prov_id)->get();
@@ -41,7 +45,7 @@ class case_controller extends Controller
         //$caseinputs = new case_input();
         $provinces = province::all();
         $amphurs= amphur::where('PROVINCE_ID', '=', 1)->get();
-        return view('input',compact('provinces','amphurs'));    }
+        return view('officer.input_case',compact('provinces','amphurs'));    }
 
     /**
      * Show the form for creating a new resource.

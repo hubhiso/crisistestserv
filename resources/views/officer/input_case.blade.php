@@ -15,26 +15,8 @@
 {!! Form::open(['url' =>'case_inputs']) !!}
 
 
-<section class="hero is-primary">
-    <div class="hero-body">
-        <div class="container">
-            <div class="columns is-vcentered">
-                <div class="column">
-                    <p class="title"> Crisis Response </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="hero-foot">
-        <div class="container">
-            <nav class="tabs is-boxed">
-                <ul>
-                    <li class="is-active"> <a href="{{ url('/') }}">แบบฟอร์มบันทึกข้อมูล</a> </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</section>
+@component('component.login_bar')
+@endcomponent
 
 <div class="container">
     <section class="section">
@@ -47,10 +29,37 @@
                 </div>
             </div>
 
-            @component('component.informer_detail')
-            @endcomponent
+            <div class="field is-grouped">
+                <p class="control is-expanded has-icons-left ">
+                    กรุณาระบุสถาณะของท่าน
+                    <label class="radio">
+                        {{ Form::radio('sender_case', '3' , true) }}  <a >เจ้าหน้าที่แจ้ง</a>
+                    </label>
+                </p>
+            </div>
 
+            <hr>
             <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">ชื่อผู้แจ้ง</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-grouped">
+                        <p class="control is-expanded has-icons-left ">
+                            {!! Form::text('sender',Auth::user()->name,['class'=>'input','readonly']) !!}
+                            <span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+                    </div>
+                    <div class="field-label is-normal">
+                        <label class="label">เบอร์มือถือผู้แจ้ง</label>
+                    </div>
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            {!! Form::text('agent_tel',Auth::user()->tel,['class'=>'input','readonly']) !!}
+                            <span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
                 <div class="field-label">
                     <!-- Left empty for spacing -->
                 </div>

@@ -21,6 +21,8 @@ Route::prefix('officer')->group(function () {
     Route::get('/login', 'Auth\OfficerLoginController@ShowLoginForm')->name('officer.login');
     Route::post('/login', 'Auth\OfficerLoginController@login')->name('officer.login.submit');
     Route::post('/logout', 'Auth\OfficerLoginController@logout')->name('officer.logout');
+    Route::resource('/input_case','OfficerInputController');
+    Route::get('/ajax-amphur/{prov_id}','OfficerInputController@ajax_amphur');
 
 });
 Route::get('status', function () {

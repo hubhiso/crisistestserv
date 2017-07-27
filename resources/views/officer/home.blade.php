@@ -21,8 +21,8 @@
 				<div class="container">
 					<h1 id="bulma" class="title"> Crisis Response </h1>
 					<h2 id="modern-framework" class="subtitle"> ระบบรับเรื่องร้องเรียนและการให้คำปรึกษาข้อมูลสิทธิด้านเอดส์ </h2>
-					<a id="btn_new1" class="button ft1 i-margin" href="{{ 'case_inputs' }}">แจ้งเหตุ</a>
-					<a id="btn_new1" class="button ft1 i-margin" href="managecase.php">จัดการเหตุ</a>
+					<a id="btn_new1" class="button ft1 i-margin" href="{{ 'officer/input_case' }}">แจ้งเหตุ</a>
+					<a id="btn_new1" class="button ft1 i-margin" href="#">จัดการเหตุ</a>
 					<a id="btn_new1" class="button ft1 i-margin" href="#">รายงาน</a>
 				</div>
 			</div>
