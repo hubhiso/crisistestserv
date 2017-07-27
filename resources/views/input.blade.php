@@ -46,53 +46,13 @@
 					<!-- Left empty for spacing -->
 				</div>
 			</div>
-<<<<<<< Updated upstream
-			
-			<div class="field is-horizontal">
-				<label class="checkbox ">
-				<div class="field is-grouped">
-					<p class="control is-expanded has-icons-left ">
-					กรุณาระบุสถาณะของท่าน 
-					<label class="radio">
-						{{ Form::radio('sender_case', '1' , true) }}  <a >ผู้ถูกกระทำ</a>
-					</label>
-					<label class="radio">
-						{{ Form::radio('sender_case', '2' , false) }} <a >ผู้แจ้งแทน</a>
-					</label>
-					</p>
-				</div>
-			</div>
-			<hr>
-			<div class="field is-horizontal">
-					<div class="field-label is-normal">
-						<label class="label">ชื่อผู้แจ้ง</label>
-					</div>
-					<div class="field-body">
-						<div class="field is-grouped">
-							<p class="control is-expanded has-icons-left ">
-								{!! Form::text('agentname',null,['class'=>'input','placeholder'=>'ชื่อเรียก']) !!}
-								<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
-						</div>
-						<div class="field-label is-normal">
-							<label class="label">เบอร์มือถือผู้แจ้ง</label>
-						</div>
-						<div class="field">
-							<p class="control is-expanded has-icons-left">
 
-								{!! Form::text('agent_tel',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
-								<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
-							</p>
-						</div>
-					</div>
-				</div>
-				
-				
-=======
+
 
 			@component('component.informer_detail')
 			@endcomponent
 
->>>>>>> Stashed changes
+
 			<div class="field is-horizontal">
 				<div class="field-label">
 					<!-- Left empty for spacing -->
