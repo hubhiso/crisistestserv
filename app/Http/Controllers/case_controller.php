@@ -66,7 +66,7 @@ class case_controller extends Controller
         $case_tel = Request::input('victim_tel');
         $case_update = case_input::whereraw('victim_tel = ? AND case_id IS NULL ', [$case_tel])->first();
         $new_id = $this->gen_id();
-        case_input::where('id','=',$case_update->id)->update(['case_id' => $new_id]);
+        case_input::where('id','=',$case_update->id)->update(['case_id' => $new_id , 'status' => 1]);
         return view('layout.gen_caseid',compact('new_id'));
 
     //return redirect('/');

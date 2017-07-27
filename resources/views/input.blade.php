@@ -46,6 +46,7 @@
 					<!-- Left empty for spacing -->
 				</div>
 			</div>
+<<<<<<< Updated upstream
 			
 			<div class="field is-horizontal">
 				<label class="checkbox ">
@@ -86,13 +87,19 @@
 				</div>
 				
 				
+=======
+
+			@component('component.informer_detail')
+			@endcomponent
+
+>>>>>>> Stashed changes
 			<div class="field is-horizontal">
 				<div class="field-label">
 					<!-- Left empty for spacing -->
 				</div>
 			</div>
 		</div>
-			
+
    		<div class="box" id="data-person">
        		<div class="field is-horizontal">
 				<div class="field-label ">
@@ -129,8 +136,8 @@
 					</div>
 				</div>
 			</div>
-    
-     		
+
+
      		<div class="field is-horizontal">
 				<div class="field-label is-normal">
 					<label class="label">เพศ</label>
@@ -139,7 +146,7 @@
 					<div class="field is-grouped">
 						<p class="control is-expanded has-icons-left ">
 							<label class="radio">
-      							{{ Form::radio('sex', '1' , true) }} 
+      							{{ Form::radio('sex', '1' , true) }}
       							ชาย
     						</label>
    							<label class="radio">
@@ -152,7 +159,7 @@
 					</div>
 				</div>
 			</div>
-      		
+
        		<div class="field is-horizontal">
 				<div class="field-label is-normal">
 					<label class="label">จังหวัดที่เกิดเหตุ</label>
@@ -181,7 +188,7 @@
 					</div>
 				</div>
 			</div>
-      
+
         	<div class="field is-horizontal">
 				<div class="field-label ">
 					<!-- Left empty for spacing -->
@@ -192,8 +199,8 @@
 					<!-- Left empty for spacing -->
 				</div>
 			</div>
-            
-       
+
+
        		<div class="field is-horizontal">
 				<div class="field-label is-normal">
 					<label class="label">ปัญหาที่พบ</label>
@@ -209,22 +216,14 @@
     				 			<option value="3" >เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
      							<option value="4" >ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
 							</select>
-							
-							{{--Form::select('problem_case', array(
-                        	'บังคับตรวจเอชไอวี' => array('110' =>'ผู้ติดเชื้อเอชไอวี',
-                                                          '120' =>'กลุ่มเปราะบาง',
-                                                          '130' =>'ประชาชนทั่วไป'),
-                        	'เปิดเผยสถานะการติดเชื้อเชื้อเอชไอวี' => array('210' => 'ผู้ติดเชื้อเอชไอวี'),
-                        	'เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี' => array('310' => 'ผู้ติดเชื้อเอชไอวี'),
-                        	'ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง' => array('410' => 'กลุ่มเปราะบาง'),
-        					))--}}
+
         					</span>
 						</p>
 					</div>
 				</div>
 			</div>
-       
-       
+
+
        		<div class="field is-horizontal">
 				<div class="field-label is-normal">
 					<label class="label"> ประเภทกลุ่ม </label>
@@ -235,17 +234,10 @@
 							<span class="select">
 							<select id ="sub_problem" name="sub_problem" disabled="true">
                 			</select>
-                			{{--Form::select('sub_problem', array(
-                       			'001' => 'กลุ่มหลากหลายทางเพศ',
-                        		'002' => 'พนักงานบริการ',
-                        		'003' => 'ผู้ใช้สารเสพติด',
-                        		'004' => 'ประชากรข้ามชาติ',
-                        		'005' => 'ผู้ต้องขัง',
-                        		'006' => 'เยาวชนในสถานพินิจ',
-        					)) --}}
+
 						</p>
 					</div>
-					
+
 				</div>
 			</div>
       		 <div class="field is-horizontal">
@@ -261,15 +253,15 @@
                 			</select>
 						</p>
 					</div>
-					
+
 				</div>
-				
-					
+
+
 			</div>
-        
-        
+
+
         </div>
-		
+
 		<div class="field is-grouped">
         	<p class="control">
             	{!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
