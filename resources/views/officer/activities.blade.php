@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="route-index">
+<html lang="{{ config('app.locale') }}" class="route-index">
 
 <head>
 	<meta charset="utf-8">
@@ -8,6 +8,7 @@
 	<title>Crisis Response</title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	
 
 	<!--meta name="msapplication-config" content="http://bulma.io/favicons/browserconfig.xml?v=201701041855"-->
 	<meta name="theme-color" content="#cc99cc"/>
@@ -212,13 +213,13 @@
 					</div>
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
-							<label class="label"> วันที่</label>
+							<label class="label"> วันที่ดำเนินการ </label>
 						</div>
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control  has-icons-left">
-									<input class="input" type="text" placeholder="Ex : 01/01/2560" value="26/06/2560">
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+									<input class="input" type="text"  value="_ _ /_ _ /_ _ _ _">
+									</p>
 							</div>
 						</div>
 					</div>
@@ -262,8 +263,6 @@
   				<input type="checkbox" >
  				เจรจาระดับนโยบายขององค์กร
 			</label>
-								
-
 
 
 									<label class="checkbox">
@@ -271,8 +270,6 @@
  				ดำเนินคดี
 			</label>
 								
-
-
 
 							</div>
 						</div>
@@ -387,7 +384,7 @@
 							<div class="field is-grouped">
 								<p class="control  ">
 									<input class="input" type="text" placeholder="" value="ยังไม่ได้รับเรื่อง" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+									 </p>
 							</div>
 							<div class="field-label is-normal">
 								<label class="label"> ดำเนินการเสร็จสิ้น </label>
@@ -395,7 +392,7 @@
 							<div class="field">
 								<p class="control  has-icons-left ">
 									<input class="input" type="text" placeholder="" value="" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+									 </p>
 							</div>
 						</div>
 					</div>
@@ -412,28 +409,7 @@
 	</section>
 	<br>
 
-	<footer class="footer">
-		<div class="container">
-			<div class="columns">
-				<div class="column is-3">
-					<div id="about" class="content"> <strong xmlns:dct="#" href="#" property="dct:title" rel="dct:type">Crisis Response</strong> by <a xmlns:cc="#" href="#" property="cc:attributionName" rel="cc:attributionURL"> มูลนิธิศูนย์คุ้มครองสิทธิด้านเอดส์ (Aidsrightsthailand) </a>. </div>
-				</div>
-				<div class="column is-5">
-					<div id="share" class="content"> </div>
-				</div>
-				<div class="column is-4">
-					<div id="sister">
-						<p><small> <strong>ที่อยู่</strong> : </small>
-						</p>
-						<p><small>133/235 หมู่บ้านรื่นฤดี3 ถนนหทัยราษฎร์ แขวงมีนบุรี เขตมีนบุรี กทม 10510 โทรศัพท์ 02-171-5135-6 โทรสาร 02-1715124 </small>
-						</p>
-					</div>
-				</div>
-			</div>
-			<p id="tsp"> <small> Source code licensed <a href="#">HISO</a>. <br>
-      Website content licensed <a rel="license" href="http://www.hiso.or.th">www.hiso.or.th</a>. </small> </p>
-		</div>
-	</footer>
+	@extends('footer')
 </body>
 
 </html>

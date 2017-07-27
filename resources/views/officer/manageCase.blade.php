@@ -7,7 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Crisis Response</title>
-	<link href="{{ asset('bulma/css/bulma-doc.css') }}" rel="stylesheet">
+	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+	
+	
 
 	<meta name="theme-color" content="#cc99cc"/>
 	<script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
@@ -112,82 +114,7 @@
 					</div>
 				</nav>
 				
-				<!--nav class="level">
-					<!-- Left side -->
-					<!--div class="level-left">
-							
-					</div>
-
-					<!-- Right side -->
-					<!--div class="level-right">
-						<div class="level-item">
-							<p class="subtitle is-6">
-								<strong> กรอง </strong>
-							</p>
-						</div>
-						<div class="level-item">
-							<div class="field has-addons">
-								<p>
-									<span class="select">
-        							<select>
-          								<option> ประเภท </option>
-          								<option> สถานะ </option>
-          								<option> ดำเนินการ </option>
-          								<option> ประเภทของผู้แจ้ง </option>
-          								
-       								</select>
-       								</span>
-								</p>
-								<p>
-									<span class="select">
-        							<select>
-          								<option> บังคับตรวจ HIV </option>
-          								<option> เปิดเผยสถานะ </option>
-          								<option> เลือกปฏิบัติ </option>
-          								<option> ไม่ได้รับความเป็นธรรม </option>
-       								</select>
-       								</span>
-								</p>
-								<!--p class="control"> <button class="button is-primary"> ตกลง </button> </p-->
-							<!--/div>
-						</div>
-					</div>
-				</nav-->
-
-
-
-				<!-- -->
-
-
-
-				<!--div class="field has-addons has-addons-left is-grouped ">
-					<div class="field is-grouped">
-
-						<div class="field-label is-normal">
-							<label class="label"> วันที่เริ่มต้น</label>
-						</div>
-						<div class="control"> <span class="select">
-        <select>
-          <option>01/01/2560</option>
-        </select>
-        </span>
-						
-
-						</div>
-						<div class="field-label is-normal">
-							<label class="label"> วันที่สิ้นสุด</label>
-						</div>
-						<div class="control"> <span class="select">
-        <select>
-          <option>31/12/2560</option>
-        </select>
-        </span>
-						
-
-						</div>
-						<p class="control"> <a class="button is-primary"> ตกลง </a> </p>
-					</div>
-				</div-->
+				
 			</div>
 			<br>
 			<div class="body container">
@@ -250,6 +177,10 @@
 		  ?>
 						</tbody>
 					</table>
+					
+					
+					
+					
 				</div>
 				<nav class="pagination is-centered"> <a class="pagination-previous">Previous</a> <a class="pagination-next">Next page</a>
 					<ul class="pagination-list">
@@ -294,6 +225,7 @@
       Website content licensed <a rel="license" href="http://www.hiso.or.th">www.hiso.or.th</a>. </small> </p>
 		</div>
 	</footer>
+	
 </body>
 
 </html>
