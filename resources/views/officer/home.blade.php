@@ -39,9 +39,9 @@
 						<div class="navbar-end">
 							<a class="nav-item is-active" href="#"> Username : {{ Auth::user()->name }} </a>
 							<div class="nav-item">
-								<p class="control"> <a class="button is-primary" href="#" onclick="event.preventDefault();
+								<p class="control"> <a class="button is-primary" href="{{ route('officer.logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"> <span>Logout</span> </a> </p>
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								<form id="logout-form" action="{{ route('officer.logout') }}" method="POST" style="display: none;">
 									{{ csrf_field() }}
 								</form>
 							</div>

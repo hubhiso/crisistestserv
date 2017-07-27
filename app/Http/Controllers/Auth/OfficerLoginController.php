@@ -12,7 +12,7 @@ class OfficerLoginController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('guest:officer');
+        $this->middleware('guest:officer' , ['except' => ['logout']]);
     }
 
     public function ShowLoginForm()
@@ -35,5 +35,13 @@ class OfficerLoginController extends Controller
        }
 
        return redirect()->back()->withInput($request->only('username','remember'));
+    }
+
+    public  function  logout()
+    {
+
+        Auth::guard('officer')->logout();
+
+        return redirect('officer');
     }
 }
