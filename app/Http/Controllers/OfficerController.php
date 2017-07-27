@@ -23,6 +23,6 @@ class OfficerController extends Controller
      */
     public function index()
     {
-        return view('officer.index');
+        return view('officer.home');
     }
 }
