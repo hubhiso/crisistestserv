@@ -12,12 +12,11 @@
 
 <body >
 
-{!! Form::open(['url' =>'officer/input_case']) !!}
+{!! Form::open(['url' =>'case_inputs']) !!}
 
 
 	@component('component.input_head')
 	@endcomponent
-
 <div class="container">
 	<section class="section">
   		<h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>

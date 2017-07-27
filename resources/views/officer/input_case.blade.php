@@ -12,11 +12,9 @@
 
 <body >
 
-{!! Form::open(['url' =>'case_inputs']) !!}
+{!! Form::open(['url' =>'officer/input_case']) !!}
 
 
-@component('component.login_bar')
-@endcomponent
 
 <div class="container">
     <section class="section">
