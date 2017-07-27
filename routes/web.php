@@ -21,6 +21,9 @@ Route::prefix('officer')->group(function () {
     Route::get('/login', 'Auth\OfficerLoginController@ShowLoginForm')->name('officer.login');
     Route::post('/login', 'Auth\OfficerLoginController@login')->name('officer.login.submit');
 });
+Route::get('status', function () {
+    return view('layout.status');
+});
 Route::get('manage', function () {
     return view('officer.manageCase');
 });

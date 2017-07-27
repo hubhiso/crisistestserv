@@ -37,19 +37,7 @@
 				</ul>
 			</nav>
 			
-<<<<<<< HEAD
-=======
-			{{--@extends('layout.officer')--}}
 
-			@extends('layout.PPL')
-
-
-			{{--@extends('agentinput')--}}
-
-			@extends('../agentinput')
-
-
->>>>>>> b5745413b6f0de274e2b2c5c3c0c2ca18fe63358
 
 			<h1 class="title"> ตรวจสอบสถานะ </h1>
 			
