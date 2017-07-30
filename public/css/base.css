@@ -161,12 +161,17 @@ header:after, #timeline .timeline-item:after, header:before, #timeline .timeline
       -moz-transition: all 0.3s ease;
       -ms-transition: all 0.3s ease;
       transition: all 0.3s ease; }
+		
+	  .timeline-content p {
+		  margin-top: 15px;	
+		  font-size: 1.5em;
+	  }
       #timeline .timeline-item .timeline-content h2 {
         padding: 15px;
         background: #cc99cc;
         color: #fff;
         margin: -20px -20px 0 -20px;
-        font-weight: 500;
+        font-weight: 800;
         -webkit-border-radius: 3px 3px 0 0;
         -moz-border-radius: 3px 3px 0 0;
         -ms-border-radius: 3px 3px 0 0;

@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/base.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 
@@ -30,7 +31,7 @@
 
 			<nav class="breadcrumb">
 				<ul>
-					<li><a><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+					<li><a href="{{ 'index.php' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 					</li>
 					<li class="is-active"><a><span class="icon is-small"><i class="fa fa-search"></i></span><span> ตรวจสอบสถานะ </span></a>
 					</li>
@@ -67,44 +68,46 @@
 			</nav>
 
 			<hr>
-			<nav class="level">
-				<div class="level-item has-text-centered">
-					<div>
-						<p class="heading"> ขั้นที่ 1 </p>
-						<p class="title"> รับเรื่องแล้ว </p>
-					</div>
+			<!-- Timeline begin here -->
+		<div id="timeline">
+			<div class="timeline-item">
+				<div class="timeline-icon">
+					<img src="images/markx40.png" alt="">
 				</div>
+				<div class="timeline-content">
+					<h2> 1 มกราคม 2560 เวลา 13.00 น. </h2>
+					<p>
+						รับเรื่อง
+					</p>
+					
+				</div>
+			</div>
 
-				<div class="level-item has-text-centered">
-					<div>
-						<p class="title"> > </p>
-					</div>
+			<div class="timeline-item">
+				<div class="timeline-icon">
+					<img src="images/markx40.png" alt="">
 				</div>
+				<div class="timeline-content right">
+					<h2> 25 มกราคม 2560 เวลา 17.00 น. </h2>
+					<p>
+						ดำเนินการอยู่
+					</p>
+				</div>
+			</div>
 
-				<div class="level-item has-text-centered">
-					<div>
-						<p class="heading"> ขั้นที่ 2 </p>
-						<p class="title"> ดำเนินการอยู่ </p>
-					</div>
+			<div class="timeline-item">
+				<div class="timeline-icon">
+					<img src="images/minusx40.png" alt="">
 				</div>
-				
-				
-
-				<div class="level-item has-text-centered">
-					<div>
-						<p class="title"> > </p>
-					</div>
+				<div class="timeline-content">
+					<h2> - </h2>
+					<p>
+						การดำเนินการเสร็จสิ้น
+					</p>
 				</div>
-				
-				
-
-				<div class="level-item has-text-centered">
-					<div>
-						<p class="heading"> ขั้นที่ 3 </p>
-						<p class="title"> เสร็จสิ้น </p>
-					</div>
-				</div>
-			</nav>
+			</div>
+		</div>
+		<!-- Timeline ends here -->
 		</div>
 	</section>
 
