@@ -162,19 +162,39 @@
 							</tr>
 						</thead>
 						<tbody>
-							<? for($i = 1; $i <=20; $i++){
-			 echo "<tr>";
-			 echo "<th>26/06/2560</th>";
-			 echo "<th>XXX123</th>";
-			 echo "<td><a href='#' title='ID'>Name</a> </td>";
-			 echo "<td>กรุงเทพ</td>";
-			 echo "<td>บังคับตรวจ HIV</td>";
-			 echo "<td>ยังไม่ได้รับเรื่อง</td>";
-			 echo "<td><a class='button is-primary' href='#'> <span>รับเรื่อง</span> </a> </td> ";
-			 echo "<td><a href='#' title='Username'>-</a></td>";
-			 echo "<td><a href='#' title='Username'>Name Surname</a></td>";
-		  }
-		  ?>
+							<tr id='1'>
+								<th> 26/06/2560 </th>
+								<th> XXX123 </th>
+								<td><a href='#' title='ID'> Name </a> </td>
+								<td> กรุงเทพ </td>
+								<td> บังคับตรวจ HIV </td>
+								<td> ยังไม่ได้รับเรื่อง </td>
+								<td><a class='button is-primary' href='#'> <span> รับเรื่อง </span> </a> </td>
+								<td><a href='#' title='Username'>-</a></td>
+								<td><a href='#' title='Username'>-</a></td>
+							</tr>
+							<tr id='2'>
+								<th> 01/07/2560 </th>
+								<th> X1A2RW </th>
+								<td><a href='#' title='ID'> Name </a> </td>
+								<td> กรุงเทพ </td>
+								<td> บังคับตรวจ HIV </td>
+								<td> ยังไม่ได้รับเรื่อง </td>
+								<td><a class='button is-primary' href='#'> <span> รับเรื่อง </span> </a> </td>
+								<td><a href='#' title='Username'>-</a></td>
+								<td><a href='#' title='Username'>-</a></td>
+							</tr>
+							<tr id='3'>
+								<th> 10/07/2560 </th>
+								<th> W2HT6D </th>
+								<td><a href='#' title='ID'> Name </a> </td>
+								<td> กรุงเทพ </td>
+								<td> บังคับตรวจ HIV </td>
+								<td> ยังไม่ได้รับเรื่อง </td>
+								<td><a class='button is-primary' href='#'> <span> รับเรื่อง </span> </a> </td>
+								<td><a href='#' title='Username'>-</a></td>
+								<td><a href='#' title='Username'>-</a></td>
+							</tr>
 						</tbody>
 					</table>
 					

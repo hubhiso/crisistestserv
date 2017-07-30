@@ -8,6 +8,7 @@
 
 	<title>Crisis Response</title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	
 	
 
@@ -26,15 +27,22 @@
 				@endcomponent
 				</div>
 			</div>
-			<div class="column is-one-third ">
-				<p> <a href="Home.php">Home</a> >> <a>รายการข้อมูลการแจ้งเหตุ</a> </p>
-			</div>
-			<br/>
+			
 			<div class="container">
+			
+				<nav class="breadcrumb">
+					<ul>
+						<li><a href="{{ '' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+						</li>
+						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-address-card"></i></span><span> รายการข้อมูลการแจ้งเหตุ </span></a>
+						</li>
+					</ul>
+				</nav>
+			
+			
 				<!--h1 id="title" class="title"> Monitoring Case Alert!! </h1-->
 				<!--h1 id="modern-framework" class="subtitle is-3"> รายการข้อมูลการแจ้งเหตุ </h1-->
 				
-				<br>
 
 
 				<!-- -->
@@ -159,10 +167,17 @@
 								<td>{{ $case->problem_case }}</td>
 								@if( $case->status  == 1)
 									<td>ยังไม่ได้รับเรื่อง</td>
-									<td><a class='button is-primary' href='#'> <span>รับเรื่อง</span> </a> </td>
+									<td><a class='button is-primary' href="{{ 'detail1' }}"> <span>รับเรื่อง</span> </a> </td>
+								@elseif( $case->status  == 2)
+									<td> รับเรื่องแล้ว </td>
+									<td><a class='button is-primary' href="{{ 'detail2' }}"> <span> บันทึกข้อมูล </span> </a> </td>
+									
+								@elseif( $case->status  == 3)
+									<td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
+									<td><a class='button is-primary' href="{{ 'activities' }}"> <span> ดำเนินการ </span> </a> </td>
 								@else
-									<td>รับเรื่องแล้ว</td>
-									<td><a class='button is-primary' href='#'> <span>ระบุรายละเอียด</span> </a> </td>
+									<td> รับเรื่องแล้ว </td>
+									<td><a class='button is-primary' href="{{ 'detail2' }}"> <span> บันทึกข้อมูล </span> </a> </td>
 								@endif
 								<td><a href='#' title='Sender'>{{ $case->sender }}</a></td>
 								<td><a href='#' title='Receiver'>{{ $case->receiver }}</a></td>
