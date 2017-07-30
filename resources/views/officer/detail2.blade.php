@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Crisis Response</title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<meta name="theme-color" content="#cc99cc"/>
 	<script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
 	<script src="http://bulma.io/javascript/clipboard.min.js"></script>
@@ -21,12 +21,7 @@
 			<div class="container">
 				<nav class="nav">
 					<div class="nav-left"> <a class="nav-item is-active" href="#"> Crisis Response </a>
-						<div class="nav-item">
-							<div class="field is-grouped">
-								<p class="control"> <a id="i-" class="button" href="#"> <span>100 case</span> </a> </p>
-							</div>
-						</div>
-						<div class="nav-center"> <a class="nav-item" href="#"> <span class="icon"> <i class="fa fa-github"></i> </span> </a> <a class="nav-item" href="#"> <span class="icon"> <i class="fa fa-twitter"></i> </span> </a> </div>
+						
 						<span id="nav-toggle" class="nav-toggle"> <span></span> <span></span> <span></span> </span>
 						<div id="nav-menu" class="nav-right nav-menu"> <a class="nav-item is-active" href="#"> Username : </a>
 							<div class="nav-item">
@@ -34,11 +29,21 @@
 							</div>
 						</div>
 				</nav>
-				</div>
 			</div>
-			<div class="column is-one-third ">
-				<p> <a href="Home.php">Home</a> >> <a>ข้อมูลเพิ่มเติม</a> </p>
-			</div>
+		</div>
+			<br>
+			<div class="container">
+				<nav class="breadcrumb">
+					<ul>
+						<li><a href="{{ '' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+						</li>
+						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-address-card"></i></span><span> ข้อมูลเพิ่มเติม </span></a>
+						</li>
+					</ul>
+				</nav>
+			</div>	
+			
+			
 			<h1 id="title" class="title"> ข้อมูลเพิ่มเติม </h1>
 			<div class="container">
 				<div class="notification">
@@ -56,7 +61,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
 									<input class="input" type="text" placeholder="Ex : 01/01/2560" value="26/06/2560" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -76,7 +81,7 @@
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
 									<input class="input" type="text" value="0123456789" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+									<span class="icon is-small is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
 					</div>
@@ -109,7 +114,7 @@
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
 									<input class="input" type="email" placeholder="ID-CODE" value="XX12345" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-envelope"></i> </span> <span class="icon is-small is-right"> <i class="fa fa-check"></i> </span> </p>
+								 </p>
 							</div>
 						</div>
 					</div>
@@ -122,17 +127,21 @@
 							<div class="field is-grouped">
 								<p class="control has-icons-left">
 									<input class="input" type="text" placeholder="Ex : 0123456789" value="0123456789">
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+									<span class="icon is-small is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
 					</div>
 
+					
+					
+					
 					<div class="field is-horizontal">
-						<div class="field-label is-normal">
-							<label class="label">เพศ</label>
-						</div>
-						<div class="field-body">
-							<div class="field is-grouped">
+					  <div class="field-label">
+						<label class="label"> เพศ </label>
+					  </div>
+					  <div class="field-body">
+						<div class="field">
+						  <div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
 									<label class="radio">
       							{{ Form::radio('sex', '1' , true) }} 
@@ -150,7 +159,8 @@
 								</p>
 							</div>
 						</div>
-					</div>
+					  </div>
+					 </div>
 
 
 					<div class="field is-horizontal">
@@ -161,7 +171,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
 									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="กรุงเทพมหานคร" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								</p>
 							</div>
 							<div class="field-label is-normal">
 								<label class="label">อำเภอ</label>
@@ -169,7 +179,7 @@
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
 									<input class="input" type="email" placeholder="ID-CODE" value="บางกะปิ" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-envelope"></i> </span> <span class="icon is-small is-right"> <i class="fa fa-check"></i> </span> </p>
+								 </p>
 							</div>
 						</div>
 					</div>
@@ -196,7 +206,7 @@
 							<div class="field is-grouped">
 								<p class="control  has-icons-left ">
 									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="26/06/2520">
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								 </p>
 							</div>
 							<div class="field-label is-normal">
 								<label class="label"> อายุ </label>
@@ -208,36 +218,40 @@
 							</div>
 						</div>
 					</div>
-
-
+					
+					
 					<div class="field is-horizontal">
-						<div class="field-label is-normal">
-							<label class="label">สถานะภาพสมรส</label>
-						</div>
-						<div class="field-body">
-							<div class="field is-narrow">
-								<div class="control">
+					  <div class="field-label">
+						<label class="label"> สถานะภาพสมรส </label>
+					  </div>
+					  <div class="field-body">
+						<div class="field">
+						  <div class="field is-grouped">
+								<p class="control is-expanded has-icons-left ">
 									<label class="radio">
-      <input type="radio" name="member"   >
-      โสด </label>
+      							{{ Form::radio('marital-status', '1' , true) }} 
+      							โสด
+    						</label>
 								
 									<label class="radio">
-      <input type="radio" name="member" >
-      สมรส </label>
+     							{{ Form::radio('marital-status', '2' , false) }} สมรส
+    						</label>
 								
 									<label class="radio">
-      <input type="radio" name="member" >
-      หม้าย / หย่า / แยก </label>
+     							{{ Form::radio('marital-status', '3' , false) }} หม้าย / หย่า / แยก
+    						</label>
+   								
+    								<label class="radio">
+     							{{ Form::radio('marital-status', '4' , false) }} สมณะ
+    						</label>
 								
-									<label class="radio">
-      <input type="radio" name="member" >
-      สมณะ </label>
-								
-									<label class="radio">
-								</div>
+								</p>
 							</div>
 						</div>
-					</div>
+					  </div>
+					 </div>
+					
+					
 					<div class="field is-horizontal">
 						<div class="field-label">
 							<label class="label">อาชีพ</label>
@@ -271,7 +285,7 @@
 							<div class="field  is-grouped">
 								<p class="control  is-expanded">
 									<textarea class="textarea" placeholder="บ้านเลขที่ ซอย ถนน หมู่บ้าน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"></textarea>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								 </p>
 							</div>
 						</div>
 					</div>
@@ -297,7 +311,7 @@
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
 									<input class="input" type="email" placeholder="ID-CODE" value="">
-									<span class="icon is-small is-left"> <i class="fa fa-envelope"></i> </span> <span class="icon is-small is-right"> <i class="fa fa-check"></i> </span> </p>
+								 </p>
 							</div>
 						</div>
 					</div>

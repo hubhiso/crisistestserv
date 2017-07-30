@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Crisis Response</title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<!--meta name="msapplication-config" content="http://bulma.io/favicons/browserconfig.xml?v=201701041855"-->
 	<meta name="theme-color" content="#cc99cc"/>
 	<script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
@@ -22,12 +22,7 @@
 			<div class="container">
 				<nav class="nav">
 					<div class="nav-left"> <a class="nav-item is-active" href="#"> Crisis Response </a>
-						<div class="nav-item">
-							<div class="field is-grouped">
-								<p class="control"> <a id="i-" class="button" href="#"> <span>100 case</span> </a> </p>
-							</div>
-						</div>
-						<div class="nav-center"> <a class="nav-item" href="#"> <span class="icon"> <i class="fa fa-github"></i> </span> </a> <a class="nav-item" href="#"> <span class="icon"> <i class="fa fa-twitter"></i> </span> </a> </div>
+						
 						<span id="nav-toggle" class="nav-toggle"> <span></span> <span></span> <span></span> </span>
 						<div id="nav-menu" class="nav-right nav-menu"> <a class="nav-item is-active" href="#"> Username : </a>
 							<div class="nav-item">
@@ -37,9 +32,20 @@
 				</nav>
 				</div>
 			</div>
-			<div class="column is-one-third ">
-				<p> <a href="Home.php">Home</a> >> <a>ข้อมูลเบื้องต้น</a> </p>
+			<br>
+		
+		
+			<div class="container">
+				<nav class="breadcrumb">
+					<ul>
+						<li><a href="{{ '' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+						</li>
+						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-address-card"></i></span><span> ข้อมูลเบื้องต้น </span></a>
+						</li>
+					</ul>
+				</nav>
 			</div>
+				
 			<h1 id="title" class="title"> ข้อมูลเบื้องต้น </h1>
 			<div class="container">
 				<div class="notification">
@@ -57,7 +63,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
 									<input class="input" type="text" placeholder="Ex : 01/01/2560" value="26/06/2560" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -76,8 +82,7 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" type="email" placeholder="ID-CODE" value="XX12345" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-envelope"></i> </span> <span class="icon is-small is-right"> <i class="fa fa-check"></i> </span> </p>
+									<input class="input" type="text" placeholder="ID-CODE" value="XX12345" disabled></p>
 							</div>
 						</div>
 					</div>
@@ -89,7 +94,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
 									<input class="input" type="text" value="0123456789" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+									<span class="icon is-small is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
 					</div>
@@ -101,7 +106,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
 									<input class="input" type="text" value="ชาย" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -113,7 +118,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
 									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="กรุงเทพมหานคร" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								 </p>
 							</div>
 							<div class="field-label is-normal">
 								<label class="label">อำเภอ</label>
@@ -121,7 +126,7 @@
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
 									<input class="input" type="email" placeholder="ID-CODE" value="บางกะปิ" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-envelope"></i> </span> <span class="icon is-small is-right"> <i class="fa fa-check"></i> </span> </p>
+								 </p>
 							</div>
 						</div>
 					</div>
@@ -134,7 +139,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
 									<input class="input" type="text" placeholder="ประเภท1" value="บังคับตรวจเอชไอวี" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								 </p>
 							</div>
 
 						</div>
@@ -156,12 +161,10 @@
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
 									<input class="input" type="email" value="กลุ่มหลากหลายทางเพศ" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-envelope"></i> </span> <span class="icon is-small is-right"> <i class="fa fa-check"></i> </span> </p>
+								 </p>
 							</div>
 						</div>
 					</div>
-
-
 
 
 					<div class="field is-horizontal">
@@ -172,7 +175,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
 									<input class="input" type="text" placeholder="เจ้าหน้าที่" value="เจ้าหน้าที่ A" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								</p>
 							</div>
 							<div class="field-label is-normal">
 								<label class="label">เบอร์มือถือ</label>
@@ -180,7 +183,7 @@
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
 									<input class="input" value="0123456789" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-envelope"></i> </span> <span class="icon is-small is-right"> <i class="fa fa-check"></i> </span> </p>
+								 </p>
 							</div>
 						</div>
 					</div>
@@ -192,7 +195,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
 									<input class="input" type="text" value="เจ้าหน้าที่ B" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								 </p>
 							</div>
 						</div>
 					</div>
