@@ -20,12 +20,7 @@
 			<div class="container">
 				<nav class="nav">
 					<div class="nav-left"> <a class="nav-item is-active" href="#"> Crisis Response </a>
-						<div class="nav-item">
-							<div class="field is-grouped">
-								<p class="control"> <a id="i-" class="button" href="#"> <span>100 case</span> </a> </p>
-							</div>
-						</div>
-
+						
 						<span id="nav-toggle" class="nav-toggle"> <span></span> <span></span> <span></span> </span>
 						<div id="nav-menu" class="nav-right nav-menu"> <a class="nav-item is-active" href="#"> Username : </a>
 							<div class="nav-item">
@@ -33,8 +28,8 @@
 							</div>
 						</div>
 				</nav>
-				</div>
 			</div>
+		</div>
 
 
 
@@ -48,7 +43,7 @@
 					<ul>
 						<li><a><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 						</li>
-						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-search"></i></span><span>  การดำเนินการ </span></a>
+						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-cog"></i></span><span>  การดำเนินการ </span></a>
 						</li>
 					</ul>
 				</nav>
@@ -60,7 +55,7 @@
 			</div>
 
 
-			<div class="tabs is-centered is-boxed">
+			<!--div class="tabs is-centered is-boxed">
 				<ul>
 					<li>
 						<a>
@@ -79,7 +74,7 @@
 
 					</li>
 				</ul>
-			</div>
+			</div-->
 
 			<section>
 				<div class="container">
@@ -94,7 +89,7 @@
 							</li>
 							<li class="is-active">
 								<a>
-									<span class="icon is-small"><i class="fa fa-music"></i></span>
+									<span class="icon is-small"><i class="fa fa-cog"></i></span>
 									<span> การดำเนินการ </span>
 								  </a>
 							
@@ -104,6 +99,7 @@
 					</div>
 				</div>
 			</section>
+			<br>
 
 			<h1 id="title" class="title"> การดำเนินการ </h1>
 			<div class="container">
@@ -130,7 +126,7 @@
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
 									<input class="input" type="email" placeholder="ID-CODE" value="XX12345" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-envelope"></i> </span> <span class="icon is-small is-right"> <i class="fa fa-check"></i> </span> </p>
+								 </p>
 							</div>
 						</div>
 					</div>
@@ -161,7 +157,7 @@
 							<div class="field is-grouped">
 								<p class="control  has-icons-left ">
 									<input class="input" type="text" placeholder="" value="26/06/2560" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+								 </p>
 							</div>
 						</div>
 						<div class="field is-grouped">
@@ -188,8 +184,8 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control  has-icons-left ">
-									<input class="input" type="text" placeholder="" value="26/06/2560" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+									<input class="input" type="text" placeholder="" value="28/06/2560" disabled>
+								 </p>
 							</div>
 						</div>
 						<div class="field is-grouped">
@@ -224,56 +220,63 @@
 						</div>
 					</div>
 
+					
+					
 					<div class="field is-horizontal">
-						<div class="field-label is-normal">
-							<label class="label"> วิธีการดำเนินการ </label>
+					  <div class="field-label">
+						<label class="label"> วิธีการดำเนินการ </label>
+					  </div>
+					  <div class="field-body">
+						<div class="field is-grouped">
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  ให้คำปรึกษา
+							</label>
+						  </div>
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  เจรจาเป็นรายบุคคล
+							</label>
+						  </div>
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  เจรจาระดับนโยบายขององค์กร
+							</label>
+						  </div>
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  ดำเนินคดี
+							</label>
+						  </div>
 						</div>
-						<div class="field-body">
-							<div class="field is-grouped">
-								<p class="control  has-icons-left is-medium">
-									<label class="checkbox">
-  				<input type="checkbox" class="is-medium" >
- 				ให้คำปรึกษา
-			</label>
-								
-
-
-
-									<label class="checkbox">
-  				<input type="checkbox" >
- 				เจรจาเป็นรายบุคคล
-			</label>
-								
-
-
-
-
-							</div>
-						</div>
+					  </div>
 					</div>
-					<div class="field is-horizontal">
-						<div class="field-label is-normal">
-							<label class="label">  </label>
+					
+					<!--div class="field is-horizontal">
+					  <div class="field-label">
+						<label class="label">  </label>
+					  </div>
+					  <div class="field-body">
+						<div class="field is-grouped">
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  เจรจาระดับนโยบายขององค์กร
+							</label>
+						  </div>
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  ดำเนินคดี
+							</label>
+						  </div>
 						</div>
-						<div class="field-body">
-							<div class="field is-grouped">
-								<p class="control  has-icons-left is-medium">
-
-									<label class="checkbox">
-  				<input type="checkbox" >
- 				เจรจาระดับนโยบายขององค์กร
-			</label>
-
-
-									<label class="checkbox">
-  				<input type="checkbox" >
- 				ดำเนินคดี
-			</label>
-								
-
-							</div>
-						</div>
-					</div>
+					  </div>
+					</div-->
 
 
 					<div class="field is-horizontal">
