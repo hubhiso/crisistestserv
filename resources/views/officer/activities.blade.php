@@ -31,8 +31,6 @@
 			</div>
 		</div>
 
-
-
 			<div class="container">
 				<div class="field is-horizontal">
 					<div class="field-label">

@@ -81,7 +81,7 @@
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
 									<input class="input" type="text" value="0123456789" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-mobile"></i> </span> </p>
+									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
 					</div>
@@ -113,7 +113,7 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" type="email" placeholder="ID-CODE" value="XX12345" disabled>
+									<input class="input" type="text" placeholder="ID-CODE" value="XX12345" disabled>
 								 </p>
 							</div>
 						</div>
@@ -127,7 +127,7 @@
 							<div class="field is-grouped">
 								<p class="control has-icons-left">
 									<input class="input" type="text" placeholder="Ex : 0123456789" value="0123456789">
-									<span class="icon is-small is-left"> <i class="fa fa-mobile"></i> </span> </p>
+									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
 					</div>
@@ -366,7 +366,7 @@
 
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
-							<label class="label"> สถานที่เกิดเหตุ</label>
+							<label class="label"> สถานที่เกิดเหตุ </label>
 						</div>
 						<div class="field-body">
 							<div class="field is-narrow is-grouped">
@@ -376,6 +376,7 @@
               <option> สถานพยาบาล </option>
               <option> สถานที่ทำงาน </option>
               <option> สถานศึกษา </option>
+              <option> หน่วยงานอื่นๆ </option>
               <option> ชุมชน </option>
             </select>
             </span>
@@ -384,8 +385,8 @@
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
             <select>
-              <!--option> ของรัฐบาล </option>
-              <option> ของเอกชน </option-->
+              <option> ของรัฐบาล </option>
+              <option> ของเอกชน </option>
             </select>
             </span>
 									</div>

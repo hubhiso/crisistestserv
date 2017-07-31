@@ -26,6 +26,7 @@ Route::prefix('officer')->group(function () {
     Route::get('ajax-amphur/{prov_id}','OfficerInputController@ajax_amphur');
 
 });
+
 Route::get('status', function () {
     return view('layout.status');
 });

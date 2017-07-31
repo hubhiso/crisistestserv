@@ -94,7 +94,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
 									<input class="input" type="text" value="0123456789" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-mobile"></i> </span> </p>
+									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
 					</div>
@@ -175,7 +175,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
 									<input class="input" type="text" placeholder="เจ้าหน้าที่" value="เจ้าหน้าที่ A" disabled>
-								</p>
+								<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span></p>
 							</div>
 							<div class="field-label is-normal">
 								<label class="label">เบอร์มือถือ</label>
@@ -183,7 +183,7 @@
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
 									<input class="input" value="0123456789" disabled>
-								 </p>
+								 <span class="icon  is-left"> <i class="fa fa-mobile"></i> </span></p>
 							</div>
 						</div>
 					</div>
@@ -195,7 +195,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
 									<input class="input" type="text" value="เจ้าหน้าที่ B" disabled>
-								 </p>
+								 <span class="icon is-small is-left"> <i class="fa fa-user"></i> </span></p>
 							</div>
 						</div>
 					</div>
