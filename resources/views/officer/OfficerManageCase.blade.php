@@ -32,7 +32,7 @@
 			
 				<nav class="breadcrumb">
 					<ul>
-						<li><a href="{{ '' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+						<li><a href="{{ route('officer.main') }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 						</li>
 						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-address-card"></i></span><span> รายการข้อมูลการแจ้งเหตุ </span></a>
 						</li>
@@ -164,20 +164,28 @@
 								<th>{{ $case->case_id }}</th>
 								<td><a href='#' title='ID'>{{ $case->name }}</a> </td>
 								<td>กรุงเทพ</td>
-								<td>{{ $case->problem_case }}</td>
+								@if($case->problem_case == 1 )
+									<td>บังคับตรวจเอชไอวี</td>
+								@elseif($case->problem_case == 2)
+									<td>เปิดเผยสถานะการติดเชื้อเอชไอวี</td>
+								@elseif($case->problem_case == 3)
+									<td>เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</td>
+								@elseif($case->problem_case == 4)
+									<td>ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</td>
+								@endif
 								@if( $case->status  == 1)
 									<td>ยังไม่ได้รับเรื่อง</td>
-									<td><a class='button is-primary' href="{{ 'detail1' }}"> <span>รับเรื่อง</span> </a> </td>
+									<td><a class='button is-primary' href="{{ route('data.detail1') }}"> <span>รับเรื่อง</span> </a> </td>
 								@elseif( $case->status  == 2)
 									<td> รับเรื่องแล้ว </td>
-									<td><a class='button is-primary' href="{{ 'detail2' }}"> <span> บันทึกข้อมูล </span> </a> </td>
+									<td><a class='button is-primary' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล </span> </a> </td>
 									
 								@elseif( $case->status  == 3)
 									<td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
-									<td><a class='button is-primary' href="{{ 'activities' }}"> <span> ดำเนินการ </span> </a> </td>
+									<td><a class='button is-primary' href="{{ route('data.detail3') }}"> <span> ดำเนินการ </span> </a> </td>
 								@else
 									<td> รับเรื่องแล้ว </td>
-									<td><a class='button is-primary' href="{{ 'detail2' }}"> <span> บันทึกข้อมูล </span> </a> </td>
+									<td><a class='button is-primary' href="{{ route('data.detail1') }}"> <span> บันทึกข้อมูล </span> </a> </td>
 								@endif
 								<td><a href='#' title='Sender'>{{ $case->sender }}</a></td>
 								<td><a href='#' title='Receiver'>{{ $case->receiver }}</a></td>

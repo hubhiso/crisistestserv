@@ -35,13 +35,13 @@ Route::get('manage', function () {
 });
 Route::get('detail1', function () {
     return view('officer.detail1');
-});
+})->name('data.detail1');
 Route::get('detail2', function () {
     return view('officer.detail2');
-});
+})->name('data.detail2');
 Route::get('activities', function () {
     return view('officer.activities');
-});
+})->name('data.detail3');
 Route::get('ajax-amphur/{prov_id}','case_controller@ajax_amphur');
 
 Route::resource('case_inputs','case_controller');
