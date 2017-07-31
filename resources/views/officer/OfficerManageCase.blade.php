@@ -164,7 +164,15 @@
 								<th>{{ $case->case_id }}</th>
 								<td><a href='#' title='ID'>{{ $case->name }}</a> </td>
 								<td>กรุงเทพ</td>
-								<td>{{ $case->problem_case }}</td>
+								@if($case->problem_case == 1 )
+									<td>บังคับตรวจเอชไอวี</td>
+								@elseif($case->problem_case == 2)
+									<td>เปิดเผยสถานะการติดเชื้อเอชไอวี</td>
+								@elseif($case->problem_case == 3)
+									<td>เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</td>
+								@elseif($case->problem_case == 4)
+									<td>ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</td>
+								@endif
 								@if( $case->status  == 1)
 									<td>ยังไม่ได้รับเรื่อง</td>
 									<td><a class='button is-primary' href="{{ 'detail1' }}"> <span>รับเรื่อง</span> </a> </td>
