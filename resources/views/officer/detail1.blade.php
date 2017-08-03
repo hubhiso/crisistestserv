@@ -20,22 +20,15 @@
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 			<div class="container">
-				<nav class="nav">
-					<div class="nav-left"> <a class="nav-item is-active" href="#"> Crisis Response </a>
-						
-						<span id="nav-toggle" class="nav-toggle"> <span></span> <span></span> <span></span> </span>
-						<div id="nav-menu" class="nav-right nav-menu"> <a class="nav-item is-active" href="#"> Username : </a>
-							<div class="nav-item">
-								<p class="control"> <a class="button is-primary" href="#"> <span>Logout</span> </a> </p>
-							</div>
-						</div>
-				</nav>
-				</div>
+				@component('component.login_bar')
+				@endcomponent
 			</div>
+		</div>
+
 			<br>
-		
-		
-			<div class="container">
+		{!! Form::open(['url' =>'officer/input_case']) !!}
+
+		<div class="container">
 				<nav class="breadcrumb">
 					<ul>
 						<li><a href="{{ '' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
@@ -62,7 +55,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
-									<input class="input" type="text" placeholder="Ex : 01/01/2560" value="26/06/2560" disabled>
+									<input class="input" type="text"  value="{{ $show_data->created_at }}" disabled>
 								</p>
 							</div>
 						</div>
@@ -74,7 +67,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="สมชาย" disabled>
+									<input class="input" type="text" value="{{ $show_data->name }}" disabled>
 									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
 							</div>
 							<div class="field-label is-normal">
@@ -82,7 +75,7 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" type="text" placeholder="ID-CODE" value="XX12345" disabled></p>
+									<input class="input"  type="text"  name="case_id" value="{{ $show_data->case_id }}" disabled></p>
 							</div>
 						</div>
 					</div>
@@ -93,8 +86,9 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
-									<input class="input" type="text" value="0123456789" disabled>
-									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
+
+									<input class="input" type="text" value="{{ $show_data->victim_tel }}" disabled>
+									<span class="icon is-small is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
 					</div>
@@ -105,8 +99,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
-									<input class="input" type="text" value="ชาย" disabled>
-								</p>
+									<input class="input" type="text" value="{{ $show_data->sex }}" disabled>
 							</div>
 						</div>
 					</div>
@@ -117,7 +110,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="กรุงเทพมหานคร" disabled>
+									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="{{ $show_data->prov_id }}" disabled>
 								 </p>
 							</div>
 							<div class="field-label is-normal">
@@ -125,7 +118,7 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" type="email" placeholder="ID-CODE" value="บางกะปิ" disabled>
+									<input class="input" type="email" placeholder="ID-CODE" value="{{ $show_data->amphur_id }}" disabled>
 								 </p>
 							</div>
 						</div>
@@ -138,7 +131,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
-									<input class="input" type="text" placeholder="ประเภท1" value="บังคับตรวจเอชไอวี" disabled>
+									<input class="input" type="text" placeholder="ประเภท1" value="{{ $show_data->problem_case }}" disabled>
 								 </p>
 							</div>
 
@@ -152,7 +145,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" value="กลุ่มเปราะบาง" disabled>
+									<input class="input" type="text" value="{{ $show_data->sub_problem }}" disabled>
 								</p>
 							</div>
 							<div class="field-label is-normal">
@@ -160,7 +153,7 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" type="email" value="กลุ่มหลากหลายทางเพศ" disabled>
+									<input class="input" type="email" value="{{ $show_data->group_code }}" disabled>
 								 </p>
 							</div>
 						</div>
@@ -174,16 +167,17 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" placeholder="เจ้าหน้าที่" value="เจ้าหน้าที่ A" disabled>
-								<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span></p>
+
+									<input class="input" type="text"  value="{{ $show_data->group_code }}" disabled>
+								</p>
 							</div>
 							<div class="field-label is-normal">
 								<label class="label">เบอร์มือถือ</label>
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" value="0123456789" disabled>
-								 <span class="icon  is-left"> <i class="fa fa-mobile"></i> </span></p>
+									<input class="input" value="{{ $show_data->agent_tel }}" disabled>
+								 </p>
 							</div>
 						</div>
 					</div>
@@ -194,8 +188,9 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" value="เจ้าหน้าที่ B" disabled>
-								 <span class="icon is-small is-left"> <i class="fa fa-user"></i> </span></p>
+
+									<input name="receiver" class="input" type="text" value="{{  Auth::user()->name }}" disabled>
+								 </p>
 							</div>
 						</div>
 					</div>
@@ -221,11 +216,13 @@
 				<div class="field is-grouped">
 					<p><a> </a>
 					</p>
-					<p class="control"> <a class="button is-primary"> ยืนยันการรับเรื่อง </a> </p>
+					{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}
 					<p class="control"> <a class="button"> ยกเลิก </a> </p>
 				</div>
 			</div>
 	</section>
+	{!!   Form::close() !!}
+
 	<br> @extends('footer')
 </body>
 

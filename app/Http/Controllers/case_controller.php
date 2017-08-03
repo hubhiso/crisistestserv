@@ -74,6 +74,8 @@ class case_controller extends Controller
     //return redirect('/');
     }
 
+
+
     /**
      * Display the specified resource.
      *

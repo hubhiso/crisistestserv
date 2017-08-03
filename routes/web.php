@@ -19,6 +19,7 @@ Auth::routes();
 Route::prefix('officer')->group(function () {
     Route::get('/', 'OfficerController@index')->name('officer.main');
     Route::get('/show', 'OfficerInputController@show')->name('officer.show');
+    Route::get('/confirm/{case_id}', 'OfficerInputController@open_confirm')->name('officer.open_cfm');
     Route::get('/login', 'Auth\OfficerLoginController@ShowLoginForm')->name('officer.login');
     Route::post('/login', 'Auth\OfficerLoginController@login')->name('officer.login.submit');
     Route::post('/logout', 'Auth\OfficerLoginController@logout')->name('officer.logout');

@@ -93,6 +93,17 @@ class OfficerInputController extends Controller
 
     }
 
+    public function open_confirm($case_id)
+    {
+        //
+        //$input = Request::all();
+        $show_data = case_input::where('case_id','=',$case_id)->first();
+        return view('officer.detail1',compact('show_data'));
+
+        //return redirect('/');
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.
