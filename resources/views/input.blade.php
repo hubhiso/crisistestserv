@@ -7,6 +7,7 @@
     <link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title> CRS </title>
 
 </head>
 
@@ -17,6 +18,7 @@
 
 	@component('component.input_head')
 	@endcomponent
+	
 <div class="container">
 	<section class="section">
   		<h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>
@@ -27,8 +29,6 @@
 					<!-- Left empty for spacing -->
 				</div>
 			</div>
-
-
 
 			@component('component.informer_detail')
 			@endcomponent
@@ -194,13 +194,22 @@
                 			</select>
 						</p>
 					</div>
-
 				</div>
-
-
 			</div>
-
-
+			
+			
+			<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label"> รายละเอียดของปัญหา </label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<div class="control">
+								<textarea class="textarea" placeholder=" กรอกรายละเอียดของปัญหา "></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
         </div>
 
 		<div class="field is-grouped">
@@ -289,26 +298,7 @@
         });
 </script>
 
-<footer class="footer">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-3">
-                <div id="about" class="content"> <strong xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Crisis Response</strong> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://jgthms.com" property="cc:attributionName" rel="cc:attributionURL">Aidsrightsthailand</a>. </div>
-            </div>
-            <div class="column is-5">
-                <div id="share" class="content"> </div>
-            </div>
-            <div class="column is-4">
-                <div id="sister">
-                    <p><small> <strong>ที่อยู่</strong> : </small></p>
-                    <p><small>133/235 หมู่บ้านรื่นฤดี3 ถนนหทัยราษฎร์ แขวงมีนบุรี เขตมีนบุรี กทม 10510 โทรศัพท์ 02-171-5135-6 โทรสาร 02-1715124 </small></p>
-                </div>
-            </div>
-        </div>
-        <p id="tsp"> <small> Source code licensed <a href="http://opensource.org/licenses/mit-license.php">HISO</a>. <br>
-                Website content licensed <a rel="license" href="http://www.hiso.or.th">www.hiso.or.th</a>. </small> </p>
-    </div>
-</footer>
+@extends('footer')
 
 
 </body>

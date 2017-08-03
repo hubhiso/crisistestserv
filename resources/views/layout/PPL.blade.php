@@ -19,7 +19,4 @@
 
 </section>
 
-
-	
-
 @extends('footer')

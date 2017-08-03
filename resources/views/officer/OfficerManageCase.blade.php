@@ -6,17 +6,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Crisis Response</title>
+	<title> CRS </title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	
-	
-
 	<meta name="theme-color" content="#cc99cc"/>
-	<script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
+	<!--script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
 	<script src="http://bulma.io/javascript/clipboard.min.js"></script>
 	<script src="http://bulma.io/javascript/bulma.js"></script>
-	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script>
+	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script-->
 </head>
 
 <body class="layout-default">
@@ -45,7 +42,41 @@
 				
 
 
-				<!-- -->
+				<nav class="level">
+					<!-- Left side -->
+					<div class="level-left">
+						
+					</div>
+
+					<!-- Right side -->
+					<div class="level-right">
+						<div class="level-item">
+							<p class="subtitle is-6">
+								<strong> เลือกวันที่ </strong>
+							</p>
+						</div>
+						<div class="level-item">
+							<div class="field has-addons">
+								<p>
+									<input class="input" type="text" placeholder="วว/ดด/ปปปป">
+								</p>
+							</div>
+						</div>
+						<div class="level-item">
+							<p class="subtitle is-6">
+								<strong> ถึงวันที่ </strong>
+							</p>
+						</div>
+						<div class="level-item">
+							<div class="field has-addons">
+								<p>
+									<input class="input" type="text" placeholder="วว/ดด/ปปปป">
+								</p>
+							</div>
+						</div>
+						
+					</div>
+				</nav>
 
 				<nav class="level">
 					<!-- Left side -->
@@ -63,8 +94,9 @@
 								<p>
 									<span class="select">
         							<select>
-          								<option>ชื่อ</option>
-          								<option>ผู้รับเรื่อง</option>
+          								<option> ชื่อ </option>
+          								<option> ผู้รับเรื่อง </option>
+          								<option> เบอร์ติดต่อ </option>
        								</select>
        								</span>
 								</p>
@@ -106,24 +138,25 @@
 								<!--p class="control"> <button class="button is-primary"> ตกลง </button> </p-->
 							</div>
 						</div>
+						<div class="level-item has-text-centered">
+							<div>
+							  <p class="heading is-4"> จำนวนเรื่อง </p>
+							  <p class="title is-4">3,456</p>
+							</div>
+						  </div>
 					</div>
 				</nav>
-				
-				
 			</div>
+			<br>
 			<br>
 			<div class="body container">
 				<nav class="pagination is-centered"> <a class="pagination-previous">Previous</a> <a class="pagination-next">Next page</a>
 					<ul class="pagination-list">
-						<li><a class="pagination-link">1</a>
+						<li><a class="pagination-link is-current">1</a>
 						</li>
-						<li><span class="pagination-ellipsis">&hellip;</span>
+						<li><a class="pagination-link">2</a>
 						</li>
-						<li><a class="pagination-link">5</a>
-						</li>
-						<li><a class="pagination-link is-current">6</a>
-						</li>
-						<li><a class="pagination-link">7</a>
+						<li><a class="pagination-link">3</a>
 						</li>
 						<li><span class="pagination-ellipsis">&hellip;</span>
 						</li>
@@ -136,23 +169,23 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th><abbr title="Date">วันที่</abbr>
+								<th><abbr title="Date"> วันที่ </abbr>
 								</th>
-								<th><abbr title="ID">ไอดี</abbr>
+								<th><abbr title="ID"> รหัส </abbr>
 								</th>
-								<th><abbr title="Name">ชื่อ</abbr>
+								<th><abbr title="Name"> ชื่อ </abbr>
 								</th>
-								<th><abbr title="PR">จังหวัด</abbr>
+								<th><abbr title="PR"> จังหวัด </abbr>
 								</th>
-								<th><abbr title="Type">ประเภท</abbr>
+								<th><abbr title="Type"> ประเภท </abbr>
 								</th>
-								<th><abbr title="Status">สถานะ</abbr>
+								<th><abbr title="Status"> สถานะ </abbr>
 								</th>
-								<th><abbr title="Activities">ดำเนินการ</abbr>
+								<th><abbr title="Activities"> ดำเนินการ </abbr>
 								</th>
-								<th><abbr title="Username">ประเภทของผู้แจ้ง</abbr>
+								<th><abbr title="Username"> ประเภทของผู้แจ้ง </abbr>
 								</th>
-								<th><abbr title="Username">ผู้รับเรื่อง</abbr>
+								<th><abbr title="Username"> ผู้รับเรื่อง </abbr>
 								</th>
 							</tr>
 						</thead>
@@ -160,7 +193,8 @@
 
 						@foreach($cases as $case)
 							<tr>
-								<th>{{ $case->created_at }}</th>
+								<!--th>{{ $case->created_at }}</th-->
+								<th> 27 ก.ค. 60 </th>
 								<th>{{ $case->case_id }}</th>
 								<td><a href='#' title='ID'>{{ $case->name }}</a> </td>
 								<td>กรุงเทพ</td>
@@ -185,7 +219,7 @@
 									<td><a class='button is-primary' href="{{ route('data.detail3') }}"> <span> ดำเนินการ </span> </a> </td>
 								@else
 									<td> รับเรื่องแล้ว </td>
-									<td><a class='button is-primary' href="{{ route('data.detail1') }}"> <span> บันทึกข้อมูล </span> </a> </td>
+									<td><a class='button is-primary' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล </span> </a> </td>
 								@endif
 								<td><a href='#' title='Sender'>{{ $case->sender }}</a></td>
 								<td><a href='#' title='Receiver'>{{ $case->receiver }}</a></td>
@@ -222,7 +256,10 @@
 	</section>
 	<br>
 	
+	
 	@extends('footer')
+	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
+	<script src="http://bulma.io/lib/main.js"></script>
 	
 </body>
 
