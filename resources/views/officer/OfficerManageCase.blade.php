@@ -175,11 +175,10 @@
 								@endif
 								@if( $case->status  == 1)
 									<td>ยังไม่ได้รับเรื่อง</td>
-									<td><a class='button is-primary' href="{{ route('data.detail1') }}"> <span>รับเรื่อง</span> </a> </td>
+									<td><a class='button is-primary' href="{{ route('officer.open_cfm', $case->case_id) }}"> <span>รับเรื่อง</span> </a> </td>
 								@elseif( $case->status  == 2)
 									<td> รับเรื่องแล้ว </td>
 									<td><a class='button is-primary' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล </span> </a> </td>
-									
 								@elseif( $case->status  == 3)
 									<td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
 									<td><a class='button is-primary' href="{{ route('data.detail3') }}"> <span> ดำเนินการ </span> </a> </td>
