@@ -86,16 +86,9 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-									<input class="input" type="text" value="0123456789" disabled>
-									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
-=======
-=======
->>>>>>> Stashed changes
+
 									<input class="input" type="text" value="{{ $show_data->victim_tel }}" disabled>
 									<span class="icon is-small is-left"> <i class="fa fa-mobile"></i> </span> </p>
->>>>>>> Stashed changes
 							</div>
 						</div>
 					</div>
@@ -174,32 +167,17 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-									<input class="input" type="text" placeholder="เจ้าหน้าที่" value="เจ้าหน้าที่ A" disabled>
-								<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span></p>
-=======
-=======
->>>>>>> Stashed changes
+
 									<input class="input" type="text"  value="{{ $show_data->group_code }}" disabled>
 								</p>
->>>>>>> Stashed changes
 							</div>
 							<div class="field-label is-normal">
 								<label class="label">เบอร์มือถือ</label>
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-									<input class="input" value="0123456789" disabled>
-								 <span class="icon  is-left"> <i class="fa fa-mobile"></i> </span></p>
-=======
-=======
->>>>>>> Stashed changes
 									<input class="input" value="{{ $show_data->agent_tel }}" disabled>
 								 </p>
->>>>>>> Stashed changes
 							</div>
 						</div>
 					</div>
@@ -210,16 +188,9 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-									<input class="input" type="text" value="เจ้าหน้าที่ B" disabled>
-								 <span class="icon is-small is-left"> <i class="fa fa-user"></i> </span></p>
-=======
-=======
->>>>>>> Stashed changes
+
 									<input name="receiver" class="input" type="text" value="{{  Auth::user()->name }}" disabled>
 								 </p>
->>>>>>> Stashed changes
 							</div>
 						</div>
 					</div>
