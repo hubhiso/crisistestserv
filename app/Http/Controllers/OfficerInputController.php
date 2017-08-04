@@ -98,6 +98,15 @@ class OfficerInputController extends Controller
     public function open_confirm($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
+        /*
+        foreach ($show_data as $show_datas){
+            if($show_datas->problemcase == 1){
+                $show_datas->problem_case = "test";
+            }
+            if($show_datas->problemcase == 2){
+                $show_datas->problem_case = "test2";
+            }
+    }*/
         return view('officer.detail1',compact('show_data'));
     }
 

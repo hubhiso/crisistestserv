@@ -112,7 +112,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="{{ $show_data->prov_id }}" disabled>
+									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="{{ $show_data->Provinces->PROVINCE_NAME }}" disabled>
 								 </p>
 							</div>
 							<div class="field-label is-normal">
@@ -120,7 +120,7 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" type="email" placeholder="ID-CODE" value="{{ $show_data->amphur_id }}" disabled>
+									<input class="input" type="email" placeholder="ID-CODE" value="{{ $show_data->Amphurs->AMPHUR_NAME }}" disabled>
 								 </p>
 							</div>
 						</div>
@@ -204,7 +204,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" placeholder="กรอกรายละเอียด" disabled></textarea>
+									<textarea class="textarea" placeholder="กรอกรายละเอียด" value="{{ $show_data->detail }}" disabled></textarea>
 								</div>
 							</div>
 						</div>

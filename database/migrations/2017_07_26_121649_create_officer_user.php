@@ -18,6 +18,7 @@ class CreateOfficerUser extends Migration
             $table->string('username');
             $table->string('name');
             $table->string('tel')->unique();
+            $table->string('email')->unique();
             $table->string('password');
             $table->integer('prov_id');
             $table->string('position');

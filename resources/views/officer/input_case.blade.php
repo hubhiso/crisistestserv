@@ -135,7 +135,7 @@
 								<span class="select">
 								<select style='width:200px' name="prov_id" id="prov_id">
 									@foreach($provinces as $province)
-										<option value="{{ $province->PROVINCE_ID }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
+										<option value="{{ $province->PROVINCE_CODE }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
 									@endforeach
 								</select>
 						</div>
@@ -228,7 +228,7 @@
 					<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+									<textarea name="detail" class="textarea" placeholder="กรอกรายละเอียด"></textarea>
 								</div>
 							</div>
 						</div>
