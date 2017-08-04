@@ -21,9 +21,6 @@ class case_input extends Model
 
     }
 
-    public function GetProblems(){
-        $case = "TEST";
-        return $case;
-    }
+
 
 }

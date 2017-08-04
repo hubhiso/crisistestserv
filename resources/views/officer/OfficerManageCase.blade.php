@@ -197,7 +197,7 @@
 								<th> 27 ก.ค. 60 </th>
 								<th>{{ $case->case_id }}</th>
 								<td><a href='#' title='ID'>{{ $case->name }}</a> </td>
-								<td>กรุงเทพ</td>
+								<td>{{$case->Provinces->PROVINCE_NAME}}</td>
 								@if($case->problem_case == 1 )
 									<td>บังคับตรวจเอชไอวี</td>
 								@elseif($case->problem_case == 2)
@@ -220,7 +220,14 @@
 									<td> รับเรื่องแล้ว </td>
 									<td><a class='button is-primary' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล </span> </a> </td>
 								@endif
-								<td><a href='#' title='Sender'>{{ $case->sender }}</a></td>
+
+									@if($case->sender_case == 1 )
+										<td>แจ้งด้วยตนเอง</td>
+									@elseif($case->sender_case == 2)
+										<td>มีผู้แจ้งแทน</td>
+									@elseif($case->sender_case == 3)
+										<td>เจ้าหน้าที่แจ้ง</td>
+									@endif
 								<td><a href='#' title='Receiver'>{{ $case->receiver }}</a></td>
 							</tr>
 							@endforeach
