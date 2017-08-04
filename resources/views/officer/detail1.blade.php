@@ -27,9 +27,7 @@
 
 			<br>
 		<form class="form-horizontal" role="form" method="POST" action="{{ route('officer.accept_c') }}">
-<!--
-		{--!! Form::open(array('url' => 'officer/accept', 'method' => 'post')) !!--} -->
-		{{ csrf_field() }}
+
 		<div class="container">
 				<nav class="breadcrumb">
 					<ul>
@@ -171,7 +169,6 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-
 									<input class="input" type="text"  value="{{ $show_data->group_code }}" disabled>
 								</p>
 							</div>
@@ -194,6 +191,7 @@
 								<p class="control is-expanded has-icons-left ">
 									<input  class="input" type="text" value="{{  Auth::user()->name }}" disabled >
 									<input id="receive" name="receiver"  type="text" value="{{  Auth::user()->name }}" hidden >
+
 								 </p>
 							</div>
 						</div>
@@ -225,7 +223,9 @@
 				</div>
 			</div>
 	</section>
+
 </from>
+
 
 	<br> @extends('footer')
 </body>
