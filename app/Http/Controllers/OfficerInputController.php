@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 //use Illuminate\Http\Request;
 use App\Http\Requests\case_inputRequest;
+use Illuminate\Support\HtmlString;
+
 use Illuminate\Support\Str;
 use App\province;
 use App\amphur;
@@ -95,13 +97,19 @@ class OfficerInputController extends Controller
 
     public function open_confirm($case_id)
     {
-        //
-        //$input = Request::all();
         $show_data = case_input::where('case_id','=',$case_id)->first();
         return view('officer.detail1',compact('show_data'));
-
-        //return redirect('/');
     }
+
+    public function accept_case($case_id , $receiver_name )
+    {
+
+        $test = case_input::findOrfail($case_id);
+        $test->update(['receiver' => $receiver_name , 'status' => 2]);
+        //case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 2]);
+        return $this->show();
+    }
+
 
 
 

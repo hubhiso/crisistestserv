@@ -26,8 +26,10 @@
 		</div>
 
 			<br>
-		{!! Form::open(['url' =>'officer/input_case']) !!}
-
+		<form class="form-horizontal" role="form" method="POST" action="{{ route('officer.accept_c') }}">
+<!--
+		{--!! Form::open(array('url' => 'officer/accept', 'method' => 'post')) !!--} -->
+		{{ csrf_field() }}
 		<div class="container">
 				<nav class="breadcrumb">
 					<ul>
@@ -75,7 +77,9 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input"  type="text"  name="case_id" value="{{ $show_data->case_id }}" disabled></p>
+								<input class="input" type="text" value="{{ $show_data->case_id }}" disabled>
+								{!! Form::text('case_id',$show_data->case_id,['class'=>'text', 'hidden']) !!}
+
 							</div>
 						</div>
 					</div>
@@ -188,8 +192,8 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-
-									<input name="receiver" class="input" type="text" value="{{  Auth::user()->name }}" disabled>
+									<input  class="input" type="text" value="{{  Auth::user()->name }}" disabled >
+									<input id="receive" name="receiver"  type="text" value="{{  Auth::user()->name }}" hidden >
 								 </p>
 							</div>
 						</div>
@@ -208,7 +212,7 @@
 				</div>
 			</div>
 	</section>
-	{!!   Form::close() !!}
+</from>
 
 	<br> @extends('footer')
 </body>
