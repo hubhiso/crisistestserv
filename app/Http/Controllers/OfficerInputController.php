@@ -97,7 +97,6 @@ class OfficerInputController extends Controller
 
     public function open_confirm($case_id)
     {
-<<<<<<< Updated upstream
         $show_data = case_input::where('case_id','=',$case_id)->first();
         return view('officer.detail1',compact('show_data'));
     }
@@ -113,17 +112,7 @@ class OfficerInputController extends Controller
 
 
 
-=======
-        //
-        //$input = Request::all();
-        $show_data = case_input::where('case_id','=',$case_id)->first();
-        return view('officer.detail1',compact('show_data'));
 
-        //return redirect('/');
-    }
-
-
->>>>>>> Stashed changes
 
     /**
      * Show the form for editing the specified resource.
