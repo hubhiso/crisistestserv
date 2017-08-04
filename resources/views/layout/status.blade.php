@@ -3,12 +3,15 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>CRISIS RESPONSE</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#cc99cc"/>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/base.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
+	<script src="http://bulma.io/lib/main.js"></script>
+	<title> CRS </title>
 </head>
 
 <body>
@@ -38,17 +41,15 @@
 				</ul>
 			</nav>
 			
-
-
 			<h1 class="title"> ตรวจสอบสถานะ </h1>
 			
-
+			
+			<!-- Main container -->
 			<nav class="level">
-				<div class="level-left">
+			  <!-- Left side -->
+			    <div class="level-left">
 					<div class="level-item">
-						<p class="subtitle is-5">
-							ใส่รหัสเพื่อตรวจสอบ
-						</p>
+						<p class="subtitle is-5"> ใส่รหัสเพื่อตรวจสอบ </p>
 					</div>
 					<div class="level-item">
 						<div class="field has-addons">
@@ -56,17 +57,25 @@
 								<input class="input" type="text" >
 							</p>
 							<p class="control">
-								<button class="button">
-            ค้นหา
-          </button>
-							
-
+								<button class="button"> ค้นหา </button>
 							</p>
 						</div>
 					</div>
 				</div>
-			</nav>
 
+			  <!-- Right side -->
+				<div class="level-right">
+					<div class="level-item">
+						<a class="button is-medium   modal-button" data-target="modal-ter">
+							<span class="icon is-medium">
+								<i class="fa fa-smile-o"></i>
+							</span>
+							<span> ประเมินความพึงพอใจ </span>
+						</a>
+					</div>
+			  	</div>
+			</nav>
+			
 			<hr>
 			<!-- Timeline begin here -->
 		<div id="timeline">
@@ -113,6 +122,62 @@
 
 
 	@extends('footer')
+	
+	
+	<div id="modal-ter" class="modal">
+	  <div class="modal-background"></div>
+	  <div class="modal-card">
+		<header class="modal-card-head">
+		  <p class="modal-card-title"> ประเมินความพึงพอใจ </p>
+		  <button class="delete"></button>
+		</header>
+		<section class="modal-card-body">
+		  <div class="content">
+			<h4> ให้คะแนนตามความพอใจของท่าน </h4>
+			<table class="table">
+			  <thead>
+				<tr>
+				  <th><abbr title="Position"> ลำดับ </abbr></th>
+				  <th> หัวข้อ </th>
+				  <th><abbr title="Played"> น้อยที่สุด </abbr></th>
+				  <th><abbr title="Won"> น้อย </abbr></th>
+				  <th><abbr title="Drawn"> มาก </abbr></th>
+				  <th><abbr title="Lost">  มากที่สุด</abbr></th>
+				</tr>
+			  </thead>
+			  
+			  <tbody>
+				<tr>
+				  <th>1</th>
+				  <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C."> การรับเรื่องและติดต่อกลับ </a> 
+				  </td>
+				  <td><label class="radio"><input type="radio" name=""></label></td>
+				  <td><label class="radio"><input type="radio" name=""></label></td>
+				  <td><label class="radio"><input type="radio" name=""></label></td>
+				  <td><label class="radio"><input type="radio" name=""></label></td>
+
+				</tr>
+				<tr>
+				  <th>2</th>
+				  <td><a href="https://en.wikipedia.org/wiki/Arsenal_F.C." title="Arsenal F.C."> การให้การช่วยเหลือ </a></td>
+				  <td><label class="radio"><input type="radio" name=""></label></td>
+				  <td><label class="radio"><input type="radio" name=""></label></td>
+				  <td><label class="radio"><input type="radio" name=""></label></td>
+				  <td><label class="radio"><input type="radio" name=""></label></td>
+
+				</tr>
+
+			  </tbody>
+			</table>
+		  </div>
+		</section>
+		<footer class="modal-card-foot">
+		  <a class="button is-success"> บันทึก </a>
+		  <a class="button"> ยกเลิก </a>
+		</footer>
+	  </div>
+	</div>
+
 
 </body>
 

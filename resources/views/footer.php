@@ -2,7 +2,7 @@
 		<div class="container">
 			<div class="columns">
 				<div class="column is-3">
-					<div id="about" class="content"> <strong xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Crisis Response</strong> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://jgthms.com" property="cc:attributionName" rel="cc:attributionURL">Aidsrightsthailand</a>. </div>
+					<div id="about" class="content"> <strong >Crisis Response</strong> by <a  href="http://www.aidsrightsthailand.com" >Aidsrightsthailand</a>. </div>
 				</div>
 				<div class="column is-5">
 					<div id="share" class="content"> </div>
@@ -16,7 +16,7 @@
 					</div>
 				</div>
 			</div>
-			<p id="tsp"> <small> Source code licensed <a href="http://opensource.org/licenses/mit-license.php">HISO</a>. <br>
+			<p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>. <br>
                 Website content licensed <a rel="license" href="http://www.hiso.or.th">www.hiso.or.th</a>. </small> </p>
 		</div>
 	</footer>

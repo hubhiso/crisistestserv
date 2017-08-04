@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Crisis Response</title>
+	<title> CRS </title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	
@@ -52,27 +52,6 @@
 				</div>
 			</div>
 
-
-			<!--div class="tabs is-centered is-boxed">
-				<ul>
-					<li>
-						<a>
-        					<span class="icon is-small"><i class="fa fa-image"></i></span>
-        					<span> ข้อมูลเพิ่มเติม </span>
-      					</a>
-					
-
-					</li>
-					<li class="is-active">
-						<a>
-        					<span class="icon is-small"><i class="fa fa-music"></i></span>
-       						<span> การดำเนินการ </span>
-      					</a>
-					
-
-					</li>
-				</ul>
-			</div-->
 
 			<section>
 				<div class="container">
@@ -254,27 +233,7 @@
 					  </div>
 					</div>
 					
-					<!--div class="field is-horizontal">
-					  <div class="field-label">
-						<label class="label">  </label>
-					  </div>
-					  <div class="field-body">
-						<div class="field is-grouped">
-						  <div class="control">
-							<label class="checkbox">
-							  <input type="checkbox">
-							  เจรจาระดับนโยบายขององค์กร
-							</label>
-						  </div>
-						  <div class="control">
-							<label class="checkbox">
-							  <input type="checkbox">
-							  ดำเนินคดี
-							</label>
-						  </div>
-						</div>
-					  </div>
-					</div-->
+				
 
 
 					<div class="field is-horizontal">
@@ -326,39 +285,75 @@
 				<div class="notification">
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
-							<label class="label"> สรุปผลการดำเนินการ </label>
+							<label class="label"> สถานะการดำเนินการ </label>
 						</div>
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded  ">
 									<span class="select">
-            <select>
-                <option> อยู่ระหว่างการดำเนินการ </option>
-                <option> ดำเนินการเสร็จสิ้น </option>
-                <option> ดำเนินการแล้วส่งต่อ </option>
-			   </select> </span>
-								
-
-
+									<select>
+										<option> อยู่ระหว่างการดำเนินการ </option>
+										<option> ดำเนินการเสร็จสิ้น </option>
+										<option> ดำเนินการแล้วส่งต่อ </option>
+									   </select> </span>
 								</p>
 							</div>
 							<div class="field-label is-normal">
-								<label class="label"> ดำเนินการเสร็จสิ้น </label>
+								<label class="label"> ผลการดำเนินการ </label>
 							</div>
 							<div class="field">
 								<p class="control is-expanded  has-icons-right">
 									<span class="select"> <select>
-                <option> สำเร็จ </option>
-                <option> ไม่สำเร็จ </option>
-                <option> ตาย </option>
-              </select> </span>
-								
-
-
+									<option> สำเร็จ </option>
+									<option> ไม่สำเร็จ </option>
+									<option> ตาย </option>
+									<option> ย้ายที่อยู่ </option>
+								  </select> </span>
+								</p>
+								<div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							    บุคคลได้รับการชดเชย
+							</label>
+						  </div>
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  องค์กรเปลี่ยนนโยบาย
+							</label>
+						  </div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> ส่งต่อไปยัง </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control   ">
+									<span class="select">
+									<select>
+										<option> หน่วยงานในเครือข่าย </option>
+										<option> หน่วยงานนอกเครือข่าย </option>
+									   </select> </span>
+								</p>
+								<p class="control   ">
+									<span class="select">
+									<select>
+										<option> จังหวัด List </option>
+									   </select> </span>
+								</p>
+								<p class="control  has-icons-left">
+									<input class="input" type="text"  value="ชื่อหน่วยงาน">
 								</p>
 							</div>
 						</div>
 					</div>
+					
+					
+					
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
 							<label class="label"></label>

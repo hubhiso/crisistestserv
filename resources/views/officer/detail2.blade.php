@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Crisis Response</title>
+	<title> CRS </title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<meta name="theme-color" content="#cc99cc"/>
-	<script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
+	<!--script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
 	<script src="http://bulma.io/javascript/clipboard.min.js"></script>
 	<script src="http://bulma.io/javascript/bulma.js"></script>
-	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script>
+	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script-->
 </head>
 
 <body class="layout-default">
@@ -21,7 +21,7 @@
 			<div class="container">
 				<nav class="nav">
 					<div class="nav-left"> <a class="nav-item is-active" href="#"> Crisis Response </a>
-						
+
 						<span id="nav-toggle" class="nav-toggle"> <span></span> <span></span> <span></span> </span>
 						<div id="nav-menu" class="nav-right nav-menu"> <a class="nav-item is-active" href="#"> Username : </a>
 							<div class="nav-item">
@@ -29,8 +29,8 @@
 							</div>
 						</div>
 				</nav>
+				</div>
 			</div>
-		</div>
 			<br>
 			<div class="container">
 				<nav class="breadcrumb">
@@ -41,9 +41,9 @@
 						</li>
 					</ul>
 				</nav>
-			</div>	
-			
-			
+			</div>
+
+
 			<h1 id="title" class="title"> ข้อมูลเพิ่มเติม </h1>
 			<div class="container">
 				<div class="notification">
@@ -114,10 +114,12 @@
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
 									<input class="input" type="text" placeholder="ID-CODE" value="XX12345" disabled>
-								 </p>
+								</p>
 							</div>
 						</div>
 					</div>
+					
+				
 
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
@@ -132,35 +134,38 @@
 						</div>
 					</div>
 
-					
-					
-					
+
+
+
 					<div class="field is-horizontal">
-					  <div class="field-label">
-						<label class="label"> เพศ </label>
-					  </div>
-					  <div class="field-body">
-						<div class="field">
-						  <div class="field is-grouped">
-								<p class="control is-expanded has-icons-left ">
-									<label class="radio">
+						<div class="field-label">
+							<label class="label"> เพศ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="field is-grouped">
+									<p class="control is-expanded has-icons-left ">
+										<label class="radio">
       							{{ Form::radio('sex', '1' , true) }} 
       							ชาย
     						</label>
-								
-									<label class="radio">
+									
+
+										<label class="radio">
      							{{ Form::radio('sex', '2' , false) }} หญิง
     						</label>
-								
-									<label class="radio">
+									
+
+										<label class="radio">
      							{{ Form::radio('sex', '3' , false) }} สาวประเภทสอง
     						</label>
-								
-								</p>
+									
+
+									</p>
+								</div>
 							</div>
 						</div>
-					  </div>
-					 </div>
+					</div>
 
 
 					<div class="field is-horizontal">
@@ -179,10 +184,24 @@
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
 									<input class="input" type="email" placeholder="ID-CODE" value="บางกะปิ" disabled>
-								 </p>
+								</p>
 							</div>
 						</div>
 					</div>
+					
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> รายละเอียดของปัญหา </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" placeholder="กรอกรายละเอียด"  disabled></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 					<div class="field is-horizontal">
 						<div class="field-label">
 							<!-- Left empty for spacing -->
@@ -206,7 +225,7 @@
 							<div class="field is-grouped">
 								<p class="control  has-icons-left ">
 									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="26/06/2520">
-								 </p>
+								</p>
 							</div>
 							<div class="field-label is-normal">
 								<label class="label"> อายุ </label>
@@ -218,40 +237,44 @@
 							</div>
 						</div>
 					</div>
-					
-					
+
+
 					<div class="field is-horizontal">
-					  <div class="field-label">
-						<label class="label"> สถานะภาพสมรส </label>
-					  </div>
-					  <div class="field-body">
-						<div class="field">
-						  <div class="field is-grouped">
-								<p class="control is-expanded has-icons-left ">
-									<label class="radio">
+						<div class="field-label">
+							<label class="label"> สถานะภาพสมรส </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="field is-grouped">
+									<p class="control is-expanded has-icons-left ">
+										<label class="radio">
       							{{ Form::radio('marital-status', '1' , true) }} 
       							โสด
     						</label>
-								
-									<label class="radio">
+									
+
+										<label class="radio">
      							{{ Form::radio('marital-status', '2' , false) }} สมรส
     						</label>
-								
-									<label class="radio">
+									
+
+										<label class="radio">
      							{{ Form::radio('marital-status', '3' , false) }} หม้าย / หย่า / แยก
     						</label>
-   								
-    								<label class="radio">
+									
+
+										<label class="radio">
      							{{ Form::radio('marital-status', '4' , false) }} สมณะ
     						</label>
-								
-								</p>
+									
+
+									</p>
+								</div>
 							</div>
 						</div>
-					  </div>
-					 </div>
-					
-					
+					</div>
+
+
 					<div class="field is-horizontal">
 						<div class="field-label">
 							<label class="label">อาชีพ</label>
@@ -259,21 +282,22 @@
 						<div class="field-body">
 							<div class="field is-narrow">
 								<div class="control"> <span class="select">
-            <select>
-              <option> โปรดเลือก </option>
-              <option> รับราชการ </option>
-              <option> พนักงานบริษัทเอกชน </option>
-              <option> องค์กรพัฒนาเอกชน (NGO) </option>
-              <option> พนักงานมหาวิทยาลัย </option>
-              <option> นักเรียน/นักศึกษา </option>
-              <option> พนักงานบริการทั่วไป </option>
-              <option> รับจ้างทั่วไป </option>
-              <option> เกษตรกร </option>
-              <option> ธุรกิจส่วนตัว </option>
-              <option> อื่นๆ โปรดระบุ </option>
-            </select>
-            </span>
-									</div>
+									<select>
+									  <option> โปรดเลือก </option>
+									  <option> รับราชการ </option>
+									  <option> พนักงานบริษัทเอกชน </option>
+									  <option> องค์กรพัฒนาเอกชน (NGO) </option>
+									  <option> พนักงานมหาวิทยาลัย </option>
+									  <option> นักเรียน/นักศึกษา </option>
+									  <option> พนักงานบริการทั่วไป </option>
+									  <option> รับจ้างทั่วไป </option>
+									  <option> เกษตรกร </option>
+									  <option> ธุรกิจส่วนตัว </option>
+									  <option> อื่นๆ โปรดระบุ </option>
+									</select>
+									</span>
+								
+								</div>
 							</div>
 						</div>
 					</div>
@@ -285,7 +309,7 @@
 							<div class="field  is-grouped">
 								<p class="control  is-expanded">
 									<textarea class="textarea" placeholder="บ้านเลขที่ ซอย ถนน หมู่บ้าน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"></textarea>
-								 </p>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -296,14 +320,14 @@
 						<div class="field-body is-expanded">
 							<div class="field is-narrow ">
 								<div class="control"> <span class="select">
-            <select>
-              <option> บัตรประชาชน </option>
-              <option> บัตรต่างด้าว </option>
-              <option> บัตรคนไทยไร้สถานะ </option>
-              <option> พาสปอร์ต </option>
-            </select>
-            </span>
-									</div>
+									<select>
+									  <option> บัตรประชาชน </option>
+									  <option> บัตรต่างด้าว </option>
+									  <option> บัตรคนไทยไร้สถานะ </option>
+									  <option> พาสปอร์ต </option>
+									</select>
+									</span>
+								</div>
 							</div>
 							<div class="field-label is-normal">
 								<label class="label">เลขที่บัตร</label>
@@ -311,7 +335,7 @@
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
 									<input class="input" type="email" placeholder="ID-CODE" value="">
-								 </p>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -325,6 +349,132 @@
 
 				<div class="notification">
 					<!--This container is <strong>centered</strong> on desktop. -->
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> หน่วยงานผู้ละเมิด </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-narrow is-grouped">
+								<div class="control"> <span class="select">
+									<select>
+									  <option> โปรดเลือก </option>
+									  <option> สถานพยาบาล </option>
+									  <option> สถานที่ทำงาน </option>
+									  <option> สถานศึกษา </option>
+									  <option> ตำรวจ </option>
+									  <option> ทหาร </option>
+									  <option> ท้องถิ่น </option>
+									  <option> หน่วยงานอื่นๆ </option>
+									</select>
+									</span>
+								
+								</div>
+							</div>
+							<div class="field is-narrow is-grouped">
+								<div class="control"> <span class="select">
+									<select>
+									  <option> ของรัฐบาล </option>
+									  <option> ของเอกชน </option>
+									</select>
+									</span>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<label class="label"> ผู้ละเมิด </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<div class="control">
+									<label class="radio">
+										<input type="radio" name="">
+										บุคคล
+									 </label>
+								</div>
+								<div class="control">
+									<label class="text">
+									  ชื่อ
+									</label>
+								</div>
+								<div class="control">
+									<p>
+										<input class="input" type="text" placeholder="">
+									</p>
+								</div>
+								<div class="control">
+									<label class="text">
+										หน่วยงาน
+									</label>
+								</div>
+								<div class="control">
+									<p>
+										<input class="input" type="text" placeholder="">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<label class="label"> </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<div class="control">
+									<label class="radio">
+							  <input type="radio">
+							  องค์กร
+							</label>
+								</div>
+								<div class="control">
+									<label class="text">
+							  ชื่อ
+							</label>
+								</div>
+								<div class="control">
+									<p>
+										<input class="input" type="text" placeholder="">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> สถานที่เกิดเหตุ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> วันเวลาที่เกิดเหตุ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<div class="field is-horizontal">
 						<div class="field-label">
 							<!-- Left empty for spacing -->
@@ -337,68 +487,35 @@
 						<div class="field-body">
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-            <select>
-              <option>บังคับตรวจการติดเชื้อ HIV</option>
-            </select>
-            </span>
-									</div>
+									<select>
+									  <option>บังคับตรวจการติดเชื้อ HIV</option>
+									</select>
+									</span>
+								</div>
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-            <select>
-              <option>กลุ่มเปราะบาง</option>
-            </select>
-            </span>
-									</div>
+									<select>
+									  <option>กลุ่มเปราะบาง</option>
+									</select>
+									</span>
+								</div>
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-            <select>
-              <option>ผู้ใช้สารเสพติด</option>
-            </select>
-            </span>
-									</div>
+									<select>
+									  <option>ผู้ใช้สารเสพติด</option>
+									</select>
+									</span>
+								</div>
 							</div>
 
 						</div>
 					</div>
-
-
+					
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
-							<label class="label"> สถานที่เกิดเหตุ </label>
-						</div>
-						<div class="field-body">
-							<div class="field is-narrow is-grouped">
-								<div class="control"> <span class="select">
-            <select>
-              <option> โปรดเลือก </option>
-              <option> สถานพยาบาล </option>
-              <option> สถานที่ทำงาน </option>
-              <option> สถานศึกษา </option>
-              <option> หน่วยงานอื่นๆ </option>
-              <option> ชุมชน </option>
-            </select>
-            </span>
-									</div>
-							</div>
-							<div class="field is-narrow is-grouped">
-								<div class="control"> <span class="select">
-            <select>
-              <option> ของรัฐบาล </option>
-              <option> ของเอกชน </option>
-            </select>
-            </span>
-									</div>
-							</div>
-
-						</div>
-					</div>
-
-
-					<div class="field is-horizontal">
-						<div class="field-label is-normal">
-							<label class="label">ข้อมูลเพิ่มเติม</label>
+							<label class="label"> ลักษณะการละเมิด </label>
 						</div>
 						<div class="field-body">
 							<div class="field">
@@ -408,6 +525,80 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> ผลกระทบ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field is-horizontal">
+					  <div class="field-label">
+						<label class="label"> สาเหตุ </label>
+					  </div>
+					  <div class="field-body">
+						<div class="field is-grouped">
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  ไม่รู้กฎหมาย
+							</label>
+						  </div>
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  ขาดความเข้าใจที่ถูกต้องเรื่องเอดส์
+							</label>
+						  </div>
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  ทัศนคติ
+							</label>
+						  </div>
+						  <div class="control">
+							<label class="checkbox">
+							  <input type="checkbox">
+							  นโยบายองค์กร
+							</label>
+						  </div>
+						</div>
+					  </div>
+					</div>
+					
+					<div class="field is-horizontal">
+					  <div class="field-label">
+						<label class="label">  </label>
+					  </div>
+					  <div class="field-body">
+						<div class="field is-grouped">
+								<div class="control">
+									<label class="checkbox">
+							  <input type="checkbox">
+							  อื่นๆ
+							</label>
+								</div>
+								<div class="control">
+									<label class="text">
+							  ระบุ
+							</label>
+								</div>
+								<div class="control">
+									<p>
+										<input class="input" type="text" placeholder="">
+									</p>
+								</div>
+							</div>
+					  </div>
+					</div>
+					
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
 							<label class="label"> </label>
@@ -429,8 +620,7 @@
 				</div>
 			</div>
 	</section>
-	<br>
-	@extends('footer')
+	<br> @extends('footer')
 </body>
 
 </html>
