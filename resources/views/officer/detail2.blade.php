@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}
-	{{ Html::style('bootstrap/css/bootstrap.min.css') }}
+	{{ Html::style('bootstrap/css/bootstrap.css') }}
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 
 	{{ Html::script('js/jquery.min.js') }}
