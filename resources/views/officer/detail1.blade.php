@@ -27,8 +27,8 @@
 
 			<br>
 		<form class="form-horizontal" role="form" method="POST" action="{{ route('officer.accept_c') }}">
-
-		<div class="container">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<div class="container">
 				<nav class="breadcrumb">
 					<ul>
 						<li><a href="{{ '' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>

@@ -10,10 +10,7 @@
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<meta name="theme-color" content="#cc99cc"/>
-	<!--script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
-	<script src="http://bulma.io/javascript/clipboard.min.js"></script>
-	<script src="http://bulma.io/javascript/bulma.js"></script>
-	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script-->
+
 </head>
 
 <body class="layout-default">
@@ -212,7 +209,7 @@
 									<td><a class='button is-primary' href="{{ route('officer.open_cfm', $case->case_id) }}"> <span>รับเรื่อง</span> </a> </td>
 								@elseif( $case->status  == 2)
 									<td> รับเรื่องแล้ว </td>
-									<td><a class='button is-primary' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล </span> </a> </td>
+									<td><a class='button is-primary' href="{{ route('officer.add_detail' , $case->case_id) }}"> <span> บันทึกข้อมูล </span> </a> </td>
 								@elseif( $case->status  == 3)
 									<td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
 									<td><a class='button is-primary' href="{{ route('data.detail3') }}"> <span> ดำเนินการ </span> </a> </td>

@@ -98,29 +98,13 @@ class OfficerInputController extends Controller
     public function open_confirm($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
-        /*
-        foreach ($show_data as $show_datas){
-            if($show_datas->problemcase == 1){
-                $show_datas->problem_case = "test";
-            }
-            if($show_datas->problemcase == 2){
-                $show_datas->problem_case = "test2";
-            }
-    }*/
-        return view('officer.detail1',compact('show_data'));
+         return view('officer.detail1',compact('show_data'));
     }
-
-    public function accept_case($case_id , $receiver_name )
+    public function add_detail($case_id)
     {
-
-        $test = case_input::findOrfail($case_id);
-        $test->update(['receiver' => $receiver_name , 'status' => 2]);
-        //case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 2]);
-        return $this->show();
+        $show_data = case_input::where('case_id','=',$case_id)->first();
+        return view('officer.detail2',compact('show_data'));
     }
-
-
-
 
 
     /**

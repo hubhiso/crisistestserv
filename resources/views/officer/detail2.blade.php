@@ -1,36 +1,31 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}" class="route-index">
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title> CRS </title>
+	{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}
+	{{ Html::style('bootstrap/css/bootstrap.min.css') }}
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+
+	{{ Html::script('js/jquery.min.js') }}
+	{{ Html::script('bootstrap/js/bootstrap.min.js') }}
+	{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<meta name="theme-color" content="#cc99cc"/>
-	<!--script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
-	<script src="http://bulma.io/javascript/clipboard.min.js"></script>
-	<script src="http://bulma.io/javascript/bulma.js"></script>
-	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script-->
+
+
+	<title> CRS </title>
 </head>
 
 <body class="layout-default">
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 			<div class="container">
-				<nav class="nav">
-					<div class="nav-left"> <a class="nav-item is-active" href="#"> Crisis Response </a>
-
-						<span id="nav-toggle" class="nav-toggle"> <span></span> <span></span> <span></span> </span>
-						<div id="nav-menu" class="nav-right nav-menu"> <a class="nav-item is-active" href="#"> Username : </a>
-							<div class="nav-item">
-								<p class="control"> <a class="button is-primary" href="#"> <span>Logout</span> </a> </p>
-							</div>
-						</div>
-				</nav>
-				</div>
+				@component('component.login_bar')
+				@endcomponent
 			</div>
+		</div>
 			<br>
 			<div class="container">
 				<nav class="breadcrumb">
@@ -60,7 +55,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left">
-									<input class="input" type="text" placeholder="Ex : 01/01/2560" value="26/06/2560" disabled>
+									<input class="input" type="text"  value="{{ $show_data->created_at }}" disabled>
 								</p>
 							</div>
 						</div>
@@ -72,7 +67,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" placeholder="เจ้าหน้าที่" value="เจ้าหน้าที่ A" disabled>
+									<input class="input" type="text"  value="{{ $show_data->sender }}" disabled>
 									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
 							</div>
 							<div class="field-label is-normal">
@@ -80,7 +75,7 @@
 							</div>
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
-									<input class="input" type="text" value="0123456789" disabled>
+									<input class="input" type="text" value="{{ $show_data->agent_tel }}" disabled>
 									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
@@ -92,7 +87,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control has-icons-left">
-									<input class="input" type="text" placeholder="เจ้าหน้าที่" value="เจ้าหน้าที่ B" disabled>
+									<input class="input" type="text"  value="{{ $show_data->receiver }}" disabled>
 									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
 							</div>
 						</div>
@@ -105,7 +100,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="สมชาย">
+									<input class="input" type="text"  value="{{ $show_data->name }}">
 									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
 							</div>
 							<div class="field-label is-normal">
@@ -113,7 +108,7 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" type="text" placeholder="ID-CODE" value="XX12345" disabled>
+									<input class="input" type="text"  value="{{ $show_data->case_id }}" disabled>
 								</p>
 							</div>
 						</div>
@@ -128,7 +123,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control has-icons-left">
-									<input class="input" type="text" placeholder="Ex : 0123456789" value="0123456789">
+									<input class="input" type="text"  value="{{ $show_data->victim_tel }}">
 									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
@@ -146,18 +141,30 @@
 								<div class="field is-grouped">
 									<p class="control is-expanded has-icons-left ">
 										<label class="radio">
-      							{{ Form::radio('sex', '1' , true) }} 
+											@if( $show_data->sex == 1 )
+      											{{ Form::radio('sex', '1' , true) }}
+											@else
+												{{ Form::radio('sex', '1' , false) }}
+											@endif
       							ชาย
     						</label>
 									
 
 										<label class="radio">
-     							{{ Form::radio('sex', '2' , false) }} หญิง
+											@if( $show_data->sex == 2 )
+												{{ Form::radio('sex', '2' , true) }}
+											@else
+												{{ Form::radio('sex', '2' , false) }}
+											@endif หญิง
     						</label>
 									
 
 										<label class="radio">
-     							{{ Form::radio('sex', '3' , false) }} สาวประเภทสอง
+											@if( $show_data->sex == 3 )
+												{{ Form::radio('sex', '3' , true) }}
+											@else
+												{{ Form::radio('sex', '3' , false) }}
+											@endif สาวประเภทสอง
     						</label>
 									
 
@@ -175,7 +182,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="กรุงเทพมหานคร" disabled>
+									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="{{ $show_data->Provinces->PROVINCE_NAME }}" disabled>
 								</p>
 							</div>
 							<div class="field-label is-normal">
@@ -183,7 +190,7 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" type="email" placeholder="ID-CODE" value="บางกะปิ" disabled>
+									<input class="input" type="email" placeholder="ID-CODE" value="{{ $show_data->Amphurs->AMPHUR_NAME }}" disabled>
 								</p>
 							</div>
 						</div>
@@ -196,7 +203,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" placeholder="กรอกรายละเอียด"  disabled></textarea>
+									<textarea class="textarea" name="detail"  >{{ $show_data->detail }}</textarea>
 								</div>
 							</div>
 						</div>
@@ -224,7 +231,12 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control  has-icons-left ">
-									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="26/06/2520">
+								<div class="input-group date" data-provide="datepicker">
+									<input type="text" class="form-control">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
 								</p>
 							</div>
 							<div class="field-label is-normal">
@@ -232,7 +244,7 @@
 							</div>
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
-									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="36" disabled>
+									<input class="input" type="text" placeholder="อายุ" value="36" disabled>
 								</p>
 							</div>
 						</div>
@@ -620,7 +632,14 @@
 				</div>
 			</div>
 	</section>
+	<script>
+        $('.datepicker').datepicker();
+
+        //# sourceURL=pen.js
+    </script>
+
 	<br> @extends('footer')
+
 </body>
 
 </html>
