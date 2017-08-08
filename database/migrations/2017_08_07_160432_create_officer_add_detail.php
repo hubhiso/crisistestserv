@@ -15,8 +15,7 @@ class CreateOfficerAddDetail extends Migration
     {
         Schema::create('add_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('case_id');
-            $table->foreign('case_id')->references('case_id')->on('case_inputs');
+            $table->string('case_id', 5)->references('case_id')->on('case_inputs');
             $table->date('birth_date');
             $table->integer('current_status');
             $table->integer('occupation');
@@ -32,7 +31,6 @@ class CreateOfficerAddDetail extends Migration
             $table->text('accident_time');
             $table->text('violation_characteristics');
             $table->text('effect');
-            $table->text('offender_organization');
             $table->integer('cause_type1');
             $table->integer('cause_type2');
             $table->integer('cause_type3');

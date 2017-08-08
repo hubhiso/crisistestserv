@@ -36,7 +36,7 @@
             <div class="notification is-success">
                 <button class="delete"></button>
                 รหัสที่ใช้ติดตามข้อมูลของท่านคือ
-                {{ $new_id }}
+                {{ $case_id }}
             </div>
             @if(Auth::guard('officer')->check())
                 <a class="button is-success" href="{{ route('officer.main') }}">กลับสู้หน้าหลัก</a>

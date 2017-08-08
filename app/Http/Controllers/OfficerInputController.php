@@ -46,7 +46,8 @@ class OfficerInputController extends Controller
         //$caseinputs = new case_input();
         $provinces = province::all();
         $amphurs= amphur::where('PROVINCE_ID', '=', 1)->get();
-        return view('officer.input_case',compact('provinces','amphurs'));
+        $new_id = $this->gen_id();
+        return view('officer.input_case',compact('provinces','amphurs', 'new_id'));
     }
 
     /**
@@ -69,13 +70,10 @@ class OfficerInputController extends Controller
     {
         //
 
-        //$input = Request::all();
         case_input::create($request->all());
-        $case_tel = Request::input('victim_tel');
-        $case_update = case_input::whereraw('victim_tel = ? AND case_id IS NULL ', [$case_tel])->first();
-        $new_id = $this->gen_id();
-        case_input::where('id','=',$case_update->id)->update(['case_id' => $new_id , 'status' => 1]);
-        return view('layout.gen_caseid',compact('new_id'));
+        $case_id = Request::input('case_id');
+        case_input::where('case_id','=',$case_id)->update([ 'status' => 1]);
+        return view('layout.gen_caseid',compact('case_id'));
 
     //return redirect('/');
     }

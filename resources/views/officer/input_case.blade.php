@@ -27,6 +27,7 @@
                     <!-- Left empty for spacing -->
                 </div>
             </div>
+			<input id="case_id" name="case_id"  type="text" value="{{  $new_id }}" hidden >
 
             <div class="field is-grouped">
                 <p class="control is-expanded has-icons-left ">

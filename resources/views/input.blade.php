@@ -40,8 +40,8 @@
 				</div>
 			</div>
 		</div>
-
-   		<div class="box" id="data-person">
+		<input id="case_id" name="case_id"  type="text" value="{{  $new_id }}" hidden >
+		<div class="box" id="data-person">
        		<div class="field is-horizontal">
 				<div class="field-label ">
 					<!-- Left empty for spacing -->
