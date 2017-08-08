@@ -18,7 +18,7 @@
 	<title> CRS </title>
 </head>
 
-<body class="layout-default">
+<form class="layout-default">
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 			<div class="container">
@@ -27,6 +27,10 @@
 			</div>
 		</div>
 			<br>
+		<form class="form-horizontal" role="form" method="POST" action="{{ route('officer.post_detail') }}">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<input id="case_id" name="case_id"  type="text" value="{{  $case_id }}" hidden >
+
 			<div class="container">
 				<nav class="breadcrumb">
 					<ul>
@@ -190,7 +194,7 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" type="email" placeholder="ID-CODE" value="{{ $show_data->Amphurs->AMPHUR_NAME }}" disabled>
+									<input class="input"  placeholder="ID-CODE" value="{{ $show_data->Amphurs->AMPHUR_NAME }}" disabled>
 								</p>
 							</div>
 						</div>
@@ -232,7 +236,7 @@
 							<div class="field is-grouped">
 								<p class="control  has-icons-left ">
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" class="form-control">
+									<input type="text" name="birthdate" class="form-control">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
 									</div>
@@ -244,7 +248,7 @@
 							</div>
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
-									<input class="input" type="text" placeholder="อายุ" value="36" disabled>
+									<input class="input" type="text" name="age" value="36" disabled>
 								</p>
 							</div>
 						</div>
@@ -294,21 +298,21 @@
 						<div class="field-body">
 							<div class="field is-narrow">
 								<div class="control"> <span class="select">
-									<select>
-									  <option> โปรดเลือก </option>
-									  <option> รับราชการ </option>
-									  <option> พนักงานบริษัทเอกชน </option>
-									  <option> องค์กรพัฒนาเอกชน (NGO) </option>
-									  <option> พนักงานมหาวิทยาลัย </option>
-									  <option> นักเรียน/นักศึกษา </option>
-									  <option> พนักงานบริการทั่วไป </option>
-									  <option> รับจ้างทั่วไป </option>
-									  <option> เกษตรกร </option>
-									  <option> ธุรกิจส่วนตัว </option>
-									  <option> อื่นๆ โปรดระบุ </option>
+									<select id ="occupation" name="occupation">
+									  <option value="0"> โปรดเลือก </option>
+									  <option value="1"> รับราชการ </option>
+									  <option value="2"> พนักงานบริษัทเอกชน </option>
+									  <option value="3"> องค์กรพัฒนาเอกชน (NGO) </option>
+									  <option value="4"> พนักงานมหาวิทยาลัย </option>
+									  <option value="5"> นักเรียน/นักศึกษา </option>
+									  <option value="6"> พนักงานบริการทั่วไป </option>
+									  <option value="7"> รับจ้างทั่วไป </option>
+									  <option value="8"> เกษตรกร </option>
+									  <option value="9"> ธุรกิจส่วนตัว </option>
+									  <option value="10"> อื่นๆ โปรดระบุ </option>
 									</select>
 									</span>
-								
+									<input id="occupation_detail" name="occupation_detail"  type="text" value="" hidden >
 								</div>
 							</div>
 						</div>
@@ -320,7 +324,7 @@
 						<div class="field-body">
 							<div class="field  is-grouped">
 								<p class="control  is-expanded">
-									<textarea class="textarea" placeholder="บ้านเลขที่ ซอย ถนน หมู่บ้าน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"></textarea>
+									<textarea class="textarea" name="address" placeholder="บ้านเลขที่ ซอย ถนน หมู่บ้าน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"></textarea>
 								</p>
 							</div>
 						</div>
@@ -332,11 +336,11 @@
 						<div class="field-body is-expanded">
 							<div class="field is-narrow ">
 								<div class="control"> <span class="select">
-									<select>
-									  <option> บัตรประชาชน </option>
-									  <option> บัตรต่างด้าว </option>
-									  <option> บัตรคนไทยไร้สถานะ </option>
-									  <option> พาสปอร์ต </option>
+									<select id ="card_type" name="card_type">
+									  <option value="1"> บัตรประชาชน </option>
+									  <option value="2"> บัตรต่างด้าว </option>
+									  <option value="3"> บัตรคนไทยไร้สถานะ </option>
+									  <option value="4"> พาสปอร์ต </option>
 									</select>
 									</span>
 								</div>
@@ -346,7 +350,7 @@
 							</div>
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
-									<input class="input" type="email" placeholder="ID-CODE" value="">
+									<input class="input" type="TEXT" name="card_num" placeholder="ID-CODE" value="">
 								</p>
 							</div>
 						</div>
@@ -369,15 +373,15 @@
 						<div class="field-body">
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select>
-									  <option> โปรดเลือก </option>
-									  <option> สถานพยาบาล </option>
-									  <option> สถานที่ทำงาน </option>
-									  <option> สถานศึกษา </option>
-									  <option> ตำรวจ </option>
-									  <option> ทหาร </option>
-									  <option> ท้องถิ่น </option>
-									  <option> หน่วยงานอื่นๆ </option>
+									<select id ="offender_type" name="offender_type">
+									  <option value="0"> โปรดเลือก </option>
+									  <option value="1"> สถานพยาบาล </option>
+									  <option value="2"> สถานที่ทำงาน </option>
+									  <option value="3"> สถานศึกษา </option>
+									  <option value="4"> ตำรวจ </option>
+									  <option value="5"> ทหาร </option>
+									  <option value="6"> ท้องถิ่น </option>
+									  <option value="7"> หน่วยงานอื่นๆ </option>
 									</select>
 									</span>
 								
@@ -385,9 +389,9 @@
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select>
-									  <option> ของรัฐบาล </option>
-									  <option> ของเอกชน </option>
+									<select id ="offender_subtype" name="offender_subtype">
+									  <option value="1"> ของรัฐบาล </option>
+									  <option value="2"> ของเอกชน </option>
 									</select>
 									</span>
 								
@@ -418,7 +422,7 @@
 								</div>
 								<div class="control">
 									<p>
-										<input class="input" type="text" placeholder="">
+										<input class="input" type="text" id="violator_name" name="violator_name">
 									</p>
 								</div>
 								<div class="control">
@@ -428,7 +432,7 @@
 								</div>
 								<div class="control">
 									<p>
-										<input class="input" type="text" placeholder="">
+										<input class="input" type="text" id="violator_organization" name="violator_organization">
 									</p>
 								</div>
 							</div>
@@ -454,7 +458,7 @@
 								</div>
 								<div class="control">
 									<p>
-										<input class="input" type="text" placeholder="">
+										<input class="input" type="text" id="offender_organization" name="offender_organization">
 									</p>
 								</div>
 							</div>
@@ -468,7 +472,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+									<textarea class="textarea" name="accident_location" placeholder="กรอกรายละเอียด"></textarea>
 								</div>
 							</div>
 						</div>
@@ -481,7 +485,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+									<textarea class="textarea" name="accident_time" placeholder="กรอกรายละเอียด"></textarea>
 								</div>
 							</div>
 						</div>
@@ -499,24 +503,28 @@
 						<div class="field-body">
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select>
-									  <option>บังคับตรวจการติดเชื้อ HIV</option>
-									</select>
+									<select id ="problem_case" name="problem_case">
+									<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
+									<option value="1"  >บังคับตรวจเอชไอวี</option>
+									<option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
+									<option value="3" >เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
+									<option value="4" >ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
+								</select>
 									</span>
 								</div>
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
 									<select>
-									  <option>กลุ่มเปราะบาง</option>
+									  <select id ="sub_problem" name="sub_problem" disabled="true">
+									  </select>
 									</select>
 									</span>
 								</div>
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select>
-									  <option>ผู้ใช้สารเสพติด</option>
+									<select id ="group_code" name="group_code" disabled="true">
 									</select>
 									</span>
 								</div>
@@ -532,7 +540,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+									<textarea class="textarea" name="violation_characteristics" placeholder="กรอกรายละเอียด"></textarea>
 								</div>
 							</div>
 						</div>
@@ -545,7 +553,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+									<textarea class="textarea" name="effect" placeholder="กรอกรายละเอียด"></textarea>
 								</div>
 							</div>
 						</div>
@@ -559,25 +567,25 @@
 						<div class="field is-grouped">
 						  <div class="control">
 							<label class="checkbox">
-							  <input type="checkbox">
+							  <input type="checkbox" name="law">
 							  ไม่รู้กฎหมาย
 							</label>
 						  </div>
 						  <div class="control">
 							<label class="checkbox">
-							  <input type="checkbox">
+							  <input type="checkbox" name="aids">
 							  ขาดความเข้าใจที่ถูกต้องเรื่องเอดส์
 							</label>
 						  </div>
 						  <div class="control">
 							<label class="checkbox">
-							  <input type="checkbox">
+							  <input type="checkbox" name="attitude">
 							  ทัศนคติ
 							</label>
 						  </div>
 						  <div class="control">
 							<label class="checkbox">
-							  <input type="checkbox">
+							  <input type="checkbox" name="policy">
 							  นโยบายองค์กร
 							</label>
 						  </div>
@@ -593,12 +601,12 @@
 						<div class="field is-grouped">
 								<div class="control">
 									<label class="checkbox">
-							  <input type="checkbox">
+							  <input type="checkbox" name="etc">
 							  อื่นๆ
 							</label>
 								</div>
 								<div class="control">
-									<label class="text">
+									<label class="text" name="etc_detail">
 							  ระบุ
 							</label>
 								</div>
@@ -627,11 +635,13 @@
 				<div class="field is-grouped">
 					<p><a> </a>
 					</p>
-					<p class="control"> <a class="button is-primary"> ยืนยัน </a> </p>
+					<p class="control"> {!! Form::submit('ยืนยัน',['class'=>'button is-primary']) !!}</p>
+
 					<p class="control"> <a class="button"> ยกเลิก </a> </p>
 				</div>
 			</div>
 	</section>
+</form>
 	<script>
         $('.datepicker').datepicker();
 

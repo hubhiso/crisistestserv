@@ -21,8 +21,9 @@ Route::prefix('officer')->group(function () {
     Route::get('/show', 'OfficerInputController@show')->name('officer.show');
     Route::get('/confirm/{case_id}', 'OfficerInputController@open_confirm')->name('officer.open_cfm');
     Route::get('/add_detail/{case_id}', 'OfficerInputController@add_detail')->name('officer.add_detail');
-
+    Route::post('/add_detail', 'OfficerUpdateController@add_detail')->name('officer.post_detail');
     Route::post('/accept', 'OfficerUpdateController@accept_case')->name('officer.accept_c');
+
     Route::get('/login', 'Auth\OfficerLoginController@ShowLoginForm')->name('officer.login');
     Route::post('/login', 'Auth\OfficerLoginController@login')->name('officer.login.submit');
     Route::post('/logout', 'Auth\OfficerLoginController@logout')->name('officer.logout');
