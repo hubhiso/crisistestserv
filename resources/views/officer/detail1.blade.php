@@ -246,7 +246,7 @@
 					<p><a> </a>
 					</p>
 					{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}
-					<p class="control"> <a class="button"> ยกเลิก </a> </p>
+					<p class="control"> <a class="button" href="{{ 'officer/show' }}" > ยกเลิก </a> </p>
 				</div>
 			</div>
 	</section>
