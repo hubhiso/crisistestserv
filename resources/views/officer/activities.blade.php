@@ -365,7 +365,7 @@
 									<p class="control"> <a class="button is-primary"> ยืนยัน </a> </p>
 								</div>
 								<div class="control">
-									<p class="control"> <a class="button" href="{{ 'officer/show' }}"> ยกเลิก </a> </p>
+									<p class="control"> <a class="button" href="{{ route('officer.show') }}"> ยกเลิก </a> </p>
 								</div>
 							</div>
 						</div>

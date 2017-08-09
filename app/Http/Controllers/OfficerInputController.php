@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\province;
 use App\amphur;
 use App\case_input;
+use App\add_detail;
 use Request;
 use Auth;
 
@@ -100,10 +101,16 @@ class OfficerInputController extends Controller
         $show_data = case_input::where('case_id','=',$case_id)->first();
         return view('officer.detail2',compact('show_data'));
     }
+    public function edit_detail($case_id)
+    {
+        $show_data = case_input::where('case_id','=',$case_id)->first();
+        return view('officer.detail2',compact('show_data'));
+    }
     public function add_activities($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
-        return view('officer.activities',compact('show_data'));
+        $show_detail = add_detail::where('case_id','=',$case_id)->first();
+        return view('officer.edit_detail2',compact('show_data','show_detail'));
     }
 
 

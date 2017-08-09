@@ -42,6 +42,30 @@
 				</nav>
 			</div>
 
+			<section>
+				<div class="container">
+					<div class="tabs is-centered is-toggle">
+						<ul>
+							<li>
+								<a>
+									<span class="icon is-small"><i class="fa fa-image"></i></span>
+									<span> ข้อมูลเพิ่มเติม </span>
+								</a>
+
+							</li>
+							<li class="is-active">
+								<a>
+									<span class="icon is-small"><i class="fa fa-cog"></i></span>
+									<span> การดำเนินการ </span>
+								</a>
+
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</section>
+			<br>
 
 			<h1 id="title" class="title"> ข้อมูลเพิ่มเติม </h1>
 			<div class="container">
@@ -248,7 +272,7 @@
 							</div>
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
-									<input class="input" type="text" name="age" value="36" >
+									<input class="input" type="text" name="age" value="36" disabled>
 								</p>
 							</div>
 						</div>
