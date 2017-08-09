@@ -29,7 +29,7 @@
 			<br>
 		<form class="form-horizontal" role="form" method="POST" action="{{ route('officer.post_detail') }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<input id="case_id" name="case_id"  type="text" value="{{  $case_id }}" hidden >
+			<input id="case_id" name="case_id"  type="text" value="{{  $show_data->case_id }}" hidden >
 
 			<div class="container">
 				<nav class="breadcrumb">

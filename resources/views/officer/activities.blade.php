@@ -6,11 +6,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> CRS </title>
+	{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}
+	{{ Html::style('bootstrap/css/bootstrap.css') }}
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	
 
-	<!--meta name="msapplication-config" content="http://bulma.io/favicons/browserconfig.xml?v=201701041855"-->
+	{{ Html::script('js/jquery.min.js') }}
+	{{ Html::script('bootstrap/js/bootstrap.min.js') }}
+	{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<meta name="theme-color" content="#cc99cc"/>
 </head>
 
@@ -18,16 +21,8 @@
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 			<div class="container">
-				<nav class="nav">
-					<div class="nav-left"> <a class="nav-item is-active" href="#"> Crisis Response </a>
-						
-						<span id="nav-toggle" class="nav-toggle"> <span></span> <span></span> <span></span> </span>
-						<div id="nav-menu" class="nav-right nav-menu"> <a class="nav-item is-active" href="#"> Username : </a>
-							<div class="nav-item">
-								<p class="control"> <a class="button is-primary" href="#"> <span>Logout</span> </a> </p>
-							</div>
-						</div>
-				</nav>
+				@component('component.login_bar')
+				@endcomponent
 			</div>
 		</div>
 
@@ -94,7 +89,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="สมชาย" disabled>
+									<input class="input" type="text" placeholder="ชื่อผู้ถูกกระทำ" value="{{ $show_data->name }}" disabled>
 								</p>
 							</div>
 							<div class="field-label is-normal">
@@ -102,7 +97,8 @@
 							</div>
 							<div class="field">
 								<p class="control is-expanded has-icons-left has-icons-right">
-									<input class="input" type="email" placeholder="ID-CODE" value="XX12345" disabled>
+									<input class="input" type="text" placeholder="ID-CODE" value="{{ $show_data->case_id }}" disabled>
+									{!! Form::text('case_id',$show_data->case_id,['class'=>'text', 'hidden']) !!}
 								 </p>
 							</div>
 						</div>
@@ -191,7 +187,12 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control  has-icons-left">
-									<input class="input" type="text"  value="_ _ /_ _ /_ _ _ _">
+								<div class="input-group date" data-provide="datepicker">
+									<input type="text" name="operate_date" class="form-control">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
 									</p>
 							</div>
 						</div>
@@ -404,7 +405,11 @@
 		</div>
 	</section>
 	<br>
+	<script>
+        $('.datepicker').datepicker();
 
+        //# sourceURL=pen.js
+	</script>
 	@extends('footer')
 </body>
 

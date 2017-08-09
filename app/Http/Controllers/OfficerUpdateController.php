@@ -53,7 +53,7 @@ class OfficerUpdateController extends Controller
         add_detail::create(
             ['case_id'=>$case_id],
             ['birth_date'=>$request->input('birthdate')],
-            ['birth_date'=>$request->input('age')],
+            ['age'=>$request->input('age')],
             ['current_status'=>$request->input('marital-status')],
             ['occupation'=>$request->input('occupation')],
             ['occupation_detail'=>$request->input('occupation_detail')],

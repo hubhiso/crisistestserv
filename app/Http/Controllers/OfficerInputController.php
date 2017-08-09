@@ -86,11 +86,8 @@ class OfficerInputController extends Controller
      */
     public function show()
     {
-        //
         $cases = case_input::all();
-
         return view('officer.OfficerManageCase',compact('cases'));
-
     }
 
     public function open_confirm($case_id)
@@ -101,7 +98,12 @@ class OfficerInputController extends Controller
     public function add_detail($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
-        return view('officer.detail2',compact('show_data', 'case_id'));
+        return view('officer.detail2',compact('show_data'));
+    }
+    public function add_activities($case_id)
+    {
+        $show_data = case_input::where('case_id','=',$case_id)->first();
+        return view('officer.activities',compact('show_data'));
     }
 
 

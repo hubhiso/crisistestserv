@@ -41,7 +41,8 @@ class case_controller extends Controller
         //$caseinputs = new case_input();
         $provinces = province::all();
         $amphurs= amphur::where('PROVINCE_ID', '=', 1)->get();
-        return view('input',compact('provinces','amphurs'));    }
+        $new_id = $this->gen_id();
+        return view('input',compact('provinces','amphurs','new_id'));    }
 
     /**
      * Show the form for creating a new resource.
