@@ -343,7 +343,9 @@
 								<p class="control   ">
 									<span class="select">
 									<select>
-										<option> จังหวัด List </option>
+										@foreach($provinces as $province)
+											<option value="{{ $province->PROVINCE_CODE }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
+										@endforeach
 									   </select> </span>
 								</p>
 								<p class="control  has-icons-left">
