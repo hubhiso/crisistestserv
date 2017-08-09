@@ -104,13 +104,14 @@ class OfficerInputController extends Controller
     public function edit_detail($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
-        return view('officer.detail2',compact('show_data'));
+        $show_detail = add_detail::where('case_id','=',$case_id)->first();
+
+        return view('officer.detail2',compact('show_data', 'show_detail'));
     }
     public function add_activities($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
-        $show_detail = add_detail::where('case_id','=',$case_id)->first();
-        return view('officer.edit_detail2',compact('show_data','show_detail'));
+        return view('officer.edit_detail2',compact('show_data'));
     }
 
 

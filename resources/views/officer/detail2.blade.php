@@ -18,7 +18,6 @@
 	<title> CRS </title>
 </head>
 
-<form class="layout-default">
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 			<div class="container">
@@ -248,7 +247,7 @@
 							</div>
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
-									<input class="input" type="text" name="age" value="36" >
+									<input class="input" type="text" name="age" value="36">
 								</p>
 							</div>
 						</div>
