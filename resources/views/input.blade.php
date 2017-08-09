@@ -19,8 +19,20 @@
 	@component('component.input_head')
 	@endcomponent
 	
+	
 <div class="container">
+
 	<section class="section">
+ 		
+ 		<nav class="breadcrumb">
+				<ul>
+					<li><a href="{{ 'index.php' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+					</li>
+					<li class="is-active"><a><span class="icon is-small"><i class="fa fa-volume-control-phone"></i></span><span> แจ้งเรื่อง </span></a>
+					</li>
+				</ul>
+			</nav>
+ 		
   		<h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>
   		
    		<div class="box" id="data-agent">
