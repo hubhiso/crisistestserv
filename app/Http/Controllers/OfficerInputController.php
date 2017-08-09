@@ -27,8 +27,9 @@ class OfficerInputController extends Controller
         $this->middleware('auth:officer');
     }
     public function ajax_amphur($prov_id) {
-        $prov_id    = $prov_id;
-        $category = amphur::where('PROVINCE_ID', '=', $prov_id)->get();
+        $prov_code    = $prov_id;
+        $new_prov_id = province::where('PROVINCE_CODE', '=', $prov_code)->first();
+        $category = amphur::where('PROVINCE_ID', '=', $new_prov_id->PROVINCE_ID)->get();
         return response()->json($category);
     }
     public function gen_id(){

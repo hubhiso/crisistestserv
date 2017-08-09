@@ -412,7 +412,7 @@
 							<div class="field is-grouped">
 								<div class="control">
 									<label class="radio">
-										<input type="radio" name="type-violator" id="type-violator" value="1" checked>
+										<input type="radio" name="type-violator" onclick="handleClick(this);" value="1" checked>
 										บุคคล
 									 </label>
 								</div>
@@ -448,7 +448,7 @@
 							<div class="field is-grouped">
 								<div class="control">
 									<label class="radio">
-							  <input type="radio" name="type-violator" id="type-violator" value="2" >
+							  <input type="radio" name="type-violator" onclick="handleClick(this);" value="2" >
 							  องค์กร
 							</label>
 								</div>
@@ -716,10 +716,15 @@
                 $('#group_code').attr('disabled', 'disabled');
             }
         });
+        /*
         $('#type-violator').on('click change',function (e) {
 			var type_id = e.target.value;
             console.log(e.type);
-        });
+        });*/
+        function handleClick(myRadio) {
+            alert('New value: ' + myRadio.value);
+            //currentValue = myRadio.value;
+        }
     </script>
 
 	<br> @extends('footer')
