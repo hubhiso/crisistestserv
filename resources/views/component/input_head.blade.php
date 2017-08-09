@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <div class="hero-foot">
+    <!--div class="hero-foot">
         <div class="container">
             <nav class="tabs is-boxed">
                 <ul>
@@ -17,5 +17,5 @@
                 </ul>
             </nav>
         </div>
-    </div>
+    </div-->
 </section>
