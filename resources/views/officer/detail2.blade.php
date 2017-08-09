@@ -233,13 +233,15 @@
 						</div>
 						<div class="field-body">
 							<div class="field is-grouped">
-								<p class="control  has-icons-left ">
+								<p class="control  has-icons-left " >
+									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" name="birthdate" class="form-control">
+									<input type="text" name="birthdate" class="form-control" >
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
 									</div>
 								</div>
+								   <!-- birth_date input -->
 								</p>
 							</div>
 							<div class="field-label is-normal">
@@ -401,7 +403,7 @@
 
 
 
-
+					<!-- Violent group -->
 					<div class="field is-horizontal">
 						<div class="field-label">
 							<label class="label"> ผู้ละเมิด </label>
@@ -410,7 +412,7 @@
 							<div class="field is-grouped">
 								<div class="control">
 									<label class="radio">
-										<input type="radio" name="">
+										<input type="radio" name="type-violator" id="type-violator" value="1" checked>
 										บุคคล
 									 </label>
 								</div>
@@ -446,7 +448,7 @@
 							<div class="field is-grouped">
 								<div class="control">
 									<label class="radio">
-							  <input type="radio">
+							  <input type="radio" name="type-violator" id="type-violator" value="2" >
 							  องค์กร
 							</label>
 								</div>
@@ -463,7 +465,7 @@
 							</div>
 						</div>
 					</div>
-
+					<!-- Violent group -->
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
 							<label class="label"> สถานที่เกิดเหตุ </label>
@@ -514,14 +516,33 @@
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									  <select id ="sub_problem" name="sub_problem" disabled="true">
+									  <select id ="sub_problem" name="sub_problem" @if($show_data->sub_problem == null){ disabled } @endif>
+										  @if($show_data->problem_case == 1)
+											  <option value="1" style="width:250px" @if($show_data->sub_problem == 1){ selected } @endif>ผู้ติดเชื้อเอชไอวี</option>
+											  <option value="2" style="width:250px" @if($show_data->sub_problem == 2){ selected } @endif>กลุ่มเปราะบาง</option>
+											  <option value="3" style="width:250px" @if($show_data->sub_problem == 3){ selected } @endif>ประชาชนทั่วไป</option>
+										  @elseif($show_data->problem_case == 2 || $show_data->problem_case == 3)
+											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
+										  @elseif($show_data->problem_case == 4)
+											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
+										  @endif
 									  </select>
 									</span>
 								</div>
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select id ="group_code" name="group_code" disabled="true">
+									<select id ="group_code" name="group_code" @if($show_data->group_code == null){ disabled } @endif>
+
+										@if($show_data->sub_problem == 2)
+											<option value="1" style="width:250px" @if($show_data->group_code == 1){ selected } @endif>กลุ่มหลากหลายทางเพศ</option>
+											<option value="2" style="width:250px" @if($show_data->group_code == 2){ selected } @endif>พนักงานบริการ HIV</option>
+											<option value="3" style="width:250px" @if($show_data->group_code == 3){ selected } @endif>ผู้ใช้สารเสพติด</option>
+											<option value="4" style="width:250px" @if($show_data->group_code == 4){ selected } @endif>ประชากรข้ามชาติ</option>
+											<option value="5" style="width:250px" @if($show_data->group_code == 5){ selected } @endif>ผู้ต้องขัง</option>
+											<option value="6" style="width:250px" @if($show_data->group_code == 6){ selected } @endif>เยาวชนในสถานพินิจ</option>
+										@endif
+
 									</select>
 									</span>
 								</div>
@@ -664,7 +685,7 @@
             }else if(prob_id==4){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" style="width:250px">กลุ่มเปราะบาง</option>');
+                $('#sub_problem').append('<option value="2" style="width:250px">กลุ่มเปราะบาง</option>');
                 $('#group_code').empty();
                 $('#group_code').removeAttr('disabled');
                 $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
@@ -694,6 +715,10 @@
                 $('#group_code').empty();
                 $('#group_code').attr('disabled', 'disabled');
             }
+        });
+        $('#type-violator').on('click change',function (e) {
+			var type_id = e.target.value;
+            console.log(e.type);
         });
     </script>
 

@@ -1,7 +1,7 @@
 
 <div class="field is-grouped">
     <p class="control is-expanded has-icons-left ">
-        กรุณาระบุสถาณะของท่าน
+        กรุณาระบุสถานะของท่าน
         <label class="radio">
             {{ Form::radio('sender_case', '1' , true) }}  <a >ผู้ถูกกระทำ</a>
         </label>
