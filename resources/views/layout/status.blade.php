@@ -78,7 +78,13 @@
 			
 			<hr>
 			<!-- Timeline begin here -->
+			
+		</div>	
+			
+		<div class="container" style="background-color: #EEEEEE">
+		
 		<div id="timeline">
+		<br>
 			<div class="timeline-item">
 				<div class="timeline-icon">
 					<img src="images/markx40.png" alt="">
@@ -86,7 +92,7 @@
 				<div class="timeline-content">
 					<h2> 1 มกราคม 2560 เวลา 13.00 น. </h2>
 					<p>
-						รับเรื่อง
+						ระบบดำเนินการรับเรื่องเรียบร้อยแล้ว
 					</p>
 					
 				</div>
@@ -99,7 +105,7 @@
 				<div class="timeline-content right">
 					<h2> 25 มกราคม 2560 เวลา 17.00 น. </h2>
 					<p>
-						ดำเนินการอยู่
+						เจ้าหน้าที่กำลังดำเนินการอยู่
 					</p>
 				</div>
 			</div>
