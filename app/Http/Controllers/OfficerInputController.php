@@ -27,8 +27,9 @@ class OfficerInputController extends Controller
         $this->middleware('auth:officer');
     }
     public function ajax_amphur($prov_id) {
-        $prov_id    = $prov_id;
-        $category = amphur::where('PROVINCE_ID', '=', $prov_id)->get();
+        $prov_code    = $prov_id;
+        $new_prov_id = province::where('PROVINCE_CODE', '=', $prov_code)->first();
+        $category = amphur::where('PROVINCE_ID', '=', $new_prov_id->PROVINCE_ID)->get();
         return response()->json($category);
     }
     public function gen_id(){
@@ -105,7 +106,6 @@ class OfficerInputController extends Controller
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
         $show_detail = add_detail::where('case_id','=',$case_id)->first();
-
         return view('officer.detail2',compact('show_data', 'show_detail'));
     }
     public function add_activities($case_id)
