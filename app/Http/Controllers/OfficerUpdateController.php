@@ -55,7 +55,11 @@ class OfficerUpdateController extends Controller
             $chk5 = 0;
         }
 
-        case_input::where('case_id','=',$case_id)->update([ 'status' => 3]);
+        case_input::where('case_id','=',$case_id)->update([ 'status' => 3,
+                                                            'name' => $request->input('name'),
+                                                            'tel' => $request->input('tel'),
+                                                            'sex' => $request->input('sex'),
+                                                            'detail' => $request->input('detail')]);
         add_detail::create(
             ['case_id'=>$case_id,
             'birth_date'=>$birth_date,
