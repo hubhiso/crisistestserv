@@ -103,7 +103,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text"  value="{{ $show_data->name }}">
+									<input class="input" type="text"  name="name" value="{{ $show_data->name }}">
 									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
 							</div>
 							<div class="field-label is-normal">
@@ -126,7 +126,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control has-icons-left">
-									<input class="input" type="text"  value="{{ $show_data->victim_tel }}">
+									<input class="input" type="text" name="tel" value="{{ $show_data->victim_tel }}">
 									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
@@ -504,20 +504,18 @@
 								<div class="control"> <span class="select">
 									<select id ="problem_case" name="problem_case">
 									<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
-									<option value="1"  >บังคับตรวจเอชไอวี</option>
-									<option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
-									<option value="3" >เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
-									<option value="4" >ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
+									<option value="1"  @if($show_data->problem_case == 1){ selected } @endif>บังคับตรวจเอชไอวี</option>
+									<option value="2"  @if($show_data->problem_case == 2){ selected } @endif>เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
+									<option value="3"  @if($show_data->problem_case == 3){ selected } @endif>เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
+									<option value="4"  @if($show_data->problem_case == 4){ selected } @endif>ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
 								</select>
 									</span>
 								</div>
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select>
 									  <select id ="sub_problem" name="sub_problem" disabled="true">
 									  </select>
-									</select>
 									</span>
 								</div>
 							</div>
@@ -644,7 +642,59 @@
 	<script>
         $('.datepicker').datepicker();
 
-        //# sourceURL=pen.js
+        $('#problem_case').on('change',function (e) {
+            var prob_id = e.target.value;
+            //console.log(prob_id);
+            $('#group_code').empty();
+            $('#group_code').attr('disabled', 'disabled');
+            if(prob_id==1){
+                $('#sub_problem').empty();
+                $('#sub_problem').removeAttr('disabled');
+                $('#sub_problem').append('<option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>');
+                $('#sub_problem').append('<option value="2" style="width:250px">กลุ่มเปราะบาง</option>');
+                $('#sub_problem').append('<option value="3" style="width:250px">ประชาชนทั่วไป</option>');
+            }else if(prob_id==2){
+                $('#sub_problem').empty();
+                $('#sub_problem').removeAttr('disabled');
+                $('#sub_problem').append('<option value="1" >ผู้ติดเชื้อเอชไอวี</option>');
+            }else if(prob_id==3){
+                $('#sub_problem').empty();
+                $('#sub_problem').removeAttr('disabled');
+                $('#sub_problem').append('<option value="1" >ผู้ติดเชื้อเอชไอวี</option>');
+            }else if(prob_id==4){
+                $('#sub_problem').empty();
+                $('#sub_problem').removeAttr('disabled');
+                $('#sub_problem').append('<option value="1" style="width:250px">กลุ่มเปราะบาง</option>');
+                $('#group_code').empty();
+                $('#group_code').removeAttr('disabled');
+                $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
+                $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ </option>');
+                $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
+                $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
+                $('#group_code').append('<option value="5" style="width:250px">ผู้ต้องขัง</option>');
+                $('#group_code').append('<option value="6" style="width:250px">เยาวชนในสถานพินิจ</option>');
+            }else{
+                $('#sub_problem').empty();
+                $('#sub_problem').attr('disabled', 'disabled');
+            }
+        });
+        $('#sub_problem').on('change',function (e) {
+            var sub_id = e.target.value;
+            if(sub_id==2){
+                $('#group_code').empty();
+                $('#group_code').removeAttr('disabled');
+                $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
+                $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ HIV</option>');
+                $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
+                $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
+                $('#group_code').append('<option value="5" style="width:250px">ผู้ต้องขัง</option>');
+                $('#group_code').append('<option value="6" style="width:250px">เยาวชนในสถานพินิจ</option>');
+
+            }else{
+                $('#group_code').empty();
+                $('#group_code').attr('disabled', 'disabled');
+            }
+        });
     </script>
 
 	<br> @extends('footer')
