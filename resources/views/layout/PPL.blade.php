@@ -1,5 +1,5 @@
 
-<section class="hero is-info is-medium  wall2">
+<section class="hero is-primary is-medium  ">
   
   <!-- Hero content: will be in the middle -->
   <div class="hero-body">
