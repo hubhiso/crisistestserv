@@ -111,7 +111,9 @@ class OfficerInputController extends Controller
     public function add_activities($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
-        return view('officer.activities',compact('show_data'));
+        $provinces = province::all();
+
+        return view('officer.activities',compact('show_data', 'provinces'));
     }
 
 

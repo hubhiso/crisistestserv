@@ -722,7 +722,17 @@
             console.log(e.type);
         });*/
         function handleClick(myRadio) {
-            alert('New value: ' + myRadio.value);
+            if(myRadio.value == 1)
+			{
+                //$('#offender_organization').disabled();
+                document.getElementById("offender_organization").disabled = true;
+			}else if(myRadio.value == 2){
+                document.getElementById("violator_name").disabled = true;
+                document.getElementById("violator_organization").disabled = true;
+               // $('#violator_name').disabled();
+               // $('#violator_organization').disabled();
+			}
+            //alert('New value: ' + myRadio.value);
             //currentValue = myRadio.value;
         }
     </script>
