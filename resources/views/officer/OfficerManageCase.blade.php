@@ -116,7 +116,6 @@
         							<select>
           								<option> ประเภท </option>
           								<option> สถานะ </option>
-          								<option> ดำเนินการ </option>
           								<option> ประเภทของผู้แจ้ง </option>
           								
        								</select>
