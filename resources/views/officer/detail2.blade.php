@@ -374,7 +374,7 @@
 						<div class="field-body">
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select id ="offender_type" name="offender_type">
+									<select id ="offender_type" name="offender_type"  >
 									  <option value="0"> โปรดเลือก </option>
 									  <option value="1"> สถานพยาบาล </option>
 									  <option value="2"> สถานที่ทำงาน </option>
@@ -390,7 +390,7 @@
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select id ="offender_subtype" name="offender_subtype">
+									<select id ="offender_subtype" name="offender_subtype" disabled>
 									  <option value="1"> ของรัฐบาล </option>
 									  <option value="2"> ของเอกชน </option>
 									</select>
@@ -459,7 +459,7 @@
 								</div>
 								<div class="control">
 									<p>
-										<input class="input" type="text" id="offender_organization" name="offender_organization">
+										<input class="input" type="text" id="offender_organization" name="offender_organization" disabled>
 									</p>
 								</div>
 							</div>
@@ -665,6 +665,7 @@
 
         $('#problem_case').on('change',function (e) {
             var prob_id = e.target.value;
+            //alert(prob_id);
             //console.log(prob_id);
             $('#group_code').empty();
             $('#group_code').attr('disabled', 'disabled');
@@ -701,6 +702,7 @@
         });
         $('#sub_problem').on('change',function (e) {
             var sub_id = e.target.value;
+
             if(sub_id==2){
                 $('#group_code').empty();
                 $('#group_code').removeAttr('disabled');
@@ -716,6 +718,17 @@
                 $('#group_code').attr('disabled', 'disabled');
             }
         });
+        $('#offender_type').on('change',function (e) {
+
+            var sel_value = e.target.value;
+            //alert(sel_value);
+
+			 if((sel_value == 4)||(sel_value == 5)) {
+			  document.getElementById("offender_subtype").disabled = true;
+			 }else {
+			  document.getElementById("offender_subtype").disabled = false;
+			 }
+        });
         /*
         $('#type-violator').on('click change',function (e) {
 			var type_id = e.target.value;
@@ -724,14 +737,16 @@
         function handleClick(myRadio) {
             if(myRadio.value == 1)
 			{
-                //$('#offender_organization').disabled();
                 document.getElementById("offender_organization").disabled = true;
+                document.getElementById("violator_name").disabled = false;
+                document.getElementById("violator_organization").disabled = false;
 			}else if(myRadio.value == 2){
+                document.getElementById("offender_organization").disabled = false;
                 document.getElementById("violator_name").disabled = true;
                 document.getElementById("violator_organization").disabled = true;
-               // $('#violator_name').disabled();
-               // $('#violator_organization').disabled();
+
 			}
+
             //alert('New value: ' + myRadio.value);
             //currentValue = myRadio.value;
         }
