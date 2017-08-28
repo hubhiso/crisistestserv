@@ -19,7 +19,7 @@
 	<meta name="theme-color" content="#cc99cc"/>
 </head>
 
-<body class="layout-default">
+<body class="layout-default" onload="renderTable()">
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 			<div class="container">
@@ -118,63 +118,14 @@
 					<p class="subtitle is-5">การดำเนินการที่ผ่านมา</p>
 				</div>
 
-				<div class="notification">
 					<!--This container is <strong>centered</strong> on desktop. -->
-					<div class="field is-horizontal">
-						<div class="field-label">
-							<!-- Left empty for spacing -->
-						</div>
-
-					</div>
-					<div class="field is-horizontal">
-						<div class="field-label is-normal">
-							<label class="label">วันที่ดำเนินการ</label>
-						</div>
-						<div class="field-body">
-							<div class="field is-grouped">
-								<p class="control  has-icons-left ">
-									<input class="input" type="text" placeholder="" value="26/06/2560" disabled>
-								 </p>
-							</div>
-						</div>
-						<div class="field is-grouped">
-							<p><a> </a>
-							</p>
-							<p class="control"> <a class="button is-primary"> แก้ไข </a> </p>
-						</div>
-					</div>
+				<div class="table-container">
 				</div>
 
 
-				<div class="notification">
-					<!--This container is <strong>centered</strong> on desktop. -->
-					<div class="field is-horizontal">
-						<div class="field-label">
-							<!-- Left empty for spacing -->
-						</div>
-
-					</div>
-					<div class="field is-horizontal">
-						<div class="field-label is-normal">
-							<label class="label">วันที่ดำเนินการ</label>
-						</div>
-						<div class="field-body">
-							<div class="field is-grouped">
-								<p class="control  has-icons-left ">
-									<input class="input" type="text" placeholder="" value="28/06/2560" disabled>
-								 </p>
-							</div>
-						</div>
-						<div class="field is-grouped">
-							<p><a> </a>
-							</p>
-							<p class="control"> <a class="button is-primary"> แก้ไข </a> </p>
-						</div>
-					</div>
-				</div>
 
 
-				<form class="form-horizontal" role="form" method="POST" action="{{ route('officer.post_activities') }}">
+
 
 				<div class="field is-horizontal">
 					<div class="field-label">
@@ -289,7 +240,6 @@
 					</div>
 				</div>
 
-				</form>
 
 				<div class="notification">
 					<div class="field is-horizontal">
@@ -417,11 +367,31 @@
 	</section>
 	<br>
 	<script>
+
+        function renderTable() {
+            var case_id = $('#case_id').val();
+			var url = "{{route('officer.load_activities',['case_id' => ":case_id"]) }}";
+            url = url.replace(':case_id', case_id);
+
+            console.log(url);
+            var $request = $.get(url); // make request
+            var $container = $('.table-container');
+
+            $container.addClass('loading'); // add loading class (optional)
+
+            $request.done(function(data) { // success
+                $container.html(data.html);
+            });
+            $request.always(function() {
+                $container.removeClass('loading');
+            });
+        }
+
         $('.datepicker').datepicker();
 
         //# sourceURL=pen.js
 
-		/// submit
+		///////// create operate case /////////////////////
         $('#operate_send').on('click', function(e) {
             e.preventDefault();
             var case_id_s = $('#case_id').val();
@@ -442,12 +412,8 @@
             if ($('#prosecution').is(':checked') == true) {
                 prosecution_s = 1;
             }
-
-
             var operate_detail_s = $('#operate_detail').val();
             var operate_result_s = $('#operate_result').val();
-
-
             var token = $('#token').val();
 			//alert(token);
             $.ajax({
@@ -466,13 +432,12 @@
                 },
                 success: function( data ) {
                     //console.log(data);
-                    //$("#ajaxResponse").append("<div>"+data.msg+"</div>");
-                    $('#ajaxResponse').empty();
-                    $("#ajaxResponse").html("<div>"+data.msg+"</div>");
+                    $("#ajaxResponse").append("<div>"+data.msg+"</div>");
+                    renderTable();
                 }
             })
          });
-		//////
+		///////////////////////////////
 	</script>
 
 	@extends('footer')

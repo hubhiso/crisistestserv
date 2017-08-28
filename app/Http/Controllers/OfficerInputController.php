@@ -113,10 +113,15 @@ class OfficerInputController extends Controller
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
         $provinces = province::all();
-        $activities = operate_detail::all();
-        return view('officer.activities',compact('show_data', 'provinces',$activities));
+        //$activities = operate_detail::all();
+        return view('officer.activities',compact('show_data', 'provinces'));
     }
-
+    public function load_activities_table($case_id)
+    {
+        $activities = operate_detail::where('case_id','=',$case_id)->get();
+        $html = view('officer._activities_table',compact('activities'))->render();;
+        return response()->json(compact('html'));
+    }
 
     /**
      * Show the form for editing the specified resource.
