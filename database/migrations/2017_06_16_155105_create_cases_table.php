@@ -32,8 +32,15 @@ class CreateCasesTable extends Migration
             $table->text('sender')->nullable();
             $table->text('receiver')->nullable();
             $table->integer('receiver_id')->nullable();
-           // $table->foreign('receiver_id')->references('id')->on('officers');
             $table->text('status')->nullable();
+            /////  operate path ////////
+            $table->integer('operate_result_status')->nullable();
+            $table->integer('compensation')->nullable();
+            $table->integer('change_policy')->nullable();
+            $table->integer('operate_status')->nullable();
+            $table->integer('refer_type')->nullable();
+            $table->text('refer_name')->nullable();
+            ///////////////////////////
             $table->timestamps();
         });
     }

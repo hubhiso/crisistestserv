@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 //use Illuminate\Http\Request;
 use App\Http\Requests\case_inputRequest;
+use App\operate_detail;
 use Illuminate\Support\HtmlString;
 
 use Illuminate\Support\Str;
@@ -112,8 +113,8 @@ class OfficerInputController extends Controller
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
         $provinces = province::all();
-
-        return view('officer.activities',compact('show_data', 'provinces'));
+        $activities = operate_detail::all();
+        return view('officer.activities',compact('show_data', 'provinces',$activities));
     }
 
 

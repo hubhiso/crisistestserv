@@ -17,6 +17,12 @@ class AddOperateDetail extends Migration
             $table->increments('id');
             $table->string('case_id', 5)->references('case_id')->on('case_inputs');
             $table->date('operate_date')->nullable();
+            $table->integer('advice')->nullable();
+            $table->integer('negotiate_individual')->nullable();
+            $table->integer('negotiate_policy')->nullable();
+            $table->integer('prosecution')->nullable();
+            $table->text('operate_detail')->nullable();
+            $table->text('operate_result')->nullable();
             $table->timestamps();
         });
     }

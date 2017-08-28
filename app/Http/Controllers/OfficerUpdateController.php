@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\case_input;
 use App\add_detail;
+use App\operate_detail;
 
 class OfficerUpdateController extends Controller
 {
@@ -57,7 +58,7 @@ class OfficerUpdateController extends Controller
 
         case_input::where('case_id','=',$case_id)->update([ 'status' => 3,
                                                             'name' => $request->input('name'),
-                                                            'tel' => $request->input('tel'),
+                                                            'victim_tel' => $request->input('tel'),
                                                             'sex' => $request->input('sex'),
                                                             'detail' => $request->input('detail')]);
         add_detail::create(
@@ -88,4 +89,49 @@ class OfficerUpdateController extends Controller
         );
         return redirect('officer/show');
     }
+    public function add_activities(Request $request){
+
+        $operate_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('operate_date'))));
+
+
+        operate_detail::create([
+            'case_id' => $request->input('case_id'),
+            'operate_date' => $operate_date,
+            'advice' => $request->input('advice'),
+            'negotiate_individual' => $request->input('negotiate_individual'),
+            'negotiate_policy' => $request->input('negotiate_policy'),
+            'prosecution' => $request->input('prosecution'),
+            'operate_detail' => $request->input('operate_detail'),
+            'operate_result' => $request->input('operate_result')
+        ]);
+        /*
+        $operate_detail = new operate_detail($request->all());
+        Auth::user()->operate_detail()->save($operate_detail);*/
+
+        $response = array(
+            'case_id' => $request->input('case_id'),
+            'operate_date' => $operate_date,
+            'advice' => $request->input('advice'),
+            'negotiate_individual' => $request->input('negotiate_individual'),
+            'negotiate_policy' => $request->input('negotiate_policy'),
+            'prosecution' => $request->input('prosecution'),
+            'operate_detail' => $request->input('operate_detail'),
+            'operate_result' => $request->input('operate_result'),
+            'msg' => 'Setting created successfully',
+        );
+        return \Response::json($response);
+    }
+    public function update_operate_case(Request $request)
+    {
+        $case_id = $request->input('case_id');
+        case_input::where('case_id','=',$case_id)->update([
+            'status' => $request->input('status'),
+            'operate_result_status' => $request->input('operate_result_status'),
+            'compensation' => $request->input('compensation'),
+            'change_policy' => $request->input('change_policy'),
+            'operate_status' => $request->input('operate_status'),
+            'refer_type' => $request->input('detail'),
+            'refer_name' => $request->input('sex')]);
+    }
+
 }

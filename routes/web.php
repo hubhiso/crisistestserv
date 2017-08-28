@@ -24,6 +24,8 @@ Route::prefix('officer')->group(function () {
     Route::get('/add_activities/{case_id}', 'OfficerInputController@add_activities')->name('officer.add_activities');
 
     Route::post('/add_detail', 'OfficerUpdateController@add_detail')->name('officer.post_detail');
+    Route::post('/add_activities', 'OfficerUpdateController@add_activities')->name('officer.post_activities');
+    Route::post('/update_case_operate', 'OfficerUpdateController@update_operate_case')->name('officer.update_case');
     Route::post('/accept', 'OfficerUpdateController@accept_case')->name('officer.accept_c');
 
     Route::get('/login', 'Auth\OfficerLoginController@ShowLoginForm')->name('officer.login');
