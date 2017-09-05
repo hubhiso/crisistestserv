@@ -89,8 +89,9 @@ class OfficerInputController extends Controller
      */
     public function show()
     {
-        $cases = case_input::all();
-        return view('officer.OfficerManageCase',compact('cases'));
+       // $cases = case_input::all();
+        //return view('officer.OfficerManageCase',compact('cases'));
+        return view('officer.OfficerManageCase');
     }
 
     public function open_confirm($case_id)
@@ -119,7 +120,13 @@ class OfficerInputController extends Controller
     public function load_activities_table($case_id)
     {
         $activities = operate_detail::where('case_id','=',$case_id)->get();
-        $html = view('officer._activities_table',compact('activities'))->render();;
+        $html = view('officer._activities_table',compact('activities'))->render();
+        return response()->json(compact('html'));
+    }
+    public function load_case($search_txt)
+    {
+        $cases = case_input::all();
+        $html = view('officer._Case',compact('cases'))->render();
         return response()->json(compact('html'));
     }
 

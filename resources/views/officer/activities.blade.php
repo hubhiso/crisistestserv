@@ -386,7 +386,12 @@
                 $container.removeClass('loading');
             });
         }
-
+		function  clear_input() {
+            $('#advice').checked = false;
+            $('#negotiate_individual').checked = false;
+            $('#negotiate_policy').checked = false;
+            $('#prosecution').checked = false;
+        }
         $('.datepicker').datepicker();
 
         //# sourceURL=pen.js
@@ -434,6 +439,7 @@
                     //console.log(data);
                     $("#ajaxResponse").append("<div>"+data.msg+"</div>");
                     renderTable();
+                    clear_input();
                 }
             })
          });

@@ -5,6 +5,13 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}
+	{{ Html::style('bootstrap/css/bootstrap.css') }}
+
+	{{ Html::script('bootstrap/js/bootstrap.min.js') }}
+	{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}
 
 	<title> CRS </title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
@@ -13,7 +20,7 @@
 
 </head>
 
-<body class="layout-default">
+<body class="layout-default" onload="load_case()">
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 			<div class="container">
@@ -54,20 +61,24 @@
 						</div>
 						<div class="level-item">
 							<div class="field has-addons">
-								<p>
-									<input class="input" type="text" placeholder="วว/ดด/ปปปป">
+								<p class="control has-icons-left" >
+								<div class="input-group input-daterange" style="width: 300px">
+									<input type="text" class="form-control" >
+									<div class="input-group-addon">ถึง</div>
+									<input type="text" class="form-control" >
+								</div>
 								</p>
 							</div>
 						</div>
 						<div class="level-item">
 							<p class="subtitle is-6">
-								<strong> ถึงวันที่ </strong>
+								<strong>  </strong>
 							</p>
 						</div>
 						<div class="level-item">
 							<div class="field has-addons">
 								<p>
-									<input class="input" type="text" placeholder="วว/ดด/ปปปป">
+
 								</p>
 							</div>
 						</div>
@@ -86,14 +97,14 @@
 						<div class="level-item">
 							<div class="field has-addons">
 								<p class="control">
-									<input class="input" type="text" placeholder="">
+									<input class="input" type="text" id="text_search" placeholder="">
 								</p>
 								<p>
 									<span class="select">
-        							<select>
-          								<option> ชื่อ </option>
-          								<option> ผู้รับเรื่อง </option>
-          								<option> เบอร์ติดต่อ </option>
+        							<select id="type_search">
+          								<option value="1"> ชื่อ </option>
+          								<option value="2"> ผู้รับเรื่อง </option>
+          								<option value="3"> เบอร์ติดต่อ </option>
        								</select>
        								</span>
 								</p>
@@ -113,21 +124,19 @@
 							<div class="field has-addons">
 								<p>
 									<span class="select">
-        							<select>
-          								<option> ประเภท </option>
-          								<option> สถานะ </option>
-          								<option> ประเภทของผู้แจ้ง </option>
+        							<select id="filter_search">
+										<option value="1"> ทั้งหมด </option>
+          								<option value="2"> ประเภท </option>
+          								<option value="3"> สถานะ </option>
+          								<option value="4"> ประเภทของผู้แจ้ง </option>
           								
        								</select>
        								</span>
 								</p>
 								<p>
 									<span class="select">
-        							<select>
-          								<option> บังคับตรวจ HIV </option>
-          								<option> เปิดเผยสถานะ </option>
-          								<option> เลือกปฏิบัติ </option>
-          								<option> ไม่ได้รับความเป็นธรรม </option>
+        							<select id="sub_filter_search" disabled="disabled">
+
        								</select>
        								</span>
 								</p>
@@ -185,48 +194,8 @@
 								</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="table-case_container">
 
-						@foreach($cases as $case)
-							<tr>
-								<!--th>{{ $case->created_at }}</th-->
-								<th> 27 ก.ค. 60 </th>
-								<th>{{ $case->case_id }}</th>
-								<td><a href='#' title='ID'>{{ $case->name }}</a> </td>
-								<td>{{$case->Provinces->PROVINCE_NAME}}</td>
-								@if($case->problem_case == 1 )
-									<td>บังคับตรวจเอชไอวี</td>
-								@elseif($case->problem_case == 2)
-									<td>เปิดเผยสถานะการติดเชื้อเอชไอวี</td>
-								@elseif($case->problem_case == 3)
-									<td>เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</td>
-								@elseif($case->problem_case == 4)
-									<td>ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</td>
-								@endif
-								@if( $case->status  == 1)
-									<td>ยังไม่ได้รับเรื่อง</td>
-									<td><a class='button is-primary' href="{{ route('officer.open_cfm', $case->case_id) }}"> <span>รับเรื่อง</span> </a> </td>
-								@elseif( $case->status  == 2)
-									<td> รับเรื่องแล้ว </td>
-									<td><a class='button is-primary' href="{{ route('officer.add_detail' , $case->case_id) }}"> <span> บันทึกข้อมูล </span> </a> </td>
-								@elseif( $case->status  == 3)
-									<td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
-									<td><a class='button is-primary' href="{{ route('officer.add_activities' , $case->case_id) }}"> <span> ดำเนินการ </span> </a> </td>
-								@else
-									<td> รับเรื่องแล้ว </td>
-									<td><a class='button is-primary' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล </span> </a> </td>
-								@endif
-
-									@if($case->sender_case == 1 )
-										<td>แจ้งด้วยตนเอง</td>
-									@elseif($case->sender_case == 2)
-										<td>มีผู้แจ้งแทน</td>
-									@elseif($case->sender_case == 3)
-										<td>เจ้าหน้าที่แจ้ง</td>
-									@endif
-								<td><a href='#' title='Receiver'>{{ $case->receiver }}</a></td>
-							</tr>
-							@endforeach
 
 
 						</tbody>
@@ -257,12 +226,82 @@
 			</div>
 	</section>
 	<br>
-	
-	
 	@extends('footer')
 	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
 	<script src="http://bulma.io/lib/main.js"></script>
-	
-</body>
+
+	<script>
+        $('.input-daterange input').each(function() {
+            $(this).datepicker('clearDates');
+        });
+        function load_case () {
+            var text_search = $('#text_search').val();
+            var type_Search = $('#type_search').val();
+            var Date_start = $('#date_start').val();
+            var Date_end = $('#date_end').val();
+            var Filter = $('#filter_search').val();
+            var Sub_Filter = $('#sub_filter_search').val();
+
+ 			console.log("loading...");
+            var search_filter = {
+                "Search_text":text_search ,
+				"Type_" : type_Search,
+				"Date_start" : Date_start,
+				"Date_end"  : Date_end,
+				"Filter" : Filter,
+				"Sub_Filter" : Sub_Filter
+			};
+            var url = "{{route('officer.load_case',['filter' => ":filter"]) }}";
+            url = url.replace(':filter', search_filter);
+
+            console.log(url);
+            var $request = $.get(url); // make request
+            var $container = $('.table-case_container');
+
+            $container.addClass('loading'); // add loading class (optional)
+
+            $request.done(function(data) { // success
+                $container.html(data.html);
+            });
+            $request.always(function() {
+                $container.removeClass('loading');
+            });
+
+        }
+
+        $('#filter_search').on('change',function (e) {
+            var search_type = e.target.value;
+            if(search_type==1){
+                $('#sub_filter_search').empty();
+                $('#sub_filter_search').attr('disabled', 'disabled');
+			}else if(search_type==2){
+                $('#sub_filter_search').empty();
+                $('#sub_filter_search').removeAttr('disabled');
+                $('#sub_filter_search').append('<option value="1" style="width:250px">บังคับตรวจ HIV</option>');
+                $('#sub_filter_search').append('<option value="2" style="width:250px">เปิดเผยสถาณะ</option>');
+                $('#sub_filter_search').append('<option value="3" style="width:250px">เลือกปฏิบัติ</option>');
+                $('#sub_filter_search').append('<option value="4" style="width:250px">ไม่ได้รับความเป็นธรรม</option>');
+			}else if(search_type==3){
+                $('#sub_filter_search').empty();
+                $('#sub_filter_search').removeAttr('disabled');
+                $('#sub_filter_search').append('<option value="1" style="width:250px">ยังไม่ได้รับเรื่อง</option>');
+                $('#sub_filter_search').append('<option value="2" style="width:250px">รับเรื่องแล้ว </option>');
+                $('#sub_filter_search').append('<option value="3" style="width:250px">บันทึกข้อมูลเพิ่มเติมแล้ว</option>');
+                $('#sub_filter_search').append('<option value="4" style="width:250px">อยู่ระหว่างดำเนินการ</option>');
+                $('#sub_filter_search').append('<option value="5" style="width:250px">ดำเนินการเสร็จสิ้น</option>');
+                $('#sub_filter_search').append('<option value="6" style="width:250px">ดำเนินการแล้วส่งต่อ</option>');
+            }else if(search_type==4){
+                $('#sub_filter_search').empty();
+                $('#sub_filter_search').removeAttr('disabled');
+                $('#sub_filter_search').append('<option value="1" style="width:250px">แจ้งด้วยตนเอง</option>');
+                $('#sub_filter_search').append('<option value="2" style="width:250px">มีผู้แจ้งแทน</option>');
+                $('#sub_filter_search').append('<option value="3" style="width:250px">เจ้าหน้าที่แจ้ง</option>');
+            }
+
+        });
+
+	</script>
+
+    </body>
 
 </html>
