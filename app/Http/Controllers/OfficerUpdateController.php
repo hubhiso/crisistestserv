@@ -133,5 +133,86 @@ class OfficerUpdateController extends Controller
             'refer_type' => $request->input('detail'),
             'refer_name' => $request->input('sex')]);
     }
+    public function load_case(Request $request)
+    {
+        //$data = $request->json()->all();
+        //$Filter = $data['Filter'];
+        $filter = 0;
+        $value_sub = $request->input('Sub_Filter');
+        $Date_start = date('Y-m-d',strtotime(str_replace('-','/', $request->input('Date_start'))));
+        $Date_end = date('Y-m-d',strtotime(str_replace('-','/', $request->input('Date_end'))));
+        $text_search = $request->input('Search_text');
+        $type_Search = $request->input('Type_search');
 
+        if($request->input('Filter')==1){
+
+        }else if ($request->input('Filter')==2){
+            $matchThese = ['problem_case' => $value_sub];
+            $cases = case_input::where($matchThese);
+            $filter ++;
+
+        }else if ($request->input('Filter')==3){
+            $matchThese = ['status' => $value_sub];
+            $cases = case_input::where($matchThese);
+            $filter ++;
+
+        }else if ($request->input('Filter')==4){
+            $matchThese = ['sender_case' => $value_sub];
+            $cases = case_input::where($matchThese);
+            $filter ++;
+        }
+
+        if($Date_start != null){
+
+            if ($filter==0) {
+                $cases = case_input::whereBetween('created_at', array($Date_start, $Date_end));
+                $filter++;
+            }else{
+                 $cases = $cases->whereBetween('created_at', array($Date_start, $Date_end));
+                $filter++;
+            }
+        }
+        if($text_search != null){
+
+            if ($type_Search == 1){
+                if ($filter==0) {
+                    $cases =  case_input::Where('name', 'like', '%' . $text_search . '%');
+                    $filter++;
+                }else{
+                    $cases =  $cases->Where('name', 'like', '%' . $text_search . '%');
+                    $filter++;
+                }
+
+            }else if ($type_Search == 2){
+                if ($filter==0) {
+                    $cases =  case_input::Where('receiver', 'like', '%' . $text_search . '%');
+                    $filter++;
+                }else{
+                    $cases =  $cases->Where('receiver', 'like', '%' . $text_search . '%');
+                    $filter++;
+                }
+
+            }else if ($type_Search == 3){
+                if ($filter==0) {
+                    $cases =  case_input::Where('victim_tel', 'like', '%' . $text_search . '%');
+                    $filter++;
+                }else{
+                    $cases =  $cases->Where('victim_tel', 'like', '%' . $text_search . '%');
+                    $filter++;
+                }
+
+            }
+        }
+
+        if($filter > 0){
+            $cases = $cases->get();
+          //var_dump($cases);
+        }else{
+            $cases = case_input::all();
+        }
+
+        $html = view('officer._Case',compact('cases'))->render();
+        return response()->json(compact('html','text_search'));
+
+    }
 }

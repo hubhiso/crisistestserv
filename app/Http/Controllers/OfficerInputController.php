@@ -123,12 +123,7 @@ class OfficerInputController extends Controller
         $html = view('officer._activities_table',compact('activities'))->render();
         return response()->json(compact('html'));
     }
-    public function load_case($search_txt)
-    {
-        $cases = case_input::all();
-        $html = view('officer._Case',compact('cases'))->render();
-        return response()->json(compact('html'));
-    }
+
 
     /**
      * Show the form for editing the specified resource.

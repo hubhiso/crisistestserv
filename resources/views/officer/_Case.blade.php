@@ -2,8 +2,7 @@
 @foreach($cases as $case)
 
     <tr>
-    <!--th>{{ $case->created_at }}</th-->
-        <th> 27 ก.ค. 60 </th>
+        <th>{{ \Carbon\Carbon::parse($case->created_at)->format('d-M-y') }}</th>
         <th>{{ $case->case_id }}</th>
         <td><a href='#' title='ID'>{{ $case->name }}</a> </td>
         <td>{{$case->Provinces->PROVINCE_NAME}}</td>
@@ -22,7 +21,7 @@
         @elseif( $case->status  == 2)
             <td> รับเรื่องแล้ว </td>
             <td><a class='button is-primary' href="{{ route('officer.add_detail' , $case->case_id) }}"> <span> บันทึกข้อมูล </span> </a> </td>
-        @elseif( $case->status  == 3)
+        @elseif( $case->status  >= 3)
             <td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
             <td><a class='button is-primary' href="{{ route('officer.add_activities' , $case->case_id) }}"> <span> ดำเนินการ </span> </a> </td>
         @else

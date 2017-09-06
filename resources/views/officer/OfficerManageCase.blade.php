@@ -10,6 +10,7 @@
 	{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}
 	{{ Html::style('bootstrap/css/bootstrap.css') }}
 
+	{{ Html::script('js/jquery.min.js') }}
 	{{ Html::script('bootstrap/js/bootstrap.min.js') }}
 	{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}
 
@@ -28,8 +29,9 @@
 				@endcomponent
 				</div>
 			</div>
-			
-			<div class="container">
+		<input type="hidden" id="token" value="{{ csrf_token() }}">
+
+		<div class="container">
 			
 				<nav class="breadcrumb">
 					<ul>
@@ -63,9 +65,9 @@
 							<div class="field has-addons">
 								<p class="control has-icons-left" >
 								<div class="input-group input-daterange" style="width: 300px">
-									<input type="text" class="form-control" >
+									<input type="text" class="form-control" id="date_start">
 									<div class="input-group-addon">ถึง</div>
-									<input type="text" class="form-control" >
+									<input type="text" class="form-control" id="date_end">
 								</div>
 								</p>
 							</div>
@@ -108,7 +110,7 @@
        								</select>
        								</span>
 								</p>
-								<p class="control"> <button class="button is-primary"> ตกลง </button> </p>
+								<p class="control"> <button class="button is-primary" onclick="load_case()"> ตกลง </button> </p>
 							</div>
 						</div>
 					</div>
@@ -135,7 +137,7 @@
 								</p>
 								<p>
 									<span class="select">
-        							<select id="sub_filter_search" disabled="disabled">
+        							<select id="sub_filter_search" disabled="disabled" onchange="load_case()">
 
        								</select>
        								</span>
@@ -146,7 +148,7 @@
 						<div class="level-item has-text-centered">
 							<div>
 							  <p class="heading is-4"> จำนวนเรื่อง </p>
-							  <p class="title is-4">3,456</p>
+							  <p class="title is-4"><label id="case_number"></label></p>
 							</div>
 						  </div>
 					</div>
@@ -171,7 +173,7 @@
 				</nav>
 				<br/>
 				<div class="container">
-					<table class="table">
+					<table class="table" id="table_show">
 						<thead>
 							<tr>
 								<th><abbr title="Date"> วันที่ </abbr>
@@ -232,9 +234,15 @@
 
 	<script>
         $('.input-daterange input').each(function() {
-            $(this).datepicker('clearDates');
+			$(this).datepicker('clearDates');
+            $('#date_end').datepicker("setDate", new Date());
+        }).on('changeDate', function(e) {
+            load_case()
         });
+
+
         function load_case () {
+            var token = $('#token').val();
             var text_search = $('#text_search').val();
             var type_Search = $('#type_search').val();
             var Date_start = $('#date_start').val();
@@ -242,30 +250,31 @@
             var Filter = $('#filter_search').val();
             var Sub_Filter = $('#sub_filter_search').val();
 
- 			console.log("loading...");
-            var search_filter = {
-                "Search_text":text_search ,
-				"Type_" : type_Search,
-				"Date_start" : Date_start,
-				"Date_end"  : Date_end,
-				"Filter" : Filter,
-				"Sub_Filter" : Sub_Filter
-			};
-            var url = "{{route('officer.load_case',['filter' => ":filter"]) }}";
-            url = url.replace(':filter', search_filter);
 
-            console.log(url);
-            var $request = $.get(url); // make request
             var $container = $('.table-case_container');
 
-            $container.addClass('loading'); // add loading class (optional)
 
-            $request.done(function(data) { // success
-                $container.html(data.html);
-            });
-            $request.always(function() {
-                $container.removeClass('loading');
-            });
+            $.ajax({
+                type: 'POST',
+                url: '{!!  route('officer.load_case') !!}',
+                data: {
+                    _token: token,
+                    Search_text: text_search,
+                    Type_search: type_Search,
+					Date_start : Date_start,
+					Date_end : Date_end,
+                    Filter: Filter,
+                    Sub_Filter: Sub_Filter
+                },
+                success: function( data ) {
+                    console.log(data);
+                    $container.html(data.html);
+                    var rows = $('#table_show tbody tr').length
+                    document.getElementById('case_number').innerHTML = rows;
+
+                }
+            })
+
 
         }
 
@@ -297,7 +306,7 @@
                 $('#sub_filter_search').append('<option value="2" style="width:250px">มีผู้แจ้งแทน</option>');
                 $('#sub_filter_search').append('<option value="3" style="width:250px">เจ้าหน้าที่แจ้ง</option>');
             }
-
+            load_case ()
         });
 
 	</script>
