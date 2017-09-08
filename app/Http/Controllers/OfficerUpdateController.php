@@ -133,6 +133,17 @@ class OfficerUpdateController extends Controller
             'refer_type' => $request->input('detail'),
             'refer_name' => $request->input('sex')]);
     }
+    public function update_operate(Request $request)
+    {
+        $id = $request->input('id');
+        operate_detail::where('id','=',$id)->update([
+            'advice' => $request->input('advice'),
+            'negotiate_individual' => $request->input('negotiate_individual'),
+            'negotiate_policy' => $request->input('negotiate_policy'),
+            'prosecution' => $request->input('prosecution'),
+            'operate_detail' => $request->input('operate_detail'),
+            'operate_result' => $request->input('operate_result')]);
+    }
     public function load_case(Request $request)
     {
         //$data = $request->json()->all();
@@ -198,6 +209,15 @@ class OfficerUpdateController extends Controller
                     $filter++;
                 }else{
                     $cases =  $cases->Where('victim_tel', 'like', '%' . $text_search . '%');
+                    $filter++;
+                }
+
+            }else if ($type_Search == 4){
+                if ($filter==0) {
+                    $cases =  case_input::Where('case_id', 'like', '%' . $text_search . '%');
+                    $filter++;
+                }else{
+                    $cases =  $cases->Where('case_id', 'like', '%' . $text_search . '%');
                     $filter++;
                 }
 

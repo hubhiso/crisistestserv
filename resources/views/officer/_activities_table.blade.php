@@ -24,13 +24,14 @@
         <div class="field is-grouped">
             <p><a> </a>
             </p>
-            <p class="control"> <a class="button is-primary"> แก้ไข </a> </p>
+            <p class="control"> <a class="button is-primary" onclick="edit_operate({{$activitie->id}})"> แก้ไข </a> </p>
         </div>
     </div>
     <!-- operate case -->
     <div class="field is-horizontal">
         <div class="field-label">
             <!-- Left empty for spacing -->
+            <div id="edit_area{{$activitie->id}}"></div>
         </div>
 
     </div>

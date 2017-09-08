@@ -117,6 +117,12 @@ class OfficerInputController extends Controller
         //$activities = operate_detail::all();
         return view('officer.activities',compact('show_data', 'provinces'));
     }
+    public function edit_operate($operate_id)
+    {
+        $operate_datas = operate_detail::where('id','=',$operate_id)->get();
+        $html = view('officer._edit_operate',compact('operate_datas'))->render();
+        return response()->json(compact('html'));
+    }
     public function load_activities_table($case_id)
     {
         $activities = operate_detail::where('case_id','=',$case_id)->get();

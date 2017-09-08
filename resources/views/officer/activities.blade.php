@@ -367,7 +367,58 @@
 	</section>
 	<br>
 	<script>
+		function edit_operate(operate_id) {
 
+            var url = "{{route('officer.edit_operate',['case_id' => ":operate_id"]) }}";
+            url = url.replace(':operate_id', operate_id);
+            var $request = $.get(url); // make request
+            var $container = $('#edit_area'+operate_id);
+            $request.done(function(data) { // success
+                $container.html(data.html);
+            });
+        }
+        function clear_edit(operate_id) {
+            $('#edit_area'+operate_id).empty();
+        }
+        function update_operate(operate_id) {
+            var advice_s = 0;
+            var negotiate_individual_s = 0;
+            var negotiate_policy_s = 0;
+            var prosecution_s = 0;
+            if ($('#edit_advice'+operate_id).is(':checked') == true) {
+                advice_s = 1;
+            }
+            if ($('#edit_negotiate_individual'+operate_id).is(':checked') == true) {
+                negotiate_individual_s = 1;
+            }
+            if ($('#edit_negotiate_policy'+operate_id).is(':checked') == true) {
+                negotiate_policy_s = 1;
+            }
+            if ($('#edit_prosecution'+operate_id).is(':checked') == true) {
+                prosecution_s = 1;
+            }
+            var operate_detail_s = $('#edit_operate_detail'+operate_id).val();
+            var operate_result_s = $('#edit_operate_result'+operate_id).val();
+            var token = $('#token').val();
+            $.ajax({
+                type: 'POST',
+                url: '{!!  route('officer.update_operate') !!}',
+                data: {
+                    _token: token,
+                    id: operate_id,
+                    advice: advice_s,
+                    negotiate_individual: negotiate_individual_s,
+                    negotiate_policy: negotiate_policy_s,
+                    prosecution: prosecution_s,
+                    operate_detail: operate_detail_s,
+                    operate_result: operate_result_s
+                },
+                success: function( data ) {
+                    //console.log(data);
+                    clear_edit(operate_id)
+                }
+            })
+        }
         function renderTable() {
             var case_id = $('#case_id').val();
 			var url = "{{route('officer.load_activities',['case_id' => ":case_id"]) }}";

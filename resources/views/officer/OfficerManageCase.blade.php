@@ -107,6 +107,7 @@
           								<option value="1"> ชื่อ </option>
           								<option value="2"> ผู้รับเรื่อง </option>
           								<option value="3"> เบอร์ติดต่อ </option>
+										<option value="4"> รหัส </option>
        								</select>
        								</span>
 								</p>
