@@ -130,9 +130,12 @@
 				<div class="field is-horizontal">
 					<div class="field-label">
 						<!-- Left empty for spacing -->
+						<p class="control">
+						<button class="button is-primary" id="btn_add" onclick="open_add_form()"> เพิ่มการดำเนินการ </button>
+						</p>
 					</div>
 				</div>
-				<div class="notification">
+				<div class="notification" id="current_operate">
 					<div class="field is-normal">
 						<p class="subtitle is-5">การดำเนินการในครั้งนี้</p>
 					</div>
@@ -227,7 +230,7 @@
 									<p class="control"> <a class="button is-primary" id="operate_send" > ยืนยัน </a> </p>
 								</div>
 								<div class="control">
-									<p class="control"> <a class="button"> ยกเลิก </a> </p>
+									<p class="control"> <a class="button" onclick="clear_input()"> ยกเลิก </a> </p>
 								</div>
 							</div>
 						</div>
@@ -250,7 +253,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded  ">
 									<span class="select">
-									<select name="status">
+									<select name="status" id="status_operate">
 										<option value="4"> อยู่ระหว่างการดำเนินการ </option>
 										<option value="5"> ดำเนินการเสร็จสิ้น </option>
 										<option value="6"> ดำเนินการแล้วส่งต่อ </option>
@@ -260,7 +263,7 @@
 							<div class="field-label is-normal">
 								<label class="label"> ผลการดำเนินการ </label>
 							</div>
-							<div class="field">
+							<div class="field" id="result_form">
 								<p class="control is-expanded  has-icons-right">
 									<span class="select">
 									<select name="operate_result_status">
@@ -286,7 +289,7 @@
 						</div>
 					</div>
 					
-					<div class="field is-horizontal">
+					<div class="field is-horizontal" id="refer_form">
 						<div class="field-label is-normal">
 							<label class="label"> ส่งต่อไปยัง </label>
 						</div>
@@ -367,9 +370,10 @@
 	</section>
 	<br>
 	<script>
+		////////////////////////////// operate control /////////////////////////
 		function edit_operate(operate_id) {
 
-            var url = "{{route('officer.edit_operate',['case_id' => ":operate_id"]) }}";
+            var url = "{{route('officer.edit_operate',['operate_id' => ":operate_id"]) }}";
             url = url.replace(':operate_id', operate_id);
             var $request = $.get(url); // make request
             var $container = $('#edit_area'+operate_id);
@@ -431,21 +435,32 @@
             $container.addClass('loading'); // add loading class (optional)
 
             $request.done(function(data) { // success
+				if(data.html != ""){
+				    //alert(data.html)
+                    $('#current_operate').hide();
+				}else{
+                    $('#btn_add').hide();
+				}
                 $container.html(data.html);
             });
             $request.always(function() {
                 $container.removeClass('loading');
             });
         }
+        function open_add_form() {
+            $('#current_operate').show();
+            $('#btn_add').hide();
+        }
 		function  clear_input() {
             $('#advice').checked = false;
             $('#negotiate_individual').checked = false;
             $('#negotiate_policy').checked = false;
             $('#prosecution').checked = false;
+            $('#current_operate').hide();
+            $('#btn_add').show();
         }
         $('.datepicker').datepicker();
 
-        //# sourceURL=pen.js
 
 		///////// create operate case /////////////////////
         $('#operate_send').on('click', function(e) {
@@ -491,10 +506,19 @@
                     $("#ajaxResponse").append("<div>"+data.msg+"</div>");
                     renderTable();
                     clear_input();
+                    $('#current_operate').hide();
+                    $('#btn_add').show();
                 }
             })
          });
 		///////////////////////////////
+
+
+		/////////// status form control///////
+		$('#status_operate').change(function () {
+			alert(this.value);
+            });
+		//////////////////////////////////////
 	</script>
 
 	@extends('footer')
