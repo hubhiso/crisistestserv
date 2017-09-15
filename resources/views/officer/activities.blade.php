@@ -38,7 +38,7 @@
 				</div>
 				<nav class="breadcrumb">
 					<ul>
-						<li><a><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+						<li><a href="{{ route('officer.show') }}" ><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 						</li>
 						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-cog"></i></span><span>  การดำเนินการ </span></a>
 						</li>
@@ -254,42 +254,49 @@
 								<p class="control is-expanded  ">
 									<span class="select">
 									<select name="status" id="status_operate">
-										<option value="4"> อยู่ระหว่างการดำเนินการ </option>
-										<option value="5"> ดำเนินการเสร็จสิ้น </option>
-										<option value="6"> ดำเนินการแล้วส่งต่อ </option>
+										<option value="4" @if($show_data->status == 4 ) selected @endif> อยู่ระหว่างการดำเนินการ </option>
+										<option value="5" @if($show_data->status == 5 ) selected @endif> ดำเนินการเสร็จสิ้น </option>
+										<option value="6" @if($show_data->status == 6 ) selected @endif> ดำเนินการแล้วส่งต่อ </option>
 									   </select> </span>
 								</p>
 							</div>
-							<div class="field-label is-normal">
-								<label class="label"> ผลการดำเนินการ </label>
-							</div>
-							<div class="field" id="result_form">
-								<p class="control is-expanded  has-icons-right">
-									<span class="select">
-									<select name="operate_result_status">
-									<option value="1"> สำเร็จ </option>
-									<option value="2"> ไม่สำเร็จ </option>
-									<option value="3"> ตาย </option>
-									<option value="4"> ย้ายที่อยู่ </option>
-								  </select> </span>
-								</p>
-								<div class="control">
-							<label class="checkbox">
-							  <input type="checkbox" name="compensation">
-							    บุคคลได้รับการชดเชย
-							</label>
-						  </div>
-						  <div class="control">
-							<label class="checkbox">
-							  <input type="checkbox" name="change_policy">
-							  องค์กรเปลี่ยนนโยบาย
-							</label>
-						  </div>
-							</div>
+
 						</div>
 					</div>
+					<div class="field is-horizontal"  id="result_form" @if($show_data->status != 5 ) style="display: none" @endif>
+						<div class="field-label is-normal">
+							<label class="label"> ผลการดำเนินการ </label>
+						</div>
+						<div class="field-body" >
+							<div class="columns">
+							<p class="column">
+									<span class="select">
+									<select name="operate_result_status" id="operate_result_status">
+									<option value="1" @if($show_data->operate_result_status == 1 ) selected @endif> สำเร็จ </option>
+									<option value="2" @if($show_data->operate_result_status == 2 ) selected @endif> ไม่สำเร็จ </option>
+									<option value="3" @if($show_data->operate_result_status == 3 ) selected @endif> ตาย </option>
+									<option value="4" @if($show_data->operate_result_status == 4 ) selected @endif> ย้ายที่อยู่ </option>
+								  	</select>
+									</span>
+							</p>
+
+
+
+								<p class="column " id="chk_result" @if($show_data->operate_result_status != 1 ) style="display: none" @endif>
+								<label class="checkbox">
+									<input type="checkbox" name="compensation" id="compensation" @if($show_data->compensation == 1 ) checked @endif>
+									บุคคลได้รับการชดเชย
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" name="change_policy" id="change_policy" @if($show_data->change_policy == 1 ) checked @endif>
+									องค์กรเปลี่ยนนโยบาย
+								</label>
+								</p>
+							</div>
+						</div>
+					</div><!--- resulte group !-->
 					
-					<div class="field is-horizontal" id="refer_form">
+					<div class="field is-horizontal" id="refer_form" @if($show_data->status != 6 ) style="display: none" @endif >
 						<div class="field-label is-normal">
 							<label class="label"> ส่งต่อไปยัง </label>
 						</div>
@@ -297,21 +304,22 @@
 							<div class="field is-grouped">
 								<p class="control   ">
 									<span class="select">
-									<select name="refer_type">
-										<option value="1"> หน่วยงานในเครือข่าย </option>
-										<option value="2"> หน่วยงานนอกเครือข่าย </option>
-									   </select> </span>
+									<select name="refer_type" id="refer_type">
+										<option value="1" @if($show_data->refer_type == 1 ) selected @endif> หน่วยงานในเครือข่าย </option>
+										<option value="2" @if($show_data->refer_type == 2 ) selected @endif> หน่วยงานนอกเครือข่าย </option>
+									</select> </span>
 								</p>
-								<p class="control   ">
+								<p class="control">
 									<span class="select">
-									<select>
+									<select id="prov_refer">
 										@foreach($provinces as $province)
-											<option value="{{ $province->PROVINCE_CODE }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
+											<option @if($show_data->prov_refer == $province->PROVINCE_CODE ) selected @endif value="{{ $province->PROVINCE_CODE }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
 										@endforeach
 									   </select> </span>
 								</p>
 								<p class="control  has-icons-left">
-									<input class="input" type="text"  name="refer_name" value="ชื่อหน่วยงาน">
+									<input class="input" type="text"  name="refer_name" id="refer_name" placeholder="ชื่อหน่วยงาน"
+										   value="{{$show_data->refer_name}}">
 								</p>
 							</div>
 						</div>
@@ -326,7 +334,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<div class="control">
-									<p class="control"> <a class="button is-primary"> ยืนยัน </a> </p>
+									<p class="control"> <a class="button is-primary" onclick="update_operate_case()"> ยืนยัน </a> </p>
 								</div>
 								<div class="control">
 									<p class="control"> <a class="button" href="{{ route('officer.show') }}"> ยกเลิก </a> </p>
@@ -372,7 +380,6 @@
 	<script>
 		////////////////////////////// operate control /////////////////////////
 		function edit_operate(operate_id) {
-
             var url = "{{route('officer.edit_operate',['operate_id' => ":operate_id"]) }}";
             url = url.replace(':operate_id', operate_id);
             var $request = $.get(url); // make request
@@ -446,6 +453,7 @@
             $request.always(function() {
                 $container.removeClass('loading');
             });
+
         }
         function open_add_form() {
             $('#current_operate').show();
@@ -516,8 +524,73 @@
 
 		/////////// status form control///////
 		$('#status_operate').change(function () {
-			alert(this.value);
+			if(this.value==4){
+                $('#result_form').hide();
+                $('#refer_form').hide();
+			}else if(this.value==5){
+                $('#result_form').show();
+                if($('#operate_result_status').val()==1){
+                    $('#chk_result').show();
+				}
+                $('#refer_form').hide();
+			}else if(this.value==6){
+                $('#result_form').hide();
+                $('#refer_form').show();
+            }
             });
+        $('#operate_result_status').change(function () {
+            if(this.value==1){
+                $('#chk_result').show();
+            }else {
+                $('#chk_result').hide();
+                //alert("test")
+                document.getElementById("compensation").checked = false;
+                document.getElementById("change_policy").checked = false;
+
+			}
+
+        });
+
+        function update_operate_case(){
+            //alert("test");
+            var case_id_s = $('#case_id').val();
+            var status = $('#status_operate').val();
+           var operate_result_status = $('#operate_result_status').val();
+            var compensation = 0;
+            var change_policy = 0;
+            if ($('#compensation').is(':checked') == true) {
+                compensation = 1;
+            }
+            if ($('#change_policy').is(':checked') == true) {
+                change_policy = 1;
+            }
+
+            var prov_refer = $('#prov_refer').val();
+            var refer_type = $('#refer_type').val();
+            var refer_name = $('#refer_name').val();
+            var token = $('#token').val();
+            $.ajax({
+                type: 'POST',
+                url: '{!!  route('officer.update_case') !!}',
+                data: {
+                    _token: token,
+                    case_id: case_id_s,
+                    status: status,
+                    operate_result_status: operate_result_status,
+                    compensation: compensation,
+                    change_policy: change_policy,
+                    prov_refer: prov_refer,
+                    refer_type: refer_type,
+                    refer_name: refer_name
+                },
+                success: function( data ) {
+                    //console.log(data);
+                    $("#ajaxResponse").append("<div>"+data.msg+"</div>");
+                    //alert("อัพเดตสถาณะเสร็จสมบูรณ์");
+                    window.location = "{{ route('officer.show') }}";
+                }
+            });
+		}
 		//////////////////////////////////////
 	</script>
 

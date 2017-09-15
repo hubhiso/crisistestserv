@@ -114,7 +114,6 @@ class OfficerInputController extends Controller
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
         $provinces = province::all();
-        //$activities = operate_detail::all();
         return view('officer.activities',compact('show_data', 'provinces'));
     }
     public function edit_operate($operate_id)

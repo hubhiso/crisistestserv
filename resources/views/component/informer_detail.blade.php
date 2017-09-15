@@ -19,7 +19,7 @@
     <div class="field-body">
         <div class="field is-grouped">
             <p class="control is-expanded has-icons-left ">
-                {!! Form::text('sender',null,['class'=>'input','placeholder'=>'ชื่อเรียก']) !!}
+                {!! Form::text('sender',null,['class'=>'input','placeholder'=>'ชื่อเรียก' , 'disabled' => 'disabled']) !!}
                 <span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
         </div>
         <div class="field-label is-normal">
@@ -27,7 +27,7 @@
         </div>
         <div class="field">
             <p class="control is-expanded has-icons-left">
-                {!! Form::text('agent_tel',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
+                {!! Form::text('agent_tel',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก','disabled' => 'disabled']) !!}
                 <span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
             </p>
         </div>

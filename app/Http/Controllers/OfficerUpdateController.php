@@ -104,9 +104,11 @@ class OfficerUpdateController extends Controller
             'operate_detail' => $request->input('operate_detail'),
             'operate_result' => $request->input('operate_result')
         ]);
+
         /*
         $operate_detail = new operate_detail($request->all());
-        Auth::user()->operate_detail()->save($operate_detail);*/
+        Auth::user()->operate_detail()->save($operate_detail);
+        */
 
         $response = array(
             'case_id' => $request->input('case_id'),
@@ -124,14 +126,35 @@ class OfficerUpdateController extends Controller
     public function update_operate_case(Request $request)
     {
         $case_id = $request->input('case_id');
-        case_input::where('case_id','=',$case_id)->update([
-            'status' => $request->input('status'),
-            'operate_result_status' => $request->input('operate_result_status'),
-            'compensation' => $request->input('compensation'),
-            'change_policy' => $request->input('change_policy'),
-            'operate_status' => $request->input('operate_status'),
-            'refer_type' => $request->input('detail'),
-            'refer_name' => $request->input('sex')]);
+        if($request->input('status') == 4){
+            case_input::where('case_id','=',$case_id)->update([
+                'status' => $request->input('status'),
+                'operate_result_status' => null,
+                'compensation' => null,
+                'change_policy' => null,
+                'prov_refer' => null,
+                'refer_type' => null,
+                'refer_name' => null]);
+        }elseif ($request->input('status') == 5){
+            case_input::where('case_id','=',$case_id)->update([
+                'status' => $request->input('status'),
+                'operate_result_status' => $request->input('operate_result_status'),
+                'compensation' => $request->input('compensation'),
+                'change_policy' => $request->input('change_policy'),
+                'prov_refer' => null,
+                'refer_type' => null,
+                'refer_name' => null]);
+        }elseif ($request->input('status') == 6){
+            case_input::where('case_id','=',$case_id)->update([
+                'status' => $request->input('status'),
+                'operate_result_status' => null,
+                'compensation' => null,
+                'change_policy' => null,
+                'prov_refer' => $request->input('prov_refer'),
+                'refer_type' => $request->input('refer_type'),
+                'refer_name' => $request->input('refer_name')]);
+        }
+
     }
     public function update_operate(Request $request)
     {

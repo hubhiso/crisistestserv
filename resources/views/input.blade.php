@@ -308,6 +308,21 @@
                 $('#group_code').attr('disabled', 'disabled');
             }
         });
+        $('input[name="sender_case"]').click(function(){
+            //do stuff
+
+			var val = $(this).val();
+			//alert(val);
+			if(val==1){
+                $('input[name="sender"]').prop('disabled', true);
+                $('input[name="agent_tel"]').prop('disabled', true);
+
+			}else if(val==2){
+                $('input[name="sender"]').prop('disabled', false);
+                $('input[name="agent_tel"]').prop('disabled', false);
+			}
+
+        });
 </script>
 
 @extends('footer')

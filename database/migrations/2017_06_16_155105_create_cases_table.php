@@ -37,7 +37,7 @@ class CreateCasesTable extends Migration
             $table->integer('operate_result_status')->nullable();
             $table->integer('compensation')->nullable();
             $table->integer('change_policy')->nullable();
-            $table->integer('operate_status')->nullable();
+            $table->integer('prov_refer')->nullable();
             $table->integer('refer_type')->nullable();
             $table->text('refer_name')->nullable();
             ///////////////////////////
