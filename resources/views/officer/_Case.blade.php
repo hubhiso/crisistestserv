@@ -1,3 +1,30 @@
+<table class="table paginated" id="table_show">
+    <thead>
+    <tr>
+        <th><abbr title="Date"> วันที่ </abbr>
+        </th>
+        <th><abbr title="ID"> รหัส </abbr>
+        </th>
+        <th><abbr title="Name"> ชื่อ </abbr>
+        </th>
+        <th><abbr title="PR"> จังหวัด </abbr>
+        </th>
+        <th><abbr title="Type"> ประเภท </abbr>
+        </th>
+        <th><abbr title="Status"> สถานะ </abbr>
+        </th>
+        <th><abbr title="Activities"> ดำเนินการ </abbr>
+        </th>
+        <th><abbr title="Username"> ประเภทของผู้แจ้ง </abbr>
+        </th>
+        <th><abbr title="Username"> ผู้รับเรื่อง </abbr>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+
 
 @foreach($cases as $case)
 
@@ -39,3 +66,33 @@
         <td><a href='#' title='Receiver'>{{ $case->receiver }}</a></td>
     </tr>
 @endforeach
+    </tbody>
+</table>
+<script>
+
+$('table.paginated').each(function() {
+var currentPage = 0;
+var numPerPage = 2;
+var $table = $(this);
+$table.bind('repaginate', function() {
+$table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+});
+$table.trigger('repaginate');
+var numRows = $table.find('tbody tr').length;
+var numPages = Math.ceil(numRows / numPerPage);
+var $pager = $('<nav class="pagination is-centered"><ul class="pagination-list"></ul><nav>');
+for (var page = 0; page < numPages; page++) {
+$('<span class="pagination-link"></span>').text(page + 1).bind('click', {
+newPage: page
+}, function(event) {
+currentPage = event.data['newPage'];
+$table.trigger('repaginate');
+$(this).addClass('is-current').siblings().removeClass('is-current');
+}).appendTo($pager).addClass('pagination-link');
+}
+$pager.insertBefore($table).find('span.pagination-link:first').addClass('is-current');
+//$pager.insertAfter($table).find('span.page-number:first').addClass('is-current');
+
+});
+</script>
+{{--{{$cases->links()}}--}}

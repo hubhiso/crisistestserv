@@ -158,74 +158,42 @@
 			<br>
 			<br>
 			<div class="body container">
-				<nav class="pagination is-centered"> <a class="pagination-previous">Previous</a> <a class="pagination-next">Next page</a>
-					<ul class="pagination-list">
-						<li><a class="pagination-link is-current">1</a>
-						</li>
-						<li><a class="pagination-link">2</a>
-						</li>
-						<li><a class="pagination-link">3</a>
-						</li>
-						<li><span class="pagination-ellipsis">&hellip;</span>
-						</li>
-						<li><a class="pagination-link">20</a>
-						</li>
-					</ul>
-				</nav>
+				{{--<nav class="pagination is-centered"> <a class="pagination-previous">Previous</a> <a class="pagination-next">Next page</a>--}}
+					{{--<ul class="pagination-list">--}}
+						{{--<li><a class="pagination-link is-current">1</a>--}}
+						{{--</li>--}}
+						{{--<li><a class="pagination-link">2</a>--}}
+						{{--</li>--}}
+						{{--<li><a class="pagination-link">3</a>--}}
+						{{--</li>--}}
+						{{--<li><span class="pagination-ellipsis">&hellip;</span>--}}
+						{{--</li>--}}
+						{{--<li><a class="pagination-link">20</a>--}}
+						{{--</li>--}}
+					{{--</ul>--}}
+				{{--</nav>--}}
 				<br/>
-				<div class="container">
-					<table class="table" id="table_show">
-						<thead>
-							<tr>
-								<th><abbr title="Date"> วันที่ </abbr>
-								</th>
-								<th><abbr title="ID"> รหัส </abbr>
-								</th>
-								<th><abbr title="Name"> ชื่อ </abbr>
-								</th>
-								<th><abbr title="PR"> จังหวัด </abbr>
-								</th>
-								<th><abbr title="Type"> ประเภท </abbr>
-								</th>
-								<th><abbr title="Status"> สถานะ </abbr>
-								</th>
-								<th><abbr title="Activities"> ดำเนินการ </abbr>
-								</th>
-								<th><abbr title="Username"> ประเภทของผู้แจ้ง </abbr>
-								</th>
-								<th><abbr title="Username"> ผู้รับเรื่อง </abbr>
-								</th>
-							</tr>
-						</thead>
-						<tbody class="table-case_container">
+				<div class="table-case_container">
 
-
-
-						</tbody>
-					</table>
-					
-					
-					
-					
 				</div>
-				<nav class="pagination is-centered"> <a class="pagination-previous">Previous</a> <a class="pagination-next">Next page</a>
-					<ul class="pagination-list">
-						<li><a class="pagination-link">1</a>
-						</li>
-						<li><span class="pagination-ellipsis">&hellip;</span>
-						</li>
-						<li><a class="pagination-link">5</a>
-						</li>
-						<li><a class="pagination-link is-current">6</a>
-						</li>
-						<li><a class="pagination-link">7</a>
-						</li>
-						<li><span class="pagination-ellipsis">&hellip;</span>
-						</li>
-						<li><a class="pagination-link">20</a>
-						</li>
-					</ul>
-				</nav>
+				{{--<nav class="pagination is-centered"> <a class="pagination-previous">Previous</a> <a class="pagination-next">Next page</a>--}}
+					{{--<ul class="pagination-list">--}}
+						{{--<li><a class="pagination-link">1</a>--}}
+						{{--</li>--}}
+						{{--<li><span class="pagination-ellipsis">&hellip;</span>--}}
+						{{--</li>--}}
+						{{--<li><a class="pagination-link">5</a>--}}
+						{{--</li>--}}
+						{{--<li><a class="pagination-link is-current">6</a>--}}
+						{{--</li>--}}
+						{{--<li><a class="pagination-link">7</a>--}}
+						{{--</li>--}}
+						{{--<li><span class="pagination-ellipsis">&hellip;</span>--}}
+						{{--</li>--}}
+						{{--<li><a class="pagination-link">20</a>--}}
+						{{--</li>--}}
+					{{--</ul>--}}
+				{{--</nav>--}}
 			</div>
 	</section>
 	<br>
@@ -311,7 +279,6 @@
         });
 
 	</script>
-
     </body>
 
 </html>
