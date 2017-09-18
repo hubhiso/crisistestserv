@@ -11,7 +11,7 @@
 
 </head>
 
-<body >
+<body  onload="load()">
 
 {!! Form::open(['url' =>'case_inputs']) !!}
 
@@ -312,17 +312,26 @@
             //do stuff
 
 			var val = $(this).val();
-			//alert(val);
-			if(val==1){
+            loadinput(val)
+
+
+        });
+        function load() {
+
+            $('input[name="sender_case"][value="1"]').attr('checked', 'checked');
+          //  loadinput(val);
+        }
+        function loadinput(val) {
+            console.log("chk : "+ val);
+            if(val==1){
                 $('input[name="sender"]').prop('disabled', true);
                 $('input[name="agent_tel"]').prop('disabled', true);
 
-			}else if(val==2){
+            }else if(val==2){
                 $('input[name="sender"]').prop('disabled', false);
                 $('input[name="agent_tel"]').prop('disabled', false);
-			}
-
-        });
+            }
+        }
 </script>
 
 @extends('footer')

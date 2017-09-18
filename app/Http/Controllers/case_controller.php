@@ -64,7 +64,6 @@ class case_controller extends Controller
     public function store(case_inputRequest $request)
     {
         //
-
         //$input = Request::all();
         case_input::create($request->all());
         $case_id = Request::input('case_id');
