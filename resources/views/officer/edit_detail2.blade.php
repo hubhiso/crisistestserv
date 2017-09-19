@@ -27,14 +27,14 @@
 			</div>
 		</div>
 			<br>
-		<form class="form-horizontal" role="form" method="POST" action="{{ route('officer.post_detail') }}">
+		<form class="form-horizontal" role="form" method="POST" action="{{ route('officer.update_detail') }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input id="case_id" name="case_id"  type="text" value="{{  $show_data->case_id }}" hidden >
 
 			<div class="container">
 				<nav class="breadcrumb">
 					<ul>
-						<li><a href="{{ '' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+						<li><a href="{{ route('officer.show') }}" ><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 						</li>
 						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-address-card"></i></span><span> ข้อมูลเพิ่มเติม </span></a>
 						</li>
@@ -46,15 +46,15 @@
 				<div class="container">
 					<div class="tabs is-centered is-toggle">
 						<ul>
-							<li>
+							<li class="is-active">
 								<a>
 									<span class="icon is-small"><i class="fa fa-image"></i></span>
 									<span> ข้อมูลเพิ่มเติม </span>
 								</a>
 
 							</li>
-							<li class="is-active">
-								<a>
+							<li >
+								<a href="{{ route('officer.add_activities' , $show_data->case_id) }}">
 									<span class="icon is-small"><i class="fa fa-cog"></i></span>
 									<span> การดำเนินการ </span>
 								</a>
@@ -128,7 +128,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text"  value="{{ $show_data->name }}">
+									<input class="input" type="text"  name="name" value="{{ $show_data->name }}">
 									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
 							</div>
 							<div class="field-label is-normal">
@@ -151,7 +151,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control has-icons-left">
-									<input class="input" type="text"  value="{{ $show_data->victim_tel }}">
+									<input class="input" type="text" name="tel" value="{{ $show_data->victim_tel }}">
 									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
 							</div>
 						</div>
@@ -210,7 +210,7 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
-									<input class="input" type="text" placeholder="ชื่อผู้แจ้ง" value="{{ $show_data->Provinces->PROVINCE_NAME }}" disabled>
+									<input class="input" type="text" placeholder="จังหวัด" value="{{ $show_data->Provinces->PROVINCE_NAME }}" disabled>
 								</p>
 							</div>
 							<div class="field-label is-normal">
@@ -260,7 +260,7 @@
 							<div class="field is-grouped">
 								<p class="control  has-icons-left ">
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" name="birthdate" class="form-control">
+									<input type="text" id="dateInput" name="birthdate" class="form-control" value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->birth_date)))}}">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
 									</div>
@@ -271,8 +271,8 @@
 								<label class="label"> อายุ </label>
 							</div>
 							<div class="field">
-								<p class="control  has-icons-left has-icons-right">
-									<input class="input" type="text" name="age" value="36" disabled>
+								<p class="control ">
+									<input class="input" name="age" id="age" value="{{$show_detail->age}}"  disabled>
 								</p>
 							</div>
 						</div>
@@ -288,23 +288,42 @@
 								<div class="field is-grouped">
 									<p class="control is-expanded has-icons-left ">
 										<label class="radio">
-      							{{ Form::radio('marital-status', '1' , true) }} 
+											@if( $show_detail->current_status == 1 )
+												{{ Form::radio('marital-status', '1' , true) }}
+											@else
+												{{ Form::radio('marital-status', '1' , false) }}
+											@endif
       							โสด
     						</label>
 									
 
 										<label class="radio">
-     							{{ Form::radio('marital-status', '2' , false) }} สมรส
+											@if( $show_detail->current_status == 2 )
+												{{ Form::radio('marital-status', '2' , true) }}
+											@else
+												{{ Form::radio('marital-status', '2' , false) }}
+											@endif
+     							 สมรส
     						</label>
 									
 
 										<label class="radio">
-     							{{ Form::radio('marital-status', '3' , false) }} หม้าย / หย่า / แยก
+											@if( $show_detail->current_status == 3 )
+												{{ Form::radio('marital-status', '3' , true) }}
+											@else
+												{{ Form::radio('marital-status', '3' , false) }}
+											@endif
+     							 หม้าย / หย่า / แยก
     						</label>
 									
 
 										<label class="radio">
-     							{{ Form::radio('marital-status', '4' , false) }} สมณะ
+											@if( $show_detail->current_status == 4 )
+												{{ Form::radio('marital-status', '4' , true) }}
+											@else
+												{{ Form::radio('marital-status', '4' , false) }}
+											@endif
+     							 สมณะ
     						</label>
 									
 
@@ -323,20 +342,20 @@
 							<div class="field is-narrow">
 								<div class="control"> <span class="select">
 									<select id ="occupation" name="occupation">
-									  <option value="0"> โปรดเลือก </option>
-									  <option value="1"> รับราชการ </option>
-									  <option value="2"> พนักงานบริษัทเอกชน </option>
-									  <option value="3"> องค์กรพัฒนาเอกชน (NGO) </option>
-									  <option value="4"> พนักงานมหาวิทยาลัย </option>
-									  <option value="5"> นักเรียน/นักศึกษา </option>
-									  <option value="6"> พนักงานบริการทั่วไป </option>
-									  <option value="7"> รับจ้างทั่วไป </option>
-									  <option value="8"> เกษตรกร </option>
-									  <option value="9"> ธุรกิจส่วนตัว </option>
-									  <option value="10"> อื่นๆ โปรดระบุ </option>
+									  <option value="0" @if($show_detail->occupation == 0){ selected } @endif> โปรดเลือก </option>
+									  <option value="1" @if($show_detail->occupation == 1){ selected } @endif> รับราชการ </option>
+									  <option value="2" @if($show_detail->occupation == 2){ selected } @endif> พนักงานบริษัทเอกชน </option>
+									  <option value="3" @if($show_detail->occupation == 3){ selected } @endif> องค์กรพัฒนาเอกชน (NGO) </option>
+									  <option value="4" @if($show_detail->occupation == 4){ selected } @endif> พนักงานมหาวิทยาลัย </option>
+									  <option value="5" @if($show_detail->occupation == 5){ selected } @endif> นักเรียน/นักศึกษา </option>
+									  <option value="6" @if($show_detail->occupation == 6){ selected } @endif> พนักงานบริการทั่วไป </option>
+									  <option value="7" @if($show_detail->occupation == 7){ selected } @endif> รับจ้างทั่วไป </option>
+									  <option value="8" @if($show_detail->occupation == 8){ selected } @endif> เกษตรกร </option>
+									  <option value="9" @if($show_detail->occupation == 9){ selected } @endif> ธุรกิจส่วนตัว </option>
+									  <option value="10" @if($show_detail->occupation == 10){ selected } @endif> อื่นๆ โปรดระบุ </option>
 									</select>
 									</span>
-									<input id="occupation_detail" name="occupation_detail"  type="text" value="" hidden >
+									<input id="occupation_detail" name="occupation_detail"  type="text" value="{{$show_detail->occupation_detail}}" hidden >
 								</div>
 							</div>
 						</div>
@@ -348,7 +367,7 @@
 						<div class="field-body">
 							<div class="field  is-grouped">
 								<p class="control  is-expanded">
-									<textarea class="textarea" name="address" placeholder="บ้านเลขที่ ซอย ถนน หมู่บ้าน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"></textarea>
+									<textarea class="textarea" name="address" placeholder="บ้านเลขที่ ซอย ถนน หมู่บ้าน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์">{{$show_detail->address}}</textarea>
 								</p>
 							</div>
 						</div>
@@ -361,10 +380,10 @@
 							<div class="field is-narrow ">
 								<div class="control"> <span class="select">
 									<select id ="card_type" name="card_type">
-									  <option value="1"> บัตรประชาชน </option>
-									  <option value="2"> บัตรต่างด้าว </option>
-									  <option value="3"> บัตรคนไทยไร้สถานะ </option>
-									  <option value="4"> พาสปอร์ต </option>
+									  <option value="1"  @if($show_detail->card_type == 1){ selected } @endif> บัตรประชาชน </option>
+									  <option value="2"  @if($show_detail->card_type == 2){ selected } @endif> บัตรต่างด้าว </option>
+									  <option value="3"  @if($show_detail->card_type == 3){ selected } @endif> บัตรคนไทยไร้สถานะ </option>
+									  <option value="4"  @if($show_detail->card_type == 4){ selected } @endif> พาสปอร์ต </option>
 									</select>
 									</span>
 								</div>
@@ -374,7 +393,7 @@
 							</div>
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
-									<input class="input" type="TEXT" name="card_num" placeholder="ID-CODE" value="">
+									<input class="input" type="TEXT" name="card_num" placeholder="ID-CODE" value="{{$show_detail->card_number}}">
 								</p>
 							</div>
 						</div>
@@ -398,14 +417,14 @@
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
 									<select id ="offender_type" name="offender_type">
-									  <option value="0"> โปรดเลือก </option>
-									  <option value="1"> สถานพยาบาล </option>
-									  <option value="2"> สถานที่ทำงาน </option>
-									  <option value="3"> สถานศึกษา </option>
-									  <option value="4"> ตำรวจ </option>
-									  <option value="5"> ทหาร </option>
-									  <option value="6"> ท้องถิ่น </option>
-									  <option value="7"> หน่วยงานอื่นๆ </option>
+									  <option value="0" @if($show_detail->type_offender == 0){ selected } @endif> โปรดเลือก </option>
+									  <option value="1" @if($show_detail->type_offender == 1){ selected } @endif> สถานพยาบาล </option>
+									  <option value="2" @if($show_detail->type_offender == 2){ selected } @endif> สถานที่ทำงาน </option>
+									  <option value="3" @if($show_detail->type_offender == 3){ selected } @endif> สถานศึกษา </option>
+									  <option value="4" @if($show_detail->type_offender == 4){ selected } @endif> ตำรวจ </option>
+									  <option value="5" @if($show_detail->type_offender == 5){ selected } @endif> ทหาร </option>
+									  <option value="6" @if($show_detail->type_offender == 6){ selected } @endif> ท้องถิ่น </option>
+									  <option value="7" @if($show_detail->type_offender == 7){ selected } @endif> หน่วยงานอื่นๆ </option>
 									</select>
 									</span>
 								
@@ -413,9 +432,10 @@
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select id ="offender_subtype" name="offender_subtype">
-									  <option value="1"> ของรัฐบาล </option>
-									  <option value="2"> ของเอกชน </option>
+									<select id ="offender_subtype" name="offender_subtype" 	@if($show_detail->type_offender == 4||$show_detail->type_offender == 5) disabled @endif>
+									  <option value="1" @if($show_detail->subtype_offender == 1){ selected } @endif> ของรัฐบาล </option>
+									  <option value="2" @if($show_detail->subtype_offender == 2){ selected } @endif> ของเอกชน </option>
+
 									</select>
 									</span>
 								
@@ -435,18 +455,19 @@
 							<div class="field is-grouped">
 								<div class="control">
 									<label class="radio">
-										<input type="radio" name="">
+										<input type="radio" name="type-violator" onclick="handleClick(this);" value="1" @if($show_detail->violator_name != ''){ checked } @endif >
 										บุคคล
-									 </label>
+									</label>
 								</div>
 								<div class="control">
 									<label class="text">
-									  ชื่อ
+										ชื่อ
 									</label>
 								</div>
 								<div class="control">
 									<p>
-										<input class="input" type="text" id="violator_name" name="violator_name">
+										<input class="input" type="text" id="violator_name" name="violator_name"
+											   @if($show_detail->violator_name != '')  value="{{$show_detail->violator_name}}" @else disabled @endif>
 									</p>
 								</div>
 								<div class="control">
@@ -456,7 +477,8 @@
 								</div>
 								<div class="control">
 									<p>
-										<input class="input" type="text" id="violator_organization" name="violator_organization">
+										<input class="input" type="text" id="violator_organization" name="violator_organization"
+											   @if($show_detail->violator_name != '')  value="{{$show_detail->violator_organization}}" @else disabled @endif>
 									</p>
 								</div>
 							</div>
@@ -471,18 +493,19 @@
 							<div class="field is-grouped">
 								<div class="control">
 									<label class="radio">
-							  <input type="radio">
-							  องค์กร
-							</label>
+										<input type="radio" name="type-violator" onclick="handleClick(this);" value="2" @if($show_detail->violator_name == ''){ checked } @endif>
+										องค์กร
+									</label>
 								</div>
 								<div class="control">
 									<label class="text">
-							  ชื่อ
-							</label>
+										ชื่อ
+									</label>
 								</div>
 								<div class="control">
 									<p>
-										<input class="input" type="text" id="offender_organization" name="offender_organization">
+										<input class="input" type="text" id="offender_organization" name="offender_organization"
+											   @if($show_detail->violator_name == '')  value="{{$show_detail->offender_organization}}" @else disabled @endif>
 									</p>
 								</div>
 							</div>
@@ -496,7 +519,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" name="accident_location" placeholder="กรอกรายละเอียด"></textarea>
+									<textarea class="textarea" name="accident_location" placeholder="กรอกรายละเอียด">{{$show_detail->accident_location}}</textarea>
 								</div>
 							</div>
 						</div>
@@ -509,7 +532,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" name="accident_time" placeholder="กรอกรายละเอียด"></textarea>
+									<textarea class="textarea" name="accident_time" placeholder="กรอกรายละเอียด">{{$show_detail->accident_time}}</textarea>
 								</div>
 							</div>
 						</div>
@@ -529,26 +552,41 @@
 								<div class="control"> <span class="select">
 									<select id ="problem_case" name="problem_case">
 									<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
-									<option value="1"  >บังคับตรวจเอชไอวี</option>
-									<option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
-									<option value="3" >เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
-									<option value="4" >ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
+									<option value="1"  @if($show_data->problem_case == 1){ selected } @endif>บังคับตรวจเอชไอวี</option>
+									<option value="2"  @if($show_data->problem_case == 2){ selected } @endif>เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
+									<option value="3"  @if($show_data->problem_case == 3){ selected } @endif>เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
+									<option value="4"  @if($show_data->problem_case == 4){ selected } @endif>ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
 								</select>
 									</span>
 								</div>
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select>
-									  <select id ="sub_problem" name="sub_problem" disabled="true">
+									  <select id ="sub_problem" name="sub_problem" @if($show_data->sub_problem == null){ disabled } @endif>
+										  @if($show_data->problem_case == 1)
+											  <option value="1" style="width:250px" @if($show_data->sub_problem == 1){ selected } @endif>ผู้ติดเชื้อเอชไอวี</option>
+											  <option value="2" style="width:250px" @if($show_data->sub_problem == 2){ selected } @endif>กลุ่มเปราะบาง</option>
+											  <option value="3" style="width:250px" @if($show_data->sub_problem == 3){ selected } @endif>ประชาชนทั่วไป</option>
+										  @elseif($show_data->problem_case == 2 || $show_data->problem_case == 3)
+											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
+										  @elseif($show_data->problem_case == 4)
+											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
+										  @endif
 									  </select>
-									</select>
 									</span>
 								</div>
 							</div>
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
-									<select id ="group_code" name="group_code" disabled="true">
+									<select id ="group_code" name="group_code" @if($show_data->group_code == null){ disabled } @endif>
+										@if($show_data->sub_problem == 2)
+											<option value="1" style="width:250px" @if($show_data->group_code == 1){ selected } @endif>กลุ่มหลากหลายทางเพศ</option>
+											<option value="2" style="width:250px" @if($show_data->group_code == 2){ selected } @endif>พนักงานบริการ HIV</option>
+											<option value="3" style="width:250px" @if($show_data->group_code == 3){ selected } @endif>ผู้ใช้สารเสพติด</option>
+											<option value="4" style="width:250px" @if($show_data->group_code == 4){ selected } @endif>ประชากรข้ามชาติ</option>
+											<option value="5" style="width:250px" @if($show_data->group_code == 5){ selected } @endif>ผู้ต้องขัง</option>
+											<option value="6" style="width:250px" @if($show_data->group_code == 6){ selected } @endif>เยาวชนในสถานพินิจ</option>
+										@endif
 									</select>
 									</span>
 								</div>
@@ -564,7 +602,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" name="violation_characteristics" placeholder="กรอกรายละเอียด"></textarea>
+									<textarea class="textarea" name="violation_characteristics" placeholder="กรอกรายละเอียด">{{$show_detail->violation_characteristics}}</textarea>
 								</div>
 							</div>
 						</div>
@@ -577,7 +615,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" name="effect" placeholder="กรอกรายละเอียด"></textarea>
+									<textarea class="textarea" name="effect" placeholder="กรอกรายละเอียด">{{$show_detail->effect}}</textarea>
 								</div>
 							</div>
 						</div>
@@ -591,25 +629,25 @@
 						<div class="field is-grouped">
 						  <div class="control">
 							<label class="checkbox">
-							  <input type="checkbox" name="law">
+							  <input type="checkbox" name="law" @if($show_detail->cause_type1 == 1){ checked } @endif>
 							  ไม่รู้กฎหมาย
 							</label>
 						  </div>
 						  <div class="control">
 							<label class="checkbox">
-							  <input type="checkbox" name="aids">
+							  <input type="checkbox" name="aids" @if($show_detail->cause_type2 == 1){ checked } @endif>
 							  ขาดความเข้าใจที่ถูกต้องเรื่องเอดส์
 							</label>
 						  </div>
 						  <div class="control">
 							<label class="checkbox">
-							  <input type="checkbox" name="attitude">
+							  <input type="checkbox" name="attitude" @if($show_detail->cause_type3 == 1){ checked } @endif>
 							  ทัศนคติ
 							</label>
 						  </div>
 						  <div class="control">
 							<label class="checkbox">
-							  <input type="checkbox" name="policy">
+							  <input type="checkbox" name="policy" @if($show_detail->cause_type4 == 1){ checked } @endif>
 							  นโยบายองค์กร
 							</label>
 						  </div>
@@ -625,7 +663,7 @@
 						<div class="field is-grouped">
 								<div class="control">
 									<label class="checkbox">
-							  <input type="checkbox" name="etc">
+							  <input type="checkbox" name="etc" @if($show_detail->etc == 1){ checked } @endif>
 							  อื่นๆ
 							</label>
 								</div>
@@ -636,7 +674,7 @@
 								</div>
 								<div class="control">
 									<p>
-										<input class="input" type="text" placeholder="">
+										<input class="input" type="text" placeholder="" value="{{$show_detail->etc_detail}}">
 									</p>
 								</div>
 							</div>
@@ -664,11 +702,25 @@
 					<p class="control"> <a class="button" href="{{ route('officer.show') }}" > ยกเลิก </a> </p>
 				</div>
 			</div>
+		</form>
 	</section>
 </form>
 	<script>
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            onSelect: function(){
+               // alert("test");
+            }
+        });
+        $('#dateInput').change(function(){
+            //alert("test");
+            var dob = $('#dateInput').val();
+            dob = new Date(dob);
+            var today = new Date();
+            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+            $("#age").val(age);
+            console.log(age);
 
+        });
         $('#problem_case').on('change',function (e) {
             var prob_id = e.target.value;
             //console.log(prob_id);
@@ -722,6 +774,39 @@
                 $('#group_code').attr('disabled', 'disabled');
             }
         });
+        $('#offender_type').on('change',function (e) {
+
+            var sel_value = e.target.value;
+            //alert(sel_value);
+
+            if((sel_value == 4)||(sel_value == 5)) {
+                document.getElementById("offender_subtype").disabled = true;
+            }else {
+                document.getElementById("offender_subtype").disabled = false;
+            }
+        });
+		/*
+		 $('#type-violator').on('click change',function (e) {
+		 var type_id = e.target.value;
+		 console.log(e.type);
+		 });*/
+        function handleClick(myRadio) {
+            if(myRadio.value == 1)
+            {
+                document.getElementById("offender_organization").disabled = true;
+                document.getElementById("violator_name").disabled = false;
+                document.getElementById("violator_organization").disabled = false;
+            }else if(myRadio.value == 2){
+                document.getElementById("offender_organization").disabled = false;
+                document.getElementById("violator_name").disabled = true;
+                document.getElementById("violator_organization").disabled = true;
+
+            }
+
+            //alert('New value: ' + myRadio.value);
+            //currentValue = myRadio.value;
+        }
+
     </script>
 
 	<br> @extends('footer')

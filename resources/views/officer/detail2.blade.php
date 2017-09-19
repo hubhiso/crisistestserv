@@ -33,7 +33,7 @@
 			<div class="container">
 				<nav class="breadcrumb">
 					<ul>
-						<li><a href="{{ '' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+						<li><a href="{{ route('officer.show') }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 						</li>
 						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-address-card"></i></span><span> ข้อมูลเพิ่มเติม </span></a>
 						</li>
@@ -236,7 +236,7 @@
 								<p class="control  has-icons-left " >
 									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" name="birthdate" class="form-control" >
+									<input type="text" id="dateInput" name="birthdate" class="form-control" >
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
 									</div>
@@ -248,8 +248,8 @@
 								<label class="label"> อายุ </label>
 							</div>
 							<div class="field">
-								<p class="control  has-icons-left has-icons-right">
-									<input class="input" type="text" name="age" value="36">
+								<p class="control  ">
+									<input class="input" type="text" name="age"  id="age" disabled>
 								</p>
 							</div>
 						</div>
@@ -662,7 +662,16 @@
 </form>
 	<script>
         $('.datepicker').datepicker();
+        $('#dateInput').change(function(){
+            //alert("test");
+            var dob = $('#dateInput').val();
+            dob = new Date(dob);
+            var today = new Date();
+            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+            $("#age").val(age);
+            console.log(age);
 
+        });
         $('#problem_case').on('change',function (e) {
             var prob_id = e.target.value;
             //alert(prob_id);

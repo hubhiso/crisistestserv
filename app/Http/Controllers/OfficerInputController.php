@@ -104,11 +104,12 @@ class OfficerInputController extends Controller
         $show_data = case_input::where('case_id','=',$case_id)->first();
         return view('officer.detail2',compact('show_data'));
     }
-    public function edit_detail($case_id)
+
+    public function edit_detail2($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
         $show_detail = add_detail::where('case_id','=',$case_id)->first();
-        return view('officer.detail2',compact('show_data', 'show_detail'));
+        return view('officer.edit_detail2',compact('show_data', 'show_detail'));
     }
     public function add_activities($case_id)
     {
@@ -124,7 +125,7 @@ class OfficerInputController extends Controller
     }
     public function load_activities_table($case_id)
     {
-        $activities = operate_detail::where('case_id','=',$case_id)->get();
+        $activities = operate_detail::where('case_id','=',$case_id)->orderBy('operate_date', 'asc')->get();
         $html = view('officer._activities_table',compact('activities'))->render();
         return response()->json(compact('html'));
     }

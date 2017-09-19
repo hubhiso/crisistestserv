@@ -57,9 +57,9 @@
 					<div class="tabs is-centered is-toggle">
 						<ul>
 							<li>
-								<a>
+								<a href="{{ route('officer.edit_detail2' , $show_data->case_id) }}">
 								<span class="icon is-small"><i class="fa fa-image"></i></span>
-								<span> ข้อมูลเพิ่มเติม </span>
+								<span > ข้อมูลเพิ่มเติม </span>
 							  </a>
 							
 							</li>
