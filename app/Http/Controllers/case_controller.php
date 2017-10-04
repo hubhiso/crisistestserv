@@ -81,9 +81,13 @@ class case_controller extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($case_id)
     {
         //
+        //var_dump($case_id);
+        $data = case_input::where('case_id','=',$case_id)->first();
+        $html = view('layout._status',compact('data'))->render();
+        return response()->json(compact('html'));
     }
 
     /**

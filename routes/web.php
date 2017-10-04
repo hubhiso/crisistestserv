@@ -46,6 +46,8 @@ Route::prefix('officer')->group(function () {
 Route::get('status', function () {
     return view('layout.status');
 });
+Route::get('status/{case_id}', 'case_controller@show')->name('case.status');
+
 Route::get('manage', function () {
     return view('officer.manageCase');
 });

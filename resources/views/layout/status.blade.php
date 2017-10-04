@@ -10,6 +10,7 @@
 	<link href="{{ asset('css/base.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="http://bulma.io/lib/main.js"></script>
 	<title> CRS </title>
 </head>
@@ -54,10 +55,10 @@
 					<div class="level-item">
 						<div class="field has-addons">
 							<p class="control">
-								<input class="input" type="text" >
+								<input class="input" type="text" id="case_search">
 							</p>
 							<p class="control">
-								<button class="button"> ค้นหา </button>
+								<button class="button" onclick="report_status();"> ค้นหา </button>
 							</p>
 						</div>
 					</div>
@@ -81,49 +82,16 @@
 			
 		</div>	
 			
-		<div class="container" style="background-color: #EEEEEE">
+		<div class="container"  style="background-color: #EEEEEE">
 		
-		<div id="timeline">
-		<br>
-			<div class="timeline-item">
-				<div class="timeline-icon">
-					<img src="images/markx40.png" alt="">
-				</div>
-				<div class="timeline-content">
-					<h2> 1 มกราคม 2560 เวลา 13.00 น. </h2>
-					<p>
-						ระบบดำเนินการรับเรื่องเรียบร้อยแล้ว
-					</p>
-					
-				</div>
-			</div>
+		<div id="timeline" >
+		</br>
 
-			<div class="timeline-item">
-				<div class="timeline-icon">
-					<img src="images/markx40.png" alt="">
-				</div>
-				<div class="timeline-content right">
-					<h2> 25 มกราคม 2560 เวลา 17.00 น. </h2>
-					<p>
-						เจ้าหน้าที่กำลังดำเนินการอยู่
-					</p>
-				</div>
-			</div>
-
-			<div class="timeline-item">
-				<div class="timeline-icon">
-					<img src="images/minusx40.png" alt="">
-				</div>
-				<div class="timeline-content">
-					<h2> - </h2>
-					<p>
-						การดำเนินการเสร็จสิ้น
-					</p>
-				</div>
-			</div>
 		</div>
 		<!-- Timeline ends here -->
 		</div>
+
+
 	</section>
 
 
@@ -186,5 +154,21 @@
 
 
 </body>
+<script>
+    function report_status(){
 
+        var  case_id = $('#case_search').val();
+       // alert(case_id);
+        var url = "{{route('case.status',['case_id' => ":case_id"]) }}";
+        url = url.replace(':case_id', case_id);
+        console.log(url);
+        var $request = $.get(url); // make request
+        var $container = $('#timeline');
+        $request.done(function(data) { // success
+            $container.html(data.html);
+        });
+
+	}
+
+</script>
 </html>
