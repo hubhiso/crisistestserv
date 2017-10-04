@@ -166,7 +166,9 @@
         var $container = $('#timeline');
         $request.done(function(data) { // success
             $container.html(data.html);
-        });
+        }
+        )
+        ;
 
 	}
 

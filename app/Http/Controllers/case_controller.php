@@ -85,9 +85,23 @@ class case_controller extends Controller
     {
         //
         //var_dump($case_id);
-        $data = case_input::where('case_id','=',$case_id)->first();
-        $html = view('layout._status',compact('data'))->render();
-        return response()->json(compact('html'));
+        try {
+            // Validate the value...
+            $data = case_input::where('case_id','=',$case_id)->first();
+            //var_dump($data);
+            if ($data!=[]) {
+                $html = view('layout._status', compact('data'))->render();
+                return response()->json(compact('html'));
+            }else{
+                 $html = view('layout._statusError')->render();
+                 return response()->json(compact('html'));
+
+            }
+        } catch (Exception $e) {
+           // $html = view('layout._statusError')->render();
+           // return response()->json(compact('html'));
+        }
+
     }
 
     /**
