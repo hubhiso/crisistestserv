@@ -11,7 +11,7 @@
 	{{ Html::script('js/jquery.min.js') }}
 	{{ Html::script('bootstrap/js/bootstrap.min.js') }}
 	{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet">
 	<meta name="theme-color" content="#cc99cc"/>
 
 
