@@ -6,9 +6,9 @@
 
                 <div class="nav-item">
                     <div class="field is-grouped">
-                        <p class="control"> <a id="i-receive" class="button" href="#"> <span>ไม่รับเรื่อง 100</span> </a> </p>
-                        <p class="control"> <a id="i-additional" class="button" href="#"> <span>ไม่บันทึก 20</span> </a> </p>
-                        <p class="control"> <a id="i-process" class="button" href="#"> <span>ไม่ดำเนินการ 30</span> </a> </p>
+                        <p class="control"> <a id="i-receive" class="button" href="#"> <span>ไม่รับเรื่อง</span> </a> </p>
+                        <p class="control"> <a id="i-additional" class="button" href="#"> <span>ไม่บันทึก</span> </a> </p>
+                        <p class="control"> <a id="i-process" class="button" href="#"> <span>ไม่ดำเนินการ</span> </a> </p>
                     </div>
                 </div>
 
