@@ -230,7 +230,7 @@
             	{!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
             </p>
             <p class="control">
-            	<a ><a href="{{ '/' }}">ยกเลิก</a></a>
+            	<a ><a href="{{ route('guest_home') }}">ยกเลิก</a></a>
             </p>
         </div>
 	</div>

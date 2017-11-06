@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('guest_home');;
 
 Auth::routes();
 Route::prefix('officer')->group(function () {
