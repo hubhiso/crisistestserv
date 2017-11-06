@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="{{ asset('css/jquery.min.js') }}"></script>
 
 	<title> CRS </title>
 	{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}
@@ -15,7 +15,7 @@
 	{{ Html::script('js/jquery.min.js') }}
 	{{ Html::script('bootstrap/js/bootstrap.min.js') }}
 	{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 	<meta name="theme-color" content="#cc99cc"/>
 </head>
 

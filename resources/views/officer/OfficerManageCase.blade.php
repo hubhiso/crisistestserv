@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="{{ asset('css/jquery.min.js') }}"></script>
 
 	{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}
 	{{ Html::style('bootstrap/css/bootstrap.css') }}
@@ -16,7 +16,8 @@
 
 	<title> CRS </title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+	
 	<meta name="theme-color" content="#cc99cc"/>
 
 </head>
@@ -198,8 +199,8 @@
 	</section>
 	<br>
 	@extends('footer')
-	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
-	<script src="http://bulma.io/lib/main.js"></script>
+	<script src="{{ asset('bulma/clipboard-1.7.1.min.jss') }}"></script>
+	<script src="{{ asset('bulma/main.js') }}"></script>
 
 	<script>
         $('.input-daterange input').each(function() {
