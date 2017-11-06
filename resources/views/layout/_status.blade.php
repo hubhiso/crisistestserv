@@ -8,7 +8,7 @@
         <div class="timeline-content">
             <h2>  </h2>
             <p>
-                ระบบดำเนินการรับเรื่องเรียบร้อยแล้ว
+                เจ้าหน้าที่รับเรื่องแล้ว
             </p>
 
         </div>
@@ -32,6 +32,7 @@
         @if($data->status > 2 )
             <div class="timeline-icon">
             <img src="images/markx40.png" alt="">
+            </div>
                 <div class="timeline-content right">
                     <h2>  </h2>
                     <p>
