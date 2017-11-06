@@ -476,10 +476,14 @@
             $('#btn_add').hide();
         }
 		function  clear_input() {
-            $('#advice').checked = false;
-            $('#negotiate_individual').checked = false;
-            $('#negotiate_policy').checked = false;
-            $('#prosecution').checked = false;
+		    //alert("test");
+            $('#operate_date').val("");
+            $('#operate_detail').val("");
+            $('#operate_result').val("");
+            $('#advice').prop('checked', false);
+            $('#negotiate_individual').prop('checked', false);
+            $('#negotiate_policy').prop('checked', false);
+            $('#prosecution').prop('checked', false);
             $('#current_operate').hide();
             $('#btn_add').show();
         }
