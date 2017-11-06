@@ -257,10 +257,10 @@
 			}else if(search_type==2){
                 $('#sub_filter_search').empty();
                 $('#sub_filter_search').removeAttr('disabled');
-                $('#sub_filter_search').append('<option value="1" style="width:250px">บังคับตรวจ HIV</option>');
-                $('#sub_filter_search').append('<option value="2" style="width:250px">เปิดเผยสถาณะ</option>');
-                $('#sub_filter_search').append('<option value="3" style="width:250px">เลือกปฏิบัติ</option>');
-                $('#sub_filter_search').append('<option value="4" style="width:250px">ไม่ได้รับความเป็นธรรม</option>');
+                $('#sub_filter_search').append('<option value="1" style="width:250px">บังคับตรวจเอชไอวี</option>');
+                $('#sub_filter_search').append('<option value="2" style="width:250px">เปิดเผยสถานะการติดเชื้อเอชไอวี</option>');
+                $('#sub_filter_search').append('<option value="3" style="width:250px">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>');
+                $('#sub_filter_search').append('<option value="4" style="width:250px">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>');
 			}else if(search_type==3){
                 $('#sub_filter_search').empty();
                 $('#sub_filter_search').removeAttr('disabled');
