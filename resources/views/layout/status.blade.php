@@ -14,6 +14,8 @@
 	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="http://bulma.io/lib/main.js"></script-->
+	<script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
+	<script src="{{ asset('bulma/main.js') }}"></script>
 	<title> CRS </title>
 </head>
 
