@@ -269,7 +269,7 @@
 							</div>
 							<div class="field">
 								<p class="control  ">
-									<input class="input" type="text" name="age"  id="age" disabled>
+									<input class="input" type="text" name="age"  id="age" readonly>
 								</p>
 							</div>
 						</div>
@@ -554,16 +554,16 @@
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
 									  <select id ="sub_problem" name="sub_problem" @if($show_data->sub_problem == null){ disabled } @endif>
-										  @if($show_data->problem_case == 1)
+										  @if(($show_data->problem_case == 1)||($show_data->problem_case == 5))
 											  <option value="1" style="width:250px" @if($show_data->sub_problem == 1){ selected } @endif>ผู้ติดเชื้อเอชไอวี</option>
 											  <option value="2" style="width:250px" @if($show_data->sub_problem == 2){ selected } @endif>กลุ่มเปราะบาง</option>
-											  <option value="4" style="width:250px" @if($show_data->sub_problem == 3){ selected } @endif>ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
+											  <option value="4" style="width:250px" @if($show_data->sub_problem == 4){ selected } @endif>ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
 											  <option value="3" style="width:250px" @if($show_data->sub_problem == 3){ selected } @endif>ประชาชนทั่วไป</option>
 										  @elseif($show_data->problem_case == 2 || $show_data->problem_case == 3)
 											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
 										  @elseif($show_data->problem_case == 3)
-											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
-											  <option value="4" style="width:250px">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
+											  <option value="1" style="width:250px" @if($show_data->sub_problem == 1){ selected } @endif>ผู้ติดเชื้อเอชไอวี</option>
+											  <option value="4" style="width:250px" @if($show_data->sub_problem == 4){ selected } @endif>ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
 										  @elseif($show_data->problem_case == 4)
 											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
 										  @endif

@@ -292,7 +292,7 @@
 							</div>
 							<div class="field">
 								<p class="control ">
-									<input class="input" name="age" id="age" value="{{$show_detail->age}}"  disabled>
+									<input class="input" name="age" id="age" value="{{$show_detail->age}}"  readonly>
 								</p>
 							</div>
 						</div>
@@ -603,18 +603,20 @@
 							<div class="field is-narrow is-grouped">
 								<div class="control"> <span class="select">
 									  <select id ="sub_problem" name="sub_problem" @if($show_data->sub_problem == null){ disabled } @endif>
-										  @if($show_data->problem_case == 1)
+										  @if(($show_data->problem_case == 1)||($show_data->problem_case == 5))
 											  <option value="1" style="width:250px" @if($show_data->sub_problem == 1){ selected } @endif>ผู้ติดเชื้อเอชไอวี</option>
 											  <option value="2" style="width:250px" @if($show_data->sub_problem == 2){ selected } @endif>กลุ่มเปราะบาง</option>
-											  <option value="4" style="width:250px" @if($show_data->sub_problem == 3){ selected } @endif>ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
+											  <option value="4" style="width:250px" @if($show_data->sub_problem == 4){ selected } @endif>ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
 											  <option value="3" style="width:250px" @if($show_data->sub_problem == 3){ selected } @endif>ประชาชนทั่วไป</option>
 										  @elseif($show_data->problem_case == 2 )
 											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
 										  @elseif($show_data->problem_case == 3)
-											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
-											  <option value="4" style="width:250px">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
+											  <option value="1" style="width:250px" @if($show_data->sub_problem == 1){ selected } @endif>ผู้ติดเชื้อเอชไอวี</option>
+											  <option value="4" style="width:250px" @if($show_data->sub_problem == 4){ selected } @endif>ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
+
 										  @elseif($show_data->problem_case == 4)
 											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
+
 										  @endif
 									  </select>
 									</span>
@@ -672,25 +674,25 @@
 					  <div class="field-body">
 						<div class="field is-grouped">
 						  <div class="control">
-							<label class="checkbox">
+							<label >
 							  <input type="checkbox" name="law" @if($show_detail->cause_type1 == 1){ checked } @endif>
 							  ไม่รู้กฎหมาย
 							</label>
 						  </div>
 						  <div class="control">
-							<label class="checkbox">
+							<label >
 							  <input type="checkbox" name="aids" @if($show_detail->cause_type2 == 1){ checked } @endif>
 							  ขาดความเข้าใจที่ถูกต้องเรื่องเอดส์
 							</label>
 						  </div>
 						  <div class="control">
-							<label class="checkbox">
+							<label >
 							  <input type="checkbox" name="attitude" @if($show_detail->cause_type3 == 1){ checked } @endif>
 							  ทัศนคติ
 							</label>
 						  </div>
 						  <div class="control">
-							<label class="checkbox">
+							<label >
 							  <input type="checkbox" name="policy" @if($show_detail->cause_type4 == 1){ checked } @endif>
 							  นโยบายองค์กร
 							</label>

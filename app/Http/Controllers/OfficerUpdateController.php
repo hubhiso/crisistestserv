@@ -95,7 +95,7 @@ class OfficerUpdateController extends Controller
     }
     public function update_detail(Request $request)
 {
-    //var_dump($request->input('birthdate'));
+    //var_dump($request->input('age'));
     foreach ($request->input() as $key => $value) {
         if (empty($value)) {
             $request->request->set($key, null);
