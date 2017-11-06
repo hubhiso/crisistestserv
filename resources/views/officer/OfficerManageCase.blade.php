@@ -199,7 +199,7 @@
 	</section>
 	<br>
 	@extends('footer')
-	<script src="{{ asset('bulma/clipboard-1.7.1.min.jss') }}"></script>
+	<script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
 	<script src="{{ asset('bulma/main.js') }}"></script>
 
 	<script>

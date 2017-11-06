@@ -91,12 +91,19 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=310296819307942";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script> 
-<script async defer id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script> 
+
+<!--script async defer id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script> 
 <script async defer type="text/javascript" src="https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script> 
 <script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script> 
 <script src="http://bulma.io/javascript/clipboard.min.js"></script> 
 <script src="http://bulma.io/javascript/bulma.js"></script> 
-<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script> 
+<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script-->
+
+
+<script async defer src="{{ asset('bulma/widgets.js') }}"></script>
+<script async defe src="{{ asset('bulma/mc-validate.js') }}"></script>
+
+
 <script type="text/javascript">
   (function($) {
     window.fnames = new Array();
