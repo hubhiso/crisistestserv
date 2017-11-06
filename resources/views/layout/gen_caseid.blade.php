@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('bulma/css/bulma-doc.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 
 </head>
 
@@ -34,7 +35,7 @@
     <div class="tile is-parent">
         <div class="tile is-child box">
             <div class="notification is-success">
-                <button class="delete"></button>
+                <button class="delete is-size-1"></button>
                 รหัสที่ใช้ติดตามข้อมูลของท่านคือ
                 {{ $case_id }}
             </div>
