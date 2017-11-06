@@ -225,7 +225,7 @@
 				
 				<div class="field is-horizontal">
 					<div class="field-label is-normal">
-						<label class="label"> สาเหตุของปัญหา </label>
+						<label class="label"> รายละเอียดของปัญหา </label>
 					</div>
 					<div class="field-body">
 							<div class="field">
@@ -243,7 +243,7 @@
 					{!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
 				</p>
 				<p class="control">
-					<button class="button is-link"><a href="{{ route('officer.main') }}">ยกเลิก</a></button>
+					<a ><a href="{{ route('officer.main') }}">ยกเลิก</a></a>
 				</p>
 			</div>
 		</div>

@@ -47,7 +47,7 @@ class OfficerInputController extends Controller
         //
 
         //$caseinputs = new case_input();
-        $provinces = province::all();
+        $provinces = province::orderBy('PROVINCE_NAME', 'asc')->get();;
         $amphurs= amphur::where('PROVINCE_ID', '=', 1)->get();
         $new_id = $this->gen_id();
         return view('officer.input_case',compact('provinces','amphurs', 'new_id'));
