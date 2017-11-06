@@ -31,7 +31,8 @@
 
 @extends('footer')
 
-<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
-	<script src="http://bulma.io/lib/main.js"></script>
+
+	<script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
+	<script src="{{ asset('bulma/main.js') }}"></script>
 </body>
 </html>
