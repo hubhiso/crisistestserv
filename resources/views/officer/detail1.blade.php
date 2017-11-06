@@ -140,9 +140,9 @@
 								@elseif($show_data->problem_case == 2)
 										<input class="input" type="text" placeholder="ประเภท2" value="เปิดเผยสถานะการติดเชื้อเอชไอวี" disabled>
 								@elseif($show_data->problem_case == 3)
-										<input class="input" type="text" placeholder="ประเภท3" value="เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี" disabled>
+										<input class="input" type="text" placeholder="ประเภท3" value="ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี" disabled>
 								@elseif($show_data->problem_case == 4)
-										<input class="input" type="text" placeholder="ประเภท4" value="ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง" disabled>
+										<input class="input" type="text" placeholder="ประเภท4" value="ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง" disabled>
 								@endif
 
 								 </p>
@@ -159,11 +159,13 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded has-icons-left ">
 									@if($show_data->sub_problem == 1 )
-										<input class="input" type="text" placeholder="ประเภท1" value="ผู้ติดเชื้อ HIV" disabled>
+										<input class="input" type="text" placeholder="ประเภท1" value="ผู้ติดเชื้อเอชไอวี" disabled>
 									@elseif($show_data->sub_problem == 2)
 										<input class="input" type="text" placeholder="ประเภท2" value="กลุ่มเปราะบาง" disabled>
 									@elseif($show_data->sub_problem == 3)
 										<input class="input" type="text" placeholder="ประเภท3" value="ประชาชนทั่วไป" disabled>
+									@elseif($show_data->sub_problem == 4)
+										<input class="input" type="text" placeholder="ประเภท4" value="ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี" disabled>
 									@endif
 								</p>
 							</div>
@@ -231,7 +233,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" placeholder="กรอกรายละเอียด" value="{{ $show_data->detail }}" disabled></textarea>
+									<textarea class="textarea" placeholder="กรอกรายละเอียด" value="{{ $show_data->detail }}" readonly></textarea>
 								</div>
 							</div>
 						</div>
