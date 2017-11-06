@@ -259,21 +259,24 @@ class OfficerUpdateController extends Controller
        // $Date_end = $Date_end;
         $text_search = $request->input('Search_text');
         $type_Search = $request->input('Type_search');
+        $pid = $request->input('pid');
 
         if($request->input('Filter')==1){
-
+            $matchThese = ['prov_id'=>$pid];
+            $cases = case_input::where($matchThese);
+            $filter ++;
         }else if ($request->input('Filter')==2){
-            $matchThese = ['problem_case' => $value_sub];
+            $matchThese = ['problem_case' => $value_sub,'prov_id'=>$pid];
             $cases = case_input::where($matchThese);
             $filter ++;
 
         }else if ($request->input('Filter')==3){
-            $matchThese = ['status' => $value_sub];
+            $matchThese = ['status' => $value_sub,'prov_id'=>$pid];
             $cases = case_input::where($matchThese);
             $filter ++;
 
         }else if ($request->input('Filter')==4){
-            $matchThese = ['sender_case' => $value_sub];
+            $matchThese = ['sender_case' => $value_sub,'prov_id'=>$pid];
             $cases = case_input::where($matchThese);
             $filter ++;
         }
@@ -333,7 +336,7 @@ class OfficerUpdateController extends Controller
             $cases = $cases->get();
           //var_dump($cases);
         }else{
-            $cases = case_input::all();
+            $cases = case_input::Where('prov_id','=',$pid);
         }
 
         $html = view('officer._Case',compact('cases'))->render();
