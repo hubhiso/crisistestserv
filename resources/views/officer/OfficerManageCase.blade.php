@@ -30,7 +30,7 @@
 				</div>
 			</div>
 		<input type="hidden" id="token" value="{{ csrf_token() }}">
-
+		<input type="hidden" id="p_id" value="{{ Auth::user()->prov_id }}">
 		<div class="container">
 			
 				<nav class="breadcrumb">
@@ -212,6 +212,7 @@
 
         function load_case () {
             var token = $('#token').val();
+            var p_id = $('#p_id').val();
             var text_search = $('#text_search').val();
             var type_Search = $('#type_search').val();
             var Date_start = $('#date_start').val();
@@ -228,6 +229,7 @@
                 url: '{!!  route('officer.load_case') !!}',
                 data: {
                     _token: token,
+                    pid: p_id,
                     Search_text: text_search,
                     Type_search: type_Search,
 					Date_start : Date_start,

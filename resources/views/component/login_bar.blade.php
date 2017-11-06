@@ -21,7 +21,7 @@
 
             <div id="navMenuDocumentation" class="navbar-menu">
                 <div class="navbar-end">
-                    <a class="nav-item is-active" href="#"> Username : {{ Auth::user()->name }} </a>
+                    <a class="nav-item is-active" href="#"> Username : {{ Auth::user()->name }}  </a>
                     <div class="nav-item">
                         <p class="control"> <a class="button is-primary" href="{{ route('officer.logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"> <span>Logout</span> </a> </p>
