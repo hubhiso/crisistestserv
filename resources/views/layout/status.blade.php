@@ -9,6 +9,7 @@
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/base.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+	<script src="{{ asset('css/jquery.min.js') }}"></script>
 	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

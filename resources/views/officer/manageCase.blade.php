@@ -8,14 +8,14 @@
 
 	<title>Crisis Response</title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-	
+	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 	
 
 	<meta name="theme-color" content="#cc99cc"/>
-	<script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
+	<!--script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
 	<script src="http://bulma.io/javascript/clipboard.min.js"></script>
 	<script src="http://bulma.io/javascript/bulma.js"></script>
-	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script>
+	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script-->
 </head>
 
 <body class="layout-default">

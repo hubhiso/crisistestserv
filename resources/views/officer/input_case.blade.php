@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <script src="{{ asset('css/jquery.min.js') }}"></script>
     <title> CRS </title>
 
 </head>
