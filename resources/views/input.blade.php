@@ -277,7 +277,7 @@
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
                 $('#sub_problem').append('<option value="1" >ผู้ติดเชื้อเอชไอวี</option>');
-                $('#sub_problem').append('<option value="4" >ครอบครัวผู้ติดเชื้อ HIV</option>');
+                $('#sub_problem').append('<option value="4" >ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
             }else if(prob_id == 4){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
