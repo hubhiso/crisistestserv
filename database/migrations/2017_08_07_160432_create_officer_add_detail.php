@@ -16,6 +16,7 @@ class CreateOfficerAddDetail extends Migration
         Schema::create('add_details', function (Blueprint $table) {
             $table->increments('id');
             $table->string('case_id', 5)->references('case_id')->on('case_inputs');
+            $table->date('interview_date')->nullable();
             $table->date('birth_date')->nullable();
             $table->integer('age')->nullable();
             $table->integer('current_status')->nullable();
@@ -30,6 +31,7 @@ class CreateOfficerAddDetail extends Migration
             $table->text('violator_organization')->nullable();
             $table->text('offender_organization')->nullable();
             $table->text('accident_location')->nullable();
+            $table->date('accident_date')->nullable();
             $table->text('accident_time')->nullable();
             $table->text('violation_characteristics')->nullable();
             $table->text('effect')->nullable();

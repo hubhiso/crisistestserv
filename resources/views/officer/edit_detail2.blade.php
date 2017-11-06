@@ -260,7 +260,7 @@
 								<p class="control  has-icons-left " >
 									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" id="DateInterview" name="DateInterview" class="form-control" >
+									<input type="text" id="DateInterview" name="DateInterview" class="form-control"  value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->interview_date)))}}">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
 									</div>
@@ -552,7 +552,7 @@
 								<p class="control  has-icons-left " >
 									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" id="DateAct" name="DateAct" class="form-control" >
+									<input type="text" id="DateAct" name="DateAct" class="form-control" value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->accident_date)))}}">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
 									</div>

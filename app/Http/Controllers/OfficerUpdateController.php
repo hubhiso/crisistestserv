@@ -30,6 +30,8 @@ class OfficerUpdateController extends Controller
         }
         $case_id = $request->input('case_id');
         $birth_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('birthdate'))));
+        $interview_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateInterview'))));
+        $accident_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateAct'))));
         $temp_chk1 = $request->input('law');
         $temp_chk2 = $request->input('aids');
         $temp_chk3 = $request->input('attitude');
@@ -63,6 +65,7 @@ class OfficerUpdateController extends Controller
                                                             'detail' => $request->input('detail')]);
         add_detail::create(
             ['case_id'=>$case_id,
+             'interview_date'=>$interview_date,
             'birth_date'=>$birth_date,
             'age'=>$request->input('age'),
             'current_status'=>$request->input('marital-status'),
@@ -77,6 +80,7 @@ class OfficerUpdateController extends Controller
             'violator_organization'=>$request->input('violator_organization'),
             'offender_organization'=>$request->input('offender_organization'),
             'accident_location'=>$request->input('accident_location'),
+            'accident_date'=>$accident_date,
             'accident_time'=>$request->input('accident_time'),
             'violation_characteristics'=>$request->input('violation_characteristics'),
             'effect'=>$request->input('effect'),
@@ -88,7 +92,8 @@ class OfficerUpdateController extends Controller
             'etc_detail'=>$request->input('etc_detail')]
         );
         return redirect('officer/show');
-    }public function update_detail(Request $request)
+    }
+    public function update_detail(Request $request)
 {
     //var_dump($request->input('birthdate'));
     foreach ($request->input() as $key => $value) {
@@ -98,6 +103,9 @@ class OfficerUpdateController extends Controller
     }
     $case_id = $request->input('case_id');
     $birth_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('birthdate'))));
+    $interview_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateInterview'))));
+    $accident_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateAct'))));
+
     $temp_chk1 = $request->input('law');
     $temp_chk2 = $request->input('aids');
     $temp_chk3 = $request->input('attitude');
@@ -131,6 +139,7 @@ class OfficerUpdateController extends Controller
         'detail' => $request->input('detail')]);
     add_detail::where('case_id','=',$case_id)->update(
         [
+            'interview_date'=>$interview_date,
             'birth_date'=>$birth_date,
             'age'=>$request->input('age'),
             'current_status'=>$request->input('marital-status'),
@@ -145,6 +154,7 @@ class OfficerUpdateController extends Controller
             'violator_organization'=>$request->input('violator_organization'),
             'offender_organization'=>$request->input('offender_organization'),
             'accident_location'=>$request->input('accident_location'),
+            'accident_date'=>$accident_date,
             'accident_time'=>$request->input('accident_time'),
             'violation_characteristics'=>$request->input('violation_characteristics'),
             'effect'=>$request->input('effect'),
