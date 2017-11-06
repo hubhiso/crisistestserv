@@ -8,10 +8,11 @@
 	<meta name="theme-color" content="#cc99cc"/>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/base.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="http://bulma.io/lib/main.js"></script>
+	<script src="http://bulma.io/lib/main.js"></script-->
 	<title> CRS </title>
 </head>
 
