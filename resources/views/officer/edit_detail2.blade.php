@@ -11,7 +11,7 @@
 	{{ Html::script('js/jquery.min.js') }}
 	{{ Html::script('bootstrap/js/bootstrap.min.js') }}
 	{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}
-	<link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 	<meta name="theme-color" content="#cc99cc"/>
 
 
