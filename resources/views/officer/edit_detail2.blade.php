@@ -168,7 +168,7 @@
 							<div class="field">
 								<div class="field is-grouped">
 									<p class="control is-expanded has-icons-left ">
-										<label class="radio">
+										<label >
 											@if( $show_data->sex == 1 )
       											{{ Form::radio('sex', '1' , true) }}
 											@else
@@ -178,7 +178,7 @@
     						</label>
 									
 
-										<label class="radio">
+										<label >
 											@if( $show_data->sex == 2 )
 												{{ Form::radio('sex', '2' , true) }}
 											@else
@@ -187,7 +187,7 @@
     						</label>
 									
 
-										<label class="radio">
+										<label >
 											@if( $show_data->sex == 3 )
 												{{ Form::radio('sex', '3' , true) }}
 											@else
@@ -251,6 +251,26 @@
 						</div>
 					</div>
 
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> วันที่สอบถามข้อมูล </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control  has-icons-left " >
+									<!--This container is birth_date input. -->
+								<div class="input-group date" data-provide="datepicker">
+									<input type="text" id="DateInterview" name="DateInterview" class="form-control" >
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
+								<!-- interview input -->
+								</p>
+							</div>
+
+						</div>
+					</div>
 
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
@@ -287,7 +307,7 @@
 							<div class="field">
 								<div class="field is-grouped">
 									<p class="control is-expanded has-icons-left ">
-										<label class="radio">
+										<label >
 											@if( $show_detail->current_status == 1 )
 												{{ Form::radio('marital-status', '1' , true) }}
 											@else
@@ -297,7 +317,7 @@
     						</label>
 									
 
-										<label class="radio">
+										<label >
 											@if( $show_detail->current_status == 2 )
 												{{ Form::radio('marital-status', '2' , true) }}
 											@else
@@ -307,7 +327,7 @@
     						</label>
 									
 
-										<label class="radio">
+										<label >
 											@if( $show_detail->current_status == 3 )
 												{{ Form::radio('marital-status', '3' , true) }}
 											@else
@@ -317,7 +337,7 @@
     						</label>
 									
 
-										<label class="radio">
+										<label >
 											@if( $show_detail->current_status == 4 )
 												{{ Form::radio('marital-status', '4' , true) }}
 											@else
@@ -343,16 +363,15 @@
 								<div class="control"> <span class="select">
 									<select id ="occupation" name="occupation">
 									  <option value="0" @if($show_detail->occupation == 0){ selected } @endif> โปรดเลือก </option>
-									  <option value="1" @if($show_detail->occupation == 1){ selected } @endif> รับราชการ </option>
-									  <option value="2" @if($show_detail->occupation == 2){ selected } @endif> พนักงานบริษัทเอกชน </option>
-									  <option value="3" @if($show_detail->occupation == 3){ selected } @endif> องค์กรพัฒนาเอกชน (NGO) </option>
-									  <option value="4" @if($show_detail->occupation == 4){ selected } @endif> พนักงานมหาวิทยาลัย </option>
-									  <option value="5" @if($show_detail->occupation == 5){ selected } @endif> นักเรียน/นักศึกษา </option>
-									  <option value="6" @if($show_detail->occupation == 6){ selected } @endif> พนักงานบริการทั่วไป </option>
-									  <option value="7" @if($show_detail->occupation == 7){ selected } @endif> รับจ้างทั่วไป </option>
-									  <option value="8" @if($show_detail->occupation == 8){ selected } @endif> เกษตรกร </option>
-									  <option value="9" @if($show_detail->occupation == 9){ selected } @endif> ธุรกิจส่วนตัว </option>
-									  <option value="10" @if($show_detail->occupation == 10){ selected } @endif> อื่นๆ โปรดระบุ </option>
+									  <option value="1" @if($show_detail->occupation == 1){ selected } @endif> ทำงานในหน่วยงานราชการ </option>
+									  <option value="2" @if($show_detail->occupation == 2){ selected } @endif> ทำงานในบริษัทเอกชน </option>
+									  <option value="3" @if($show_detail->occupation == 3){ selected } @endif> ทำงานในองค์กรพัฒนาเอกชน (NGO) </option>
+									  <option value="4" @if($show_detail->occupation == 4){ selected } @endif> ธุรกิจส่วนตัว </option>
+									  <option value="5" @if($show_detail->occupation == 5){ selected } @endif> รับจ้างทั่วไป </option>
+									  <option value="6" @if($show_detail->occupation == 6){ selected } @endif> เกษตรกร </option>
+									  <option value="7" @if($show_detail->occupation == 7){ selected } @endif> นักเรียน/นักศึกษา </option>
+									  <option value="8" @if($show_detail->occupation == 8){ selected } @endif> ว่างงาน </option>
+									  <option value="9" @if($show_detail->occupation == 9){ selected } @endif> อื่นๆ โปรดระบุ </option>
 									</select>
 									</span>
 									<input id="occupation_detail" name="occupation_detail"  type="text" value="{{$show_detail->occupation_detail}}" hidden >
@@ -524,10 +543,30 @@
 							</div>
 						</div>
 					</div>
-					
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
-							<label class="label"> วันเวลาที่เกิดเหตุ </label>
+							<label class="label"> วันที่เกิดเหตุ </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control  has-icons-left " >
+									<!--This container is birth_date input. -->
+								<div class="input-group date" data-provide="datepicker">
+									<input type="text" id="DateAct" name="DateAct" class="form-control" >
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
+								<!-- interview input -->
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> รายละเอียดวันเวลาที่เกิดเหตุ </label>
 						</div>
 						<div class="field-body">
 							<div class="field">
@@ -554,8 +593,9 @@
 									<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
 									<option value="1"  @if($show_data->problem_case == 1){ selected } @endif>บังคับตรวจเอชไอวี</option>
 									<option value="2"  @if($show_data->problem_case == 2){ selected } @endif>เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
-									<option value="3"  @if($show_data->problem_case == 3){ selected } @endif>เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
-									<option value="4"  @if($show_data->problem_case == 4){ selected } @endif>ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
+									<option value="3"  @if($show_data->problem_case == 3){ selected } @endif>ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
+									<option value="4"  @if($show_data->problem_case == 4){ selected } @endif>ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
+									<option value="5"  @if($show_data->problem_case == 5){ selected } @endif>อื่นๆ ที่เกี่ยวข้องกับ HIV</option>
 								</select>
 									</span>
 								</div>
@@ -566,9 +606,13 @@
 										  @if($show_data->problem_case == 1)
 											  <option value="1" style="width:250px" @if($show_data->sub_problem == 1){ selected } @endif>ผู้ติดเชื้อเอชไอวี</option>
 											  <option value="2" style="width:250px" @if($show_data->sub_problem == 2){ selected } @endif>กลุ่มเปราะบาง</option>
+											  <option value="4" style="width:250px" @if($show_data->sub_problem == 3){ selected } @endif>ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
 											  <option value="3" style="width:250px" @if($show_data->sub_problem == 3){ selected } @endif>ประชาชนทั่วไป</option>
-										  @elseif($show_data->problem_case == 2 || $show_data->problem_case == 3)
+										  @elseif($show_data->problem_case == 2 )
 											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
+										  @elseif($show_data->problem_case == 3)
+											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
+											  <option value="4" style="width:250px">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
 										  @elseif($show_data->problem_case == 4)
 											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
 										  @endif
@@ -726,11 +770,12 @@
             //console.log(prob_id);
             $('#group_code').empty();
             $('#group_code').attr('disabled', 'disabled');
-            if(prob_id==1){
+            if((prob_id==1)||(prob_id==5)){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
                 $('#sub_problem').append('<option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>');
                 $('#sub_problem').append('<option value="2" style="width:250px">กลุ่มเปราะบาง</option>');
+                $('#sub_problem').append('<option value="4" style="width:250px">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
                 $('#sub_problem').append('<option value="3" style="width:250px">ประชาชนทั่วไป</option>');
             }else if(prob_id==2){
                 $('#sub_problem').empty();
@@ -740,6 +785,7 @@
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
                 $('#sub_problem').append('<option value="1" >ผู้ติดเชื้อเอชไอวี</option>');
+                $('#sub_problem').append('<option value="4" >ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
             }else if(prob_id==4){
                 $('#sub_problem').empty();
                 $('#sub_problem').removeAttr('disabled');
@@ -750,8 +796,8 @@
                 $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ </option>');
                 $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
                 $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
-                $('#group_code').append('<option value="5" style="width:250px">ผู้ต้องขัง</option>');
-                $('#group_code').append('<option value="6" style="width:250px">เยาวชนในสถานพินิจ</option>');
+                $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
+
             }else{
                 $('#sub_problem').empty();
                 $('#sub_problem').attr('disabled', 'disabled');
@@ -766,8 +812,8 @@
                 $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ HIV</option>');
                 $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
                 $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
-                $('#group_code').append('<option value="5" style="width:250px">ผู้ต้องขัง</option>');
-                $('#group_code').append('<option value="6" style="width:250px">เยาวชนในสถานพินิจ</option>');
+                $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
+
 
             }else{
                 $('#group_code').empty();
@@ -783,6 +829,18 @@
                 document.getElementById("offender_subtype").disabled = true;
             }else {
                 document.getElementById("offender_subtype").disabled = false;
+            }
+        });
+
+        $('#occupation').on('change',function (e) {
+
+            var sel_value = e.target.value;
+            //alert(sel_value);
+
+            if(sel_value == 9) {
+                $('#occupation_detail').show();
+            }else {
+                $('#occupation_detail').hide();
             }
         });
 		/*

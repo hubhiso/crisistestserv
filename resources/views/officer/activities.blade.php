@@ -165,30 +165,37 @@
 					  </div>
 					  <div class="field-body">
 						<div class="field is-grouped">
+							<div class="control">
+								<label >
+									<input type="checkbox" name="investigate" id="investigate">
+									สืบหาข้อเท๊จจริง
+								</label>
+							</div>
 						  <div class="control">
-							<label class="checkbox">
+							<label >
 							  <input type="checkbox" name="advice" id="advice">
 							  ให้คำปรึกษา
 							</label>
 						  </div>
 						  <div class="control">
-							<label class="checkbox">
+							<label >
 							  <input type="checkbox" name="negotiate_individual" id="negotiate_individual">
 							  เจรจาเป็นรายบุคคล
 							</label>
 						  </div>
 						  <div class="control">
-							<label class="checkbox">
+							<label >
 							  <input type="checkbox" name="negotiate_policy" id="negotiate_policy">
 							  เจรจาระดับนโยบายขององค์กร
 							</label>
 						  </div>
 						  <div class="control">
-							<label class="checkbox">
+							<label >
 							  <input type="checkbox" name="prosecution" id="prosecution">
 							  ดำเนินคดี
 							</label>
 						  </div>
+
 						</div>
 					  </div>
 					</div>
@@ -284,8 +291,12 @@
 
 								<p class="column " id="chk_result" @if($show_data->operate_result_status != 1 ) style="display: none" @endif>
 								<label class="checkbox">
+										<input type="checkbox" name="compensation" id="compensation" @if($show_data->compensation == 1 ) checked @endif>
+										ปัญหาได้รับการแก้ไข
+								</label>
+								<label class="checkbox">
 									<input type="checkbox" name="compensation" id="compensation" @if($show_data->compensation == 1 ) checked @endif>
-									บุคคลได้รับการชดเชย
+									บุคคลได้รับการเยียวยา
 								</label>
 								<label class="checkbox">
 									<input type="checkbox" name="change_policy" id="change_policy" @if($show_data->change_policy == 1 ) checked @endif>
@@ -344,28 +355,28 @@
 					</div>
 				</div>
 
-				<div class="box">
-					<div class="field is-horizontal">
-						<div class="field-label is-normal">
-							<label class="label"> ผลการดำเนินการที่ส่งต่อ </label>
-						</div>
-						<div class="field-body">
-							<div class="field is-grouped">
-								<p class="control  ">
-									<input class="input" type="text" placeholder="" value="ยังไม่ได้รับเรื่อง" disabled>
-									 </p>
-							</div>
-							<div class="field-label is-normal">
-								<label class="label"> ดำเนินการเสร็จสิ้น </label>
-							</div>
-							<div class="field">
-								<p class="control  has-icons-left ">
-									<input class="input" type="text" placeholder="" value="" disabled>
-									 </p>
-							</div>
-						</div>
-					</div>
-				</div>
+				{{--<div class="box">--}}
+					{{--<div class="field is-horizontal">--}}
+						{{--<div class="field-label is-normal">--}}
+							{{--<label class="label"> ผลการดำเนินการที่ส่งต่อ </label>--}}
+						{{--</div>--}}
+						{{--<div class="field-body">--}}
+							{{--<div class="field is-grouped">--}}
+								{{--<p class="control  ">--}}
+									{{--<input class="input" type="text" placeholder="" value="ยังไม่ได้รับเรื่อง" disabled>--}}
+									 {{--</p>--}}
+							{{--</div>--}}
+							{{--<div class="field-label is-normal">--}}
+								{{--<label class="label"> ดำเนินการเสร็จสิ้น </label>--}}
+							{{--</div>--}}
+							{{--<div class="field">--}}
+								{{--<p class="control  has-icons-left ">--}}
+									{{--<input class="input" type="text" placeholder="" value="" disabled>--}}
+									 {{--</p>--}}
+							{{--</div>--}}
+						{{--</div>--}}
+					{{--</div>--}}
+				{{--</div>--}}
 
 				<div class="field is-horizontal">
 					<div class="field-label">
@@ -393,11 +404,15 @@
         }
         function update_operate(operate_id) {
             var advice_s = 0;
+            var investigate_s = 0;
             var negotiate_individual_s = 0;
             var negotiate_policy_s = 0;
             var prosecution_s = 0;
             if ($('#edit_advice'+operate_id).is(':checked') == true) {
                 advice_s = 1;
+            }
+            if ($('#edit_investigate'+operate_id).is(':checked') == true) {
+                investigate_s = 1;
             }
             if ($('#edit_negotiate_individual'+operate_id).is(':checked') == true) {
                 negotiate_individual_s = 1;
@@ -418,6 +433,7 @@
                     _token: token,
                     id: operate_id,
                     advice: advice_s,
+                    investigate: investigate_s,
                     negotiate_individual: negotiate_individual_s,
                     negotiate_policy: negotiate_policy_s,
                     prosecution: prosecution_s,
@@ -476,11 +492,15 @@
             var case_id_s = $('#case_id').val();
             var operate_date_s = $('#operate_date').val();
             var advice_s = 0;
+            var investigate_s = 0;
             var negotiate_individual_s = 0;
             var negotiate_policy_s = 0;
             var prosecution_s = 0;
             if ($('#advice').is(':checked') == true) {
                 advice_s = 1;
+            }
+            if ($('#investigate').is(':checked') == true) {
+                investigate_s = 1;
             }
             if ($('#negotiate_individual').is(':checked') == true) {
                 negotiate_individual_s = 1;
@@ -503,6 +523,7 @@
                     case_id: case_id_s,
                     operate_date: operate_date_s,
                     advice: advice_s,
+                    investigate: investigate_s,
                     negotiate_individual: negotiate_individual_s,
                     negotiate_policy: negotiate_policy_s,
                     prosecution: prosecution_s,

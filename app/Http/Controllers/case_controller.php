@@ -123,9 +123,17 @@ class case_controller extends Controller
      */
     public function update($id)
     {
-        //
-    }
 
+    }
+    public function up_evaluate(Request $request){
+        $case_id = Request::input('case_id');
+        $eval_1 =  Request::input('eval_1');
+        $eval_2 = Request::input('eval_2');
+        case_input::where('case_id','=',$case_id)->update([
+            'evaluate1'=>$eval_1,
+            'evaluate2'=>$eval_2
+        ]);
+    }
     /**
      * Remove the specified resource from storage.
      *

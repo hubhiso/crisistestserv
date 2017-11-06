@@ -21,6 +21,7 @@ class AddOperateDetail extends Migration
             $table->integer('negotiate_individual')->nullable();
             $table->integer('negotiate_policy')->nullable();
             $table->integer('prosecution')->nullable();
+            $table->integer('investigate')->nullable();
             $table->text('operate_detail')->nullable();
             $table->text('operate_result')->nullable();
             $table->timestamps();

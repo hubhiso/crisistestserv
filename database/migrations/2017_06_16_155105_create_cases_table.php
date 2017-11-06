@@ -40,6 +40,8 @@ class CreateCasesTable extends Migration
             $table->integer('prov_refer')->nullable();
             $table->integer('refer_type')->nullable();
             $table->text('refer_name')->nullable();
+            $table->integer('evaluate1')->nullable();
+            $table->integer('evaluate2')->nullable();
             ///////////////////////////
             $table->timestamps();
         });

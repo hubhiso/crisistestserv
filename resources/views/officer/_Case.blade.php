@@ -38,9 +38,9 @@
         @elseif($case->problem_case == 2)
             <td>เปิดเผยสถานะการติดเชื้อเอชไอวี</td>
         @elseif($case->problem_case == 3)
-            <td>เลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</td>
+            <td>ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</td>
         @elseif($case->problem_case == 4)
-            <td>ไม่ได้รับความเป็นธรรมเนื่องมาจากเป็นกลุ่มเปราะบาง</td>
+            <td>ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</td>
         @endif
         @if( $case->status  == 1)
             <td>ยังไม่ได้รับเรื่อง</td>
@@ -79,7 +79,7 @@
 <script>
     $('table.paginated').each(function() {
         var currentPage = 0;
-        var numPerPage = 2;
+        var numPerPage = 5;
         var $table = $(this);
         $table.bind('repaginate', function() {
             $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();

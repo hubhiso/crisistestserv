@@ -47,6 +47,8 @@ Route::get('status', function () {
     return view('layout.status');
 });
 Route::get('status/{case_id}', 'case_controller@show')->name('case.status');
+Route::post('evaluate', 'case_controller@up_evaluate')->name('case.update');
+
 
 Route::get('manage', function () {
     return view('officer.manageCase');

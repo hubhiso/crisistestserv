@@ -166,6 +166,7 @@ class OfficerUpdateController extends Controller
             'case_id' => $request->input('case_id'),
             'operate_date' => $operate_date,
             'advice' => $request->input('advice'),
+            'investigate' => $request->input('investigate'),
             'negotiate_individual' => $request->input('negotiate_individual'),
             'negotiate_policy' => $request->input('negotiate_policy'),
             'prosecution' => $request->input('prosecution'),
@@ -181,6 +182,7 @@ class OfficerUpdateController extends Controller
         $response = array(
             'case_id' => $request->input('case_id'),
             'operate_date' => $operate_date,
+            'investigate' => $request->input('investigate'),
             'advice' => $request->input('advice'),
             'negotiate_individual' => $request->input('negotiate_individual'),
             'negotiate_policy' => $request->input('negotiate_policy'),
@@ -229,6 +231,7 @@ class OfficerUpdateController extends Controller
         $id = $request->input('id');
         operate_detail::where('id','=',$id)->update([
             'advice' => $request->input('advice'),
+            'investigate' => $request->input('investigate'),
             'negotiate_individual' => $request->input('negotiate_individual'),
             'negotiate_policy' => $request->input('negotiate_policy'),
             'prosecution' => $request->input('prosecution'),
@@ -242,7 +245,8 @@ class OfficerUpdateController extends Controller
         $filter = 0;
         $value_sub = $request->input('Sub_Filter');
         $Date_start = date('Y-m-d',strtotime(str_replace('-','/', $request->input('Date_start'))));
-        $Date_end = date('Y-m-d',strtotime(str_replace('-','/', $request->input('Date_end'))));
+        $Date_end = date('Y-m-d',strtotime(str_replace('-','/', $request->input('Date_end')). "+1 day"));
+       // $Date_end = $Date_end;
         $text_search = $request->input('Search_text');
         $type_Search = $request->input('Type_search');
 

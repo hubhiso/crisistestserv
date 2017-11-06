@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+	<input type="hidden" id="token" value="{{ csrf_token() }}">
 	<section class="hero is-primary wall3">
 		<div class="hero-body">
 			<div class="container">
@@ -123,21 +123,20 @@
 			  <tbody>
 				<tr>
 				  <th>1</th>
-				  <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C."> การรับเรื่องและติดต่อกลับ </a> 
+				  <td><a href="#" > การรับเรื่องและติดต่อกลับ </a>
 				  </td>
-				  <td><label class="radio"><input type="radio" name=""></label></td>
-				  <td><label class="radio"><input type="radio" name=""></label></td>
-				  <td><label class="radio"><input type="radio" name=""></label></td>
-				  <td><label class="radio"><input type="radio" name=""></label></td>
-
+				  <td>{{ Form::radio('eval1', '1' , true) }}</td>
+				  <td>{{ Form::radio('eval1', '2' , false) }}</td>
+				  <td>{{ Form::radio('eval1', '3' , false) }}</td>
+				  <td>{{ Form::radio('eval1', '4' , false) }}</td>
 				</tr>
 				<tr>
 				  <th>2</th>
-				  <td><a href="https://en.wikipedia.org/wiki/Arsenal_F.C." title="Arsenal F.C."> การให้การช่วยเหลือ </a></td>
-				  <td><label class="radio"><input type="radio" name=""></label></td>
-				  <td><label class="radio"><input type="radio" name=""></label></td>
-				  <td><label class="radio"><input type="radio" name=""></label></td>
-				  <td><label class="radio"><input type="radio" name=""></label></td>
+				  <td><a href="#" > การให้การช่วยเหลือ </a></td>
+					<td>{{ Form::radio('eval2', '1' , true) }}</td>
+					<td>{{ Form::radio('eval2', '2' , false) }}</td>
+					<td>{{ Form::radio('eval2', '3' , false) }}</td>
+					<td>{{ Form::radio('eval2', '4' , false) }}</td>
 
 				</tr>
 
@@ -146,7 +145,7 @@
 		  </div>
 		</section>
 		<footer class="modal-card-foot">
-		  <a class="button is-success"> บันทึก </a>
+		  <a class="button is-success" onclick="evaluate1();"> บันทึก </a>
 		  <a class="button"> ยกเลิก </a>
 		</footer>
 	  </div>
@@ -155,6 +154,30 @@
 
 </body>
 <script>
+	function evaluate1() {
+        var token = $('#token').val();
+        var  case_id = $('#case_search').val();
+        var  eval1 = $("input[name='eval1']:checked").val();
+        var  eval2 = $("input[name='eval2']:checked").val();
+        console.log(eval1 + eval2);
+		//alert(eval1 + eval2);
+        $.ajax({
+            type: 'POST',
+            url: '{!!  route('case.update') !!}',
+            data: {
+                _token: token,
+                case_id: case_id,
+                eval_1: eval1,
+                eval_2 : eval2,
+            },
+            success: function( data ) {
+                console.log(data);
+            },
+			error: function (request, data, error) {
+                alert(data);
+            }
+        })
+    }
     function report_status(){
 
         var  case_id = $('#case_search').val();

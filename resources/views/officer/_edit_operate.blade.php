@@ -20,25 +20,31 @@
         <div class="field-body">
             <div class="field is-grouped">
                 <div class="control">
-                    <label class="checkbox">
+                    <label >
+                        <input type="checkbox" name="edit_investigate" id="edit_investigate{{$operate_data->id}}" @if($operate_data->investigate == 1 ) checked @endif>
+                        สืบหาข้อเท๊จจริง
+                    </label>
+                </div>
+                <div class="control">
+                    <label >
                         <input type="checkbox" name="edit_advice" id="edit_advice{{$operate_data->id}}" @if($operate_data->advice == 1 ) checked @endif >
                         ให้คำปรึกษา
                     </label>
                 </div>
                 <div class="control">
-                    <label class="checkbox">
+                    <label >
                         <input type="checkbox" name="edit_negotiate_individual" id="edit_negotiate_individual{{$operate_data->id}}" @if($operate_data->negotiate_individual == 1 ) checked @endif>
                         เจรจาเป็นรายบุคคล
                     </label>
                 </div>
                 <div class="control">
-                    <label class="checkbox">
+                    <label >
                         <input type="checkbox" name="edit_negotiate_policy" id="edit_negotiate_policy{{$operate_data->id}}" @if($operate_data->negotiate_policy == 1 ) checked @endif>
                         เจรจาระดับนโยบายขององค์กร
                     </label>
                 </div>
                 <div class="control">
-                    <label class="checkbox">
+                    <label >
                         <input type="checkbox" name="edit_prosecution" id="edit_prosecution{{$operate_data->id}}" @if($operate_data->prosecution == 1 ) checked @endif>
                         ดำเนินคดี
                     </label>

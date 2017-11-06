@@ -23,7 +23,7 @@ class CreateOfficerAddDetail extends Migration
             $table->text('occupation_detail')->nullable();
             $table->text('address')->nullable();
             $table->integer('card_type')->nullable();
-            $table->bigInteger('card_number')->nullable();
+            $table->text('card_number')->nullable();
             $table->integer('type_offender')->nullable();
             $table->integer('subtype_offender')->nullable();
             $table->text('violator_name')->nullable();
