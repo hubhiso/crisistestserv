@@ -218,7 +218,7 @@
 					<div class="field-body">
 						<div class="field">
 							<div class="control">
-								<textarea class="textarea" placeholder=" กรอกรายละเอียดของปัญหา "></textarea>
+								<textarea class="textarea"  id ="detail" name="detail" placeholder=" กรอกรายละเอียดของปัญหา "></textarea>
 							</div>
 						</div>
 					</div>

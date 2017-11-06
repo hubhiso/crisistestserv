@@ -233,7 +233,7 @@
 						<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea class="textarea" placeholder="กรอกรายละเอียด" value="{{ $show_data->detail }}" readonly></textarea>
+									<textarea class="textarea" placeholder="กรอกรายละเอียด" value="{{ $show_data->detail }}" ></textarea>
 								</div>
 							</div>
 						</div>
