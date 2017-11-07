@@ -42,7 +42,7 @@
             @if(Auth::guard('officer')->check())
                 <a class="button is-success" href="{{ route('officer.main') }}">กลับสู้หน้าหลัก</a>
             @else
-            <a class="button is-success" href="{{ url('/') }}">กลับสู้หน้าหลัก</a>
+            <a class="button is-success" href="{{ route('guest_home') }}">กลับสู้หน้าหลัก</a>
             @endif
         </div>
     </div>
