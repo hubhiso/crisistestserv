@@ -96,7 +96,7 @@
 						</div>
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-								{!! Form::text('victim_tel',null,['class'=>'input','placeholder'=>'เลขหมาย 10 หลัก']) !!}
+								{!! Form::text('victim_tel',null,['class'=>'input','placeholder'=>'เบอร์มือถือ 10 หลัก']) !!}
 								<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
 							</p>
 						</div>
@@ -230,7 +230,8 @@
 					<div class="field-body">
 							<div class="field">
 								<div class="control">
-									<textarea name="detail" class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+									{{ Form::textarea('detail', null, ['size' => '100x10']) }}
+									{{--<textarea name="detail" class="textarea" placeholder="กรอกรายละเอียด"></textarea>--}}
 								</div>
 							</div>
 						</div>

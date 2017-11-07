@@ -83,7 +83,7 @@
 					</div>
 					<div class="field">
 						<p class="control is-expanded has-icons-left">
-								{!! Form::text('victim_tel',null,['class'=>'input','placeholder'=>'เบอร์ติดต่อกลับ']) !!}
+								{!! Form::text('victim_tel',null,['class'=>'input','placeholder'=>'เบอร์มือถือ 10 หลัก']) !!}
 							<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
 						</p>
 					</div>
@@ -218,7 +218,8 @@
 					<div class="field-body">
 						<div class="field">
 							<div class="control">
-								<textarea class="textarea"  id ="detail" name="detail" placeholder=" กรอกรายละเอียดของปัญหา "></textarea>
+								{{ Form::textarea('detail', null, ['size' => '100x10']) }}
+								{{--<textarea class="textarea"  id ="detail" name="detail" placeholder=" กรอกรายละเอียดของปัญหา "></textarea>--}}
 							</div>
 						</div>
 					</div>
