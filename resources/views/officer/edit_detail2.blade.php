@@ -615,7 +615,7 @@
 											  <option value="4" style="width:250px" @if($show_data->sub_problem == 4){ selected } @endif>ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
 
 										  @elseif($show_data->problem_case == 4)
-											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
+											  <option value="1" style="width:250px">กลุ่มเปราะบาง</option>
 
 										  @endif
 									  </select>
