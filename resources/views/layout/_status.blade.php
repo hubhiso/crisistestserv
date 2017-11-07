@@ -15,6 +15,7 @@
         @else
         <div class="timeline-icon">
         <img src="images/minusx40.png" alt="">
+        </div>
             <div class="timeline-content">
                 <h2>  </h2>
                 <p>
@@ -22,7 +23,6 @@
                 </p>
 
             </div>
-        </div>
 
     @endif
 
