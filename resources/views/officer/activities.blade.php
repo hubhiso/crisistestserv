@@ -291,7 +291,7 @@
 
 								<p class="column " id="chk_result" @if($show_data->operate_result_status != 1 ) style="display: none" @endif>
 								<label class="checkbox">
-										<input type="checkbox" name="compensation" id="compensation" @if($show_data->compensation == 1 ) checked @endif>
+										<input type="checkbox" name="problemfix" id="problemfix" @if($show_data->problemfix == 1 ) checked @endif>
 										ปัญหาได้รับการแก้ไข
 								</label>
 								<label class="checkbox">
@@ -583,11 +583,15 @@
            var operate_result_status = $('#operate_result_status').val();
             var compensation = 0;
             var change_policy = 0;
+            var problemfix = 0;
             if ($('#compensation').is(':checked') == true) {
                 compensation = 1;
             }
             if ($('#change_policy').is(':checked') == true) {
                 change_policy = 1;
+            }
+            if ($('#problemfix').is(':checked') == true) {
+                problemfix = 1;
             }
 
             var prov_refer = $('#prov_refer').val();
@@ -602,6 +606,7 @@
                     case_id: case_id_s,
                     status: status,
                     operate_result_status: operate_result_status,
+                    problemfix: problemfix,
                     compensation: compensation,
                     change_policy: change_policy,
                     prov_refer: prov_refer,

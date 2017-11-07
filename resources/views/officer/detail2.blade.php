@@ -546,7 +546,7 @@
 									<option value="2"  @if($show_data->problem_case == 2){ selected } @endif>เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
 									<option value="3"  @if($show_data->problem_case == 3){ selected } @endif>ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
 									<option value="4"  @if($show_data->problem_case == 4){ selected } @endif>ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
-									<option value="5"  @if($show_data->problem_case == 5){ selected } @endif>อื่นๆ ที่เกี่ยวข้องกับ HIV</option>
+									<option value="5"  @if($show_data->problem_case == 5){ selected } @endif>อื่นๆ ที่เกี่ยวข้องกับเอชไอวี</option>
 								</select>
 									</span>
 								</div>
@@ -577,7 +577,7 @@
 
 										@if($show_data->sub_problem == 2)
 											<option value="1" style="width:250px" @if($show_data->group_code == 1){ selected } @endif>กลุ่มหลากหลายทางเพศ</option>
-											<option value="2" style="width:250px" @if($show_data->group_code == 2){ selected } @endif>พนักงานบริการ HIV</option>
+											<option value="2" style="width:250px" @if($show_data->group_code == 2){ selected } @endif>พนักงานบริการ</option>
 											<option value="3" style="width:250px" @if($show_data->group_code == 3){ selected } @endif>ผู้ใช้สารเสพติด</option>
 											<option value="4" style="width:250px" @if($show_data->group_code == 4){ selected } @endif>ประชากรข้ามชาติ</option>
 											<option value="5" style="width:250px" @if($show_data->group_code == 5){ selected } @endif>ผู้ต้องขัง</option>
