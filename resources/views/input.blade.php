@@ -108,6 +108,9 @@
     						<label class="radio">
      							{{ Form::radio('sex', '3' , false) }} สาวประเภทสอง
     						</label>
+							<label class="radio">
+								{{ Form::radio('sex', '4' , false) }} อื่นๆ ระบุ {!! Form::text('sexetc',null,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
+							</label>
 						</p>
 					</div>
 				</div>
@@ -290,6 +293,8 @@
                 $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
                 $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
                 $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
+                $('#group_code').append('<option value="7" style="width:250px">กลุ่มชนเผ่า</option>');
+
             }else{
                 $('#sub_problem').empty();
                 $('#sub_problem').attr('disabled', 'disabled');
@@ -301,11 +306,11 @@
                 $('#group_code').empty();
                 $('#group_code').removeAttr('disabled');
                 $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
-                $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ HIV</option>');
+                $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ</option>');
                 $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
                 $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
                 $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
-
+                $('#group_code').append('<option value="7" style="width:250px">กลุ่มชนเผ่า</option>');
             }else{
                 $('#group_code').empty();
                 $('#group_code').attr('disabled', 'disabled');

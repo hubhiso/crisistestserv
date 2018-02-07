@@ -103,7 +103,10 @@
 										<input class="input" type="text" placeholder="ประเภท2" value="หญิง" disabled>
 									@elseif($show_data->sex == 3)
 										<input class="input" type="text" placeholder="ประเภท3" value="สาวประเภทสอง" disabled>
+									@elseif($show_data->sex == 4)
+										<input class="input" type="text" placeholder="ประเภท4" value="อื่นๆ" disabled>
 									@endif
+
 							</div>
 						</div>
 					</div>

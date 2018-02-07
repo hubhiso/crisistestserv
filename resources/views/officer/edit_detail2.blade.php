@@ -4,13 +4,13 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}
-	{{ Html::style('bootstrap/css/bootstrap.css') }}
+	{{--{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}--}}
+	{{--{{ Html::style('bootstrap/css/bootstrap.css') }}--}}
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 
 	{{ Html::script('js/jquery.min.js') }}
-	{{ Html::script('bootstrap/js/bootstrap.min.js') }}
-	{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}
+	{{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
+	{{--{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}--}}
 	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 	<meta name="theme-color" content="#cc99cc"/>
 
@@ -194,6 +194,13 @@
 												{{ Form::radio('sex', '3' , false) }}
 											@endif สาวประเภทสอง
     						</label>
+										<label >
+											@if( $show_data->sex == 4 )
+												{{ Form::radio('sex', '4' , true) }}
+											@else
+												{{ Form::radio('sex', '4' , false) }}
+											@endif อื่นๆ
+										</label>
 									
 
 									</p>
@@ -752,11 +759,11 @@
 	</section>
 </form>
 	<script>
-        $('.datepicker').datepicker({
-            onSelect: function(){
-               // alert("test");
-            }
-        });
+//        $('.datepicker').datepicker({
+//            onSelect: function(){
+//               // alert("test");
+//            }
+//        });
         $('#dateInput').change(function(){
             //alert("test");
             var dob = $('#dateInput').val();
@@ -799,6 +806,8 @@
                 $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
                 $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
                 $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
+                $('#group_code').append('<option value="7" style="width:250px">กลุ่มชนเผ่า</option>');
+
 
             }else{
                 $('#sub_problem').empty();
@@ -811,10 +820,11 @@
                 $('#group_code').empty();
                 $('#group_code').removeAttr('disabled');
                 $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
-                $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ HIV</option>');
+                $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ</option>');
                 $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
                 $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
                 $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
+                $('#group_code').append('<option value="7" style="width:250px">กลุ่มชนเผ่า</option>');
 
 
             }else{
