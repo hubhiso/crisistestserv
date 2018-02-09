@@ -62,7 +62,12 @@ class OfficerUpdateController extends Controller
                                                             'name' => $request->input('name'),
                                                             'victim_tel' => $request->input('tel'),
                                                             'sex' => $request->input('sex'),
-                                                            'detail' => $request->input('detail')]);
+                                                            'sex_etc' => $request->input('sex_etc'),
+                                                            'problem_case' => $request->input('problem_case'),
+                                                            'sub_problem' => $request->input('sub_problem'),
+                                                            'group_code' => $request->input('group_code'),
+                                                            'detail' => $request->input('detail'),
+                                                            'need' => $request->input('need')]);
         add_detail::create(
             ['case_id'=>$case_id,
              'interview_date'=>$interview_date,
@@ -136,7 +141,12 @@ class OfficerUpdateController extends Controller
         'name' => $request->input('name'),
         'victim_tel' => $request->input('tel'),
         'sex' => $request->input('sex'),
-        'detail' => $request->input('detail')]);
+        'sex_etc' => $request->input('sex_etc'),
+        'problem_case' => $request->input('problem_case'),
+        'sub_problem' => $request->input('sub_problem'),
+        'group_code' => $request->input('group_code'),
+        'detail' => $request->input('detail'),
+        'need' => $request->input('need')]);
     add_detail::where('case_id','=',$case_id)->update(
         [
             'interview_date'=>$interview_date,

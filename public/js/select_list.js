@@ -22,7 +22,7 @@ $('#problem_case').on('change',function (e) {
     }else if(prob_id==4){
         $('#sub_problem').empty();
         $('#sub_problem').removeAttr('disabled');
-        $('#sub_problem').append('<option value="1" style="width:250px">กลุ่มเปราะบาง</option>');
+        $('#sub_problem').append('<option value="2" style="width:250px">กลุ่มเปราะบาง</option>');
         $('#group_code').empty();
         $('#group_code').removeAttr('disabled');
         $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');

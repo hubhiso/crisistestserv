@@ -201,6 +201,7 @@
 											@else
 												{{ Form::radio('sex', '4' , false) }}
 											@endif อื่นๆ
+												ระบุ {!! Form::text('sex_etc',$show_data->sex_etc,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
 										</label>
 									
 
@@ -658,6 +659,7 @@
 											<option value="4" style="width:250px" @if($show_data->group_code == 4){ selected } @endif>ประชากรข้ามชาติ</option>
 											<option value="5" style="width:250px" @if($show_data->group_code == 5){ selected } @endif>ผู้ต้องขัง</option>
 											<option value="6" style="width:250px" @if($show_data->group_code == 6){ selected } @endif>เยาวชนในสถานพินิจ</option>
+											<option value="7" style="width:250px" @if($show_data->group_code == 7){ selected } @endif>กลุ่มชนเผ่า</option>
 										@endif
 									</select>
 									</span>
