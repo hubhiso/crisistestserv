@@ -8,13 +8,13 @@
 	<script src="{{ asset('css/jquery.min.js') }}"></script>
 
 	<title> CRS </title>
-	{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}
-	{{ Html::style('bootstrap/css/bootstrap.css') }}
+	{{--{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}--}}
+	{{--{{ Html::style('bootstrap/css/bootstrap.css') }}--}}
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 
 	{{ Html::script('js/jquery.min.js') }}
-	{{ Html::script('bootstrap/js/bootstrap.min.js') }}
-	{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}
+	{{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
+	{{--{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}--}}
 	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 	<meta name="theme-color" content="#cc99cc"/>
 </head>
@@ -147,7 +147,10 @@
 							<div class="field is-grouped">
 								<p class="control  has-icons-left">
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" name="operate_date" id="operate_date" class="form-control">
+									วันที่ : <input type="number" min="01" max="31" maxlength = "2" id="Dayoperate" name="DayAct" class="form-control" placeholder="วว" onchange="createoperate();">
+									เดือน : <input type="number" min="01" max="12" maxlength = "2" id="Monthoperate" name="MonthAct" class="form-control" placeholder="ดด" onchange="createoperate();">
+									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="Yearoperate" name="YearAct" class="form-control" placeholder="ปปปป" onchange="createoperate();">
+									<input type="hidden" name="operate_date" id="operate_date" class="form-control">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
 									</div>
@@ -402,6 +405,9 @@
         function clear_edit(operate_id) {
             $('#edit_area'+operate_id).empty();
         }
+        function createoperate() {
+            $('#operate_date').val($('#Dayoperate').val()+"/"+ $('#Monthoperate').val()+"/"+ ($('#Yearoperate').val()-543));
+        }
         function update_operate(operate_id) {
             var advice_s = 0;
             var investigate_s = 0;
@@ -487,7 +493,7 @@
             $('#current_operate').hide();
             $('#btn_add').show();
         }
-        $('.datepicker').datepicker();
+//        $('.datepicker').datepicker();
 
 
 		///////// create operate case /////////////////////

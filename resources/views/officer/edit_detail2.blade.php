@@ -9,6 +9,7 @@
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 
 	{{ Html::script('js/jquery.min.js') }}
+	{{--{{ Html::script('js/select_list.js') }}--}}
 	{{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
 	{{--{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}--}}
 	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
@@ -243,6 +244,18 @@
 							</div>
 						</div>
 					</div>
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> ความต้องการความช่วยเหลือ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" name="need"  >{{ $show_data->need }}</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
 					
 					<div class="field is-horizontal">
 						<div class="field-label">
@@ -267,10 +280,11 @@
 								<p class="control  has-icons-left " >
 									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" id="DateInterview" name="DateInterview" class="form-control"  value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->interview_date)))}}">
-									<div class="input-group-addon">
-										<span class="fa-calendar"></span>
-									</div>
+									วันที่ : <input type="number" min="01" max="31" maxlength = "2" id="DayInterview" name="DayInterview" class="form-control" placeholder="วว" value="{{date('d',strtotime(str_replace('-','/', $show_detail->interview_date)))}}" onchange="createinterviewdate()">
+									เดือน : <input type="number" min="01" max="12" maxlength = "2" id="MonthInterview" name="MonthInterview" class="form-control" placeholder="ดด" value="{{date('m',strtotime(str_replace('-','/', $show_detail->interview_date)))}}" onchange="createinterviewdate()">
+									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="YearInterview" name="YearInterview" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->interview_date)))+543 }}" onchange="createinterviewdate()">
+									<input type="hidden" id="DateInterview" name="DateInterview" class="form-control"  value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->interview_date)))}}">
+
 								</div>
 								<!-- interview input -->
 								</p>
@@ -287,10 +301,11 @@
 							<div class="field is-grouped">
 								<p class="control  has-icons-left ">
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" id="dateInput" name="birthdate" class="form-control" value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->birth_date)))}}">
-									<div class="input-group-addon">
-										<span class="fa-calendar"></span>
-									</div>
+									วันที่ : <input type="number" min="01" max="31" maxlength = "2" id="dayInput" name="birthdate" class="form-control" placeholder="วว" value="{{date('d',strtotime(str_replace('-','/', $show_detail->birth_date)))}}" onchange="createbirthdate();">
+									เดือน : <input type="number" min="01" max="12" maxlength = "2" id="monthInput" name="monthdate" class="form-control" placeholder="ดด" value="{{date('m',strtotime(str_replace('-','/', $show_detail->birth_date)))}}" onchange="createbirthdate();">
+									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4"  id="yearInput" name="yearInput" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->birth_date))) + 543 }}" onchange="createbirthdate();">
+									<input type="hidden" id="dateInput" name="birthdate" class="form-control" value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->birth_date)))}}">
+
 								</div>
 								</p>
 							</div>
@@ -419,7 +434,8 @@
 							</div>
 							<div class="field">
 								<p class="control  has-icons-left has-icons-right">
-									<input class="input" type="TEXT" name="card_num" placeholder="ID-CODE" value="{{$show_detail->card_number}}">
+									{!! Form::text('card_num',$show_detail->card_number,['class'=>'input','placeholder' => 'ID-CODE','maxlength' => 13 ])!!}
+									{{--<input class="input" type="TEXT" name="card_num" placeholder="ID-CODE" value="{{$show_detail->card_number}}">--}}
 								</p>
 							</div>
 						</div>
@@ -559,7 +575,10 @@
 								<p class="control  has-icons-left " >
 									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" id="DateAct" name="DateAct" class="form-control" value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->accident_date)))}}">
+									วันที่ : <input type="number" min="01" max="31" maxlength = "2" id="DayAct" name="DayAct" class="form-control" placeholder="วว" value="{{date('d',strtotime(str_replace('-','/', $show_detail->accident_date)))}}" onchange="createaccidentdate();">
+									เดือน : <input type="number" min="01" max="12" maxlength = "2" id="MonthAct" name="MonthAct" class="form-control" placeholder="ดด" value="{{date('m',strtotime(str_replace('-','/', $show_detail->accident_date)))}}" onchange="createaccidentdate();">
+									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->accident_date))) + 543 }}" onchange="createaccidentdate();">
+									<input type="hidden" id="DateAct" name="DateAct" class="form-control" value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->accident_date)))}}">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
 									</div>
@@ -758,80 +777,35 @@
 		</form>
 	</section>
 </form>
+{{ Html::script('js/select_list.js') }}
+
 	<script>
 //        $('.datepicker').datepicker({
 //            onSelect: function(){
 //               // alert("test");
 //            }
 //        });
-        $('#dateInput').change(function(){
-            //alert("test");
-            var dob = $('#dateInput').val();
-            dob = new Date(dob);
-            var today = new Date();
-            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-            $("#age").val(age);
-            console.log(age);
 
-        });
-        $('#problem_case').on('change',function (e) {
-            var prob_id = e.target.value;
-            //console.log(prob_id);
-            $('#group_code').empty();
-            $('#group_code').attr('disabled', 'disabled');
-            if((prob_id==1)||(prob_id==5)){
-                $('#sub_problem').empty();
-                $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>');
-                $('#sub_problem').append('<option value="2" style="width:250px">กลุ่มเปราะบาง</option>');
-                $('#sub_problem').append('<option value="4" style="width:250px">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
-                $('#sub_problem').append('<option value="3" style="width:250px">ประชาชนทั่วไป</option>');
-            }else if(prob_id==2){
-                $('#sub_problem').empty();
-                $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" >ผู้ติดเชื้อเอชไอวี</option>');
-            }else if(prob_id==3){
-                $('#sub_problem').empty();
-                $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" >ผู้ติดเชื้อเอชไอวี</option>');
-                $('#sub_problem').append('<option value="4" >ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
-            }else if(prob_id==4){
-                $('#sub_problem').empty();
-                $('#sub_problem').removeAttr('disabled');
-                $('#sub_problem').append('<option value="1" style="width:250px">กลุ่มเปราะบาง</option>');
-                $('#group_code').empty();
-                $('#group_code').removeAttr('disabled');
-                $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
-                $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ </option>');
-                $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
-                $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
-                $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
-                $('#group_code').append('<option value="7" style="width:250px">กลุ่มชนเผ่า</option>');
+	function createbirthdate() {
 
+    	$('#dateInput').val($('#dayInput').val()+"/"+ $('#monthInput').val()+"/"+ ($('#yearInput').val()-543));
+    	var dob = $('#dateInput').val();
+    	dob = new Date(dob);
+    	var today = new Date();
+    	var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+    	$("#age").val(age);
 
-            }else{
-                $('#sub_problem').empty();
-                $('#sub_problem').attr('disabled', 'disabled');
-            }
-        });
-        $('#sub_problem').on('change',function (e) {
-            var sub_id = e.target.value;
-            if(sub_id==2){
-                $('#group_code').empty();
-                $('#group_code').removeAttr('disabled');
-                $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
-                $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ</option>');
-                $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
-                $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
-                $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
-                $('#group_code').append('<option value="7" style="width:250px">กลุ่มชนเผ่า</option>');
+	}
+	function createinterviewdate() {
 
+    	$('#DateInterview').val($('#DayInterview').val()+"/"+ $('#MonthInterview').val()+"/"+ ($('#YearInterview').val()-543));
 
-            }else{
-                $('#group_code').empty();
-                $('#group_code').attr('disabled', 'disabled');
-            }
-        });
+	}
+	function createaccidentdate() {
+
+    	$('#DateAct').val($('#DayAct').val()+"/"+ $('#MonthAct').val()+"/"+ ($('#YearAct').val()-543));
+
+	}
         $('#offender_type').on('change',function (e) {
 
             var sel_value = e.target.value;
