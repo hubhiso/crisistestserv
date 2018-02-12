@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\case_input;
 use App\add_detail;
 use App\operate_detail;
+use App\timeline;
 
 class OfficerUpdateController extends Controller
 {
@@ -17,6 +18,9 @@ class OfficerUpdateController extends Controller
         $case_id = $request->input('case_id');
         $receiver_name = $request->input('receiver');
         case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 2]);
+        timeline::create(['case_id'=>$case_id,
+            'operate_status'=>2,
+            ]);
         return redirect('officer/show');
 
     }
@@ -70,6 +74,9 @@ class OfficerUpdateController extends Controller
                                                             'group_code' => $request->input('group_code'),
                                                             'detail' => $request->input('detail'),
                                                             'need' => $request->input('need')]);
+        timeline::create(['case_id'=>$case_id,
+            'operate_status'=>3,
+        ]);
         add_detail::create(
             ['case_id'=>$case_id,
              'interview_date'=>$interview_date,
@@ -230,6 +237,9 @@ class OfficerUpdateController extends Controller
                 'prov_refer' => null,
                 'refer_type' => null,
                 'refer_name' => null]);
+            timeline::create(['case_id'=>$case_id,
+                'operate_status'=>4,
+            ]);
         }elseif ($request->input('status') == 5){
             case_input::where('case_id','=',$case_id)->update([
                 'status' => $request->input('status'),
@@ -240,6 +250,9 @@ class OfficerUpdateController extends Controller
                 'prov_refer' => null,
                 'refer_type' => null,
                 'refer_name' => null]);
+            timeline::create(['case_id'=>$case_id,
+                'operate_status'=>5,
+            ]);
         }elseif ($request->input('status') == 6){
             case_input::where('case_id','=',$case_id)->update([
                 'status' => $request->input('status'),
@@ -250,6 +263,9 @@ class OfficerUpdateController extends Controller
                 'prov_refer' => $request->input('prov_refer'),
                 'refer_type' => $request->input('refer_type'),
                 'refer_name' => $request->input('refer_name')]);
+            timeline::create(['case_id'=>$case_id,
+                'operate_status'=>6,
+            ]);
         }
 
     }
