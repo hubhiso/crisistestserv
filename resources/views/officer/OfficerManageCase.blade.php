@@ -210,6 +210,26 @@
             load_case()
         });
 
+        function auto_select_status(status) {
+				if(status==1){
+                    $("#filter_search option[value='3']").attr("selected","selected");
+                    set_suboption(3);
+                    $("#sub_filter_search option[value='1']").attr("selected","selected");
+                    load_case ()
+
+                }else if(status==2){
+                    $("#filter_search option[value='3']").attr("selected","selected");
+                    set_suboption(3);
+                    $("#sub_filter_search option[value='2']").attr("selected","selected");
+                    load_case ()
+
+				}else if(status==3){
+                    $("#filter_search option[value='3']").attr("selected","selected");
+                    set_suboption(3);
+                    $("#sub_filter_search option[value='3']").attr("selected","selected");
+                    load_case ()
+                }
+        }
 
         function load_case () {
             var token = $('#token').val();
@@ -224,7 +244,19 @@
 
             var $container = $('.table-case_container');
 
+            var status_url = "{{route('officer.load_status',['prov_id' => ":p_id"]) }}";
+            status_url = status_url.replace(':p_id', p_id);
 
+			$.ajax({
+                type: 'GET',
+                url: status_url,
+                success: function( data ) {
+                    //console.log(data);
+                    $('#i-receive').text(" ไม่ได้รับเรื่อง "+data.NotAcp);
+                    $('#i-additional').text(" ไม่บันทึก "+data.NotKeyIn);
+                    $('#i-process').text(" ไม่ดำเนินการ "+data.NotOp);
+                }
+			});
             $.ajax({
                 type: 'POST',
                 url: '{!!  route('officer.load_case') !!}',
@@ -239,7 +271,7 @@
                     Sub_Filter: Sub_Filter
                 },
                 success: function( data ) {
-                    console.log(data);
+                  //  console.log(data);
                     $container.html(data.html);
                     var rows = $('#table_show tbody tr').length
                     document.getElementById('case_number').innerHTML = rows;
@@ -249,20 +281,18 @@
 
 
         }
-
-        $('#filter_search').on('change',function (e) {
-            var search_type = e.target.value;
+		function set_suboption(search_type) {
             if(search_type==1){
                 $('#sub_filter_search').empty();
                 $('#sub_filter_search').attr('disabled', 'disabled');
-			}else if(search_type==2){
+            }else if(search_type==2){
                 $('#sub_filter_search').empty();
                 $('#sub_filter_search').removeAttr('disabled');
                 $('#sub_filter_search').append('<option value="1" style="width:250px">บังคับตรวจเอชไอวี</option>');
                 $('#sub_filter_search').append('<option value="2" style="width:250px">เปิดเผยสถานะการติดเชื้อเอชไอวี</option>');
                 $('#sub_filter_search').append('<option value="3" style="width:250px">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>');
                 $('#sub_filter_search').append('<option value="4" style="width:250px">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>');
-			}else if(search_type==3){
+            }else if(search_type==3){
                 $('#sub_filter_search').empty();
                 $('#sub_filter_search').removeAttr('disabled');
                 $('#sub_filter_search').append('<option value="1" style="width:250px">ยังไม่ได้รับเรื่อง</option>');
@@ -278,6 +308,10 @@
                 $('#sub_filter_search').append('<option value="2" style="width:250px">มีผู้แจ้งแทน</option>');
                 $('#sub_filter_search').append('<option value="3" style="width:250px">เจ้าหน้าที่แจ้ง</option>');
             }
+        }
+        $('#filter_search').on('change',function (e) {
+            var search_type = e.target.value;
+            set_suboption(search_type);
             load_case ()
         });
 

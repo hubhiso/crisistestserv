@@ -91,7 +91,7 @@
 			</div>
 
 
-     		<div class="field is-horizontal">
+			<div class="field is-horizontal">
 				<div class="field-label is-normal">
 					<label class="label">เพศ</label>
 				</div>
@@ -99,17 +99,47 @@
 					<div class="field is-grouped">
 						<p class="control is-expanded has-icons-left ">
 							<label class="radio">
-      							{{ Form::radio('sex', '1' , true) }}
-      							ชาย
-    						</label>
-   							<label class="radio">
-     							{{ Form::radio('sex', '2' , false) }} หญิง
-    						</label>
-    						<label class="radio">
-     							{{ Form::radio('sex', '3' , false) }} สาวประเภทสอง
-    						</label>
+								{{ Form::radio('sex', '1' , true) }}
+								ชาย
+							</label>
+							<label class="radio">
+								{{ Form::radio('sex', '2' , false) }} หญิง
+							</label>
+							<label class="radio">
+								{{ Form::radio('sex', '3' , false) }} สาวประเภทสอง
+							</label>
 							<label class="radio">
 								{{ Form::radio('sex', '4' , false) }} อื่นๆ ระบุ {!! Form::text('sex_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
+							</label>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="field is-horizontal">
+				<div class="field-label is-normal">
+					<label class="label">สัญชาติ</label>
+				</div>
+				<div class="field-body">
+					<div class="field is-grouped">
+						<p class="control is-expanded has-icons-left ">
+							<label class="radio">
+								{{ Form::radio('nation', '1' , true) }} ไทย
+							</label>
+							<label class="radio">
+								{{ Form::radio('nation', '2' , false) }} ลาว
+							</label>
+							<label class="radio">
+								{{ Form::radio('nation', '3' , false) }} เวียดนาม
+							</label>
+							<label class="radio">
+								{{ Form::radio('nation', '4' , false) }} พม่า
+							</label>
+							<label class="radio">
+								{{ Form::radio('nation', '5' , false) }} กัมพูชา
+							</label>
+							<label class="radio">
+								{{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ {!! Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
 							</label>
 						</p>
 					</div>

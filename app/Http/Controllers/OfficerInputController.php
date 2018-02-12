@@ -89,7 +89,7 @@ class OfficerInputController extends Controller
      */
     public function show()
     {
-       // $cases = case_input::all();
+         $cases = case_input::all();
         //return view('officer.OfficerManageCase',compact('cases'));
         return view('officer.OfficerManageCase');
     }
@@ -128,6 +128,18 @@ class OfficerInputController extends Controller
         $activities = operate_detail::where('case_id','=',$case_id)->orderBy('operate_date', 'asc')->get();
         $html = view('officer._activities_table',compact('activities'))->render();
         return response()->json(compact('html'));
+    }
+    public function load_status($pid)
+    {
+//        $cases = case_input::select(array(
+//            case_input::raw("SUM (status) as s1"),
+//            case_input::raw("SUM (status) as s2"),))
+//            ->where('prov_id', '=', $pid);
+        $NotAcp = case_input::Where('prov_id','=',$pid)->where('status', '=', '1')->count('status');
+        $NotKeyIn = case_input::Where('prov_id','=',$pid)->where('status', '=', '2')->count('status');
+        $NotOp = case_input::Where('prov_id','=',$pid)->where('status', '=', '3')->count('status');
+
+        return response()->json(compact('NotAcp','NotKeyIn','NotOp'));
     }
 
 

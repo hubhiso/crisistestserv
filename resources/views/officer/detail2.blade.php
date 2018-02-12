@@ -185,6 +185,75 @@
 						</div>
 					</div>
 
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<label class="label"> สัญชาติ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="field is-grouped">
+									<p class="control is-expanded  ">
+										<label >
+											@if( $show_data->nation == 1 )
+												{{ Form::radio('nation', '1' , true) }}
+											@else
+												{{ Form::radio('nation', '1' , false) }}
+											@endif
+											ไทย
+										</label>
+
+
+										<label >
+											@if( $show_data->nation == 2 )
+												{{ Form::radio('nation', '2' , true) }}
+											@else
+												{{ Form::radio('nation', '2' , false) }}
+											@endif
+											ลาว
+										</label>
+
+
+										<label >
+											@if( $show_data->nation == 3 )
+												{{ Form::radio('nation', '3' , true) }}
+											@else
+												{{ Form::radio('nation', '3' , false) }}
+											@endif
+											เวียดนาม
+										</label>
+
+										<label >
+											@if( $show_data->nation == 4 )
+												{{ Form::radio('nation', '4' , true) }}
+											@else
+												{{ Form::radio('nation', '4' , false) }}
+											@endif
+											พม่า
+										</label>
+
+										<label >
+											@if( $show_data->nation == 5 )
+												{{ Form::radio('nation', '5' , true) }}
+											@else
+												{{ Form::radio('nation', '5' , false) }}
+											@endif
+											กัมพูชา
+										</label>
+
+										<label >
+											@if( $show_data->nation == 6 )
+												{{ Form::radio('nation', '6' , true) }}
+											@else
+												{{ Form::radio('nation', '6' , false) }}
+											@endif อื่นๆ
+											ระบุ {!! Form::text('nation_etc',$show_data->nation_etc,['class'=>'input','placeholder'=>'ระบุสัญชาติ']) !!}
+										</label>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
 
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
