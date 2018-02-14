@@ -18,7 +18,7 @@ class CreateCasesTable extends Migration
             $table->text('name');
             $table->integer('sex');
             $table->text('sex_etc')->nullable();
-            $table->integer('nation');
+            $table->integer('nation')->nullable();
             $table->text('nation_etc')->nullable();
             $table->integer('prov_id');
             $table->foreign('prov_id')->references('PROVINCE_CODE')->on('provinces');

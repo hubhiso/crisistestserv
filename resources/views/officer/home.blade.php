@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+	{{ Html::script('js/jquery.min.js') }}
 
-    <meta name="theme-color" content="#cc99cc" />
+
+	<meta name="theme-color" content="#cc99cc" />
     <!--script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
     <script src="http://bulma.io/javascript/clipboard.min.js"></script>
     <script src="http://bulma.io/javascript/bulma.js"></script>
@@ -23,7 +25,7 @@
 					<h1 id="bulma" class="title"> Crisis Response </h1>
 					<h2 id="modern-framework" class="subtitle"> ระบบรับเรื่องร้องเรียนและการให้คำปรึกษาข้อมูลสิทธิด้านเอดส์ </h2>
 					<a id="btn_new1" class="button ft1 i-margin" href="{{ 'officer/input_case' }}">แจ้งเหตุ</a>
-					<a id="btn_new1" class="button ft1 i-margin" href="{{ 'officer/show' }}">จัดการเหตุ</a>
+					<a id="btn_new1" class="button ft1 i-margin" href="{{ route('officer.show',['mode_id' => "0"]) }}">จัดการเหตุ</a>
 					<a id="btn_new1" class="button ft1 i-margin" href="#">รายงาน</a>
 				</div>
 			</div>
@@ -34,5 +36,24 @@
 
 	<script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
 	<script src="{{ asset('bulma/main.js') }}"></script>
+{{--<script src="{{ asset('js/status_report.js') }}"></script>--}}
+<script>
+
+    var p_id = $('#p_id').val();
+
+    var status_url = "{{route('officer.load_status',['prov_id' => ':p_id']) }}";
+    status_url = status_url.replace(':p_id', p_id);
+    console.log(status_url);
+    $.ajax({
+        type: 'GET',
+        url: status_url,
+        success: function( data ) {
+            //console.log(data);
+            $('#i-receive').text(" ไม่ได้รับเรื่อง "+data.NotAcp);
+            $('#i-additional').text(" ไม่บันทึก "+data.NotKeyIn);
+            $('#i-process').text(" ไม่ดำเนินการ "+data.NotOp);
+        }
+    });
+</script>
 </body>
 </html>

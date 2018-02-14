@@ -33,7 +33,7 @@
 			<div class="container">
 				<nav class="breadcrumb">
 					<ul>
-						<li><a href="{{ route('officer.show') }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+						<li><a href="{{ route('officer.show',['mode_id' => "0"]) }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 						</li>
 						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-address-card"></i></span><span> ข้อมูลเพิ่มเติม </span></a>
 						</li>
@@ -796,7 +796,7 @@
 					</p>
 					<p class="control"> {!! Form::submit('ยืนยัน',['class'=>'button is-primary']) !!}</p>
 
-					<p class="control"> <a class="button" href="{{ route('officer.show') }}" > ยกเลิก </a> </p>
+					<p class="control"> <a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > ยกเลิก </a> </p>
 				</div>
 			</div>
 	</section>
@@ -871,5 +871,20 @@
 	<br> @extends('footer')
 
 </body>
-
+<script>
+    var p_id = $('#p_id').val();
+    var status_url = "{{route('officer.load_status',['prov_id' => ':p_id']) }}";
+    status_url = status_url.replace(':p_id', p_id);
+    console.log(status_url);
+    $.ajax({
+        type: 'GET',
+        url: status_url,
+        success: function( data ) {
+            //console.log(data);
+            $('#i-receive').text(" ไม่ได้รับเรื่อง "+data.NotAcp);
+            $('#i-additional').text(" ไม่บันทึก "+data.NotKeyIn);
+            $('#i-process').text(" ไม่ดำเนินการ "+data.NotOp);
+        }
+    });
+</script>
 </html>

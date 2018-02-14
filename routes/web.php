@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::prefix('officer')->group(function () {
     Route::get('/', 'OfficerController@index')->name('officer.main');
-    Route::get('/show', 'OfficerInputController@show')->name('officer.show');
+    Route::get('/show/{mode_id}', 'OfficerInputController@show')->name('officer.show');
     Route::get('/load_status/{prov_id}', 'OfficerInputController@load_status')->name('officer.load_status');
     Route::get('/confirm/{case_id}', 'OfficerInputController@open_confirm')->name('officer.open_cfm');
     Route::get('/add_detail/{case_id}', 'OfficerInputController@add_detail')->name('officer.add_detail');

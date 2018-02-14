@@ -87,11 +87,13 @@ class OfficerInputController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show()
+    public function show($mode_id)
     {
-         $cases = case_input::all();
+       //  $cases = case_input::all();
         //return view('officer.OfficerManageCase',compact('cases'));
-        return view('officer.OfficerManageCase');
+      //  return View::make('officer.OfficerManageCase', $mode_id);
+       // return view('officer.OfficerManageCase')->withMode($mode_id);
+        return view('officer.OfficerManageCase',compact('mode_id'));
     }
 
     public function open_confirm($case_id)

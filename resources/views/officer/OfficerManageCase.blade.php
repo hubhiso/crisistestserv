@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="layout-default" onload="load_case()">
+<body class="layout-default" onload="auto_select_status({{ $mode_id}});load_case();">
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 			<div class="container">
@@ -31,7 +31,6 @@
 				</div>
 			</div>
 		<input type="hidden" id="token" value="{{ csrf_token() }}">
-		<input type="hidden" id="p_id" value="{{ Auth::user()->prov_id }}">
 		<div class="container">
 			
 				<nav class="breadcrumb">
@@ -228,7 +227,9 @@
                     set_suboption(3);
                     $("#sub_filter_search option[value='3']").attr("selected","selected");
                     load_case ()
-                }
+                }else {
+				    //// do nothing
+				}
         }
 
         function load_case () {

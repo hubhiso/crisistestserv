@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class timeline extends Model
 {
     //
+    protected  $guarded = ['id'];
 }
