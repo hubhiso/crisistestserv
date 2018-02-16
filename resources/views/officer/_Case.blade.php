@@ -31,7 +31,7 @@
     <tr>
         <th>{{ \Carbon\Carbon::parse($case->created_at)->format('d-M-y') }}</th>
         <th>{{ $case->case_id }}</th>
-        <td><a href='#' title='ID'>{{ $case->name }}</a> </td>
+        <td><a target="_blank" href='{{ route('officer.open_dt', $case->case_id) }}' title='ID'>{{ $case->name }}</a> </td>
         <td>{{$case->Provinces->PROVINCE_NAME}}</td>
         @if($case->problem_case == 1 )
             <td>บังคับตรวจเอชไอวี</td>

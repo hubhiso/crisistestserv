@@ -21,7 +21,7 @@ class OfficerUpdateController extends Controller
         timeline::create(['case_id'=>$case_id,
             'operate_status'=>2,
             ]);
-        return redirect('officer/show');
+        return redirect('officer/show/0');
 
     }
     public function add_detail(Request $request)
@@ -105,7 +105,7 @@ class OfficerUpdateController extends Controller
             'etc'=>$chk5,
             'etc_detail'=>$request->input('etc_detail')]
         );
-        return redirect('officer/show');
+        return redirect('officer/show/0');
     }
     public function update_detail(Request $request)
 {
@@ -186,7 +186,7 @@ class OfficerUpdateController extends Controller
             'etc'=>$chk5,
             'etc_detail'=>$request->input('etc_detail')]
     );
-    return redirect('officer/show');
+    return redirect('officer/show/0');
 }
     public function add_activities(Request $request){
 

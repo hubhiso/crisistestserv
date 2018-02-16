@@ -151,7 +151,7 @@
 									{{ Form::radio('nation', '5' , false) }} กัมพูชา
 								</label>
 								<label class="radio">
-									{{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ {!! Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
+									{{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ {!! Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุสัญชาติ']) !!}
 								</label>
 							</p>
 						</div>

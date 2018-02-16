@@ -101,6 +101,11 @@ class OfficerInputController extends Controller
         $show_data = case_input::where('case_id','=',$case_id)->first();
          return view('officer.detail1',compact('show_data'));
     }
+    public function open_detail($case_id)
+    {
+        $show_data = case_input::where('case_id','=',$case_id)->first();
+        return view('officer.view_only',compact('show_data'));
+    }
     public function add_detail($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();

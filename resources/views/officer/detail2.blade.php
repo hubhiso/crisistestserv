@@ -9,6 +9,7 @@
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 
 	{{ Html::script('js/jquery.min.js') }}
+	{{ Html::script('js/thai_date_dropdown.js') }}
 	{{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
 	{{--{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}--}}
 	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
@@ -325,9 +326,26 @@
 									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
 
-									วันที่ : <input type="number" min="01" max="31" maxlength = "2" id="DayInterview" name="DayInterview" class="form-control" placeholder="วว" onchange="createinterviewdate()">
-									เดือน : <input type="number" min="01" max="12" maxlength = "2" id="MonthInterview" name="MonthInterview" class="form-control" placeholder="ดด" onchange="createinterviewdate()">
-									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="YearInterview" name="YearInterview" class="form-control" placeholder="ปปปป" onchange="createinterviewdate()">
+									วันที่ : <select id ="DayInterview" name="DayInterview" onchange="createinterviewdate();">
+										@for ($i = 1; $i <= 31; $i++)
+											<option value="{{$i}}">{{$i}}</option>
+										@endfor
+									      </select>
+									เดือน :  <select id ="MonthInterview" name="MonthInterview" onchange="date_interview();createinterviewdate();">
+											<option value="1"> มกราคม </option>
+											<option value="2"> กุมภาพันธ์ </option>
+											<option value="3"> มีนาคม </option>
+											<option value="4"> เมษายน </option>
+											<option value="5"> พฤษภาคม </option>
+											<option value="6"> มิถุนายน </option>
+											<option value="7"> กรกฎาคม </option>
+											<option value="8"> สิงหาคม </option>
+											<option value="9"> กันยายน </option>
+											<option value="10"> ตุลาคม </option>
+											<option value="11"> พฤศจิกายน </option>
+											<option value="12"> ธันวาคม </option>
+											</select>
+									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="YearInterview" name="YearInterview" class="form-control" placeholder="ปปปป" onchange="date_interview();createinterviewdate()">
 									<input type="hidden" id="DateInterview" name="DateInterview" class="form-control" >
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
@@ -349,9 +367,26 @@
 								<p class="control  has-icons-left " >
 									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
-									วันที่ : <input type="number" min="01" max="31" maxlength = "2" id="dayInput" name="birthdate" class="form-control" placeholder="วว" onchange="createbirthdate();">
-									เดือน : <input type="number" min="01" max="12" maxlength = "2" id="monthInput" name="monthdate" class="form-control" placeholder="ดด" onchange="createbirthdate();">
-									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4"  id="yearInput" name="yearInput" class="form-control" placeholder="ปปปป" onchange="createbirthdate();">
+									วันที่ : <select id ="dayInput" name="birthdate" onchange="createbirthdate();">
+										@for ($i = 1; $i <= 31; $i++)
+											<option value="{{$i}}">{{$i}}</option>
+										@endfor
+										</select>
+									เดือน : 	<select id ="monthInput" name="monthdate" onchange="date_birth();createbirthdate();">
+											<option value="1"> มกราคม </option>
+											<option value="2"> กุมภาพันธ์ </option>
+											<option value="3"> มีนาคม </option>
+											<option value="4"> เมษายน </option>
+											<option value="5"> พฤษภาคม </option>
+											<option value="6"> มิถุนายน </option>
+											<option value="7"> กรกฎาคม </option>
+											<option value="8"> สิงหาคม </option>
+											<option value="9"> กันยายน </option>
+											<option value="10"> ตุลาคม </option>
+											<option value="11"> พฤศจิกายน </option>
+											<option value="12"> ธันวาคม </option>
+											</select>
+									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4"  id="yearInput" name="yearInput" class="form-control" placeholder="ปปปป" onchange="date_birth();createbirthdate();">
 									<input type="hidden" id="dateInput" name="birthdate" class="form-control" >
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
@@ -599,9 +634,26 @@
 								<p class="control  has-icons-left " >
 									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
-									วันที่ : <input type="number" min="01" max="31" maxlength = "2" id="DayAct" name="DayAct" class="form-control" placeholder="วว" onchange="createaccidentdate();">
-									เดือน : <input type="number" min="01" max="12" maxlength = "2" id="MonthAct" name="MonthAct" class="form-control" placeholder="ดด" onchange="createaccidentdate();">
-									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" onchange="createaccidentdate();">
+									วันที่ : <select id ="DayAct" name="DayAct" onchange="createaccidentdate();">
+											@for ($i = 1; $i <= 31; $i++)
+											<option value="{{$i}}">{{$i}}</option>
+											@endfor
+											</select>
+									เดือน : <select id ="MonthAct" name="MonthAct" onchange="date_acc();createaccidentdate();">
+											<option value="1"> มกราคม </option>
+											<option value="2"> กุมภาพันธ์ </option>
+											<option value="3"> มีนาคม </option>
+											<option value="4"> เมษายน </option>
+											<option value="5"> พฤษภาคม </option>
+											<option value="6"> มิถุนายน </option>
+											<option value="7"> กรกฎาคม </option>
+											<option value="8"> สิงหาคม </option>
+											<option value="9"> กันยายน </option>
+											<option value="10"> ตุลาคม </option>
+											<option value="11"> พฤศจิกายน </option>
+											<option value="12"> ธันวาคม </option>
+											</select>
+									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" onchange="date_acc();createaccidentdate();">
 									<input  type="hidden" id="DateAct" name="DateAct" class="form-control" >
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
@@ -836,7 +888,8 @@
             console.log(e.type);
         });*/
         function createbirthdate() {
-            $('#dateInput').val($('#dayInput').val()+"/"+ $('#monthInput').val()+"/"+ ($('#yearInput').val()-543));
+
+            $('#dateInput').val($('#monthInput').val()+"/"+ $('#dayInput').val()+"/"+ ($('#yearInput').val()-543));
             var dob = $('#dateInput').val();
             dob = new Date(dob);
             var today = new Date();
@@ -845,10 +898,10 @@
             //console.log(age);
         }
         function createinterviewdate() {
-            $('#DateInterview').val($('#DayInterview').val()+"/"+ $('#MonthInterview').val()+"/"+ ($('#YearInterview').val()-543));
+            $('#DateInterview').val($('#MonthInterview').val()+"/"+ $('#DayInterview').val()+"/"+ ($('#YearInterview').val()-543));
         }
         function createaccidentdate() {
-            $('#DateAct').val($('#DayAct').val()+"/"+ $('#MonthAct').val()+"/"+ ($('#YearAct').val()-543));
+            $('#DateAct').val($('#MonthAct').val()+"/"+ $('#DayAct').val()+"/"+ ($('#YearAct').val()-543));
         }
         function handleClick(myRadio) {
             if(myRadio.value == 1)

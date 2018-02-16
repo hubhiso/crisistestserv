@@ -21,6 +21,8 @@ Route::prefix('officer')->group(function () {
     Route::get('/show/{mode_id}', 'OfficerInputController@show')->name('officer.show');
     Route::get('/load_status/{prov_id}', 'OfficerInputController@load_status')->name('officer.load_status');
     Route::get('/confirm/{case_id}', 'OfficerInputController@open_confirm')->name('officer.open_cfm');
+    Route::get('/only_detail/{case_id}', 'OfficerInputController@open_detail')->name('officer.open_dt');
+
     Route::get('/add_detail/{case_id}', 'OfficerInputController@add_detail')->name('officer.add_detail');
     Route::get('/add_activities/{case_id}', 'OfficerInputController@add_activities')->name('officer.add_activities');
     Route::get('/load_activities/{case_id}', 'OfficerInputController@load_activities_table')->name('officer.load_activities');
