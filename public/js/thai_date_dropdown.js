@@ -38,8 +38,14 @@ function date_birth() {
     $('#dayInput').html(output.join(''));
 }
 function date_acc() {
-    var mon = $('#DayAct').val();
-    var year = $('#MonthAct').val()-543;
+    var mon = $('#MonthAct').val();
+    var year = $('#YearAct').val()-543;
     var output = load_date(mon,year);
-    $('#DateAct').html(output.join(''));
+    $('#DayAct').html(output.join(''));
+}
+function date_operate() {
+    var mon = $('#Monthoperate').val();
+    var year = $('#Yearoperate').val()-543;
+    var output = load_date(mon,year);
+    $('#Dayoperate').html(output.join(''));
 }

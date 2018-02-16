@@ -242,6 +242,20 @@
 							</div>
 						</div>
 					</div>
+					@if( $show_data->status  == 99)
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> เหตุผลที่ปฏิเสธการรับเรื่อง </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" placeholder="กรอกรายละเอียด"  disabled>{{ $show_data->reject_reason }}</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endif
 					<div class="field is-horizontal">
 						<div class="field-label">
 							<!-- Left empty for spacing -->
@@ -252,9 +266,10 @@
 					<p><a> </a>
 					</p>
 					{{--{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}--}}
-					<a class="button is-info is-focused">เปลี่ยนผู้รับผิดชอบ</a>
-					<a class="button is-danger is-focused"> ปฎิเสธการรับเคส</a>
-
+					@if( $show_data->status  != 99)
+					<a class="button is-info is-focused" >เปลี่ยนผู้รับผิดชอบ</a>
+					<a class="button is-danger is-focused" href="{{ route('manager.reject_frm',['case_id' => $show_data->case_id]) }}"> ปฎิเสธการรับเคส</a>
+					@endif
 					<p class="control"> <a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > กลับ </a> </p>
 				</div>
 			</div>

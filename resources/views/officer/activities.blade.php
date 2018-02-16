@@ -7,12 +7,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="{{ asset('css/jquery.min.js') }}"></script>
 
+
 	<title> CRS </title>
 	{{--{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}--}}
 	{{--{{ Html::style('bootstrap/css/bootstrap.css') }}--}}
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 
 	{{ Html::script('js/jquery.min.js') }}
+	{{ Html::script('js/thai_date_dropdown.js') }}
 	{{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
 	{{--{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}--}}
 	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
@@ -147,9 +149,27 @@
 							<div class="field is-grouped">
 								<p class="control  has-icons-left">
 								<div class="input-group date" data-provide="datepicker">
-									วันที่ : <input type="number" min="01" max="31" maxlength = "2" id="Dayoperate" name="DayAct" class="form-control" placeholder="วว" onchange="createoperate();">
-									เดือน : <input type="number" min="01" max="12" maxlength = "2" id="Monthoperate" name="MonthAct" class="form-control" placeholder="ดด" onchange="createoperate();">
-									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="Yearoperate" name="YearAct" class="form-control" placeholder="ปปปป" onchange="createoperate();">
+									วันที่ : <select id ="Dayoperate" name="Dayoperate" onchange="createoperate();">
+										@for ($i = 1; $i <= 31; $i++)
+											<option value="{{$i}}" >{{$i}}</option>
+										@endfor
+									</select>
+									เดือน :  <select id ="Monthoperate" name="Monthoperate" onchange="date_operate();createoperate();">
+										<option value="1" > มกราคม </option>
+										<option value="2" > กุมภาพันธ์ </option>
+										<option value="3" > มีนาคม </option>
+										<option value="4" > เมษายน </option>
+										<option value="5" > พฤษภาคม </option>
+										<option value="6" > มิถุนายน </option>
+										<option value="7" > กรกฎาคม </option>
+										<option value="8" > สิงหาคม </option>
+										<option value="9" > กันยายน </option>
+										<option value="10" > ตุลาคม </option>
+										<option value="11" > พฤศจิกายน </option>
+										<option value="12" > ธันวาคม </option>
+									</select>
+
+									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="Yearoperate" name="Yearoperate" class="form-control" placeholder="ปปปป" onchange="date_operate();createoperate();">
 									<input type="hidden" name="operate_date" id="operate_date" class="form-control">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
@@ -406,7 +426,7 @@
             $('#edit_area'+operate_id).empty();
         }
         function createoperate() {
-            $('#operate_date').val($('#Dayoperate').val()+"/"+ $('#Monthoperate').val()+"/"+ ($('#Yearoperate').val()-543));
+            $('#operate_date').val($('#Monthoperate').val()+"/"+ $('#Dayoperate').val()+"/"+ ($('#Yearoperate').val()-543));
         }
         function update_operate(operate_id) {
             var advice_s = 0;

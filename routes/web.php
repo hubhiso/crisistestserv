@@ -16,6 +16,11 @@ Route::get('/', function () {
 })->name('guest_home');;
 
 Auth::routes();
+Route::prefix('manager')->group(function (){
+    Route::get('/reject_case/{case_id}', 'ManagerController@reject')->name('manager.reject_frm');
+
+    Route::post('/reject_cfm', 'ManagerController@reject_cfm')->name('manager.reject_cfm');
+});
 Route::prefix('officer')->group(function () {
     Route::get('/', 'OfficerController@index')->name('officer.main');
     Route::get('/show/{mode_id}', 'OfficerInputController@show')->name('officer.show');

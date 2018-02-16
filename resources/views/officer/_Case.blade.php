@@ -44,7 +44,10 @@
         @elseif($case->problem_case == 5)
             <td>อื่นๆ ที่เกี่ยวข้องกับเอชไอวี</td>
         @endif
-        @if( $case->status  == 1)
+        @if($case->status  == 99)
+            <td>ปฏิเสธการรับเรื่อง</td>
+            <td><a class='button is-primary' href="{{ route('officer.open_dt', $case->case_id) }}"> <span>ดูรายละเอียด</span> </a> </td>
+        @elseif( $case->status  == 1)
             <td>ยังไม่ได้รับเรื่อง</td>
             <td><a class='button is-primary' href="{{ route('officer.open_cfm', $case->case_id) }}"> <span>รับเรื่อง</span> </a> </td>
         @elseif( $case->status  == 2)

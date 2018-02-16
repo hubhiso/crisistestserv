@@ -37,6 +37,7 @@ class CreateCasesTable extends Migration
             $table->text('receiver')->nullable();
             $table->integer('receiver_id')->nullable();
             $table->text('status')->nullable();
+            $table->text('reject_reason')->nullable();
             /////  operate path ////////
             $table->integer('operate_result_status')->nullable();
             $table->integer('compensation')->nullable();
@@ -46,6 +47,7 @@ class CreateCasesTable extends Migration
             $table->text('refer_name')->nullable();
             $table->integer('evaluate1')->nullable();
             $table->integer('evaluate2')->nullable();
+
             ///////////////////////////
             $table->timestamps();
         });
