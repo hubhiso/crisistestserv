@@ -1,159 +1,178 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    {{ Html::script('js/jquery.min.js') }}
-    <title> CRS </title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet"> {{ Html::script('js/jquery.min.js') }}
+	<title> CRS </title>
 
 </head>
 
-<body  onload="load()">
+<body onload="load()">
 
-{!! Form::open(['url' =>'case_inputs']) !!}
+	{!! Form::open(['url' =>'case_inputs']) !!} @component('component.input_head') @endcomponent
 
 
-	@component('component.input_head')
-	@endcomponent
-	
-	
-<div class="container">
+	<div class="container">
 
-	<section class="section">
- 		
- 		<nav class="breadcrumb">
+		<section class="section">
+
+			<nav class="breadcrumb">
 				<ul>
 					<li><a href="{{ 'index.php' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 					</li>
-					<li class="is-active"><a><span class="icon is-small"><i class="fa fa-volume-control-phone"></i></span><span> แจ้งเรื่อง </span></a>
+					<li class="is-active"><a><span class="icon is-small"><i class="fa fa-bullhorn"></i></span><span> แจ้งเรื่อง </span></a>
 					</li>
 				</ul>
 			</nav>
- 		
-  		<h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>
-  		
-   		<div class="box" id="data-agent">
-			<div class="field is-horizontal">
-				<div class="field-label ">
-					<!-- Left empty for spacing -->
-				</div>
-			</div>
 
-			@component('component.informer_detail')
-			@endcomponent
+			<h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>
 
-
-			<div class="field is-horizontal">
-				<div class="field-label">
-					<!-- Left empty for spacing -->
-				</div>
-			</div>
-		</div>
-		<input id="case_id" name="case_id"  type="text" value="{{  $new_id }}" hidden >
-		<div class="box" id="data-person">
-       		<div class="field is-horizontal">
-				<div class="field-label ">
-					<!-- Left empty for spacing -->
-				</div>
-			</div>
-       		<label >ข้อมูลผู้ถูกกระทำ</label>
-			<hr>
-      		@if($errors->any())
-                <ul class="notification is-warning">
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
-       		<div class="field is-horizontal">
-				<div class="field-label is-normal">
-					<label class="label">ชื่อผู้ถูกกระทำ</label>
-				</div>
-				<div class="field-body">
-					<div class="field is-grouped">
-						<p class="control is-expanded has-icons-left ">
-							{!! Form::text('name',null,['class'=>'input','placeholder'=>'ชื่อจริง หรือนามแฝง']) !!}
-							<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+			<div class="box" id="data-agent">
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
 					</div>
+				</div>
+
+				@component('component.informer_detail') @endcomponent
+
+
+				<div class="field is-horizontal">
+					<div class="field-label">
+						<!-- Left empty for spacing -->
+					</div>
+				</div>
+			</div>
+			<input id="case_id" name="case_id" type="text" value="{{  $new_id }}" hidden>
+			<div class="box" id="data-person">
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
+					</div>
+				</div>
+				<label>ข้อมูลผู้ถูกกระทำ</label>
+
+				<hr> @if($errors->any())
+
+				<ul class="notification is-warning">
+					@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+				@endif
+				<div class="field is-horizontal">
 					<div class="field-label is-normal">
-						<label class="label">หมายเลขโทรศัพท์</label>
+						<label class="label">ชื่อผู้ถูกกระทำ</label>
 					</div>
-					<div class="field">
-						<p class="control is-expanded has-icons-left">
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded has-icons-left ">
+								{!! Form::text('name',null,['class'=>'input','placeholder'=>'ชื่อจริง หรือนามแฝง']) !!}
+								<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+						</div>
+						<div class="field-label is-normal">
+							<label class="label">หมายเลขโทรศัพท์</label>
+						</div>
+						<div class="field">
+							<p class="control is-expanded has-icons-left">
 								{!! Form::text('victim_tel',null,array('class'=>'input','placeholder' => 'เบอร์มือถือ 10 หลัก','maxlength' => 10 )) !!}
-							<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
-						</p>
+								<span class="icon  is-left"> <i class="fa fa-mobile-alt"></i> </span>
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
-
-
-			<div class="field is-horizontal">
-				<div class="field-label is-normal">
-					<label class="label">เพศ</label>
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
+					</div>
 				</div>
-				<div class="field-body">
-					<div class="field is-grouped">
-						<p class="control is-expanded has-icons-left ">
-							<label class="radio">
-								{{ Form::radio('sex', '1' , true) }}
-								ชาย
+
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<label class="label">เพศ</label>
+					</div>
+					<div class="field-body">
+						<div class="field is-narrow">
+							<div class="control ">
+
+								<label class="radio">
+								{{ Form::radio('sex', '1' , true) }} ชาย
 							</label>
-							<label class="radio">
+								<label class="radio">
 								{{ Form::radio('sex', '2' , false) }} หญิง
 							</label>
-							<label class="radio">
+								<label class="radio">
 								{{ Form::radio('sex', '3' , false) }} สาวประเภทสอง
 							</label>
-							<label class="radio">
-								{{ Form::radio('sex', '4' , false) }} อื่นๆ ระบุ {!! Form::text('sex_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
+								<label class="radio">
+								{{ Form::radio('sex', '4' , false) }} อื่นๆ ระบุ 
 							</label>
-						</p>
+								<label class="radio">
+								{!! Form::text('sex_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
+							</label>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="field is-horizontal">
-				<div class="field-label is-normal">
-					<label class="label">สัญชาติ</label>
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
+					</div>
 				</div>
-				<div class="field-body">
-					<div class="field is-grouped">
-						<p class="control is-expanded has-icons-left ">
-							<label class="radio">
+
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<label class="label"> สัญชาติ </label>
+					</div>
+					<div class="field-body">
+						<div class="field is-narrow">
+							<div class="control  ">
+								<label class="radio">
 								{{ Form::radio('nation', '1' , true) }} ไทย
 							</label>
-							<label class="radio">
+								<label class="radio">
 								{{ Form::radio('nation', '2' , false) }} ลาว
 							</label>
-							<label class="radio">
+								<label class="radio">
 								{{ Form::radio('nation', '3' , false) }} เวียดนาม
 							</label>
-							<label class="radio">
+								<label class="radio">
 								{{ Form::radio('nation', '4' , false) }} พม่า
 							</label>
-							<label class="radio">
+								<label class="radio">
 								{{ Form::radio('nation', '5' , false) }} กัมพูชา
 							</label>
-							<label class="radio">
-								{{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ {!! Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
+							</div>
+							<div class="control ">
+								<label class="radio">
+								{{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ 
 							</label>
-						</p>
+								<label class="radio">
+								{!! Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุสัญชาติ']) !!}
+							</label>
+							
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-
-       		<div class="field is-horizontal">
-				<div class="field-label is-normal">
-					<label class="label">จังหวัดที่เกิดเหตุ</label>
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
+					</div>
 				</div>
-				<div class="field-body">
-					<div class="field is-grouped">
-						<p class="control is-expanded  ">
-							<span class="select">
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">จังหวัดที่เกิดเหตุ</label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded  ">
+								<span class="select">
 							<select style='width:200px' name="prov_id" id="prov_id">
 								@foreach($provinces as $province)
                	 					<option value="{{ $province->PROVINCE_CODE }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
@@ -175,11 +194,6 @@
 				</div>
 			</div>
 
-        	<div class="field is-horizontal">
-				<div class="field-label ">
-					<!-- Left empty for spacing -->
-				</div>
-			</div>
            <div class="field is-horizontal">
 				<div class="field-label ">
 					<!-- Left empty for spacing -->
@@ -205,36 +219,41 @@
 							</select>
 
         					</span>
-						</p>
+							
+
+							</p>
+
+						</div>
 					</div>
 				</div>
-			</div>
 
 
-       		<div class="field is-horizontal">
-				<div class="field-label is-normal">
-					<label class="label"> ประเภทกลุ่ม </label>
-				</div>
-				<div class="field-body">
-					<div class="field is-grouped">
-						<p class="control is-expanded  ">
-							<span class="select">
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label"> ประเภทกลุ่ม </label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded  ">
+								<span class="select">
 							<select id ="sub_problem" name="sub_problem" disabled="true">
                 			</select>
 							</span>
-						</p>
-					</div>
+							
 
+							</p>
+						</div>
+
+					</div>
 				</div>
-			</div>
-      		 <div class="field is-horizontal">
-      		 	<div class="field-label is-normal">
-					<label class="label">ประเภทกลุ่มย่อย</label>
-				</div>
-				<div class="field-body">
-					<div class="field is-grouped">
-						<p class="control is-expanded  ">
-							<span class="select">
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">ประเภทกลุ่มย่อย</label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded  ">
+								<span class="select">
 							<span class="select">
 							<select id ="group_code" name="group_code" disabled="true">
                 			</select>
@@ -242,6 +261,7 @@
 					</div>
 				</div>
 			</div>
+			
 			
 			
 			<div class="field is-horizontal">
