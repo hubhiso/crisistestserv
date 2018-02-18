@@ -1,0 +1,92 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.step-box {
+	padding: 0 0px 10px 10px;
+	border: 1px solid #ddd;
+	background: #fff
+}
+.step-state {
+	padding: 10px 0 15px;
+	margin-top: 15px;
+	background: #fff
+}
+.step-state ul:after {
+	content: '';
+	display: block;
+	clear: both
+}
+.step-state ul li {
+	float: left;
+	position: relative;
+	width: 20%;
+	padding-top: 60px;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 12px;
+	color: #666
+}
+.step-state ul li span {
+	display: block;
+	margin-top: 10px;
+	font-weight: normal;
+	color: #898989;
+	font-size: 12px
+}
+.step-state ul li:before {
+	position: absolute;
+	top: 35px;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background: #ddd;
+	content: ''
+}
+.step-state.step2 ul li:nth-child(2) p:before, .step-state.step3 ul li:nth-child(3) p:before, .step-state.step4 ul li:nth-child(4) p:before {
+	background: #ddd
+}
+
+.step-state ul li:nth-child(1):before {
+	left: 50%
+}
+.step-state ul li:nth-child(5):before {
+	right: 50%
+}
+.step-state ul li:after {
+	position: absolute;
+	top: 27px;
+	left: 50%;
+	width: 20px;
+	height: 20px;
+	margin-left: -10px;
+	background: url(http://cfile5.uf.tistory.com/image/241D463E58AFAEAB1642F3) no-repeat 0 0;
+	background-size: auto 24px;
+	background-position: 0 0;
+	content: ''
+}
+.step-state.step1 ul li:nth-child(1):before, .step-state.step2 ul li:nth-child(-n+2):before, .step-state.step2-ing ul li:nth-child(-n+2):before, .step-state.step3 ul li:nth-child(-n+3):before, .step-state.step3-ing ul li:nth-child(-n+3):before, .step-state.step4 ul li:nth-child(-n+4):before, .step-state.step4-ing ul li:nth-child(-n+4):before, .step-state.step5 ul li:nth-child(-n+5):before {
+	background: #ff889b
+}
+.step-state.step1 ul li:nth-child(1):after, .step-state.step2 ul li:nth-child(-n+2):after, .step-state.step2-ing ul li:nth-child(-n+2):after, .step-state.step3 ul li:nth-child(-n+3):after, .step-state.step3-ing ul li:nth-child(-n+3):after, .step-state.step4 ul li:nth-child(-n+4):after, .step-state.step4-ing ul li:nth-child(-n+4):after, .step-state.step5 ul li:nth-child(-n+5):after {
+	background-position: -20px 0
+}
+.step-state ul li p:before {
+	position: absolute;
+	top: 35px;
+	left: 50%;
+	right: 0;
+	height: 3px;
+	content: '';
+}
+ .step-state.step2 ul li:nth-child(2) p:before, .step-state.step3 ul li:nth-child(3) p:before, .step-state.step4 ul li:nth-child(4) p:before {
+	background: #ddd
+}
+.day{
+	position: absolute;
+	top: -5px;
+	left: -20px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ff889b;
+}
