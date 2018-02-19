@@ -6,9 +6,9 @@
 
                 <div class="nav-item">
                     <div class="field is-grouped">
-                        <p class="control"> <a id="i-receive" class="button" href="{{ route('officer.show',['mode_id' => "1"]) }}" > <span>ไม่รับเรื่อง</span> </a> </p>
-                        <p class="control"> <a id="i-additional" class="button" href="{{ route('officer.show',['mode_id' => "2"]) }}" > <span>ไม่บันทึก</span> </a> </p>
-                        <p class="control"> <a id="i-process" class="button" href="{{ route('officer.show',['mode_id' => "3"]) }}" > <span>ไม่ดำเนินการ</span> </a> </p>
+                        <p class="control"> <a id="i-receive" class="button is-small" href="{{ route('officer.show',['mode_id' => "1"]) }}" > <span >ไม่รับเรื่อง</span> </a> </p>
+                        <p class="control"> <a id="i-additional" class="button is-small" href="{{ route('officer.show',['mode_id' => "2"]) }}" > <span>ไม่บันทึก</span> </a> </p>
+                        <p class="control"> <a id="i-process" class="button is-small" href="{{ route('officer.show',['mode_id' => "3"]) }}" > <span>ไม่ดำเนินการ</span> </a> </p>
                     </div>
                 </div>
 
@@ -23,7 +23,7 @@
                 <div class="navbar-end">
                     <a class="nav-item is-active" href="#"> Username : {{ Auth::user()->name }}  </a>
                     <div class="nav-item">
-                        <p class="control"> <a class="button is-primary" href="{{ route('officer.logout') }}" onclick="event.preventDefault();
+                        <p class="control"> <a class="button is-small is-primary" href="{{ route('officer.logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"> <span>Logout</span> </a> </p>
                         <form id="logout-form" action="{{ route('officer.logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}

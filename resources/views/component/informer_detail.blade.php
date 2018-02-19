@@ -28,7 +28,7 @@
         <div class="field">
             <p class="control is-expanded has-icons-left">
                 {!! Form::text('agent_tel',null,['class'=>'input','placeholder'=>'เบอร์มือถือ 10 หลัก','disabled' => 'disabled','maxlength' => 10 ]) !!}
-                <span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
+                <span class="icon  is-left"> <i class="fa fa-mobile-alt"></i> </span>
             </p>
         </div>
     </div>
