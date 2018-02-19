@@ -240,8 +240,8 @@
 							<div class="field-body">
 								<div class="field is-grouped">
 									<p class="control is-expanded has-icons-left ">
-										<input class="input" type="text" value="{{  Auth::user()->name }}" disabled>
-										<input id="receive" name="receiver" type="text" value="{{  Auth::user()->name }}" hidden>
+										<input class="input" type="text" value="{{ $show_data->receiver }}" disabled>
+										<input id="receive" name="receiver" type="text" value="{{ $show_data->receiver_id }}" hidden>
 
 									</p>
 								</div>
@@ -288,7 +288,7 @@
 						@if( $show_data->status  != 99)
 					</div>
 					<div class="control">
-						<a class="button is-info is-focused" >เปลี่ยนผู้รับผิดชอบ</a>
+						<a class="button is-info is-focused" href="{{ route('manager.transfer_frm',['case_id' => $show_data->case_id]) }}">เปลี่ยนผู้รับผิดชอบ</a>
 					</div>
 					<div class="control">
 						<a class="button is-danger is-focused" href="{{ route('manager.reject_frm',['case_id' => $show_data->case_id]) }}"> ปฎิเสธการรับเคส</a>

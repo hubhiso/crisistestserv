@@ -18,8 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 Route::prefix('manager')->group(function (){
     Route::get('/reject_case/{case_id}', 'ManagerController@reject')->name('manager.reject_frm');
+    Route::get('/transfer_case/{case_id}', 'ManagerController@transfer')->name('manager.transfer_frm');
 
     Route::post('/reject_cfm', 'ManagerController@reject_cfm')->name('manager.reject_cfm');
+    Route::post('/transfer_cfm', 'ManagerController@transfer_cfm')->name('manager.transfer_cfm');
 });
 Route::prefix('officer')->group(function () {
     Route::get('/', 'OfficerController@index')->name('officer.main');

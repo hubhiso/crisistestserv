@@ -16,8 +16,8 @@
 
 	<title> CRS </title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-	
+	<link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
+
 	<meta name="theme-color" content="#cc99cc"/>
 
 </head>

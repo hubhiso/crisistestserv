@@ -22,7 +22,7 @@
     </div>
 
     <br>
-    <form class="form-horizontal" role="form" method="POST" action="{{ route('manager.reject_cfm') }}">
+    <form class="form-horizontal" role="form" method="POST" action="{{ route('manager.transfer_cfm') }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="container">
             <nav class="breadcrumb">
@@ -35,7 +35,7 @@
             </nav>
         </div>
 
-        <h1 id="title" class="title"> ปฏิเสธการรับเรื่อง </h1>
+        <h1 id="title" class="title"> เปลี่ยนเจ้าหน้าที่ผู้รับผิดชอบ </h1>
         <div class="container">
             <div class="notification">
                 <!--This container is <strong>centered</strong> on desktop. -->
@@ -89,22 +89,25 @@
                     </div>
                 </div>
 
-
-
-
-
-
-
-
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label"> ระบุเหตุผลที่ปฏิเสธไม่รับเรื่อง </label>
+                        <label class="label"> เปลี่ยนผู้รับเรื่อง </label>
                     </div>
                     <div class="field-body">
-                        <div class="field">
-                            <div class="control">
-                                {{ Form::textarea('reason', null, ['size' => '100x10']) }}
-                            </div>
+                        <div class="field is-grouped">
+                            <p class="control is-expanded has-icons-left ">
+                                <input class="input" type="text" value="{{ $show_data->receiver }}" disabled>
+                                <input id="receive" name="receiver" type="text" value="{{ $show_data->receiver_id }}" hidden>
+
+                            </p>
+                            <label class="label"> เป็น </label>
+                            <p class="control is-expanded has-icons-left ">
+                                <select style='width:200px' name="officer" id="officer">
+                                @foreach($officers as $officer)
+                                    <option value="{{ $officer->id }}" style="width:250px">{{ $officer->name }}</option>
+                                @endforeach
+                                </select>
+                            </p>
                         </div>
                     </div>
                 </div>
