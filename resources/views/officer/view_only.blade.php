@@ -260,8 +260,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					@if( $show_data->status  == 99)
+						
+						@if( $show_data->status  == 99)
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
 							<label class="label"> เหตุผลที่ปฏิเสธการรับเรื่อง </label>
@@ -281,16 +281,26 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="field is-grouped">
-					<p><a> </a>
-					</p>
-					{{--{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}--}}
-					@if( $show_data->status  != 99)
-					<a class="button is-info is-focused" >เปลี่ยนผู้รับผิดชอบ</a>
-					<a class="button is-danger is-focused" href="{{ route('manager.reject_frm',['case_id' => $show_data->case_id]) }}"> ปฎิเสธการรับเคส</a>
+					<div class="control">
+						{{--{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}--}}
+						@if( $show_data->status  != 99)
+					</div>
+					<div class="control">
+						<a class="button is-info is-focused" >เปลี่ยนผู้รับผิดชอบ</a>
+					</div>
+					<div class="control">
+						<a class="button is-danger is-focused" href="{{ route('manager.reject_frm',['case_id' => $show_data->case_id]) }}"> ปฎิเสธการรับเคส</a>
 					@endif
-					<p class="control"> <a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > กลับ </a> </p>
+					</div>
+					<p class="control"> 
+						<a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > กลับ </a> 
+					</p>
 				</div>
+					
+				</div>
+				
 			</div>
 	</section>
 
