@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\province;
 use App\amphur;
 use App\case_input;
+use App\timeline;
 use Request;
 use Auth;
 
