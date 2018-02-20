@@ -42,34 +42,50 @@
 			<div class="container">
 				<section class="section">
 					<div class="box">
-						<div class="step-state step3">
+						 @php
+						 $date1 = null;
+						 $date2 = null;
+						 $date3 = null;
+						 $date4 = null;
+						 $date5 = null;
+						 $step = 1;
+						 @endphp
+					    @foreach($timelines as $timeline)
+							@if($timeline->operate_status == 1)  @php $date1 = $timeline->created_at @endphp  @endif
+							@if($timeline->operate_status == 2)  @php $date2 = $timeline->created_at;$step++ @endphp  @endif
+							@if($timeline->operate_status == 3)  @php $date3 = $timeline->created_at;$step++ @endphp  @endif
+							@if($timeline->operate_status == 4)  @php $date4 = $timeline->created_at;$step++ @endphp  @endif
+							@if($timeline->operate_status == 5)  @php $date5 = $timeline->created_at;$step++ @endphp  @endif
+						@endforeach
+						<div class="step-state step{{$step}}">
 							<ul>
 								<li>
-									<p> แจ้งเหตุ <span>(1/1/2561)</span>
+									<p> แจ้งเหตุ <span>{{ $date1  }}</span>
 									</p>
 								</li>
 								<li>
-									<p> รับเรื่อง <span>(4/1/2561)</span>
+									<p> รับเรื่อง <span>{{ $date2  }}</span>
 									</p>
-									<a class="day">3 วัน</a>
+									<a class="day">@if($date2 != null) {{$date2->diffInDays($date1) }} วัน @endif</a>
 								</li>
 								<li>
-									<p> บันทึกข้อมูล <span>(9/1/2561)</span>
+									<p> บันทึกข้อมูล <span>{{ $date3 }}</span>
 									</p>
-									<a class="day">5 วัน</a>
+									<a class="day">@if($date3 != null) {{$date3->diffInDays($date2) }} วัน @endif</a>
 								</li>
 								<li>
-									<p> ดำเนินการ <span> </span>
+									<p> ดำเนินการ <span>{{ $date4 }} </span>
 									</p>
-									<p class="day"> </p>
+									<p class="day">@if($date4 != null) {{$date4->diffInDays($date3) }} วัน @endif</p>
 								</li>
 								<li>
-									<p> เสร็จสิ้น <span> </span>
+									<p> เสร็จสิ้น <span> {{ $date5 }}</span>
 									</p>
-									<p class="day"> </p>
+									<p class="day">@if($date5 != null) {{$date5->diffInDays($date4) }} วัน @endif</p>
 								</li>
 							</ul>
 						</div>
+
 					</div>
 
 					<div class="notification">
@@ -121,7 +137,7 @@
 									<p class="control is-expanded has-icons-left">
 
 										<input class="input" type="text" value="{{ $show_data->victim_tel }}" disabled>
-										<span class="icon  is-left"> <i class="fa fa-mobile-alt"></i> </span> 
+										<span class="icon  is-left"> <i class="fa fa-mobile-alt"></i> </span>
 									</p>
 								</div>
 							</div>
@@ -260,7 +276,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						@if( $show_data->status  == 99)
 					<div class="field is-horizontal">
 						<div class="field-label is-normal">
@@ -281,7 +297,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="field is-grouped">
 					<div class="control">
 						{{--{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}--}}
@@ -294,13 +310,13 @@
 						<a class="button is-danger is-focused" href="{{ route('manager.reject_frm',['case_id' => $show_data->case_id]) }}"> ปฎิเสธการรับเคส</a>
 					@endif
 					</div>
-					<p class="control"> 
-						<a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > กลับ </a> 
+					<p class="control">
+						<a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > กลับ </a>
 					</p>
 				</div>
-					
+
 				</div>
-				
+
 			</div>
 	</section>
 

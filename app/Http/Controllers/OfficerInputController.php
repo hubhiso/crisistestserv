@@ -11,6 +11,7 @@ use App\province;
 use App\amphur;
 use App\case_input;
 use App\add_detail;
+use App\timeline;
 use Request;
 use Auth;
 
@@ -104,7 +105,8 @@ class OfficerInputController extends Controller
     public function open_detail($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
-        return view('officer.view_only',compact('show_data'));
+        $timelines = timeline::where('case_id','=',$case_id)->get();
+        return view('officer.view_only',compact('show_data','timelines'));
     }
     public function add_detail($case_id)
     {

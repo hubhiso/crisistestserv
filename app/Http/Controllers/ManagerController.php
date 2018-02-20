@@ -47,5 +47,5 @@ class ManagerController extends Controller
         return redirect('officer/show/0');
     }
 
-   
+
 }
