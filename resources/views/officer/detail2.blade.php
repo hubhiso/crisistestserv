@@ -345,7 +345,7 @@
 											<option value="11"> พฤศจิกายน </option>
 											<option value="12"> ธันวาคม </option>
 											</select>
-									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="YearInterview" name="YearInterview" class="form-control" placeholder="ปปปป" onchange="date_interview();createinterviewdate()">
+									ปี พ.ศ. : <input type="number" min="2561" max="2570" value = {{ date("Y")+543 }}  id="YearInterview" name="YearInterview" class="form-control" placeholder="ปปปป" onchange="date_interview();createinterviewdate()">
 									<input type="hidden" id="DateInterview" name="DateInterview" class="form-control" >
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
@@ -653,7 +653,7 @@
 											<option value="11"> พฤศจิกายน </option>
 											<option value="12"> ธันวาคม </option>
 											</select>
-									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" onchange="date_acc();createaccidentdate();">
+									ปี พ.ศ. : <input type="number" min="2561" max="2570" value = {{ date("Y")+543 }} id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" onchange="date_acc();createaccidentdate();">
 									<input  type="hidden" id="DateAct" name="DateAct" class="form-control" >
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>

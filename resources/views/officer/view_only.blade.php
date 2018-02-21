@@ -52,10 +52,10 @@
 						 @endphp
 					    @foreach($timelines as $timeline)
 							@if($timeline->operate_status == 1)  @php $date1 = $timeline->created_at @endphp  @endif
-							@if($timeline->operate_status == 2)  @php $date2 = $timeline->created_at;$step++ @endphp  @endif
-							@if($timeline->operate_status == 3)  @php $date3 = $timeline->created_at;$step++ @endphp  @endif
-							@if($timeline->operate_status == 4)  @php $date4 = $timeline->created_at;$step++ @endphp  @endif
-							@if($timeline->operate_status == 5)  @php $date5 = $timeline->created_at;$step++ @endphp  @endif
+							@if($timeline->operate_status == 2)  @php $date2 = $timeline->created_at;$step=2 @endphp  @endif
+							@if($timeline->operate_status == 3)  @php $date3 = $timeline->created_at;$step=3 @endphp  @endif
+							@if($timeline->operate_status == 4)  @php $date4 = $timeline->created_at;$step=4 @endphp  @endif
+							@if($timeline->operate_status == 5)  @php $date5 = $timeline->created_at;$step=5 @endphp  @endif
 						@endforeach
 						<div class="step-state step{{$step}}">
 							<ul>

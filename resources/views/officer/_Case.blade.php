@@ -24,12 +24,14 @@
     <tbody>
 
 
-
+@php
+   $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+@endphp
 
 @foreach($cases as $case)
 
     <tr>
-        <th>{{ \Carbon\Carbon::parse($case->created_at)->format('d-M-y') }}</th>
+        <th>{{date('d',strtotime(str_replace('-','/', $case->created_at)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->created_at)))]}}{{date("Y",strtotime(str_replace('-','/', $case->created_at)))+543}}</th>
         <th>{{ $case->case_id }}</th>
         <td><a target="_blank" href='{{ route('officer.open_dt', $case->case_id) }}' title='ID'>{{ $case->name }}</a> </td>
         <td>{{$case->Provinces->PROVINCE_NAME}}</td>

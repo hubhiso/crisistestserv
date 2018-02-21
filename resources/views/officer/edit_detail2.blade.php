@@ -371,7 +371,7 @@
 										<option value="11" @if(date('m',strtotime(str_replace('-','/', $show_detail->interview_date))) == 11){ selected } @endif> พฤศจิกายน </option>
 										<option value="12" @if(date('m',strtotime(str_replace('-','/', $show_detail->interview_date))) == 12){ selected } @endif> ธันวาคม </option>
 									</select>
-									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="YearInterview" name="YearInterview" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->interview_date)))+543 }}" onchange="date_interview();createinterviewdate()">
+									ปี พ.ศ. : <input type="number" min="2561" max="2570" maxlength = "4" id="YearInterview" name="YearInterview" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->interview_date)))+543 }}" onchange="date_interview();createinterviewdate()">
 									<input type="hidden" id="DateInterview" name="DateInterview" class="form-control"  value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->interview_date)))}}">
 
 								</div>
@@ -702,7 +702,7 @@
 										<option value="12" @if(date('m',strtotime(str_replace('-','/', $show_detail->accident_date))) == 12){ selected } @endif> ธันวาคม </option>
 									</select>
 
-									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->accident_date))) + 543 }}" onchange="date_acc();createaccidentdate();">
+									ปี พ.ศ. : <input type="number" min="2561" max="2570" maxlength = "4" id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->accident_date))) + 543 }}" onchange="date_acc();createaccidentdate();">
 									<input type="hidden" id="DateAct" name="DateAct" class="form-control" value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->accident_date)))}}">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
