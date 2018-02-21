@@ -34,10 +34,11 @@
 <div class="tile is-ancestor">
     <div class="tile is-parent">
         <div class="tile is-child box">
-            <div class="notification is-success">
-                <button class="delete is-size-1"></button>
-                รหัสที่ใช้ติดตามข้อมูลของท่านคือ
-                {{ $case_id }}
+            <div class="notification has-text-centered is-large">
+                <h1>
+                    รหัสที่ใช้ติดตามข้อมูลของท่านคือ </br>
+                    <p class="title">{{ $case_id }}</p>
+                </h1>
             </div>
             @if(Auth::guard('officer')->check())
                 <a class="button is-success" href="{{ route('officer.main') }}">กลับสู้หน้าหลัก</a>

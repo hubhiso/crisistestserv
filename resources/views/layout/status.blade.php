@@ -160,11 +160,12 @@
 <script>
 	function evaluate1() {
         var token = $('#token').val();
-        var  case_id = $('#case_search').val();
+        var  case_id = $('#fcase').val();
         var  eval1 = $("input[name='eval1']:checked").val();
         var  eval2 = $("input[name='eval2']:checked").val();
         console.log(eval1 + eval2);
 		//alert(eval1 + eval2);
+		if (case_id!=null){
         $.ajax({
             type: 'POST',
             url: '{!!  route('case.update') !!}',
@@ -180,7 +181,9 @@
 			error: function (request, data, error) {
                 alert(data);
             }
-        })
+        })}else{
+		    alert("ไม่พบเคส");
+		}
     }
     function report_status(){
 

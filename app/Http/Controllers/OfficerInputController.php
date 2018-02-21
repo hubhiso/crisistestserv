@@ -77,6 +77,9 @@ class OfficerInputController extends Controller
         case_input::create($request->all());
         $case_id = Request::input('case_id');
         case_input::where('case_id','=',$case_id)->update([ 'status' => 1]);
+        timeline::create(['case_id'=>$case_id,
+            'operate_status'=>1,
+        ]);
         return view('layout.gen_caseid',compact('case_id'));
 
     //return redirect('/');

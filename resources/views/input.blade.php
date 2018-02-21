@@ -175,6 +175,7 @@
 							<p class="control is-expanded  ">
 								<span class="select">
 							<select style='width:200px' name="prov_id" id="prov_id">
+								<option value="0" style="width:250px">กรุณาเลือกจังหวัด</option>
 								@foreach($provinces as $province)
                	 					<option value="{{ $province->PROVINCE_CODE }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
            					 	@endforeach
@@ -187,9 +188,9 @@
 						<p class="control is-expanded  ">
 							<span class="select">
 							<select style='width:200px' name="amphur_id" id="amphur_id">
-								@foreach($amphurs as $amphur)
-               	 					<option value="{{ $amphur->AMPHUR_CODE }}" style="width:250px">{{ $amphur->AMPHUR_NAME }}</option>
-           					 	@endforeach
+								{{--@foreach($amphurs as $amphur)--}}
+               	 					{{--<option value="{{ $amphur->AMPHUR_CODE }}" style="width:250px">{{ $amphur->AMPHUR_NAME }}</option>--}}
+           					 	{{--@endforeach--}}
            					</select>
 					</div>
 				</div>
@@ -272,7 +273,7 @@
 					<div class="field-body">
 						<div class="field">
 							<div class="control">
-								{{ Form::textarea('detail', null, ['size' => '100x10']) }}
+								<textarea name="detail" class="textarea" ></textarea>
 								{{--<textarea class="textarea"  id ="detail" name="detail" placeholder=" กรอกรายละเอียดของปัญหา "></textarea>--}}
 							</div>
 						</div>
@@ -285,7 +286,7 @@
 				<div class="field-body">
 					<div class="field">
 						<div class="control">
-							{{ Form::textarea('need', null, ['size' => '100x10']) }}
+							<textarea name="need" class="textarea" ></textarea>
 							{{--<textarea name="detail" class="textarea" placeholder="กรอกรายละเอียด"></textarea>--}}
 						</div>
 					</div>

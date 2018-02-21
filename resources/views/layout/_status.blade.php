@@ -2,6 +2,7 @@
 <div class="timeline-item">
 
         @if($data->status > 1 )
+            <input type="hidden" id="fcase" value="{{$data->case_id}}">
         <div class="timeline-icon">
         <img src="images/markx40.png" alt="">
         </div>

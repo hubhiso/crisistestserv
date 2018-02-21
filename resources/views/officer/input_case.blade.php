@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome5.0.6/css/font-awesome.css') }}" rel="stylesheet">
     <script src="{{ asset('css/jquery.min.js') }}"></script>
     <title> CRS </title>
 
@@ -122,7 +122,11 @@
 									{{ Form::radio('sex', '3' , false) }} สาวประเภทสอง
 								</label>
 								<label class="radio">
-									{{ Form::radio('sex', '4' , false) }} อื่นๆ ระบุ {!! Form::text('sex_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
+									{{ Form::radio('sex', '4' , false) }} อื่นๆ ระบุ
+								</label>
+								<label class="radio">
+
+									{!! Form::text('sex_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
 								</label>
 							</p>
 						</div>
@@ -151,7 +155,10 @@
 									{{ Form::radio('nation', '5' , false) }} กัมพูชา
 								</label>
 								<label class="radio">
-									{{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ {!! Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุสัญชาติ']) !!}
+									{{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ
+								</label>
+								<label class="radio">
+									{!! Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุสัญชาติ']) !!}
 								</label>
 							</p>
 						</div>
@@ -167,7 +174,8 @@
 							<p class="control is-expanded  ">
 								<span class="select">
 								<select style='width:200px' name="prov_id" id="prov_id">
-									@foreach($provinces as $province)
+								<option value="0" style="width:250px">กรุณาเลือกจังหวัด</option>
+								@foreach($provinces as $province)
 										<option value="{{ $province->PROVINCE_CODE }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
 									@endforeach
 								</select>
@@ -179,9 +187,9 @@
 							<p class="control is-expanded  ">
 								<span class="select">
 								<select style='width:200px' name="amphur_id" id="amphur_id">
-									@foreach($amphurs as $amphur)
-										<option value="{{ $amphur->AMPHUR_CODE }}" style="width:250px">{{ $amphur->AMPHUR_NAME }}</option>
-									@endforeach
+									{{--@foreach($amphurs as $amphur)--}}
+										{{--<option value="{{ $amphur->AMPHUR_CODE }}" style="width:250px">{{ $amphur->AMPHUR_NAME }}</option>--}}
+									{{--@endforeach--}}
 								</select>
 						</div>
 					</div>
@@ -262,7 +270,8 @@
 					<div class="field-body">
 							<div class="field">
 								<div class="control">
-									{{ Form::textarea('detail', null, ['size' => '100x10']) }}
+									{{--{{ Form::textarea('detail', null , ['size' => '100x10']) }}--}}
+									<textarea name="detail" class="textarea" ></textarea>
 									{{--<textarea name="detail" class="textarea" placeholder="กรอกรายละเอียด"></textarea>--}}
 								</div>
 							</div>
@@ -275,7 +284,8 @@
 					<div class="field-body">
 						<div class="field">
 							<div class="control">
-								{{ Form::textarea('need', null, ['size' => '100x10']) }}
+								{{--{{ Form::textarea('need', null, ['size' => '100x10']) }}--}}
+								<textarea name="need" class="textarea" ></textarea>
 								{{--<textarea name="detail" class="textarea" placeholder="กรอกรายละเอียด"></textarea>--}}
 							</div>
 						</div>

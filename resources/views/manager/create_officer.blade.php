@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('tel') ? ' has-error' : '' }}">
-                                <label for="tel" class="col-md-4 control-label">UserName</label>
+                                <label for="tel" class="col-md-4 control-label">Telephone Number</label>
 
                                 <div class="col-md-6">
                                     <input id="tel" type="text" class="form-control" name="tel" value="{{ old('tel') }}" required >
