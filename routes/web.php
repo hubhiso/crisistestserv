@@ -19,9 +19,11 @@ Auth::routes();
 Route::prefix('manager')->group(function (){
     Route::get('/reject_case/{case_id}', 'ManagerController@reject')->name('manager.reject_frm');
     Route::get('/transfer_case/{case_id}', 'ManagerController@transfer')->name('manager.transfer_frm');
+    Route::get('/register', 'ManagerController@load_register')->name('manager.register');
 
     Route::post('/reject_cfm', 'ManagerController@reject_cfm')->name('manager.reject_cfm');
     Route::post('/transfer_cfm', 'ManagerController@transfer_cfm')->name('manager.transfer_cfm');
+    Route::post('/register_cfm', 'ManagerController@create_officer')->name('manager.register_cfm');
 });
 Route::prefix('officer')->group(function () {
     Route::get('/', 'OfficerController@index')->name('officer.main');
@@ -69,9 +71,11 @@ Route::get('detail1', function () {
 Route::get('detail2', function () {
     return view('officer.detail2');
 })->name('data.detail2');
+
 Route::get('activities', function () {
     return view('officer.activities');
 })->name('data.detail3');
+
 Route::get('ajax-amphur/{prov_id}','case_controller@ajax_amphur');
 
 Route::resource('case_inputs','case_controller');

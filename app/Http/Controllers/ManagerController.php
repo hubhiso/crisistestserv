@@ -47,5 +47,17 @@ class ManagerController extends Controller
         return redirect('officer/show/0');
     }
 
+    function  load_register(){
+        return view('Manager.create_officer');
+    }
+     function create_officer(Request $request)
+    {
+        return officer::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+    }
+
 
 }

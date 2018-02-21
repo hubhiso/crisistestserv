@@ -91,7 +91,7 @@ class case_controller extends Controller
         //var_dump($case_id);
         try {
             // Validate the value...
-            $data = case_input::where('case_id','=',$case_id)->first();
+            $data = case_input::where('case_id','=',$case_id)->orWhere('victim_tel','=',$case_id)->first();
             //var_dump($data);
             if ($data!=[]) {
                 $html = view('layout._status', compact('data'))->render();
