@@ -126,7 +126,7 @@
 								</label>
 								<label class="radio">
 
-									{!! Form::text('sex_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
+									{!! Form::text('sex_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ','style'=>'display: none']) !!}
 								</label>
 							</p>
 						</div>
@@ -158,7 +158,7 @@
 									{{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ
 								</label>
 								<label class="radio">
-									{!! Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุสัญชาติ']) !!}
+									{!! Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุสัญชาติ','style'=>'display: none']) !!}
 								</label>
 							</p>
 						</div>
@@ -328,7 +328,28 @@
         });
     });
 
+    $("input[name='sex']").on('change',function (e) {
 
+        var sel_value = e.target.value;
+        //alert(sel_value);
+
+        if(sel_value == 4) {
+            $("input[name='sex_etc']").show();
+        }else {
+            $("input[name='sex_etc']").hide();
+        }
+    });
+    $("input[name='nation']").on('change',function (e) {
+
+        var sel_value = e.target.value;
+        //alert(sel_value);
+
+        if(sel_value == 6) {
+            $("input[name='nation_etc']").show();
+        }else {
+            $("input[name='nation_etc']").hide();
+        }
+    });
 </script>
 
 @extends('footer')

@@ -17,7 +17,8 @@ class CreateTimelineStatus extends Migration
             //
             $table->increments('id');
             $table->string('case_id', 5)->references('case_id')->on('case_inputs');
-            $table->date('operate_status')->nullable();
+            $table->integer('operate_status')->nullable();
+            $table->date('operate_time')->nullable();
             $table->timestamps();
         });
     }

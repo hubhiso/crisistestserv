@@ -14,7 +14,6 @@
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 
 	{{ Html::script('js/jquery.min.js') }}
-	{{ Html::script('js/thai_date_dropdown.js') }}
 	{{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
 	{{--{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}--}}
 	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
@@ -149,11 +148,8 @@
 							<div class="field is-grouped">
 								<p class="control  has-icons-left">
 								<div class="input-group date" data-provide="datepicker">
-									วันที่ : <select id ="Dayoperate" name="Dayoperate" onchange="createoperate();">
-										@for ($i = 1; $i <= 31; $i++)
-											<option value="{{$i}}" >{{$i}}</option>
-										@endfor
-									</select>
+									ปี พ.ศ. : <input type="number" min="2400" max="2570" value="{{ date("Y")+543 }}" maxlength = "4" id="Yearoperate" name="Yearoperate" class="form-control" placeholder="ปปปป" onchange="createoperate();">
+
 									เดือน :  <select id ="Monthoperate" name="Monthoperate" onchange="date_operate();createoperate();">
 										<option value="1" > มกราคม </option>
 										<option value="2" > กุมภาพันธ์ </option>
@@ -168,8 +164,13 @@
 										<option value="11" > พฤศจิกายน </option>
 										<option value="12" > ธันวาคม </option>
 									</select>
+									วันที่ : <select id ="Dayoperate" name="Dayoperate" onchange="createoperate();">
+										@for ($i = 1; $i <= 31; $i++)
+											<option value="{{$i}}" >{{$i}}</option>
+										@endfor
+									</select>
 
-									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4" id="Yearoperate" name="Yearoperate" class="form-control" placeholder="ปปปป" onchange="date_operate();createoperate();">
+
 									<input type="hidden" name="operate_date" id="operate_date" class="form-control">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
@@ -312,23 +313,32 @@
 
 
 
-								<p class="column " id="chk_result" @if($show_data->operate_result_status != 1 ) style="display: none" @endif>
-								<label class="checkbox">
-										<input type="checkbox" name="problemfix" id="problemfix" @if($show_data->problemfix == 1 ) checked @endif>
-										ปัญหาได้รับการแก้ไข
-								</label>
-								<label class="checkbox">
-									<input type="checkbox" name="compensation" id="compensation" @if($show_data->compensation == 1 ) checked @endif>
-									บุคคลได้รับการเยียวยา
-								</label>
-								<label class="checkbox">
-									<input type="checkbox" name="change_policy" id="change_policy" @if($show_data->change_policy == 1 ) checked @endif>
-									องค์กรเปลี่ยนนโยบาย
-								</label>
-								</p>
+
 							</div>
 						</div>
+
 					</div><!--- resulte group !-->
+					<div  class="field is-horizontal" >
+						<div class="field-label is-normal">
+							<label class="label">  </label>
+						</div>
+						<div class="field-body" >
+						<p  id="chk_result" @if($show_data->operate_result_status != 1 ) style="display: none" @endif>
+							<label class="checkbox">
+								<input type="checkbox" name="problemfix" id="problemfix" @if($show_data->problemfix == 1 ) checked @endif>
+								ปัญหาได้รับการแก้ไข
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="compensation" id="compensation" @if($show_data->compensation == 1 ) checked @endif>
+								บุคคลได้รับการเยียวยา
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="change_policy" id="change_policy" @if($show_data->change_policy == 1 ) checked @endif>
+								องค์กรเปลี่ยนนโยบาย
+							</label>
+						</p>
+						</div>
+					</div>
 					
 					<div class="field is-horizontal" id="refer_form" @if($show_data->status != 6 ) style="display: none" @endif >
 						<div class="field-label is-normal">
@@ -336,7 +346,7 @@
 						</div>
 						<div class="field-body">
 							<div class="field is-grouped">
-								<p class="control   ">
+								<p class="control">
 									<span class="select">
 									<select name="refer_type" id="refer_type">
 										<option value="1" @if($show_data->refer_type == 1 ) selected @endif> หน่วยงานในเครือข่าย </option>
@@ -425,10 +435,41 @@
         function clear_edit(operate_id) {
             $('#edit_area'+operate_id).empty();
         }
+        function load_date(mon,year) {
+            var output = [];
+            if(mon==2){
+                if((year%400)==0){
+                    var x = 29
+                }else if((year%100)==0){
+                    var x = 28
+                }else if((year%4)==0){
+                    var x = 29
+                }else{
+                    var x = 28
+                }
+            }else if(mon==1 || mon==3 || mon==5 || mon==7 || mon== 8 || mon== 9 || mon== 12){
+                var x = 31
+            }else{
+                var x = 30
+            }
+            for(i = 1;i<=x;i++) {
+                output.push('<option value="' + i + '">' + i + '</option>');
+            }
+            return output;
+        }
+        function edit_DateOperate( id) {
+            var mon = $('#MonthEdit'+id).val();
+
+            var year = $('#YearEdit'+id).val()-543;
+            var output = load_date(mon,year);
+            $('#DayEdit'+id).html(output.join(''));
+        }
         function createoperate() {
             $('#operate_date').val($('#Monthoperate').val()+"/"+ $('#Dayoperate').val()+"/"+ ($('#Yearoperate').val()-543));
         }
         function update_operate(operate_id) {
+            var Operate_date = $('#MonthEdit'+operate_id).val()+"/"+ $('#DayEdit'+operate_id).val()+"/"+ ($('#YearEdit'+operate_id).val()-543)
+
             var advice_s = 0;
             var investigate_s = 0;
             var negotiate_individual_s = 0;
@@ -458,6 +499,7 @@
                 data: {
                     _token: token,
                     id: operate_id,
+                    Operate_date: Operate_date,
                     advice: advice_s,
                     investigate: investigate_s,
                     negotiate_individual: negotiate_individual_s,
@@ -565,6 +607,7 @@
                     $("#ajaxResponse").append("<div>"+data.msg+"</div>");
                     renderTable();
                     clear_input();
+                    //alert(data.cout)
                     $('#current_operate').hide();
                     $('#btn_add').show();
                 }
@@ -578,7 +621,9 @@
 			if(this.value==4){
                 $('#result_form').hide();
                 $('#refer_form').hide();
-			}else if(this.value==5){
+                $('#chk_result').hide();
+
+            }else if(this.value==5){
                 $('#result_form').show();
                 if($('#operate_result_status').val()==1){
                     $('#chk_result').show();
@@ -587,6 +632,8 @@
 			}else if(this.value==6){
                 $('#result_form').hide();
                 $('#refer_form').show();
+                $('#chk_result').hide();
+
             }
             });
         $('#operate_result_status').change(function () {
@@ -594,7 +641,7 @@
                 $('#chk_result').show();
             }else {
                 $('#chk_result').hide();
-                //alert("test")
+
                 document.getElementById("compensation").checked = false;
                 document.getElementById("change_policy").checked = false;
 

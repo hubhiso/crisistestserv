@@ -235,6 +235,7 @@
         function load_case () {
             var token = $('#token').val();
             var p_id = $('#p_id').val();
+            var username = $('#user_name').val();
             var text_search = $('#text_search').val();
             var type_Search = $('#type_search').val();
             var Date_start = $('#date_start').val();
@@ -264,6 +265,7 @@
                 data: {
                     _token: token,
                     pid: p_id,
+					username: username,
                     Search_text: text_search,
                     Type_search: type_Search,
 					Date_start : Date_start,
@@ -274,7 +276,7 @@
                 success: function( data ) {
                   //  console.log(data);
                     $container.html(data.html);
-                    var rows = $('#table_show tbody tr').length
+                    var rows = $('#table_show tbody tr').length;
                     document.getElementById('case_number').innerHTML = rows;
 
                 }

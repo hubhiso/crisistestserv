@@ -49,37 +49,38 @@
 						 $date4 = null;
 						 $date5 = null;
 						 $step = 1;
+
 						 @endphp
 					    @foreach($timelines as $timeline)
-							@if($timeline->operate_status == 1)  @php $date1 = $timeline->created_at @endphp  @endif
-							@if($timeline->operate_status == 2)  @php $date2 = $timeline->created_at;$step=2 @endphp  @endif
-							@if($timeline->operate_status == 3)  @php $date3 = $timeline->created_at;$step=3 @endphp  @endif
-							@if($timeline->operate_status == 4)  @php $date4 = $timeline->created_at;$step=4 @endphp  @endif
-							@if($timeline->operate_status == 5)  @php $date5 = $timeline->created_at;$step=5 @endphp  @endif
+							@if($timeline->operate_status == 1)  @php $date1 = Carbon\Carbon::parse($timeline->operate_time);@endphp  @endif
+							@if($timeline->operate_status == 2)  @php $date2 = Carbon\Carbon::parse($timeline->operate_time);$step=2 @endphp  @endif
+							@if($timeline->operate_status == 3)  @php $date3 = Carbon\Carbon::parse($timeline->operate_time);$step=3 @endphp  @endif
+							@if($timeline->operate_status == 4)  @php $date4 = Carbon\Carbon::parse($timeline->operate_time);$step=4 @endphp  @endif
+							@if($timeline->operate_status >= 5)  @php $date5 = Carbon\Carbon::parse($timeline->operate_time);$step=5 @endphp  @endif
 						@endforeach
 						<div class="step-state step{{$step}}">
 							<ul>
 								<li>
-									<p> แจ้งเหตุ <span>{{ $date1  }}</span>
+									<p> แจ้งเหตุ <span>@if($date1 != null) {{$date1->format('Y-m-d')  }}  @endif</span>
 									</p>
 								</li>
 								<li>
-									<p> รับเรื่อง <span>{{ $date2  }}</span>
+									<p> รับเรื่อง <span>@if($date2 != null) {{$date2->format('Y-m-d')  }} @endif</span>
 									</p>
 									<a class="day">@if($date2 != null) {{$date2->diffInDays($date1) }} วัน @endif</a>
 								</li>
 								<li>
-									<p> บันทึกข้อมูล <span>{{ $date3 }}</span>
+									<p> บันทึกข้อมูล <span>@if($date3 != null) {{$date3->format('Y-m-d')  }} @endif</span>
 									</p>
 									<a class="day">@if($date3 != null) {{$date3->diffInDays($date2) }} วัน @endif</a>
 								</li>
 								<li>
-									<p> ดำเนินการ <span>{{ $date4 }} </span>
+									<p> ดำเนินการ <span>@if($date4 != null) {{$date4->format('Y-m-d')  }} @endif</span>
 									</p>
 									<p class="day">@if($date4 != null) {{$date4->diffInDays($date3) }} วัน @endif</p>
 								</li>
 								<li>
-									<p> เสร็จสิ้น <span> {{ $date5 }}</span>
+									<p> เสร็จสิ้น <span> @if($date5 != null) {{$date5->format('Y-m-d')  }} @endif</span>
 									</p>
 									<p class="day">@if($date5 != null) {{$date5->diffInDays($date4) }} วัน @endif</p>
 								</li>
@@ -301,7 +302,7 @@
 				<div class="field is-grouped">
 					<div class="control">
 						{{--{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}--}}
-						@if( $show_data->status  != 99)
+						@if( $show_data->status  != 99 &&   Auth::user()->position  == "manager")
 					</div>
 					<div class="control">
 						<a class="button is-info is-focused" href="{{ route('manager.transfer_frm',['case_id' => $show_data->case_id]) }}">เปลี่ยนผู้รับผิดชอบ</a>

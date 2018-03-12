@@ -49,3 +49,9 @@ function date_operate() {
     var output = load_date(mon,year);
     $('#Dayoperate').html(output.join(''));
 }
+function edit_DateOperate( id) {
+    var mon = $('#MonthEdit'+id).val();
+    var year = $('#YearEdit'+id).val()-543;
+    var output = load_date(mon,year);
+    $('#DayEdit'+id).html(output.join(''));
+}

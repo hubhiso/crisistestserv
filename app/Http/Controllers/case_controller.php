@@ -71,6 +71,7 @@ class case_controller extends Controller
         case_input::where('case_id','=',$case_id)->update([ 'status' => 1]);
         timeline::create(['case_id'=>$case_id,
             'operate_status'=>1,
+            'operate_time'=> date("Y-m-d")
         ]);
         return view('layout.gen_caseid',compact('case_id'));
 

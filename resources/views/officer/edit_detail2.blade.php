@@ -9,7 +9,7 @@
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 
 	{{ Html::script('js/jquery.min.js') }}
-	{{ Html::script('js/thai_date_dropdown.js') }}
+	{{--{{ Html::script('js/thai_date_dropdown.js') }}--}}
 
 	{{--{{ Html::script('js/select_list.js') }}--}}
 	{{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
@@ -199,11 +199,17 @@
     						</label>
 										<label >
 											@if( $show_data->sex == 4 )
-												{{ Form::radio('sex', '4' , true) }}
+												{{ Form::radio('sex', '4' , true) }} อื่นๆ ระบุ
+												<label class="radio">
+												{!! Form::text('sex_etc',$show_data->sex_etc,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
+												</label>
 											@else
-												{{ Form::radio('sex', '4' , false) }}
-											@endif อื่นๆ
-												ระบุ {!! Form::text('sex_etc',$show_data->sex_etc,['class'=>'input','placeholder'=>'ระบุเพศ']) !!}
+												{{ Form::radio('sex', '4' , false) }} อื่นๆ ระบุ
+												<label class="radio">
+												{!! Form::text('sex_etc',$show_data->sex_etc,['class'=>'input','placeholder'=>'ระบุเพศ','style'=>'display: none']) !!}
+												</label>
+											@endif
+
 										</label>
 									
 
@@ -270,11 +276,17 @@
 
 										<label >
 											@if( $show_data->nation == 6 )
-												{{ Form::radio('nation', '6' , true) }}
+												{{ Form::radio('nation', '6' , true) }} อื่นๆ ระบุ
+												<label class="radio">
+												{!! Form::text('nation_etc',$show_data->nation_etc,['class'=>'input','placeholder'=>'ระบุสัญชาติ']) !!}
+												</label>
 											@else
-												{{ Form::radio('nation', '6' , false) }}
-											@endif อื่นๆ
-											ระบุ {!! Form::text('nation_etc',$show_data->nation_etc,['class'=>'input','placeholder'=>'ระบุสัญชาติ']) !!}
+												{{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ
+												<label class="radio">
+												{!! Form::text('nation_etc',$show_data->nation_etc,['class'=>'input','placeholder'=>'ระบุสัญชาติ','style'=>'display: none']) !!}
+														</label>
+											@endif
+
 										</label>
 									</p>
 								</div>
@@ -352,11 +364,7 @@
 								<p class="control  has-icons-left " >
 									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
-									วันที่ : <select id ="DayInterview" name="DayInterview" onchange="createinterviewdate();">
-										@for ($i = 1; $i <= 31; $i++)
-											<option value="{{$i}}" @if(date('d',strtotime(str_replace('-','/', $show_detail->interview_date))) == $i){ selected } @endif>{{$i}}</option>
-										@endfor
-									</select>
+									ปี พ.ศ. : <input type="number" min="2561" max="2570" maxlength = "4" id="YearInterview" name="YearInterview" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->interview_date)))+543 }}" onchange="date_interview();createinterviewdate()">
 									เดือน :  <select id ="MonthInterview" name="MonthInterview" onchange="date_interview();createinterviewdate();">
 										<option value="1" @if(date('m',strtotime(str_replace('-','/', $show_detail->interview_date))) == 1){ selected } @endif> มกราคม </option>
 										<option value="2" @if(date('m',strtotime(str_replace('-','/', $show_detail->interview_date))) == 2){ selected } @endif> กุมภาพันธ์ </option>
@@ -371,7 +379,12 @@
 										<option value="11" @if(date('m',strtotime(str_replace('-','/', $show_detail->interview_date))) == 11){ selected } @endif> พฤศจิกายน </option>
 										<option value="12" @if(date('m',strtotime(str_replace('-','/', $show_detail->interview_date))) == 12){ selected } @endif> ธันวาคม </option>
 									</select>
-									ปี พ.ศ. : <input type="number" min="2561" max="2570" maxlength = "4" id="YearInterview" name="YearInterview" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->interview_date)))+543 }}" onchange="date_interview();createinterviewdate()">
+									วันที่ : <select id ="DayInterview" name="DayInterview" onchange="createinterviewdate();">
+										@for ($i = 1; $i <= 31; $i++)
+											<option value="{{$i}}" @if(date('d',strtotime(str_replace('-','/', $show_detail->interview_date))) == $i){ selected } @endif>{{$i}}</option>
+										@endfor
+									</select>
+
 									<input type="hidden" id="DateInterview" name="DateInterview" class="form-control"  value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->interview_date)))}}">
 
 								</div>
@@ -390,11 +403,7 @@
 							<div class="field is-grouped">
 								<p class="control  has-icons-left ">
 								<div class="input-group date" data-provide="datepicker">
-									วันที่ : <select id ="dayInput" name="birthdate" onchange="createbirthdate();">
-										@for ($i = 1; $i <= 31; $i++)
-											<option value="{{$i}}" @if(date('d',strtotime(str_replace('-','/', $show_detail->birth_date))) == $i){ selected } @endif>{{$i}}</option>
-										@endfor
-									</select>
+									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4"  id="yearInput" name="yearInput" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->birth_date))) + 543 }}" onchange="date_birth();createbirthdate();">
 									เดือน :  <select id ="monthInput" name="monthdate" onchange="date_birth();createbirthdate();">
 										<option value="1" @if(date('m',strtotime(str_replace('-','/', $show_detail->birth_date))) == 1){ selected } @endif> มกราคม </option>
 										<option value="2" @if(date('m',strtotime(str_replace('-','/', $show_detail->birth_date))) == 2){ selected } @endif> กุมภาพันธ์ </option>
@@ -409,8 +418,13 @@
 										<option value="11" @if(date('m',strtotime(str_replace('-','/', $show_detail->birth_date))) == 11){ selected } @endif> พฤศจิกายน </option>
 										<option value="12" @if(date('m',strtotime(str_replace('-','/', $show_detail->birth_date))) == 12){ selected } @endif> ธันวาคม </option>
 									</select>
+									วันที่ : <select id ="dayInput" name="birthdate" onchange="createbirthdate();">
+										@for ($i = 1; $i <= 31; $i++)
+											<option value="{{$i}}" @if(date('d',strtotime(str_replace('-','/', $show_detail->birth_date))) == $i){ selected } @endif>{{$i}}</option>
+										@endfor
+									</select>
 
-									ปี พ.ศ. : <input type="number" min="2400" max="2570" maxlength = "4"  id="yearInput" name="yearInput" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->birth_date))) + 543 }}" onchange="date_birth();createbirthdate();">
+
 									<input type="hidden" id="dateInput" name="birthdate" class="form-control" value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->birth_date)))}}">
 
 								</div>
@@ -503,7 +517,7 @@
 									  <option value="9" @if($show_detail->occupation == 9){ selected } @endif> อื่นๆ โปรดระบุ </option>
 									</select>
 									</span>
-									<input id="occupation_detail" name="occupation_detail"  type="text" value="{{$show_detail->occupation_detail}}" hidden >
+									<input  class="input" id="occupation_detail" name="occupation_detail"  type="text" value="{{$show_detail->occupation_detail}}" @if($show_detail->occupation != 9)  style="display: none" @endif>
 								</div>
 							</div>
 						</div>
@@ -682,11 +696,7 @@
 								<p class="control  has-icons-left " >
 									<!--This container is birth_date input. -->
 								<div class="input-group date" data-provide="datepicker">
-									วันที่ : <select id ="DayAct" name="DayAct" onchange="createaccidentdate();">
-										@for ($i = 1; $i <= 31; $i++)
-											<option value="{{$i}}" @if(date('d',strtotime(str_replace('-','/', $show_detail->accident_date))) == $i){ selected } @endif>{{$i}}</option>
-										@endfor
-									</select>
+									ปี พ.ศ. : <input type="number" min="2561" max="2570" maxlength = "4" id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->accident_date))) + 543 }}" onchange="date_acc();createaccidentdate();">
 									เดือน :  <select id ="MonthAct" name="MonthAct" onchange="date_acc();createaccidentdate();">
 										<option value="1" @if(date('m',strtotime(str_replace('-','/', $show_detail->accident_date))) == 1){ selected } @endif> มกราคม </option>
 										<option value="2" @if(date('m',strtotime(str_replace('-','/', $show_detail->accident_date))) == 2){ selected } @endif> กุมภาพันธ์ </option>
@@ -701,8 +711,11 @@
 										<option value="11" @if(date('m',strtotime(str_replace('-','/', $show_detail->accident_date))) == 11){ selected } @endif> พฤศจิกายน </option>
 										<option value="12" @if(date('m',strtotime(str_replace('-','/', $show_detail->accident_date))) == 12){ selected } @endif> ธันวาคม </option>
 									</select>
-
-									ปี พ.ศ. : <input type="number" min="2561" max="2570" maxlength = "4" id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $show_detail->accident_date))) + 543 }}" onchange="date_acc();createaccidentdate();">
+									วันที่ : <select id ="DayAct" name="DayAct" onchange="createaccidentdate();">
+										@for ($i = 1; $i <= 31; $i++)
+											<option value="{{$i}}" @if(date('d',strtotime(str_replace('-','/', $show_detail->accident_date))) == $i){ selected } @endif>{{$i}}</option>
+										@endfor
+									</select>
 									<input type="hidden" id="DateAct" name="DateAct" class="form-control" value="{{date('m/d/Y',strtotime(str_replace('-','/', $show_detail->accident_date)))}}">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-th"></span>
@@ -866,13 +879,14 @@
 							</label>
 								</div>
 								<div class="control">
-									<label class="text" name="etc_detail">
+									<label class="text" >
 							  ระบุ
 							</label>
 								</div>
 								<div class="control">
 									<p>
-										<input class="input" type="text" placeholder="" value="{{$show_detail->etc_detail}}">
+										<input name = "etc_detail" class="input" type="text" placeholder="" value="{{$show_detail->etc_detail}}" @if($show_detail->occupation != 1)  style="display: none" @endif>
+
 									</p>
 								</div>
 							</div>
@@ -943,7 +957,7 @@
                 document.getElementById("offender_subtype").disabled = false;
             }
         });
-
+///// show and hide even btn ///////
         $('#occupation').on('change',function (e) {
 
             var sel_value = e.target.value;
@@ -955,6 +969,39 @@
                 $('#occupation_detail').hide();
             }
         });
+$("input[name='sex']").on('change',function (e) {
+
+    var sel_value = e.target.value;
+    //alert(sel_value);
+
+    if(sel_value == 4) {
+        $("input[name='sex_etc']").show();
+    }else {
+        $("input[name='sex_etc']").hide();
+    }
+});
+$("input[name='nation']").on('change',function (e) {
+
+    var sel_value = e.target.value;
+    //alert(sel_value);
+
+    if(sel_value == 6) {
+        $("input[name='nation_etc']").show();
+    }else {
+        $("input[name='nation_etc']").hide();
+    }
+});
+$("input[name='etc']").on('change',function (e) {
+
+    var sel_value = e.target.checked;
+    //alert(sel_value);
+    if(sel_value) {
+        $("input[name='etc_detail']").show();
+    }else {
+        $("input[name='etc_detail']").hide();
+    }
+});
+///// end show and hide even btn ///////
 		/*
 		 $('#type-violator').on('click change',function (e) {
 		 var type_id = e.target.value;

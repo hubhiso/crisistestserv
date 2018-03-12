@@ -32,12 +32,17 @@ Route::prefix('officer')->group(function () {
     Route::get('/confirm/{case_id}', 'OfficerInputController@open_confirm')->name('officer.open_cfm');
     Route::get('/only_detail/{case_id}', 'OfficerInputController@open_detail')->name('officer.open_dt');
 
+    Route::get('/password/reset', 'Auth\UserForgotPasswordController@showLinkRequestForm')->name('officer.password.request');
+    Route::get('/password/reset/{token}', 'Auth\UserResetPasswordController@showResetForm')->name('officer.password.reset');
+
     Route::get('/add_detail/{case_id}', 'OfficerInputController@add_detail')->name('officer.add_detail');
     Route::get('/add_activities/{case_id}', 'OfficerInputController@add_activities')->name('officer.add_activities');
     Route::get('/load_activities/{case_id}', 'OfficerInputController@load_activities_table')->name('officer.load_activities');
     Route::get('/load_edit_operate/{operate_id}', 'OfficerInputController@edit_operate')->name('officer.edit_operate');
     Route::get('/load_edit_detail2/{case_id}', 'OfficerInputController@edit_detail2')->name('officer.edit_detail2');
 
+  //  Route::post('/password/email', 'UserForgotPasswordController@sendResetLinkEmail')->name('officer.password.email');
+  //  Route::post('/password/reset', 'UserResetPasswordController@reset');
 
     Route::post('/update_operate', 'OfficerUpdateController@update_operate')->name('officer.update_operate');
     Route::post('/load_case', 'OfficerUpdateController@load_case')->name('officer.load_case');

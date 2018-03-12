@@ -46,6 +46,7 @@
         @elseif($case->problem_case == 5)
             <td>อื่นๆ ที่เกี่ยวข้องกับเอชไอวี</td>
         @endif
+        @if(($case->receiver ==  $username )||($case->status  == 1))
         @if($case->status  == 99)
             <td>ปฏิเสธการรับเรื่อง</td>
             <td><a class='button is-primary' href="{{ route('officer.open_dt', $case->case_id) }}"> <span>ดูรายละเอียด</span> </a> </td>
@@ -70,7 +71,22 @@
             <td> รับเรื่องแล้ว </td>
             <td><a class='button is-primary' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล </span> </a> </td>
         @endif
-
+        @else
+            @if($case->status  == 99)
+                <td>ปฏิเสธการรับเรื่อง</td>
+            @elseif( $case->status  == 2)
+                <td> รับเรื่องแล้ว </td>
+            @elseif($case->status == 3)
+                <td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
+            @elseif($case->status == 4)
+                <td> อยู่ระหว่างการดำเนินการ </td>
+            @elseif($case->status == 5)
+                <td> ดำเนินการเสร็จสิ้น </td>
+            @elseif($case->status == 6)
+                <td> ดำเนินการแล้วส่งต่อ </td>
+            @endif
+            <td><a class='button is-primary' href="{{ route('officer.open_dt', $case->case_id) }}"> <span>ดูรายละเอียด</span> </a> </td>
+        @endif
         @if($case->sender_case == 1 )
             <td>แจ้งด้วยตนเอง</td>
         @elseif($case->sender_case == 2)

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
-class ResetPasswordController extends Controller
+class UserResetPasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,6 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:officer');
-     //   $this->middleware('guest');
+        $this->middleware('officer');
     }
 }

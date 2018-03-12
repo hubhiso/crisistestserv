@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\case_inputRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\case_input;
 use App\timeline;
 use App\officer;
+
 
 use Auth;
 
@@ -50,13 +52,34 @@ class ManagerController extends Controller
     function  load_register(){
         return view('Manager.create_officer');
     }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'tel' => 'required|numeric|digits:10',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
+    protected function create(array $data)
+    {
+
+        return officer::create([
+            'username' => $data['username'],
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'tel' => $data['tel'],
+            'password' => bcrypt($data['password']),
+            'prov_id' => $data['prov_id'],
+            'position' => $data['position'],
+
+        ]);
+    }
      function create_officer(Request $request)
     {
-        return officer::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-        ]);
+        $this->validator($request->all())->validate();
+        $this->create($request->all());
+        return redirect('officer/show/0');
     }
 
 

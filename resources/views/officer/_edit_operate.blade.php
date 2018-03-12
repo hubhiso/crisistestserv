@@ -12,7 +12,33 @@
 
 
 
-
+    <div class="field is-horizontal" >
+    <div class="field-label">
+        <label class="label"> แก้ไขวันที่ดำเนินการ </label>
+    </div>
+        <div class="field-body">
+        ปี พ.ศ. : <input type="number" min="2561" max="2570" maxlength = "4" id="YearEdit{{$operate_data->id}}" name="YearEdit" class="form-control" placeholder="ปปปป" value="{{date('Y',strtotime(str_replace('-','/', $operate_data->operate_date))) + 543 }}" onchange="edit_DateOperate({{$operate_data->id}})" >
+        เดือน :  <select id ="MonthEdit{{$operate_data->id}}" name="MonthEdit" onchange="edit_DateOperate({{$operate_data->id}})">
+            <option value="1" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 1){ selected } @endif> มกราคม </option>
+            <option value="2" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 2){ selected } @endif> กุมภาพันธ์ </option>
+            <option value="3" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 3){ selected } @endif> มีนาคม </option>
+            <option value="4" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 4){ selected } @endif> เมษายน </option>
+            <option value="5" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 5){ selected } @endif> พฤษภาคม </option>
+            <option value="6" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 6){ selected } @endif> มิถุนายน </option>
+            <option value="7" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 7){ selected } @endif> กรกฎาคม </option>
+            <option value="8" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 8){ selected } @endif> สิงหาคม </option>
+            <option value="9" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 9){ selected } @endif> กันยายน </option>
+            <option value="10" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 10){ selected } @endif> ตุลาคม </option>
+            <option value="11" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 11){ selected } @endif> พฤศจิกายน </option>
+            <option value="12" @if(date('m',strtotime(str_replace('-','/', $operate_data->operate_date))) == 12){ selected } @endif> ธันวาคม </option>
+        </select>
+        วันที่ : <select id ="DayEdit{{$operate_data->id}}" name="DayEdit" >
+            @for ($i = 1; $i <= 31; $i++)
+                <option value="{{$i}}" @if(date('d',strtotime(str_replace('-','/', $operate_data->operate_date))) == $i){ selected } @endif>{{$i}}</option>
+            @endfor
+        </select>
+        </div>
+    </div>
     <div class="field is-horizontal">
         <div class="field-label">
             <label class="label"> วิธีการดำเนินการ </label>

@@ -18,6 +18,7 @@
             <div class="field is-grouped">
                 <p class="control  has-icons-left ">
                     <input class="input" type="text" placeholder="" value="{{$activitie->operate_date}}" disabled>
+
                 </p>
             </div>
         </div>

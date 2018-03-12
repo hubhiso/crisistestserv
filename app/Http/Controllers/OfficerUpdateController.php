@@ -20,6 +20,7 @@ class OfficerUpdateController extends Controller
         case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 2]);
         timeline::create(['case_id'=>$case_id,
             'operate_status'=>2,
+            'operate_time'=> date("Y-m-d")
             ]);
         return redirect('officer/show/0');
 
@@ -36,6 +37,15 @@ class OfficerUpdateController extends Controller
         $birth_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('birthdate'))));
         $interview_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateInterview'))));
         $accident_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateAct'))));
+        if ($interview_date == "1970-01-01"){
+            $interview_date = date('Y-m-d');
+        }
+        if ($accident_date == "1970-01-01"){
+            $accident_date = date('Y-m-d');
+        }
+        if ($birth_date == "1970-01-01"){
+            $birth_date = date('Y-m-d');
+        }
         $temp_chk1 = $request->input('law');
         $temp_chk2 = $request->input('aids');
         $temp_chk3 = $request->input('attitude');
@@ -76,6 +86,7 @@ class OfficerUpdateController extends Controller
                                                             'need' => $request->input('need')]);
         timeline::create(['case_id'=>$case_id,
             'operate_status'=>3,
+            'operate_time'=> $interview_date
         ]);
         add_detail::create(
             ['case_id'=>$case_id,
@@ -189,10 +200,15 @@ class OfficerUpdateController extends Controller
     return redirect('officer/show/0');
 }
     public function add_activities(Request $request){
-
+        $activities_num = operate_detail::where('case_id','=',$request->input('case_id'))->orderBy('operate_date', 'asc')->count();
         $operate_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('operate_date'))));
 
-
+        if($activities_num == 0){
+            timeline::create(['case_id'=>$request->input('case_id'),
+                'operate_status'=>4,
+                'operate_time'=> $operate_date
+            ]);
+        }
         operate_detail::create([
             'case_id' => $request->input('case_id'),
             'operate_date' => $operate_date,
@@ -213,6 +229,7 @@ class OfficerUpdateController extends Controller
         $response = array(
             'case_id' => $request->input('case_id'),
             'operate_date' => $operate_date,
+            'cout' => $activities_num,
             'investigate' => $request->input('investigate'),
             'advice' => $request->input('advice'),
             'negotiate_individual' => $request->input('negotiate_individual'),
@@ -237,9 +254,7 @@ class OfficerUpdateController extends Controller
                 'prov_refer' => null,
                 'refer_type' => null,
                 'refer_name' => null]);
-            timeline::create(['case_id'=>$case_id,
-                'operate_status'=>4,
-            ]);
+
         }elseif ($request->input('status') == 5){
             case_input::where('case_id','=',$case_id)->update([
                 'status' => $request->input('status'),
@@ -252,6 +267,7 @@ class OfficerUpdateController extends Controller
                 'refer_name' => null]);
             timeline::create(['case_id'=>$case_id,
                 'operate_status'=>5,
+                'operate_time'=> date("Y-m-d")
             ]);
         }elseif ($request->input('status') == 6){
             case_input::where('case_id','=',$case_id)->update([
@@ -265,14 +281,17 @@ class OfficerUpdateController extends Controller
                 'refer_name' => $request->input('refer_name')]);
             timeline::create(['case_id'=>$case_id,
                 'operate_status'=>6,
+                'operate_time'=> date("Y-m-d")
             ]);
         }
 
     }
     public function update_operate(Request $request)
     {
+        $Operate_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('Operate_date'))));
         $id = $request->input('id');
         operate_detail::where('id','=',$id)->update([
+            'operate_date' => $Operate_date,
             'advice' => $request->input('advice'),
             'investigate' => $request->input('investigate'),
             'negotiate_individual' => $request->input('negotiate_individual'),
@@ -285,6 +304,7 @@ class OfficerUpdateController extends Controller
     {
         //$data = $request->json()->all();
         //$Filter = $data['Filter'];
+        $username = $request->input('username');
         $filter = 0;
         $value_sub = $request->input('Sub_Filter');
         $Date_start = date('Y-m-d',strtotime(str_replace('-','/', $request->input('Date_start'))));
@@ -372,7 +392,7 @@ class OfficerUpdateController extends Controller
             $cases = case_input::Where('prov_id','=',$pid);
         }
 
-        $html = view('officer._Case',compact('cases'))->render();
+        $html = view('officer._Case',compact('cases','username'))->render();
         return response()->json(compact('html','text_search'));
 
     }

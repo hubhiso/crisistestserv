@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Register</div>
+                    <div class="panel-heading">สร้างผู้ใช้ระบบ</div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('manager.register_cfm') }}">
                             {{ csrf_field() }}
@@ -87,11 +87,25 @@
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="position" class="col-md-4 control-label">ตำแหน่ง</label>
+
+                                <div class="col-md-6">
+                                    <input id="position" type="text" class="form-control" name="position" required value="officer">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="prov" class="col-md-4 control-label">รหัสจังหวัด</label>
+
+                                <div class="col-md-6">
+                                    <input id="prov_id" type="text" class="form-control" name="prov_id" required value="10">
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Register
+                                        สร้างผู้ใช้ระบบ
                                     </button>
                                 </div>
                             </div>
