@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Officer_Login</div>
+                <div class="panel-heading"> Crisis Response System </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('officer.login.submit') }}">
                         {{ csrf_field() }}
@@ -54,9 +54,9 @@
                                     Login
                                 </button>
 
-                                {{--<a class="btn btn-link" href="{{ route('password.request') }}">--}}
-                                    {{--Forgot Your Password?--}}
-                                {{--</a>--}}
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    ลืมหรัสผ่าน
+                                </a>
                             </div>
                         </div>
                     </form>
