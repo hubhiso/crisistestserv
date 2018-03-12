@@ -54,7 +54,7 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" href="{{ route('officer.password.request') }}">
                                     ลืมหรัสผ่าน
                                 </a>
                             </div>

@@ -23,7 +23,9 @@
 	@endcomponent
     <div class="container">
     	<div class="navbar-end">
-        	<a id="" class="button is-text" href="#"> ลงทะเบียนผู้ดูแลเพิ่มเติม </a>
+			@if(    Auth::user()->position  == "manager")
+        	<a id="" class="button is-text" href="{{ 'manager.register' }}"> ลงทะเบียนผู้ดูแลเพิ่มเติม </a>
+				@endif
 		</div>
      </div>     
     <div class="hero-body">
