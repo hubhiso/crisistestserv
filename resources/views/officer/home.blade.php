@@ -23,8 +23,8 @@
 	@endcomponent
     <div class="container">
     	<div class="navbar-end">
-			@if(    Auth::user()->position  == "manager")
-        	<a id="" class="button is-text" href="{{ 'manager.register' }}"> ลงทะเบียนผู้ดูแลเพิ่มเติม </a>
+			@if( Auth::user()->position  == "manager")
+        	<a id="" class="button is-text" href="{{ route('manager.register') }}"> ลงทะเบียนผู้ดูแลเพิ่มเติม </a>
 				@endif
 		</div>
      </div>     
@@ -45,7 +45,7 @@
 
 	<script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
 	<script src="{{ asset('bulma/main.js') }}"></script>
-{{--<script src="{{ asset('js/status_report.js') }}"></script>--}}
+{{--<script src="{{ asset('js/prov_list.js') }}"></script>--}}
 <script>
 
     var p_id = $('#p_id').val();

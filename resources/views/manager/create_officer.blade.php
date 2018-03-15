@@ -91,14 +91,28 @@
                                 <label for="position" class="col-md-4 control-label">ตำแหน่ง</label>
 
                                 <div class="col-md-6">
-                                    <input id="position" type="text" class="form-control" name="position" required value="officer">
+                                    <select id ="position" name="position">
+                                        <option value="officer"  >เจ้าหน้าที่</option>
+                                        @if(   Auth::user()->position  == "admin")
+                                            <option value="manager"  >เจ้าหน้าประจำจังหวัด</option>
+                                        @endif
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="prov" class="col-md-4 control-label">รหัสจังหวัด</label>
 
                                 <div class="col-md-6">
-                                    <input id="prov_id" type="text" class="form-control" name="prov_id" required value="10">
+                                    <select style='width:200px' name="prov_id" id="prov_id">
+                                        @foreach($provinces as $province)
+                                            @if ( Auth::user()->prov_id == $province->PROVINCE_CODE And Auth::user()->position  == "manager")
+                                            <option value="{{ $province->PROVINCE_CODE }}" style="width:250px">{{ $province->PROVINCE_NAME }}</option>
+                                            @elseif(   Auth::user()->position  == "admin")
+                                                <option value="{{ $province->PROVINCE_CODE }}" style="width:250px">{{ $province->PROVINCE_NAME }}
+                                            @endif
+                                        @endforeach
+                                    </select>
+
                                 </div>
                             </div>
 

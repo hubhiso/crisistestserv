@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\case_input;
 use App\timeline;
 use App\officer;
+use App\province;
 
 
 use Auth;
@@ -50,7 +51,8 @@ class ManagerController extends Controller
     }
 
     function  load_register(){
-        return view('Manager.create_officer');
+        $provinces = province::orderBy('PROVINCE_NAME', 'asc')->get();
+        return view('Manager.create_officer',compact('provinces'));
     }
     protected function validator(array $data)
     {
