@@ -92,15 +92,15 @@ class case_controller extends Controller
         //var_dump($case_id);
         try {
             // Validate the value...
-            $data = case_input::where('case_id','=',$case_id)->orWhere('victim_tel','=',$case_id)->first();
-            //var_dump($data);
-            if ($data!=[]) {
+            $case = case_input::where('case_id','=',$case_id)->orWhere('victim_tel','=',$case_id)->first();
+            $id = $case->case_id;
+            if ($case!=[]) {
+                $data = timeline::where('case_id','=',$id)->orderBy('operate_status', 'asc')->get();
                 $html = view('layout._status', compact('data'))->render();
                 return response()->json(compact('html'));
             }else{
                  $html = view('layout._statusError')->render();
                  return response()->json(compact('html'));
-
             }
         } catch (Exception $e) {
            // $html = view('layout._statusError')->render();

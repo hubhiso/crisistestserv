@@ -13,7 +13,9 @@
 	<meta name="theme-color" content="#cc99cc"/>
 
 </head>
-
+@php
+	$thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+@endphp
 <body class="layout-default">
 	<section class="hero is-medium ">
 		<div class="hero-head">
@@ -103,7 +105,7 @@
 							<div class="field-body">
 								<div class="field is-grouped">
 									<p class="control is-expanded has-icons-left">
-										<input class="input" type="text" value="{{ $show_data->created_at }}" disabled>
+										<input class="input" type="text" value="{{date('d',strtotime(str_replace('-','/', $show_data->created_at)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $show_data->created_at)))]}}{{date("Y",strtotime(str_replace('-','/', $show_data->created_at)))+543}}" disabled>
 										<span class="icon is-small is-left"> <i class="far fa-calendar"></i> </span>
 									</p>
 								</div>

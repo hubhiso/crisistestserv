@@ -23,7 +23,7 @@
 	@endcomponent
     <div class="container">
     	<div class="navbar-end">
-			@if( Auth::user()->position  == "manager")
+			@if( Auth::user()->position  == "manager" or Auth::user()->position  == "admin" )
         	<a id="" class="button is-text" href="{{ route('manager.register') }}"> ลงทะเบียนผู้ดูแลเพิ่มเติม </a>
 				@endif
 		</div>
