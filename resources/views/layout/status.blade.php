@@ -8,7 +8,8 @@
 	<meta name="theme-color" content="#cc99cc"/>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/base.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+	<!--link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet"-->
+	<link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
 	<script src="{{ asset('css/jquery.min.js') }}"></script>
 	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
@@ -26,7 +27,7 @@
 			<div class="container">
 				<div class="columns is-vcentered">
 					<div class="column">
-						<p class="title"> Crisis Response </p>
+						<p class="title"> Crisis Response System (CRS) </p>
 					</div>
 				</div>
 			</div>
@@ -73,7 +74,7 @@
 					<div class="level-item">
 						<a class="button is-medium   modal-button" data-target="modal-ter">
 							<span class="icon is-medium">
-								<i class="fa fa-smile-o"></i>
+								<i class="fa fa-smile"></i>
 							</span>
 							<span> ประเมินความพึงพอใจ </span>
 						</a>

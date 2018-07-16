@@ -10,12 +10,12 @@
 </head>
 
 <body >
-<section class="hero is-primary">
+<section class="hero is-primary wall3">
     <div class="hero-body">
         <div class="container">
             <div class="columns is-vcentered">
                 <div class="column">
-                    <p class="title"> Crisis Response </p>
+                    <p class="title"> Crisis Response System (CRS) </p>
                 </div>
             </div>
         </div>

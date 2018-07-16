@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> CRS </title>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
 	{{ Html::script('js/jquery.min.js') }}
 	<meta name="theme-color" content="#cc99cc"/>
 
@@ -87,7 +87,7 @@
 								<p class="control is-expanded has-icons-left">
 
 									<input class="input" type="text" value="{{ $show_data->victim_tel }}" disabled>
-									<span class="icon is-small is-left"> <i class="fa fa-mobile"></i> </span> </p>
+									<span class="icon is-small is-left"> <i class="fa fa-mobile-alt"></i> </span> </p>
 							</div>
 						</div>
 					</div>
@@ -248,10 +248,13 @@
 					</div>
 				</div>
 				<div class="field is-grouped">
-					<p><a> </a>
-					</p>
-					{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}
-					<p class="control"> <a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > ยกเลิก </a> </p>
+					
+					<div class="control">
+						{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}
+					</div>
+					<div class="control"> 
+						<a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > ยกเลิก </a> 
+					</div>
 				</div>
 			</div>
 	</section>
