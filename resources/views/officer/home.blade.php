@@ -34,7 +34,7 @@
 					<h2 id="modern-framework" class="subtitle"> ระบบรับเรื่องร้องเรียนและการให้คำปรึกษาข้อมูลสิทธิด้านเอดส์ </h2>
 					<a id="btn_new1" class="button ft1 i-margin" href="{{ 'officer/input_case' }}">แจ้งเหตุ</a>
 					<a id="btn_new1" class="button ft1 i-margin" href="{{ route('officer.show',['mode_id' => "0"]) }}">จัดการเหตุ</a>
-					<a id="btn_new1" class="button ft1 i-margin" href="#">รายงาน</a>
+					<a id="btn_new1" class="button ft1 i-margin" href="../php/table.blade.php">รายงาน</a>
 					
 				</div>
 			</div>

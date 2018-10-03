@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C_CRS-%E0%B9%81%E0%B8%88%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8/bulma.css" rel="stylesheet">
+    <link href="%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C_CRS-%E0%B9%81%E0%B8%88%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8/font-awesome.html" rel="stylesheet">
+    <script src="%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C_CRS-%E0%B9%81%E0%B8%88%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8/jquery.js"></script>
+    <title> CRS </title>
+
+</head>
+
+<body>
+
+<form method="POST" action="http://crs.ddc.moph.go.th/crisis/public/officer/input_case" accept-charset="UTF-8"><input name="_token" value="jnpF0ixLxaVE80niUGvMtxleiuA7sGs2kqK61n5K" type="hidden">
+
+
+
+<div class="container">
+    <section class="section">
+        <h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>
+
+        <div class="box" id="data-agent">
+            <div class="field is-horizontal">
+                <div class="field-label ">
+                    <!-- Left empty for spacing -->
+                </div>
+            </div>
+			<input id="case_id" name="case_id" value="jr931" type="text" hidden="">
+
+            <div class="field is-grouped">
+                <p class="control is-expanded has-icons-left ">
+                    กรุณาระบุสถาณะของท่าน
+                    <label class="radio">
+                        <input checked="checked" name="sender_case" value="3" type="radio">  <a>เจ้าหน้าที่แจ้ง</a>
+                    </label>
+                </p>
+            </div>
+
+            <hr>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">ชื่อผู้แจ้ง</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-grouped">
+                        <p class="control is-expanded has-icons-left ">
+                            <input class="input" readonly="readonly" name="sender" value="HisoDev" type="text">
+                            <span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+                    </div>
+                    <div class="field-label is-normal">
+                        <label class="label">เบอร์มือถือผู้แจ้ง</label>
+                    </div>
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input" readonly="readonly" name="agent_tel" value="0865430138" type="text">
+                            <span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                <div class="field-label">
+                    <!-- Left empty for spacing -->
+                </div>
+            </div>
+        </div>
+
+			<div class="box" id="data-person">
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
+					</div>
+				</div>
+				<label>ข้อมูลผู้ถูกกระทำ</label>
+				<hr>
+								<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">ชื่อผู้ถูกกระทำ</label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded has-icons-left ">
+								<input class="input" placeholder="ชื่อเรียก" name="name" type="text">
+								<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+						</div>
+						<div class="field-label is-normal">
+							<label class="label">เบอร์มือถือ</label>
+						</div>
+						<div class="field">
+							<p class="control is-expanded has-icons-left">
+								<input class="input" placeholder="เบอร์มือถือ 10 หลัก" maxlength="10" name="victim_tel" type="text">
+								<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">เพศ</label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded has-icons-left ">
+								<label class="radio">
+									<input checked="checked" name="sex" value="1" type="radio">
+									ชาย
+								</label>
+								<label class="radio">
+									<input name="sex" value="2" type="radio"> หญิง
+								</label>
+								<label class="radio">
+									<input name="sex" value="3" type="radio"> สาวประเภทสอง
+								</label>
+								<label class="radio">
+									<input name="sex" value="4" type="radio"> อื่นๆ ระบุ
+								</label>
+								<label class="radio">
+
+									<input class="input" placeholder="ระบุเพศ" style="display: none" name="sex_etc" type="text">
+								</label>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">สัญชาติ</label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded has-icons-left ">
+								<label class="radio">
+									<input checked="checked" name="nation" value="1" type="radio"> ไทย
+								</label>
+								<label class="radio">
+									<input name="nation" value="2" type="radio"> ลาว
+								</label>
+								<label class="radio">
+									<input name="nation" value="3" type="radio"> เวียดนาม
+								</label>
+								<label class="radio">
+									<input name="nation" value="4" type="radio"> พม่า
+								</label>
+								<label class="radio">
+									<input name="nation" value="5" type="radio"> กัมพูชา
+								</label>
+								<label class="radio">
+									<input name="nation" value="6" type="radio"> อื่นๆ ระบุ
+								</label>
+								<label class="radio">
+									<input class="input" placeholder="ระบุสัญชาติ" style="display: none" name="nation_etc" type="text">
+								</label>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">จังหวัดที่เกิดเหตุ</label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded  ">
+								<span class="select">
+								<select style="width:200px" name="prov_id" id="prov_id">
+								<option value="0" style="width:250px" selected="selected">กรุณาเลือกจังหวัด</option>
+																		<option value="81" style="width:250px">กระบี่   </option>
+																			<option value="10" style="width:250px">กรุงเทพมหานคร   </option>
+																			<option value="71" style="width:250px">กาญจนบุรี   </option>
+																			<option value="46" style="width:250px">กาฬสินธุ์   </option>
+																			<option value="62" style="width:250px">กำแพงเพชร   </option>
+																			<option value="40" style="width:250px">ขอนแก่น   </option>
+																			<option value="22" style="width:250px">จันทบุรี   </option>
+																			<option value="24" style="width:250px">ฉะเชิงเทรา   </option>
+																			<option value="20" style="width:250px">ชลบุรี   </option>
+																			<option value="18" style="width:250px">ชัยนาท   </option>
+																			<option value="36" style="width:250px">ชัยภูมิ   </option>
+																			<option value="86" style="width:250px">ชุมพร   </option>
+																			<option value="92" style="width:250px">ตรัง   </option>
+																			<option value="23" style="width:250px">ตราด   </option>
+																			<option value="63" style="width:250px">ตาก   </option>
+																			<option value="26" style="width:250px">นครนายก   </option>
+																			<option value="73" style="width:250px">นครปฐม   </option>
+																			<option value="48" style="width:250px">นครพนม   </option>
+																			<option value="30" style="width:250px">นครราชสีมา   </option>
+																			<option value="80" style="width:250px">นครศรีธรรมราช   </option>
+																			<option value="60" style="width:250px">นครสวรรค์   </option>
+																			<option value="12" style="width:250px">นนทบุรี   </option>
+																			<option value="96" style="width:250px">นราธิวาส   </option>
+																			<option value="55" style="width:250px">น่าน   </option>
+																			<option value="31" style="width:250px">บุรีรัมย์   </option>
+																			<option value="13" style="width:250px">ปทุมธานี   </option>
+																			<option value="77" style="width:250px">ประจวบคีรีขันธ์   </option>
+																			<option value="25" style="width:250px">ปราจีนบุรี   </option>
+																			<option value="94" style="width:250px">ปัตตานี   </option>
+																			<option value="14" style="width:250px">พระนครศรีอยุธยา   </option>
+																			<option value="56" style="width:250px">พะเยา   </option>
+																			<option value="82" style="width:250px">พังงา   </option>
+																			<option value="93" style="width:250px">พัทลุง   </option>
+																			<option value="66" style="width:250px">พิจิตร   </option>
+																			<option value="65" style="width:250px">พิษณุโลก   </option>
+																			<option value="83" style="width:250px">ภูเก็ต   </option>
+																			<option value="44" style="width:250px">มหาสารคาม   </option>
+																			<option value="49" style="width:250px">มุกดาหาร   </option>
+																			<option value="95" style="width:250px">ยะลา   </option>
+																			<option value="35" style="width:250px">ยโสธร   </option>
+																			<option value="85" style="width:250px">ระนอง   </option>
+																			<option value="21" style="width:250px">ระยอง   </option>
+																			<option value="70" style="width:250px">ราชบุรี   </option>
+																			<option value="45" style="width:250px">ร้อยเอ็ด   </option>
+																			<option value="16" style="width:250px">ลพบุรี   </option>
+																			<option value="52" style="width:250px">ลำปาง   </option>
+																			<option value="51" style="width:250px">ลำพูน   </option>
+																			<option value="33" style="width:250px">ศรีสะเกษ   </option>
+																			<option value="47" style="width:250px">สกลนคร   </option>
+																			<option value="90" style="width:250px">สงขลา   </option>
+																			<option value="91" style="width:250px">สตูล   </option>
+																			<option value="11" style="width:250px">สมุทรปราการ   </option>
+																			<option value="75" style="width:250px">สมุทรสงคราม   </option>
+																			<option value="74" style="width:250px">สมุทรสาคร   </option>
+																			<option value="19" style="width:250px">สระบุรี</option>
+																			<option value="27" style="width:250px">สระแก้ว   </option>
+																			<option value="17" style="width:250px">สิงห์บุรี   </option>
+																			<option value="72" style="width:250px">สุพรรณบุรี   </option>
+																			<option value="84" style="width:250px">สุราษฎร์ธานี   </option>
+																			<option value="32" style="width:250px">สุรินทร์   </option>
+																			<option value="64" style="width:250px">สุโขทัย   </option>
+																			<option value="43" style="width:250px">หนองคาย   </option>
+																			<option value="39" style="width:250px">หนองบัวลำภู   </option>
+																			<option value="37" style="width:250px">อำนาจเจริญ   </option>
+																			<option value="41" style="width:250px">อุดรธานี   </option>
+																			<option value="53" style="width:250px">อุตรดิตถ์   </option>
+																			<option value="61" style="width:250px">อุทัยธานี   </option>
+																			<option value="34" style="width:250px">อุบลราชธานี   </option>
+																			<option value="15" style="width:250px">อ่างทอง   </option>
+																			<option value="57" style="width:250px">เชียงราย   </option>
+																			<option value="50" style="width:250px">เชียงใหม่   </option>
+																			<option value="76" style="width:250px">เพชรบุรี   </option>
+																			<option value="67" style="width:250px">เพชรบูรณ์   </option>
+																			<option value="42" style="width:250px">เลย   </option>
+																			<option value="54" style="width:250px">แพร่   </option>
+																			<option value="58" style="width:250px">แม่ฮ่องสอน   </option>
+																	</select>
+						</span></p></div>
+						<div class="field-label is-normal">
+							<label class="label">อำเภอที่เกิดเหตุ</label>
+						</div>
+						<div class="field is-grouped">
+							<p class="control is-expanded  ">
+								<span class="select">
+								<select style="width:200px" name="amphur_id" id="amphur_id">
+									
+										
+									
+								</select>
+						</span></p></div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
+					</div>
+				</div>
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
+					</div>
+				</div>
+
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">ปัญหาที่พบ</label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded  ">
+								<span class="select">
+								<select id="problem_case" name="problem_case">
+									<option value="0" selected="selected">โปรดเลือกประเภทปัญหาของท่าน</option>
+									<option value="1">บังคับตรวจเอชไอวี</option>
+									<option value="2">เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
+									<option value="3">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
+									<option value="4">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
+									<option value="5">อื่นๆ ที่เกี่ยวข้องกับ HIV</option>
+								</select>
+
+								</span>
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label"> ประเภทกลุ่ม </label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded  ">
+								<span class="select">
+								<select id="sub_problem" name="sub_problem" disabled="true">
+								</select>
+
+							</span></p>
+						</div>
+
+					</div>
+				</div>
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label"> ประเภทกลุ่มย่อย </label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped">
+							<p class="control is-expanded  ">
+								<span class="select">
+								<span class="select">
+								<select id="group_code" name="group_code" disabled="true">
+								</select>
+							</span></span></p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label"> รายละเอียดของปัญหา </label>
+					</div>
+					<div class="field-body">
+							<div class="field">
+								<div class="control">
+									
+									<textarea name="detail" class="textarea"></textarea>
+									
+								</div>
+							</div>
+						</div>
+				</div>
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label"> ความต้องการความช่วยเหลือ </label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<div class="control">
+								
+								<textarea name="need" class="textarea"></textarea>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="field is-grouped">
+				<p class="control">
+					<input class="button is-primary" value="ส่งข้อมูล" type="submit">
+				</p>
+				<p class="control">
+					<a></a><a href="http://crs.ddc.moph.go.th/crisis/public/officer">ยกเลิก</a>
+				</p>
+			</div>
+		</div>
+	</section>
+</div>
+
+
+</form>
+
+<script src="%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C_CRS-%E0%B9%81%E0%B8%88%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8/select_list.js"></script>
+
+
+<script>
+    $('#prov_id').on('change', function (e) {
+        // console.log(e);
+        var prov_id = e.target.value;
+
+        $.get('ajax-amphur/' + prov_id, function (data) {
+            //success data
+            $('#amphur_id').empty();
+
+            $.each(data, function ($index, subcatObj) {
+                $('#amphur_id').append('<option value="' + subcatObj.AMPHUR_CODE + '"style="width:250px">' + subcatObj.AMPHUR_NAME + '</option>');
+
+            });
+            // console.log(data);
+        });
+    });
+
+    $("input[name='sex']").on('change',function (e) {
+
+        var sel_value = e.target.value;
+        //alert(sel_value);
+
+        if(sel_value == 4) {
+            $("input[name='sex_etc']").show();
+        }else {
+            $("input[name='sex_etc']").hide();
+        }
+    });
+    $("input[name='nation']").on('change',function (e) {
+
+        var sel_value = e.target.value;
+        //alert(sel_value);
+
+        if(sel_value == 6) {
+            $("input[name='nation_etc']").show();
+        }else {
+            $("input[name='nation_etc']").hide();
+        }
+    });
+</script>
+
+
+
+
+
+
+<footer class="footer">
+		<div class="container">
+			<div class="columns">
+				<div class="column is-3">
+					<div id="about" class="content"> <strong>Crisis Response</strong> by <a href="http://www.aidsrightsthailand.com/">Aidsrightsthailand</a>. </div>
+				</div>
+				<div class="column is-5">
+					<div id="share" class="content"> </div>
+				</div>
+				<div class="column is-4">
+					<div id="sister">
+						<p><small> <strong>ที่อยู่</strong> : </small>
+						</p>
+						<p><small>133/235 หมู่บ้านรื่นฤดี3 ถนนหทัยราษฎร์ แขวงมีนบุรี เขตมีนบุรี กทม 10510 โทรศัพท์ 02-171-5135-6 โทรสาร 02-1715124 </small>
+						</p>
+					</div>
+				</div>
+			</div>
+			<p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th/">HISO</a>. <br>
+                Website content licensed <a rel="license" href="http://www.hiso.or.th/">www.hiso.or.th</a>. </small> </p>
+		</div>
+	</footer></body></html>

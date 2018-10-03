@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html class="route-index" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	
+	<link href="%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C_CRS/bulma.css" rel="stylesheet">
+
+	<script src="%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C_CRS/jquery.js"></script>
+
+	<script src="%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C_CRS/thai_date_dropdown.js"></script>
+
+	
+	
+	<link href="%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C_CRS/fontawesome-all.css" rel="stylesheet">
+	<meta name="theme-color" content="#cc99cc">
+
+
+	<title> CRS </title>
+</head>
+
+	<body><section class="hero is-medium has-text-centered">
+		<div class="hero-head">
+			<div class="container">
+				<div class="hero-head">
+    <div class="container">
+        <nav class="navbar ">
+            <div class="navbar-brand">
+                <!--a class="nav-item is-active" href="#">Crisis Response</a-->
+
+                <div class="nav-item">
+                    <div class="field is-grouped">
+                        <p class="control"> <a id="i-receive" class="button is-small" href="http://crs.ddc.moph.go.th/crisis/public/officer/show/1"> ไม่ได้รับเรื่อง 8</a> </p>
+                        <p class="control"> <a id="i-additional" class="button is-small" href="http://crs.ddc.moph.go.th/crisis/public/officer/show/2"> ไม่บันทึก 2</a> </p>
+                        <p class="control"> <a id="i-process" class="button is-small" href="http://crs.ddc.moph.go.th/crisis/public/officer/show/3"> ไม่ดำเนินการ 2</a> </p>
+                    </div>
+                </div>
+
+                <div class="navbar-burger burger" data-target="navMenuDocumentation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <div id="navMenuDocumentation" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="nav-item is-active" href="#"> Username : HisoDev  </a>
+                    <div class="nav-item">
+                        <p class="control"> <a class="button is-small is-primary" href="http://crs.ddc.moph.go.th/crisis/public/officer/logout" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"> <span>Logout</span> </a> </p>
+                        <form id="logout-form" action="http://crs.ddc.moph.go.th/crisis/public/officer/logout" method="POST" style="display: none;">
+                            <input name="_token" value="jnpF0ixLxaVE80niUGvMtxleiuA7sGs2kqK61n5K" type="hidden">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+</div>
+<input id="p_id" value="10" type="hidden">
+<input id="user_name" value="HisoDev" type="hidden">
+
+			</div>
+		</div>
+			<br>
+		<form class="form-horizontal" role="form" method="POST" action="http://crs.ddc.moph.go.th/crisis/public/officer/add_detail">
+			<input name="_token" value="jnpF0ixLxaVE80niUGvMtxleiuA7sGs2kqK61n5K" type="hidden">
+			<input id="case_id" name="case_id" value="zz408" type="text" hidden="">
+
+			<div class="container">
+				<nav class="breadcrumb">
+					<ul>
+						<li><a href="http://crs.ddc.moph.go.th/crisis/public/officer/show/0"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
+						</li>
+						<li class="is-active"><a><span class="icon is-small"><i class="fa fa-address-card"></i></span><span> ข้อมูลเพิ่มเติม </span></a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+
+			<h1 id="title" class="title"> ข้อมูลเพิ่มเติม </h1>
+			<div class="container">
+				<div class="notification">
+					<!--This container is <strong>centered</strong> on desktop. -->
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<!-- Left empty for spacing -->
+						</div>
+					</div>
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> วันที่</label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control is-expanded has-icons-left">
+									<input class="input" value="2018-03-28 15:10:13" disabled="disabled" type="text">
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label">ผู้แจ้งเรื่อง</label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control is-expanded has-icons-left ">
+									<input class="input" value="HisoDev" disabled="disabled" type="text">
+									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+							</div>
+							<div class="field-label is-normal">
+								<label class="label"> เบอร์มือถือผู้แจ้ง </label>
+							</div>
+							<div class="field">
+								<p class="control  has-icons-left has-icons-right">
+									<input class="input" value="0865430138" disabled="disabled" type="text">
+									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
+							</div>
+						</div>
+					</div>
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label">ผู้รับเรื่อง</label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control has-icons-left">
+									<input class="input" value="HisoDev" disabled="disabled" type="text">
+									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+							</div>
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label">ชื่อผู้ถูกกระทำ</label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control is-expanded has-icons-left ">
+									<input class="input" name="name" value="นพพล2" type="text">
+									<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
+							</div>
+							<div class="field-label is-normal">
+								<label class="label">ID-Code</label>
+							</div>
+							<div class="field">
+								<p class="control is-expanded has-icons-left has-icons-right">
+									<input class="input" value="zz408" disabled="disabled" type="text">
+								</p>
+							</div>
+						</div>
+					</div>
+					
+				
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> เบอร์มือถือผู้ถูกกระทำ </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control has-icons-left">
+									<input class="input" name="tel" value="0237580698" type="text">
+									<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span> </p>
+							</div>
+						</div>
+					</div>
+
+
+
+
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<label class="label"> เพศ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="field is-grouped">
+									<p class="control is-expanded  ">
+										<label>
+																							<input name="sex" value="1" type="radio">
+																							ชาย
+    									</label>
+									
+
+										<label>
+																							<input name="sex" value="2" type="radio">
+																							หญิง
+										</label>
+									
+
+										<label>
+																							<input checked="checked" name="sex" value="3" type="radio">
+																							สาวประเภทสอง
+    										</label>
+										<label>
+																							<input name="sex" value="4" type="radio"> อื่นๆ ระบุ
+												<label class="radio">
+												 <input class="input" placeholder="ระบุเพศ" style="display: none" name="sex_etc" type="text">
+												</label>
+																					</label>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<label class="label"> สัญชาติ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="field is-grouped">
+									<p class="control is-expanded  ">
+										<label>
+																							<input name="nation" value="1" type="radio">
+																						ไทย
+										</label>
+
+
+										<label>
+																							<input checked="checked" name="nation" value="2" type="radio">
+																						ลาว
+										</label>
+
+
+										<label>
+																							<input name="nation" value="3" type="radio">
+																						เวียดนาม
+										</label>
+
+										<label>
+																							<input name="nation" value="4" type="radio">
+																						พม่า
+										</label>
+
+										<label>
+																							<input name="nation" value="5" type="radio">
+																						กัมพูชา
+										</label>
+
+										<label>
+																							<input name="nation" value="6" type="radio"> อื่นๆ ระบุ
+												<label class="radio">
+												<input class="input" placeholder="ระบุสัญชาติ" style="display: none" name="nation_etc" type="text">
+												</label>
+																					</label>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label">พื้นที่ จังหวัด</label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control is-expanded has-icons-left ">
+									<input class="input" placeholder="ชื่อผู้แจ้ง" value="กรุงเทพมหานคร   " disabled="disabled" type="text">
+								</p>
+							</div>
+							<div class="field-label is-normal">
+								<label class="label">อำเภอ</label>
+							</div>
+							<div class="field">
+								<p class="control is-expanded has-icons-left has-icons-right">
+									<input class="input" placeholder="ID-CODE" value="เขตบางกะปิ   " disabled="disabled">
+								</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> รายละเอียดของปัญหา </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" name="detail">โดนบังคับตรวจในที่ทำงาน</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> ความต้องการความช่วยเหลือ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" name="need">ให้ความรู้ความเข้าใจ</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<!-- Left empty for spacing -->
+						</div>
+					</div>
+				</div>
+				<div class="notification">
+					<!--This container is <strong>centered</strong> on desktop. -->
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<!-- Left empty for spacing -->
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> วันที่สอบถามข้อมูล </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control  has-icons-left ">
+									<!--This container is birth_date input. -->
+								</p><div class="input-group date" data-provide="datepicker">
+									ปี พ.ศ. : <input min="2561" max="2570" value="2561" id="YearInterview" name="YearInterview" class="form-control" placeholder="ปปปป" onchange="date_interview();createinterviewdate()" type="number">
+									เดือน :  <select id="MonthInterview" name="MonthInterview" onchange="date_interview();createinterviewdate();">
+										<option value="1" selected="selected"> มกราคม </option>
+										<option value="2"> กุมภาพันธ์ </option>
+										<option value="3"> มีนาคม </option>
+										<option value="4"> เมษายน </option>
+										<option value="5"> พฤษภาคม </option>
+										<option value="6"> มิถุนายน </option>
+										<option value="7"> กรกฎาคม </option>
+										<option value="8"> สิงหาคม </option>
+										<option value="9"> กันยายน </option>
+										<option value="10"> ตุลาคม </option>
+										<option value="11"> พฤศจิกายน </option>
+										<option value="12"> ธันวาคม </option>
+									</select>
+									วันที่ : <select id="DayInterview" name="DayInterview" onchange="createinterviewdate();">
+																					<option value="1" selected="selected">1</option>
+																					<option value="2">2</option>
+																					<option value="3">3</option>
+																					<option value="4">4</option>
+																					<option value="5">5</option>
+																					<option value="6">6</option>
+																					<option value="7">7</option>
+																					<option value="8">8</option>
+																					<option value="9">9</option>
+																					<option value="10">10</option>
+																					<option value="11">11</option>
+																					<option value="12">12</option>
+																					<option value="13">13</option>
+																					<option value="14">14</option>
+																					<option value="15">15</option>
+																					<option value="16">16</option>
+																					<option value="17">17</option>
+																					<option value="18">18</option>
+																					<option value="19">19</option>
+																					<option value="20">20</option>
+																					<option value="21">21</option>
+																					<option value="22">22</option>
+																					<option value="23">23</option>
+																					<option value="24">24</option>
+																					<option value="25">25</option>
+																					<option value="26">26</option>
+																					<option value="27">27</option>
+																					<option value="28">28</option>
+																					<option value="29">29</option>
+																					<option value="30">30</option>
+																					<option value="31">31</option>
+																			      </select>
+
+									<input id="DateInterview" name="DateInterview" class="form-control" type="hidden">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
+								<!-- interview input -->
+								<p></p>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> วันเกิด </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control  has-icons-left ">
+									<!--This container is birth_date input. -->
+								</p><div class="input-group date" data-provide="datepicker">
+									ปี พ.ศ. : <input min="2400" max="2570" maxlength="4" id="yearInput" name="yearInput" class="form-control" placeholder="ปปปป" onchange="date_birth();createbirthdate();" type="number">
+									เดือน : 	<select id="monthInput" name="monthdate" onchange="date_birth();createbirthdate();">
+										<option value="1" selected="selected"> มกราคม </option>
+										<option value="2"> กุมภาพันธ์ </option>
+										<option value="3"> มีนาคม </option>
+										<option value="4"> เมษายน </option>
+										<option value="5"> พฤษภาคม </option>
+										<option value="6"> มิถุนายน </option>
+										<option value="7"> กรกฎาคม </option>
+										<option value="8"> สิงหาคม </option>
+										<option value="9"> กันยายน </option>
+										<option value="10"> ตุลาคม </option>
+										<option value="11"> พฤศจิกายน </option>
+										<option value="12"> ธันวาคม </option>
+									</select>
+									วันที่ : <select id="dayInput" name="birthdate" onchange="createbirthdate();">
+																					<option value="1" selected="selected">1</option>
+																					<option value="2">2</option>
+																					<option value="3">3</option>
+																					<option value="4">4</option>
+																					<option value="5">5</option>
+																					<option value="6">6</option>
+																					<option value="7">7</option>
+																					<option value="8">8</option>
+																					<option value="9">9</option>
+																					<option value="10">10</option>
+																					<option value="11">11</option>
+																					<option value="12">12</option>
+																					<option value="13">13</option>
+																					<option value="14">14</option>
+																					<option value="15">15</option>
+																					<option value="16">16</option>
+																					<option value="17">17</option>
+																					<option value="18">18</option>
+																					<option value="19">19</option>
+																					<option value="20">20</option>
+																					<option value="21">21</option>
+																					<option value="22">22</option>
+																					<option value="23">23</option>
+																					<option value="24">24</option>
+																					<option value="25">25</option>
+																					<option value="26">26</option>
+																					<option value="27">27</option>
+																					<option value="28">28</option>
+																					<option value="29">29</option>
+																					<option value="30">30</option>
+																					<option value="31">31</option>
+																				</select>
+
+									<input id="dateInput" name="birthdate" class="form-control" type="hidden">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
+								   <!-- birth_date input -->
+								<p></p>
+							</div>
+							<div class="field-label is-normal">
+								<label class="label"> อายุ </label>
+							</div>
+							<div class="field">
+								<p class="control  ">
+									<input class="input" name="age" id="age" readonly="readonly" type="text">
+								</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<label class="label"> สถานะภาพสมรส </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="field is-grouped">
+									<p class="control is-expanded has-icons-left ">
+							<label>
+      							<input checked="checked" name="marital-status" value="1" type="radio"> 
+      							โสด
+    						</label>
+							<label>
+     							<input name="marital-status" value="2" type="radio">
+								สมรส
+    						</label>
+							<label>
+     							<input name="marital-status" value="3" type="radio">
+								หม้าย / หย่า / แยก
+    						</label>
+							<label>
+     							<input name="marital-status" value="4" type="radio">
+								สมณะ
+    						</label>
+									
+
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<label class="label">อาชีพ</label>
+						</div>
+						<div class="field-body">
+							<div class="field is-narrow">
+								<div class="control"> <span class="select">
+									<select id="occupation" name="occupation">
+									  <option value="0" selected="selected"> โปรดเลือก </option>
+									  <option value="1"> ทำงานในหน่วยงานราชการ </option>
+									  <option value="2"> ทำงานในบริษัทเอกชน </option>
+									  <option value="3"> ทำงานในองค์กรพัฒนาเอกชน (NGO) </option>
+									  <option value="4"> ธุรกิจส่วนตัว </option>
+									  <option value="5"> รับจ้างทั่วไป </option>
+									  <option value="6"> เกษตรกร </option>
+									  <option value="7"> นักเรียน/นักศึกษา </option>
+									  <option value="8"> ว่างงาน </option>
+									  <option value="9"> อื่นๆ โปรดระบุ </option>
+									</select>
+									</span>
+									<input class="input" id="occupation_detail" name="occupation_detail" style="display: none" type="text">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> ที่อยู่</label>
+						</div>
+						<div class="field-body">
+							<div class="field  is-grouped">
+								<p class="control  is-expanded">
+									<textarea class="textarea" name="address" placeholder="บ้านเลขที่ ซอย ถนน หมู่บ้าน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"></textarea>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<label class="label">ประเภทบัตร</label>
+						</div>
+						<div class="field-body is-expanded">
+							<div class="field is-narrow ">
+								<div class="control"> <span class="select">
+									<select id="card_type" name="card_type">
+									  <option value="1" selected="selected"> บัตรประชาชน </option>
+									  <option value="2"> บัตรต่างด้าว </option>
+									  <option value="3"> บัตรคนไทยไร้สถานะ </option>
+									  <option value="4"> พาสปอร์ต </option>
+									</select>
+									</span>
+								</div>
+							</div>
+							<div class="field-label is-normal">
+								<label class="label">เลขที่บัตร</label>
+							</div>
+							<div class="field">
+								<p class="control  has-icons-left has-icons-right">
+									<input class="input" placeholder="ID-CODE" maxlength="13" name="card_num" type="text">
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<!-- Left empty for spacing -->
+						</div>
+					</div>
+				</div>
+
+				<div class="notification">
+					<!--This container is <strong>centered</strong> on desktop. -->
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> หน่วยงานผู้ละเมิด </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-narrow is-grouped">
+								<div class="control"> <span class="select">
+									<select id="offender_type" name="offender_type">
+									  <option value="0" selected="selected"> โปรดเลือก </option>
+									  <option value="1"> สถานพยาบาล </option>
+									  <option value="2"> สถานที่ทำงาน </option>
+									  <option value="3"> สถานศึกษา </option>
+									  <option value="4"> หน่วยงานที่บังคับใช้กฎหมาย</option>
+									  <option value="5"> องค์กรปกครองส่วนท้องถิ่น </option>
+									  <option value="6"> หน่วยงานอื่นๆ </option>
+									</select>
+									</span>
+								
+								</div>
+							</div>
+							<div class="field is-narrow is-grouped">
+								<div class="control"> <span class="select">
+									<select id="offender_subtype" name="offender_subtype" disabled="disabled">
+									  <option value="1" selected="selected"> ของรัฐบาล </option>
+									  <option value="2"> ของเอกชน </option>
+									  <option value="3"> อื่นๆ </option>
+									</select>
+									</span>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<!-- Violent group -->
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<label class="label"> ผู้ละเมิด </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<div class="control">
+									<label class="radio">
+										<input name="type-violator" onclick="handleClick(this);" value="1" checked="checked" type="radio">
+										บุคคล
+									 </label>
+								</div>
+								<div class="control">
+									<label class="text">
+									  ชื่อ
+									</label>
+								</div>
+								<div class="control">
+									<p>
+										<input class="input" id="violator_name" name="violator_name" type="text">
+									</p>
+								</div>
+								<div class="control">
+									<label class="text">
+										หน่วยงาน
+									</label>
+								</div>
+								<div class="control">
+									<p>
+										<input class="input" id="violator_organization" name="violator_organization" type="text">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<label class="label"> </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<div class="control">
+									<label class="radio">
+							  <input name="type-violator" onclick="handleClick(this);" value="2" type="radio">
+							  องค์กร
+							</label>
+								</div>
+								<div class="control">
+									<label class="text">
+							  ชื่อ
+							</label>
+								</div>
+								<div class="control">
+									<p>
+										<input class="input" id="offender_organization" name="offender_organization" disabled="disabled" type="text">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Violent group -->
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> สถานที่เกิดเหตุ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" name="accident_location" placeholder="กรอกรายละเอียด"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> วันที่เกิดเหตุ </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control  has-icons-left ">
+									<!--This container is birth_date input. -->
+								</p><div class="input-group date" data-provide="datepicker">
+									ปี พ.ศ. : <input min="2561" max="2570" value="2561" id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" onchange="date_acc();createaccidentdate();" type="number">
+									เดือน : <select id="MonthAct" name="MonthAct" onchange="date_acc();createaccidentdate();">
+										<option value="1" selected="selected"> มกราคม </option>
+										<option value="2"> กุมภาพันธ์ </option>
+										<option value="3"> มีนาคม </option>
+										<option value="4"> เมษายน </option>
+										<option value="5"> พฤษภาคม </option>
+										<option value="6"> มิถุนายน </option>
+										<option value="7"> กรกฎาคม </option>
+										<option value="8"> สิงหาคม </option>
+										<option value="9"> กันยายน </option>
+										<option value="10"> ตุลาคม </option>
+										<option value="11"> พฤศจิกายน </option>
+										<option value="12"> ธันวาคม </option>
+									</select>
+									วันที่ : <select id="DayAct" name="DayAct" onchange="createaccidentdate();">
+																						<option value="1" selected="selected">1</option>
+																						<option value="2">2</option>
+																						<option value="3">3</option>
+																						<option value="4">4</option>
+																						<option value="5">5</option>
+																						<option value="6">6</option>
+																						<option value="7">7</option>
+																						<option value="8">8</option>
+																						<option value="9">9</option>
+																						<option value="10">10</option>
+																						<option value="11">11</option>
+																						<option value="12">12</option>
+																						<option value="13">13</option>
+																						<option value="14">14</option>
+																						<option value="15">15</option>
+																						<option value="16">16</option>
+																						<option value="17">17</option>
+																						<option value="18">18</option>
+																						<option value="19">19</option>
+																						<option value="20">20</option>
+																						<option value="21">21</option>
+																						<option value="22">22</option>
+																						<option value="23">23</option>
+																						<option value="24">24</option>
+																						<option value="25">25</option>
+																						<option value="26">26</option>
+																						<option value="27">27</option>
+																						<option value="28">28</option>
+																						<option value="29">29</option>
+																						<option value="30">30</option>
+																						<option value="31">31</option>
+																						</select>
+
+									<input id="DateAct" name="DateAct" class="form-control" type="hidden">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-th"></span>
+									</div>
+								</div>
+								<!-- interview input -->
+								<p></p>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> รายละเอียดวันเวลาที่เกิดเหตุ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" name="accident_time" placeholder="กรอกรายละเอียด"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<!-- Left empty for spacing -->
+						</div>
+					</div>
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> ปัญหาที่แจ้ง</label>
+						</div>
+						<div class="field-body">
+							<div class="field is-narrow is-grouped">
+								<div class="control"> <span class="select">
+									<select id="problem_case" name="problem_case">
+									<option value="0">โปรดเลือกประเภทปัญหาของท่าน</option>
+									<option value="1" {="" selected="selected" }="">บังคับตรวจเอชไอวี</option>
+									<option value="2">เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
+									<option value="3">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
+									<option value="4">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
+									<option value="5">อื่นๆ ที่เกี่ยวข้องกับเอชไอวี</option>
+								</select>
+									</span>
+								</div>
+							</div>
+							<div class="field is-narrow is-grouped">
+								<div class="control"> <span class="select">
+									  <select id="sub_problem" name="sub_problem">
+										  											  <option value="1" style="width:250px">ผู้ติดเชื้อเอชไอวี</option>
+											  <option value="2" style="width:250px" {="" selected="selected" }="">กลุ่มเปราะบาง</option>
+											  <option value="4" style="width:250px">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>
+											  <option value="3" style="width:250px">ประชาชนทั่วไป</option>
+										  									  </select>
+									</span>
+								</div>
+							</div>
+							<div class="field is-narrow is-grouped">
+								<div class="control"> <span class="select">
+									<select id="group_code" name="group_code">
+
+																					<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>
+											<option value="2" style="width:250px">พนักงานบริการ</option>
+											<option value="3" style="width:250px" {="" selected="selected" }="">ผู้ใช้สารเสพติด</option>
+											<option value="4" style="width:250px">ประชากรข้ามชาติ</option>
+											<option value="5" style="width:250px">ผู้ต้องขัง</option>
+											<option value="6" style="width:250px">เยาวชนในสถานพินิจ</option>
+											<option value="7" style="width:250px">กลุ่มชนเผ่า</option>
+										
+									</select>
+									</span>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> ลักษณะการละเมิด </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" name="violation_characteristics" placeholder="กรอกรายละเอียด"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> ผลกระทบ </label>
+						</div>
+						<div class="field-body">
+							<div class="field">
+								<div class="control">
+									<textarea class="textarea" name="effect" placeholder="กรอกรายละเอียด"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field is-horizontal">
+					  <div class="field-label">
+						<label class="label"> สาเหตุ </label>
+					  </div>
+					  <div class="field-body">
+						<div class="field is-grouped">
+						  <div class="control">
+							<label>
+							  <input name="law" type="checkbox">
+							  ไม่รู้กฎหมาย
+							</label>
+						  </div>
+						  <div class="control">
+							<label>
+							  <input name="aids" type="checkbox">
+							  ขาดความเข้าใจที่ถูกต้องเรื่องเอดส์
+							</label>
+						  </div>
+						  <div class="control">
+							<label>
+							  <input name="attitude" type="checkbox">
+							  ทัศนคติ
+							</label>
+						  </div>
+						  <div class="control">
+							<label>
+							  <input name="policy" type="checkbox">
+							  นโยบายองค์กร
+							</label>
+						  </div>
+						</div>
+					  </div>
+					</div>
+					
+					<div class="field is-horizontal">
+					  <div class="field-label">
+						<label class="label">  </label>
+					  </div>
+					  <div class="field-body">
+						<div class="field is-grouped">
+								<div class="control">
+									<label class="checkbox">
+							  <input name="etc" type="checkbox">
+							  อื่นๆ
+							</label>
+								</div>
+								<div class="control">
+									<label class="text">
+							  ระบุ
+							</label>
+								</div>
+								<div class="control">
+									<p>
+										<input name="etc_detail" class="input" placeholder="" style="display: none" type="text">
+									</p>
+								</div>
+							</div>
+					  </div>
+					</div>
+					
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> </label>
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label">
+							<!-- Left empty for spacing -->
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-grouped">
+					<p><a> </a>
+					</p>
+					<p class="control"> <input class="button is-primary" value="ยืนยัน" type="submit"></p>
+
+					<p class="control"> <a class="button" href="http://crs.ddc.moph.go.th/crisis/public/officer/show/0"> ยกเลิก </a> </p>
+				</div>
+			</div>
+	</form></section>
+
+<script src="%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C_CRS/select_list.js"></script>
+
+
+	<script>
+//        $('.datepicker').datepicker();
+
+
+        $('#offender_type').on('change',function (e) {
+
+            var sel_value = e.target.value;
+            //alert(sel_value);
+
+			 if((sel_value == 4)||(sel_value == 5)) {
+			  document.getElementById("offender_subtype").disabled = true;
+			 }else {
+			  document.getElementById("offender_subtype").disabled = false;
+			 }
+        });
+
+///// show and hide even btn ///////
+$('#occupation').on('change',function (e) {
+
+    var sel_value = e.target.value;
+    //alert(sel_value);
+
+    if(sel_value == 9) {
+        $('#occupation_detail').show();
+    }else {
+        $('#occupation_detail').hide();
+    }
+	});
+	$("input[name='sex']").on('change',function (e) {
+
+    var sel_value = e.target.value;
+    //alert(sel_value);
+
+    if(sel_value == 4) {
+        $("input[name='sex_etc']").show();
+    }else {
+        $("input[name='sex_etc']").hide();
+    }
+	});
+	$("input[name='nation']").on('change',function (e) {
+
+    var sel_value = e.target.value;
+    //alert(sel_value);
+
+    if(sel_value == 6) {
+        $("input[name='nation_etc']").show();
+    }else {
+        $("input[name='nation_etc']").hide();
+    }
+	});
+	$("input[name='etc']").on('change',function (e) {
+
+    var sel_value = e.target.checked;
+    //alert(sel_value);
+    if(sel_value) {
+        $("input[name='etc_detail']").show();
+    }else {
+        $("input[name='etc_detail']").hide();
+    }
+	});
+///// end show and hide even btn ///////
+        /*
+        $('#type-violator').on('click change',function (e) {
+			var type_id = e.target.value;
+            console.log(e.type);
+        });*/
+        function createbirthdate() {
+
+            $('#dateInput').val($('#monthInput').val()+"/"+ $('#dayInput').val()+"/"+ ($('#yearInput').val()-543));
+            var dob = $('#dateInput').val();
+            dob = new Date(dob);
+            var today = new Date();
+            var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+            $("#age").val(age);
+            //console.log(age);
+        }
+        function createinterviewdate() {
+            $('#DateInterview').val($('#MonthInterview').val()+"/"+ $('#DayInterview').val()+"/"+ ($('#YearInterview').val()-543));
+        }
+        function createaccidentdate() {
+            $('#DateAct').val($('#MonthAct').val()+"/"+ $('#DayAct').val()+"/"+ ($('#YearAct').val()-543));
+        }
+        function handleClick(myRadio) {
+            if(myRadio.value == 1)
+			{
+                document.getElementById("offender_organization").disabled = true;
+                document.getElementById("violator_name").disabled = false;
+                document.getElementById("violator_organization").disabled = false;
+			}else if(myRadio.value == 2){
+                document.getElementById("offender_organization").disabled = false;
+                document.getElementById("violator_name").disabled = true;
+                document.getElementById("violator_organization").disabled = true;
+
+			}
+
+            //alert('New value: ' + myRadio.value);
+            //currentValue = myRadio.value;
+        }
+    </script>
+
+	<br> 
+
+
+<script>
+    var p_id = $('#p_id').val();
+    var status_url = "http://crs.ddc.moph.go.th/crisis/public/officer/load_status/:p_id";
+    status_url = status_url.replace(':p_id', p_id);
+    console.log(status_url);
+    $.ajax({
+        type: 'GET',
+        url: status_url,
+        success: function( data ) {
+            //console.log(data);
+            $('#i-receive').text(" ไม่ได้รับเรื่อง "+data.NotAcp);
+            $('#i-additional').text(" ไม่บันทึก "+data.NotKeyIn);
+            $('#i-process').text(" ไม่ดำเนินการ "+data.NotOp);
+        }
+    });
+</script>
+
+<footer class="footer">
+		<div class="container">
+			<div class="columns">
+				<div class="column is-3">
+					<div id="about" class="content"> <strong>Crisis Response</strong> by <a href="http://www.aidsrightsthailand.com/">Aidsrightsthailand</a>. </div>
+				</div>
+				<div class="column is-5">
+					<div id="share" class="content"> </div>
+				</div>
+				<div class="column is-4">
+					<div id="sister">
+						<p><small> <strong>ที่อยู่</strong> : </small>
+						</p>
+						<p><small>133/235 หมู่บ้านรื่นฤดี3 ถนนหทัยราษฎร์ แขวงมีนบุรี เขตมีนบุรี กทม 10510 โทรศัพท์ 02-171-5135-6 โทรสาร 02-1715124 </small>
+						</p>
+					</div>
+				</div>
+			</div>
+			<p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th/">HISO</a>. <br>
+                Website content licensed <a rel="license" href="http://www.hiso.or.th/">www.hiso.or.th</a>. </small> </p>
+		</div>
+	</footer></body></html>

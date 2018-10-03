@@ -39,7 +39,7 @@
 				updateBtn12.disabled = false;
 				salesChart.setJSONData( {
 					"chart": {
-						"caption": "กราฟแสดงข้อมูลแยกตามการจัดการ",
+						"caption": "กราฟแสดงข้อมูลแยกตามขั้นตอน",
 						"subCaption": "ปี 2560",
 						"placeValuesInside": "0",
 						"yAxisName": "เปอร์เซ็นต์",
@@ -60,7 +60,7 @@
 
 					"data": [ {
 						"label": "แจ้งเรื่อง",
-						"value": "97"
+						"value": "100"
 					}, {
 						"label": "รับเรื่อง",
 						"value": "85"
@@ -72,10 +72,10 @@
 						"value": "45"
 					}, {
 						"label": "เสร็จสิ้น",
-						"value": "35"
+						"value": "38"
 					}, {
 						"label": "ส่งต่อ",
-						"value": "20"
+						"value": "33"
 					} ]
 				} );
 			} );
@@ -86,7 +86,7 @@
 				updateBtn11.disabled = false;
 				salesChart.setJSONData( {
 					"chart": {
-						"caption": "กราฟแสดงข้อมูลแยกตามการจัดการ",
+						"caption": "กราฟแสดงข้อมูลแยกตามขั้นตอน",
 						"subCaption": "ปี 2560",
 						"placeValuesInside": "0",
 						"yAxisName": "จำนวน",
@@ -133,7 +133,7 @@
 					dataFormat: 'json',
 					dataSource: {
 						"chart": {
-							"caption": "กราฟแสดงข้อมูลแยกตามการจัดการ",
+							"caption": "กราฟแสดงข้อมูลแยกตามขั้นตอน",
 							"subCaption": "ปี 2560",
 							"placeValuesInside": "0",
 							"yAxisName": "จำนวน",
@@ -220,7 +220,7 @@
 
 				<nav class="breadcrumb" aria-label="breadcrumbs">
 					<ul>
-						<li><a href=""><span class="icon is-small">
+						<li><a href="../public/officer"><span class="icon is-small">
 							<i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 						
 						</li>
@@ -245,7 +245,7 @@
 						<li class="is-active">
 							<a href="dashboard1.blade.php">
 						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูลแยกตามการจัดการ </span>
+						<span> กราฟแสดงข้อมูลแยกตามขั้นตอน </span>
 					</a>
 						
 						</li>

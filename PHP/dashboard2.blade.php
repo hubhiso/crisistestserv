@@ -39,7 +39,7 @@
 				updateBtn12.disabled = false;
 				salesChart.setJSONData( {
 					"chart": {
-						"caption": "กราฟแสดงข้อมูลแยกตามการจัดการ",
+						"caption": "กราฟแสดงข้อมูลแยกตามปัญหา",
 						"subCaption": "ปี 2560",
 						"placeValuesInside": "0",
 						"yAxisName": "เปอร์เซ็นต์",
@@ -86,7 +86,7 @@
 				updateBtn11.disabled = false;
 				salesChart.setJSONData( {
 					"chart": {
-						"caption": "กราฟแสดงข้อมูลแยกตามการจัดการ",
+						"caption": "กราฟแสดงข้อมูลแยกตามปัญหา",
 						"subCaption": "ปี 2560",
 						"placeValuesInside": "0",
 						"yAxisName": "จำนวน",
@@ -133,7 +133,7 @@
 					dataFormat: 'json',
 					dataSource: {
 						"chart": {
-							"caption": "กราฟแสดงข้อมูลแยกตามการจัดการ",
+							"caption": "กราฟแสดงข้อมูลแยกตามปัญหา",
 							"subCaption": "ปี 2560",
 							"placeValuesInside": "0",
 							"yAxisName": "จำนวน",
@@ -151,23 +151,20 @@
 						},
 
 						"data":[ {
-						"label": "แจ้งเรื่อง",
+						"label": "บังคับตรวจเอชไอวี",
 						"value": "290"
 					}, {
-						"label": "รับเรื่อง",
+						"label": "เปิดเผยสถานะการติดเชื้อเอชไอวี",
 						"value": "260"
 					}, {
-						"label": "บันทึกข้อมูล",
+						"label": "ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากการติดเชื้อเอชไอวี",
 						"value": "180"
 					}, {
-						"label": "ดำเนินการ",
+						"label": "ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง",
 						"value": "140"
 					}, {
-						"label": "เสร็จสิ้น",
+						"label": "อื่นๆ ที่เกี่ยวข้องกับ HIV",
 						"value": "115"
-					}, {
-						"label": "ส่งต่อ",
-						"value": "100"
 					} ]
 					},
 					events: {
@@ -220,7 +217,7 @@
 
 				<nav class="breadcrumb" aria-label="breadcrumbs">
 					<ul>
-						<li><a href=""><span class="icon is-small">
+						<li><a href="../public/officer"><span class="icon is-small">
 							<i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 						
 						</li>
@@ -245,7 +242,7 @@
 						<li >
 							<a href="dashboard1.blade.php">
 						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูลแยกตามการจัดการ </span>
+						<span> กราฟแสดงข้อมูลแยกตามขั้นตอน </span>
 					</a>
 						
 						</li>
@@ -261,19 +258,30 @@
 
 <div class="field is-horizontal">
 				<div class="field-label is-normal">
-					<label class="label">ปัญหา</label>
+					<label class="label">ช่วงเวลา</label>
 				</div>
 				<div class="field-body">
 					<div class="field is-grouped">
 						<p class="control is-expanded  ">
 							<span class="select">
 							<select id ="problem_case" name="problem_case">
-								<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
-     							<option value="1"  >บังคับตรวจเอชไอวี</option>
-     							<option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
-    				 			<option value="3" >ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
-     							<option value="4" >ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
-								<option value="5" >อื่นๆ ที่เกี่ยวข้องกับ HIV</option>
+								<option value="0" >โปรดเลือกช่วงเวลา</option>
+     							<option value="1" >มกราคม</option>
+     							<option value="2" >กุมภาพันธ์</option>
+    				 			<option value="3" >มีนาคม</option>
+     							<option value="4" >เมษายน</option>
+								<option value="4" >พฤษภาคม</option>
+								<option value="4" >มิถุนายน</option>
+								<option value="4" >กรกฎาคม</option>
+								<option value="4" >สิงหาคม</option>
+								<option value="4" >กันยายน</option>
+								<option value="4" >ตุลาคม</option>
+								<option value="4" >พฤศจิกายน</option>
+								<option value="4" >ธันวาคม</option>
+								<option value="4" >ไตรมาส 1</option>
+								<option value="4" >ไตรมาส 2</option>
+								<option value="4" >ไตรมาส 3</option>
+								<option value="5" >ไตรมาส 4</option>
 							</select>
 
         					</span>
@@ -288,7 +296,7 @@
 
 				<div class="field is-horizontal">
 					<div class="field-label is-normal">
-						<label class="label"> ประเภทกลุ่ม </label>
+						<label class="label"> สถานะ </label>
 					</div>
 					<div class="field-body">
 						<div class="field is-grouped">
@@ -306,7 +314,7 @@
 				</div>
 				<div class="field is-horizontal">
 					<div class="field-label is-normal">
-						<label class="label">ประเภทกลุ่มย่อย</label>
+						<label class="label"> จังหวัด </label>
 					</div>
 					<div class="field-body">
 						<div class="field is-grouped">
