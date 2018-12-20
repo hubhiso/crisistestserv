@@ -6,7 +6,7 @@
     <div class="container has-text-centered">
       <div class="container">
 					<h1 id="bulma" class="title"> Crisis Response System (CRS) </h1>
-					<h2 id="modern-framework" class="subtitle"> ระบบติดตามสถานการณ์การละเมิดสิทธิด้านเอดส์และให้การช่วยเหลือแบบเร่งด่วน </h2>
+					<h2 id="modern-framework" class="subtitle"> ระบบรับเรื่องร้องเรียนและคุ้มครองการละเมิดสิทธิด้านเอดส์ </h2>
 					<a id="btn_new1" class="button" href="{{ 'case_inputs' }}"> แจ้งเรื่อง </a>
 				</div>
 				<br>	
