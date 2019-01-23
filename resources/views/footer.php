@@ -3,6 +3,8 @@
 			<div class="columns">
 				<div class="column is-3">
 					<div id="about" class="content"> <strong >Crisis Response</strong> by <a  href="http://www.aidsrightsthailand.com" >Aidsrightsthailand</a>. </div>
+					<a class="button is-outlined" href="support">หน่วยงานสนับสนุน</a>
+
 				</div>
 				<div class="column is-5">
 					<div id="share" class="content"> </div>
@@ -19,4 +21,4 @@
 			<p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>. <br>
                 Website content licensed <a rel="license" href="http://www.hiso.or.th">www.hiso.or.th</a>. </small> </p>
 		</div>
-	</footer>
+</footer>

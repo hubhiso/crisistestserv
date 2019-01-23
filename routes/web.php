@@ -87,4 +87,6 @@ Route::resource('case_inputs','case_controller');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::get('support', function () {
+    return view('support');
+});
