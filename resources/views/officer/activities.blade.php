@@ -12,11 +12,11 @@
 	{{--{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}--}}
 	{{--{{ Html::style('bootstrap/css/bootstrap.css') }}--}}
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
 
 	{{ Html::script('js/jquery.min.js') }}
 	{{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
 	{{--{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}--}}
-	<link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 	<meta name="theme-color" content="#cc99cc"/>
 </head>
 
