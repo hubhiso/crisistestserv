@@ -52,7 +52,7 @@
                         <figure class="image"  >
                             <img src="images/logo/logo1-x100.png"  >
                         </figure>
-                        <p class="is-size-3"  >สำนักโรคเอดส์ วัณโรค และโรคติดต่อทางเพศสัมพันธ์</p>
+                        <p class="is-size-6"  >สำนักโรคเอดส์ วัณโรค และโรคติดต่อทางเพศสัมพันธ์</p>
                         </a>
                     </article>
                 </div>
@@ -62,7 +62,7 @@
                         <figure class="image">
                             <img src="images/logo/logo2-x100.png">
                         </figure>
-                        <p class="is-size-3">มูลนิธิศูนย์คุ้มครองสิทธิ์ด้านเอดส์</p>
+                        <p class="is-size-6">มูลนิธิศูนย์คุ้มครองสิทธิ์ด้านเอดส์</p>
                         </a>
                     </article>
                 </div>
@@ -72,7 +72,7 @@
                         <figure class="image">
                             <img src="images/logo/logo3-x100.png">
                         </figure>
-                        <p class="is-size-3">กรมคุ้มครองสิทธิและเสรีภาพ</p>
+                        <p class="is-size-6">กรมคุ้มครองสิทธิและเสรีภาพ</p>
                         </a>
                     </article>
                 </div>
@@ -82,7 +82,7 @@
                         <figure class="image">
                             <img src="images/logo/logo4-x100.png">
                         </figure>
-                        <p class="is-size-3">สำนักงานคณะกรรมการสิทธิมนุษยชนแห่งชาติ</p>
+                        <p class="is-size-6">สำนักงานคณะกรรมการสิทธิมนุษยชนแห่งชาติ</p>
                         </a>
                     </article>
                 </div>
@@ -92,7 +92,7 @@
                         <figure class="image">
                             <img src="images/logo/logo5-x100.png">
                         </figure>
-                        <p class="is-size-3">ศูนย์ช่วยเหลือสังคม</p>
+                        <p class="is-size-6">ศูนย์ช่วยเหลือสังคม</p>
                         </a>
                     </article>
                 </div>
@@ -105,7 +105,7 @@
                         <figure class="image">
                             <img src="images/logo/logo6-x100.png">
                         </figure>
-                        <p class="is-size-3">สภาทนายความ ในพระบรมราชูปถัมภ์</p>
+                        <p class="is-size-6">สภาทนายความ ในพระบรมราชูปถัมภ์</p>
                         </a>
                     </article>
                 </div>
@@ -115,7 +115,7 @@
                         <figure class="image">
                             <img src="images/logo/logo7-x100.png">
                         </figure>
-                        <p class="is-size-3">สายด่วน 1663<br>มูลนิธิเข้าถึงเอดส์</p>
+                        <p class="is-size-6">สายด่วน 1663<br>มูลนิธิเข้าถึงเอดส์</p>
                         </a>
                     </article>
                 </div>
@@ -125,7 +125,7 @@
                         <figure class="image">
                             <img src="images/logo/logo8-x100.png">
                         </figure>
-                        <p class="is-size-3">เครือข่ายผู้ติดเชื้อ<br>เอชไอวี/เอดส์ประเทศไทย</p>
+                        <p class="is-size-6">เครือข่ายผู้ติดเชื้อ<br>เอชไอวี/เอดส์ประเทศไทย</p>
                         </a>
                     </article>
                 </div>
@@ -135,7 +135,7 @@
                             <figure class="image">
                                 <img src="images/logo/logo1-x100.png">
                             </figure>
-                            <p class="is-size-3">สายด่วน 1442<br>กรมควบคุมโรค</p>
+                            <p class="is-size-6">สายด่วน 1442<br>กรมควบคุมโรค</p>
                             </a>
                         </a>
                     </article>
@@ -146,7 +146,7 @@
                             <figure class="image">
                                 <img  src="images/logo/logo10-x100.png">
                             </figure>
-                            <p class="is-size-3">สำนักงานพัฒนาระบบ<br>ข้อมูลข่าวสารสุขภาพ</p>
+                            <p class="is-size-6">สำนักงานพัฒนาระบบ<br>ข้อมูลข่าวสารสุขภาพ</p>
                         </a>
                     </article>
                 </div>
