@@ -1,5 +1,6 @@
 <div class="hero-head">
     <div class="container">
+    <br>
         <nav class="navbar ">
             <div class="navbar-brand">
                 <!--a class="nav-item is-active" href="#">Crisis Response</a-->
@@ -23,7 +24,7 @@
                 <div class="navbar-end">
                     <a class="nav-item is-active" href="#"> Username : {{ Auth::user()->name }}  </a>
                     <div class="nav-item">
-                        <p class="control"> <a class="button is-small is-primary" href="{{ route('officer.logout') }}" onclick="event.preventDefault();
+                        <p class="control">&nbsp;&nbsp; <a class="button is-small is-primary" href="{{ route('officer.logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"> <span>Logout</span> </a> </p>
                         <form id="logout-form" action="{{ route('officer.logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
