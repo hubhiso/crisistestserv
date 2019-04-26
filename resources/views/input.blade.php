@@ -437,8 +437,7 @@
 		$('input[name="sender_case"][value="1"]').attr('checked', true);
 		//  loadinput(val);
 		document.getElementById("data-agent").style.display = 'none';
-		var x = document.getElementById("tabradio");
-		x.style.display = "none";
+		var x = document.getElementById("tabradio").style.display = 'none';
 		}
 
 		var val = $('input[name="sender_case"]').val();
