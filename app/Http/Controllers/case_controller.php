@@ -56,6 +56,7 @@ class case_controller extends Controller
         //
 
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -68,11 +69,37 @@ class case_controller extends Controller
         //$input = Request::all();
         case_input::create($request->all());
         $case_id = Request::input('case_id');
-        case_input::where('case_id','=',$case_id)->update([ 'status' => 1]);
+       
+
+        $pathfile = "uploads/".$case_id;
+        $file1 = "";
+
+        if ($request->file('file1') != null) {
+           $file1 =  md5(time() . $request->fname).'.'.$request->file('file1')->getClientOriginalExtension();
+           $request->file('file1')->move(public_path($pathfile), $file1);
+        }
+
+        $file2 = "";
+
+        if ($request->file('file2') != null) {
+           $file2 =  md5(time() . $request->fname).'.'.$request->file('file2')->getClientOriginalExtension();
+           $request->file('file2')->move(public_path($pathfile), $file2);
+        }
+
+        $file3 = "";
+
+        if ($request->file('file3') != null) {
+           $file3 =  md5(time() . $request->fname).'.'.$request->file('file3')->getClientOriginalExtension();
+           $request->file('file3')->move(public_path($pathfile), $file3);
+        }
+
+        case_input::where('case_id','=',$case_id)->update([ 'status' => 1, 'file1' => $file1, 'file2' => $file2, 'file3' => $file3]);
+
         timeline::create(['case_id'=>$case_id,
             'operate_status'=>1,
             'operate_time'=> date("Y-m-d")
         ]);
+
         return view('layout.gen_caseid',compact('case_id'));
 
     //return redirect('/');

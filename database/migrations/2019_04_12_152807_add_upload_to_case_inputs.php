@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class AddUploadToCaseInputs extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('case_inputs', function (Blueprint $table) {
+            $table->float('geolat',5,4)->nullable();
+            $table->float('geolon',5,4)->nullable();
+            $table->string('file1')->nullable();
+            $table->string('file2')->nullable();
+            $table->string('file3')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('case_inputs', function (Blueprint $table) {
+            //
+        });
+    }
+}

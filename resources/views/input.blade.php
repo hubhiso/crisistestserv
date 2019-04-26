@@ -8,13 +8,14 @@
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}"
 		  rel="stylesheet"> {{ Html::script('js/jquery.min.js') }}
+	<link rel="stylesheet" type="text/css" href="css/uploadicon/new3.css" />
 	<title> CRS </title>
 
 </head>
 
 <body onload="load()">
 
-	{!! Form::open(['url' =>'case_inputs']) !!} @component('component.input_head') @endcomponent
+	{!! Form::open(['url' =>'case_inputs','files' => true]) !!} @component('component.input_head') @endcomponent
 
 
 	<div class="container">
@@ -31,6 +32,10 @@
 			</nav>
 
 			<h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>
+
+			<!-- input class="button is-primary" type="button" value="คลิกเพื่อระบุว่าเป็นผู้แจ้งแทน" onClick="showHideDiv('data-agent')"/><br><br-->
+			<!--input class="button is-primary" type="button" value="คลิกเพื่อระบุว่าเป็นผู้แจ้งแทน" /><br><br-->
+			{!! Form::button('คลิกเพื่อระบุว่าเป็นผู้แจ้งแทน', ['class' => 'button is-primary', 'onclick' => "showHideDiv('data-agent')"]) !!}<br><br>
 
 			<div class="box" id="data-agent">
 				<div class="field is-horizontal">
@@ -292,6 +297,81 @@
 					</div>
 				</div>
 			</div>
+
+
+
+			<div class="field is-horizontal">
+				<div class="field-label is-normal">
+				<label class="label"> อัพโหลดข้อมูลเพิ่มเติม </label>
+				</div>
+				<div class="field-body">
+					<div class="file is-info has-name is-fullwidth">
+						<label class="file-label">
+							<input class="input-file" id="file1" name="file1" type="file" name="resume">
+							<span class="file-cta">
+								<span class="file-icon">
+								<i class="fas fa-upload"></i>
+								</span>
+								<span class="file-label input-file-trigger1">
+								กรุณาเลือกไฟล์...
+								</span>
+							</span>
+							<span class="file-name file-return1">
+								ไม่ได้เลือกไฟล์ใด
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="field is-horizontal">
+				<div class="field-label is-normal">
+				</div>
+				<div class="field-body">
+					<div class="file is-info has-name is-fullwidth">
+						<label class="file-label">
+							<input class="input-file" id="file2" name="file2" type="file" name="resume">
+							<span class="file-cta">
+								<span class="file-icon">
+								<i class="fas fa-upload"></i>
+								</span>
+								<span class="file-label input-file-trigger2">
+								กรุณาเลือกไฟล์...
+								</span>
+							</span>
+							<span class="file-name file-return2">
+								ไม่ได้เลือกไฟล์ใด
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="field is-horizontal">
+				<div class="field-label is-normal">
+				</div>
+				<div class="field-body">
+					<div class="file is-info has-name is-fullwidth">
+						<label class="file-label">
+							<input class="input-file" id="file3" name="file3" type="file" name="resume">
+							<span class="file-cta">
+								<span class="file-icon">
+								<i class="fas fa-upload"></i>
+								</span>
+								<span class="file-label input-file-trigger3">
+								กรุณาเลือกไฟล์...
+								</span>
+							</span>
+							<span class="file-name file-return3">
+								ไม่ได้เลือกไฟล์ใด
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+
+
+
         </div>
 
 		<div class="field is-grouped">
@@ -327,7 +407,7 @@
             });
         });
 
-
+		/*
         $('input[name="sender_case"]').click(function(){
             //do stuff
 			var val = $(this).val();
@@ -350,7 +430,50 @@
                 $('input[name="sender"]').prop('disabled', false);
                 $('input[name="agent_tel"]').prop('disabled', false);
             }
-        }
+        }*/
+
+		function load() {
+
+		$('input[name="sender_case"][value="1"]').attr('checked', true);
+		//  loadinput(val);
+		document.getElementById("data-agent").style.display = 'none';
+		var x = document.getElementById("tabradio");
+		x.style.display = "none";
+		}
+
+		var val = $('input[name="sender_case"]').val();
+
+		
+
+		function showHideDiv(ele) {
+
+			var srcElement = document.getElementById(ele);
+			
+			console.log("chk : "+ val);
+
+				if (val == 2) {
+					srcElement.style.display = 'none';
+					$('input[name="sender_case"][value=2]').attr('checked', false);
+					
+					$('input[name="sender"]').prop('disabled', true);
+					$('input[name="agent_tel"]').prop('disabled', true);
+					val = 1;
+					console.log("chk-val-loop1 : "+ val);
+				}
+				else {
+					srcElement.style.display = 'block';
+					$('input[name="sender_case"][value=2]').attr('checked', true);
+
+					$('input[name="sender"]').prop('disabled', false);
+					$('input[name="agent_tel"]').prop('disabled', false);
+					val = 2;
+					console.log("chk-val-loop2 : "+ val);
+				}
+				return false;
+			
+			//loadinput(val)
+		}
+
         $("input[name='sex']").on('change',function (e) {
 
             var sel_value = e.target.value;
@@ -373,6 +496,58 @@
                 $("input[name='nation_etc']").hide();
             }
         });
+
+
+//<!-- upload -->
+
+		document.querySelector("html").classList.add('js');
+
+		var fileInput1  = document.getElementById( "file1" ),
+			fileInput2  = document.getElementById( "file2" ), 
+			fileInput3  = document.getElementById( "file3" ), 
+			button1     = document.querySelector( ".input-file-trigger1" ),
+			button2     = document.querySelector( ".input-file-trigger2" ),
+			button3     = document.querySelector( ".input-file-trigger3" ),
+			the_return1 = document.querySelector(".file-return1");
+			the_return2 = document.querySelector(".file-return2");
+			the_return3 = document.querySelector(".file-return3");
+			
+		button1.addEventListener( "keydown", function( event ) {  
+			if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+				fileInput1.focus();  
+			}  
+		});
+		button2.addEventListener( "keydown", function( event ) {  
+			if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+				fileInput2.focus();  
+			}  
+		});
+		button3.addEventListener( "keydown", function( event ) {  
+			if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+				fileInput3.focus();  
+			}  
+		});
+		button1.addEventListener( "click", function( event ) {
+		fileInput1.focus();
+		return false;
+		});
+		button2.addEventListener( "click", function( event ) {
+		fileInput2.focus();
+		return false;
+		});
+		button3.addEventListener( "click", function( event ) {
+		fileInput3.focus();
+		return false;
+		});  
+		fileInput1.addEventListener( "change", function( event ) {  
+			the_return1.innerHTML = this.files[0].name;  
+		});
+		fileInput2.addEventListener( "change", function( event ) {  
+			the_return2.innerHTML = this.files[0].name;  
+		}); 
+		fileInput3.addEventListener( "change", function( event ) {  
+			the_return3.innerHTML = this.files[0].name;  
+		});   
 </script>
 
 @extends('footer')
