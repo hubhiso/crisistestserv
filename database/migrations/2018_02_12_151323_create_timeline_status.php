@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTimelineStatus extends Migration
+class CreateTimelinesStatus extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTimelineStatus extends Migration
      */
     public function up()
     {
-        Schema::table('timeline', function (Blueprint $table) {
+        Schema::table('timelines', function (Blueprint $table) {
             //
             $table->increments('id');
             $table->string('case_id', 5)->references('case_id')->on('case_inputs');
@@ -30,8 +30,9 @@ class CreateTimelineStatus extends Migration
      */
     public function down()
     {
-        Schema::table('timeline', function (Blueprint $table) {
+        Schema::table('timelines', function (Blueprint $table) {
             //
         });
+        
     }
 }
