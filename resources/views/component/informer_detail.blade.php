@@ -1,5 +1,5 @@
 
-<div class="field is-grouped">
+<div id="tabradio" class="field is-grouped">
     <p class="control is-expanded has-icons-left ">
         กรุณาระบุสถานะของท่าน
         <label class="radio">
