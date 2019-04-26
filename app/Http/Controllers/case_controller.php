@@ -75,21 +75,21 @@ class case_controller extends Controller
         $file1 = "";
 
         if ($request->file('file1') != null) {
-           $file1 =  md5(time() . $request->fname).'.'.$request->file('file1')->getClientOriginalExtension();
+           $file1 =  md5(time() . $request->file('file1')).'.'.$request->file('file1')->getClientOriginalExtension();
            $request->file('file1')->move(public_path($pathfile), $file1);
         }
 
         $file2 = "";
 
         if ($request->file('file2') != null) {
-           $file2 =  md5(time() . $request->fname).'.'.$request->file('file2')->getClientOriginalExtension();
+           $file2 =  md5(time() . $request->file('file2')).'.'.$request->file('file2')->getClientOriginalExtension();
            $request->file('file2')->move(public_path($pathfile), $file2);
         }
 
         $file3 = "";
 
         if ($request->file('file3') != null) {
-           $file3 =  md5(time() . $request->fname).'.'.$request->file('file3')->getClientOriginalExtension();
+           $file3 =  md5(time() . $request->file('file3')).'.'.$request->file('file3')->getClientOriginalExtension();
            $request->file('file3')->move(public_path($pathfile), $file3);
         }
 

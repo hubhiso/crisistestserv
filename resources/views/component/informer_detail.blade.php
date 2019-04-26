@@ -11,7 +11,6 @@
     </p>
 </div>
 
-<hr>
 <div class="field is-horizontal">
     <div class="field-label is-normal">
         <label class="label">ชื่อผู้แจ้ง</label>
