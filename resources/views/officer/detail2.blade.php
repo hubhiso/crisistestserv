@@ -311,6 +311,30 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="field is-horizontal">
+							<div class="field-label is-normal">
+								<label class="label"> ข้อมูลเพิ่มเติม </label>
+							</div>
+							<div class="field-body">
+								<div class="field is-grouped">
+									<div class="control is-expanded has-icons-left" >
+										@if ($show_data->file1 == '')
+										@else
+											<a class="button is-primary " href="{{asset('/uploads/'.$show_data->case_id.'/'.$show_data->file1)}}" download>Download ข้อมูลเพิ่มเติม 1</a>
+										@endif
+										@if ($show_data->file2 == '')
+										@else
+											<a class="button is-primary " href="{{asset('/uploads/'.$show_data->case_id.'/'.$show_data->file2)}}" download>Download ข้อมูลเพิ่มเติม 2</a>
+										@endif
+										@if ($show_data->file3 == '')
+										@else
+											<a class="button is-primary " href="{{asset('/uploads/'.$show_data->case_id.'/'.$show_data->file3)}}" download>Download ข้อมูลเพิ่มเติม 3</a>
+										@endif
+									</div>
+								</div>
+							</div>
+						</div>
 					
 					<div class="field is-horizontal">
 						<div class="field-label">
