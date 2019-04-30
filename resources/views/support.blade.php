@@ -38,14 +38,27 @@
             <ul>
                 <li><a href="{{ 'index.php' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
                 </li>
-                <li class="is-active"><a><span class="icon is-small"><i class="fa fa-handshake"></i></span><span> หน่วยงานสนับสนุน </span></a>
+                <li class="is-active"><a><span class="icon is-small"><i class="fa fa-handshake"></i></span><span> ภาคีเครือข่าย </span></a>
                 </li>
             </ul>
         </nav>
 
-            <h2 class="title"> หน่วยงานสนับสนุน </h2>
+            <h2 class="title"> ภาคีเครือข่าย </h2>
+
 
             <div class="tile is-ancestor">
+
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <a href="http://www.ddc.moph.go.th">
+                            <figure class="image">
+                                <img src="images/logo/logo11-x100.png">
+                            </figure>
+                            <p class="is-size-6">สายด่วน 1442<br>กรมควบคุมโรค</p>
+                            </a>
+                        </a>
+                    </article>
+                </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box"  >
                     <a href="http://aidssti.ddc.moph.go.th">
@@ -86,6 +99,10 @@
                         </a>
                     </article>
                 </div>
+                
+            </div>
+
+            <div class="tile is-ancestor">
                 <div class="tile is-parent">
                 <article class="tile is-child box">
                 <a href="http://www.1300thailand.m-society.go.th">
@@ -96,9 +113,6 @@
                         </a>
                     </article>
                 </div>
-            </div>
-
-            <div class="tile is-ancestor">
                 <div class="tile is-parent">
                 <article class="tile is-child box">
                 <a href="http://www.lawyerscouncil.or.th">
@@ -129,17 +143,7 @@
                         </a>
                     </article>
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <a href="http://www.ddc.moph.go.th">
-                            <figure class="image">
-                                <img src="images/logo/logo1-x100.png">
-                            </figure>
-                            <p class="is-size-6">สายด่วน 1442<br>กรมควบคุมโรค</p>
-                            </a>
-                        </a>
-                    </article>
-                </div>
+                
                 <div class="tile is-parent">
                     <article class="tile is-child box" >
                         <a href="http://www.hiso.or.th">
