@@ -1,0 +1,27 @@
+
+      th {
+        background-color: #CDA0CA;
+        color: white;
+      }
+      tr.head{
+        font-size:16px;;
+      }
+      tr.subhead {
+        font-weight: bold;
+      }
+      tr.subhead_border td {
+        font-weight: bold;  
+            border-bottom:1pt solid black;
+      }
+      tr.head_border td{
+        font-size:16px;
+        border-bottom:1pt solid black;
+      }
+      tr.border td {
+        font-weight: bold;  
+            border-bottom:1pt solid black;
+      }
+	  tr.border_top{
+        font-weight: bold;  
+            border-top:1pt solid black;
+      }
