@@ -114,8 +114,8 @@ header:after, #timeline .timeline-item:after, header:before, #timeline .timeline
   transition: all 0.4s ease; }
   #timeline:before {
     content: "";
-    width: 3px;
-    height: 70%;
+    width: 5px;
+    height: 80%;
     background: #cc99cc;
     left: 50%;
     top: 0;
