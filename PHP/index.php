@@ -214,12 +214,83 @@
                 <div class="form-group">
                 <select id="province" name="province" class="form-control">				  
                   <option value="00" <? if ($province == "00") { echo "selected";} ?>>จังหวัด</option>
-                  <option value="10" <? if ($province == "10") { echo "selected";} ?>>กรุงเทพมหานคร</option>
-                  <option value="20" <? if ($province == "20") { echo "selected";} ?>>ชลบุรี</option>
-                  <option value="50" <? if ($province == "50") { echo "selected";} ?>>เชียงใหม่</option>
-                  <option value="63" <? if ($province == "63") { echo "selected";} ?>>ตาก</option>
-                  <option value="21" <? if ($province == "21") { echo "selected";} ?>>ระยอง</option>       
-                  <option value="90" <? if ($province == "90") { echo "selected";} ?>>สงขลา</option>                  
+                  <option value="81" <? if ($province == "81") { echo "selected";} ?>>กระบี่</option>
+<option value="10" <? if ($province == "10") { echo "selected";} ?>>กรุงเทพมหานคร</option>
+<option value="71" <? if ($province == "71") { echo "selected";} ?>>กาญจนบุรี</option>
+<option value="46" <? if ($province == "46") { echo "selected";} ?>>กาฬสินธุ์</option>
+<option value="62" <? if ($province == "62") { echo "selected";} ?>>กำแพงเพชร</option>
+<option value="40" <? if ($province == "40") { echo "selected";} ?>>ขอนแก่น</option>
+<option value="22" <? if ($province == "22") { echo "selected";} ?>>จันทบุรี</option>
+<option value="24" <? if ($province == "24") { echo "selected";} ?>>ฉะเชิงเทรา</option>
+<option value="20" <? if ($province == "20") { echo "selected";} ?>>ชลบุรี</option>
+<option value="18" <? if ($province == "18") { echo "selected";} ?>>ชัยนาท</option>
+<option value="36" <? if ($province == "36") { echo "selected";} ?>>ชัยภูมิ</option>
+<option value="86" <? if ($province == "86") { echo "selected";} ?>>ชุมพร</option>
+<option value="57" <? if ($province == "57") { echo "selected";} ?>>เชียงราย</option>
+<option value="50" <? if ($province == "50") { echo "selected";} ?>>เชียงใหม่</option>
+<option value="92" <? if ($province == "92") { echo "selected";} ?>>ตรัง</option>
+<option value="23" <? if ($province == "23") { echo "selected";} ?>>ตราด</option>
+<option value="63" <? if ($province == "63") { echo "selected";} ?>>ตาก</option>
+<option value="26" <? if ($province == "26") { echo "selected";} ?>>นครนายก</option>
+<option value="73" <? if ($province == "73") { echo "selected";} ?>>นครปฐม</option>
+<option value="48" <? if ($province == "48") { echo "selected";} ?>>นครพนม</option>
+<option value="30" <? if ($province == "30") { echo "selected";} ?>>นครราชสีมา</option>
+<option value="80" <? if ($province == "80") { echo "selected";} ?>>นครศรีธรรมราช</option>
+<option value="60" <? if ($province == "60") { echo "selected";} ?>>นครสวรรค์</option>
+<option value="12" <? if ($province == "12") { echo "selected";} ?>>นนทบุรี</option>
+<option value="96" <? if ($province == "96") { echo "selected";} ?>>นราธิวาส</option>
+<option value="55" <? if ($province == "55") { echo "selected";} ?>>น่าน</option>
+<option value="38" <? if ($province == "38") { echo "selected";} ?>>บึงกาฬ</option>
+<option value="31" <? if ($province == "31") { echo "selected";} ?>>บุรีรัมย์</option>
+<option value="13" <? if ($province == "13") { echo "selected";} ?>>ปทุมธานี</option>
+<option value="77" <? if ($province == "77") { echo "selected";} ?>>ประจวบคีรีขันธ์</option>
+<option value="25" <? if ($province == "25") { echo "selected";} ?>>ปราจีนบุรี</option>
+<option value="94" <? if ($province == "94") { echo "selected";} ?>>ปัตตานี</option>
+<option value="14" <? if ($province == "14") { echo "selected";} ?>>พระนครศรีอยุธยา</option>
+<option value="56" <? if ($province == "56") { echo "selected";} ?>>พะเยา</option>
+<option value="82" <? if ($province == "82") { echo "selected";} ?>>พังงา</option>
+<option value="93" <? if ($province == "93") { echo "selected";} ?>>พัทลุง</option>
+<option value="66" <? if ($province == "66") { echo "selected";} ?>>พิจิตร</option>
+<option value="65" <? if ($province == "65") { echo "selected";} ?>>พิษณุโลก</option>
+<option value="76" <? if ($province == "76") { echo "selected";} ?>>เพชรบุรี</option>
+<option value="67" <? if ($province == "67") { echo "selected";} ?>>เพชรบูรณ์</option>
+<option value="54" <? if ($province == "54") { echo "selected";} ?>>แพร่</option>
+<option value="83" <? if ($province == "83") { echo "selected";} ?>>ภูเก็ต</option>
+<option value="44" <? if ($province == "44") { echo "selected";} ?>>มหาสารคาม</option>
+<option value="49" <? if ($province == "49") { echo "selected";} ?>>มุกดาหาร</option>
+<option value="58" <? if ($province == "58") { echo "selected";} ?>>แม่ฮ่องสอน</option>
+<option value="35" <? if ($province == "35") { echo "selected";} ?>>ยโสธร</option>
+<option value="95" <? if ($province == "95") { echo "selected";} ?>>ยะลา</option>
+<option value="45" <? if ($province == "45") { echo "selected";} ?>>ร้อยเอ็ด</option>
+<option value="85" <? if ($province == "85") { echo "selected";} ?>>ระนอง</option>
+<option value="21" <? if ($province == "21") { echo "selected";} ?>>ระยอง</option>
+<option value="70" <? if ($province == "70") { echo "selected";} ?>>ราชบุรี</option>
+<option value="16" <? if ($province == "16") { echo "selected";} ?>>ลพบุรี</option>
+<option value="52" <? if ($province == "52") { echo "selected";} ?>>ลำปาง</option>
+<option value="51" <? if ($province == "51") { echo "selected";} ?>>ลำพูน</option>
+<option value="42" <? if ($province == "42") { echo "selected";} ?>>เลย</option>
+<option value="33" <? if ($province == "33") { echo "selected";} ?>>ศรีสะเกษ</option>
+<option value="47" <? if ($province == "47") { echo "selected";} ?>>สกลนคร</option>
+<option value="90" <? if ($province == "90") { echo "selected";} ?>>สงขลา</option>
+<option value="91" <? if ($province == "91") { echo "selected";} ?>>สตูล</option>
+<option value="11" <? if ($province == "11") { echo "selected";} ?>>สมุทรปราการ</option>
+<option value="75" <? if ($province == "75") { echo "selected";} ?>>สมุทรสงคราม</option>
+<option value="74" <? if ($province == "74") { echo "selected";} ?>>สมุทรสาคร</option>
+<option value="27" <? if ($province == "27") { echo "selected";} ?>>สระแก้ว</option>
+<option value="19" <? if ($province == "19") { echo "selected";} ?>>สระบุรี</option>
+<option value="17" <? if ($province == "17") { echo "selected";} ?>>สิงห์บุรี</option>
+<option value="64" <? if ($province == "64") { echo "selected";} ?>>สุโขทัย</option>
+<option value="72" <? if ($province == "72") { echo "selected";} ?>>สุพรรณบุรี</option>
+<option value="84" <? if ($province == "84") { echo "selected";} ?>>สุราษฎร์ธานี</option>
+<option value="32" <? if ($province == "32") { echo "selected";} ?>>สุรินทร์</option>
+<option value="43" <? if ($province == "43") { echo "selected";} ?>>หนองคาย</option>
+<option value="39" <? if ($province == "39") { echo "selected";} ?>>หนองบัวลำภู</option>
+<option value="15" <? if ($province == "15") { echo "selected";} ?>>อ่างทอง</option>
+<option value="37" <? if ($province == "37") { echo "selected";} ?>>อำนาจเจริญ</option>
+<option value="41" <? if ($province == "41") { echo "selected";} ?>>อุดรธานี</option>
+<option value="53" <? if ($province == "53") { echo "selected";} ?>>อุตรดิตถ์</option>
+<option value="61" <? if ($province == "61") { echo "selected";} ?>>อุทัยธานี</option>
+<option value="34" <? if ($province == "34") { echo "selected";} ?>>อุบลราชธานี</option>         
                 </select>
           		</div>
                 
