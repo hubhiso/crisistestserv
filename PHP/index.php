@@ -29,6 +29,10 @@
 	   	$fillter .= " and (sex = '$gender')";
 	   }
 	   
+	   if ($province != "00"){
+	   	$fillter .= " and (prov_id = '$province')";
+	   }
+	   
 	   if ($office != "00"){
 	   	$fillter .= " and (type_offender = '$office')";
 	   }
@@ -208,7 +212,7 @@
               </div>
               
                 <div class="form-group">
-                <select id="province" name="province" class="form-control" disabled>				  
+                <select id="province" name="province" class="form-control">				  
                   <option value="00" <? if ($province == "00") { echo "selected";} ?>>จังหวัด</option>
                   <option value="10" <? if ($province == "10") { echo "selected";} ?>>กรุงเทพมหานคร</option>
                   <option value="20" <? if ($province == "20") { echo "selected";} ?>>ชลบุรี</option>
