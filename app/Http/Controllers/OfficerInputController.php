@@ -148,9 +148,16 @@ class OfficerInputController extends Controller
 //            case_input::raw("SUM (status) as s1"),
 //            case_input::raw("SUM (status) as s2"),))
 //            ->where('prov_id', '=', $pid);
-        $NotAcp = case_input::Where('prov_id','=',$pid)->where('status', '=', '1')->count('status');
-        $NotKeyIn = case_input::Where('prov_id','=',$pid)->where('status', '=', '2')->count('status');
-        $NotOp = case_input::Where('prov_id','=',$pid)->where('status', '=', '3')->count('status');
+
+        if($pid == 0){
+            $NotAcp = case_input::Where('status', '=', '1')->count('status');
+            $NotKeyIn = case_input::Where('status', '=', '2')->count('status');
+            $NotOp = case_input::Where('status', '=', '3')->count('status');
+        }else{
+            $NotAcp = case_input::Where('prov_id','=',$pid)->where('status', '=', '1')->count('status');
+            $NotKeyIn = case_input::Where('prov_id','=',$pid)->where('status', '=', '2')->count('status');
+            $NotOp = case_input::Where('prov_id','=',$pid)->where('status', '=', '3')->count('status');
+        }
 
         return response()->json(compact('NotAcp','NotKeyIn','NotOp'));
     }

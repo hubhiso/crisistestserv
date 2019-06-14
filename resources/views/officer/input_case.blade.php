@@ -296,7 +296,10 @@
 
 			<div class="field is-grouped">
 				<p class="control">
+				@if (Auth::user()->prov_id == 0)
+								@else
 					{!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
+					@endif
 				</p>
 				<p class="control">
 					<a ><a href="{{ route('officer.main') }}">ยกเลิก</a></a>

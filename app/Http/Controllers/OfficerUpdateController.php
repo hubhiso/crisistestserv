@@ -314,25 +314,47 @@ class OfficerUpdateController extends Controller
         $type_Search = $request->input('Type_search');
         $pid = $request->input('pid');
 
-        if($request->input('Filter')==1){
-            $matchThese = ['prov_id'=>$pid];
-            $cases = case_input::where($matchThese);
-            $filter ++;
-        }else if ($request->input('Filter')==2){
-            $matchThese = ['problem_case' => $value_sub,'prov_id'=>$pid];
-            $cases = case_input::where($matchThese);
-            $filter ++;
-
-        }else if ($request->input('Filter')==3){
-            $matchThese = ['status' => $value_sub,'prov_id'=>$pid];
-            $cases = case_input::where($matchThese);
-            $filter ++;
-
-        }else if ($request->input('Filter')==4){
-            $matchThese = ['sender_case' => $value_sub,'prov_id'=>$pid];
-            $cases = case_input::where($matchThese);
-            $filter ++;
+        if($pid == 0){
+            if($request->input('Filter')==1){
+                $cases = case_input::where('prov_id', '>', '0');
+                $filter ++;
+            }else if ($request->input('Filter')==2){
+                $matchThese = ['problem_case' => $value_sub];
+                $cases = case_input::where($matchThese);
+                $filter ++;
+    
+            }else if ($request->input('Filter')==3){
+                $matchThese = ['status' => $value_sub];
+                $cases = case_input::where($matchThese);
+                $filter ++;
+    
+            }else if ($request->input('Filter')==4){
+                $matchThese = ['sender_case' => $value_sub];
+                $cases = case_input::where($matchThese);
+                $filter ++;
+            }
+        }else{
+            if($request->input('Filter')==1){
+                $matchThese = ['prov_id'=>$pid];
+                $cases = case_input::where($matchThese);
+                $filter ++;
+            }else if ($request->input('Filter')==2){
+                $matchThese = ['problem_case' => $value_sub,'prov_id'=>$pid];
+                $cases = case_input::where($matchThese);
+                $filter ++;
+    
+            }else if ($request->input('Filter')==3){
+                $matchThese = ['status' => $value_sub,'prov_id'=>$pid];
+                $cases = case_input::where($matchThese);
+                $filter ++;
+    
+            }else if ($request->input('Filter')==4){
+                $matchThese = ['sender_case' => $value_sub,'prov_id'=>$pid];
+                $cases = case_input::where($matchThese);
+                $filter ++;
+            }
         }
+        
 
         if($Date_start != null){
 

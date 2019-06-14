@@ -275,7 +275,10 @@
 				<div class="field is-grouped">
 					
 					<div class="control">
-						{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}
+						@if (Auth::user()->prov_id == 0)
+						@else
+							{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}
+						@endif
 					</div>
 					<div class="control"> 
 						<a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > ยกเลิก </a> 

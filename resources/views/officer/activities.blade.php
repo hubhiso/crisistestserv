@@ -258,7 +258,10 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<div class="control">
-									<p class="control"> <a class="button is-primary" id="operate_send" > ยืนยัน </a> </p>
+								@if (Auth::user()->prov_id == 0)
+								@else
+								<p class="control"> <a class="button is-primary" id="operate_send" > ยืนยัน </a> </p>
+								@endif
 								</div>
 								<div class="control">
 									<p class="control"> <a class="button" onclick="clear_input()"> ยกเลิก </a> </p>
@@ -378,7 +381,10 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<div class="control">
-									<p class="control"> <a class="button is-primary" onclick="update_operate_case()"> ยืนยัน </a> </p>
+								@if (Auth::user()->prov_id == 0)
+								@else
+								<p class="control"> <a class="button is-primary" onclick="update_operate_case()"> ยืนยัน </a> </p>
+								@endif
 								</div>
 								<div class="control">
 									<p class="control"> <a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}"> ยกเลิก </a> </p>

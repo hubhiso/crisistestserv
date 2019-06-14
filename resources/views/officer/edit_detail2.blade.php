@@ -935,7 +935,10 @@
 				<div class="field is-grouped">
 					<p><a> </a>
 					</p>
-					<p class="control"> {!! Form::submit('ยืนยัน',['class'=>'button is-primary']) !!}</p>
+					@if (Auth::user()->prov_id == 0)
+								@else
+								<p class="control"> {!! Form::submit('ยืนยัน',['class'=>'button is-primary']) !!}</p>
+								@endif
 
 					<p class="control"> <a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > ยกเลิก </a> </p>
 				</div>
