@@ -882,8 +882,8 @@
 				<div class="field is-grouped">
 					<p><a> </a>
 					</p>
-					@if (Auth::user()->prov_id == 0)
-								@else
+					@if (Auth::user()->p_receive == 'no')
+								@elseif (Auth::user()->p_receive == 'yes')
 								<p class="control"> {!! Form::submit('ยืนยัน',['class'=>'button is-primary']) !!}</p>
 								@endif
 

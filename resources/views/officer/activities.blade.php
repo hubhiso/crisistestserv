@@ -258,8 +258,8 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<div class="control">
-								@if (Auth::user()->prov_id == 0)
-								@else
+								@if (Auth::user()->p_receive == 'no')
+								@elseif (Auth::user()->p_receive == 'yes')
 								<p class="control"> <a class="button is-primary" id="operate_send" > ยืนยัน </a> </p>
 								@endif
 								</div>
@@ -381,8 +381,8 @@
 						<div class="field-body">
 							<div class="field is-grouped">
 								<div class="control">
-								@if (Auth::user()->prov_id == 0)
-								@else
+								@if (Auth::user()->p_receive == 'no')
+								@elseif (Auth::user()->p_receive == 'yes')
 								<p class="control"> <a class="button is-primary" onclick="update_operate_case()"> ยืนยัน </a> </p>
 								@endif
 								</div>
