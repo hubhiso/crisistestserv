@@ -201,6 +201,25 @@
 					</div>
 				</div>
 				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label"> </label>
+					</div>
+					
+					<div class="field-body">
+						<div class="field  is-grouped">
+							<div class="control  ">
+							<!--p>คลิกเพื่อระบุตำแหน่งในปัจจุบัน </p-->	
+								<input type="button" class="button is-primary  " onclick="getLocation()" value="คลิกเพื่อระบุตำแหน่งในปัจจุบัน">  
+								{{ Form::hidden('geolat', null, array('id' => 'glat')) }}
+								{{ Form::hidden('geolon', null, array('id' => 'glon')) }}
+							</div>
+							<div class="control">
+								<p class=" is-primary is-medium has-text-info" id="getsuccess"></p>
+							</div>
+						</div>
+					</div>
+			</div>
+				<div class="field is-horizontal">
 					<div class="field-label ">
 						<!-- Left empty for spacing -->
 					</div>
@@ -352,7 +371,28 @@
         }else {
             $("input[name='nation_etc']").hide();
         }
-    });
+	});
+	
+	// Lcation Lat Long //
+var getsuccess = document.getElementById("getsuccess");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    latlon.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+	
+	getsuccess.innerHTML = "บันทึกตำแหน่งในปัจจุบันสำเร็จ";
+
+  document.getElementById('glat').value = position.coords.latitude;
+  document.getElementById('glon').value = position.coords.longitude;
+
+
+}
 </script>
 
 @extends('footer')

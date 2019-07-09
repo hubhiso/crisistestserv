@@ -14,8 +14,8 @@ class AddUploadToCaseInputs extends Migration
     public function up()
     {
         Schema::table('case_inputs', function (Blueprint $table) {
-            $table->float('geolat',5,4)->nullable();
-            $table->float('geolon',5,4)->nullable();
+            $table->string('geolat')->nullable();
+            $table->string('geolon')->nullable();
             $table->string('file1')->nullable();
             $table->string('file2')->nullable();
             $table->string('file3')->nullable();
