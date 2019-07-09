@@ -201,12 +201,38 @@
 				</div>
 			</div>
 
-           <div class="field is-horizontal">
+			<div class="field is-horizontal">
 				<div class="field-label ">
 					<!-- Left empty for spacing -->
 				</div>
 			</div>
 
+			<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label"> </label>
+					</div>
+					
+					<div class="field-body">
+						<div class="field  is-grouped">
+							<div class="control  ">
+							<!--p>คลิกเพื่อระบุตำแหน่งในปัจจุบัน </p-->	
+								<input type="button" class="button is-primary  " onclick="getLocation()" value="คลิกเพื่อระบุตำแหน่งในปัจจุบัน">  
+								{{ Form::hidden('geolat', null, array('id' => 'glat')) }}
+								{{ Form::hidden('geolon', null, array('id' => 'glon')) }}
+							</div>
+							<div class="control">
+								<p class=" is-primary is-medium has-text-info" id="getsuccess"></p>
+							</div>
+						</div>
+					</div>
+			</div>
+
+           <div class="field is-horizontal">
+				<div class="field-label ">
+					<!-- Left empty for spacing -->
+				</div>
+			</div>
+		
 
        		<div class="field is-horizontal">
 				<div class="field-label is-normal">
@@ -407,31 +433,6 @@
             });
         });
 
-		/*
-        $('input[name="sender_case"]').click(function(){
-            //do stuff
-			var val = $(this).val();
-            loadinput(val)
-        });
-
-        function load() {
-
-            $('input[name="sender_case"][value="1"]').attr('checked', 'checked');
-          //  loadinput(val);
-        }
-
-        function loadinput(val) {
-            console.log("chk : "+ val);
-            if(val==1){
-                $('input[name="sender"]').prop('disabled', true);
-                $('input[name="agent_tel"]').prop('disabled', true);
-
-            }else if(val==2){
-                $('input[name="sender"]').prop('disabled', false);
-                $('input[name="agent_tel"]').prop('disabled', false);
-            }
-        }*/
-
 		function load() {
 
 		$('input[name="sender_case"][value="1"]').attr('checked', true);
@@ -546,7 +547,28 @@
 		}); 
 		fileInput3.addEventListener( "change", function( event ) {  
 			the_return3.innerHTML = this.files[0].name;  
-		});   
+		});
+		
+// Lcation Lat Long //
+var getsuccess = document.getElementById("getsuccess");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    latlon.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+	
+	getsuccess.innerHTML = "บันทึกตำแหน่งในปัจจุบันสำเร็จ";
+
+  document.getElementById('glat').value = position.coords.latitude;
+  document.getElementById('glon').value = position.coords.longitude;
+
+
+}
 </script>
 
 @extends('footer')
