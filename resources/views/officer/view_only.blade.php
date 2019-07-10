@@ -184,6 +184,33 @@
 
 						<div class="field is-horizontal">
 							<div class="field-label is-normal">
+								<label class="label"></label>
+							</div>
+							<div class="field-body">
+								<div class="field is-grouped">
+									<p class="control is-expanded  ">
+									@if($show_data->geolat <> '' )
+										<a class="button is-primary" target="_blank" href="https://www.google.com/maps/?q={{ $show_data->geolat }},{{ $show_data->geolon }}">
+											<span class="icon is-left">
+											<i class="fas fa-map"></i>
+											</span>
+											<span>คลิกเพื่อแสดงพิกัดบนแผนที่</span>
+										</a>
+									@else
+									<a class="button is-primary" target="_blank" href="" disabled>
+											<span class="icon is-left">
+											<i class="fas fa-map"></i>
+											</span>
+											<span>ไม่มีการบันทึกพิกัด</span>
+										</a>
+									@endif
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="field is-horizontal">
+							<div class="field-label is-normal">
 								<label class="label"> ปัญหาที่แจ้ง</label>
 							</div>
 							<div class="field-body">
