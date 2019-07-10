@@ -313,18 +313,39 @@
 							</div>
 							<div class="field-body">
 								<div class="field is-grouped">
-									<div class="control is-expanded has-icons-left" >
+									<div class="control is-expanded " >
 										@if ($show_data->file1 == '')
+										<a class="button is-primary" target="_blank" href="" disabled>
+											<span class="icon is-left">
+											<i class="fas fa-file-alt"></i>
+											</span>
+											<span>ไม่มีการบันทึกข้อมูลเพิ่มเติม</span>
+										</a>
 										@else
-											<a class="button is-primary " href="{{asset('/uploads/'.$show_data->case_id.'/'.$show_data->file1)}}" download>Download ข้อมูลเพิ่มเติม 1</a>
+											<a class="button is-primary " href="{{asset('/uploads/'.$show_data->case_id.'/'.$show_data->file1)}}" download>
+											<span class="icon is-left">
+											<i class="fas fa-file-alt"></i>
+											</span>
+											<span>คลิกเพื่อดาวน์โหลดข้อมูลเพิ่มเติม 1</span>
+											</a>
 										@endif
 										@if ($show_data->file2 == '')
 										@else
-											<a class="button is-primary " href="{{asset('/uploads/'.$show_data->case_id.'/'.$show_data->file2)}}" download>Download ข้อมูลเพิ่มเติม 2</a>
+											<a class="button is-primary " href="{{asset('/uploads/'.$show_data->case_id.'/'.$show_data->file2)}}" download>
+											<span class="icon is-left">
+											<i class="fas fa-file-alt"></i>
+											</span>
+											<span>คลิกเพื่อดาวน์โหลดข้อมูลเพิ่มเติม 2</span>
+											</a>
 										@endif
 										@if ($show_data->file3 == '')
 										@else
-											<a class="button is-primary " href="{{asset('/uploads/'.$show_data->case_id.'/'.$show_data->file3)}}" download>Download ข้อมูลเพิ่มเติม 3</a>
+											<a class="button is-primary " href="{{asset('/uploads/'.$show_data->case_id.'/'.$show_data->file3)}}" download>
+											<span class="icon is-left">
+											<i class="fas fa-file-alt"></i>
+											</span>
+											<span>คลิกเพื่อดาวน์โหลดข้อมูลเพิ่มเติม 3</span>
+											</a>
 										@endif
 									</div>
 								</div>
