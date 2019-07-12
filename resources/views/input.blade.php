@@ -216,7 +216,12 @@
 						<div class="field  is-grouped">
 							<div class="control  ">
 							<!--p>คลิกเพื่อระบุตำแหน่งในปัจจุบัน </p-->	
-								<input type="button" class="button is-primary  " onclick="getLocation()" value="คลิกเพื่อระบุตำแหน่งในปัจจุบัน">  
+								<a class="button is-primary" onclick="getLocation()">
+									<span class="icon is-left">
+									<i class="fas fa-location-arrow"></i>
+									</span>
+									<span>คลิกเพื่อระบุตำแหน่งในปัจจุบัน</span>
+								</a>
 								{{ Form::hidden('geolat', null, array('id' => 'glat')) }}
 								{{ Form::hidden('geolon', null, array('id' => 'glon')) }}
 							</div>

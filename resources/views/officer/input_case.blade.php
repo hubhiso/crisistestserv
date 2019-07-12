@@ -5,15 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome5.0.6/css/font-awesome.css') }}" rel="stylesheet">
-    <script src="{{ asset('css/jquery.min.js') }}"></script>
+    <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}"
+		  rel="stylesheet"> {{ Html::script('js/jquery.min.js') }}
+
+	<link href="{{ asset('/css/uploadicon/new3.css') }}" rel="stylesheet">
+
+
     <title> CRS </title>
 
 </head>
 
 <body >
 
-{!! Form::open(['url' =>'officer/input_case']) !!}
+{!! Form::open(['url' =>'officer/input_case','files' => true]) !!}
 
 
 
@@ -200,6 +204,7 @@
 						<!-- Left empty for spacing -->
 					</div>
 				</div>
+
 				<div class="field is-horizontal">
 					<div class="field-label is-normal">
 						<label class="label"> </label>
@@ -209,7 +214,12 @@
 						<div class="field  is-grouped">
 							<div class="control  ">
 							<!--p>คลิกเพื่อระบุตำแหน่งในปัจจุบัน </p-->	
-								<input type="button" class="button is-primary  " onclick="getLocation()" value="คลิกเพื่อระบุตำแหน่งในปัจจุบัน">  
+								<a class="button is-primary" onclick="getLocation()">
+									<span class="icon is-left">
+										<i class="fas fa-location-arrow"></i>
+									</span>
+									<span>คลิกเพื่อระบุตำแหน่งในปัจจุบัน</span>
+								</a>
 								{{ Form::hidden('geolat', null, array('id' => 'glat')) }}
 								{{ Form::hidden('geolon', null, array('id' => 'glon')) }}
 							</div>
@@ -218,7 +228,8 @@
 							</div>
 						</div>
 					</div>
-			</div>
+				</div>
+
 				<div class="field is-horizontal">
 					<div class="field-label ">
 						<!-- Left empty for spacing -->
@@ -310,15 +321,85 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="field is-horizontal">
+				<div class="field-label is-normal">
+				<label class="label"> อัพโหลดข้อมูลเพิ่มเติม </label>
+				</div>
+				<div class="field-body">
+					<div class="file is-info has-name is-fullwidth">
+						<label class="file-label">
+							<input class="input-file" id="file1" name="file1" type="file" name="resume">
+							<span class="file-cta">
+								<span class="file-icon">
+								<i class="fas fa-upload"></i>
+								</span>
+								<span class="file-label input-file-trigger1">
+								กรุณาเลือกไฟล์...
+								</span>
+							</span>
+							<span class="file-name file-return1">
+								ไม่ได้เลือกไฟล์ใด
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="field is-horizontal">
+				<div class="field-label is-normal">
+				</div>
+				<div class="field-body">
+					<div class="file is-info has-name is-fullwidth">
+						<label class="file-label">
+							<input class="input-file" id="file2" name="file2" type="file" name="resume">
+							<span class="file-cta">
+								<span class="file-icon">
+								<i class="fas fa-upload"></i>
+								</span>
+								<span class="file-label input-file-trigger2">
+								กรุณาเลือกไฟล์...
+								</span>
+							</span>
+							<span class="file-name file-return2">
+								ไม่ได้เลือกไฟล์ใด
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="field is-horizontal">
+				<div class="field-label is-normal">
+				</div>
+				<div class="field-body">
+					<div class="file is-info has-name is-fullwidth">
+						<label class="file-label">
+							<input class="input-file" id="file3" name="file3" type="file" name="resume">
+							<span class="file-cta">
+								<span class="file-icon">
+								<i class="fas fa-upload"></i>
+								</span>
+								<span class="file-label input-file-trigger3">
+								กรุณาเลือกไฟล์...
+								</span>
+							</span>
+							<span class="file-name file-return3">
+								ไม่ได้เลือกไฟล์ใด
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
 				
 			</div>
 
 			<div class="field is-grouped">
 				<p class="control">
-				@if (Auth::user()->prov_id == 0)
-								@else
+				@if (Auth::user()->p_receive == 'no')
+				@elseif (Auth::user()->p_receive == 'yes')
 					{!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
-					@endif
+				@endif
 				</p>
 				<p class="control">
 					<a ><a href="{{ route('officer.main') }}">ยกเลิก</a></a>
@@ -371,28 +452,80 @@
         }else {
             $("input[name='nation_etc']").hide();
         }
+    });
+
+
+	//<!-- upload -->
+
+	document.querySelector("html").classList.add('js');
+
+	var fileInput1  = document.getElementById( "file1" ),
+		fileInput2  = document.getElementById( "file2" ), 
+		fileInput3  = document.getElementById( "file3" ), 
+		button1     = document.querySelector( ".input-file-trigger1" ),
+		button2     = document.querySelector( ".input-file-trigger2" ),
+		button3     = document.querySelector( ".input-file-trigger3" ),
+		the_return1 = document.querySelector(".file-return1");
+		the_return2 = document.querySelector(".file-return2");
+		the_return3 = document.querySelector(".file-return3");
+		
+	button1.addEventListener( "keydown", function( event ) {  
+		if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+			fileInput1.focus();  
+		}  
+	});
+	button2.addEventListener( "keydown", function( event ) {  
+		if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+			fileInput2.focus();  
+		}  
+	});
+	button3.addEventListener( "keydown", function( event ) {  
+		if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+			fileInput3.focus();  
+		}  
+	});
+	button1.addEventListener( "click", function( event ) {
+	fileInput1.focus();
+	return false;
+	});
+	button2.addEventListener( "click", function( event ) {
+	fileInput2.focus();
+	return false;
+	});
+	button3.addEventListener( "click", function( event ) {
+	fileInput3.focus();
+	return false;
+	});  
+	fileInput1.addEventListener( "change", function( event ) {  
+		the_return1.innerHTML = this.files[0].name;  
+	});
+	fileInput2.addEventListener( "change", function( event ) {  
+		the_return2.innerHTML = this.files[0].name;  
+	}); 
+	fileInput3.addEventListener( "change", function( event ) {  
+		the_return3.innerHTML = this.files[0].name;  
 	});
 	
 	// Lcation Lat Long //
-var getsuccess = document.getElementById("getsuccess");
+	var getsuccess = document.getElementById("getsuccess");
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    latlon.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
+	function getLocation() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+	} else {
+		latlon.innerHTML = "Geolocation is not supported by this browser.";
+	}
+	}
 
-function showPosition(position) {
-	
-	getsuccess.innerHTML = "บันทึกตำแหน่งในปัจจุบันสำเร็จ";
+	function showPosition(position) {
+		
+		getsuccess.innerHTML = "บันทึกตำแหน่งในปัจจุบันสำเร็จ";
 
-  document.getElementById('glat').value = position.coords.latitude;
-  document.getElementById('glon').value = position.coords.longitude;
+	document.getElementById('glat').value = position.coords.latitude;
+	document.getElementById('glon').value = position.coords.longitude;
 
 
-}
+	}
 </script>
 
 @extends('footer')
