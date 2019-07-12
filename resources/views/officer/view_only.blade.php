@@ -395,7 +395,7 @@
 			</div>
 	</section>
 
-	</from>
+	</form>
 
 
 	<br> @extends('footer')
