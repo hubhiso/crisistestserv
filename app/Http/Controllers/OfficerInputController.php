@@ -74,8 +74,54 @@ class OfficerInputController extends Controller
     {
         //
 
-        case_input::create($request->all());
+        //case_input::create($request->all());
+        
+        $accident_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateAct'))));
+        
+        if ($request->input('biosex') == 1) {
+            $biosex_name = 'ชาย';
+        }else if ($request->input('biosex') == 2) {
+            $biosex_name = 'หญิง';
+        }
+
+        case_input::create([
+            'emergency'=>$request->input('emergency'),
+            'sender_case'=>$request->input('sender_case'),
+            'sender'=>$request->input('sender'),
+            'agent_tel'=>$request->input('agent_tel'),
+
+            'case_id'=>$request->input('case_id'),
+            'name'=>$request->input('name'),
+            'victim_tel'=>$request->input('victim_tel'),
+            'sex'=>$request->input('biosex'),
+            'sex_name'=>$biosex_name,
+            'biosex'=>$request->input('biosex'),
+            'biosex_name'=>$biosex_name,
+            'nation'=>$request->input('nation'),
+            'nation_etc'=>$request->input('nation_etc'),
+
+            'prov_id'=>$request->input('prov_id'),
+            'amphur_id'=>$request->input('amphur_id'),
+            'geolat'=>$request->input('geolat'),
+            'geolon'=>$request->input('geolon'),
+            'problem_case'=>$request->input('problem_case'),
+            'sub_problem'=>$request->input('sub_problem'),
+            'group_code'=>$request->input('group_code'),
+            'detail'=>$request->input('detail'),
+            'need'=>$request->input('need'),
+            'group_code'=>$request->input('group_code'),
+            'group_code'=>$request->input('group_code'),
+
+            'file1'=>$request->input('file1'),
+            'file2'=>$request->input('file2'),
+            'file3'=>$request->input('file3'),
+            
+            'accident_date'=>$accident_date
+
+        ]);
+
         $case_id = Request::input('case_id');
+
         $pathfile = "uploads/".$case_id;
         $file1 = "";
 
@@ -103,7 +149,17 @@ class OfficerInputController extends Controller
             'operate_status'=>1,
             'operate_time'=> date("Y-m-d")
         ]);
+
+        $accident_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateAct'))));
+        if ($accident_date == "1970-01-01"){
+            $accident_date = date('Y-m-d');
+        }
+        
+        
+
         return view('layout.gen_caseid',compact('case_id'));
+
+        
 
     //return redirect('/');
     }
@@ -116,10 +172,10 @@ class OfficerInputController extends Controller
      */
     public function show($mode_id)
     {
-       //  $cases = case_input::all();
-        //return view('officer.OfficerManageCase',compact('cases'));
-      //  return View::make('officer.OfficerManageCase', $mode_id);
-       // return view('officer.OfficerManageCase')->withMode($mode_id);
+        //  $cases = case_input::all();
+        //  return view('officer.OfficerManageCase',compact('cases'));
+        //  return View::make('officer.OfficerManageCase', $mode_id);
+        //  return view('officer.OfficerManageCase')->withMode($mode_id);
         return view('officer.OfficerManageCase',compact('mode_id'));
     }
 
@@ -137,6 +193,8 @@ class OfficerInputController extends Controller
     public function add_detail($case_id)
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
+        
+
         return view('officer.detail2',compact('show_data'));
     }
 
@@ -170,7 +228,6 @@ class OfficerInputController extends Controller
 //            case_input::raw("SUM (status) as s1"),
 //            case_input::raw("SUM (status) as s2"),))
 //            ->where('prov_id', '=', $pid);
-
         if($pid == 0){
             $NotAcp = case_input::Where('status', '=', '1')->count('status');
             $NotKeyIn = case_input::Where('status', '=', '2')->count('status');

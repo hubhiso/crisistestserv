@@ -67,7 +67,54 @@ class case_controller extends Controller
     {
         //
         //$input = Request::all();
-        case_input::create($request->all());
+        //case_input::create($request->all());
+        $YearAct = $request->input('YearAct')-543;
+
+        $accident_date = $YearAct."-".$request->input('MonthAct')."-".$request->input('DayAct');
+        
+        if ($request->input('biosex') == 1) {
+            $biosex_name = 'ชาย';
+        }else if ($request->input('biosex') == 2) {
+            $biosex_name = 'หญิง';
+        }
+
+        
+
+        case_input::create([
+            'emergency'=>$request->input('emergency'),
+            'sender_case'=>$request->input('sender_case'),
+            'sender'=>$request->input('sender'),
+            'agent_tel'=>$request->input('agent_tel'),
+
+            'case_id'=>$request->input('case_id'),
+            'name'=>$request->input('name'),
+            'victim_tel'=>$request->input('victim_tel'),
+            'sex'=>$request->input('biosex'),
+            'sex_name'=>$biosex_name,
+            'biosex'=>$request->input('biosex'),
+            'biosex_name'=>$biosex_name,
+            'nation'=>$request->input('nation'),
+            'nation_etc'=>$request->input('nation_etc'),
+
+            'prov_id'=>$request->input('prov_id'),
+            'amphur_id'=>$request->input('amphur_id'),
+            'geolat'=>$request->input('geolat'),
+            'geolon'=>$request->input('geolon'),
+            'problem_case'=>$request->input('problem_case'),
+            'sub_problem'=>$request->input('sub_problem'),
+            'group_code'=>$request->input('group_code'),
+            'detail'=>$request->input('detail'),
+            'need'=>$request->input('need'),
+            'group_code'=>$request->input('group_code'),
+            'group_code'=>$request->input('group_code'),
+
+            'file1'=>$request->input('file1'),
+            'file2'=>$request->input('file2'),
+            'file3'=>$request->input('file3'),
+            
+            'accident_date'=>$accident_date
+
+        ]);
         $case_id = Request::input('case_id');
        
 

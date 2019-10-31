@@ -18,15 +18,15 @@
     <div class="field-body">
         <div class="field is-grouped">
             <p class="control is-expanded has-icons-left ">
-                {!! Form::text('sender',null,['class'=>'input','placeholder'=>'ชื่อเรียก' , 'disabled' => 'disabled']) !!}
+                <input name="sender" id="sender" class="input" type="text" placeholder="ชื่อเรียก"  disabled>
                 <span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
         </div>
         <div class="field-label is-normal">
-            <label class="label">เบอร์มือถือผู้แจ้ง</label>
+            <label class="label">หมายเลขโทรศัพท์ผู้แจ้ง</label>
         </div>
         <div class="field">
             <p class="control is-expanded has-icons-left">
-                {!! Form::text('agent_tel',null,['class'=>'input','placeholder'=>'เบอร์มือถือ 10 หลัก','disabled' => 'disabled','maxlength' => 10 ]) !!}
+                <input name="agent_tel" id="agent_tel" class="input" type="text" placeholder="หมายเลข 9-10 หลัก" maxlength ="10" disabled>
                 <span class="icon  is-left"> <i class="fa fa-mobile-alt"></i> </span>
             </p>
         </div>

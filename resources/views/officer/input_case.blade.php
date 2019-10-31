@@ -3,13 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+
     <link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}"
 		  rel="stylesheet"> {{ Html::script('js/jquery.min.js') }}
-
 	<link href="{{ asset('/css/uploadicon/new3.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/chk.css') }}" rel="stylesheet">
 
+	{{--{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}--}}
+	{{--{{ Html::style('bootstrap/css/bootstrap.css') }}--}}
+	{{ Html::script('js/jquery.min.js') }}
+	{{--{{ Html::script('js/thai_date_dropdown.js') }}--}}
+
+	{{--{{ Html::script('js/select_list.js') }}--}}
+	{{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
+	{{--{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}--}}
 
     <title> CRS </title>
 
@@ -24,7 +34,11 @@
 <div class="container">
     <section class="section">
         <h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>
-
+		<p class="button is-success">
+				<input type="checkbox" id="emergency" name="emergency" value="1"  />
+				<label for="emergency">ขอความช่วยเหลือเร่งด่วน</label>
+		</p>
+		<br><br>
         <div class="box" id="data-agent">
             <div class="field is-horizontal">
                 <div class="field-label ">
@@ -59,7 +73,7 @@
                     <div class="field">
                         <p class="control is-expanded has-icons-left">
                             {!! Form::text('agent_tel',Auth::user()->tel,['class'=>'input','readonly']) !!}
-                            <span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
+                            <span class="icon  is-left"> <i class="fa fa-mobile-alt"></i> </span>
                         </p>
                     </div>
                 </div>
@@ -100,8 +114,8 @@
 						</div>
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-								{!! Form::text('victim_tel',null,['class'=>'input','placeholder' => 'เบอร์มือถือ 10 หลัก','maxlength' => 10 ])!!}
-								<span class="icon  is-left"> <i class="fa fa-mobile"></i> </span>
+								{!! Form::text('victim_tel',null,['class'=>'input','placeholder' => 'เบอร์มือถือ 9-10 หลัก','maxlength' => 10 ])!!}
+								<span class="icon  is-left"> <i class="fa fa-mobile-alt"></i> </span>
 							</p>
 						</div>
 					</div>
@@ -116,21 +130,11 @@
 						<div class="field is-grouped">
 							<p class="control is-expanded has-icons-left ">
 								<label class="radio">
-									{{ Form::radio('sex', '1' , true) }}
+									{{ Form::radio('biosex', '1' , true) }}
 									ชาย
 								</label>
 								<label class="radio">
-									{{ Form::radio('sex', '2' , false) }} หญิง
-								</label>
-								<label class="radio">
-									{{ Form::radio('sex', '3' , false) }} สาวประเภทสอง
-								</label>
-								<label class="radio">
-									{{ Form::radio('sex', '4' , false) }} อื่นๆ ระบุ
-								</label>
-								<label class="radio">
-
-									{!! Form::text('sex_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ','style'=>'display: none']) !!}
+									{{ Form::radio('biosex', '2' , false) }} หญิง
 								</label>
 							</p>
 						</div>
@@ -166,6 +170,54 @@
 								</label>
 							</p>
 						</div>
+					</div>
+				</div>
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<label class="label"> วันที่เกิดเหตุ </label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped control">
+							<div class="input-group date" data-provide="datepicker">
+									ปี พ.ศ. <input type="number" min="2400" max="2570" maxlength = "4"  id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" value="{{date('Y')+543}}" onchange="date_acc();createaccidentdate();">
+									เดือน   <select id ="MonthAct" name="MonthAct" onchange="date_acc();createaccidentdate();">
+										<option value="1" @if(date('m') == 1){ selected } @endif> มกราคม </option>
+										<option value="2" @if(date('m') == 2){ selected } @endif> กุมภาพันธ์ </option>
+										<option value="3" @if(date('m') == 3){ selected } @endif> มีนาคม </option>
+										<option value="4" @if(date('m') == 4){ selected } @endif> เมษายน </option>
+										<option value="5" @if(date('m') == 5){ selected } @endif> พฤษภาคม </option>
+										<option value="6" @if(date('m') == 6){ selected } @endif> มิถุนายน </option>
+										<option value="7" @if(date('m') == 7){ selected } @endif> กรกฎาคม </option>
+										<option value="8" @if(date('m') == 8){ selected } @endif> สิงหาคม </option>
+										<option value="9" @if(date('m') == 9){ selected } @endif> กันยายน </option>
+										<option value="10" @if(date('m') == 10){ selected } @endif> ตุลาคม </option>
+										<option value="11" @if(date('m') == 11){ selected } @endif> พฤศจิกายน </option>
+										<option value="12" @if(date('m') == 12){ selected } @endif> ธันวาคม </option>
+									</select>
+										วันที่ <select id ="DayAct" name="DayAct" onchange="createaccidentdate();">
+										@for ($i = 1; $i <= 31; $i++)
+										<option value="{{$i}}" @if(date('d') == $i){ selected } @endif>{{$i}}</option>
+										@endfor
+									</select>
+
+
+									<input type="hidden" id="DateAct" name="DateAct" class="form-control" value="{{date('m/d/Y')}}">
+
+							
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
 					</div>
 				</div>
 
@@ -209,7 +261,6 @@
 					<div class="field-label is-normal">
 						<label class="label"> </label>
 					</div>
-					
 					<div class="field-body">
 						<div class="field  is-grouped">
 							<div class="control  ">
@@ -526,7 +577,17 @@
 
 
 	}
+
+
+	function createaccidentdate() {
+
+		$('#DateAct').val($('#MonthAct').val()+"/"+ $('#DayAct').val()+"/"+ ($('#YearAct').val()-543));
+
+	}
+	
 </script>
+
+
 
 @extends('footer')
 

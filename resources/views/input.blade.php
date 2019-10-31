@@ -1,22 +1,46 @@
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}"
 		  rel="stylesheet"> {{ Html::script('js/jquery.min.js') }}
-	<link rel="stylesheet" type="text/css" href="css/uploadicon/new3.css" />
+	<link href="{{ asset('/css/uploadicon/new3.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/chk.css') }}" rel="stylesheet">
+
+	{{--{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}--}}
+	{{--{{ Html::style('bootstrap/css/bootstrap.css') }}--}}
+	{{ Html::script('js/jquery.min.js') }}
+	{{--{{ Html::script('js/thai_date_dropdown.js') }}--}}
+
+	{{--{{ Html::script('js/select_list.js') }}--}}
+	{{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
+	{{--{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}--}}
+
+	<!--modal popup -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+	<script src="css/modal/modal.js"></script>
+	<link href="{{ asset('css/modal/modal.css') }}" rel="stylesheet">
+
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	
 	<title> CRS </title>
 
 </head>
 
 <body onload="load()">
 
-	{!! Form::open(['url' =>'case_inputs','files' => true]) !!} @component('component.input_head') @endcomponent
+	<!--{!! Form::open(['url' =>'case_inputs','files' => true,'onsubmit' => 'return GEEKFORGEEKS();']) !!} --> 
 
+	<form  name="RegForm" class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" onsubmit="return vali_case();" action="{{ route('store') }}" >
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+		@component('component.input_head') @endcomponent
 
 	<div class="container">
 
@@ -33,9 +57,16 @@
 
 			<h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>
 
-			<!-- input class="button is-primary" type="button" value="คลิกเพื่อระบุว่าเป็นผู้แจ้งแทน" onClick="showHideDiv('data-agent')"/><br><br-->
-			<!--input class="button is-primary" type="button" value="คลิกเพื่อระบุว่าเป็นผู้แจ้งแทน" /><br><br-->
-			{!! Form::button('คลิกเพื่อระบุว่าเป็นผู้แจ้งแทน', ['class' => 'button is-primary', 'onclick' => "showHideDiv('data-agent')"]) !!}<br><br>
+			<button id="chk_agent" id="chk_agent" type="button" class="button is-primary" value="1" onclick="showHideDiv('data-agent')">คลิกเพื่อระบุว่าเป็นผู้แจ้งแทน</button>
+
+			
+			&nbsp&nbsp
+			<p class="button is-success">
+				<input type="checkbox" id="emergency" name="emergency" value="1"  />
+				<label for="emergency">ขอความช่วยเหลือเร่งด่วน</label>
+			</p>
+
+			<br><br>
 
 			<div class="box" id="data-agent">
 				<div class="field is-horizontal">
@@ -60,7 +91,7 @@
 						<!-- Left empty for spacing -->
 					</div>
 				</div>
-				<label>ข้อมูลผู้ถูกกระทำ</label>
+				<label><b>ข้อมูลผู้ถูกกระทำ</b> ( กรุณาบันทึกข้อมูลที่มีเครื่องหมาย * ให้ครบถ้วน )</label>
 
 				<hr> @if($errors->any())
 
@@ -72,21 +103,22 @@
 				@endif
 				<div class="field is-horizontal">
 					<div class="field-label is-normal">
-						<label class="label">ชื่อผู้ถูกกระทำ</label>
+						<label class="label">ชื่อผู้ถูกกระทำ *</label>
 					</div>
 					<div class="field-body">
 						<div class="field is-grouped">
 							<p class="control is-expanded has-icons-left ">
-								{!! Form::text('name',null,['class'=>'input','placeholder'=>'ชื่อจริง หรือนามแฝง']) !!}
+								<input name="name" id="name" class="input" type="text" placeholder="ชื่อจริง หรือนามแฝง" >
 								<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
 						</div>
 						<div class="field-label is-normal">
-							<label class="label">หมายเลขโทรศัพท์</label>
+							<label class="label">หมายเลขโทรศัพท์ *</label>
 						</div>
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-								{!! Form::text('victim_tel',null,array('class'=>'input','placeholder' => 'เบอร์มือถือ 10 หลัก','maxlength' => 10 )) !!}
-								<span class="icon  is-left"> <i class="fa fa-mobile-alt"></i> </span>
+								<input name="victim_tel" id="victim_tel" class="input" type="text" placeholder="หมายเลข 9-10 หลัก" maxlength ="10" >
+
+								<span class="icon is-left"> <i class="fa fa-mobile-alt"></i> </span>
 							</p>
 						</div>
 					</div>
@@ -99,31 +131,23 @@
 
 				<div class="field is-horizontal">
 					<div class="field-label ">
-						<label class="label">เพศ</label>
+						<label class="label">เพศกำเนิด *</label>
 					</div>
 					<div class="field-body">
 						<div class="field is-narrow">
 							<div class="control ">
 
-								<label class="radio">
-								{{ Form::radio('sex', '1' , true) }} ชาย
+							<label class="radio">
+								{{ Form::radio('biosex', '1' , true) }} ชาย
 							</label>
-								<label class="radio">
-								{{ Form::radio('sex', '2' , false) }} หญิง
-							</label>
-								<label class="radio">
-								{{ Form::radio('sex', '3' , false) }} สาวประเภทสอง
-							</label>
-								<label class="radio">
-								{{ Form::radio('sex', '4' , false) }} อื่นๆ ระบุ 
-							</label>
-								<label class="radio">
-								{!! Form::text('sex_etc',null,['class'=>'input','placeholder'=>'ระบุเพศ','style'=>'display: none']) !!}
+							<label class="radio">
+								{{ Form::radio('biosex', '2' , false) }} หญิง
 							</label>
 							</div>
 						</div>
 					</div>
 				</div>
+
 				<div class="field is-horizontal">
 					<div class="field-label ">
 						<!-- Left empty for spacing -->
@@ -132,7 +156,7 @@
 
 				<div class="field is-horizontal">
 					<div class="field-label ">
-						<label class="label"> สัญชาติ </label>
+						<label class="label"> สัญชาติ *</label>
 					</div>
 					<div class="field-body">
 						<div class="field is-narrow">
@@ -172,8 +196,50 @@
 				</div>
 
 				<div class="field is-horizontal">
+					<div class="field-label ">
+						<label class="label"> วันที่เกิดเหตุ *</label>
+					</div>
+					<div class="field-body">
+						<div class="field is-grouped control">
+							<div class="input-group date" data-provide="datepicker">
+									ปี พ.ศ. <input type="number" min="2400" max="2570" maxlength = "4"  id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" value="{{date('Y')+543}}" onchange="date_acc();">
+									เดือน   <select id ="MonthAct" name="MonthAct" onchange="date_acc();">
+											<option value="1" @if(date('m') == 1){ selected } @endif> มกราคม </option>
+											<option value="2" @if(date('m') == 2){ selected } @endif> กุมภาพันธ์ </option>
+											<option value="3" @if(date('m') == 3){ selected } @endif> มีนาคม </option>
+											<option value="4" @if(date('m') == 4){ selected } @endif> เมษายน </option>
+											<option value="5" @if(date('m') == 5){ selected } @endif> พฤษภาคม </option>
+											<option value="6" @if(date('m') == 6){ selected } @endif> มิถุนายน </option>
+											<option value="7" @if(date('m') == 7){ selected } @endif> กรกฎาคม </option>
+											<option value="8" @if(date('m') == 8){ selected } @endif> สิงหาคม </option>
+											<option value="9" @if(date('m') == 9){ selected } @endif> กันยายน </option>
+											<option value="10" @if(date('m') == 10){ selected } @endif> ตุลาคม </option>
+											<option value="11" @if(date('m') == 11){ selected } @endif> พฤศจิกายน </option>
+											<option value="12" @if(date('m') == 12){ selected } @endif> ธันวาคม </option>
+										</select>
+										วันที่ <select id ="DayAct" name="DayAct" onchange="">
+										@for ($i = 1; $i <= 31; $i++)
+										<option value="{{$i}}" @if(date('d') == $i){ selected } @endif>{{$i}}</option>
+										@endfor
+									</select>
+
+									<input type="hidden" id="DateAct" name="DateAct" class="form-control" value="{{date('m/d/Y')}}">
+
+							
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-label ">
+						<!-- Left empty for spacing -->
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
 					<div class="field-label is-normal">
-						<label class="label">จังหวัดที่เกิดเหตุ</label>
+						<label class="label">จังหวัดที่เกิดเหตุ *</label>
 					</div>
 					<div class="field-body">
 						<div class="field is-grouped">
@@ -187,7 +253,7 @@
            					</select>
 					</div>
 					<div class="field-label is-normal">
-						<label class="label">อำเภอที่เกิดเหตุ</label>
+						<label class="label">อำเภอที่เกิดเหตุ *</label>
 					</div>
 					<div class="field is-grouped">
 						<p class="control is-expanded  ">
@@ -211,7 +277,6 @@
 					<div class="field-label is-normal">
 						<label class="label"> </label>
 					</div>
-					
 					<div class="field-body">
 						<div class="field  is-grouped">
 							<div class="control  ">
@@ -241,7 +306,7 @@
 
        		<div class="field is-horizontal">
 				<div class="field-label is-normal">
-					<label class="label">ปัญหาที่พบ</label>
+					<label class="label">ปัญหาที่พบ *</label>
 				</div>
 				<div class="field-body">
 					<div class="field is-grouped">
@@ -407,7 +472,11 @@
 
 		<div class="field is-grouped">
         	<p class="control">
-            	{!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}
+				<!--{!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}-->
+				<input  type="submit" class="button is-primary" value="ส่งข้อมูล" onsubmit="return validateForm();" >
+				<input type="button"  name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" style="display:none"/>
+
+				
             </p>
             <p class="control">
             	<a ><a href="{{ route('guest_home') }}">ยกเลิก</a></a>
@@ -415,11 +484,14 @@
         </div>
 	</div>
 </section>
+
 </div>
 
 
-{!!   Form::close() !!}
+</form>
 {{ Html::script('js/select_list.js') }}
+
+{{ Html::script('js/validation_case.js') }}
 
 <script>
         $('#prov_id').on('change', function (e) {
@@ -444,6 +516,9 @@
 		//  loadinput(val);
 		document.getElementById("data-agent").style.display = 'none';
 		document.getElementById("tabradio").style.display = 'none';
+		
+		document.getElementById("form_sender").style.display = 'none';
+
 		}
 
 		var val = $('input[name="sender_case"]').val();
@@ -458,6 +533,7 @@
 
 				if (val == 2) {
 					srcElement.style.display = 'none';
+					document.getElementById("form_sender").style.display = 'none';
 					$('input[name="sender_case"][value=2]').attr('checked', false);
 					
 					$('input[name="sender"]').prop('disabled', true);
@@ -467,10 +543,12 @@
 				}
 				else {
 					srcElement.style.display = 'block';
+					document.getElementById("form_sender").style.display = 'block';
 					$('input[name="sender_case"][value=2]').attr('checked', true);
 
 					$('input[name="sender"]').prop('disabled', false);
 					$('input[name="agent_tel"]').prop('disabled', false);
+					$('input[name="test12"]').prop('disabled', false);
 					val = 2;
 					console.log("chk-val-loop2 : "+ val);
 				}
@@ -479,17 +557,6 @@
 			//loadinput(val)
 		}
 
-        $("input[name='sex']").on('change',function (e) {
-
-            var sel_value = e.target.value;
-            //alert(sel_value);
-
-            if(sel_value == 4) {
-                $("input[name='sex_etc']").show();
-            }else {
-                $("input[name='sex_etc']").hide();
-            }
-        });
         $("input[name='nation']").on('change',function (e) {
 
             var sel_value = e.target.value;
@@ -503,7 +570,7 @@
         });
 
 
-//<!-- upload -->
+		//<!-- upload -->
 
 		document.querySelector("html").classList.add('js');
 
@@ -554,30 +621,118 @@
 			the_return3.innerHTML = this.files[0].name;  
 		});
 		
-// Lcation Lat Long //
-var getsuccess = document.getElementById("getsuccess");
+	// Lcation Lat Long //
+	var getsuccess = document.getElementById("getsuccess");
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    latlon.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
+	function getLocation() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+		getsuccess.innerHTML = "กรุณารอสักครู่...";
+	} else {
+		latlon.innerHTML = "Geolocation is not supported by this browser.";
+	}
+	}
 
-function showPosition(position) {
+	function showPosition(position) {
+		
+		getsuccess.innerHTML = "บันทึกตำแหน่งในปัจจุบันสำเร็จ";
+
+		document.getElementById('glat').value = position.coords.latitude;
+		document.getElementById('glon').value = position.coords.longitude;
+
+	}
 	
-	getsuccess.innerHTML = "บันทึกตำแหน่งในปัจจุบันสำเร็จ";
 
-  document.getElementById('glat').value = position.coords.latitude;
-  document.getElementById('glon').value = position.coords.longitude;
+	$(window).load(function(){
 
+		$('#submitBtn').click(function() {
 
-}
+			$('#txt_agent_tel').text($('#agent_tel').val());
+			$('#txt_sender_name').text($('#sender').val());
+
+			$('#txt_tel').text($('#victim_tel').val());
+			$('#txt_name').text($('#name').val());
+
+			var radioValue = $("input[name='biosex']:checked").val();
+
+			if(radioValue == '1'){
+				var label_sex = "ชาย";
+			}
+			
+			$('#biosex').text(label_sex);
+
+			var province = $("#sub_problem option:selected").text();
+
+		});
+
+		$('#submit').click(function(){
+			document.RegForm.submit();
+		});
+
+	});
+
 </script>
 
 @extends('footer')
 
+<!-- popup box -->
+	<div id="boxes">
+		<div style="top: 199.5px; left: 551.5px; display: none; width: 400px;" id="dialog" class="window"> 
+			<b>ข้อมูลที่บันทึกจะถูกเก็บเป็นความลับ และโปรดตรวจสอบเบอร์โทรศัพท์ให้ถูกต้อง เพื่อให้เจ้าหน้าที่ติดต่อกลับ</b>
+			<br><br>
+			<p class="has-text-centered">
+				<a class="button is-medium  is-outlined is-danger close">รับทราบ</a>
+			</p>
+		</div>
+		<div style="width: 1478px; font-size: 32pt; color:white; height: 602px; display: none; opacity: 0.8;" id="mask"></div>	
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+	<script src="css/modal/modal.js"></script>
+
+	
+	<!--  test form comfirm   -->
+
+	<div  id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="">
+		<div class="modal-dialog">
+				<div class="modal-header">
+					<b>ยืนยันการยื่นคำร้อง</b>
+				</div>
+				<div class="modal-body">
+					กรุณาตรวจสอบชื่อและหมายเลขโทรศัพท์ก่อนส่งข้อมูลเข้าสู่ระบบ <br>เพื่อความถูกต้องในการสื่อสารกับเจ้าหน้าที่
+					
+					<table class="table " id="form_sender">
+						<tr >
+							<th>ชื่อผู้แจ้งแทน</th>
+							<td id="txt_sender_name"></td>
+						</tr>
+						<tr >
+							<th>หมายเลขโทรศัพท์ผู้แจ้ง</th>
+							<td id="txt_agent_tel"></td>
+						</tr>
+					</table>
+					<table class="table ">
+						<tr>
+							<th>ชื่อผู้ถูกกระทำ</th>
+							<td id="txt_name"></td>
+						</tr>
+						<tr>
+							<th>หมายเลขโทรศัพท์</th>
+							<td id="txt_tel"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<br>
+					<a href="#" id="submit" class="button is-medium   is-primary ">ยืนยัน</a>
+					<button type="button" class="button is-medium  is-outlined is-danger " data-dismiss="modal">ยกเลิก</button>
+				</div>
+			</div>
+	</div>
+
+
+
+  <!--  test form comfirm   -->
 
 </body>
+
 </html>

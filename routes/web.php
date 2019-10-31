@@ -66,6 +66,9 @@ Route::get('status', function () {
 Route::get('status/{case_id}', 'case_controller@show')->name('case.status');
 Route::post('evaluate', 'case_controller@up_evaluate')->name('case.update');
 
+Route::post('/store', 'case_controller@store')->name('store');
+
+
 
 Route::get('manage', function () {
     return view('officer.manageCase');
@@ -87,6 +90,9 @@ Route::resource('case_inputs','case_controller');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('support', function () {
+Route::get('/support', function () {
+    return view('support');
+});
+Route::get('support2', function () {
     return view('support');
 });
