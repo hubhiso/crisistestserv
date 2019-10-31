@@ -643,7 +643,7 @@
 	}
 	
 
-	$(window).load(function(){
+	$(document).ready(function(){
 
 		$('#submitBtn').click(function() {
 
