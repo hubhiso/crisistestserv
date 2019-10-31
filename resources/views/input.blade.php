@@ -26,15 +26,15 @@
 	<script src="css/modal/modal.js"></script>
 	<link href="{{ asset('css/modal/modal.css') }}" rel="stylesheet">
 
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="//code.jquery.com/jquery-2.0.2.js"> </script>
 	
 	<title> CRS </title>
 
 </head>
 
 <body onload="load()">
-
-	<!--{!! Form::open(['url' =>'case_inputs','files' => true,'onsubmit' => 'return GEEKFORGEEKS();']) !!} --> 
 
 	<form  name="RegForm" class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" onsubmit="return vali_case();" action="{{ route('store') }}" >
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
