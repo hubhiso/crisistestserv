@@ -35,7 +35,7 @@
 
                 <div class="tile is-parent">
                     <article class="tile is-child box" >
-                        <a href="http://http://www.buddystation.org/">
+                        <a href="http://www.buddystation.org/">
 							<h4 class="subtitle is-4 	">"การกระทำที่ถือเป็นการละเมิดสิทธิ"</h4>
 							<p>Buddy Station กรมควบคุมโรค<br> กระทรวงสาธารณสุข</p>
                         </a>
