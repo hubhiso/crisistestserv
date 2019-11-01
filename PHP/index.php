@@ -6,8 +6,8 @@
       <link rel="shortcut icon" href="favicon.ico" />
       <link href="bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" type="text/css" media="all" href="daterangepicker.css" />
-      <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-      <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+      <script type="text/javascript" src="bootstrap.min.js"></script>
       <script type="text/javascript" src="moment.js"></script>
       <script type="text/javascript" src="daterangepicker.js"></script>
       <link rel="stylesheet" type="text/css" href="css_table.css">
