@@ -96,7 +96,7 @@
 .text-nicelabel+label {
 	display: table;
 	font-size: 16px;
-	padding: 1px 20px 5px 10px;
+	padding: 3px 20px 5px 10px;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	cursor: pointer;
@@ -108,19 +108,18 @@
 
 	-moz-user-select: none;
 	-webkit-user-select: none;
-	background-color: #aa1535;
-	box-shadow: 0 4px #852f41;
+	background-color: #da1919;
+	box-shadow: 0 4px #b10303;
 	-webkit-transition: none;
 	-moz-transition: none;
 	transition: none;
 	border-radius: 5px 5px 5px 5px;
-	border: #852f41 1px solid;
 }
 
 .text-nicelabel:checked+label {
-	background-color: #aa1535;
+	background-color: #da1919;
 	color: #fff;
-	box-shadow: 0 2px #852f41;
+	box-shadow: 0 2px #b10303;
 	top: 2px;
 
 }
