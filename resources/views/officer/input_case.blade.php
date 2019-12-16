@@ -10,7 +10,7 @@
     <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}"
 		  rel="stylesheet"> {{ Html::script('js/jquery.min.js') }}
 	<link href="{{ asset('/css/uploadicon/new3.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/chk.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/nicelabel/css/jquery-nicelabel.css') }}" rel="stylesheet">
 
 	{{--{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}--}}
 	{{--{{ Html::style('bootstrap/css/bootstrap.css') }}--}}
@@ -34,11 +34,10 @@
 <div class="container">
     <section class="section">
         <h2 id="modern-framework" class="subtitle"> กรุณาบันทึกข้อมูลเบื้องต้น เพื่อให้เจ้าหน้าที่รับเรื่องสามารถติดต่อไปภายหลัง </h2>
-		<p class="button is-success">
-				<input type="checkbox" id="emergency" name="emergency" value="1"  />
-				<label for="emergency">ขอความช่วยเหลือเร่งด่วน</label>
-		</p>
-		<br><br>
+		<div id="text-checkbox" class="columns is-multiline is-mobile">
+				&nbsp &nbsp
+				<input class="text-nicelabel" id="emergency" name="emergency" value="1" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "ขอความช่วยเหลือเร่งด่วน", "unchecked_text": "ขอความช่วยเหลือเร่งด่วน"}' type="checkbox" />			
+			</div>
         <div class="box" id="data-agent">
             <div class="field is-horizontal">
                 <div class="field-label ">
@@ -593,4 +592,11 @@
 
 
 </body>
+{{ Html::script('css/nicelabel/js/jquery.nicelabel-o.js') }}
+<script>
+	$(function () {
+		$('#text-checkbox  > input').nicelabel();
+		
+	});
+</script>
 </html>
