@@ -52,99 +52,116 @@
 	if($date_end==''){
 	 $date_end = date("m/d/Y");
 	}
+
+	$p_case = $_POST["pcase"];
+	   if($p_case > '0'){
+		$sub_q = ' sum(CASE WHEN problem_case = '.$p_case.' THEN 1 ELSE 0 END) as ccase ';
+	   }else{
+		$sub_q = ' count(problem_case) as ccase';
+	   }
+
+	$sql = "SELECT prov_id, prov_geo.prov_name_en,
+	$sub_q
+	FROM case_inputs, prov_geo
+	where prov_geo.code = case_inputs.prov_id
+	and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
+	group by prov_id";
+
+	$result = mysqli_query($conn, $sql); 
+	$row = mysqli_num_rows($result); 
+	$i = '0';
+	$i++;
+	$i_loop = 0;
+	$v_max = 0;
+	while($row = $result->fetch_assoc()) {
+		
+		$prov_id[$i] = $row["prov_id"];
+		$prov_code[$i] = $row["prov_name_en"];
+		$case[$i] = $row["ccase"];
+		
+		if($v_max < $case[$i]){
+			$v_max = $case[$i];
+		}
+
+		$i_loop++;
+		$i++;
+	}
     ?>
     
     <script type='text/javascript'>//<![CDATA[ 
-window.onload=function(){
-FusionCharts.ready(function() {
-    var salesByState = new FusionCharts({
-        type: 'thailand',
-        renderAt: 'chart-container',
-        width: '100%',
-        height: '700',
-        dataFormat: 'json',
-		dataSource:{
-    "map": {
-        "animation": "1",
-        "showbevel": "0",
-		"showLabels": "0", 
-        "usehovercolor": "1",
-        "canvasbordercolor": "ccc",
-        "bordercolor": "555555",
-        "showlegend": "1",
-        "showshadow": "0",
-        "legendposition": "RIGHT",
-        "legendborderalpha": "0",
-        "legendbordercolor": "ccc",
-        "legendallowdrag": "0",
-        "legendshadow": "0",
-        "caption": "",//"<? echo $title ?>",//ใส่ชื่อหัวข้อข้อมูล
-        "connectorcolor": "000",
-        "fillalpha": "100",
-        "hovercolor": "CCCCCC",
-        "showborder": 1,
-		"forceDecimals" : 2,
-		"borderThickness" : 0.1
-    },
-    "colorrange": {
-        "minvalue": "0",
-        "startlabel": "Low",
-        "endlabel": "High",
-        "code": "fff",
-        "gradient": "0",
-        "color": [
-            {
-                "maxvalue": "4",
-                "displayvalue": "2-4",
-                "code": "#EF9A9A"
-            },
-            {
-                "maxvalue": "6",
-                "displayvalue": "4-6",
-                "code": "#EF5350"
-            },
-            {
-                "maxvalue": "8",
-                "displayvalue": "6-8",
-                "code": "#E53935"
-            },
-            {
-                "maxvalue": "10",
-                "displayvalue": "8-10",
-                "code": "#C62828"
-            },
-            {
-                "maxvalue": "11",
-                "displayvalue": "No data available",
-                "code": "#FFEBEE"
-            }
-        ]
-		
-    },
-    "data": [
-	
-	<? 
-		
-			for($j=1;$j<=77; $j++){
-				echo '{';
-				echo '"id": "'.$j.'",';
-				echo '"value": ""';
-				echo '},';
-			}
-		
-	?>
+		window.onload=function(){
+		FusionCharts.ready(function() {
+			var salesByState = new FusionCharts({
+				type: 'thailand',
+				renderAt: 'chart-container',
+				width: '100%',
+				height: '700',
+				dataFormat: 'json',
+				dataSource:{
+			"map": {
+				"animation": "1",
+				"showbevel": "0",
+				"showLabels": "0", 
+				"usehovercolor": "1",
+				"canvasbordercolor": "ccc",
+				"bordercolor": "#111111",
+				"showlegend": "1",
+				"showshadow": "1",
+				"legendposition": "BOTTOM",
+				"legendborderalpha": "1",
+				"legendbordercolor": "#e5a3ad",
+				"legendallowdrag": "0",
+				"legendshadow": "0",
+				"caption": "",
+				"connectorcolor": "#e5a3ad",
+				"fillalpha": "100",
+				"hovercolor": "#CCCCCC",
+				"showborder": 1,
+				"forceDecimals" : 2,
+				"borderThickness" : 0.1,
+				"exportenabled": "1"
+			},
+			"colorrange": {
+				"minvalue": "0",
+				"startlabel": "Low",
+				"endlabel": "High",
+				"code": "#e5a3ad",
+				"gradient": "1",
+				"color": [
+					{
+						"minvalue": "0",
+						"maxvalue": "<?php echo $v_max/2; ?>",
+						"code": "#e5a3ad",
+						"label": "Medium"
+					},
+					{
+						"minvalue": "<?php echo ($v_max/2)+1; ?>",
+						"maxvalue": "<?php echo $v_max; ?>",
+						"code": "#bf1932",
+						"label": "High"
+					}
+				]
+				
+			},
+			"data": [
+			
+			<? 
+					for($j=1;$j<=$i_loop; $j++){
+						echo '{';
+						echo '"id": "'.$prov_code[$j].'",';
+						echo '"value": "'.$case[$j].'"';
+						echo '},';
+					}
+			?>
 
-    ]
-}
-    }).render();
+			]
+		}
+			}).render();
 
-});
-}//]]>  
-
-
+		});
+		}//]]>  
 
 </script>
-
 
 </head>
 
@@ -154,9 +171,7 @@ FusionCharts.ready(function() {
 		<div class="hero-head">
 
 			<div class="container">
-
 			<br>
-
 				<nav class="breadcrumb" aria-label="breadcrumbs">
 					<ul>
 						<li><a href="../public/officer"><span class="icon is-small">
@@ -170,59 +185,58 @@ FusionCharts.ready(function() {
 					</ul>
 				</nav>
 
-
-
 				<div class="tabs is-centered  is-toggle is-toggle-rounded">
 					<ul>
 						<li >
-							<a href="table.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป<br>ในภาพรวม</span>
-					</a>
-						
-						</li>
-						<li>
-							<a href="report_c1.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
-					</a>
-						
-						</li>
-						<li class="is-active">
-							<a href="report_c2.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
-					</a>
-						
+							<a href="dashboard3.blade.php">
+						        <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+                                <span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
+                            </a>
 						</li>
 						<li >
 							<a href="mapcrisis.blade.php">
 								<span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
-								<span>แผนที่สรุป<br>การละเมิดสิทธิ์</span>
+								<span>พิกัด<br>การละเมิดสิทธิ์</span>
 							</a>
 						
 						</li>
 						<li >
-							<a href="dashboard3.blade.php">
-						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
-					</a>
+							<a href="table.blade.php">
+								<span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+								<span>ตารางสรุป<br>ในภาพรวม</span>
+							</a>
 						
 						</li>
-
+						<li >
+							<a href="report_c1.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
+                            </a>
+						</li>
+						<li class="is-active">
+							<a href="report_c2.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
+                            </a>
+						</li>
 						<li >
 							<a href="report_perfomance.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป<br>การให้บริการ</span>
-					</a>
-						
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>การให้บริการ</span>
+                            </a>
 						</li>
 					</ul>
-                </div>
+				</div>
                 
                 <div class="tabs is-centered is-toggle is-toggle-rounded ">
                     <ul>
-                        <li class="is-active">
+						<li class="is-active">
+                        <a href="report_c2m.blade.php">
+                            <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                            <span>แผนที่</span>
+                        </a>
+                        </li>
+                        <li >
                         <a href="report_c2.blade.php">
                             <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                             <span>รวมทุกกรณี</span>
@@ -249,11 +263,34 @@ FusionCharts.ready(function() {
                     </ul>
                 </div>
 
-				<p class="title">สรุปการละเมิดรายจังหวัด ทุกกรณี</p>
+				<p class="title">แผนที่สรุปการละเมิดรายจังหวัด</p>
 
 
-				<form name="form_menu" method="post" action="report_c2.blade.php">
-					
+				<form name="form_menu" method="post" action="report_c2m.blade.php">
+					<div class="columns is-multiline is-mobile">
+						<div class="column ">
+							<div class="level-left">
+								<div class="level-item">
+									<p class="subtitle is-6">
+										<strong> กรณีที่ถูกละเมิด </strong>
+									</p>
+								</div>
+								
+								<div class="level-item">
+									<div class="select">
+										<select id="p_case" name="pcase">
+											<option value="0" <?php if ($p_case == "0") { echo "selected";} ?>> ทุกกรณี </option>
+											<option value="1" <?php if ($p_case == "1") { echo "selected";} ?>> บังคับตรวจเอชไอวี </option>
+											<option value="2" <?php if ($p_case == "2") { echo "selected";} ?>> เปิดเผยสถานะ<br>การติดเชื้อเอชไอวี </option>
+											<option value="3" <?php if ($p_case == "3") { echo "selected";} ?>> ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากกการติดเชื้อเอชไอวี </option>
+											<option value="4" <?php if ($p_case == "4") { echo "selected";} ?>> ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง </option>
+											<option value="5" <?php if ($p_case == "5") { echo "selected";} ?>> กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี </option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="columns is-multiline is-mobile">
 						<div class="column ">
 							<div class="level-left">
@@ -303,118 +340,8 @@ FusionCharts.ready(function() {
 					</div>
 				</form>
 				<br>
+				<a id="chart-container">FusionCharts will render here</a>
 
-				<p class="subtitle is-6">คลิกที่ตารางแล้วกดปุ่ม ซ้าย-ขวา เพื่อเลื่อนดูข้อมูล</p>
-
-			<div class="table-container">
-				<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth paginated hideextra">
-					<thead>
-						<tr class="hideextra">
-						<th>ลำดับ</th>
-						<th>ชื่อ</th>
-						<th>จังหวัด</th>
-						<th>เขต</th>
-						<th>บังคับตรวจเอชไอวี</th>
-						<th>เปิดเผยสถานะ<br>การติดเชื้อเอชไอวี </th>
-						<th>ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากกการติดเชื้อเอชไอวี</th>
-						<th>ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง</th>
-						<th>กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี</th>
-						<th>ทั้งหมด</th>
-						</tr>
-					</thead>
-					<tbody>
-						
-						<?php
-
-					$sql1 = "SELECT o.id, o.name, o.nameorg, o.prov_id, p.name as provname, nhso
-					FROM officers o left join prov_geo p
-					on p.code = o.prov_id 
-					where
-					position = 'officer' or o.name = 'adminfar'
-					order by prov_id";
-					$result1 = mysqli_query($conn, $sql1); 
-					$row1 = mysqli_num_rows($result1); 
-					$i = '0';
-					while($row1 = $result1->fetch_assoc()) {
-
-						$sql2 = "SELECT receiver,
-						sum(CASE WHEN problem_case = '1' THEN 1 ELSE 0 END) as case1,
-						sum(CASE WHEN problem_case = '2' THEN 1 ELSE 0 END) as case2,
-						sum(CASE WHEN problem_case = '3' THEN 1 ELSE 0 END) as case3,
-						sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as case4,
-						sum(CASE WHEN problem_case = '5' THEN 1 ELSE 0 END) as case5,
-						count(problem_case) as sum
-						FROM case_inputs
-						where receiver='".$row1['name']."'
-						and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
-						group by receiver";
-
-
-
-						//echo $sql2,'<br>';
-
-						$result2 = mysqli_query($conn, $sql2); 
-						$row2 = mysqli_num_rows($result2); 
-						$i++;
-						if ($result2->num_rows > 0) {
-							
-							// output data of each row
-							while($row2 = $result2->fetch_assoc()) {
-								
-								//echo $row['receiver'];
-								$sql3 = "SELECT username,officers.nameorg, prov_geo.code, prov_geo.name as provname, prov_geo.nhso 
-								FROM officers left join prov_geo 
-								on officers.prov_id = prov_geo.code
-								WHERE officers.name = '".$row2['receiver']."'";
-								//echo $sql2;
-								$result3 = mysqli_query($conn, $sql3); 
-
-								$row3 = mysqli_num_rows($result3);
-								$row3 = $result3->fetch_assoc();
-
-								//echo $row2["prov_id"];
-								
-								echo "<tr>";
-								echo "<th>".$i."</th>";
-														echo "<td>".$row3["username"]."</td>";
-														echo "<td>".$row3["provname"]."</td>";
-														echo "<td>".$row3["nhso"]."</td>";
-														echo "<td>".$row2["case1"]."</td>";
-														echo "<td>".$row2["case2"]."</td>";
-														echo "<td>".$row2["case3"]."</td>";
-														echo "<td>".$row2["case4"]."</td>";
-														echo "<td>".$row2["case5"]."</td>";
-														echo "<td>".$row2["sum"]."</td>";
-								echo "</tr>";
-														
-							}
-						} else {
-							echo "<tr>";
-								echo "<th>".$i."</th>";
-								echo "<td>".$row1["nameorg"]."</td>";
-								echo "<td>".$row1["provname"]."</td>";
-								echo "<td>".$row1["nhso"]."</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								
-								echo "</tr>";
-						}
-
-					}
-					echo "</tbody>";
-							echo "</table>";
-							echo "<br>Showing 1 to $i of $i entries";
-
-						$conn->close();
-
-
-					?>
-			</div>
-            <a id="chart-container">FusionCharts will render here</a>
 		
 	</section>
 	<br>

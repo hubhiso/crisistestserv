@@ -73,58 +73,58 @@
 					</ul>
 				</nav>
 
-
-
 				<div class="tabs is-centered  is-toggle is-toggle-rounded">
 					<ul>
 						<li >
-							<a href="table.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป<br>ในภาพรวม</span>
-					</a>
-						
-						</li>
-						<li>
-							<a href="report_c1.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
-					</a>
-						
-						</li>
-						<li class="is-active">
-							<a href="report_c2.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
-					</a>
-						
+							<a href="dashboard3.blade.php">
+						        <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+                                <span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
+                            </a>
 						</li>
 						<li >
 							<a href="mapcrisis.blade.php">
 								<span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
-								<span>แผนที่สรุป<br>การละเมิดสิทธิ์</span>
+								<span>พิกัด<br>การละเมิดสิทธิ์</span>
 							</a>
 						
 						</li>
 						<li >
-							<a href="dashboard3.blade.php">
-						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
-					</a>
+							<a href="table.blade.php">
+								<span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+								<span>ตารางสรุป<br>ในภาพรวม</span>
+							</a>
 						
 						</li>
-
+						<li >
+							<a href="report_c1.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
+                            </a>
+						</li>
+						<li class="is-active">
+							<a href="report_c2.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
+                            </a>
+						</li>
 						<li >
 							<a href="report_perfomance.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป<br>การให้บริการ</span>
-					</a>
-						
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>การให้บริการ</span>
+                            </a>
 						</li>
 					</ul>
-                </div>
+				</div>
                 
                 <div class="tabs is-centered is-toggle is-toggle-rounded ">
                     <ul>
+						<li >
+                        <a href="report_c2m.blade.php">
+                            <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                            <span>แผนที่</span>
+                        </a>
+                        </li>
+                        <li>
                         <li class="is-active">
                         <a href="report_c2.blade.php">
                             <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
@@ -152,7 +152,7 @@
                     </ul>
                 </div>
 
-				<p class="title">สรุปการละเมิดรายจังหวัด ทุกกรณี</p>
+				<p class="title">รายงานการละเมิดสิทธิ ทุกกรณี</p>
 
 
 				<form name="form_menu" method="post" action="report_c2.blade.php">
@@ -248,7 +248,7 @@
 						sum(CASE WHEN problem_case = '5' THEN 1 ELSE 0 END) as case5,
 						count(problem_case) as sum
 						FROM case_inputs
-						where receiver='".$row1['name']."'
+						where receiver='".$row1['nameorg']."'
 						and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
 						group by receiver";
 
