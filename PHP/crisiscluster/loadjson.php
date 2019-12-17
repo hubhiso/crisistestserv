@@ -1,21 +1,19 @@
-<? 
+<?php
 header("Content-type: text/json"); 
 ?>
-<?
+<?php
 
 
 require("../phpsql_dbinfo.php");
-$connection=mysql_connect ($hostname, $username, $password);
-mysql_query("SET NAMES UTF8",$connection); 
-if (!$connection) {
 
-  die('Not connected : ' . mysql_error());
-}
 
-$db_selected = mysql_select_db($database, $connection);
-if (!$db_selected) {
-  die ('Can\'t use db : ' . mysql_error());
-}
+$conn = mysqli_connect($hostname, $username, $password, $database);
+if (mysqli_connect_errno()) 
+	{ 
+        echo "Database connection failed."; 
+	}
+
+
 echo "{";
 echo "\"type\": \"FeatureCollection\",";
 echo "\"features\": [";
@@ -23,24 +21,18 @@ echo "\"features\": [";
 
 
 $query = " select * from case_inputs where geolat <> '' limit 100;";
+$result1 = mysqli_query($conn, $query);
+$count_row = mysqli_num_rows($result1); 
 
-
-//echo $query;
-
-$result = mysql_query($query);
-if (!$result) {
-  die('Invalid query: ' . mysql_error());
-}
-$count_row =  mysql_num_rows($result);
 $count_i = 1;
 //echo "count_i".$count_i."count_row".$count_row;
-while ($row = @mysql_fetch_assoc($result)){
+while ($row = $result1->fetch_assoc()){
 	//echo $row["FEATURES"].",\"dname2\": \"". $row["dname"]." -\",\"color2\": \"black\",\"total\": \"\" },"."\"".$row["GEOMETRY"].",";
 	
 		if ($count_i < $count_row){
-		echo "{\"type\": \"Feature\", \"id\": \"".$row["case_id"]."\", \"properties\": { \"name\": \"".$row["name"]."\", \"target\": \"".$row["ADDRESS"]."\", \"type_service\":  \"".$row["TYPECODE2"]."\", \"tel\":  \"".$row["TEL"]."\", \"fax\":  \"".$row["FAX"]."\", \"www\": \"".$row["WWW"]."\", \"last_update\": \"".$row["LAST_UPDATE"]."\"},\"geometry\": { \"type\":\"Point\", \"coordinates\": [".$row["geolon"].",".$row["geolat"]."] } },";
+		echo "{\"type\": \"Feature\", \"id\": \"".$row["case_id"]."\", \"properties\": { \"date\": \"".$row["created_at"]."\", \"receiver\": \"".$row["receiver"]."\"},\"geometry\": { \"type\":\"Point\", \"coordinates\": [".$row["geolon"].",".$row["geolat"]."] } },";
 		}else{
-		echo "{\"type\": \"Feature\", \"id\": \"".$row["case_id"]."\", \"properties\": { \"name\": \"".$row["name"]."\", \"target\": \"".$row["ADDRESS"]."\", \"type_service\":  \"".$row["TYPECODE2"]."\", \"tel\":  \"".$row["TEL"]."\", \"fax\":  \"".$row["FAX"]."\", \"www\": \"".$row["WWW"]."\", \"last_update\": \"".$row["LAST_UPDATE"]."\"},\"geometry\": { \"type\":\"Point\", \"coordinates\": [".$row["geolon"].",".$row["geolat"]."] } }";
+		echo "{\"type\": \"Feature\", \"id\": \"".$row["case_id"]."\", \"properties\": { \"date\": \"".$row["created_at"]."\", \"receiver\": \"".$row["receiver"]."\"},\"geometry\": { \"type\":\"Point\", \"coordinates\": [".$row["geolon"].",".$row["geolat"]."] } }";
 		
 		}
 		

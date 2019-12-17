@@ -33,13 +33,13 @@
 
   $.getJSON("loadjson.php",function(data){
     var ratIcon = L.icon({
-      iconUrl: 'm02.png',
-      iconSize: [30,43]
+      iconUrl: 'crisispinx45.png',
+      iconSize: [45,45]
     });
     var rodents = L.geoJson(data,{
       pointToLayer: function(feature,latlng){
         var marker = L.marker(latlng,{icon: ratIcon});
-        marker.bindPopup('<b>'+feature.properties.name + '</b><br/>'+'โทร : '+feature.properties.tel + '<br/>'+'แฟกซ์ : '+feature.properties.fax + '<br/>' +'last_update : ' + feature.properties.last_update);
+        marker.bindPopup('<b>id : '+feature.id + '</b><br/>'+'วันที่แจ้ง : '+feature.properties.date + '<br/>'+'คนรับเรื่อง : '+feature.properties.receiver);
         return marker;
       }
     });
