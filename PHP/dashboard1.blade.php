@@ -6,7 +6,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Bulma is an open source CSS framework based on Flexbox and built with Sass. It's 100% responsive, fully modular, and available for free.">
 	<title>CRS</title>
 
 	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
@@ -25,6 +24,30 @@
 	<script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
 	<script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
 
+	<?php
+		
+		require("phpsql_dbinfo.php");
+
+		$conn = mysqli_connect($hostname, $username, $password, $database);
+		if (mysqli_connect_errno()) 
+		{ 
+			echo "Database connection failed."; 
+		}
+
+		$sql1 = "SELECT r.code,r.name,c.status,count(c.id) as n_status FROM r_status r left join case_inputs  c 
+		on r.code = c.status
+		group by r.code";
+		//echo $sql2;
+		$result1 = mysqli_query($conn, $sql1); 
+		$i = 0;
+		while($row1 = $result1->fetch_assoc()) {
+			$i++;
+				$status[$i] = $row1["code"];
+				$name[$i] = $row1["name"];
+				$n_status[$i] = $row1["n_status"];
+				$sum =  $sum+$n_status[$i];
+		}
+	?>
 
 	<script type="text/javascript">
 		/*  Tab 2 Chart */
@@ -54,29 +77,22 @@
 						"theme": "hulk-light",
 						"decimals": "2",
 						"numberSuffix": "%",
+						"palettecolors": "#E14455",
 						"exportEnabled": "1"
-
 					},
 
-					"data": [ {
-						"label": "แจ้งเรื่อง",
-						"value": "100"
-					}, {
-						"label": "รับเรื่อง",
-						"value": "85"
-					}, {
-						"label": "บันทึกข้อมูล",
-						"value": "60"
-					}, {
-						"label": "ดำเนินการ",
-						"value": "45"
-					}, {
-						"label": "เสร็จสิ้น",
-						"value": "38"
-					}, {
-						"label": "ส่งต่อ",
-						"value": "33"
-					} ]
+					"data": [ 
+					<?php
+						for($i=1;$i<=6;$i++){
+							echo '{';
+							echo '"label": "'.$name[$i].'",';
+							echo '"value": "'.$n_status[$i]*100/$sum.'",';
+							echo '}';
+							if($i<>6){
+								echo ",";
+							}
+						}
+					?>]
 				} );
 			} );
 
@@ -99,29 +115,22 @@
 						"showAlternateVGridColor": "1",
 						"numberScaleValue": "0",
 						"theme": "hulk-light",
+						"palettecolors": "#E14455",
 						"exportEnabled": "1"
 
 					},
 
-					"data": [ {
-						"label": "แจ้งเรื่อง",
-						"value": "290"
-					}, {
-						"label": "รับเรื่อง",
-						"value": "260"
-					}, {
-						"label": "บันทึกข้อมูล",
-						"value": "180"
-					}, {
-						"label": "ดำเนินการ",
-						"value": "140"
-					}, {
-						"label": "เสร็จสิ้น",
-						"value": "115"
-					}, {
-						"label": "ส่งต่อ",
-						"value": "100"
-					} ]
+					"data": [<?php
+						for($i=1;$i<=6;$i++){
+							echo '{';
+							echo '"label": "'.$name[$i].'",';
+							echo '"value": "'.$n_status[$i].'",';
+							echo '}';
+							if($i<>6){
+								echo ",";
+							}
+						}
+					?> ]
 				} );
 			} );
 
@@ -146,29 +155,22 @@
 							"showAlternateVGridColor": "1",
 							"numberScaleValue": "0",
 							"theme": "hulk-light",
+							"palettecolors": "#E14455",
 							"exportEnabled": "1"
 
 						},
 
-						"data":[ {
-						"label": "แจ้งเรื่อง",
-						"value": "290"
-					}, {
-						"label": "รับเรื่อง",
-						"value": "260"
-					}, {
-						"label": "บันทึกข้อมูล",
-						"value": "180"
-					}, {
-						"label": "ดำเนินการ",
-						"value": "140"
-					}, {
-						"label": "เสร็จสิ้น",
-						"value": "115"
-					}, {
-						"label": "ส่งต่อ",
-						"value": "100"
-					} ]
+						"data":[ <?php
+						for($i=1;$i<=6;$i++){
+							echo '{';
+							echo '"label": "'.$name[$i].'",';
+							echo '"value": "'.$n_status[$i].'",';
+							echo '}';
+							if($i<>6){
+								echo ",";
+							}
+						}
+					?> ]
 					},
 					events: {
 						"dataUpdated": function ( evtObj, argObj ) {
@@ -204,17 +206,10 @@
 </head>
 
 <body class="layout-default">
+	<br>
 
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
-
-			<!--div class="container">
-			<nav class="nav">
-				<div class="nav-left"> <a class="nav-item is-active" href="#"> Crisis Response System </a>
-				</div>
-			</nav>
-		</div-->
-
 
 			<div class="container">
 
@@ -235,31 +230,71 @@
 
 				<div class="tabs is-centered  is-toggle is-toggle-rounded">
 					<ul>
-						<li>
-							<a href="table.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป</span>
-					</a>
-						
-						</li>
 						<li class="is-active">
-							<a href="dashboard1.blade.php">
-						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูลแยกตามขั้นตอน </span>
-					</a>
+							<a href="dashboard3.blade.php">
+						        <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+                                <span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
+                            </a>
+						</li>
+						<li >
+							<a href="mapcrisis.blade.php">
+								<span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
+								<span>พิกัด<br>การละเมิดสิทธิ์</span>
+							</a>
 						
 						</li>
-						<li>
-							<a href="dashboard2.blade.php">
-						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูลแยกตามปัญหา </span>
-					</a>
+						<li >
+							<a href="table.blade.php">
+								<span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+								<span>ตารางสรุป<br>ในภาพรวม</span>
+							</a>
 						
+						</li>
+						<li >
+							<a href="report_c1.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
+                            </a>
+						</li>
+						<li >
+							<a href="report_c2.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
+                            </a>
+						</li>
+						<li >
+							<a href="report_perfomance.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>การให้บริการ</span>
+                            </a>
 						</li>
 					</ul>
 				</div>
+				
+				<div class="tabs is-centered is-toggle is-toggle-rounded">
+                    <ul>
+                        <li >
+                        <a href="dashboard3.blade.php">
+                            <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
+                            <span>สถานการณ์การละเมิดสิทธิ</span>
+                        </a>
+                        </li>
+                        <li class="is-active">
+                        <a href="dashboard1.blade.php">
+                            <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
+                            <span>ข้อมูลแยกตามขั้นตอน</span>
+                        </a>
+                        </li>
+                        <li >
+                        <a href="dashboard2.blade.php">
+                            <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
+                            <span>ข้อมูลแยกตามปัญหา</span>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
 
-<div class="field is-horizontal">
+			<div class="field is-horizontal">
 				<div class="field-label is-normal">
 					<label class="label">ปัญหา</label>
 				</div>
@@ -329,12 +364,12 @@
 
 				<div class="field has-addons">
 					<p class="control">
-						<a id="update-chart12" class="button is-success is-outlined">
+						<a id="update-chart12" class="button is-danger is-outlined">
 							<span>จำนวน</span>
 						</a>
 					</p>
 					<p class="control">
-						<a id="update-chart11" class="button is-success is-outlined">
+						<a id="update-chart11" class="button is-danger is-outlined">
 							<span>เปอร์เซ็นต์</span>
 						</a>
 					</p>
@@ -350,11 +385,15 @@
 
 	</section>
 
-
-
-	<?
-		include "../resources/views/footer.php";
-	?>
+	<footer class="footer "style="background-color: #EEE;">
+  <div class="container  ">
+    <div class="content has-text-centered  ">
+      <p>Crisis Response System (CRS)
+	  </p>
+	  <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p>
+    </div>
+  </div>
+</footer>
 </body>
 
 </html>

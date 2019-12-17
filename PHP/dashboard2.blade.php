@@ -25,6 +25,37 @@
 	<script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
 	<script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
 
+	<?php
+		
+		require("phpsql_dbinfo.php");
+
+		$conn = mysqli_connect($hostname, $username, $password, $database);
+		if (mysqli_connect_errno()) 
+		{ 
+			echo "Database connection failed."; 
+		}
+
+		$sql1 = "SELECT 
+		sum(CASE WHEN problem_case = '1' THEN 1 ELSE 0 END) as case1,
+		sum(CASE WHEN problem_case = '2' THEN 1 ELSE 0 END) as case2,
+		sum(CASE WHEN problem_case = '3' THEN 1 ELSE 0 END) as case3,
+		sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as case4,
+		sum(CASE WHEN problem_case = '5' THEN 1 ELSE 0 END) as case5,
+		count(problem_case) as sum
+		FROM case_inputs";
+		//echo $sql2;
+		$result1 = mysqli_query($conn, $sql1); 
+		$i = 0;
+		while($row1 = $result1->fetch_assoc()) {
+				$i++;
+				$case1 = $row1["case1"];
+				$case2 = $row1["case2"];
+				$case3 = $row1["case3"];
+				$case4 = $row1["case4"];
+				$case5 = $row1["case5"];
+				$sum = $row1["sum"];
+		}
+	?>
 
 	<script type="text/javascript">
 		/*  Tab 2 Chart */
@@ -40,7 +71,7 @@
 				salesChart.setJSONData( {
 					"chart": {
 						"caption": "กราฟแสดงข้อมูลแยกตามปัญหา",
-						"subCaption": "ปี 2560",
+						"subCaption": "ปี 2562",
 						"placeValuesInside": "0",
 						"yAxisName": "เปอร์เซ็นต์",
 						"basefontsize": "14",
@@ -54,29 +85,27 @@
 						"theme": "hulk-light",
 						"decimals": "2",
 						"numberSuffix": "%",
+						"palettecolors": "#E14455",
 						"exportEnabled": "1"
 
 					},
 
 					"data": [ {
-						"label": "แจ้งเรื่อง",
-						"value": "97"
+						"label": "บังคับตรวจเอชไอวี",
+						"value": "<?php echo $case1*100/$sum; ?>"
 					}, {
-						"label": "รับเรื่อง",
-						"value": "85"
+						"label": "เปิดเผยสถานะ<br>ฃการติดเชื้อเอชไอวี",
+						"value": "<?php echo $case2*100/$sum; ?>"
 					}, {
-						"label": "บันทึกข้อมูล",
-						"value": "60"
+						"label": "ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากกการติดเชื้อเอชไอวี",
+						"value": "<?php echo $case3*100/$sum; ?>"
 					}, {
-						"label": "ดำเนินการ",
-						"value": "45"
+						"label": "ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง",
+						"value": "<?php echo $case4*100/$sum; ?>"
 					}, {
-						"label": "เสร็จสิ้น",
-						"value": "35"
-					}, {
-						"label": "ส่งต่อ",
-						"value": "20"
-					} ]
+						"label": "กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี",
+						"value": "<?php echo $case5*100/$sum; ?>"
+					}]
 				} );
 			} );
 
@@ -87,7 +116,7 @@
 				salesChart.setJSONData( {
 					"chart": {
 						"caption": "กราฟแสดงข้อมูลแยกตามปัญหา",
-						"subCaption": "ปี 2560",
+						"subCaption": "ปี 2562",
 						"placeValuesInside": "0",
 						"yAxisName": "จำนวน",
 						"basefontsize": "14",
@@ -99,29 +128,27 @@
 						"showAlternateVGridColor": "1",
 						"numberScaleValue": "0",
 						"theme": "hulk-light",
+						"palettecolors": "#E14455",
 						"exportEnabled": "1"
 
 					},
 
 					"data": [ {
-						"label": "แจ้งเรื่อง",
-						"value": "290"
+						"label": "บังคับตรวจเอชไอวี",
+						"value": "<?php echo $case1; ?>"
 					}, {
-						"label": "รับเรื่อง",
-						"value": "260"
+						"label": "เปิดเผยสถานะ<br>ฃการติดเชื้อเอชไอวี",
+						"value": "<?php echo $case2; ?>"
 					}, {
-						"label": "บันทึกข้อมูล",
-						"value": "180"
+						"label": "ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากกการติดเชื้อเอชไอวี",
+						"value": "<?php echo $case3; ?>"
 					}, {
-						"label": "ดำเนินการ",
-						"value": "140"
+						"label": "ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง",
+						"value": "<?php echo $case4; ?>"
 					}, {
-						"label": "เสร็จสิ้น",
-						"value": "115"
-					}, {
-						"label": "ส่งต่อ",
-						"value": "100"
-					} ]
+						"label": "กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี",
+						"value": "<?php echo $case5; ?>"
+					}]
 				} );
 			} );
 
@@ -134,7 +161,7 @@
 					dataSource: {
 						"chart": {
 							"caption": "กราฟแสดงข้อมูลแยกตามปัญหา",
-							"subCaption": "ปี 2560",
+							"subCaption": "ปี 2562",
 							"placeValuesInside": "0",
 							"yAxisName": "จำนวน",
 							"basefontsize": "14",
@@ -146,25 +173,26 @@
 							"showAlternateVGridColor": "1",
 							"numberScaleValue": "0",
 							"theme": "hulk-light",
+							"palettecolors": "#E14455",
 							"exportEnabled": "1"
 
 						},
 
 						"data":[ {
 						"label": "บังคับตรวจเอชไอวี",
-						"value": "290"
+						"value": "<?php echo $case1; ?>"
 					}, {
-						"label": "เปิดเผยสถานะการติดเชื้อเอชไอวี",
-						"value": "260"
+						"label": "เปิดเผยสถานะ<br>ฃการติดเชื้อเอชไอวี",
+						"value": "<?php echo $case2; ?>"
 					}, {
-						"label": "ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากการติดเชื้อเอชไอวี",
-						"value": "180"
+						"label": "ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากกการติดเชื้อเอชไอวี",
+						"value": "<?php echo $case3; ?>"
 					}, {
-						"label": "ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง",
-						"value": "140"
+						"label": "ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง",
+						"value": "<?php echo $case4; ?>"
 					}, {
-						"label": "อื่นๆ ที่เกี่ยวข้องกับ HIV",
-						"value": "115"
+						"label": "กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี",
+						"value": "<?php echo $case5; ?>"
 					} ]
 					},
 					events: {
@@ -205,16 +233,8 @@
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 
-			<!--div class="container">
-			<nav class="nav">
-				<div class="nav-left"> <a class="nav-item is-active" href="#"> Crisis Response System </a>
-				</div>
-			</nav>
-		</div-->
-
-
 			<div class="container">
-
+				<br>
 				<nav class="breadcrumb" aria-label="breadcrumbs">
 					<ul>
 						<li><a href="../public/officer"><span class="icon is-small">
@@ -232,29 +252,69 @@
 
 				<div class="tabs is-centered  is-toggle is-toggle-rounded">
 					<ul>
-						<li>
-							<a href="table.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป</span>
-					</a>
+						<li class="is-active">
+							<a href="dashboard3.blade.php">
+						        <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+                                <span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
+                            </a>
+						</li>
+						<li >
+							<a href="mapcrisis.blade.php">
+								<span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
+								<span>พิกัด<br>การละเมิดสิทธิ์</span>
+							</a>
 						
 						</li>
 						<li >
-							<a href="dashboard1.blade.php">
-						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูลแยกตามขั้นตอน </span>
-					</a>
+							<a href="table.blade.php">
+								<span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+								<span>ตารางสรุป<br>ในภาพรวม</span>
+							</a>
 						
 						</li>
-						<li class="is-active">
-							<a href="dashboard2.blade.php">
-						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูลแยกตามปัญหา </span>
-					</a>
-						
+						<li >
+							<a href="report_c1.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
+                            </a>
+						</li>
+						<li >
+							<a href="report_c2.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
+                            </a>
+						</li>
+						<li >
+							<a href="report_perfomance.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>การให้บริการ</span>
+                            </a>
 						</li>
 					</ul>
 				</div>
+				
+				<div class="tabs is-centered is-toggle is-toggle-rounded">
+                    <ul>
+                        <li >
+                        <a href="dashboard3.blade.php">
+                            <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
+                            <span>สถานการณ์การละเมิดสิทธิ</span>
+                        </a>
+                        </li>
+                        <li >
+                        <a href="dashboard1.blade.php">
+                            <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
+                            <span>ข้อมูลแยกตามขั้นตอน</span>
+                        </a>
+                        </li>
+                        <li class="is-active">
+                        <a href="dashboard2.blade.php">
+                            <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
+                            <span>ข้อมูลแยกตามปัญหา</span>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
 
 <div class="field is-horizontal">
 				<div class="field-label is-normal">
@@ -327,22 +387,15 @@
 					</div>
 				</div>
 			</div>
-			
-			
-
-
-
-
-				
 
 				<div class="field has-addons">
 					<p class="control">
-						<a id="update-chart12" class="button is-success is-outlined">
+						<a id="update-chart12" class="button is-danger is-outlined">
 							<span>จำนวน</span>
 						</a>
 					</p>
 					<p class="control">
-						<a id="update-chart11" class="button is-success is-outlined">
+						<a id="update-chart11" class="button is-danger is-outlined">
 							<span>เปอร์เซ็นต์</span>
 						</a>
 					</p>
@@ -357,12 +410,15 @@
 		</div>
 
 	</section>
-
-
-
-	<?
-		include "../resources/views/footer.php";
-	?>
+	<footer class="footer "style="background-color: #EEE;">
+  <div class="container  ">
+    <div class="content has-text-centered  ">
+      <p>Crisis Response System (CRS)
+	  </p>
+	  <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p>
+    </div>
+  </div>
+</footer>
 </body>
 
 </html>

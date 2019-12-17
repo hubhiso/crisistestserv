@@ -34,12 +34,13 @@
 		{ 
 			echo "Database connection failed."; 
 		}
+		// Change character set to utf8
+		mysqli_set_charset($conn,"utf8");
 		
 		$sql_c1 = "SELECT problem_case, r_problem_case.name,count(problem_case) as case1 
 		FROM case_inputs ,r_problem_case
 		WHERE r_problem_case.code = case_inputs.problem_case
 		group by problem_case";
-		//echo $sql2;
 		$result_c1 = mysqli_query($conn, $sql_c1); 
 		$i = 0;
 		while($rowc1 = $result_c1->fetch_assoc()) {
@@ -53,7 +54,6 @@
 
 		$sql_c2 = "SELECT sum(cause_type1) as cause1, sum(cause_type2) as cause2, sum(cause_type3) as cause3, sum(cause_type4) as cause4, sum(etc) as cause5, sum(cause_type1 or cause_type2 or cause_type3 or cause_type4 or etc) as alls
 		FROM add_details ";
-		//echo $sql2;
 		$result_c2 = mysqli_query($conn, $sql_c2); 
 		$i = 0;
 		while($rowc2 = $result_c2->fetch_assoc()) {
@@ -539,11 +539,15 @@
 		</div>
 	</section>
 
-
-
-	<?
-		include "../resources/views/footer.php";
-	?>
+	<footer class="footer "style="background-color: #EEE;">
+  <div class="container  ">
+    <div class="content has-text-centered  ">
+      <p>Crisis Response System (CRS)
+	  </p>
+	  <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p>
+    </div>
+  </div>
+</footer>
 </body>
 
 </html>
