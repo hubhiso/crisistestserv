@@ -6,14 +6,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Bulma is an open source CSS framework based on Flexbox and built with Sass. It's 100% responsive, fully modular, and available for free.">
 	<title>CRS</title>
 
 	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
-
+	<link rel="shortcut icon" href="http://localhost:8888/crisis/public/images/favicon.ico">
 
 	<link rel="stylesheet" href="../public/bulma/css/bulma.css">
-
 	<meta name="msapplication-config" content="http://bulma.io/favicons/browserconfig.xml?v=201701041855">
 
 	<meta name="theme-color" content="#cc99cc"/>
@@ -22,8 +20,6 @@
 	<script src="http://bulma.io/javascript/bulma.js"></script>
 	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script>
 
-	<script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
-	<script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
 
 
 
@@ -36,6 +32,7 @@
 
 
 			<div class="container">
+				<br>
 
 				<nav class="breadcrumb" aria-label="breadcrumbs">
 					<ul>
@@ -57,26 +54,48 @@
 						<li class="is-active">
 							<a href="table.blade.php">
 					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป</span>
-					</a>
-						
-						</li>
-						<li >
-							<a href="dashboard1.blade.php">
-						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูลแยกตามขั้นตอน </span>
+						<span>ตารางสรุป<br>ในภาพรวม</span>
 					</a>
 						
 						</li>
 						<li>
-							<a href="dashboard2.blade.php">
+							<a href="report_c1.blade.php">
+					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+						<span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
+					</a>
+						
+						</li>
+						<li >
+							<a href="report_c2.blade.php">
+					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+						<span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
+					</a>
+						
+						</li>
+						<li >
+							<a href="mapcrisis.blade.php">
+								<span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
+								<span>แผนที่สรุป<br>การละเมิดสิทธิ์</span>
+							</a>
+						
+						</li>
+						<li >
+							<a href="dashboard3.blade.php">
 						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูลแยกตามปัญหา </span>
+						<span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
+					</a>
+						
+						</li>
+
+						<li >
+							<a href="report_perfomance.blade.php">
+					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+						<span>ตารางสรุป<br>การให้บริการ</span>
 					</a>
 						
 						</li>
 					</ul>
-				</div>
+                </div>
 
 		<div class="field is-horizontal">
 		<?
@@ -86,11 +105,15 @@
 
 	</section>
 
-
-
-	<?
-		include "../resources/views/footer.php";
-	?>
 </body>
+<footer class="footer "style="background-color: #EEE;">
+  <div class="container  ">
+    <div class="content has-text-centered  ">
+      <p>Crisis Response System (CRS)
+	  </p>
+	  <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p>
+    </div>
+  </div>
+</footer>
 
 </html>
