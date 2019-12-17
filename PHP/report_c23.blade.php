@@ -75,12 +75,6 @@
 
                 <div class="tabs is-centered  is-toggle is-toggle-rounded">
 					<ul>
-                        <li >
-                        <a href="report_c2m.blade.php">
-                            <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-                            <span>แผนที่</span>
-                        </a>
-                        </li>
 						<li >
 							<a href="dashboard3.blade.php">
 						        <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>

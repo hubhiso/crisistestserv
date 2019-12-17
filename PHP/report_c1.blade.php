@@ -82,15 +82,27 @@
 					</ul>
 				</nav>
 
-
-
 				<div class="tabs is-centered  is-toggle is-toggle-rounded">
 					<ul>
 						<li >
-							<a href="table.blade.php">
-                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-                                <span>ตารางสรุป<br>ในภาพรวม</span>
+							<a href="dashboard3.blade.php">
+						        <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+                                <span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
                             </a>
+						</li>
+						<li >
+							<a href="mapcrisis.blade.php">
+								<span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
+								<span>พิกัด<br>การละเมิดสิทธิ์</span>
+							</a>
+						
+						</li>
+						<li >
+							<a href="table.blade.php">
+								<span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+								<span>ตารางสรุป<br>ในภาพรวม</span>
+							</a>
+						
 						</li>
 						<li class="is-active">
 							<a href="report_c1.blade.php">
@@ -100,35 +112,18 @@
 						</li>
 						<li >
 							<a href="report_c2.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
-					</a>
-						
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
+                            </a>
 						</li>
-						<li >
-							<a href="mapcrisis.blade.php">
-								<span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
-								<span>แผนที่สรุป<br>การละเมิดสิทธิ์</span>
-							</a>
-						
-						</li>
-						<li >
-							<a href="dashboard3.blade.php">
-						<span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-						<span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
-					</a>
-						
-						</li>
-
 						<li >
 							<a href="report_perfomance.blade.php">
-					    <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-						<span>ตารางสรุป<br>การให้บริการ</span>
-					</a>
-						
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>การให้บริการ</span>
+                            </a>
 						</li>
 					</ul>
-                </div>
+				</div>
 				<p class="title">รายงานการสรุปการจัดการเหตุละเมิดสิทธิ <br>จำแนกรายหน่วยจัดการเหตุ</p>
 
 				<form name="form_menu" method="post" action="report_c1.blade.php">
