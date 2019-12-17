@@ -42,7 +42,28 @@
                     
                         if ($case_id != ""){
                             //echo "text";
-                            send_api($case_id);
+
+                            define("LINE_API","https://notify-api.line.me/api/notify");
+
+                        $token = "hvXNnVPmVFx8tQdrhLSjGBLa9t4lF2qbI55XNkHWvPE"; //ใส่Token ที่ copy เอาไว้
+                        $message = "มีการแจ้งร้องเรียนเข้ามาในระบบรหัส : $case_id"; //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
+
+                        $queryData = array("message" => $message);
+                        $queryData = http_build_query($queryData,"","&");
+                        $headerOptions = array(
+                        "http"=>array(
+                        "method"=>"POST",
+                        "header"=> "Content-Type: application/x-www-form-urlencoded\r\n"
+                        ."Authorization: Bearer ".$token."\r\n"
+                        ."Content-Length: ".strlen($queryData)."\r\n",
+                        "content" => $queryData
+                        ),
+                        );
+                        $context = stream_context_create($headerOptions);
+                        $result = file_get_contents(LINE_API,FALSE,$context);
+                        $res = json_decode($result);
+                        //return $res;
+                        //}
                         }
                     ?>
                 </h1>
@@ -57,34 +78,3 @@
 </div>
 </body>
 </html>
-<?php
-
-
-function send_api($case_id){
-    //echo "text2";
-    //echo $case_id;  
-    define("LINE_API","https://notify-api.line.me/api/notify");
-
-    $token = "hvXNnVPmVFx8tQdrhLSjGBLa9t4lF2qbI55XNkHWvPE"; //ใส่Token ที่ copy เอาไว้
-    $str = "มีการแจ้งร้องเรียนเข้ามาในระบบรหัส : $case_id"; //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
-    $res = notify_message($str,$token);
-    print_r($res);
-    function notify_message($message,$token){
-    $queryData = array("message" => $message);
-    $queryData = http_build_query($queryData,"","&");
-    $headerOptions = array(
-    "http"=>array(
-    "method"=>"POST",
-    "header"=> "Content-Type: application/x-www-form-urlencoded\r\n"
-    ."Authorization: Bearer ".$token."\r\n"
-    ."Content-Length: ".strlen($queryData)."\r\n",
-    "content" => $queryData
-    ),
-    );
-    $context = stream_context_create($headerOptions);
-    $result = file_get_contents(LINE_API,FALSE,$context);
-    $res = json_decode($result);
-    return $res;
-    }
-}
-?>
