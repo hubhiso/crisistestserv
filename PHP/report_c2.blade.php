@@ -8,21 +8,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<title>CRS</title>
-	<link rel="shortcut icon" href="http://localhost:8888/crisis/public/images/favicon.ico">
+	<link rel="shortcut icon" href="../public/images/favicon.ico">
 	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
 	<link rel="stylesheet" href="../public/bulma/css/bulma.css">
 
-	<link media="all" type="text/css" rel="stylesheet" href="http://localhost:8888/crisis/public/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
-	<link media="all" type="text/css" rel="stylesheet" href="http://localhost:8888/crisis/public/bootstrap/css/bootstrap.css">
+	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap/css/bootstrap.css">
 
 	<meta name="theme-color" content="#cc99cc"/>
 	
-	<script src="http://localhost:8888/crisis/public/js/jquery.min.js"></script>
-	<script src="http://localhost:8888/crisis/public/bootstrap/js/bootstrap.min.js"></script>
-	<script src="http://localhost:8888/crisis/public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script src="../public/js/jquery.min.js"></script>
+	<script src="../public/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
-	<link href="http://localhost:8888/crisis/public/bulma/css/bulma.css" rel="stylesheet">
-	<link href="http://localhost:8888/crisis/public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
+	<link href="../public/bulma/css/bulma.css" rel="stylesheet">
+	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
 
 	<style>
 		.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
@@ -326,8 +326,8 @@
 
 
 	
-<script src="http://localhost:8888/crisis/public/bulma/clipboard-1.7.1.min.js"></script>
-	<script src="http://localhost:8888/crisis/public/bulma/main.js"></script>
+<script src="../public/bulma/clipboard-1.7.1.min.js"></script>
+	<script src="../public/bulma/main.js"></script>
 
 	<script>
         $('.input-daterange input').each(function() {
