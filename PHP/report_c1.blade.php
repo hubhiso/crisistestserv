@@ -38,7 +38,10 @@
     { 
         echo "Database connection failed."; 
     }
-		
+		// Change character set to utf8
+		mysqli_set_charset($conn,"utf8");
+
+
 	   $date_start = $_POST["date_start"];
 	   $date_end = $_POST["date_end"];
 	
