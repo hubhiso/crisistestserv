@@ -77,13 +77,14 @@
 			$sumcase2_c3 = $rowc2["cause3"];
 			$sumcase2_c4 = $rowc2["cause4"];
 			$sumcase2_c5 = $rowc2["cause5"];
+			$sumcase2_all = $rowc2["alls"];
 			$loop_c2 = $i;
 		}
 
 		$sql_c3 = "SELECT case_inputs.group_code, r_group_code.name, count(group_code) as c3 
 		FROM case_inputs, r_group_code
 		WHERE  case_inputs.group_code = r_group_code.code
-		group by group_code";
+		group by group_code  ";
 		//echo $sql_c3;
 		$result_c3 = mysqli_query($conn, $sql_c3); 
 		$i = 0;
@@ -95,6 +96,7 @@
 					$i_c3[$j] = $rowc3["group_code"];
 					$namec3[$j] = $rowc3["name"];
 					$sumc3[$j] = $rowc3["c3"];
+					$sumc3all = $sumc3all + $sumc3[$j];
 				}
 				//echo $i_c3[$j]," ",$sumc3[$j];
 			}
@@ -193,12 +195,12 @@
 						"caption": "สาเหตุการละเมิดสิทธิ",
 						"subcaption": "ปี 2562",
 						"showpercentvalues": "1",
-						"defaultcenterlabel": "2562",
+						"defaultcenterlabel": "<?php echo 'ทั้งหมด '.$sumcase2_all.' เคส'; ?>",
 						"aligncaptionwithcanvas": "0",
 						"captionpadding": "0",
 						"decimals": "1",
 						"showlegend": "1",
-						"plottooltext": "<b>$percentValue $label</b>",
+						//"plottooltext": "<b>$percentValue $label</b>",
 						"centerlabel": "$value เคส",
 						"theme": "hulk-light",
 						"palettecolors": "#E14455,#2B1615,#7F7F7F,#CFCFCF,#E87C87",
@@ -238,14 +240,14 @@
 				dataSource: {
 					"chart": {
 						"caption": "กลุ่มเปราะบางที่ถูกกีดกันหรือถูกเลือกปฎิบัติ",
-						"subcaption": "2562",
+						"subcaption": "ปี 2562",
 						"showpercentvalues": "1",
-						"defaultcenterlabel": "2562",
+						"defaultcenterlabel": "<?php echo 'ทั้งหมด '.$sumc3all.' เคส'; ?>",
 						"aligncaptionwithcanvas": "1",
 						"captionpadding": "1",
 						"showlegend": "1",
 						"decimals": "1",
-						"plottooltext": "<b>$percentValue $label</b>",
+						//"plottooltext": "<b>$percentValue $label</b>",
 						"centerlabel": "$value เคส",
 						"theme": "hulk-light",
 						"palettecolors": "#E14455,#2B1615,#7F7F7F,#F2F2F2,#E87C87",
