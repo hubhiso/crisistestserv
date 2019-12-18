@@ -679,7 +679,7 @@
 			<b>ข้อมูลที่บันทึกจะถูกเก็บเป็นความลับ และโปรดตรวจสอบเบอร์โทรศัพท์ให้ถูกต้อง เพื่อให้เจ้าหน้าที่ติดต่อกลับ</b>
 			<br><br>
 			<p class="has-text-centered">
-				<a class="button is-medium  is-outlined is-danger close">รับทราบ</a>
+				<a class="button is-medium  is-outlined is-danger close">ทราบ</a>
 			</p>
 		</div>
 		<div style="width: 1478px; font-size: 32pt; color:white; height: 602px; display: none; opacity: 0.8;" id="mask"></div>	

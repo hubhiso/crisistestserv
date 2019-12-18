@@ -290,7 +290,7 @@
 				</div>
 			</div>
 		<p class="has-text-centered">
-			<a class="button is-medium  is-outlined is-danger close">รับทราบ</a>
+			<a class="button is-medium  is-outlined is-danger close">ปิดหน้าต่าง</a>
 		</p>
 	</div>
 	<div style="width: 1478px; font-size: 32pt; color:white;  display: none; opacity: 0.8;" id="mask"></div>
