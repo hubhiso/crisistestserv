@@ -69,6 +69,7 @@ class ManagerController extends Controller
         return officer::create([
             'username' => $data['username'],
             'name' => $data['name'],
+            'nameorg' => $data['nameorg'],
             'email' => $data['email'],
             'tel' => $data['tel'],
             'password' => bcrypt($data['password']),
