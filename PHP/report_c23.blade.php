@@ -214,12 +214,11 @@
                         <th  rowspan="2">จังหวัด</th>
                         <th  rowspan="2">เขต</th>
                         <th  colspan="4">กลุ่มหลากหลายทางเพศ</th>
-                        <th  rowspan="2">กลุ่มชาติพันธุ์และชนเผ่า</th>
                         <th  rowspan="2">พนักงานบริการ</th>
                         <th  rowspan="2">ผู้ใช้สารเสพติด</th>
                         <th  rowspan="2">ประชากรข้ามชาติ</th>
                         <th  rowspan="2">ผู้ถูกคุมขัง</th>
-                        <th  rowspan="2">ประชาชนทั่วไป</th>
+                        <th  rowspan="2">กลุ่มชาติพันธุ์และชนเผ่า</th>
                         <th  rowspan="2">รวม</th>
                     </tr>
                     <tr>
@@ -245,16 +244,15 @@ $i = '0';
 while($row1 = $result1->fetch_assoc()) {
 
     $sql2 = "SELECT receiver,
-    sum(CASE WHEN problem_case = '4' and sub_problem = '1'  and sex = '1' THEN 1 ELSE 0 END) as case4_1_1,
-    sum(CASE WHEN problem_case = '4' and sub_problem = '1'  and sex = '2' THEN 1 ELSE 0 END) as case4_1_2,
-    sum(CASE WHEN problem_case = '4' and sub_problem = '1'  and sex = '3' THEN 1 ELSE 0 END) as case4_1_3,
-    sum(CASE WHEN problem_case = '4' and sub_problem = '1'  and sex = '4' THEN 1 ELSE 0 END) as case4_1_4,
-    sum(CASE WHEN problem_case = '4' and sub_problem = '2' THEN 1 ELSE 0 END) as case4_2,
-    sum(CASE WHEN problem_case = '4' and sub_problem = '3' THEN 1 ELSE 0 END) as case4_3,
-    sum(CASE WHEN problem_case = '4' and sub_problem = '4' THEN 1 ELSE 0 END) as case4_4,
-    sum(CASE WHEN problem_case = '4' and sub_problem = '5' THEN 1 ELSE 0 END) as case4_5,
-    sum(CASE WHEN problem_case = '4' and sub_problem = '6' THEN 1 ELSE 0 END) as case4_6,
-    sum(CASE WHEN problem_case = '4' and sub_problem = '7' THEN 1 ELSE 0 END) as case4_7,
+    sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '1' THEN 1 ELSE 0 END) as case4_1_1,
+    sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '2' THEN 1 ELSE 0 END) as case4_1_2,
+    sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '3' THEN 1 ELSE 0 END) as case4_1_3,
+    sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '4' THEN 1 ELSE 0 END) as case4_1_4,
+    sum(CASE WHEN problem_case = '4' and group_code = '2' THEN 1 ELSE 0 END) as case4_2,
+    sum(CASE WHEN problem_case = '4' and group_code = '3' THEN 1 ELSE 0 END) as case4_3,
+    sum(CASE WHEN problem_case = '4' and group_code = '4' THEN 1 ELSE 0 END) as case4_4,
+    sum(CASE WHEN problem_case = '4' and group_code = '5' THEN 1 ELSE 0 END) as case4_5,
+    sum(CASE WHEN problem_case = '4' and group_code = '6' THEN 1 ELSE 0 END) as case4_6,
     sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as sum
     FROM case_inputs
     where receiver='".$row1['name']."'
@@ -300,7 +298,6 @@ while($row1 = $result1->fetch_assoc()) {
                                 echo "<td>".$row2["case4_4"]."</td>";
                                 echo "<td>".$row2["case4_5"]."</td>";
                                 echo "<td>".$row2["case4_6"]."</td>";
-                                echo "<td>".$row2["case4_7"]."</td>";
                                 echo "<td>".$row2["sum"]."</td>";
             echo "</tr>";
                                     
@@ -311,7 +308,6 @@ while($row1 = $result1->fetch_assoc()) {
             echo "<td>".$row1["nameorg"]."</td>";
             echo "<td>".$row1["provname"]."</td>";
             echo "<td>".$row1["nhso"]."</td>";
-            echo "<td>0</td>";
             echo "<td>0</td>";
             echo "<td>0</td>";
             echo "<td>0</td>";
