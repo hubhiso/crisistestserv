@@ -36,6 +36,19 @@
 		}
 		// Change character set to utf8
 		mysqli_set_charset($conn,"utf8");
+
+		
+		$sql_of = "SELECT subtype_offender, count(subtype_offender) as suboff FROM add_details group by subtype_offender";
+		$result_of = mysqli_query($conn, $sql_of); 
+		$i = 0;
+		while($rowco = $result_of->fetch_assoc()) {
+			$i++;
+			
+			$no_suboff[$i] = $rowco["subtype_offender"];
+			$suboff[$i] = $rowco["suboff"];
+			$loop_suboff = $i;
+		}
+		$suboff_all = $suboff[2]+$suboff[3];
 		
 		$sql_c1 = "SELECT problem_case, r_problem_case.name,count(problem_case) as case1 
 		FROM case_inputs ,r_problem_case
@@ -67,10 +80,10 @@
 			$loop_c2 = $i;
 		}
 
-		$sql_c3 = "SELECT group_code, r_problem_case.name, count(group_code) as c3 
-		FROM case_inputs, r_problem_case
-		WHERE  case_inputs.group_code = r_problem_case.code
-		group by group_code ";
+		$sql_c3 = "SELECT case_inputs.group_code, r_group_code.name, count(group_code) as c3 
+		FROM case_inputs, r_group_code
+		WHERE  case_inputs.group_code = r_group_code.code
+		group by group_code";
 		//echo $sql_c3;
 		$result_c3 = mysqli_query($conn, $sql_c3); 
 		$i = 0;
@@ -500,12 +513,12 @@
 						<tr >
 							<td class="is-danger " rowspan="2" style="vertical-align : middle;text-align:center;"><p class='has-text-centered'>ละเมิดโดย</p></td>
 							<td><p class='has-text-centered'>บุคคล</p></td>
-							<td><p class='has-text-centered'>x%</p></td>
+							<td><p class='has-text-centered'><?php echo number_format(($suboff[2]/$suboff_all)*100 , 2, '.', '')?> %</p></td>
 						</tr>
 						<tr >
 							
 							<td><p class='has-text-centered'>องค์กร</p></td>
-							<td><p class='has-text-centered'>x%</p></td>
+							<td><p class='has-text-centered'><?php echo number_format(($suboff[3]/$suboff_all)*100 , 2, '.', '') ?> %</p></td>
 						</tr>
 					</tbody>
 					</table>

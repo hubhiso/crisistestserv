@@ -5,8 +5,6 @@
         </th>
         <th><abbr title="ID"> รหัส </abbr>
         </th>
-        <th><abbr title="Name"> ชื่อ </abbr>
-        </th>
         <th><abbr title="PR"> จังหวัด </abbr>
         </th>
         <th><abbr title="Type"> ประเภท </abbr>
@@ -33,7 +31,6 @@
     <tr>
         <th>{{date('d',strtotime(str_replace('-','/', $case->created_at)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->created_at)))]}}{{date("Y",strtotime(str_replace('-','/', $case->created_at)))+543}}</th>
         <th>{{ $case->case_id }}</th>
-        <td><a target="_blank" href='{{ route('officer.open_dt', $case->case_id) }}' title='ID'>{{ $case->name }}</a> </td>
         <td>{{$case->Provinces->PROVINCE_NAME}}</td>
         @if($case->problem_case == 1 )
             <td>บังคับตรวจเอชไอวี</td>

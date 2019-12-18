@@ -33,6 +33,8 @@
 		{ 
 			echo "Database connection failed."; 
 		}
+		// Change character set to utf8
+		mysqli_set_charset($conn,"utf8");
 
 		$sql1 = "SELECT r.code,r.name,c.status,count(c.id) as n_status FROM r_status r left join case_inputs  c 
 		on r.code = c.status
