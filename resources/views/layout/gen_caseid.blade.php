@@ -39,14 +39,20 @@
                     รหัสที่ใช้ติดตามข้อมูลของท่านคือ </br>
                     <p class="title">{{ $case_id }}</p>
                     <?php
+
+                        if($emergency == 1){
+                            $emer_tx = '❗เคสเร่งด่วน❗';
+                        }else{
+                            $emer_tx = '';
+                        }
                     
                         if ($case_id != ""){
                             //echo "text";
 
                             define("LINE_API","https://notify-api.line.me/api/notify");
 
-                        $token = "hvXNnVPmVFx8tQdrhLSjGBLa9t4lF2qbI55XNkHWvPE"; //ใส่Token ที่ copy เอาไว้
-                        $message = "มีการแจ้งร้องเรียนเข้ามาในระบบรหัส : $case_id"; //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
+                        $token = "GOmBagL47ZPiK6XiWKKQDUkoWE9QuF5zTIsTLDlqkf8"; //ใส่Token ที่ copy เอาไว้
+                        $message = " $case_id $emer_tx เกิดเหตุร้องเรียน จังหวัด $provname->PROVINCE_NAME "; //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
 
                         $queryData = array("message" => $message);
                         $queryData = http_build_query($queryData,"","&");
