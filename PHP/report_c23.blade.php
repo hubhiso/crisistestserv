@@ -102,7 +102,7 @@
                             </a>
 						</li>
 						<li class="is-active">
-							<a href="report_c2.blade.php">
+							<a href="report_c2m.blade.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
                             </a>
@@ -257,7 +257,7 @@ while($row1 = $result1->fetch_assoc()) {
     sum(CASE WHEN problem_case = '4' and sub_problem = '7' THEN 1 ELSE 0 END) as case4_7,
     sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as sum
     FROM case_inputs
-    where receiver='".$row1['nameorg']."'
+    where receiver='".$row1['name']."'
     and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
     group by receiver";
 
@@ -288,7 +288,7 @@ while($row1 = $result1->fetch_assoc()) {
             
             echo "<tr>";
             echo "<th>".$i."</th>";
-                                echo "<td>".$row2["receiver"]."</td>";
+                                echo "<td>".$row1["nameorg"]."</td>";
                                 echo "<td>".$row3["provname"]."</td>";
                                 echo "<td>".$row3["nhso"]."</td>";
                                 echo "<td>".$row2["case4_1_1"]."</td>";
