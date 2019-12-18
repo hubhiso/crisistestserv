@@ -58,7 +58,7 @@ class ManagerController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'tel' => 'required|numeric|digits:10',
+            'tel' => 'required|numeric|digits_between:9,10',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
