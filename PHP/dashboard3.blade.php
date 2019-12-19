@@ -135,6 +135,7 @@
 		$sql_c4 = "SELECT sub_problem, r_sub_problem.name,count(sub_problem) as c4 
 		FROM case_inputs ,r_sub_problem
 		WHERE r_sub_problem.code = case_inputs.sub_problem
+		and problem_case = '1'
         and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
 		group by sub_problem";
 		//echo $sql_c4;

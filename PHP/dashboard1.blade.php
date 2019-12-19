@@ -39,9 +39,13 @@
 		// Change character set to utf8
 		mysqli_set_charset($conn,"utf8");
 
-		if($date_end==''){
-			$date_end = date("m/d/Y");
-		   }
+		$pr = $_POST["pr"];
+	   $date_start = $_POST["date_start"];
+	   $date_end = $_POST["date_end"];
+	
+	   if($date_end==''){
+		$date_end = date("m/d/Y");
+	   }
 	
 		   $p_case = $_POST["pcase"];
 		   if($p_case > '0'){
