@@ -3,25 +3,28 @@
 
 <head>
 
-	<meta charset="utf-8">
+<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
 	<title>CRS</title>
-
+	<link rel="shortcut icon" href="../public/images/favicon.ico">
 	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
-
-
 	<link rel="stylesheet" href="../public/bulma/css/bulma.css">
 
-	<meta name="msapplication-config" content="http://bulma.io/favicons/browserconfig.xml?v=201701041855">
+	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap/css/bootstrap.css">
 
 	<meta name="theme-color" content="#cc99cc"/>
-	<script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
-	<script src="http://bulma.io/javascript/clipboard.min.js"></script>
-	<script src="http://bulma.io/javascript/bulma.js"></script>
-	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script>
+	
+	<script src="../public/js/jquery.min.js"></script>
+	<script src="../public/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
-	<script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
+	<link href="../public/bulma/css/bulma.css" rel="stylesheet">
+    <link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
+
+    <script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
 	<script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
 
 	<?php
@@ -36,10 +39,21 @@
 		// Change character set to utf8
 		mysqli_set_charset($conn,"utf8");
 
-		$sql1 = "SELECT r.code,r.name,c.status,count(c.id) as n_status FROM r_status r left join case_inputs  c 
+		if($date_end==''){
+			$date_end = date("m/d/Y");
+		   }
+	
+		   $p_case = $_POST["pcase"];
+		   if($p_case > '0'){
+			$sub_q = ' and problem_case = '.$p_case.' ';
+		   }
+
+		$sql1 = "SELECT r.code,r.name,c.status,count(c.id) as n_status 
+		FROM r_status r left join case_inputs  c 
 		on r.code = c.status
+		where created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
 		group by r.code";
-		//echo $sql2;
+		//echo $sql1;
 		$result1 = mysqli_query($conn, $sql1); 
 		$i = 0;
 		while($row1 = $result1->fetch_assoc()) {
@@ -304,7 +318,7 @@
 					<div class="field is-grouped">
 						<p class="control is-expanded  ">
 							<span class="select">
-							<select id ="problem_case" name="problem_case">
+							<select id ="problem_case" name="problem_case" disabled>
 								<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
      							<option value="1"  >บังคับตรวจเอชไอวี</option>
      							<option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
@@ -358,11 +372,56 @@
 			</div>
 			
 			
-
-
-
-
-				
+			<form name="form_menu" method="post" action="dashboard1.blade.php">
+					<div class="columns is-multiline is-mobile">
+						<div class="column ">
+							<div class="level-left">
+                                
+                                <div class="level-item">
+									<p class="subtitle is-6">
+										<strong> เลือกวันที่ </strong>
+									</p>
+                                </div>
+                                <div class="level-item">
+									<div class="field has-addons">
+										<p class="control has-icons-left" >
+										<div class="input-group input-daterange" style="width: 300px">
+											<input type="text" class="form-control" id="date_start" name="date_start" value='<?php echo $date_start; ?>'>
+											<div class="input-group-addon">ถึง</div>
+											<input type="text" class="form-control" id="date_end" name="date_end" value='<?php echo $date_end; ?>'>
+										</div>
+										</p>
+									</div>
+								</div>
+								<div class="level-item">
+									<input type="submit" class="button is-primary" id="submit" name = "submit" value="ตกลง">
+								</div>
+								<div class="level-item">
+									<div class="field has-addons">
+										<p>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="columns is-multiline is-mobile">
+						<div class="column ">
+							<div class="level-left">
+								<div class="level-item">
+									<p class="subtitle is-6">
+										<strong> ข้อมูล ณ วันที่ (ด/ว/ป) </strong>
+									</p>
+									<p class="subtitle is-6">
+										<?php echo "  : ",date("m/d/Y")," เวลา : ",date("h:i:sa"); ?>
+									</p>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</form>
+				<br>
 
 				<div class="field has-addons">
 					<p class="control">
@@ -396,6 +455,20 @@
     </div>
   </div>
 </footer>
+<script src="../public/bulma/clipboard-1.7.1.min.js"></script>
+	<script src="../public/bulma/main.js"></script>
+
+	<script>
+	
+        $('.input-daterange input').each(function() {
+			
+			$(this).datepicker('');
+            //$('#date_end').datepicker("setDate", new Date());
+        }).on('changeDate', function(e) {
+            //load_case()
+        });
+
+	</script>
 </body>
 
 </html>
