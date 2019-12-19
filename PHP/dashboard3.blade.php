@@ -137,7 +137,7 @@
 		WHERE r_sub_problem.code = case_inputs.sub_problem
         and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
 		group by sub_problem";
-		echo $sql_c4;
+		//echo $sql_c4;
 		$result_c4 = mysqli_query($conn, $sql_c4); 
 		$i = 0;
 		while($rowc4 = $result_c4->fetch_assoc()) {
