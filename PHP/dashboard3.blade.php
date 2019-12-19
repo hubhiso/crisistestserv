@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="route-index">
 
@@ -6,24 +7,31 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Bulma is an open source CSS framework based on Flexbox and built with Sass. It's 100% responsive, fully modular, and available for free.">
+	<meta name="description" content="">
 	<title>CRS</title>
-
+	<link rel="shortcut icon" href="../public/images/favicon.ico">
 	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
-
-
 	<link rel="stylesheet" href="../public/bulma/css/bulma.css">
 
-	<meta name="msapplication-config" content="http://bulma.io/favicons/browserconfig.xml?v=201701041855">
+	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap/css/bootstrap.css">
 
 	<meta name="theme-color" content="#cc99cc"/>
-	<script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
-	<script src="http://bulma.io/javascript/clipboard.min.js"></script>
-	<script src="http://bulma.io/javascript/bulma.js"></script>
-	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script>
+	
+	<script src="../public/js/jquery.min.js"></script>
+	<script src="../public/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
-	<script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
+	<link href="../public/bulma/css/bulma.css" rel="stylesheet">
+    <link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
+
+    <script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
 	<script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
+    
+
+	<style>
+		.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
+	</style>
 
 	<?php
 		
@@ -31,14 +39,30 @@
 
 		$conn = mysqli_connect($hostname, $username, $password, $database);
 		if (mysqli_connect_errno()) 
-		{ 
-			echo "Database connection failed."; 
-		}
+    { 
+        echo "Database connection failed."; 
+    }
 		// Change character set to utf8
 		mysqli_set_charset($conn,"utf8");
 
+       $pr = $_POST["pr"];
+	   $date_start = $_POST["date_start"];
+	   $date_end = $_POST["date_end"];
+	
+	   if($date_end==''){
+		$date_end = date("m/d/Y");
+	   }
+
+	   $p_case = $_POST["pcase"];
+	   if($p_case > '0'){
+		$sub_q = ' and problem_case = '.$p_case.' ';
+	   }
 		
-		$sql_of = "SELECT subtype_offender, count(subtype_offender) as suboff FROM add_details group by subtype_offender";
+		$sql_of = "SELECT subtype_offender, count(subtype_offender) as suboff 
+        FROM add_details 
+        where created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
+        group by subtype_offender";
+        
 		$result_of = mysqli_query($conn, $sql_of); 
 		$i = 0;
 		while($rowco = $result_of->fetch_assoc()) {
@@ -53,6 +77,7 @@
 		$sql_c1 = "SELECT problem_case, r_problem_case.name,count(problem_case) as case1 
 		FROM case_inputs ,r_problem_case
 		WHERE r_problem_case.code = case_inputs.problem_case
+        and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
 		group by problem_case";
 		$result_c1 = mysqli_query($conn, $sql_c1); 
 		$i = 0;
@@ -66,7 +91,9 @@
 		}
 
 		$sql_c2 = "SELECT sum(cause_type1) as cause1, sum(cause_type2) as cause2, sum(cause_type3) as cause3, sum(cause_type4) as cause4, sum(etc) as cause5, sum(cause_type1 or cause_type2 or cause_type3 or cause_type4 or etc) as alls
-		FROM add_details ";
+		FROM add_details
+        where created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
+         ";
 		$result_c2 = mysqli_query($conn, $sql_c2); 
 		$i = 0;
 		while($rowc2 = $result_c2->fetch_assoc()) {
@@ -84,6 +111,7 @@
 		$sql_c3 = "SELECT case_inputs.group_code, r_group_code.name, count(group_code) as c3 
 		FROM case_inputs, r_group_code
 		WHERE  case_inputs.group_code = r_group_code.code
+        and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
 		group by group_code  ";
 		//echo $sql_c3;
 		$result_c3 = mysqli_query($conn, $sql_c3); 
@@ -104,11 +132,12 @@
 			$loop_c3 = $i;
 		}
 
-		$sql_c4 = "SELECT sub_problem, r_sub_problem.name,count(problem_case) as c4 
+		$sql_c4 = "SELECT sub_problem, r_sub_problem.name,count(sub_problem) as c4 
 		FROM case_inputs ,r_sub_problem
 		WHERE r_sub_problem.code = case_inputs.sub_problem
+        and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
 		group by sub_problem";
-		//echo $sql_c4;
+		echo $sql_c4;
 		$result_c4 = mysqli_query($conn, $sql_c4); 
 		$i = 0;
 		while($rowc4 = $result_c4->fetch_assoc()) {
@@ -126,8 +155,10 @@
 
 			$loop_c4 = $i;
 		}
-	?>
+    ?>
 
+  
+    
     <script type="text/javascript">
 		/*  Chart1 */
 		FusionCharts.ready( function () {
@@ -327,9 +358,12 @@
 				.render();
         } );
         
-	</script>
-	<?php
-							$sql1 = "SELECT status,count(id) as n_status FROM case_inputs group by status";
+    </script>
+    <?php
+							$sql1 = "SELECT status,count(id) as n_status 
+                            FROM case_inputs 
+                            where created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
+                            group by status";
 							//echo $sql2;
 							$result1 = mysqli_query($conn, $sql1); 
 							$i = 0;
@@ -337,20 +371,24 @@
 								$i++;
 								if($row1["status"] == $i){
 									$status[$i] = $row1["status"];
-									$n_status[$i] = $row1["n_status"];
+                                    $n_status[$i] = $row1["n_status"];
+                                    $sumall = $sumall + $n_status[$i];
 								}
 							}
-						?>
+	?>
+
 
 </head>
 
 <body class="layout-default">
-	<br>
 
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 
+
 			<div class="container">
+
+			    <br>
 
 				<nav class="breadcrumb" aria-label="breadcrumbs">
 					<ul>
@@ -430,10 +468,89 @@
                         </li>
                     </ul>
                 </div>
-			
-			<br>
 
-			<div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-2-widescreen is-2-fullhd">
+				<form name="form_menu" method="post" action="d3.blade.php">
+					<div class="columns is-multiline is-mobile">
+						<div class="column ">
+							<div class="level-left">
+								<div class="level-item">
+									<p class="subtitle is-6">
+										<strong> จังหวัด </strong>
+									</p>
+                                </div>
+								
+								<div class="level-item">
+									<div class="select">
+										<select id="pr" name="pr" disabled>
+                                            <?php
+                                                if ($pr == '0') { $pr_v = "selected";}
+                                                echo "<option value='0' $pr_v> ทุกจังหวัด </option>";
+                                                $pr_v = '';
+                                                $sql_p = "SELECT *
+                                                FROM prov_geo";
+                                                $result_p = mysqli_query($conn, $sql_p); 
+                                                $i = 0;
+                                                while($rowp = $result_p->fetch_assoc()) {
+                                                    $i++;
+                                                    $pcode[$i] = $rowp["code"];
+                                                    $pname[$i] = $rowp["name"];
+                                                    $loop_p = $i;
+                                                    if ($pr == $pcode[$i]) { $pr_v = "selected";} 
+                                                    echo "<option value='$pcode[$i]' $pr_v> $pname[$i] </option>";
+                                                    $pr_v = '';
+                                                }
+                                            ?>
+										</select>
+									</div>
+                                </div>
+                                
+                                <div class="level-item">
+									<p class="subtitle is-6">
+										<strong> เลือกวันที่ </strong>
+									</p>
+                                </div>
+                                <div class="level-item">
+									<div class="field has-addons">
+										<p class="control has-icons-left" >
+										<div class="input-group input-daterange" style="width: 300px">
+											<input type="text" class="form-control" id="date_start" name="date_start" value='<?php echo $date_start; ?>'>
+											<div class="input-group-addon">ถึง</div>
+											<input type="text" class="form-control" id="date_end" name="date_end" value='<?php echo $date_end; ?>'>
+										</div>
+										</p>
+									</div>
+								</div>
+								<div class="level-item">
+									<input type="submit" class="button is-primary" id="submit" name = "submit" value="ตกลง">
+								</div>
+								<div class="level-item">
+									<div class="field has-addons">
+										<p>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="columns is-multiline is-mobile">
+						<div class="column ">
+							<div class="level-left">
+								<div class="level-item">
+									<p class="subtitle is-6">
+										<strong> ข้อมูล ณ วันที่ (ด/ว/ป) </strong>
+									</p>
+									<p class="subtitle is-6">
+										<?php echo "  : ",date("m/d/Y")," เวลา : ",date("h:i:sa"); ?>
+									</p>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+                </form>
+                <br>
+                
+                <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-2-widescreen is-2-fullhd">
 				<div class="column">
 					<table class="table is-fullwidth  is-bordered">
 						<tbody>
@@ -505,10 +622,21 @@
 							</tr>
 						</tbody>
 					</table>
+                </div>
+                <div class="column">
+				<table class="table is-fullwidth  is-bordered">
+						<tbody>
+							<tr class="is-selected ">
+								<td  class="is-danger" ><p class='has-text-centered'>รวม</p></td>
+							</tr>
+							<tr class=" ">
+								<td><p class='has-text-centered'><?php echo $sumall;if($sumall ==''){echo '0';} ?></p></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
-
-			<div class="columns ">
+                <div class="columns ">
 				<div class="column  is-offset-8">
 					<table class="table is-fullwidth  is-bordered">
 					<tbody>
@@ -526,9 +654,10 @@
 					</table>
 				</div>
 			</div>
-			<br>
-
-            <div class="columns is-gapless">
+                
+            </div>
+                
+                <div class="columns is-gapless">
                 <div class="column">
                     <div id="chart-container-1">FusionCharts XT will load here!</div>
                 </div>
@@ -544,17 +673,28 @@
                     <div id="chart-container-b1">FusionCharts XT will load here!</div>
                 </div>
             </div>
- 
+        <br>
+        
+    </section>
 
-				
-		</div>
+</body>
 
-		<br>
+    <script src="../public/bulma/clipboard-1.7.1.min.js"></script>
+	<script src="../public/bulma/main.js"></script>
 
-		</div>
-	</section>
+	<script>
+	
+        $('.input-daterange input').each(function() {
+			
+			$(this).datepicker('');
+            //$('#date_end').datepicker("setDate", new Date());
+        }).on('changeDate', function(e) {
+            //load_case()
+        });
 
-	<footer class="footer "style="background-color: #EEE;">
+	</script>
+
+<footer class="footer "style="background-color: #EEE;">
   <div class="container  ">
     <div class="content has-text-centered  ">
       <p>Crisis Response System (CRS)
@@ -563,6 +703,5 @@
     </div>
   </div>
 </footer>
-</body>
 
 </html>
