@@ -154,6 +154,16 @@
                         </a>
                     </article>
                 </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box" >
+                        <a href="http://www.hiso.or.th">
+                            <figure class="image">
+                                <img  src="images/logo/logo12-x100.png">
+                            </figure>
+                            <p class="is-size-6">สำนักงานอัยการสูงสุด</p>
+                        </a>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
