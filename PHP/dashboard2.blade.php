@@ -2,27 +2,27 @@
 <html lang="en" class="route-index">
 
 <head>
-
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Bulma is an open source CSS framework based on Flexbox and built with Sass. It's 100% responsive, fully modular, and available for free.">
+	<meta name="description" content="">
 	<title>CRS</title>
-
+	<link rel="shortcut icon" href="../public/images/favicon.ico">
 	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
-
-
 	<link rel="stylesheet" href="../public/bulma/css/bulma.css">
 
-	<meta name="msapplication-config" content="http://bulma.io/favicons/browserconfig.xml?v=201701041855">
+	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap/css/bootstrap.css">
 
 	<meta name="theme-color" content="#cc99cc"/>
-	<script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
-	<script src="http://bulma.io/javascript/clipboard.min.js"></script>
-	<script src="http://bulma.io/javascript/bulma.js"></script>
-	<script type="text/javascript" src="http://bulma.io/javascript/index.js"></script>
+	
+	<script src="../public/js/jquery.min.js"></script>
+	<script src="../public/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
-	<script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
+	<link href="../public/bulma/css/bulma.css" rel="stylesheet">
+    <link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
+
+    <script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
 	<script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
 
 	<?php
@@ -34,6 +34,21 @@
 		{ 
 			echo "Database connection failed."; 
 		}
+		// Change character set to utf8
+		mysqli_set_charset($conn,"utf8");
+
+		$pr = $_POST["pr"];
+	   $date_start = $_POST["date_start"];
+	   $date_end = $_POST["date_end"];
+	
+	   if($date_end==''){
+		$date_end = date("m/d/Y");
+	   }
+	
+		   $p_case = $_POST["pcase"];
+		   if($p_case > '0'){
+			$sub_q = ' and problem_case = '.$p_case.' ';
+		   }
 
 		$sql1 = "SELECT 
 		sum(CASE WHEN problem_case = '1' THEN 1 ELSE 0 END) as case1,
@@ -324,7 +339,7 @@
 					<div class="field is-grouped">
 						<p class="control is-expanded  ">
 							<span class="select">
-							<select id ="problem_case" name="problem_case">
+							<select id ="problem_case" name="problem_case" disabled>
 								<option value="0" >โปรดเลือกช่วงเวลา</option>
      							<option value="1" >มกราคม</option>
      							<option value="2" >กุมภาพันธ์</option>
