@@ -470,7 +470,7 @@
                     </ul>
                 </div>
 
-				<form name="form_menu" method="post" action="d3.blade.php">
+				<form name="form_menu" method="post" action="dashboard3.blade.php">
 					<div class="columns is-multiline is-mobile">
 						<div class="column ">
 							<div class="level-left">
