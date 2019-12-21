@@ -26,7 +26,7 @@
 
     <script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
 	<script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
-
+	
 	<?php
 		
 		require("phpsql_dbinfo.php");
@@ -40,22 +40,27 @@
 		mysqli_set_charset($conn,"utf8");
 
 		$pr = $_POST["pr"];
-	   $date_start = $_POST["date_start"];
-	   $date_end = $_POST["date_end"];
+	    $date_start = $_POST["date_start"];
+	    $date_end = $_POST["date_end"];
+
+	    $se1 = $_POST["problem_case"];
+	    $se2 = $_POST["sub_problem"];
+	    $se3 = $_POST["group_code"];
+	   //echo $se1,' ',$se2," ",$se3," ";
 	
 	   if($date_end==''){
 		$date_end = date("m/d/Y");
 	   }
 	
-		   $p_case = $_POST["pcase"];
-		   if($p_case > '0'){
-			$sub_q = ' and problem_case = '.$p_case.' ';
-		   }
+	   if($pr != 0){
+			$pr_q = " and c.prov_id= '".$pr."' ";
+		}
 
 		$sql1 = "SELECT r.code,r.name,c.status,count(c.id) as n_status 
 		FROM r_status r left join case_inputs  c 
 		on r.code = c.status
 		where created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
+		$pr_q
 		group by r.code";
 		//echo $sql1;
 		$result1 = mysqli_query($conn, $sql1); 
@@ -222,7 +227,6 @@
 		} );
 	</script>
 
-
 </head>
 
 <body class="layout-default">
@@ -245,8 +249,6 @@
 						</li>
 					</ul>
 				</nav>
-
-
 
 				<div class="tabs is-centered  is-toggle is-toggle-rounded">
 					<ul>
@@ -312,74 +314,98 @@
                         </a>
                         </li>
                     </ul>
-                </div>
-
-			<div class="field is-horizontal">
-				<div class="field-label is-normal">
-					<label class="label">ปัญหา</label>
 				</div>
-				<div class="field-body">
-					<div class="field is-grouped">
-						<p class="control is-expanded  ">
-							<span class="select">
-							<select id ="problem_case" name="problem_case" disabled>
-								<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
-     							<option value="1"  >บังคับตรวจเอชไอวี</option>
-     							<option value="2"  >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
-    				 			<option value="3" >ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
-     							<option value="4" >ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
-								<option value="5" >อื่นๆ ที่เกี่ยวข้องกับ HIV</option>
-							</select>
+				
+				<form name="form_menu" method="post" action="dashboard1.blade.php">
 
-        					</span>
-							
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label">ปัญหาที่พบ</label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control is-expanded  ">
+									<span class="select">
+									<select id ="problem_case" name="problem_case">
+										<option value="0"  >โปรดเลือกประเภทปัญหาของท่าน</option>
+										<option value="1"  >บังคับตรวจเอชไอวี</option>
+										<option value="2" <?php if($se1 == '2' ){echo "selected";} ?> >เปิดเผยสถานะการติดเชื้อเอชไอวี</option>
+										<option value="3"  >ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
+										<option value="4"  >ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
+										<option value="5"  >อื่นๆ ที่เกี่ยวข้องกับ HIV</option>
+									</select>
 
-							</p>
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> ประเภทกลุ่ม </label>
+						</div>
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control is-expanded  ">
+									<span class="select">
+									<select id ="sub_problem" name="sub_problem" disabled="true">
+									</select>
+
+								</p>
+							</div>
 
 						</div>
 					</div>
-				</div>
-
-
-				<div class="field is-horizontal">
-					<div class="field-label is-normal">
-						<label class="label"> ประเภทกลุ่ม </label>
-					</div>
-					<div class="field-body">
-						<div class="field is-grouped">
-							<p class="control is-expanded  ">
-								<span class="select">
-							<select id ="sub_problem" name="sub_problem" disabled="true">
-                			</select>
-							</span>
-							
-
-							</p>
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
+							<label class="label"> ประเภทกลุ่มย่อย </label>
 						</div>
-
+						<div class="field-body">
+							<div class="field is-grouped">
+								<p class="control is-expanded  ">
+									<span class="select">
+									<span class="select">
+									<select id ="group_code" name="group_code" disabled="true">
+									</select>
+								</p>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="field is-horizontal">
-					<div class="field-label is-normal">
-						<label class="label">ประเภทกลุ่มย่อย</label>
-					</div>
-					<div class="field-body">
-						<div class="field is-grouped">
-							<p class="control is-expanded  ">
-								<span class="select">
-							<span class="select">
-							<select id ="group_code" name="group_code" disabled="true">
-                			</select>
-						</p>
-					</div>
-				</div>
-			</div>
 			
-			
-			<form name="form_menu" method="post" action="dashboard1.blade.php">
 					<div class="columns is-multiline is-mobile">
 						<div class="column ">
 							<div class="level-left">
+								<div class="level-item">
+									<p class="subtitle is-6">
+										<strong> จังหวัด </strong>
+									</p>
+                                </div>
+								
+								<div class="level-item">
+									<div class="select">
+										<select id="pr" name="pr" >
+                                            <?php
+                                                if ($pr == '0') { $pr_v = "selected";}
+                                                echo "<option value='0' $pr_v> ทุกจังหวัด </option>";
+                                                $pr_v = '';
+                                                $sql_p = "SELECT *
+                                                FROM prov_geo";
+                                                $result_p = mysqli_query($conn, $sql_p); 
+                                                $i = 0;
+                                                while($rowp = $result_p->fetch_assoc()) {
+                                                    $i++;
+                                                    $pcode[$i] = $rowp["code"];
+                                                    $pname[$i] = $rowp["name"];
+                                                    $loop_p = $i;
+                                                    if ($pr == $pcode[$i]) { $pr_v = "selected";} 
+                                                    echo "<option value='$pcode[$i]' $pr_v> $pname[$i] </option>";
+                                                    $pr_v = '';
+                                                }
+                                            ?>
+										</select>
+									</div>
+                                </div>
                                 
                                 <div class="level-item">
 									<p class="subtitle is-6">
@@ -409,8 +435,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="columns is-multiline is-mobile">
-						<div class="column ">
+
+					<div class="field is-horizontal">
+						<div class="field-label is-normal">
 							<div class="level-left">
 								<div class="level-item">
 									<p class="subtitle is-6">
@@ -424,6 +451,7 @@
 							</div>
 						</div>
 					</div>
+
 				</form>
 				<br>
 
@@ -451,15 +479,15 @@
 	</section>
 
 	<footer class="footer "style="background-color: #EEE;">
-  <div class="container  ">
-    <div class="content has-text-centered  ">
-      <p>Crisis Response System (CRS)
-	  </p>
-	  <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p>
-    </div>
-  </div>
+	<div class="container  ">
+		<div class="content has-text-centered  ">
+		<p>Crisis Response System (CRS)
+		</p>
+		<p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p>
+		</div>
+	</div>
 </footer>
-<script src="../public/bulma/clipboard-1.7.1.min.js"></script>
+	<script src="../public/bulma/clipboard-1.7.1.min.js"></script>
 	<script src="../public/bulma/main.js"></script>
 
 	<script>
@@ -472,7 +500,65 @@
             //load_case()
         });
 
-	</script>
+            $('#problem_case').on('change',function (e) {
+    var prob_id = e.target.value;
+    //console.log(prob_id);
+    $('#group_code').empty();
+    $('#group_code').attr('disabled', 'disabled');
+    if((prob_id==1)||(prob_id==5)){
+        $('#sub_problem').empty();
+        $('#sub_problem').removeAttr('disabled');
+        $('#sub_problem').append('<option value="1" <?php if($se2 == '1' ){echo "selected";} ?> style="width:250px">ผู้ติดเชื้อเอชไอวี</option>');
+        $('#sub_problem').append('<option value="2" <?php if($se2 == '2' ){echo "selected";} ?> style="width:250px">กลุ่มเปราะบาง</option>');
+        $('#sub_problem').append('<option value="4" style="width:250px">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
+        $('#sub_problem').append('<option value="3" style="width:250px">ประชาชนทั่วไป</option>');
+    }else if(prob_id==2){
+        $('#sub_problem').empty();
+        $('#sub_problem').removeAttr('disabled');
+        $('#sub_problem').append('<option value="1" <?php if($se2 == '1' ){echo "selected";} ?>>ผู้ติดเชื้อเอชไอวี</option>');
+    }else if(prob_id==3){
+        $('#sub_problem').empty();
+        $('#sub_problem').removeAttr('disabled');
+        $('#sub_problem').append('<option value="1" >ผู้ติดเชื้อเอชไอวี</option>');
+        $('#sub_problem').append('<option value="4" >ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
+    }else if(prob_id==4){
+        $('#sub_problem').empty();
+        $('#sub_problem').removeAttr('disabled');
+        $('#sub_problem').append('<option value="2" style="width:250px">กลุ่มเปราะบาง</option>');
+        $('#group_code').empty();
+        $('#group_code').removeAttr('disabled');
+        $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
+        $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ </option>');
+        $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
+        $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
+        $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
+        $('#group_code').append('<option value="7" style="width:250px">กลุ่มชาติพันธุ์และชนเผ่า</option>');
+
+
+    }else{
+        $('#sub_problem').empty();
+        $('#sub_problem').attr('disabled', 'disabled');
+    }
+});
+$('#sub_problem').on('change',function (e) {
+    var sub_id = e.target.value;
+    if(sub_id==2){
+        $('#group_code').empty();
+        $('#group_code').removeAttr('disabled');
+        $('#group_code').append('<option value="1" <?php if($se3 == '1' ){echo "selected";} ?> style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
+        $('#group_code').append('<option value="2" <?php if($se3 == '2' ){echo "selected";} ?>style="width:250px">พนักงานบริการ</option>');
+        $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
+        $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
+        $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
+        $('#group_code').append('<option value="7" style="width:250px">กลุ่มชาติพันธุ์และชนเผ่า</option>');
+
+
+    }else{
+        $('#group_code').empty();
+        $('#group_code').attr('disabled', 'disabled');
+    }
+});
+        </script>
 </body>
 
 </html>

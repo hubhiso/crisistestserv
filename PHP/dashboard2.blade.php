@@ -47,8 +47,11 @@
 	
 		   $p_case = $_POST["pcase"];
 		   if($p_case > '0'){
-			$sub_q = ' and problem_case = '.$p_case.' ';
+			$sub_q = " and  status = '".$p_case."' ";
 		   }
+		   if($pr != 0){
+			$pr_q = " and prov_id= '".$pr."' ";
+		}
 
 		$sql1 = "SELECT 
 		sum(CASE WHEN problem_case = '1' THEN 1 ELSE 0 END) as case1,
@@ -57,8 +60,11 @@
 		sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as case4,
 		sum(CASE WHEN problem_case = '5' THEN 1 ELSE 0 END) as case5,
 		count(problem_case) as sum
-		FROM case_inputs";
-		//echo $sql2;
+		FROM case_inputs where 
+		created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
+		$sub_q $pr_q
+		";
+		echo $sql2;
 		$result1 = mysqli_query($conn, $sql1); 
 		$i = 0;
 		while($row1 = $result1->fetch_assoc()) {
@@ -331,78 +337,112 @@
                     </ul>
                 </div>
 
-<div class="field is-horizontal">
-				<div class="field-label is-normal">
-					<label class="label">ช่วงเวลา</label>
-				</div>
-				<div class="field-body">
-					<div class="field is-grouped">
-						<p class="control is-expanded  ">
-							<span class="select">
-							<select id ="problem_case" name="problem_case" disabled>
-								<option value="0" >โปรดเลือกช่วงเวลา</option>
-     							<option value="1" >มกราคม</option>
-     							<option value="2" >กุมภาพันธ์</option>
-    				 			<option value="3" >มีนาคม</option>
-     							<option value="4" >เมษายน</option>
-								<option value="4" >พฤษภาคม</option>
-								<option value="4" >มิถุนายน</option>
-								<option value="4" >กรกฎาคม</option>
-								<option value="4" >สิงหาคม</option>
-								<option value="4" >กันยายน</option>
-								<option value="4" >ตุลาคม</option>
-								<option value="4" >พฤศจิกายน</option>
-								<option value="4" >ธันวาคม</option>
-								<option value="4" >ไตรมาส 1</option>
-								<option value="4" >ไตรมาส 2</option>
-								<option value="4" >ไตรมาส 3</option>
-								<option value="5" >ไตรมาส 4</option>
-							</select>
-
-        					</span>
-							
-
-							</p>
-
+				<form name="form_menu" method="post" action="dashboard2.blade.php">
+					<div class="columns is-multiline is-mobile">
+						<div class="column ">
+							<div class="level-left">
+								<div class="level-item">
+									<p class="subtitle is-6">
+										<strong> สถานะ </strong>
+									</p>
+								</div>
+								
+								<div class="level-item">
+									<div class="select">
+										<select id="p_case" name="pcase">
+											<option value="0" <?php if ($p_case == "0") { echo "selected";} ?>> ทั้งหมด </option>
+											<option value="1" <?php if ($p_case == "1") { echo "selected";} ?>> ยังไม่ได้รับเรื่อง </option>
+											<option value="2" <?php if ($p_case == "2") { echo "selected";} ?>> รับเรื่องแล้ว </option>
+											<option value="3" <?php if ($p_case == "3") { echo "selected";} ?>> บันทึกข้อมูลเพิ่มเติมแล้ว </option>
+											<option value="4" <?php if ($p_case == "4") { echo "selected";} ?>> อยู่ระหว่างดำเนินการ</option>
+											<option value="5" <?php if ($p_case == "5") { echo "selected";} ?>> ดำเนินการเสร็จสิ้น </option>
+											<option value="5" <?php if ($p_case == "5") { echo "selected";} ?>> ดำเนินการเสร็จสิ้นแล้วส่งต่อ </option>
+										</select>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-
-
-				<div class="field is-horizontal">
-					<div class="field-label is-normal">
-						<label class="label"> สถานะ </label>
-					</div>
-					<div class="field-body">
-						<div class="field is-grouped">
-							<p class="control is-expanded  ">
-								<span class="select">
-							<select id ="sub_problem" name="sub_problem" disabled="true">
-                			</select>
-							</span>
-							
-
-							</p>
+					<div class="columns is-multiline is-mobile">
+						<div class="column ">
+							<div class="level-left">
+							<div class="level-item">
+									<p class="subtitle is-6">
+										<strong> จังหวัด </strong>
+									</p>
+                                </div>
+								
+								<div class="level-item">
+									<div class="select">
+										<select id="pr" name="pr" >
+                                            <?php
+                                                if ($pr == '0') { $pr_v = "selected";}
+                                                echo "<option value='0' $pr_v> ทุกจังหวัด </option>";
+                                                $pr_v = '';
+                                                $sql_p = "SELECT *
+                                                FROM prov_geo";
+                                                $result_p = mysqli_query($conn, $sql_p); 
+                                                $i = 0;
+                                                while($rowp = $result_p->fetch_assoc()) {
+                                                    $i++;
+                                                    $pcode[$i] = $rowp["code"];
+                                                    $pname[$i] = $rowp["name"];
+                                                    $loop_p = $i;
+                                                    if ($pr == $pcode[$i]) { $pr_v = "selected";} 
+                                                    echo "<option value='$pcode[$i]' $pr_v> $pname[$i] </option>";
+                                                    $pr_v = '';
+                                                }
+                                            ?>
+										</select>
+									</div>
+                                </div>
+								<div class="level-item">
+									<p class="subtitle is-6">
+										<strong> เลือกวันที่ </strong>
+									</p>
+								</div>
+								<div class="level-item">
+									<div class="field has-addons">
+										<p class="control has-icons-left" >
+										<div class="input-group input-daterange" style="width: 300px">
+											<input type="text" class="form-control" id="date_start" name="date_start" value='<?php echo $date_start; ?>'>
+											<div class="input-group-addon">ถึง</div>
+											<input type="text" class="form-control" id="date_end" name="date_end" value='<?php echo $date_end; ?>'>
+										</div>
+										</p>
+									</div>
+								</div>
+								<div class="level-item">
+									<input type="submit" class="button is-primary" id="submit" name = "submit" value="ตกลง">
+								</div>
+								<div class="level-item">
+									<div class="field has-addons">
+										<p>
+										</p>
+									</div>
+								</div>
+								
+							</div>
 						</div>
-
 					</div>
-				</div>
-				<div class="field is-horizontal">
-					<div class="field-label is-normal">
-						<label class="label"> จังหวัด </label>
+					<div class="columns is-multiline is-mobile">
+						<div class="column ">
+							<div class="level-left">
+								<div class="level-item">
+									<p class="subtitle is-6">
+										<strong> ข้อมูล ณ วันที่ (ด/ว/ป) </strong>
+									</p>
+									<p class="subtitle is-6">
+										<?php echo "  : ",date("m/d/Y")," เวลา : ",date("h:i:sa"); ?>
+									</p>
+								</div>
+								
+							</div>
+						</div>
 					</div>
-					<div class="field-body">
-						<div class="field is-grouped">
-							<p class="control is-expanded  ">
-								<span class="select">
-							<span class="select">
-							<select id ="group_code" name="group_code" disabled="true">
-                			</select>
-						</p>
-					</div>
-				</div>
-			</div>
-
+				</form>
+				<br>
+				<br>
 				<div class="field has-addons">
 					<p class="control">
 						<a id="update-chart12" class="button is-danger is-outlined">
@@ -425,6 +465,20 @@
 		</div>
 
 	</section>
+	<script src="../public/bulma/clipboard-1.7.1.min.js"></script>
+	<script src="../public/bulma/main.js"></script>
+
+	<script>
+	
+        $('.input-daterange input').each(function() {
+			
+			$(this).datepicker('');
+            //$('#date_end').datepicker("setDate", new Date());
+        }).on('changeDate', function(e) {
+            //load_case()
+        });
+
+	</script>
 	<footer class="footer "style="background-color: #EEE;">
   <div class="container  ">
     <div class="content has-text-centered  ">

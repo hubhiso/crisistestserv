@@ -31,6 +31,24 @@
 
 	<style>
 		.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
+		.red {
+			height: 70px; 
+			vertical-align: middle; 
+			background-color: #E14455;
+			border: 1px solid #E14455;
+		}
+		.red2 {
+			vertical-align: middle; 
+			background-color: #713132;
+			border: 1px solid #713132;
+			color: white;
+		}
+		.red3 {
+			vertical-align: middle; 
+			background-color: #E14455;
+			color: white;
+		}
+		
 	</style>
 
 	<?php
@@ -45,7 +63,12 @@
 		// Change character set to utf8
 		mysqli_set_charset($conn,"utf8");
 
-       $pr = $_POST["pr"];
+	   $pr = $_POST["pr"];
+	   
+	   if($pr != 0){
+		   $pr_q = " and c.prov_id= '".$pr."' ";
+	   }
+
 	   $date_start = $_POST["date_start"];
 	   $date_end = $_POST["date_end"];
 	
@@ -58,10 +81,12 @@
 		$sub_q = ' and problem_case = '.$p_case.' ';
 	   }
 		
-		$sql_of = "SELECT subtype_offender, count(subtype_offender) as suboff 
-        FROM add_details 
-        where created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
-        group by subtype_offender";
+		$sql_of = "SELECT a.subtype_offender, count(a.subtype_offender) as suboff 
+        FROM add_details a , case_inputs c
+        where c.case_id = a.case_id
+        and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
+        $pr_q
+        group by a.subtype_offender";
         
 		$result_of = mysqli_query($conn, $sql_of); 
 		$i = 0;
@@ -75,10 +100,12 @@
 		$suboff_all = $suboff[2]+$suboff[3];
 		
 		$sql_c1 = "SELECT problem_case, r_problem_case.name,count(problem_case) as case1 
-		FROM case_inputs ,r_problem_case
-		WHERE r_problem_case.code = case_inputs.problem_case
-        and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
+		FROM case_inputs c ,r_problem_case
+		WHERE r_problem_case.code = c.problem_case
+		$pr_q
+        and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
 		group by problem_case";
+		
 		$result_c1 = mysqli_query($conn, $sql_c1); 
 		$i = 0;
 		while($rowc1 = $result_c1->fetch_assoc()) {
@@ -90,10 +117,16 @@
 			$loop_c1 = $i;
 		}
 
-		$sql_c2 = "SELECT sum(cause_type1) as cause1, sum(cause_type2) as cause2, sum(cause_type3) as cause3, sum(cause_type4) as cause4, sum(etc) as cause5, sum(cause_type1 or cause_type2 or cause_type3 or cause_type4 or etc) as alls
-		FROM add_details
-        where created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
-         ";
+		$sql_c2 = "SELECT sum(a.cause_type1) as cause1, 
+		sum(a.cause_type2) as cause2, 
+		sum(a.cause_type3) as cause3, 
+		sum(a.cause_type4) as cause4, 
+		sum(a.etc) as cause5, sum(a.cause_type1 or a.cause_type2 or a.cause_type3 or a.cause_type4 or a.etc) as alls
+		FROM add_details a , case_inputs c
+		where c.case_id = a.case_id
+		$pr_q
+		and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'";
+		
 		$result_c2 = mysqli_query($conn, $sql_c2); 
 		$i = 0;
 		while($rowc2 = $result_c2->fetch_assoc()) {
@@ -108,11 +141,12 @@
 			$loop_c2 = $i;
 		}
 
-		$sql_c3 = "SELECT case_inputs.group_code, r_group_code.name, count(group_code) as c3 
-		FROM case_inputs, r_group_code
-		WHERE  case_inputs.group_code = r_group_code.code
-        and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
-		group by group_code  ";
+		$sql_c3 = "SELECT c.group_code, r.name, count(c.group_code) as c3 
+		FROM case_inputs c, r_group_code r
+		WHERE  c.group_code = r.code
+		$pr_q
+		and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
+		group by c.group_code ";
 		//echo $sql_c3;
 		$result_c3 = mysqli_query($conn, $sql_c3); 
 		$i = 0;
@@ -126,19 +160,20 @@
 					$sumc3[$j] = $rowc3["c3"];
 					$sumc3all = $sumc3all + $sumc3[$j];
 				}
-				//echo $i_c3[$j]," ",$sumc3[$j];
 			}
 
 			$loop_c3 = $i;
 		}
 
-		$sql_c4 = "SELECT sub_problem, r_sub_problem.name,count(sub_problem) as c4 
-		FROM case_inputs ,r_sub_problem
-		WHERE r_sub_problem.code = case_inputs.sub_problem
-		and problem_case = '1'
-        and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
-		group by sub_problem";
-		//echo $sql_c4;
+		
+		$sql_c4 = "SELECT c.sub_problem, r.name,count(sub_problem) as c4 
+		FROM case_inputs c ,r_sub_problem r
+		WHERE r.code = c.sub_problem
+		and c.problem_case = '1'
+		$pr_q
+		and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
+		group by c.sub_problem";
+		
 		$result_c4 = mysqli_query($conn, $sql_c4); 
 		$i = 0;
 		while($rowc4 = $result_c4->fetch_assoc()) {
@@ -151,7 +186,6 @@
 					$sumc4[$j] = $rowc4["c4"];
 					
 				}
-				//echo $i_c4[$j]," ",$sumc4[$j];
 			}
 
 			$loop_c4 = $i;
@@ -173,7 +207,7 @@
 					dataSource: {
 						"chart": {
 							"caption": "จำนวนการละเมิดสิทธิ",
-							"subCaption": "จำแนกตามประเภท ปี 2562",
+							"subCaption": "จำแนกตามประเภท ",
 							"placeValuesInside": "0",
                             "yAxisName": "จำนวน",
                             "palettecolors": "#E14455",
@@ -225,7 +259,7 @@
 					"chart": {
 
 						"caption": "สาเหตุการละเมิดสิทธิ",
-						"subcaption": "ปี 2562",
+						"subcaption": "",
 						"showpercentvalues": "1",
 						"defaultcenterlabel": "<?php echo 'ทั้งหมด '.$sumcase2_all.' เคส'; ?>",
 						"aligncaptionwithcanvas": "0",
@@ -272,7 +306,7 @@
 				dataSource: {
 					"chart": {
 						"caption": "กลุ่มเปราะบางที่ถูกกีดกันหรือถูกเลือกปฎิบัติ",
-						"subcaption": "ปี 2562",
+						"subcaption": "",
 						"showpercentvalues": "1",
 						"defaultcenterlabel": "<?php echo 'ทั้งหมด '.$sumc3all.' เคส'; ?>",
 						"aligncaptionwithcanvas": "1",
@@ -324,7 +358,7 @@
 					dataSource: {
 						"chart": {
 							"caption": "ผู้ถูกบังคับตรวจเอชไอวี",
-							"subCaption": "จำแนกตามประเภท ปี 2562",
+							"subCaption": "จำแนกตามประเภท",
 							"placeValuesInside": "0",
 							"palettecolors": "#713132",
 							"yAxisName": "จำนวน",
@@ -361,21 +395,24 @@
         
     </script>
     <?php
-							$sql1 = "SELECT status,count(id) as n_status 
-                            FROM case_inputs 
-                            where created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
-                            group by status";
-							//echo $sql2;
-							$result1 = mysqli_query($conn, $sql1); 
-							$i = 0;
-							while($row1 = $result1->fetch_assoc()) {
-								$i++;
-								if($row1["status"] == $i){
-									$status[$i] = $row1["status"];
-                                    $n_status[$i] = $row1["n_status"];
-                                    $sumall = $sumall + $n_status[$i];
-								}
-							}
+		$sql1 = "SELECT c.status,count(c.id) as n_status 
+		FROM case_inputs c
+		WHERE  c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
+		$pr_q
+		group by c.status";
+		$result1 = mysqli_query($conn, $sql1); 
+		$i = 0;
+		$sumall = 0;
+		while($row1 = $result1->fetch_assoc()) {
+			$i++;
+			$sumall = $sumall + $row1["n_status"];
+			for($j=1;$j<=6;$j++){
+				if($row1["status"] == $j){
+					$status[$j] = $row1["status"];
+					$n_status[$j] = $row1["n_status"];
+				}
+			}
+		}
 	?>
 
 
@@ -482,7 +519,7 @@
 								
 								<div class="level-item">
 									<div class="select">
-										<select id="pr" name="pr" disabled>
+										<select id="pr" name="pr" >
                                             <?php
                                                 if ($pr == '0') { $pr_v = "selected";}
                                                 echo "<option value='0' $pr_v> ทุกจังหวัด </option>";
@@ -553,10 +590,22 @@
                 
                 <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-2-widescreen is-2-fullhd">
 				<div class="column">
-					<table class="table is-fullwidth  is-bordered">
+				<table class="table is-fullwidth  is-bordered ">
 						<tbody>
-							<tr class="is-selected is-danger">
-								<td class="is-danger"><p class='has-text-centered '>ยังไม่ได้รับเรื่อง</p></td>
+							<tr class="is-selected ">
+								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>ทั้งหมด</p></td>
+							</tr>
+							<tr class=" ">
+								<td><p class='has-text-centered'><?php echo $sumall;?></p></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="column">
+					<table class="table is-fullwidth  is-bordered ">
+						<tbody>
+							<tr class="is-selected ">
+								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>ยังไม่ได้รับเรื่อง</p></td>
 							</tr>
 							<tr class=" ">
 								<td><p class='has-text-centered'><?php echo $n_status[1];if($status[1] ==''){echo '0';} ?></p></td>
@@ -565,10 +614,10 @@
 					</table>
 				</div>
 				<div class="column">
-					<table class="table is-fullwidth  is-bordered">
+					<table class="table is-fullwidth  is-bordered ">
 						<tbody>
 							<tr class="is-selected ">
-								<td  class="is-danger"><p class='has-text-centered'>รับเรื่องแล้ว</p></td>
+								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>รับเรื่องแล้ว</p></td>
 							</tr>
 							<tr class=" ">
 								<td><p class='has-text-centered'><?php echo $n_status[2];if($status[2] ==''){echo '0';} ?></p></td>
@@ -577,10 +626,10 @@
 					</table>
 				</div>
 				<div class="column">
-				<table class="table is-fullwidth  is-bordered">
+				<table class="table is-fullwidth  is-bordered ">
 						<tbody>
 							<tr class="is-selected ">
-								<td  class="is-danger"><p class='has-text-centered'>บันทึกข้อมูลเพิ่มแล้ว</p></td>
+								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>บันทึกข้อมูลเพิ่มแล้ว</p></td>
 							</tr>
 							<tr class=" ">
 								<td><p class='has-text-centered'><?php echo $n_status[3];if($status[3] ==''){echo '0';} ?></p></td>
@@ -589,10 +638,10 @@
 					</table>
 				</div>
 				<div class="column">
-				<table class="table is-fullwidth  is-bordered">
+				<table class="table is-fullwidth  is-bordered ">
 						<tbody>
 							<tr class="is-selected ">
-								<td  class="is-danger"><p class='has-text-centered'>อยู่ระหว่างดำเนินการ</p></td>
+								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>อยู่ระหว่างดำเนินการ</p></td>
 							</tr>
 							<tr class=" ">
 								<td><p class='has-text-centered'><?php echo $n_status[4];if($status[4] ==''){echo '0';} ?></p></td>
@@ -601,10 +650,10 @@
 					</table>
 				</div>
 				<div class="column">
-				<table class="table is-fullwidth  is-bordered">
+				<table class="table is-fullwidth  is-bordered ">
 						<tbody>
 							<tr class="is-selected ">
-								<td  class="is-danger"><p class='has-text-centered'>ดำเนินการเสร็จสิ้น</p></td>
+								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>ดำเนินการเสร็จสิ้น</p></td>
 							</tr>
 							<tr class=" ">
 								<td><p class='has-text-centered'><?php echo $n_status[5];if($status[5] ==''){echo '0';} ?></p></td>
@@ -613,10 +662,10 @@
 					</table>
 				</div>
 				<div class="column">
-				<table class="table is-fullwidth  is-bordered">
+				<table class="table is-fullwidth  is-bordered ">
 						<tbody>
 							<tr class="is-selected ">
-								<td  class="is-danger"><p class='has-text-centered'>ดำเนินการแล้วส่งต่อ</p></td>
+								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>ดำเนินการแล้วส่งต่อ</p></td>
 							</tr>
 							<tr class=" ">
 								<td><p class='has-text-centered'><?php echo $n_status[6];if($status[6] ==''){echo '0';} ?></p></td>
@@ -624,31 +673,21 @@
 						</tbody>
 					</table>
                 </div>
-                <div class="column">
-				<table class="table is-fullwidth  is-bordered">
-						<tbody>
-							<tr class="is-selected ">
-								<td  class="is-danger" ><p class='has-text-centered'>รวม</p></td>
-							</tr>
-							<tr class=" ">
-								<td><p class='has-text-centered'><?php echo $sumall;if($sumall ==''){echo '0';} ?></p></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+                
 			</div>
-                <div class="columns ">
+            
+			<div class="columns ">
 				<div class="column  is-offset-8">
 					<table class="table is-fullwidth  is-bordered">
 					<tbody>
 						<tr >
-							<td class="is-danger " rowspan="2" style="vertical-align : middle;text-align:center;"><p class='has-text-centered'>ละเมิดโดย</p></td>
-							<td><p class='has-text-centered'>บุคคล</p></td>
+							<td class="red2" rowspan="2" style="vertical-align : middle;text-align:center;"><p class='has-text-centered'>ละเมิดโดย</p></td>
+							<td class=" red3"><p class='has-text-centered'>บุคคล</p></td>
 							<td><p class='has-text-centered'><?php echo number_format(($suboff[2]/$suboff_all)*100 , 2, '.', '')?> %</p></td>
 						</tr>
 						<tr >
 							
-							<td><p class='has-text-centered'>องค์กร</p></td>
+							<td  class=" red3"><p class='has-text-centered '>องค์กร</p></td>
 							<td><p class='has-text-centered'><?php echo number_format(($suboff[3]/$suboff_all)*100 , 2, '.', '') ?> %</p></td>
 						</tr>
 					</tbody>

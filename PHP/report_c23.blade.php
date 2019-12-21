@@ -26,6 +26,18 @@
 
 	<style>
 		.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
+        .red2 {
+			vertical-align: middle; 
+			background-color: #713132;
+			border: 1px solid #713132;
+			color: white;
+		}
+		.red3 {
+			vertical-align: middle; 
+			background-color: #E14455;
+			color: white;
+			text-align: center;
+		}
 	</style>
 
 	<?php
@@ -206,134 +218,133 @@
                 <p class="subtitle is-6">คลิกที่ตารางแล้วกดปุ่ม ซ้าย-ขวา เพื่อเลื่อนดูข้อมูล</p>
 
         <div class="table-container">
-            <table class="table hideextra is-bordered is-striped is-narrow is-hoverable">
+            <table id='crisis23' class="table hideextra is-bordered is-striped is-narrow is-hoverable">
                 <thead>
                     <tr class="hideextra">
-                        <th  rowspan="2">ลำดับ</th>
-                        <th  rowspan="2">ชื่อ</th>
-                        <th  rowspan="2">จังหวัด</th>
-                        <th  rowspan="2">เขต</th>
-                        <th  colspan="4">กลุ่มหลากหลายทางเพศ</th>
-                        <th  rowspan="2">พนักงานบริการ</th>
-                        <th  rowspan="2">ผู้ใช้สารเสพติด</th>
-                        <th  rowspan="2">ประชากรข้ามชาติ</th>
-                        <th  rowspan="2">ผู้ถูกคุมขัง</th>
-                        <th  rowspan="2">กลุ่มชาติพันธุ์และชนเผ่า</th>
-                        <th  rowspan="2">รวม</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">ลำดับ</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">ชื่อ</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">จังหวัด</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">เขต</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" colspan="4">กลุ่มหลากหลายทางเพศ</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">พนักงานบริการ</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">ผู้ใช้สารเสพติด</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">ประชากรข้ามชาติ</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">ผู้ถูกคุมขัง</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">กลุ่มชาติพันธุ์และชนเผ่า</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">รวม</th>
                     </tr>
                     <tr>
                         
-                        <th  >ชาย (ชายมีเพศสัมพันธ์กับชาย)</th>
-                        <th  >หญิง</th>
-                        <th  >สาวประเภทสอง</th>
-                        <th  >อื่นๆ</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" >ชาย (ชายมีเพศสัมพันธ์กับชาย)</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" >หญิง</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" >สาวประเภทสอง</th>
+                        <th  class="red3" style="vertical-align: middle; color: white;" >อื่นๆ</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
 
-$sql1 = "SELECT o.id, o.name, o.nameorg, o.prov_id, p.name as provname, nhso
-FROM officers o left join prov_geo p
-on p.code = o.prov_id 
-where
-position = 'officer' or o.name = 'adminfar'
-order by prov_id";
-$result1 = mysqli_query($conn, $sql1); 
-$row1 = mysqli_num_rows($result1); 
-$i = '0';
-while($row1 = $result1->fetch_assoc()) {
+                        $sql1 = "SELECT o.id, o.name, o.nameorg, o.prov_id, p.name as provname, nhso
+                        FROM officers o left join prov_geo p
+                        on p.code = o.prov_id 
+                        where
+                        position = 'officer' or o.name = 'adminfar'
+                        order by prov_id";
+                        $result1 = mysqli_query($conn, $sql1); 
+                        $row1 = mysqli_num_rows($result1); 
+                        $i = '0';
+                        while($row1 = $result1->fetch_assoc()) {
 
-    $sql2 = "SELECT receiver,
-    sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '1' THEN 1 ELSE 0 END) as case4_1_1,
-    sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '2' THEN 1 ELSE 0 END) as case4_1_2,
-    sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '3' THEN 1 ELSE 0 END) as case4_1_3,
-    sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '4' THEN 1 ELSE 0 END) as case4_1_4,
-    sum(CASE WHEN problem_case = '4' and group_code = '2' THEN 1 ELSE 0 END) as case4_2,
-    sum(CASE WHEN problem_case = '4' and group_code = '3' THEN 1 ELSE 0 END) as case4_3,
-    sum(CASE WHEN problem_case = '4' and group_code = '4' THEN 1 ELSE 0 END) as case4_4,
-    sum(CASE WHEN problem_case = '4' and group_code = '5' THEN 1 ELSE 0 END) as case4_5,
-    sum(CASE WHEN problem_case = '4' and group_code = '6' THEN 1 ELSE 0 END) as case4_6,
-    sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as sum
-    FROM case_inputs
-    where receiver='".$row1['name']."'
-    and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
-    group by receiver";
+                            $sql2 = "SELECT receiver,
+                            sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '1' THEN 1 ELSE 0 END) as case4_1_1,
+                            sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '2' THEN 1 ELSE 0 END) as case4_1_2,
+                            sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '3' THEN 1 ELSE 0 END) as case4_1_3,
+                            sum(CASE WHEN problem_case = '4' and group_code = '1'  and sex = '4' THEN 1 ELSE 0 END) as case4_1_4,
+                            sum(CASE WHEN problem_case = '4' and group_code = '2' THEN 1 ELSE 0 END) as case4_2,
+                            sum(CASE WHEN problem_case = '4' and group_code = '3' THEN 1 ELSE 0 END) as case4_3,
+                            sum(CASE WHEN problem_case = '4' and group_code = '4' THEN 1 ELSE 0 END) as case4_4,
+                            sum(CASE WHEN problem_case = '4' and group_code = '5' THEN 1 ELSE 0 END) as case4_5,
+                            sum(CASE WHEN problem_case = '4' and group_code = '6' THEN 1 ELSE 0 END) as case4_6,
+                            sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as sum
+                            FROM case_inputs
+                            where receiver='".$row1['name']."'
+                            and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
+                            group by receiver";
 
 
 
-    //echo $sql2,'<br>';
+                            //echo $sql2,'<br>';
 
-    $result2 = mysqli_query($conn, $sql2); 
-    $row2 = mysqli_num_rows($result2); 
-    $i++;
-    if ($result2->num_rows > 0) {
-        
-        // output data of each row
-        while($row2 = $result2->fetch_assoc()) {
-            
-            //echo $row['receiver'];
-            $sql3 = "SELECT username,officers.nameorg, prov_geo.code, prov_geo.name as provname, prov_geo.nhso 
-            FROM officers left join prov_geo 
-            on officers.prov_id = prov_geo.code
-            WHERE officers.name = '".$row2['receiver']."'";
-            //echo $sql2;
-            $result3 = mysqli_query($conn, $sql3); 
-
-            $row3 = mysqli_num_rows($result3);
-            $row3 = $result3->fetch_assoc();
-
-            //echo $row2["prov_id"];
-            
-            echo "<tr>";
-            echo "<th>".$i."</th>";
-                                echo "<td>".$row1["nameorg"]."</td>";
-                                echo "<td>".$row3["provname"]."</td>";
-                                echo "<td>".$row3["nhso"]."</td>";
-                                echo "<td>".$row2["case4_1_1"]."</td>";
-                                echo "<td>".$row2["case4_1_2"]."</td>";
-                                echo "<td>".$row2["case4_1_3"]."</td>";
-                                echo "<td>".$row2["case4_1_4"]."</td>";
-                                echo "<td>".$row2["case4_2"]."</td>";
-                                echo "<td>".$row2["case4_3"]."</td>";
-                                echo "<td>".$row2["case4_4"]."</td>";
-                                echo "<td>".$row2["case4_5"]."</td>";
-                                echo "<td>".$row2["case4_6"]."</td>";
-                                echo "<td>".$row2["sum"]."</td>";
-            echo "</tr>";
+                            $result2 = mysqli_query($conn, $sql2); 
+                            $row2 = mysqli_num_rows($result2); 
+                            $i++;
+                            if ($result2->num_rows > 0) {
+                                
+                                // output data of each row
+                                while($row2 = $result2->fetch_assoc()) {
                                     
-        }
-    } else {
-        echo "<tr>";
-            echo "<th>".$i."</th>";
-            echo "<td>".$row1["nameorg"]."</td>";
-            echo "<td>".$row1["provname"]."</td>";
-            echo "<td>".$row1["nhso"]."</td>";
-            echo "<td>0</td>";
-            echo "<td>0</td>";
-            echo "<td>0</td>";
-            echo "<td>0</td>";
-            echo "<td>0</td>";
-            echo "<td>0</td>";
-            echo "<td>0</td>";
-            echo "<td>0</td>";
-            echo "<td>0</td>";
-            echo "<td>0</td>";
-            echo "</tr>";
-    }
+                                    //echo $row['receiver'];
+                                    $sql3 = "SELECT username,officers.nameorg, prov_geo.code, prov_geo.name as provname, prov_geo.nhso 
+                                    FROM officers left join prov_geo 
+                                    on officers.prov_id = prov_geo.code
+                                    WHERE officers.name = '".$row2['receiver']."'";
+                                    //echo $sql2;
+                                    $result3 = mysqli_query($conn, $sql3); 
 
-}
-echo "</tbody>";
-        echo "</table>";
-        echo "<br>Showing 1 to $i of $i entries";
+                                    $row3 = mysqli_num_rows($result3);
+                                    $row3 = $result3->fetch_assoc();
 
-    $conn->close();
+                                    //echo $row2["prov_id"];
+                                    
+                                    echo "<tr>";
+                                    echo "<th>".$i."</th>";
+                                                        echo "<td>".$row1["nameorg"]."</td>";
+                                                        echo "<td>".$row3["provname"]."</td>";
+                                                        echo "<td>".$row3["nhso"]."</td>";
+                                                        echo "<td>".$row2["case4_1_1"]."</td>";
+                                                        echo "<td>".$row2["case4_1_2"]."</td>";
+                                                        echo "<td>".$row2["case4_1_3"]."</td>";
+                                                        echo "<td>".$row2["case4_1_4"]."</td>";
+                                                        echo "<td>".$row2["case4_2"]."</td>";
+                                                        echo "<td>".$row2["case4_3"]."</td>";
+                                                        echo "<td>".$row2["case4_4"]."</td>";
+                                                        echo "<td>".$row2["case4_5"]."</td>";
+                                                        echo "<td>".$row2["case4_6"]."</td>";
+                                                        echo "<td>".$row2["sum"]."</td>";
+                                    echo "</tr>";
+                                                            
+                                }
+                            } else {
+                                echo "<tr>";
+                                    echo "<th>".$i."</th>";
+                                    echo "<td>".$row1["nameorg"]."</td>";
+                                    echo "<td>".$row1["provname"]."</td>";
+                                    echo "<td>".$row1["nhso"]."</td>";
+                                    echo "<td>0</td>";
+                                    echo "<td>0</td>";
+                                    echo "<td>0</td>";
+                                    echo "<td>0</td>";
+                                    echo "<td>0</td>";
+                                    echo "<td>0</td>";
+                                    echo "<td>0</td>";
+                                    echo "<td>0</td>";
+                                    echo "<td>0</td>";
+                                    echo "<td>0</td>";
+                                    echo "</tr>";
+                            }
+
+                        }
+                        echo "</tbody>";
+                                echo "</table>";
+
+                            $conn->close();
 
 
-?>
-        </div>
-	</section>
+                        ?>
+                                </div>
+                            </section>
 
-	<br>
+                            <br>
 
 </body>
 
@@ -361,5 +372,30 @@ echo "</tbody>";
     </div>
   </div>
 </footer>
+
+<link rel="stylesheet" type="text/css" href="DataTable/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="DataTable/buttons.dataTables.min.css" />
+
+    <script type="text/javascript" language="javascript" src="DataTable/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.flash.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.print.min.js"></script>
+	<script type="text/javascript" language="javascript">
+	$(document).ready(function() {
+		$('#crisis23').DataTable( {
+			bFilter: true,
+			dom: 'Bfrtip',
+			buttons: [
+				'excel', 'copy', 'print'
+			],
+			paging: false,
+			ordering: false
+		} );
+	} );
+	</script>
 
 </html>

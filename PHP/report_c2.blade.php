@@ -26,6 +26,18 @@
 
 	<style>
 		.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
+		.red2 {
+			vertical-align: middle; 
+			background-color: #713132;
+			border: 1px solid #713132;
+			color: white;
+		}
+		.red3 {
+			vertical-align: middle; 
+			background-color: #E14455;
+			color: white;
+			text-align: center;
+		}
 	</style>
 
 	<?php
@@ -209,20 +221,20 @@
 
 				<p class="subtitle is-6">คลิกที่ตารางแล้วกดปุ่ม ซ้าย-ขวา เพื่อเลื่อนดูข้อมูล</p>
 
-			<div class="table-container">
-				<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth paginated hideextra">
+			<div  class="table-container">
+				<table id='crisisc2' class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth paginated hideextra">
 					<thead>
 						<tr class="hideextra">
-						<th>ลำดับ</th>
-						<th>ชื่อ</th>
-						<th>จังหวัด</th>
-						<th>เขต</th>
-						<th>บังคับตรวจเอชไอวี</th>
-						<th>เปิดเผยสถานะ<br>การติดเชื้อเอชไอวี </th>
-						<th>ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากกการติดเชื้อเอชไอวี</th>
-						<th>ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง</th>
-						<th>กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี</th>
-						<th>ทั้งหมด</th>
+						<th  class="red3" style="vertical-align: middle; color: white;" >ลำดับ</th>
+						<th  class="red3" style="vertical-align: middle; color: white;" >ชื่อ</th>
+						<th  class="red3" style="vertical-align: middle; color: white;" >จังหวัด</th>
+						<th  class="red3" style="vertical-align: middle; color: white;" >เขต</th>
+						<th  class="red3" style="vertical-align: middle; color: white;" >บังคับตรวจเอชไอวี</th>
+						<th  class="red3" style="vertical-align: middle; color: white;" >เปิดเผยสถานะ<br>การติดเชื้อเอชไอวี </th>
+						<th  class="red3" style="vertical-align: middle; color: white;" >ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากกการติดเชื้อเอชไอวี</th>
+						<th  class="red3" style="vertical-align: middle; color: white;" >ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง</th>
+						<th  class="red3" style="vertical-align: middle; color: white;" >กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี</th>
+						<th  class="red3" style="vertical-align: middle; color: white;" >ทั้งหมด</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -278,7 +290,7 @@
 								//echo $row2["prov_id"];
 								
 								echo "<tr>";
-								echo "<th>".$i."</th>";
+								echo "<th >".$i."</th>";
 														echo "<td>".$row1["nameorg"]."</td>";
 														echo "<td>".$row3["provname"]."</td>";
 														echo "<td>".$row3["nhso"]."</td>";
@@ -293,7 +305,7 @@
 							}
 						} else {
 							echo "<tr>";
-								echo "<th>".$i."</th>";
+								echo "<th >".$i."</th>";
 								echo "<td>".$row1["nameorg"]."</td>";
 								echo "<td>".$row1["provname"]."</td>";
 								echo "<td>".$row1["nhso"]."</td>";
@@ -348,5 +360,30 @@
     </div>
   </div>
 </footer>
+
+	<link rel="stylesheet" type="text/css" href="DataTable/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="DataTable/buttons.dataTables.min.css" />
+
+    <script type="text/javascript" language="javascript" src="DataTable/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.flash.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.print.min.js"></script>
+	<script type="text/javascript" language="javascript">
+	$(document).ready(function() {
+		$('#crisisc2').DataTable( {
+			bFilter: true,
+			dom: 'Bfrtip',
+			buttons: [
+				'excel', 'copy', 'print'
+			],
+			paging: false,
+			ordering: false
+		} );
+	} );
+	</script>
 
 </html>

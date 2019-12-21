@@ -27,6 +27,18 @@
 
 	<style>
 		.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
+		.red2 {
+			vertical-align: middle; 
+			background-color: #713132;
+			border: 1px solid #713132;
+			color: white;
+		}
+		.red3 {
+			vertical-align: middle; 
+			background-color: #E14455;
+			color: white;
+			text-align: center;
+		}
 	</style>
 
 	<?php
@@ -104,7 +116,7 @@
 							</a>
 						
 						</li>
-						<li class="is-active">
+						<li class="is-active ">
 							<a href="report_c1.blade.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
@@ -203,20 +215,20 @@
                 
 				<p class="subtitle is-6">คลิกที่ตารางแล้วกดปุ่ม ซ้าย-ขวา เพื่อเลื่อนดูข้อมูล</p>
                 <div class="table-container">
-				<table class="table hideextra is-bordered is-striped is-narrow is-hoverable">
+				<table id='crisisc1' class="table hideextra is-bordered is-striped is-narrow is-hoverable">
 					<thead>
 						<tr class="hideextra">
-						<th>ลำดับ</th>
-						<th>ชื่อ</th>
-						<th>จังหวัด</th>
-						<th>เขต</th>
-						<th>ยังไม่ได้รับเรื่อง</th>
-						<th>รับเรื่องแล้ว</th>
-						<th>บันทึกข้อมูลเพิ่มเติมแล้ว</th>
-						<th>อยู่ระหว่างดำเนินการ</th>
-						<th>ดำเนินการเสร็จสิ้น</th>
-						<th>ส่งต่อ</th>
-						<th>ทั้งหมด</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >ลำดับ</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >ชื่อ</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >จังหวัด</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >เขต</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >ยังไม่ได้รับเรื่อง</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >รับเรื่องแล้ว</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >บันทึกข้อมูลเพิ่มเติมแล้ว</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >อยู่ระหว่างดำเนินการ</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >ดำเนินการเสร็จสิ้น</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >ส่งต่อ</th>
+						<th class="red3" style="vertical-align: middle; color: white;" >ทั้งหมด</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -307,7 +319,6 @@
 							}
 							echo "</tbody>";
 							echo "</table>";
-							echo "Showing 1 to $i of $i entries";
 
 							$conn->close();
 						?>
@@ -344,5 +355,31 @@
     </div>
   </div>
 </footer>
+
+<link rel="stylesheet" type="text/css" href="DataTable/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="DataTable/buttons.dataTables.min.css" />
+
+   <script type="text/javascript" language="javascript" src="DataTable/jquery.dataTables.min.js"></script>
+   <script type="text/javascript" language="javascript" src="DataTable/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.flash.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.print.min.js"></script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+    $('#crisisc1').DataTable( {
+		bFilter: true,
+        dom: 'Bfrtip',
+        buttons: [
+            'excel', 'copy', 'print'
+        ],
+		paging: false,
+		ordering: false
+    } );
+} );
+
+  </script>
 
 </html>

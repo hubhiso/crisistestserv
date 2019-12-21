@@ -26,6 +26,18 @@
 
 	<style>
 		.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
+		.red2 {
+			vertical-align: middle; 
+			background-color: #713132;
+			border: 1px solid #713132;
+			color: white;
+		}
+		.red3 {
+			vertical-align: middle; 
+			background-color: #E14455;
+			color: white;
+			text-align: center;
+		}
 	</style>
 
 	<?php
@@ -204,32 +216,32 @@
 				<p class="subtitle is-6">คลิกที่ตารางแล้วกดปุ่ม ซ้าย-ขวา เพื่อเลื่อนดูข้อมูล</p>
 
 			<div class="table-container">
-				<table class="table hideextra is-bordered is-striped is-narrow is-hoverable">
+				<table id='crisisc21' class="table hideextra is-bordered is-striped is-narrow is-hoverable">
 					<thead>
                         <tr class="hideextra">
-                            <th  rowspan="3">ลำดับ</th>
-                            <th  rowspan="3">ชื่อ</th>
-                            <th  rowspan="3">จังหวัด</th>
-                            <th  rowspan="3">เขต</th>
-                            <th  rowspan="3">ผู้ติดเชื้อเอชไอวี</th>
-                            <th  colspan="9">กลุ่มเปราะบาง</th>
-                            <th  rowspan="3">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</th>
-                            <th  rowspan="3">ประชาชนทั่วไป</th>
-                            <th  rowspan="3">รวม</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="3">ลำดับ</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="3">ชื่อ</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="3">จังหวัด</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="3">เขต</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="3">ผู้ติดเชื้อเอชไอวี</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" colspan="9">กลุ่มเปราะบาง</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="3">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="3">ประชาชนทั่วไป</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="3">รวม</th>
                         </tr>
                         <tr>
-                            <th  colspan="4">กลุ่มหลากหลายทางเพศ</th>
-                            <th  rowspan="2">พนักงานบริการ</th>
-                            <th  rowspan="2">ผู้ใช้สารเสพติด</th>
-                            <th  rowspan="2">ประชากรข้ามชาติ</th>
-                            <th  rowspan="2">ผู้ถูกคุมขัง</th>
-                            <th  rowspan="2">กลุ่มชาติพันธุ์และชนเผ่า</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" colspan="4">กลุ่มหลากหลายทางเพศ</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">พนักงานบริการ</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">ผู้ใช้สารเสพติด</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">ประชากรข้ามชาติ</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">ผู้ถูกคุมขัง</th>
+                            <th  class="red3" style="vertical-align: middle; color: white;" rowspan="2">กลุ่มชาติพันธุ์และชนเผ่า</th>
                         </tr>
                         <tr>
-                            <th >ชาย (ชายมีเพศสัมพันธ์กับชาย)</th>
-                            <th >หญิง</th>
-                            <th >สาวประเภทสอง</th>
-                            <th >อื่นๆ</th>
+                            <th class="red3" style="vertical-align: middle; color: white;" >ชาย (ชายมีเพศสัมพันธ์กับชาย)</th>
+                            <th class="red3" style="vertical-align: middle; color: white;" >หญิง</th>
+                            <th class="red3" style="vertical-align: middle; color: white;" >สาวประเภทสอง</th>
+                            <th class="red3" style="vertical-align: middle; color: white;" >อื่นๆ</th>
                         </tr>
 					</thead>
 					<tbody>
@@ -338,7 +350,6 @@
 						}
 						echo "</tbody>";
 								echo "</table>";
-								echo "<br>Showing 1 to $i of $i entries";
 
 							$conn->close();
 
@@ -375,5 +386,29 @@
     </div>
   </div>
 </footer>
+	<link rel="stylesheet" type="text/css" href="DataTable/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="DataTable/buttons.dataTables.min.css" />
+
+    <script type="text/javascript" language="javascript" src="DataTable/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.flash.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="DataTable/buttons.print.min.js"></script>
+	<script type="text/javascript" language="javascript">
+	$(document).ready(function() {
+		$('#crisisc21').DataTable( {
+			bFilter: true,
+			dom: 'Bfrtip',
+			buttons: [
+				'excel', 'copy', 'print'
+			],
+			paging: false,
+			ordering: false
+		} );
+	} );
+	</script>
 
 </html>
