@@ -1,9 +1,11 @@
-<table class="table paginated" id="table_show">
+<table class="table paginated hideextra" id="table_show">
     <thead>
     <tr>
         <th><abbr title="Date"> วันที่ </abbr>
         </th>
         <th><abbr title="ID"> รหัส </abbr>
+        </th>
+        <th><abbr title="Date"> วันที่เกิดเหตุ </abbr>
         </th>
         <th><abbr title="PR"> จังหวัด </abbr>
         </th>
@@ -27,11 +29,18 @@
 @endphp
 
 @foreach($cases as $case)
-
     <tr>
         <th>{{date('d',strtotime(str_replace('-','/', $case->created_at)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->created_at)))]}}{{date("Y",strtotime(str_replace('-','/', $case->created_at)))+543}}</th>
-        <th>{{ $case->case_id }}</th>
+        @if($case->emergency == "yes" )
+            <th>เร่งด่วน<br> <a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}" title='ID'>{{ $case->case_id }}</a></th>
+        @elseif($case->emergency <> "yes" )
+            <th><a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}" title='ID'>{{ $case->case_id }}</a></th>
+        @endif  
+        <!--td><a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}" title='ID'>{{ $case->accident_date }}</a> </td-->
+        <td>{{date('d',strtotime(str_replace('-','/', $case->accident_date)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->accident_date)))]}}{{date("Y",strtotime(str_replace('-','/', $case->accident_date)))+543}}</td>
         <td>{{$case->Provinces->PROVINCE_NAME}}</td>
+         
+       
         @if($case->problem_case == 1 )
             <td>บังคับตรวจเอชไอวี</td>
         @elseif($case->problem_case == 2)
@@ -99,7 +108,7 @@
 <script>
     $('table.paginated').each(function() {
         var currentPage = 0;
-        var numPerPage = 5;
+        var numPerPage = 20;
         var $table = $(this);
         $table.bind('repaginate', function() {
             $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();

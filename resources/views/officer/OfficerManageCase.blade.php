@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="{{ asset('css/jquery.min.js') }}"></script>
+	<link rel="shortcut icon" href="http://localhost:8888/crisis/public/images/favicon.ico">
 
 	{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}
 	{{ Html::style('bootstrap/css/bootstrap.css') }}
@@ -18,18 +19,24 @@
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
 
+	<style>
+		.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
+	</style>
+
 	<meta name="theme-color" content="#cc99cc"/>
 
 </head>
 
 <body class="layout-default" onload="auto_select_status({{ $mode_id}});load_case();">
-	<section class="hero is-medium has-text-centered">
+	
+<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 			<div class="container">
 				@component('component.login_bar')
 				@endcomponent
-				</div>
 			</div>
+		</div>
+
 		<input type="hidden" id="token" value="{{ csrf_token() }}">
 		<div class="container">
 			
@@ -173,7 +180,7 @@
 					{{--</ul>--}}
 				{{--</nav>--}}
 				<br/>
-				<div class="table-case_container">
+				<div class="table-case_container " style="overflow-x:auto;">
 
 				</div>
 				{{--<nav class="pagination is-centered"> <a class="pagination-previous">Previous</a> <a class="pagination-next">Next page</a>--}}
@@ -197,7 +204,15 @@
 			</div>
 	</section>
 	<br>
-	@extends('footer')
+	<footer class="footer "style="background-color: #EEE;">
+	<div class="container  ">
+		<div class="content has-text-centered  ">
+		<p>Crisis Response System (CRS)
+		</p>
+		<p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p>
+		</div>
+	</div>
+	</footer>
 	<script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
 	<script src="{{ asset('bulma/main.js') }}"></script>
 
@@ -253,7 +268,7 @@
                 type: 'GET',
                 url: status_url,
                 success: function( data ) {
-                    //console.log(data);
+                    console.log(data);
                     $('#i-receive').text(" ไม่ได้รับเรื่อง "+data.NotAcp);
                     $('#i-additional').text(" ไม่บันทึก "+data.NotKeyIn);
                     $('#i-process').text(" ไม่ดำเนินการ "+data.NotOp);
