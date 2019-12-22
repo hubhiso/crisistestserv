@@ -376,14 +376,14 @@
 				<div class="field is-grouped">
 					<div class="control">
 						{{--{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}--}}
-						@if( $show_data->status  != 99 &&   Auth::user()->position  == "manager")
+						<!-- @if( ($show_data->status  != 99) &&   (Auth::user()->position  == "admin")) -->
 					</div>
 					<div class="control">
 						<a class="button is-info is-focused" href="{{ route('manager.transfer_frm',['case_id' => $show_data->case_id]) }}">เปลี่ยนผู้รับผิดชอบ</a>
 					</div>
 					<div class="control">
 						<a class="button is-danger is-focused" href="{{ route('manager.reject_frm',['case_id' => $show_data->case_id]) }}"> ปฎิเสธการรับเคส</a>
-					@endif
+					<!-- @endif -->
 					</div>
 					<p class="control">
 						<a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}" > กลับ </a>
@@ -395,28 +395,34 @@
 			</div>
 	</section>
 
-	</form>
+	</from>
 
 
 	<br> @extends('footer')
 </body>
 
 <script>
-	var p_id = $( '#p_id' ).val();
+	var p_id = $('#p_id').val();
 	//alert(p_id);
-	var status_url = "{{route('officer.load_status',['prov_id' => ':p_id']) }}";
-	status_url = status_url.replace( ':p_id', p_id );
-	console.log( status_url );
-	$.ajax( {
-		type: 'GET',
-		url: status_url,
-		success: function ( data ) {
-			//console.log(data);
-			$( '#i-receive' ).text( " ไม่ได้รับเรื่อง " + data.NotAcp );
-			$( '#i-additional' ).text( " ไม่บันทึก " + data.NotKeyIn );
-			$( '#i-process' ).text( " ไม่ดำเนินการ " + data.NotOp );
-		}
-	} );
+    var status_url = "{{route('officer.load_status',['prov_id' => ':p_id']) }}";
+    status_url = status_url.replace(':p_id', p_id);
+    console.log(status_url);
+    $.ajax({
+        type: 'GET',
+        url: status_url,
+        success: function( data ) {
+            //console.log(data);
+            $('#i-receive').text(" ไม่ได้รับเรื่อง "+data.NotAcp);
+            $('#i-additional').text(" ไม่บันทึก "+data.NotKeyIn);
+            $('#i-process').text(" ไม่ดำเนินการ "+data.NotOp);
+        }
+    });
+
+	if($show_data->file1==''){
+		console.log("file1 null");
+	}else{
+		console.log("file1 not null");
+	}
 </script>
 
 <script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
