@@ -5,7 +5,7 @@
         </th>
         <th style="text-align: center;"><abbr title="ID"> รหัส </abbr>
         </th>
-        <th  style="text-align: center;"><abbr title="Date"> วันที่เกิดเหตุ<br>(จากหน้ารับเรื่อง) </abbr>
+        <th  style="text-align: center;"><abbr title="Date"> วันที่เกิดเหตุ<br>(ตามแจ้ง) </abbr>
         </th>
         <th><abbr title="PR"> จังหวัด </abbr>
         </th>
@@ -39,7 +39,7 @@
         @if($case->accident_date != "")
             <td>{{date('d',strtotime(str_replace('-','/', $case->accident_date)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->accident_date)))]}}{{date("Y",strtotime(str_replace('-','/', $case->accident_date)))+543}}</td>
         @else
-            <td></td>
+            <td>ไม่มีข้อมูล</td>
         @endif        
         <td>{{$case->Provinces->PROVINCE_NAME}}</td>
        
