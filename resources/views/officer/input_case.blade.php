@@ -67,7 +67,7 @@
                             <span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
                     </div>
                     <div class="field-label is-normal">
-                        <label class="label">เบอร์มือถือผู้แจ้ง</label>
+                        <label class="label">หมายเลขโทรศัพท์ผู้แจ้ง </label>
                     </div>
                     <div class="field">
                         <p class="control is-expanded has-icons-left">
@@ -109,7 +109,7 @@
 								<span class="icon is-small is-left"> <i class="fa fa-user"></i> </span> </p>
 						</div>
 						<div class="field-label is-normal">
-							<label class="label">เบอร์มือถือ</label>
+							<label class="label">หมายเลขโทรศัพท์ </label>
 						</div>
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
@@ -123,7 +123,7 @@
 
 				<div class="field is-horizontal">
 					<div class="field-label is-normal">
-						<label class="label">เพศ</label>
+						<label class="label">เพศกำเนิด</label>
 					</div>
 					<div class="field-body">
 						<div class="field is-grouped">
