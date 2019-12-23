@@ -36,10 +36,12 @@
         @elseif($case->emergency <> "yes" )
             <th><a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}" title='ID'>{{ $case->case_id }}</a></th>
         @endif  
-        <!--td><a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}" title='ID'>{{ $case->accident_date }}</a> </td-->
-        <td>{{date('d',strtotime(str_replace('-','/', $case->accident_date)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->accident_date)))]}}{{date("Y",strtotime(str_replace('-','/', $case->accident_date)))+543}}</td>
+        @if($case->accident_date != "")
+            <td>{{date('d',strtotime(str_replace('-','/', $case->accident_date)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->accident_date)))]}}{{date("Y",strtotime(str_replace('-','/', $case->accident_date)))+543}}</td>
+        @else
+            <td></td>
+        @endif        
         <td>{{$case->Provinces->PROVINCE_NAME}}</td>
-         
        
         @if($case->problem_case == 1 )
             <td>บังคับตรวจเอชไอวี</td>

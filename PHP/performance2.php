@@ -28,7 +28,7 @@
 					<td class="red3" style="vertical-align: middle;"  rowspan = 2 width='$cel_width'>เจ้าหน้าที่</td>
 					<td class="red3" style="vertical-align: middle;"  rowspan = 2 width='$cel_width'>จังหวัด</td>
 					<td class="red3" style="vertical-align: middle;"  rowspan = 2 align='center' width='$cel_width'>รวม</td>
-					<td class="red3" style="vertical-align: middle;"  colspan = 4 align='center' width='$cel_width'>จำนวนเคสที่ดำเนินการ : เวลาเฉลี่ย</td>
+					<td class="red3" style="vertical-align: middle;"  colspan = 4 align='center' width='$cel_width'>จำนวนเคสที่ดำเนินการ  (ราย) : เวลาเฉลี่ย (วัน)</td>
 				</tr>
 				<tr>
 					<td class="red3" style="vertical-align: middle;"  align='center' width='$cel_width'>แจ้งเหตุ -> รับเรื่อง</td>
