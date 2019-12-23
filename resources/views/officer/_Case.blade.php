@@ -1,17 +1,17 @@
 <table class="table paginated hideextra" id="table_show">
-    <thead>
-    <tr>
-        <th><abbr title="Date"> วันที่ </abbr>
+    <thead style="text-align: center;">
+    <tr > 
+        <th style="text-align: center;"><abbr title="Date"> วันที่ </abbr>
         </th>
-        <th><abbr title="ID"> รหัส </abbr>
+        <th style="text-align: center;"><abbr title="ID"> รหัส </abbr>
         </th>
-        <th><abbr title="Date"> วันที่เกิดเหตุ </abbr>
+        <th  style="text-align: center;"><abbr title="Date"> วันที่เกิดเหตุ<br>(จากหน้ารับเรื่อง) </abbr>
         </th>
         <th><abbr title="PR"> จังหวัด </abbr>
         </th>
-        <th><abbr title="Type"> ประเภท </abbr>
+        <th style="text-align: center;"><abbr title="Type"> ประเภท </abbr>
         </th>
-        <th><abbr title="Status"> สถานะ </abbr>
+        <th style="text-align: center;"><abbr title="Status"> สถานะ </abbr>
         </th>
         <th><abbr title="Activities"> ดำเนินการ </abbr>
         </th>
