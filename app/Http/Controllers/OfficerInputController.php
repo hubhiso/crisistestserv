@@ -121,6 +121,9 @@ class OfficerInputController extends Controller
         ]);
 
         $case_id = Request::input('case_id');
+        $emergency = Request::input('emergency');
+        $prov_id = Request::input('prov_id');
+        $provname = province::where('PROVINCE_CODE', $prov_id)->first();
 
         $pathfile = "uploads/".$case_id;
         $file1 = "";
@@ -157,7 +160,7 @@ class OfficerInputController extends Controller
         
         
 
-        return view('layout.gen_caseid',compact('case_id'));
+        return view('layout.gen_caseid',compact('case_id','emergency','prov_id','provname'));
 
         
 

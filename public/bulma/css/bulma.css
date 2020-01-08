@@ -8731,13 +8731,13 @@ print {
 }
 
 #i-additional {
-  color: rgb(255, 115, 0);
-  border-color: rgb(255, 115, 0);
+  color: rgb(177, 81, 3);
+  border-color: rgb(177, 81, 3);
 }
 
 #i-additional:hover {
-  background: rgb(255, 115, 0);
-  border-color: rgb(255, 115, 0);
+  background: rgb(177, 81, 3);
+  border-color: rgb(177, 81, 3);
   color: white;
 }
 
