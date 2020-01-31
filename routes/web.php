@@ -96,3 +96,6 @@ Route::get('/support', function () {
 Route::get('support2', function () {
     return view('support');
 });
+Route::get('/orgmap', function () {
+    return view('orgmap');
+});

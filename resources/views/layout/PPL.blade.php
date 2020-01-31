@@ -1,7 +1,10 @@
 
 <section class="hero is-primary is-medium wall2">
-  
-  <!-- Hero content: will be in the middle -->
+<br>
+  <div  class="container level-right">
+	<a class="button is-primary is-inverted is-outlined is-rounded is-small is-danger" href="{{ 'officer' }}"> <i class="fas fa-lock"></i>&nbsp ส่วนเจ้าหน้าที่ </a>  
+	<!-- Hero content: will be in the middle -->
+  </div>
   <div class="hero-body">
     <div class="container has-text-centered">
       <div class="container">
@@ -126,6 +129,8 @@
       <h2 class="subtitle">
         	สามารถแจ้งเหตุได้ที่หน่วยงานตามข้อมูลด้านล่างนี้
 	  </h2>
+	  <a class="button is-primary  is-rounded is-danger" href="{{ 'orgmap' }}"> <i class="fas fa-thumbtack"></i>&nbsp แสดงบนแผนที่ </a>
+	  <br><br>
 	  	<table class="table has-text-centered  is-striped">
 			<thead >
 				<tr>
@@ -264,30 +269,31 @@
 
 <!-- popup box -->
 	<div id="boxes">
-		<div style="  display: none; width: 900px; " id="dialog" class="window"> 
-			<br>
+		<div id="dialog" class="window"> 
 			<div class="columns">
 				<div class="column">
-					<!--img src="images/question.png" class="img-circle" alt="Cinque Terre" width="200" height="200"-->
-					<h2><b>CRS คืออะไร</b></h2><br>
-					<p class="message-body" >
-						พัฒนามาเพื่อเป็นช่องทางรับทราบข้อมูล ปัญหาการละเมิดสิทธิ
-						โดยมีระบบการจัดเก็บและรวบรวมข้อมูลที่เป็นระบบ
-						มีมาตรฐานกลไกการดูแลช่วยเหลือระหว่างภาคีเครือข่าย
-						นำไปสู่การช่วยเหลืออย่างเป็นระบบ
-						และยังสามารถนำข้อมูลที่ได้รับไปผลักดันให้เกิดการเปลี่ยนแปลงเชิงนโยบาย
-						หรือทางกฎหมาย รวมทั้งให้ความรู้ต่อสาธารณะ
-					</p>
+					<div class="tile is-parent">
+						<article class="tile is-child box"  >
+								<h4 class="subtitle is-4 	">"CRS คืออะไร"</h4>
+								<p style="text-indent: 2.5em;">พัฒนามาเพื่อเป็นช่องทางรับทราบข้อมูล ปัญหาการละเมิดสิทธิ โดยมีระบบการจัดเก็บและรวบรวมข้อมูลที่เป็นระบบ มีมาตรฐานกลไกการดูแลช่วยเหลือระหว่างภาคีเครือข่าย
+									นำไปสู่การช่วยเหลืออย่างเป็นระบบ และยังสามารถนำข้อมูลที่ได้รับไปผลักดันให้เกิดการเปลี่ยนแปลงเชิงนโยบาย หรือทางกฎหมาย รวมทั้งให้ความรู้ต่อสาธารณะ <br><br><br>
+								</p>
+						</article>
+					</div>
 				</div>
 				<div class="column ">
-					<h2><b>กรณีใดบ้างที่ท่านสามารถร้องเรียนในระบบ </b></h2><br>
-					<p class="message-body is-medium" style="text-align:left;">  
-						1. ถูกบังคับตรวจเอชไอวี <br>
-						2. ถูกเปิดเผยสถานะการติดเชื้อเอชไอวี <br>
-						3. ถูกกีดกันหรือเลือกปฏิบัติเนื่องมาจากการติดเชื้อเอชไอวี <br>
-						4. ถูกกีดกันหรือเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง <br>
-						* กลุ่มเปราะบาง ได้แก่ กลุ่มหลากหลายทางเพศ, พนักงานบริการ, ผู้ใช้สารเสพติด, ประชากรข้ามชาติ, ผู้ถูกคุมขัง, กลุ่มชาติพันธุ์และชนเผ่า
-					</p>
+					<div class="tile is-parent">
+						<article class="tile is-child box"  >
+							
+								<h4 class="subtitle is-4 	">"กรณีใดบ้างที่ท่านสามารถร้องเรียนในระบบ"</h4>
+								<p >1.ถูกบังคับตรวจเอชไอวี <br>
+									2.ถูกเปิดเผยสถานะการติดเชื้อเอชไอวี <br>
+									3.ถูกกีดกันหรือเลือกปฏิบัติเนื่องมาจากการติดเชื้อเอชไอวี <br>
+									4.ถูกกีดกันหรือเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง <br>
+									* กลุ่มเปราะบาง ได้แก่ กลุ่มหลากหลายทางเพศ, พนักงานบริการ, ผู้ใช้สารเสพติด, ประชากรข้ามชาติ, ผู้ถูกคุมขัง, กลุ่มชาติพันธุ์และชนเผ่า
+								</p>
+						</article>
+					</div>
 				</div>
 			</div>
 		<p class="has-text-centered">

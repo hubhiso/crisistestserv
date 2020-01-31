@@ -9,6 +9,8 @@
     <meta name="theme-color" content="#cc99cc"/>
     <link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
+    <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}"
+		  rel="stylesheet">
 
     <!--modal popup -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
