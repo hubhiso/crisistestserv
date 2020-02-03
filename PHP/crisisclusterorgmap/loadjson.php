@@ -12,6 +12,7 @@ if (mysqli_connect_errno())
 	{ 
         echo "Database connection failed."; 
 	}
+mysqli_set_charset($conn,"utf8");
 
 
 echo "{";
