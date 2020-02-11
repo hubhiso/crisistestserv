@@ -38,4 +38,5 @@
 </div>
 <input type="hidden" id="p_id" value="{{ Auth::user()->prov_id }}">
 <input type="hidden" id="user_name" value="{{ Auth::user()->name }}">
-
+<input type="hidden" id="p_position" value="{{ Auth::user()->position }}">
+<input type="hidden" id="p_area" value="{{ Auth::user()->area_id }}">

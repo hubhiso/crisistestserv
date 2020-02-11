@@ -313,8 +313,10 @@ class OfficerUpdateController extends Controller
         $text_search = $request->input('Search_text');
         $type_Search = $request->input('Type_search');
         $pid = $request->input('pid');
+        $pposition = $request->input('pposition');
+        $parea = $request->input('parea');
 
-        if($pid == 0){
+        if($pposition  == "admin" && $pid == 0){
             if($request->input('Filter')==1){
                 $cases = case_input::where('prov_id', '>', '0');
                 $filter ++;
@@ -333,7 +335,26 @@ class OfficerUpdateController extends Controller
                 $cases = case_input::where($matchThese);
                 $filter ++;
             }
-        }else{
+
+        }else if($pposition  == "manager_area" && $pid == 0){
+            if($request->input('Filter')==1){
+                $cases = case_input::join('prov_geo', 'prov_id', '=', 'prov_geo.code')->where('prov_geo.nhso', '=', $parea);
+                $filter ++;
+            }else if ($request->input('Filter')==2){
+                $cases = case_input::join('prov_geo', 'prov_id', '=', 'prov_geo.code')->where([['problem_case','=', $value_sub],['prov_geo.nhso','=',$parea]]);
+                $filter ++;
+    
+            }else if ($request->input('Filter')==3){
+                $cases = case_input::join('prov_geo', 'prov_id', '=', 'prov_geo.code')->where([['status','=', $value_sub],['prov_geo.nhso','=',$parea]]);
+                $filter ++;
+    
+            }else if ($request->input('Filter')==4){
+                $cases = case_input::join('prov_geo', 'prov_id', '=', 'prov_geo.code')->where([['sender_case','=', $value_sub],['prov_geo.nhso','=',$parea]]);
+                $filter ++;
+            }
+
+        }
+        else{
             if($request->input('Filter')==1){
                 $matchThese = ['prov_id'=>$pid];
                 $cases = case_input::where($matchThese);

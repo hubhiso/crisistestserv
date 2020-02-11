@@ -257,7 +257,8 @@
             var Date_end = $('#date_end').val();
             var Filter = $('#filter_search').val();
             var Sub_Filter = $('#sub_filter_search').val();
-
+			var pposition = $('#p_position').val();
+			var parea = $('#p_area').val();
 
             var $container = $('.table-case_container');
 
@@ -286,7 +287,9 @@
 					Date_start : Date_start,
 					Date_end : Date_end,
                     Filter: Filter,
-                    Sub_Filter: Sub_Filter
+                    Sub_Filter: Sub_Filter,
+					pposition: pposition,
+					parea: parea
                 },
                 success: function( data ) {
                   //  console.log(data);
