@@ -73,8 +73,11 @@ class ManagerController extends Controller
             'email' => $data['email'],
             'tel' => $data['tel'],
             'password' => bcrypt($data['password']),
+            'area_id' => $data['area_id'],
             'prov_id' => $data['prov_id'],
             'position' => $data['position'],
+            'p_view_all' => $data['p_view_all'],
+            'p_receive' => $data['p_receive'],
 
         ]);
     }
