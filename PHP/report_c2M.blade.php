@@ -129,7 +129,7 @@
 				"gradient": "1",
 				"color": [
 					{
-						"minvalue": "0",
+						"minvalue": "1",
 						"maxvalue": "<?php echo $v_max/2; ?>",
 						"code": "#e5a3ad",
 						"label": "Medium"
