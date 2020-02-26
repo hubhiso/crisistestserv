@@ -129,6 +129,12 @@
 				"gradient": "1",
 				"color": [
 					{
+						"minvalue": "0",
+						"maxvalue": "0",
+						"code": "#FCF3CF",
+						"label": "Low"
+					},
+					{
 						"minvalue": "1",
 						"maxvalue": "<?php echo $v_max/2; ?>",
 						"code": "#e5a3ad",
