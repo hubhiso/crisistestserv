@@ -17,7 +17,7 @@
 	<section class="hero is-medium has-text-centered">
 		<div class="hero-head">
 			<div class="container">
-				@component('component.login_bar')
+				@component('component.login_bar2')
 				@endcomponent
 			</div>
 		</div>
@@ -343,18 +343,20 @@
 
 <script>
     var p_id = $('#p_id').val();
-	//alert(p_id);
+    var p_po = $('#p_position').val();
+    var p_ar = $('#p_area').val();
+
     var status_url = "{{route('officer.load_status',['prov_id' => ':p_id']) }}";
-    status_url = status_url.replace(':p_id', p_id);
+    status_url = status_url.replace(':p_id', p_id+' '+p_po+' '+p_ar);
     console.log(status_url);
     $.ajax({
         type: 'GET',
         url: status_url,
         success: function( data ) {
             //console.log(data);
-            $('#i-receive').text(" ไม่ได้รับเรื่อง "+data.NotAcp);
-            $('#i-additional').text(" ไม่บันทึก "+data.NotKeyIn);
-            $('#i-process').text(" ไม่ดำเนินการ "+data.NotOp);
+            $('#i-receive').text(data.NotAcp);
+            $('#i-additional').text(data.NotKeyIn);
+            $('#i-process').text(data.NotOp);
         }
     });
 </script>

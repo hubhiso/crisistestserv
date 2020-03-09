@@ -16,7 +16,7 @@
 <div class="hero is-medium has-text-centered">
     <div class="hero-head">
         <div class="container">
-            @component('component.login_bar')
+            @component('component.login_bar2')
             @endcomponent
         </div>
     </div>
