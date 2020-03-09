@@ -8722,34 +8722,43 @@ print {
 #i-receive {
   color: #e45b46;
   border-color: #e45b46;
+  color: white;
+  font-weight: bold;
 }
 
 #i-receive:hover {
   background: #e45b46;
   border-color: #e45b46;
   color: white;
+  font-weight: bold;
 }
 
 #i-additional {
-  color: rgb(177, 81, 3);
-  border-color: rgb(177, 81, 3);
+  color: #FFBD00;
+  border-color: #FFBD00;
+  color: black;
+  font-weight: bold;
 }
 
 #i-additional:hover {
-  background: rgb(177, 81, 3);
-  border-color: rgb(177, 81, 3);
-  color: white;
+  background: #FFBD00;
+  border-color: #FFBD00;
+  color: black;
+  font-weight: bold;
 }
 
 #i-process {
   color: #cc99cc;
   border-color: #cc99cc;
+  color: white;
+  font-weight: bold;
 }
 
 #i-process:hover {
   background: #cc99cc;
   border-color: #cc99cc;
   color: white;
+  font-weight: bold;
 }
 
 .wall1 {

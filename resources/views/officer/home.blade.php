@@ -18,9 +18,16 @@
 </head>
 
 <body class="layout-default">
-<section class="hero is-medium has-text-centered">
-	@component('component.login_bar')
-	@endcomponent
+
+    <section class="hero is-medium has-text-centered">
+		<div class="hero-head">
+			<div class="container">
+				@component('component.login_bar2')
+				@endcomponent
+				</div>
+			</div>
+    
+
     <div class="container">
     	<div class="navbar-end">
 			@if( Auth::user()->position  == "manager" or Auth::user()->position  == "admin" )
@@ -40,7 +47,15 @@
 			</div>
 </section>
 
-@extends('footer')
+<footer class="footer "style="background-color: #EEE;">
+	<div class="container  ">
+		<div class="content has-text-centered  ">
+		<p>Crisis Response System (CRS)
+		</p>
+		<p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p>
+		</div>
+	</div>
+</footer>
 
 
 	<script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
@@ -49,18 +64,20 @@
 <script>
 
     var p_id = $('#p_id').val();
+    var p_po = $('#p_position').val();
+    var p_ar = $('#p_area').val();
 
     var status_url = "{{route('officer.load_status',['prov_id' => ':p_id']) }}";
-    status_url = status_url.replace(':p_id', p_id);
+    status_url = status_url.replace(':p_id', p_id+' '+p_po+' '+p_ar);
     console.log(status_url);
     $.ajax({
         type: 'GET',
         url: status_url,
         success: function( data ) {
             //console.log(data);
-            $('#i-receive').text(" ไม่ได้รับเรื่อง "+data.NotAcp);
-            $('#i-additional').text(" ไม่บันทึก "+data.NotKeyIn);
-            $('#i-process').text(" ไม่ดำเนินการ "+data.NotOp);
+            $('#i-receive').text(data.NotAcp);
+            $('#i-additional').text(data.NotKeyIn);
+            $('#i-process').text(data.NotOp);
         }
     });
 </script>
