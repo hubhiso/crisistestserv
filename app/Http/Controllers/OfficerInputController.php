@@ -225,7 +225,7 @@ class OfficerInputController extends Controller
         $html = view('officer._activities_table',compact('activities'))->render();
         return response()->json(compact('html'));
     }
-    public function load_status($pid)
+    public function load_status($data)
     {
 //        $cases = case_input::select(array(
 //            case_input::raw("SUM (status) as s1"),
