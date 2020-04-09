@@ -6,7 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
-	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+	<link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
+
 	<link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}"
 		  rel="stylesheet"> {{ Html::script('js/jquery.min.js') }}
 	<link href="{{ asset('/css/uploadicon/new3.css') }}" rel="stylesheet">
@@ -37,7 +39,7 @@
 
 </head>
 
-<body onload="load()">
+<body onload="load() " class="has-background-light	">
 
 	<form  name="RegForm" class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" onsubmit="return vali_case();" action="{{ route('store') }}" >
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -62,11 +64,11 @@
 			
 			<div id="text-checkbox" class="columns is-multiline is-mobile">
 				&nbsp &nbsp
-				<button id="chk_agent" id="chk_agent" type="button" class="button is-primary" value="1" onclick="showHideDiv('data-agent')">คลิกเพื่อระบุว่าเป็นผู้แจ้งแทน</button>
+				<button id="chk_agent" id="chk_agent" type="button" class="button is-info" value="1" onclick="showHideDiv('data-agent')">คลิกเพื่อระบุว่าเป็นผู้แจ้งแทน</button>
 				&nbsp &nbsp
 				<input class="text-nicelabel" id="emergency" name="emergency" value="1" data-nicelabel='{"position_class": "text_checkbox", "checked_text": "ขอความช่วยเหลือเร่งด่วน", "unchecked_text": "ขอความช่วยเหลือเร่งด่วน"}' type="checkbox" />			
 			</div>
-			<div class="box" id="data-agent">
+			<div class="box " id="data-agent">
 				<div class="field is-horizontal">
 					<div class="field-label ">
 						<!-- Left empty for spacing -->
@@ -135,12 +137,12 @@
 						<div class="field is-narrow">
 							<div class="control ">
 
-							<label class="radio">
-								{{ Form::radio('biosex', '1' , true) }} ชาย
-							</label>
-							<label class="radio">
-								{{ Form::radio('biosex', '2' , false) }} หญิง
-							</label>
+								<label class="radio">
+									{{ Form::radio('biosex', '1' , true) }} ชาย
+								</label>
+								<label class="radio">
+									{{ Form::radio('biosex', '2' , false) }} หญิง
+								</label>
 							</div>
 						</div>
 					</div>
@@ -198,10 +200,10 @@
 						<label class="label"> วันที่เกิดเหตุ *</label>
 					</div>
 					<div class="field-body">
-						<div class="field is-grouped control">
-							<div class="input-group date" data-provide="datepicker">
-									ปี พ.ศ. <input type="number" min="2400" max="2570" maxlength = "4"  id="YearAct" name="YearAct" class="form-control" placeholder="ปปปป" value="{{date('Y')+543}}" onchange="date_acc();">
-									เดือน   <select id ="MonthAct" name="MonthAct" onchange="date_acc();">
+						<div class="field is-narrow is-grouped ">
+							<div class="input-group date control" data-provide="datepicker">
+									ปี พ.ศ. <input style="width: 100px;" type="number" min="2400" max="2570" maxlength = "4"  id="YearAct" name="YearAct" class="form-control input" placeholder="ปปปป" value="{{date('Y')+543}}" onchange="date_acc();">
+									เดือน   <div class="select"><select  id ="MonthAct" name="MonthAct" onchange="date_acc();">
 											<option value="1" @if(date('m') == 1){ selected } @endif> มกราคม </option>
 											<option value="2" @if(date('m') == 2){ selected } @endif> กุมภาพันธ์ </option>
 											<option value="3" @if(date('m') == 3){ selected } @endif> มีนาคม </option>
@@ -214,12 +216,12 @@
 											<option value="10" @if(date('m') == 10){ selected } @endif> ตุลาคม </option>
 											<option value="11" @if(date('m') == 11){ selected } @endif> พฤศจิกายน </option>
 											<option value="12" @if(date('m') == 12){ selected } @endif> ธันวาคม </option>
-										</select>
-										วันที่ <select id ="DayAct" name="DayAct" onchange="">
+										</select></div>
+										วันที่ <div class="select"><select class="input" id ="DayAct" name="DayAct" onchange="">
 										@for ($i = 1; $i <= 31; $i++)
 										<option value="{{$i}}" @if(date('d') == $i){ selected } @endif>{{$i}}</option>
 										@endfor
-									</select>
+									</select></div>
 
 									<input type="hidden" id="DateAct" name="DateAct" class="form-control" value="{{date('m/d/Y')}}">
 
@@ -399,7 +401,7 @@
 				<label class="label"> อัพโหลดข้อมูลเพิ่มเติม </label>
 				</div>
 				<div class="field-body">
-					<div class="file is-info has-name is-fullwidth">
+					<div class="file is-primary has-name is-fullwidth">
 						<label class="file-label">
 							<input class="input-file" id="file1" name="file1" type="file" name="resume">
 							<span class="file-cta">
@@ -422,7 +424,7 @@
 				<div class="field-label is-normal">
 				</div>
 				<div class="field-body">
-					<div class="file is-info has-name is-fullwidth">
+					<div class="file is-primary has-name is-fullwidth">
 						<label class="file-label">
 							<input class="input-file" id="file2" name="file2" type="file" name="resume">
 							<span class="file-cta">
@@ -445,7 +447,7 @@
 				<div class="field-label is-normal">
 				</div>
 				<div class="field-body">
-					<div class="file is-info has-name is-fullwidth">
+					<div class="file is-primary has-name is-fullwidth">
 						<label class="file-label">
 							<input class="input-file" id="file3" name="file3" type="file" name="resume">
 							<span class="file-cta">
