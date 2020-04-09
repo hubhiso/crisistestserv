@@ -1,10 +1,23 @@
 
 <section class="hero is-primary is-medium wall2">
 <br>
-  <div  class="container level-right">
-	<a class="button is-primary is-inverted is-outlined is-rounded is-small is-danger" href="{{ 'officer' }}"> <i class="fas fa-lock"></i>&nbsp ส่วนเจ้าหน้าที่ </a>  
-	<!-- Hero content: will be in the middle -->
-  </div>
+	<nav class="level">
+		<div class="level-item has-text-centered">
+			
+		</div>
+		<div class="level-item has-text-centered">
+			
+		</div>
+		<div class="level-item has-text-centered">
+			
+		</div>
+		<div class="level-item has-text-right">
+			<div>
+			<a class="button is-primary is-inverted is-outlined is-rounded is-small is-danger " href="{{ 'officer' }}"> <i class="fas fa-lock"></i>&nbsp ส่วนเจ้าหน้าที่ </a>  
+			</div>
+		</div>
+	</nav>
+
   <div class="hero-body">
     <div class="container has-text-centered">
       <div class="container">
@@ -22,7 +35,7 @@
 
 </section>
 
-<div class="container has-text-centered">
+<div class="container  has-text-centered">
       <div class="container ">
 			  <br><br>
 			  <figure class="image is-128x128 container"  >
@@ -31,6 +44,12 @@
 						<br>
 			<h1  class="title"> แหล่งข้อมูลความรู้เรื่องสิทธิในประเด็นต่างๆ </h1>
 			<h2 class="subtitle">สามารถสืบค้นได้ตาม Link ข้อมูลด้านล่างนี้</h2>	
+			<br>
+			<div class=" columns is-mobile">
+				<div class="box column is-three-fifths is-offset-one-fifth">
+					<a href="contents/Crisis.pdf"><img src="images/Crisis-cover.png"  ></a>
+				</div>
+			</div>
 			<br>
 	</div>
 
@@ -116,7 +135,7 @@
 
 </div>
 
-<section class="hero is-light has-text-centered">
+<section class="hero is-white has-text-centered">
   <div class="hero-body">
     <div class="container">
 	<figure class="image is-128x128 container"  >
