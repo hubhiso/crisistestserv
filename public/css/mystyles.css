@@ -1,0 +1,140 @@
+#btn_new1 {
+    font-size: 36px;
+    background-color: #CC3366;
+    border-color: #ab3c3c;
+    color: #FFFFFF;
+    width: 250px;
+    height: 70px;
+    box-shadow: 0 6px #ab3c3c;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    border-radius: 5px 5px 5px 5px;
+}
+
+#btn_new1:hover {
+    box-shadow: 0 4px #ab3c3c;
+    top: 2px;
+}
+
+#btn_new1:active {
+    box-shadow: 0 0 #ab3c3c;
+    top: 6px;
+}
+
+#btn_new2 {
+    background-color: #E8C2EA;
+    color: #70477E;
+    width: 200px;
+    height: 50px;
+    box-shadow: 0 6px #AC8FB6;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    border-radius: 5px 5px 5px 5px;
+    border-color: #AC8FB6;
+}
+
+#btn_new2:hover {
+    box-shadow: 0 4px #AC8FB6;
+    top: 2px;
+}
+
+#btn_new2:active {
+    box-shadow: 0 0 #AC8FB6;
+    top: 6px;
+}
+
+#ft1 {
+    color: #FFFFFF;
+    font-size: 36px;
+    text-align: center;
+}
+
+#ft2 {
+    color: #FFFFFF;
+}
+
+.btnAlert {
+    padding: 2rem 4.25rem 2rem 4.25rem;
+    background-color: #cc3366;
+    box-shadow: 0 10px #ab3c3c;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.theme1 {
+    color: #cc3366;
+    text-align: center;
+    font-size: small;
+}
+
+.color2 {
+    background-color: #CDA0CA;
+}
+
+.test {
+    width: 300px;
+    position: relative;
+}
+
+#i-receive {
+    color: #e45b46;
+    border-color: #e45b46;
+    color: white;
+    font-weight: bold;
+}
+
+#i-receive:hover {
+    background: #e45b46;
+    border-color: #e45b46;
+    color: white;
+    font-weight: bold;
+}
+
+#i-additional {
+    color: #FFBD00;
+    border-color: #FFBD00;
+    color: black;
+    font-weight: bold;
+}
+
+#i-additional:hover {
+    background: #FFBD00;
+    border-color: #FFBD00;
+    color: black;
+    font-weight: bold;
+}
+
+#i-process {
+    color: #cc99cc;
+    border-color: #cc99cc;
+    color: white;
+    font-weight: bold;
+}
+
+#i-process:hover {
+    background: #cc99cc;
+    border-color: #cc99cc;
+    color: white;
+    font-weight: bold;
+}
+
+.wall1 {
+    background-image: url("../images/wall-n1.jpg");
+    background-size: cover;
+
+}
+
+.wall2 {
+    background-image: url("../images/wall-n2.jpg");
+    background-size: cover;
+
+}
+
+.wall3 {
+    background-image: url("../images/wall-n3.jpg");
+    background-size: cover;
+}
