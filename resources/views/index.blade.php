@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#cc99cc"/>
-    <link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
+    <link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
     <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}"
 		  rel="stylesheet">
@@ -16,10 +17,10 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
 	<script src="css/modal/modal.js"></script>
     <link href="{{ asset('css/modal/modal.css') }}" rel="stylesheet">
-    <title> CRS </title>
+    <title> CRS </title> 
 </head>
 
-<body >
+<body class="has-background-light">
 
 {{--@extends('layout.officer')--}}
 
