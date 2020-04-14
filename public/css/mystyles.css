@@ -1,3 +1,7 @@
+body {
+    font-family: 'Mitr', sans-serif;
+}
+
 #btn_new1 {
     font-size: 36px;
     background-color: #CC3366;
