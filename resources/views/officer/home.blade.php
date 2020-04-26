@@ -24,23 +24,24 @@
 
 <body class="layout-default">
 
-    <section class="hero is-medium has-text-centered">
-        <div class="hero-head">
-            <div class="container">
-                @component('component.login_bar2')
-                @endcomponent
-            </div>
+    <div class="hero-head ">
+        <div class=" has-background-light">
+            @component('component.login_bar2')
+            @endcomponent
         </div>
-        <div class="columns is-mobile">
-            <div class="column is-5 is-offset-8">
-                @if( Auth::user()->position == "manager" or Auth::user()->position == "admin" )
-                <a class="button is-primary is-rounded is-small" href="{{ route('manager.register') }}">
-                    <i class="fas fa-user-plus"></i>&nbsp
-                    ลงทะเบียนผู้ดูแลเพิ่มเติม </a>
-                @endif
-            </div>
-        </div>
+    </div>
 
+    <div class="columns is-mobile">
+        <div class="column is-4 is-offset-10">
+            @if( Auth::user()->position == "manager" or Auth::user()->position == "admin" )
+            <a class="button is-primary is-rounded is-small" href="{{ route('manager.register') }}">
+                <i class="fas fa-user-plus"></i>&nbsp
+                ลงทะเบียนผู้ดูแลเพิ่มเติม </a>
+            @endif
+        </div>
+    </div>
+
+    <section class="hero is-medium has-text-centered">
 
         <div class="hero-body">
             <div class="container">
