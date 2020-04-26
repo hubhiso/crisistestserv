@@ -115,6 +115,7 @@ body {
 #i-process {
     color: #cc99cc;
     border-color: #cc99cc;
+    background-color: #cc99cc;
     color: white;
     font-weight: bold;
 }
@@ -122,6 +123,7 @@ body {
 #i-process:hover {
     background: #cc99cc;
     border-color: #cc99cc;
+    background-color: #9e759e;
     color: white;
     font-weight: bold;
 }
