@@ -148,12 +148,9 @@
                             <div class="field is-narrow">
                                 <div class="control ">
 
-                                    <label class="radio">
-                                        {{ Form::radio('biosex', '1' , true) }} ชาย
-                                    </label>
-                                    <label class="radio">
-                                        {{ Form::radio('biosex', '2' , false) }} หญิง
-                                    </label>
+                                    {{ Form::radio('biosex', '1' , true) }} ชาย
+                                    &nbsp
+                                    {{ Form::radio('biosex', '2' , false) }} หญิง
                                 </div>
                             </div>
                         </div>
@@ -172,32 +169,22 @@
                         <div class="field-body">
                             <div class="field is-narrow">
                                 <div class="control  ">
-                                    <label class="radio">
-                                        {{ Form::radio('nation', '1' , true) }} ไทย
-                                    </label>
-                                    <label class="radio">
-                                        {{ Form::radio('nation', '2' , false) }} ลาว
-                                    </label>
-                                    <label class="radio">
-                                        {{ Form::radio('nation', '3' , false) }} เวียดนาม
-                                    </label>
-                                    <label class="radio">
-                                        {{ Form::radio('nation', '4' , false) }} พม่า
-                                    </label>
-                                    <label class="radio">
-                                        {{ Form::radio('nation', '5' , false) }} กัมพูชา
-                                    </label>
+                                    {{ Form::radio('nation', '1' , true) }} ไทย
+                                    &nbsp
+                                    {{ Form::radio('nation', '2' , false) }} ลาว
+                                    &nbsp
+                                    {{ Form::radio('nation', '3' , false) }} เวียดนาม
+                                    &nbsp
+                                    {{ Form::radio('nation', '4' , false) }} พม่า
+                                    &nbsp
+                                    {{ Form::radio('nation', '5' , false) }} กัมพูชา
                                 </div>
                                 <div class="control ">
-                                    <label class="radio">
-                                        {{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ
-                                    </label>
-                                    <label class="radio">
-                                        {!!
-                                        Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุสัญชาติ','style'=>'display:
-                                        none']) !!}
-                                    </label>
-
+                                    {{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ
+                                    &nbsp
+                                    {!!
+                                    Form::text('nation_etc',null,['class'=>'input','placeholder'=>'ระบุสัญชาติ','style'=>'display:
+                                    none']) !!}
                                 </div>
                             </div>
                         </div>
