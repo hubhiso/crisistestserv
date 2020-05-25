@@ -176,10 +176,10 @@
                                     {{ Form::radio('nation', '3' , false) }} เวียดนาม
                                     &nbsp
                                     {{ Form::radio('nation', '4' , false) }} พม่า
-                                    &nbsp&nbsp
-                                    {{ Form::radio('nation', '5' , false) }} กัมพูชา
                                 </div>
                                 <div class="control ">
+                                    {{ Form::radio('nation', '5' , false) }} กัมพูชา
+                                    &nbsp
                                     {{ Form::radio('nation', '6' , false) }} อื่นๆ ระบุ
                                     &nbsp
                                     {!!
