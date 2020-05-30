@@ -293,7 +293,7 @@
 
 <!-- popup box -->
 <div id="boxes">
-    <div id="dialog" class="window">
+    <div id="dialog" class="window sizebox1">
         <div class="columns">
             <div class="column">
                 <div class="tile is-parent">

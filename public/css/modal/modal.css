@@ -25,10 +25,8 @@
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.8);
 }
 
-
 #boxes #dialog,
 #confirm-submit {
-  width: 80%;
   top: 0;
   padding: 0px;
   background-color: #ffffff;
@@ -36,12 +34,18 @@
   opacity: 0.9;
 }
 
+.sizebox1 {
+  width: 80%;
+}
+
+.sizebox2 {
+  width: 50%;
+}
 
 .maintext {
   text-align: center;
   text-decoration: none;
 }
-
 
 #lorem {
   font-size: 12pt;
@@ -58,47 +62,60 @@
 }
 
 .agree:hover {
-  background-color: #D1D1D1;
+  background-color: #d1d1d1;
 }
 
 .popupoption:hover {
-  background-color: #D1D1D1;
+  background-color: #d1d1d1;
   color: green;
 }
 
 .popupoption2:hover {
-
   color: red;
 }
 
 /* responesive size */
 @media only screen and (max-width: 700px) {
-
   #boxes #dialog {
     padding: 0px;
-    width: 85%;
     border-radius: 15px;
-    margin-top: 200px;
     padding-bottom: 0px;
+  }
+
+  .sizebox1 {
+    margin-top: 200px;
+    width: 85%;
+  }
+
+  .sizebox2 {
+    margin-top: 50px;
+    width: 85%;
   }
 }
 
 /* responesive size */
 @media only screen and (max-width: 400px) {
-
   #boxes #dialog {
     padding: 0px;
-    width: 85%;
     border-radius: 15px;
-    margin-top: 250px;
     padding-bottom: 0px;
+  }
+
+  .sizebox1 {
+    margin-top: 350px;
+    width: 85%;
+  }
+
+  .sizebox2 {
+    margin-top: 30px;
+    width: 85%;
   }
 }
 
 /* Slider wrapper*/
 .css-slider-wrapper {
   display: block;
-  background: #FFF;
+  background: #fff;
   overflow: hidden;
   position: absolute;
   left: 0;
@@ -135,26 +152,26 @@
 
 /* each slide backgound color */
 .slide1 {
-  background: #FFF;
+  background: #fff;
   left: 0;
 }
 
 .slide2 {
-  background: #FFF;
-  left: 100%
+  background: #fff;
+  left: 100%;
 }
 
 .slide3 {
-  background: #FFF;
-  left: 200%
+  background: #fff;
+  left: 200%;
 }
 
 .slide4 {
-  background: #FFF;
+  background: #fff;
   left: 300%;
 }
 
-.slider>div {
+.slider > div {
   text-align: center;
 }
 
@@ -247,56 +264,56 @@
 }
 
 /* Slider Pagger arrow event */
-.slide-radio1:checked~.next .numb2,
-.slide-radio2:checked~.next .numb3,
-.slide-radio3:checked~.next .numb4,
-.slide-radio2:checked~.previous .numb1,
-.slide-radio3:checked~.previous .numb2,
-.slide-radio4:checked~.previous .numb3 {
+.slide-radio1:checked ~ .next .numb2,
+.slide-radio2:checked ~ .next .numb3,
+.slide-radio3:checked ~ .next .numb4,
+.slide-radio2:checked ~ .previous .numb1,
+.slide-radio3:checked ~ .previous .numb2,
+.slide-radio4:checked ~ .previous .numb3 {
   display: block;
-  z-index: 1
+  z-index: 1;
 }
 
 /* Slider Pagger event */
-.slide-radio1:checked~.slider-pagination .page1,
-.slide-radio2:checked~.slider-pagination .page2,
-.slide-radio3:checked~.slider-pagination .page3,
-.slide-radio4:checked~.slider-pagination .page4 {
+.slide-radio1:checked ~ .slider-pagination .page1,
+.slide-radio2:checked ~ .slider-pagination .page2,
+.slide-radio3:checked ~ .slider-pagination .page3,
+.slide-radio4:checked ~ .slider-pagination .page4 {
   background: #607d8d;
 }
 
 /* Slider slide effect */
-.slide-radio1:checked~.slider {
+.slide-radio1:checked ~ .slider {
   -webkit-transform: translateX(0%);
   transform: translateX(0%);
 }
 
-.slide-radio2:checked~.slider {
+.slide-radio2:checked ~ .slider {
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
 }
 
-.slide-radio3:checked~.slider {
+.slide-radio3:checked ~ .slider {
   -webkit-transform: translateX(-200%);
   transform: translateX(-200%);
 }
 
-.slide-radio4:checked~.slider {
+.slide-radio4:checked ~ .slider {
   -webkit-transform: translateX(-300%);
   transform: translateX(-300%);
 }
 
-.slide-radio1:checked~.slide1 h2,
-.slide-radio2:checked~.slide2 h2,
-.slide-radio3:checked~.slide3 h2,
-.slide-radio4:checked~.slide4 h2,
-.slide-radio1:checked~.slide1 .button,
-.slide-radio2:checked~.slide2 .button,
-.slide-radio3:checked~.slide3 .button,
-.slide-radio4:checked~.slide4 .button {
+.slide-radio1:checked ~ .slide1 h2,
+.slide-radio2:checked ~ .slide2 h2,
+.slide-radio3:checked ~ .slide3 h2,
+.slide-radio4:checked ~ .slide4 h2,
+.slide-radio1:checked ~ .slide1 .button,
+.slide-radio2:checked ~ .slide2 .button,
+.slide-radio3:checked ~ .slide3 .button,
+.slide-radio4:checked ~ .slide4 .button {
   -webkit-transform: translateX(0);
   transform: translateX(0);
-  opacity: 1
+  opacity: 1;
 }
 
 @media only screen and (max-width: 767px) {
@@ -304,8 +321,8 @@
     font-size: 20px;
   }
 
-  .slider>div {
-    padding: 0 2%
+  .slider > div {
+    padding: 0 2%;
   }
 
   .control label {

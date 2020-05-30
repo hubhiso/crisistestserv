@@ -684,7 +684,7 @@
 
     <!-- popup box -->
     <div id="boxes">
-        <div style="top: 199.5px; left: 551.5px; display: none; " id="dialog" class="window">
+        <div style="top: 199.5px; left: 551.5px; display: none; " id="dialog" class="window sizebox2">
             <div class="box">
                 <p>ข้อมูลที่บันทึกจะถูกเก็บเป็นความลับและโปรดตรวจสอบเบอร์โทรศัพท์ให้ถูกต้องเพื่อให้เจ้าหน้าที่ติดต่อกลับ
                 </p>
