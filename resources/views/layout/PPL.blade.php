@@ -23,8 +23,7 @@
             <div class="container">
                 <h1 id="bulma" class="title"> Crisis Response System (CRS) </h1>
                 <h2 id="modern-framework" class="subtitle"> ระบบรับเรื่องร้องเรียนและคุ้มครองการละเมิดสิทธิด้านเอดส์<br>
-                    เพศภาวะ และความเป็นกลุ่มประชากรเปราะบางต่อการถูกเลือกปฏิบัติ
-                </h2>
+                    เพศภาวะ และความเป็นกลุ่มประชากรเปราะบางต่อการถูกเลือกปฏิบัติ </h2>
                 <a id="btn_new1" class="button" href="{{ 'case_inputs' }}"> แจ้งเรื่อง </a>
             </div>
             <br>
@@ -329,6 +328,7 @@
         <p class="has-text-centered">
             <a class="button is-medium  is-outlined is-danger close">ปิดหน้าต่าง</a>
         </p>
+        <br>
     </div>
     <div style="width: 1478px; font-size: 32pt; color:white;  display: none; opacity: 0.8;" id="mask"></div>
 </div>

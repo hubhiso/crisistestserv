@@ -404,8 +404,6 @@
                         </div>
                     </div>
 
-
-
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label"> อัพโหลดข้อมูลเพิ่มเติม </label>
@@ -476,8 +474,6 @@
                         </div>
                     </div>
 
-
-
                 </div>
 
                 <div class="field is-grouped">
@@ -491,7 +487,7 @@
 
                     </p>
                     <p class="control">
-                        <a><a href="{{ route('guest_home') }}">ยกเลิก</a></a>
+                        <a><a class="button is-outlined" href="{{ route('guest_home') }}">ยกเลิก</a></a>
                     </p>
                 </div>
         </div>
@@ -688,15 +684,19 @@
 
     <!-- popup box -->
     <div id="boxes">
-        <div style="top: 199.5px; left: 551.5px; display: none; width: 400px;" id="dialog" class="window">
-            <b>ข้อมูลที่บันทึกจะถูกเก็บเป็นความลับ และโปรดตรวจสอบเบอร์โทรศัพท์ให้ถูกต้อง
-                เพื่อให้เจ้าหน้าที่ติดต่อกลับ</b>
-            <br><br>
-            <p class="has-text-centered">
-                <a class="button is-medium  is-outlined is-danger close">ทราบ</a>
-            </p>
+        <div style="top: 199.5px; left: 551.5px; display: none; " id="dialog" class="window">
+            <div class="box">
+                <p>ข้อมูลที่บันทึกจะถูกเก็บเป็นความลับและโปรดตรวจสอบเบอร์โทรศัพท์ให้ถูกต้องเพื่อให้เจ้าหน้าที่ติดต่อกลับ
+                </p>
+                <br>
+                <p class="has-text-centered">
+                    <a class="button is-medium  is-outlined is-danger close">ทราบ</a>
+
+                </p>
+            </div>
         </div>
         <div style="width: 1478px; font-size: 32pt; color:white; height: 602px; display: none; opacity: 0.8;" id="mask">
+
         </div>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
