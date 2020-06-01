@@ -26,8 +26,8 @@ $(document).ready(function () {
 	$(id).css('top', winH / 2 - $(id).height() / 2);
 	$(id).css('left', winW / 2 - $(id).width() / 2);
 
-	$('#confirm-submit').css('top', winH / 2.2 - $(id).height() / 1.5);
-	$('#confirm-submit').css('left', winW / 2.4 - $(id).width() / 1.5);
+	$('#confirm-submit').css('top', winH / 2 - $('#confirm-submit').height() / 2);
+	$('#confirm-submit').css('left', winW / 2 - $('#confirm-submit').width() / 2);
 
 	//transition effect
 	$(id).fadeIn(100);

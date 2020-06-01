@@ -703,43 +703,45 @@
     <script src="css/modal/modal.js"></script>
 
 
-    <!--  test form comfirm   -->
+    <!-- form comfirm   -->
 
-    <div id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="">
-        <div class="modal-dialog">
-            <div class="modal-header">
-                <b>ยืนยันการยื่นคำร้อง</b>
-            </div>
-            <div class="modal-body">
-                กรุณาตรวจสอบชื่อและหมายเลขโทรศัพท์ก่อนส่งข้อมูลเข้าสู่ระบบ
-                <br>เพื่อความถูกต้องในการสื่อสารกับเจ้าหน้าที่
+    <div id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="  ">
+        <div class="box has-text-centered">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <b>ยืนยันการยื่นคำร้อง</b>
+                </div>
+                <div class="modal-body">
+                    กรุณาตรวจสอบชื่อและหมายเลขโทรศัพท์ก่อนส่งข้อมูลเข้าสู่ระบบ
+                    <br>เพื่อความถูกต้องในการสื่อสารกับเจ้าหน้าที่
 
-                <table class="table " id="form_sender">
-                    <tr>
-                        <th>ชื่อผู้แจ้งแทน</th>
-                        <td id="txt_sender_name"></td>
-                    </tr>
-                    <tr>
-                        <th>หมายเลขโทรศัพท์ผู้แจ้ง</th>
-                        <td id="txt_agent_tel"></td>
-                    </tr>
-                </table>
-                <table class="table ">
-                    <tr>
-                        <th>ชื่อผู้ถูกกระทำ</th>
-                        <td id="txt_name"></td>
-                    </tr>
-                    <tr>
-                        <th>หมายเลขโทรศัพท์</th>
-                        <td id="txt_tel"></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <br>
-                <a href="#" id="submit" class="button is-medium   is-primary ">ยืนยัน</a>
-                <button type="button" class="button is-medium  is-outlined is-danger "
-                    data-dismiss="modal">ยกเลิก</button>
+                    <table class="table " id="form_sender">
+                        <tr>
+                            <th>ชื่อผู้แจ้งแทน</th>
+                            <td id="txt_sender_name"></td>
+                        </tr>
+                        <tr>
+                            <th>หมายเลขโทรศัพท์ผู้แจ้ง</th>
+                            <td id="txt_agent_tel"></td>
+                        </tr>
+                    </table>
+                    <table class="table ">
+                        <tr>
+                            <th>ชื่อผู้ถูกกระทำ</th>
+                            <td id="txt_name"></td>
+                        </tr>
+                        <tr>
+                            <th>หมายเลขโทรศัพท์</th>
+                            <td id="txt_tel"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <br>
+                    <a href="#" id="submit" class="button is-medium   is-primary ">ยืนยัน</a>
+                    <button type="button" class="button is-medium  is-outlined is-danger "
+                        data-dismiss="modal">ยกเลิก</button>
+                </div>
             </div>
         </div>
     </div>
