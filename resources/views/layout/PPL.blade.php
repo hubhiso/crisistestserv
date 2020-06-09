@@ -46,12 +46,18 @@
         <h1 class="title"> แหล่งข้อมูลความรู้เรื่องสิทธิในประเด็นต่างๆ </h1>
         <h2 class="subtitle">สามารถสืบค้นได้ตาม Link ข้อมูลด้านล่างนี้</h2>
         <br>
-        <div class=" columns is-mobile">
-            <div class="box column is-three-fifths is-offset-one-fifth">
+    </div>
+    <div class="columns">
+        <div class="column is-two-thirds">
+            <article class="tile is-child box">
                 <a href="contents/Crisis.pdf"><img src="images/Crisis-cover.png"></a>
-            </div>
+            </article>
         </div>
-        <br>
+        <div class="column">
+            <article class="tile is-child box">
+                <a href="contents/CRSmannual.pdf"><img src="contents/CRSmannualCV.png" height="360"></a>
+            </article>
+        </div>
     </div>
 
     <div class="tile is-ancestor">
