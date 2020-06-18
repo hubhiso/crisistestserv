@@ -141,13 +141,13 @@
 
                 <div class="tabs is-centered is-toggle is-toggle-rounded ">
                     <ul>
-                        <li class="is-active">
+                        <li>
                             <a href="report_c1.blade.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>รายหน่วยบริการ</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="is-active">
                             <a href="report_c1-2.blade.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>รายจังหวัด</span>
@@ -156,9 +156,9 @@
                     </ul>
                 </div>
 
-                <p class="title">รายงานการสรุปการจัดการเหตุละเมิดสิทธิ <br>จำแนกการจัดการเหตุรายหน่วยบริการ</p>
+                <p class="title">รายงานการสรุปการจัดการเหตุละเมิดสิทธิ <br>จำแนกการจัดการเหตุรายจังหวัดที่เกิดเหตุ</p>
 
-                <form name="form_menu" method="post" action="report_c1.blade.php">
+                <form name="form_menu" method="post" action="report_c1-2.blade.php">
                     <div class="columns is-multiline is-mobile">
                         <div class="column ">
                             <div class="level-left">
@@ -248,7 +248,7 @@
                         <thead>
                             <tr class="hideextra">
                                 <th class="red3" style="vertical-align: middle; color: white;">ลำดับ</th>
-                                <th class="red3" style="vertical-align: middle; color: white;">ชื่อ</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">รหัสจังหวัด</th>
                                 <th class="red3" style="vertical-align: middle; color: white;">จังหวัด</th>
                                 <th class="red3" style="vertical-align: middle; color: white;">เขต</th>
                                 <th class="red3" style="vertical-align: middle; color: white;">ยังไม่ได้รับเรื่อง</th>
@@ -264,71 +264,43 @@
                         <tbody>
                             <?php
 
-							$sql1 = "SELECT o.id, o.name, o.nameorg, o.prov_id, p.name as provname, nhso
-							FROM officers o left join prov_geo p
-							on p.code = o.prov_id 
-							where
-							position = 'officer' or o.name = 'adminfar'
-							order by prov_id";
-							$result1 = mysqli_query($conn, $sql1); 
-							$row1 = mysqli_num_rows($result1); 
-                            $i = '0';
-                            
-                            
-							while($row1 = $result1->fetch_assoc()) {
-
-								$sql2 = "SELECT receiver,
-								sum(CASE WHEN status = '1' THEN 1 ELSE 0 END) as case1,
-								sum(CASE WHEN status = '2' THEN 1 ELSE 0 END) as case2,
-								sum(CASE WHEN status = '3' THEN 1 ELSE 0 END) as case3,
-								sum(CASE WHEN status = '4' THEN 1 ELSE 0 END) as case4,
-								sum(CASE WHEN status = '5' THEN 1 ELSE 0 END) as case5,
-								sum(CASE WHEN status = '6' THEN 1 ELSE 0 END) as case6,
-								count(status) as sum
-								FROM case_inputs
-								where receiver='".$row1['name']."'
-								and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
-								$sub_q
-								group by receiver";
+								$sql2 = "SELECT prov_id,prov_geo.code ,prov_geo.name ,prov_geo.nhso, 
+                                sum(CASE WHEN status = '1' THEN 1 ELSE 0 END) as case1,
+                                sum(CASE WHEN status = '2' THEN 1 ELSE 0 END) as case2,
+                                sum(CASE WHEN status = '3' THEN 1 ELSE 0 END) as case3,
+                                sum(CASE WHEN status = '4' THEN 1 ELSE 0 END) as case4,
+                                sum(CASE WHEN status = '5' THEN 1 ELSE 0 END) as case5,
+                                sum(CASE WHEN status = '6' THEN 1 ELSE 0 END) as case6,
+                                count(status) as sum
+                                FROM case_inputs LEFT JOIN prov_geo ON case_inputs.prov_id = prov_geo.CODE
+                                where  created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
+                                $sub_q
+                                group by prov_id";
 
 								//echo $sql2,'<br>';
 
 								$result2 = mysqli_query($conn, $sql2); 
-								$row2 = mysqli_num_rows($result2); 
-                                $i++;
+                                $row2 = mysqli_num_rows($result2); 
                                 
+                                $c_s1 = 0;
+                                $c_s2 = 0;
+                                $c_s3 = 0;
+                                $c_s4 = 0;
+                                $c_s5 = 0;
+                                $c_s6 = 0;
+                                $c_as = 0;
+								
 								if ($result2->num_rows > 0) {
 									
-                                    // output data of each row
-                                    
-
+									// output data of each row
 									while($row2 = $result2->fetch_assoc()) {
-										
-										$sql3 = "SELECT username,officers.nameorg, prov_geo.code, prov_geo.name as provname, prov_geo.nhso 
-										FROM officers left join prov_geo 
-										on officers.prov_id = prov_geo.code
-										WHERE officers.name = '".$row2['receiver']."'";
-										//echo $sql2;
-										$result3 = mysqli_query($conn, $sql3); 
-
-										$row3 = mysqli_num_rows($result3);
-                                        $row3 = $result3->fetch_assoc();
-                                        
-                                        $c_s1 = $c_s1 + $row2["case1"];
-                                        $c_s2 = $c_s2 + $row2["case2"];
-                                        $c_s3 = $c_s3 + $row2["case3"];
-                                        $c_s4 = $c_s4 + $row2["case4"];
-                                        $c_s5 = $c_s5 + $row2["case5"];
-                                        $c_s6 = $c_s6 + $row2["case6"];
-                                        $c_as = $c_as + $row2["sum"];
-
-										//echo $row2["prov_id"];
+										$i++;
 										
 										echo "<tr>";
 										echo "<th>".$i."</th>";
-										echo "<td>".$row3["nameorg"]."</td>";
-										echo "<td>".$row3["provname"]."</td>";
-										echo "<td>".$row3["nhso"]."</td>";
+										echo "<td>".$row2["code"]."</td>";
+										echo "<td>".$row2["name"]."</td>";
+										echo "<td>".$row2["nhso"]."</td>";
 										echo "<td>".$row2["case1"]."</td>";
 										echo "<td>".$row2["case2"]."</td>";
 										echo "<td>".$row2["case3"]."</td>";
@@ -339,48 +311,32 @@
 										
                                         echo "</tr>";
                                         
-                                        
-                                    }
-                                    
-                                    
+                                        $c_s1 = $c_s1 + $row2["case1"];
+                                        $c_s2 = $c_s2 + $row2["case2"];
+                                        $c_s3 = $c_s3 + $row2["case3"];
+                                        $c_s4 = $c_s4 + $row2["case4"];
+                                        $c_s5 = $c_s5 + $row2["case5"];
+                                        $c_s6 = $c_s6 + $row2["case6"];
+                                        $c_as = $c_as + $row2["sum"];
+									}
 
-									
-								} else {
-									echo "<tr>";
-										echo "<th>".$i."</th>";
-										echo "<td>".$row1["nameorg"]."</td>";
-										echo "<td>".$row1["provname"]."</td>";
-										echo "<td>".$row1["nhso"]."</td>";
-										echo "<td>0</td>";
-										echo "<td>0</td>";
-										echo "<td>0</td>";
-										echo "<td>0</td>";
-										echo "<td>0</td>";
-										echo "<td>0</td>";
-										echo "<td>0</td>";
-										
+                                }
+
+                                        echo "<tr>";
+                                        echo "<th colspan='4' class='red3' style='vertical-align: center; color: white;' >รวม</th>";
+                                        echo "<td style='display: none;'></td>";
+                                        echo "<td style='display: none;'></td>";
+                                        echo "<td style='display: none;'></td>";
+										echo "<td>".$c_s1."</td>";
+										echo "<td>".$c_s2."</td>";
+										echo "<td>".$c_s3."</td>";
+										echo "<td>".$c_s4."</td>";
+										echo "<td>".$c_s5."</td>";
+										echo "<td>".$c_s6."</td>";
+										echo "<td>".$c_as."</td>";
                                         echo "</tr>";
-                                    
-								}
 
-                                
-                            }
-                            
-                            $i++;
-
-                            echo "<tr>";
-                                    echo "<th colspan='4' class='red3' style='vertical-align: center; color: white;' >รวม</th>";
-                                    echo "<td style='display: none;'></td>";
-                                    echo "<td style='display: none;'></td>";
-                                    echo "<td style='display: none;'></td>";
-                                    echo "<td>".$c_s1."</td>";
-                                    echo "<td>".$c_s2."</td>";
-                                    echo "<td>".$c_s3."</td>";
-                                    echo "<td>".$c_s4."</td>";
-                                    echo "<td>".$c_s5."</td>";
-                                    echo "<td>".$c_s6."</td>";
-                                    echo "<td>".$c_as."</td>";
-                            echo "</tr>";
+							
 							echo "</tbody>";
 							echo "</table>";
 
