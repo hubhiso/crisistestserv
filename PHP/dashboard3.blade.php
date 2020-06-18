@@ -1,57 +1,62 @@
-
 <!DOCTYPE html>
 <html lang="en" class="route-index">
 
 <head>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<title>CRS</title>
-	<link rel="shortcut icon" href="../public/images/favicon.ico">
-	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
-	<link rel="stylesheet" href="../public/bulma/css/bulma.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>CRS</title>
+    <link rel="shortcut icon" href="../public/images/favicon.ico">
+    <link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
 
-	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
-	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap/css/bootstrap.css">
+    <link media="all" type="text/css" rel="stylesheet"
+        href="../public/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap/css/bootstrap.css">
 
-	<meta name="theme-color" content="#cc99cc"/>
-	
-	<script src="../public/js/jquery.min.js"></script>
-	<script src="../public/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <meta name="theme-color" content="#cc99cc" />
 
-	<link href="../public/bulma/css/bulma.css" rel="stylesheet">
+    <script src="../public/js/jquery.min.js"></script>
+    <script src="../public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <link href="../public/bulma-0.8.0/css/bulma.css" rel="stylesheet">
     <link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
 
     <script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
-	<script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
-    
+    <script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
 
-	<style>
-		.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
-		.red {
-			height: 70px; 
-			vertical-align: middle; 
-			background-color: #E14455;
-			border: 1px solid #E14455;
-		}
-		.red2 {
-			vertical-align: middle; 
-			background-color: #713132;
-			border: 1px solid #713132;
-			color: white;
-		}
-		.red3 {
-			vertical-align: middle; 
-			background-color: #E14455;
-			color: white;
-		}
-		
-	</style>
 
-	<?php
+    <style>
+    .hideextra {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .red {
+        height: 70px;
+        vertical-align: middle;
+        background-color: #E14455;
+        border: 1px solid #E14455;
+    }
+
+    .red2 {
+        vertical-align: middle;
+        background-color: #713132;
+        border: 1px solid #713132;
+        color: white;
+    }
+
+    .red3 {
+        vertical-align: middle;
+        background-color: #E14455;
+        color: white;
+    }
+    </style>
+
+    <?php
 		
 		require("phpsql_dbinfo.php");
 
@@ -192,207 +197,218 @@
 		}
     ?>
 
-  
-    
+
+
     <script type="text/javascript">
-		/*  Chart1 */
-		FusionCharts.ready( function () {
+    /*  Chart1 */
+    FusionCharts.ready(function() {
 
-			var salesChart = new FusionCharts( {
-					type: 'bar2d',
-					renderAt: 'chart-container-1',
-					width: '100%',
-					height: '500',
-					dataFormat: 'json',
-					dataSource: {
-						"chart": {
-							"caption": "จำนวนการละเมิดสิทธิ",
-							"subCaption": "จำแนกตามประเภท ",
-							"placeValuesInside": "0",
-                            "yAxisName": "จำนวน",
-                            "palettecolors": "#E14455",
-							"basefontsize": "14",
-							"captionFontSize": "16",
-							"subcaptionFontSize": "16",
-							"showAxisLines": "1",
-							"axisLineAlpha": "25",
-							"alignCaptionWithCanvas": "0",
-							"showAlternateVGridColor": "1",
-							"numberScaleValue": "0",
-							"theme": "hulk-light",
-							"exportEnabled": "1"
-						},
+        var salesChart = new FusionCharts({
+                type: 'bar2d',
+                renderAt: 'chart-container-1',
+                width: '100%',
+                height: '500',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "caption": "จำนวนการละเมิดสิทธิ",
+                        "subCaption": "จำแนกตามประเภท ",
+                        "placeValuesInside": "0",
+                        "yAxisName": "จำนวน",
+                        "palettecolors": "#E14455",
+                        "basefontsize": "14",
+                        "captionFontSize": "16",
+                        "subcaptionFontSize": "16",
+                        "showAxisLines": "1",
+                        "axisLineAlpha": "25",
+                        "alignCaptionWithCanvas": "0",
+                        "showAlternateVGridColor": "1",
+                        "numberScaleValue": "0",
+                        "theme": "hulk-light",
+                        "exportEnabled": "1"
+                    },
 
-						"data":[ 
+                    "data": [
 
-						<?php
-							for($i=1;$i<=$loop_c1;$i++){
-								echo "{";
-								echo "'label': '$name_c1[$i]',";
-								echo "'value': '$sum_c1[$i]'";
-								echo "}";
-								if($i <> $loop_c1){
-									echo ",";
-								}
-							}
-						?>
-						
-						]
-					}
-				} )
-				.render();
-        } );
+                        <
+                        ?
+                        php
+                        for ($i = 1; $i <= $loop_c1; $i++) {
+                            echo "{";
+                            echo "'label': '$name_c1[$i]',";
+                            echo "'value': '$sum_c1[$i]'";
+                            echo "}";
+                            if ($i < > $loop_c1) {
+                                echo ",";
+                            }
+                        } ?
+                        >
 
-		/*  pie Chart2 */
+                    ]
+                }
+            })
+            .render();
+    });
+
+    /*  pie Chart2 */
 
 
 
-		FusionCharts.ready( function () {
+    FusionCharts.ready(function() {
 
-		var salesChart = new FusionCharts( {
-				type: 'doughnut2d',
-				renderAt: 'chart-container-2',
-				width: '100%',
-				height: '500',
-				dataFormat: 'json',
-				dataSource: {
-					"chart": {
+        var salesChart = new FusionCharts({
+                type: 'doughnut2d',
+                renderAt: 'chart-container-2',
+                width: '100%',
+                height: '500',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
 
-						"caption": "สาเหตุการละเมิดสิทธิ",
-						"subcaption": "",
-						"showpercentvalues": "1",
-						"defaultcenterlabel": "<?php echo 'ทั้งหมด '.$sumcase2_all.' เคส'; ?>",
-						"aligncaptionwithcanvas": "0",
-						"captionpadding": "0",
-						"decimals": "1",
-						"showlegend": "1",
-						//"plottooltext": "<b>$percentValue $label</b>",
-						"centerlabel": "$value เคส",
-						"theme": "hulk-light",
-						"palettecolors": "#E14455,#2B1615,#7F7F7F,#CFCFCF,#E87C87",
-						"exportEnabled": "1"
-					},
-					"data":[ {
-						"label": "ไม่รู้กฎหมาย",
-						<?php echo "'value': '$sumcase2_c1'"; ?>
-					}, {
-						"label": "ขาดความเข้าใจเรื่องเอดส์",
-						<?php echo "'value': '$sumcase2_c2'"; ?>
-					}, {
-						"label": "ทัศนคติ",
-						<?php echo "'value': '$sumcase2_c3'"; ?>
-					}, {
-						"label": "นโยบายองค์กร",
-						<?php echo "'value': '$sumcase2_c4'"; ?>
-					}, {
-						"label": "อื่นๆ",
-						<?php echo "'value': '$sumcase2_c5'"; ?>
-					} ]
-				}
-				
-			} )
-			.render();
-		} );
+                        "caption": "สาเหตุการละเมิดสิทธิ",
+                        "subcaption": "",
+                        "showpercentvalues": "1",
+                        "defaultcenterlabel": "<?php echo 'ทั้งหมด '.$sumcase2_all.' เคส'; ?>",
+                        "aligncaptionwithcanvas": "0",
+                        "captionpadding": "0",
+                        "decimals": "1",
+                        "showlegend": "1",
+                        //"plottooltext": "<b>$percentValue $label</b>",
+                        "centerlabel": "$value เคส",
+                        "theme": "hulk-light",
+                        "palettecolors": "#E14455,#2B1615,#7F7F7F,#CFCFCF,#E87C87",
+                        "exportEnabled": "1"
+                    },
+                    "data": [{
+                        "label": "ไม่รู้กฎหมาย",
+                        <
+                        ?
+                        php echo "'value': '$sumcase2_c1'"; ? >
+                    }, {
+                        "label": "ขาดความเข้าใจเรื่องเอดส์",
+                        <
+                        ?
+                        php echo "'value': '$sumcase2_c2'"; ? >
+                    }, {
+                        "label": "ทัศนคติ",
+                        <
+                        ?
+                        php echo "'value': '$sumcase2_c3'"; ? >
+                    }, {
+                        "label": "นโยบายองค์กร",
+                        <
+                        ?
+                        php echo "'value': '$sumcase2_c4'"; ? >
+                    }, {
+                        "label": "อื่นๆ",
+                        <
+                        ?
+                        php echo "'value': '$sumcase2_c5'"; ? >
+                    }]
+                }
 
-		/*  pie Chart3 */
-		FusionCharts.ready( function () {
+            })
+            .render();
+    });
 
-		var salesChart = new FusionCharts( {
-				type: 'doughnut2d',
-				renderAt: 'chart-container-3',
-				width: '100%',
-				height: '400',
-				dataFormat: 'json',
-				dataSource: {
-					"chart": {
-						"caption": "กลุ่มเปราะบางที่ถูกกีดกันหรือถูกเลือกปฎิบัติ",
-						"subcaption": "",
-						"showpercentvalues": "1",
-						"defaultcenterlabel": "<?php echo 'ทั้งหมด '.$sumc3all.' เคส'; ?>",
-						"aligncaptionwithcanvas": "1",
-						"captionpadding": "1",
-						"showlegend": "1",
-						"decimals": "1",
-						//"plottooltext": "<b>$percentValue $label</b>",
-						"centerlabel": "$value เคส",
-						"theme": "hulk-light",
-						"palettecolors": "#E14455,#2B1615,#7F7F7F,#F2F2F2,#E87C87",
-						"exportEnabled": "1"
-					},
+    /*  pie Chart3 */
+    FusionCharts.ready(function() {
 
-					"data":[ {
-						"label": "<?php echo $namec3[1]; ?>",
-						"value": "<?php echo $sumc3[1]; ?>"
-					}, {
-						"label": "<?php echo $namec3[2]; ?>",
-						"value": "<?php echo $sumc3[2]; ?>"
-					}, {
-						"label": "<?php echo $namec3[3]; ?>",
-						"value": "<?php echo $sumc3[3]; ?>"
-					}, {
-						"label": "<?php echo $namec3[4]; ?>",
-						"value": "<?php echo $sumc3[4]; ?>"
-					}, {
-						"label": "<?php echo $namec3[5]; ?>",
-						"value": "<?php echo $sumc3[5]; ?>"
-					}, {
-						"label": "<?php echo $namec3[6]; ?>",
-						"value": "<?php echo $sumc3[6]; ?>"
-					} ]
-				}
-				
-			} )
-			.render();
-		} );
-        
+        var salesChart = new FusionCharts({
+                type: 'doughnut2d',
+                renderAt: 'chart-container-3',
+                width: '100%',
+                height: '400',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "caption": "กลุ่มเปราะบางที่ถูกกีดกันหรือถูกเลือกปฎิบัติ",
+                        "subcaption": "",
+                        "showpercentvalues": "1",
+                        "defaultcenterlabel": "<?php echo 'ทั้งหมด '.$sumc3all.' เคส'; ?>",
+                        "aligncaptionwithcanvas": "1",
+                        "captionpadding": "1",
+                        "showlegend": "1",
+                        "decimals": "1",
+                        //"plottooltext": "<b>$percentValue $label</b>",
+                        "centerlabel": "$value เคส",
+                        "theme": "hulk-light",
+                        "palettecolors": "#E14455,#2B1615,#7F7F7F,#F2F2F2,#E87C87",
+                        "exportEnabled": "1"
+                    },
 
-		/*  Tab 2 Chart */
-		FusionCharts.ready( function () {
+                    "data": [{
+                        "label": "<?php echo $namec3[1]; ?>",
+                        "value": "<?php echo $sumc3[1]; ?>"
+                    }, {
+                        "label": "<?php echo $namec3[2]; ?>",
+                        "value": "<?php echo $sumc3[2]; ?>"
+                    }, {
+                        "label": "<?php echo $namec3[3]; ?>",
+                        "value": "<?php echo $sumc3[3]; ?>"
+                    }, {
+                        "label": "<?php echo $namec3[4]; ?>",
+                        "value": "<?php echo $sumc3[4]; ?>"
+                    }, {
+                        "label": "<?php echo $namec3[5]; ?>",
+                        "value": "<?php echo $sumc3[5]; ?>"
+                    }, {
+                        "label": "<?php echo $namec3[6]; ?>",
+                        "value": "<?php echo $sumc3[6]; ?>"
+                    }]
+                }
 
-			var salesChart = new FusionCharts( {
-					type: 'column2d',
-					renderAt: 'chart-container-b1',
-					width: '100%',
-					height: '400',
-					dataFormat: 'json',
-					dataSource: {
-						"chart": {
-							"caption": "ผู้ถูกบังคับตรวจเอชไอวี",
-							"subCaption": "จำแนกตามประเภท",
-							"placeValuesInside": "0",
-							"palettecolors": "#713132",
-							"yAxisName": "จำนวน",
-							"basefontsize": "14",
-							"captionFontSize": "16",
-							"subcaptionFontSize": "16",
-							"showAxisLines": "1",
-							"axisLineAlpha": "25",
-							"alignCaptionWithCanvas": "0",
-							"showAlternateVGridColor": "1",
-							"numberScaleValue": "0",
-							"theme": "hulk-light",
-							"exportEnabled": "1"
+            })
+            .render();
+    });
 
-						},
 
-						"data":[ {
-						"label": "<?php echo $namec4[1]; ?>",
-						"value": "<?php echo $sumc4[1]; ?>"
-					}, {
-						"label": "<?php echo $namec4[2]; ?>",
-						"value": "<?php echo $sumc4[2]; ?>"
-					}, {
-						"label": "<?php echo $namec4[3]; ?>",
-						"value": "<?php echo $sumc4[3]; ?>"
-					}, {
-						"label": "<?php echo $namec4[4]; ?>",
-						"value": "<?php echo $sumc4[4]; ?>"
-					}]
-					}
-				} )
-				.render();
-        } );
-        
+    /*  Tab 2 Chart */
+    FusionCharts.ready(function() {
+
+        var salesChart = new FusionCharts({
+                type: 'column2d',
+                renderAt: 'chart-container-b1',
+                width: '100%',
+                height: '400',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "caption": "ผู้ถูกบังคับตรวจเอชไอวี",
+                        "subCaption": "จำแนกตามประเภท",
+                        "placeValuesInside": "0",
+                        "palettecolors": "#713132",
+                        "yAxisName": "จำนวน",
+                        "basefontsize": "14",
+                        "captionFontSize": "16",
+                        "subcaptionFontSize": "16",
+                        "showAxisLines": "1",
+                        "axisLineAlpha": "25",
+                        "alignCaptionWithCanvas": "0",
+                        "showAlternateVGridColor": "1",
+                        "numberScaleValue": "0",
+                        "theme": "hulk-light",
+                        "exportEnabled": "1"
+
+                    },
+
+                    "data": [{
+                        "label": "<?php echo $namec4[1]; ?>",
+                        "value": "<?php echo $sumc4[1]; ?>"
+                    }, {
+                        "label": "<?php echo $namec4[2]; ?>",
+                        "value": "<?php echo $sumc4[2]; ?>"
+                    }, {
+                        "label": "<?php echo $namec4[3]; ?>",
+                        "value": "<?php echo $sumc4[3]; ?>"
+                    }, {
+                        "label": "<?php echo $namec4[4]; ?>",
+                        "value": "<?php echo $sumc4[4]; ?>"
+                    }]
+                }
+            })
+            .render();
+    });
     </script>
     <?php
 		$sql1 = "SELECT c.status,count(c.id) as n_status 
@@ -420,106 +436,106 @@
 
 <body class="layout-default">
 
-	<section class="hero is-medium has-text-centered">
-		<div class="hero-head">
+    <section class="hero is-medium has-text-centered">
+        <div class="hero-head">
 
 
-			<div class="container">
+            <div class="container">
 
-			    <br>
+                <br>
 
-				<nav class="breadcrumb" aria-label="breadcrumbs">
-					<ul>
-						<li><a href="../public/officer"><span class="icon is-small">
-							<i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
-						
-						</li>
-						<li class="is-active"><a><span class="icon is-small">
-						<i class="far fa-file-alt"></i></span><span> ระบบรายงาน </span></a>
-						
-						</li>
-					</ul>
-				</nav>
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a href="../public/officer"><span class="icon is-small">
+                                    <i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 
-				<div class="tabs is-centered  is-toggle is-toggle-rounded">
-					<ul>
-						<li class="is-active">
-							<a href="dashboard3.blade.php">
-						        <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+                        </li>
+                        <li class="is-active"><a><span class="icon is-small">
+                                    <i class="far fa-file-alt"></i></span><span> ระบบรายงาน </span></a>
+
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="tabs is-centered  is-toggle is-toggle-rounded">
+                    <ul>
+                        <li class="is-active">
+                            <a href="dashboard3.blade.php">
+                                <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
                                 <span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
                             </a>
-						</li>
-						<li >
-							<a href="mapcrisis.blade.php">
-								<span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
-								<span>พิกัด<br>การละเมิดสิทธิ์</span>
-							</a>
-						
-						</li>
-						<li >
-							<a href="table.blade.php">
-								<span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-								<span>ตารางสรุป<br>ในภาพรวม</span>
-							</a>
-						
-						</li>
-						<li >
-							<a href="report_c1.blade.php">
-                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-                                <span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
+                        </li>
+                        <li>
+                            <a href="mapcrisis.blade.php">
+                                <span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
+                                <span>พิกัด<br>การละเมิดสิทธิ์</span>
                             </a>
-						</li>
-						<li >
-							<a href="report_c2.blade.php">
+
+                        </li>
+                        <li>
+                            <a href="table.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>ในภาพรวม</span>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="report_c1.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุปการ<br>จัดการเหตุ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="report_c2.blade.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
                             </a>
-						</li>
-						<li >
-							<a href="report_perfomance.blade.php">
+                        </li>
+                        <li>
+                            <a href="report_perfomance.blade.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>ตารางสรุป<br>การให้บริการ</span>
                             </a>
-						</li>
-					</ul>
-				</div>
-				
-				<div class="tabs is-centered is-toggle is-toggle-rounded">
-                    <ul>
-                        <li class="is-active">
-                        <a href="dashboard3.blade.php">
-                            <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
-                            <span>สถานการณ์การละเมิดสิทธิ</span>
-                        </a>
-                        </li>
-                        <li>
-                        <a href="dashboard1.blade.php">
-                            <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
-                            <span>ข้อมูลแยกตามขั้นตอน</span>
-                        </a>
-                        </li>
-                        <li >
-                        <a href="dashboard2.blade.php">
-                            <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
-                            <span>ข้อมูลแยกตามปัญหา</span>
-                        </a>
                         </li>
                     </ul>
                 </div>
 
-				<form name="form_menu" method="post" action="dashboard3.blade.php">
-					<div class="columns is-multiline is-mobile">
-						<div class="column ">
-							<div class="level-left">
-								<div class="level-item">
-									<p class="subtitle is-6">
-										<strong> จังหวัด </strong>
-									</p>
+                <div class="tabs is-centered is-toggle is-toggle-rounded">
+                    <ul>
+                        <li class="is-active">
+                            <a href="dashboard3.blade.php">
+                                <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
+                                <span>สถานการณ์การละเมิดสิทธิ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard1.blade.php">
+                                <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
+                                <span>ข้อมูลแยกตามขั้นตอน</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard2.blade.php">
+                                <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
+                                <span>ข้อมูลแยกตามปัญหา</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <form name="form_menu" method="post" action="dashboard3.blade.php">
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column ">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <p class="subtitle is-6">
+                                        <strong> จังหวัด </strong>
+                                    </p>
                                 </div>
-								
-								<div class="level-item">
-									<div class="select">
-										<select id="pr" name="pr" >
+
+                                <div class="level-item">
+                                    <div class="select">
+                                        <select id="pr" name="pr">
                                             <?php
                                                 if ($pr == '0') { $pr_v = "selected";}
                                                 echo "<option value='0' $pr_v> ทุกจังหวัด </option>";
@@ -538,166 +554,215 @@
                                                     $pr_v = '';
                                                 }
                                             ?>
-										</select>
-									</div>
+                                        </select>
+                                    </div>
                                 </div>
-                                
+
                                 <div class="level-item">
-									<p class="subtitle is-6">
-										<strong> เลือกวันที่ </strong>
-									</p>
+                                    <p class="subtitle is-6">
+                                        <strong> เลือกวันที่ </strong>
+                                    </p>
                                 </div>
                                 <div class="level-item">
-									<div class="field has-addons">
-										<p class="control has-icons-left" >
-										<div class="input-group input-daterange" style="width: 300px">
-											<input type="text" class="form-control" id="date_start" name="date_start" value='<?php echo $date_start; ?>'>
-											<div class="input-group-addon">ถึง</div>
-											<input type="text" class="form-control" id="date_end" name="date_end" value='<?php echo $date_end; ?>'>
-										</div>
-										</p>
-									</div>
-								</div>
-								<div class="level-item">
-									<input type="submit" class="button is-primary" id="submit" name = "submit" value="ตกลง">
-								</div>
-								<div class="level-item">
-									<div class="field has-addons">
-										<p>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="columns is-multiline is-mobile">
-						<div class="column ">
-							<div class="level-left">
-								<div class="level-item">
-									<p class="subtitle is-6">
-										<strong> ข้อมูล ณ วันที่ (ด/ว/ป) </strong>
-									</p>
-									<p class="subtitle is-6">
-										<?php echo "  : ",date("m/d/Y")," เวลา : ",date("h:i:sa"); ?>
-									</p>
-								</div>
-								
-							</div>
-						</div>
-					</div>
+                                    <div class="field has-addons">
+                                        <p class="control has-icons-left">
+                                            <div class="input-group input-daterange" style="width: 300px">
+                                                <input type="text" class="form-control" id="date_start"
+                                                    name="date_start" value='<?php echo $date_start; ?>'>
+                                                <div class="input-group-addon">ถึง</div>
+                                                <input type="text" class="form-control" id="date_end" name="date_end"
+                                                    value='<?php echo $date_end; ?>'>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="level-item">
+                                    <input type="submit" class="button is-primary" id="submit" name="submit"
+                                        value="ตกลง">
+                                </div>
+                                <div class="level-item">
+                                    <div class="field has-addons">
+                                        <p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column ">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <p class="subtitle is-6">
+                                        <strong> ข้อมูล ณ วันที่ (ด/ว/ป) </strong>
+                                    </p>
+                                    <p class="subtitle is-6">
+                                        <?php echo "  : ",date("m/d/Y")," เวลา : ",date("h:i:sa"); ?>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </form>
                 <br>
-                
+
                 <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-2-widescreen is-2-fullhd">
-				<div class="column">
-				<table class="table is-fullwidth  is-bordered ">
-						<tbody>
-							<tr class="is-selected ">
-								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>ทั้งหมด</p></td>
-							</tr>
-							<tr class=" ">
-								<td><p class='has-text-centered'><?php echo $sumall;?></p></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="column">
-					<table class="table is-fullwidth  is-bordered ">
-						<tbody>
-							<tr class="is-selected ">
-								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>ยังไม่ได้รับเรื่อง</p></td>
-							</tr>
-							<tr class=" ">
-								<td><p class='has-text-centered'><?php echo $n_status[1];if($status[1] ==''){echo '0';} ?></p></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="column">
-					<table class="table is-fullwidth  is-bordered ">
-						<tbody>
-							<tr class="is-selected ">
-								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>รับเรื่องแล้ว</p></td>
-							</tr>
-							<tr class=" ">
-								<td><p class='has-text-centered'><?php echo $n_status[2];if($status[2] ==''){echo '0';} ?></p></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="column">
-				<table class="table is-fullwidth  is-bordered ">
-						<tbody>
-							<tr class="is-selected ">
-								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>บันทึกข้อมูลเพิ่มแล้ว</p></td>
-							</tr>
-							<tr class=" ">
-								<td><p class='has-text-centered'><?php echo $n_status[3];if($status[3] ==''){echo '0';} ?></p></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="column">
-				<table class="table is-fullwidth  is-bordered ">
-						<tbody>
-							<tr class="is-selected ">
-								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>อยู่ระหว่างดำเนินการ</p></td>
-							</tr>
-							<tr class=" ">
-								<td><p class='has-text-centered'><?php echo $n_status[4];if($status[4] ==''){echo '0';} ?></p></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="column">
-				<table class="table is-fullwidth  is-bordered ">
-						<tbody>
-							<tr class="is-selected ">
-								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>ดำเนินการเสร็จสิ้น</p></td>
-							</tr>
-							<tr class=" ">
-								<td><p class='has-text-centered'><?php echo $n_status[5];if($status[5] ==''){echo '0';} ?></p></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="column">
-				<table class="table is-fullwidth  is-bordered ">
-						<tbody>
-							<tr class="is-selected ">
-								<td class="red" style="vertical-align: middle;"><p class='has-text-centered '>ดำเนินการแล้วส่งต่อ</p></td>
-							</tr>
-							<tr class=" ">
-								<td><p class='has-text-centered'><?php echo $n_status[6];if($status[6] ==''){echo '0';} ?></p></td>
-							</tr>
-						</tbody>
-					</table>
+                    <div class="column">
+                        <table class="table is-fullwidth  is-bordered ">
+                            <tbody>
+                                <tr class="is-selected ">
+                                    <td class="red" style="vertical-align: middle;">
+                                        <p class='has-text-centered '>ทั้งหมด</p>
+                                    </td>
+                                </tr>
+                                <tr class=" ">
+                                    <td>
+                                        <p class='has-text-centered'><?php echo $sumall;?></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column">
+                        <table class="table is-fullwidth  is-bordered ">
+                            <tbody>
+                                <tr class="is-selected ">
+                                    <td class="red" style="vertical-align: middle;">
+                                        <p class='has-text-centered '>ยังไม่ได้รับเรื่อง</p>
+                                    </td>
+                                </tr>
+                                <tr class=" ">
+                                    <td>
+                                        <p class='has-text-centered'>
+                                            <?php echo $n_status[1];if($status[1] ==''){echo '0';} ?></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column">
+                        <table class="table is-fullwidth  is-bordered ">
+                            <tbody>
+                                <tr class="is-selected ">
+                                    <td class="red" style="vertical-align: middle;">
+                                        <p class='has-text-centered '>รับเรื่องแล้ว</p>
+                                    </td>
+                                </tr>
+                                <tr class=" ">
+                                    <td>
+                                        <p class='has-text-centered'>
+                                            <?php echo $n_status[2];if($status[2] ==''){echo '0';} ?></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column">
+                        <table class="table is-fullwidth  is-bordered ">
+                            <tbody>
+                                <tr class="is-selected ">
+                                    <td class="red" style="vertical-align: middle;">
+                                        <p class='has-text-centered '>บันทึกข้อมูลเพิ่มแล้ว</p>
+                                    </td>
+                                </tr>
+                                <tr class=" ">
+                                    <td>
+                                        <p class='has-text-centered'>
+                                            <?php echo $n_status[3];if($status[3] ==''){echo '0';} ?></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column">
+                        <table class="table is-fullwidth  is-bordered ">
+                            <tbody>
+                                <tr class="is-selected ">
+                                    <td class="red" style="vertical-align: middle;">
+                                        <p class='has-text-centered '>อยู่ระหว่างดำเนินการ</p>
+                                    </td>
+                                </tr>
+                                <tr class=" ">
+                                    <td>
+                                        <p class='has-text-centered'>
+                                            <?php echo $n_status[4];if($status[4] ==''){echo '0';} ?></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column">
+                        <table class="table is-fullwidth  is-bordered ">
+                            <tbody>
+                                <tr class="is-selected ">
+                                    <td class="red" style="vertical-align: middle;">
+                                        <p class='has-text-centered '>ดำเนินการเสร็จสิ้น</p>
+                                    </td>
+                                </tr>
+                                <tr class=" ">
+                                    <td>
+                                        <p class='has-text-centered'>
+                                            <?php echo $n_status[5];if($status[5] ==''){echo '0';} ?></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column">
+                        <table class="table is-fullwidth  is-bordered ">
+                            <tbody>
+                                <tr class="is-selected ">
+                                    <td class="red" style="vertical-align: middle;">
+                                        <p class='has-text-centered '>ดำเนินการแล้วส่งต่อ</p>
+                                    </td>
+                                </tr>
+                                <tr class=" ">
+                                    <td>
+                                        <p class='has-text-centered'>
+                                            <?php echo $n_status[6];if($status[6] ==''){echo '0';} ?></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
-                
-			</div>
-            
-			<div class="columns ">
-				<div class="column  is-offset-8">
-					<table class="table is-fullwidth  is-bordered">
-					<tbody>
-						<tr >
-							<td class="red2" rowspan="2" style="vertical-align : middle;text-align:center;"><p class='has-text-centered'>ละเมิดโดย</p></td>
-							<td class=" red3"><p class='has-text-centered'>บุคคล</p></td>
-							<td><p class='has-text-centered'><?php echo number_format(($suboff[2]/$suboff_all)*100 , 2, '.', '')?> %</p></td>
-						</tr>
-						<tr >
-							
-							<td  class=" red3"><p class='has-text-centered '>องค์กร</p></td>
-							<td><p class='has-text-centered'><?php echo number_format(($suboff[3]/$suboff_all)*100 , 2, '.', '') ?> %</p></td>
-						</tr>
-					</tbody>
-					</table>
-				</div>
-			</div>
-                
+
+                <div class="columns ">
+                    <div class="column  is-offset-8">
+                        <table class="table is-fullwidth  is-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="red2" rowspan="2" style="vertical-align : middle;text-align:center;">
+                                        <p class='has-text-centered'>ละเมิดโดย</p>
+                                    </td>
+                                    <td class=" red3">
+                                        <p class='has-text-centered'>บุคคล</p>
+                                    </td>
+                                    <td>
+                                        <p class='has-text-centered'>
+                                            <?php echo number_format(($suboff[2]/$suboff_all)*100 , 2, '.', '')?> %</p>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td class=" red3">
+                                        <p class='has-text-centered '>องค์กร</p>
+                                    </td>
+                                    <td>
+                                        <p class='has-text-centered'>
+                                            <?php echo number_format(($suboff[3]/$suboff_all)*100 , 2, '.', '') ?> %</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
-                
-                <div class="columns is-gapless">
+
+            <div class="columns is-gapless">
                 <div class="column">
                     <div id="chart-container-1">FusionCharts XT will load here!</div>
                 </div>
@@ -713,35 +778,33 @@
                     <div id="chart-container-b1">FusionCharts XT will load here!</div>
                 </div>
             </div>
-        <br>
-        
+            <br>
+
     </section>
 
 </body>
 
-    <script src="../public/bulma/clipboard-1.7.1.min.js"></script>
-	<script src="../public/bulma/main.js"></script>
+<script src="../public/bulma/clipboard-1.7.1.min.js"></script>
+<script src="../public/bulma/main.js"></script>
 
-	<script>
-	
-        $('.input-daterange input').each(function() {
-			
-			$(this).datepicker('');
-            //$('#date_end').datepicker("setDate", new Date());
-        }).on('changeDate', function(e) {
-            //load_case()
-        });
+<script>
+$('.input-daterange input').each(function() {
 
-	</script>
+    $(this).datepicker('');
+    //$('#date_end').datepicker("setDate", new Date());
+}).on('changeDate', function(e) {
+    //load_case()
+});
+</script>
 
-<footer class="footer "style="background-color: #EEE;">
-  <div class="container  ">
-    <div class="content has-text-centered  ">
-      <p>Crisis Response System (CRS)
-	  </p>
-	  <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p>
+<footer class="footer " style="background-color: #EEE;">
+    <div class="container  ">
+        <div class="content has-text-centered  ">
+            <p>Crisis Response System (CRS)
+            </p>
+            <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>. </small> </p>
+        </div>
     </div>
-  </div>
 </footer>
 
 </html>
