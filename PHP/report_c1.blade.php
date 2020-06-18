@@ -1,47 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en" class="route-index">
 
 <head>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<title>CRS</title>
-	<link rel="shortcut icon" href="../public/images/favicon.ico">
-	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
-	<link rel="stylesheet" href="../public/bulma/css/bulma.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>CRS</title>
+    <link rel="shortcut icon" href="../public/images/favicon.ico">
 
-	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
-	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap/css/bootstrap.css">
+    <link media="all" type="text/css" rel="stylesheet"
+        href="../public/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap/css/bootstrap.css">
 
-	<meta name="theme-color" content="#cc99cc"/>
-	
-	<script src="../public/js/jquery.min.js"></script>
-	<script src="../public/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="../public/js/jquery.min.js"></script>
+    <script src="../public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
-	<link href="../public/bulma/css/bulma.css" rel="stylesheet">
-	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
+    <link href="../public/bulma-0.8.0/css/bulma.css" rel="stylesheet">
+    <link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
 
-	<style>
-		.hideextra { white-space: nowrap; overflow: hidden; text-overflow:ellipsis; }
-		.red2 {
-			vertical-align: middle; 
-			background-color: #713132;
-			border: 1px solid #713132;
-			color: white;
-		}
-		.red3 {
-			vertical-align: middle; 
-			background-color: #E14455;
-			color: white;
-			text-align: center;
-		}
-	</style>
+    <style>
+    .hideextra {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-	<?php
+    .red2 {
+        vertical-align: middle;
+        background-color: #713132;
+        border: 1px solid #713132;
+        color: white;
+    }
+
+    .red3 {
+        vertical-align: middle;
+        background-color: #E14455;
+        color: white;
+        text-align: center;
+    }
+    </style>
+
+    <?php
 		
 		require("phpsql_dbinfo.php");
 
@@ -73,166 +75,176 @@
 
 <body class="layout-default">
 
-	<section class="hero is-medium has-text-centered">
-		<div class="hero-head">
+    <section class="hero is-medium has-text-centered">
+        <div class="hero-head">
 
 
-			<div class="container">
+            <div class="container">
 
-			<br>
+                <br>
 
-				<nav class="breadcrumb" aria-label="breadcrumbs">
-					<ul>
-						<li><a href="../public/officer"><span class="icon is-small">
-							<i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
-						
-						</li>
-						<li class="is-active"><a><span class="icon is-small">
-						<i class="far fa-file-alt"></i></span><span> ระบบรายงาน </span></a>
-						
-						</li>
-					</ul>
-				</nav>
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a href="../public/officer"><span class="icon is-small">
+                                    <i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
 
-				<div class="tabs is-centered  is-toggle is-toggle-rounded">
-					<ul>
-						<li >
-							<a href="dashboard3.blade.php">
-						        <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+                        </li>
+                        <li class="is-active"><a><span class="icon is-small">
+                                    <i class="far fa-file-alt"></i></span><span> ระบบรายงาน </span></a>
+
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="tabs is-centered  is-toggle is-toggle-rounded">
+                    <ul>
+                        <li>
+                            <a href="dashboard3.blade.php">
+                                <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
                                 <span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
                             </a>
-						</li>
-						<li >
-							<a href="mapcrisis.blade.php">
-								<span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
-								<span>พิกัด<br>การละเมิดสิทธิ์</span>
-							</a>
-						
-						</li>
-						<li >
-							<a href="table.blade.php">
-								<span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-								<span>ตารางสรุป<br>ในภาพรวม</span>
-							</a>
-						
-						</li>
-						<li class="is-active ">
-							<a href="report_c1.blade.php">
+                        </li>
+                        <li>
+                            <a href="mapcrisis.blade.php">
+                                <span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
+                                <span>พิกัด<br>การละเมิดสิทธิ์</span>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="table.blade.php">
+                                <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                                <span>ตารางสรุป<br>ในภาพรวม</span>
+                            </a>
+
+                        </li>
+                        <li class="is-active ">
+                            <a href="report_c1.blade.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
                             </a>
-						</li>
-						<li >
-							<a href="report_c2.blade.php">
+                        </li>
+                        <li>
+                            <a href="report_c2.blade.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
                             </a>
-						</li>
-						<li >
-							<a href="report_perfomance.blade.php">
+                        </li>
+                        <li>
+                            <a href="report_perfomance.blade.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>ตารางสรุป<br>การให้บริการ</span>
                             </a>
-						</li>
-					</ul>
-				</div>
-				<p class="title">รายงานการสรุปการจัดการเหตุละเมิดสิทธิ <br>จำแนกรายหน่วยจัดการเหตุ</p>
+                        </li>
+                    </ul>
+                </div>
+                <p class="title">รายงานการสรุปการจัดการเหตุละเมิดสิทธิ <br>จำแนกรายหน่วยจัดการเหตุ</p>
 
-				<form name="form_menu" method="post" action="report_c1.blade.php">
-					<div class="columns is-multiline is-mobile">
-						<div class="column ">
-							<div class="level-left">
-								<div class="level-item">
-									<p class="subtitle is-6">
-										<strong> กรณีที่ถูกละเมิด </strong>
-									</p>
-								</div>
-								
-								<div class="level-item">
-									<div class="select">
-										<select id="p_case" name="pcase">
-											<option value="0" <?php if ($p_case == "0") { echo "selected";} ?>> ทุกกรณี </option>
-											<option value="1" <?php if ($p_case == "1") { echo "selected";} ?>> บังคับตรวจเอชไอวี </option>
-											<option value="2" <?php if ($p_case == "2") { echo "selected";} ?>> เปิดเผยสถานะ<br>การติดเชื้อเอชไอวี </option>
-											<option value="3" <?php if ($p_case == "3") { echo "selected";} ?>> ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากกการติดเชื้อเอชไอวี </option>
-											<option value="4" <?php if ($p_case == "4") { echo "selected";} ?>> ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง </option>
-											<option value="5" <?php if ($p_case == "5") { echo "selected";} ?>> กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี </option>
-										</select>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="columns is-multiline is-mobile">
-						<div class="column ">
-							<div class="level-left">
-								<div class="level-item">
-									<p class="subtitle is-6">
-										<strong> เลือกวันที่ </strong>
-									</p>
-								</div>
-								<div class="level-item">
-									<div class="field has-addons">
-										<p class="control has-icons-left" >
-										<div class="input-group input-daterange" style="width: 300px">
-											<input type="text" class="form-control" id="date_start" name="date_start" value='<?php echo $date_start; ?>'>
-											<div class="input-group-addon">ถึง</div>
-											<input type="text" class="form-control" id="date_end" name="date_end" value='<?php echo $date_end; ?>'>
-										</div>
-										</p>
-									</div>
-								</div>
-								<div class="level-item">
-									<input type="submit" class="button is-primary" id="submit" name = "submit" value="ตกลง">
-								</div>
-								<div class="level-item">
-									<div class="field has-addons">
-										<p>
-										</p>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					<div class="columns is-multiline is-mobile">
-						<div class="column ">
-							<div class="level-left">
-								<div class="level-item">
-									<p class="subtitle is-6">
-										<strong> ข้อมูล ณ วันที่ (ด/ว/ป) </strong>
-									</p>
-									<p class="subtitle is-6">
-										<?php echo "  : ",date("m/d/Y")," เวลา : ",date("h:i:sa"); ?>
-									</p>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</form>
-				<br>
-                
-				<p class="subtitle is-6">คลิกที่ตารางแล้วกดปุ่ม ซ้าย-ขวา เพื่อเลื่อนดูข้อมูล</p>
+                <form name="form_menu" method="post" action="report_c1.blade.php">
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column ">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <p class="subtitle is-6">
+                                        <strong> กรณีที่ถูกละเมิด </strong>
+                                    </p>
+                                </div>
+
+                                <div class="level-item">
+                                    <div class="select">
+                                        <select id="p_case" name="pcase">
+                                            <option value="0" <?php if ($p_case == "0") { echo "selected";} ?>> ทุกกรณี
+                                            </option>
+                                            <option value="1" <?php if ($p_case == "1") { echo "selected";} ?>>
+                                                บังคับตรวจเอชไอวี </option>
+                                            <option value="2" <?php if ($p_case == "2") { echo "selected";} ?>>
+                                                เปิดเผยสถานะ<br>การติดเชื้อเอชไอวี </option>
+                                            <option value="3" <?php if ($p_case == "3") { echo "selected";} ?>>
+                                                ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากกการติดเชื้อเอชไอวี </option>
+                                            <option value="4" <?php if ($p_case == "4") { echo "selected";} ?>>
+                                                ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง </option>
+                                            <option value="5" <?php if ($p_case == "5") { echo "selected";} ?>>
+                                                กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column ">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <p class="subtitle is-6">
+                                        <strong> เลือกวันที่ </strong>
+                                    </p>
+                                </div>
+                                <div class="level-item">
+                                    <div class="field has-addons">
+                                        <p class="control has-icons-left">
+                                            <div class="input-group input-daterange" style="width: 300px">
+                                                <input type="text" class="form-control" id="date_start"
+                                                    name="date_start" value='<?php echo $date_start; ?>'>
+                                                <div class="input-group-addon">ถึง</div>
+                                                <input type="text" class="form-control" id="date_end" name="date_end"
+                                                    value='<?php echo $date_end; ?>'>
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="level-item">
+                                    <input type="submit" class="button is-primary" id="submit" name="submit"
+                                        value="ตกลง">
+                                </div>
+                                <div class="level-item">
+                                    <div class="field has-addons">
+                                        <p>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-multiline is-mobile">
+                        <div class="column ">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <p class="subtitle is-6">
+                                        <strong> ข้อมูล ณ วันที่ (ด/ว/ป) </strong>
+                                    </p>
+                                    <p class="subtitle is-6">
+                                        <?php echo "  : ",date("m/d/Y")," เวลา : ",date("h:i:sa"); ?>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <br>
+
+                <p class="subtitle is-6">คลิกที่ตารางแล้วกดปุ่ม ซ้าย-ขวา เพื่อเลื่อนดูข้อมูล</p>
                 <div class="table-container">
-				<table id='crisisc1' class="table hideextra is-bordered is-striped is-narrow is-hoverable">
-					<thead>
-						<tr class="hideextra">
-						<th class="red3" style="vertical-align: middle; color: white;" >ลำดับ</th>
-						<th class="red3" style="vertical-align: middle; color: white;" >ชื่อ</th>
-						<th class="red3" style="vertical-align: middle; color: white;" >จังหวัด</th>
-						<th class="red3" style="vertical-align: middle; color: white;" >เขต</th>
-						<th class="red3" style="vertical-align: middle; color: white;" >ยังไม่ได้รับเรื่อง</th>
-						<th class="red3" style="vertical-align: middle; color: white;" >รับเรื่องแล้ว</th>
-						<th class="red3" style="vertical-align: middle; color: white;" >บันทึกข้อมูลเพิ่มเติมแล้ว</th>
-						<th class="red3" style="vertical-align: middle; color: white;" >อยู่ระหว่างดำเนินการ</th>
-						<th class="red3" style="vertical-align: middle; color: white;" >ดำเนินการเสร็จสิ้น</th>
-						<th class="red3" style="vertical-align: middle; color: white;" >ส่งต่อ</th>
-						<th class="red3" style="vertical-align: middle; color: white;" >ทั้งหมด</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
+                    <table id='crisisc1' class="table hideextra is-bordered is-striped is-narrow is-hoverable">
+                        <thead>
+                            <tr class="hideextra">
+                                <th class="red3" style="vertical-align: middle; color: white;">ลำดับ</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">ชื่อ</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">จังหวัด</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">เขต</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">ยังไม่ได้รับเรื่อง</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">รับเรื่องแล้ว</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">บันทึกข้อมูลเพิ่มเติมแล้ว
+                                </th>
+                                <th class="red3" style="vertical-align: middle; color: white;">อยู่ระหว่างดำเนินการ</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">ดำเนินการเสร็จสิ้น</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">ส่งต่อ</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">ทั้งหมด</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
 
 							$sql1 = "SELECT o.id, o.name, o.nameorg, o.prov_id, p.name as provname, nhso
 							FROM officers o left join prov_geo p
@@ -322,64 +334,62 @@
 
 							$conn->close();
 						?>
-			</div>
-        </div>
-		<br>
-        </section>
+                </div>
+            </div>
+            <br>
+    </section>
 
 </body>
 
 
-	
+
 <script src="../public/bulma/clipboard-1.7.1.min.js"></script>
-	<script src="../public/bulma/main.js"></script>
+<script src="../public/bulma/main.js"></script>
 
-	<script>
-	
-        $('.input-daterange input').each(function() {
-			
-			$(this).datepicker('');
-            //$('#date_end').datepicker("setDate", new Date());
-        }).on('changeDate', function(e) {
-            //load_case()
-        });
+<script>
+$('.input-daterange input').each(function() {
 
-	</script>
+    $(this).datepicker('');
+    //$('#date_end').datepicker("setDate", new Date());
+}).on('changeDate', function(e) {
+    //load_case()
+});
+</script>
 
-<footer class="footer "style="background-color: #EEE;">
-  <div class="container  ">
-    <div class="content has-text-centered  ">
-      <p>Crisis Response System (CRS)
-	  </p>
-	  <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p>
+<footer class="footer " style="background-color: #EEE;">
+    <div class="container  ">
+        <div class="content has-text-centered  ">
+            <p>Crisis Response System (CRS)
+            </p>
+            <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>. </small> </p>
+        </div>
     </div>
-  </div>
 </footer>
 
 <link rel="stylesheet" type="text/css" href="DataTable/jquery.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css" href="DataTable/buttons.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="DataTable/buttons.dataTables.min.css" />
 
-   <script type="text/javascript" language="javascript" src="DataTable/jquery.dataTables.min.js"></script>
-   <script type="text/javascript" language="javascript" src="DataTable/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript" language="javascript" src="DataTable/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" language="javascript" src="DataTable/buttons.flash.min.js"></script>
-    <script type="text/javascript" language="javascript" src="DataTable/jszip.min.js"></script>
-    <script type="text/javascript" language="javascript" src="DataTable/vfs_fonts.js"></script>
-    <script type="text/javascript" language="javascript" src="DataTable/buttons.html5.min.js"></script>
-    <script type="text/javascript" language="javascript" src="DataTable/buttons.print.min.js"></script>
+<script type="text/javascript" language="javascript" src="DataTable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="DataTable/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" language="javascript" src="DataTable/dataTables.buttons.min.js"></script>
+<script type="text/javascript" language="javascript" src="DataTable/buttons.flash.min.js"></script>
+<script type="text/javascript" language="javascript" src="DataTable/jszip.min.js"></script>
+<script type="text/javascript" language="javascript" src="DataTable/vfs_fonts.js"></script>
+<script type="text/javascript" language="javascript" src="DataTable/buttons.html5.min.js"></script>
+<script type="text/javascript" language="javascript" src="DataTable/buttons.print.min.js"></script>
 <script type="text/javascript" language="javascript">
 $(document).ready(function() {
-    $('#crisisc1').DataTable( {
-		bFilter: true,
+    $('#crisisc1').DataTable({
+        bFilter: true,
         dom: 'Bfrtip',
+        responsive: true,
         buttons: [
             'excel', 'copy', 'print'
         ],
-		paging: false,
-		ordering: false
-    } );
-} );
-
-  </script>
+        paging: false,
+        ordering: false
+    });
+});
+</script>
 
 </html>
