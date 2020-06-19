@@ -7,8 +7,6 @@
 	<meta name="description" content="">
 	<title>CRS</title>
 	<link rel="shortcut icon" href="../public/images/favicon.ico">
-	<link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
-	<link rel="stylesheet" href="../public/bulma/css/bulma.css">
 
 	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
 	<link media="all" type="text/css" rel="stylesheet" href="../public/bootstrap/css/bootstrap.css">
@@ -19,7 +17,7 @@
 	<script src="../public/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
-	<link href="../public/bulma/css/bulma.css" rel="stylesheet">
+	<link href="../public/bulma-0.8.0/css/bulma.css" rel="stylesheet">
     <link href="../public/css/font-awesome5.0.6/css/fontawesome-all.css" rel="stylesheet">
 
     <script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
@@ -296,7 +294,7 @@
 						<li >
 							<a href="report_c1.blade.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-                                <span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
+                                <span>ตารางสรุปการ<br>จัดการเหตุ</span>
                             </a>
 						</li>
 						<li >
