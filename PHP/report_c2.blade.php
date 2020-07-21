@@ -247,6 +247,8 @@
                                     ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง</th>
                                 <th class="red3" style="vertical-align: middle; color: white;">
                                     กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี</th>
+                                <th class="red3" style="vertical-align: middle; color: white;">
+                                    กรณีที่อื่นๆ<br>ที่ไม่เกี่ยวข้องกับเอชไอวี</th>
                                 <th class="red3" style="vertical-align: middle; color: white;">ทั้งหมด</th>
                             </tr>
                         </thead>
@@ -271,6 +273,7 @@
 						sum(CASE WHEN problem_case = '3' THEN 1 ELSE 0 END) as case3,
 						sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as case4,
 						sum(CASE WHEN problem_case = '5' THEN 1 ELSE 0 END) as case5,
+                        sum(CASE WHEN problem_case = '6' THEN 1 ELSE 0 END) as case6,
 						count(problem_case) as sum
 						FROM case_inputs
 						where receiver='".$row1['name']."'
@@ -294,6 +297,7 @@
                                 $c_s3 = $c_s3 + $row2["case3"];
                                 $c_s4 = $c_s4 + $row2["case4"];
                                 $c_s5 = $c_s5 + $row2["case5"];
+                                $c_s6 = $c_s6 + $row2["case6"];
                                 $c_as = $c_as + $row2["sum"];
 								
 								//echo $row['receiver'];
@@ -318,7 +322,8 @@
 														echo "<td>".$row2["case2"]."</td>";
 														echo "<td>".$row2["case3"]."</td>";
 														echo "<td>".$row2["case4"]."</td>";
-														echo "<td>".$row2["case5"]."</td>";
+                                                        echo "<td>".$row2["case5"]."</td>";
+                                                        echo "<td>".$row2["case6"]."</td>";
 														echo "<td>".$row2["sum"]."</td>";
 								echo "</tr>";
 														
@@ -334,7 +339,8 @@
 								echo "<td>0</td>";
 								echo "<td>0</td>";
 								echo "<td>0</td>";
-								echo "<td>0</td>";
+                                echo "<td>0</td>";
+                                echo "<td>0</td>";
 								echo "</tr>";
 						}
 					}
@@ -348,7 +354,8 @@
 							echo "<td>".$c_s2."</td>";
 							echo "<td>".$c_s3."</td>";
 							echo "<td>".$c_s4."</td>";
-							echo "<td>".$c_s5."</td>";
+                            echo "<td>".$c_s5."</td>";
+                            echo "<td>".$c_s6."</td>";
 							echo "<td>".$c_as."</td>";
 							echo "</tr>";
 							echo "</tbody>";
