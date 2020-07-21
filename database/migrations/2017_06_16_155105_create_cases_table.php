@@ -27,7 +27,7 @@ class CreateCasesTable extends Migration
             $table->text('agent_tel')->nullable();
             $table->text('victim_tel')->nullable();
             $table->integer('problem_case');
-            $table->integer('sub_problem');
+            $table->integer('sub_problem')->nullable();
             $table->integer('group_code')->nullable();
             $table->string('case_id', 5)->index();
             $table->text('detail')->nullable();
