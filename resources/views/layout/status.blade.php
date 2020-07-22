@@ -17,7 +17,7 @@
 	<script src="http://bulma.io/lib/main.js"></script-->
     <script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
     <script src="{{ asset('bulma/main.js') }}"></script>
-    <title> ปกป้อง </title>
+    <title> ปกป้อง (CRS) </title>
 </head>
 
 <body>
