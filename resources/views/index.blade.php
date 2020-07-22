@@ -18,7 +18,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
     <script src="css/modal/modal.js"></script>
     <link href="{{ asset('css/modal/modal.css') }}" rel="stylesheet">
-    <title> CRS </title>
+    <title> ปกป้อง </title>
 </head>
 
 <body class="has-background-light">

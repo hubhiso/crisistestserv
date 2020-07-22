@@ -14,7 +14,7 @@
     <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
     {{ Html::script('js/jquery.min.js') }}
 
-    <title> CRS - Agency Support </title>
+    <title> ปกป้อง </title>
 
 
     <link rel="stylesheet" type="text/css" href="css/uploadicon/new3.css" />
