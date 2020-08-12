@@ -3,8 +3,7 @@
         <div class="level-item has-text-centered">
             <div>
                 <br>
-                <a class="button  is-outlined is-rounded is-small is-danger " href="{{ 'officer' }}"> <i
-                        class="fas fa-lock"></i>&nbsp ส่วนเจ้าหน้าที่ </a>
+
             </div>
         </div>
         <div class="level-item has-text-centered">
@@ -46,6 +45,9 @@
                         <br>
                         <p> สามารถตรวจสอบสถานะดำเนินการ ได้ทางปุ่มด้านล่างนี้ </p><br>
                         <a class="button is-danger is-outlined " href="{{ 'status' }}"> สถานะการดำเนินงาน </a>
+                        <br><br>
+                        <a class="button  is-outlined is-rounded is-small is-danger " href="{{ 'officer' }}"> <i
+                                class="fas fa-lock"></i>&nbsp ส่วนเจ้าหน้าที่ </a>
                     </div>
 
                 </div>
