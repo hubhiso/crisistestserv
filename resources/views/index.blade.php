@@ -6,7 +6,10 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv=”content-language” content=”th” />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name=”description” content=”ปกป้อง ระบบผู้ช่วยออนไลน์ที่บริการรับเรื่องร้องเรียนและคุ้มครองการละเมิดสิทธิ” />
+    <meta name=”keywords” content=”ปกป้อง,ปกป้อง thai” />
     <meta name="theme-color" content="#cc99cc" />
     <link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">

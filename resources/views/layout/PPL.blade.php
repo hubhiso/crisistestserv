@@ -1,36 +1,62 @@
-<section class="hero is-primary is-medium wall2">
-    <br>
+<section class="hero is-medium wall4">
     <nav class="level">
         <div class="level-item has-text-centered">
-
-        </div>
-        <div class="level-item has-text-centered">
-
-        </div>
-        <div class="level-item has-text-centered">
-
-        </div>
-        <div class="level-item has-text-right">
             <div>
-                <a class="button is-primary is-inverted is-outlined is-rounded is-small is-danger "
-                    href="{{ 'officer' }}"> <i class="fas fa-lock"></i>&nbsp ส่วนเจ้าหน้าที่ </a>
+                <br>
+                <a class="button  is-outlined is-rounded is-small is-danger " href="{{ 'officer' }}"> <i
+                        class="fas fa-lock"></i>&nbsp ส่วนเจ้าหน้าที่ </a>
             </div>
+        </div>
+        <div class="level-item has-text-centered">
+        </div>
+        <div class="level-item has-text-centered">
+        </div>
+        <div class="level-item has-text-centered">
         </div>
     </nav>
 
     <div class="hero-body">
-        <div class="container has-text-centered">
-            <div class="container">
-                <h1 id="bulma" class="title"> Crisis Response System (CRS) </h1>
-                <h2 id="modern-framework" class="subtitle"> ระบบรับเรื่องร้องเรียนและคุ้มครองการละเมิดสิทธิด้านเอดส์<br>
-                    เพศภาวะ และความเป็นกลุ่มประชากรเปราะบางต่อการถูกเลือกปฏิบัติ </h2>
-                <a id="btn_new1" class="button" href="{{ 'case_inputs' }}"> แจ้งเรื่อง </a>
-            </div>
+
+        <div class=" has-text-right">
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                </div>
+                <div class="level-item has-text-centered">
+                </div>
+                <div class="level-item has-text-centered">
+                </div>
+                <div class="level-item has-text-centered">
+                </div>
+                <div class="level-item has-text-centered">
+                </div>
+                <div class="level-item has-text-centered">
+                </div>
+                <div class="level-item has-text-centered">
+                </div>
+                <div class="level-item has-text-centered">
+                    <div class="container">
+                        <h1 id="bulma" class="title"> Crisis Response System (CRS) </h1>
+                        <br>
+                        <h2 id="modern-framework" class="subtitle">
+                            ระบบรับเรื่องร้องเรียนและคุ้มครองการละเมิดสิทธิด้านเอดส์<br>
+                            เพศภาวะ และความเป็นกลุ่มประชากรเปราะบางต่อการถูกเลือกปฏิบัติ </h2>
+                        <br>
+                        <a id="btn_new1" class="button" href="{{ 'case_inputs' }}"> แจ้งเหตุ </a>
+                        <br>
+                        <br>
+                        <p> สามารถตรวจสอบสถานะดำเนินการ ได้ทางปุ่มด้านล่างนี้ </p><br>
+                        <a class="button is-danger is-outlined " href="{{ 'status' }}"> สถานะการดำเนินงาน </a>
+                    </div>
+
+                </div>
+            </nav>
             <br>
-            <div class="container">
-                <p> สามารถตรวจสอบสถานะดำเนินการ ได้ทางปุ่มด้านล่างนี้ </p><br>
-                <a class="button is-primary is-inverted is-outlined " href="{{ 'status' }}"> สถานะการดำเนินงาน </a>
-            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
 
@@ -304,13 +330,13 @@
             <div class="column">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <h4 class="subtitle is-4 	">"CRS คืออะไร"</h4>
-                        <p style="text-indent: 2.5em;">พัฒนามาเพื่อเป็นช่องทางรับทราบข้อมูล ปัญหาการละเมิดสิทธิ
-                            โดยมีระบบการจัดเก็บและรวบรวมข้อมูลที่เป็นระบบ
-                            มีมาตรฐานกลไกการดูแลช่วยเหลือระหว่างภาคีเครือข่าย
-                            นำไปสู่การช่วยเหลืออย่างเป็นระบบ
-                            และยังสามารถนำข้อมูลที่ได้รับไปผลักดันให้เกิดการเปลี่ยนแปลงเชิงนโยบาย หรือทางกฎหมาย
-                            รวมทั้งให้ความรู้ต่อสาธารณะ <br><br><br>
+                        <h4 class="subtitle is-4 	">"ปกป้อง คืออะไร"</h4>
+                        <p style="text-indent: 2.5em;">
+                            ระบบผู้ช่วยออนไลน์ที่บริการรับเรื่องร้องเรียนและคุ้มครองการละเมิดสิทธิ ด้านเอดส์ เพศภาวะ
+                            และความเป็นกลุ่มประชากรเปราะบางต่อการถูกเลือกปฏิบัติ
+                            'ปกป้อง' ถูกพัฒนาบนพื้นฐานระบบ CRS:CRISIS RESPONSE SYSTEM
+                            โดยทีมผู้เชี่ยวชาญและผู้มีประสบการณ์จากหน้าองค์กร ให้บริการครอบคลุมประเด็นสำคัญในหลายมิติ
+                            <br><br><br>
                         </p>
                     </article>
                 </div>
