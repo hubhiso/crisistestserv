@@ -1,4 +1,4 @@
-<section class="hero is-medium wall4">
+<section class="hero is-medium is-large wall4">
     <nav class="level">
         <div class="level-item has-text-centered">
             <div>
