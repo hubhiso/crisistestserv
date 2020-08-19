@@ -72,7 +72,7 @@
                             <figure class="image">
                                 <img src="images/logo/logo1-x100.png">
                             </figure>
-                            <p class="is-size-6">สำนักโรคเอดส์ วัณโรค และโรคติดต่อทางเพศสัมพันธ์</p>
+                            <p class="is-size-6">กองโรคเอดส์ วัณโรค และโรคติดต่อทางเพศสัมพันธ์</p>
                         </a>
                     </article>
                 </div>
@@ -88,6 +88,16 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
+                        <a href="http://www.ago.go.th">
+                            <figure class="image">
+                                <img src="images/logo/logo12-x100.png">
+                            </figure>
+                            <p class="is-size-6">สำนักงานอัยการสูงสุด</p>
+                        </a>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
                         <a href="http://www.rlpd.go.th">
                             <figure class="image">
                                 <img src="images/logo/logo3-x100.png">
@@ -96,6 +106,9 @@
                         </a>
                     </article>
                 </div>
+            </div>
+
+            <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <a href="http://www.nhrc.or.th">
@@ -107,9 +120,6 @@
                     </article>
                 </div>
 
-            </div>
-
-            <div class="tile is-ancestor">
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <a href="http://www.1300thailand.m-society.go.th">
@@ -161,16 +171,7 @@
                         </a>
                     </article>
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <a href="http://www.ago.go.th">
-                            <figure class="image">
-                                <img src="images/logo/logo12-x100.png">
-                            </figure>
-                            <p class="is-size-6">สำนักงานอัยการสูงสุด</p>
-                        </a>
-                    </article>
-                </div>
+
             </div>
         </div>
     </section>
