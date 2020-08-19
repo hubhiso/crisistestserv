@@ -58,8 +58,8 @@
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <a href="http://www.ddc.moph.go.th">
-                            <figure class="image">
-                                <img src="images/logo/logo11-x100.png">
+                            <figure class="">
+                                <img src="images/logo/logo11-x100.png" height="150">
                             </figure>
                             <p class="is-size-6">สายด่วน 1442<br>กรมควบคุมโรค</p>
                         </a>
@@ -69,8 +69,8 @@
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <a href="http://aidssti.ddc.moph.go.th">
-                            <figure class="image">
-                                <img src="images/logo/logo1-x100.png">
+                            <figure class="">
+                                <img src="images/logo/logo1-x100.png" height="150">
                             </figure>
                             <p class="is-size-6">กองโรคเอดส์ วัณโรค และโรคติดต่อทางเพศสัมพันธ์</p>
                         </a>
@@ -79,7 +79,7 @@
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <a href="http://www.aidsrightsthailand.com">
-                            <figure class="image">
+                            <figure class="">
                                 <img src="images/logo/logo2-x100.png">
                             </figure>
                             <p class="is-size-6">มูลนิธิศูนย์คุ้มครองสิทธิ์ด้านเอดส์</p>
@@ -88,18 +88,18 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <a href="http://www.ago.go.th">
-                            <figure class="image">
+                        <a href="http://www.hiso.or.th">
+                            <figure class="">
                                 <img src="images/logo/logo12-x100.png">
                             </figure>
-                            <p class="is-size-6">สำนักงานอัยการสูงสุด</p>
+                            <p class="is-size-6">สำนักงานอัยการสูงสุด<br></p>
                         </a>
                     </article>
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
                         <a href="http://www.rlpd.go.th">
-                            <figure class="image">
+                            <figure class="">
                                 <img src="images/logo/logo3-x100.png">
                             </figure>
                             <p class="is-size-6">กรมคุ้มครองสิทธิและเสรีภาพ</p>
