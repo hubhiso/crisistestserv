@@ -72,7 +72,7 @@
                             <figure class="">
                                 <img src="images/logo/logo1-x100.png" height="150">
                             </figure>
-                            <p class="is-size-6">กองโรคเอดส์ วัณโรค และโรคติดต่อทางเพศสัมพันธ์</p>
+                            <p class="is-size-6">กองโรคเอดส์และโรคติดต่อทางเพศสัมพันธ์</p>
                         </a>
                     </article>
                 </div>
