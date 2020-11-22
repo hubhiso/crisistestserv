@@ -36,6 +36,7 @@
                     <div class="container">
                         <h1 id="bulma" class="title"> Crisis Response System (CRS) </h1>
                         <br>
+                        <h1 id="bulma" class="title"> "สวัสดี ปกป้อง" </h1><br>
                         <h2 id="modern-framework" class="subtitle">
                             ระบบรับเรื่องร้องเรียนและคุ้มครองการละเมิดสิทธิด้านเอดส์<br>
                             เพศภาวะ และความเป็นกลุ่มประชากรเปราะบางต่อการถูกเลือกปฏิบัติ </h2>
