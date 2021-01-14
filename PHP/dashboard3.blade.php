@@ -142,7 +142,7 @@
         $sql_c3 = "SELECT c.group_code, r.name, count(c.group_code) as c3 
         FROM case_inputs c, r_group_code r
         WHERE  c.group_code = r.code
-        $pr_q
+        $pr_q and c.problem_case = '4'
         and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
         group by c.group_code ";
         //echo $sql_c3;
@@ -267,7 +267,7 @@
                         //"plottooltext": "<b>$percentValue $label</b>",
                         "centerlabel": "$value เคส",
                         "theme": "hulk-light",
-                        "palettecolors": "#E14455,#2B1615,#7F7F7F,#CFCFCF,#E87C87",
+                        "palettecolors": "#E14455,#2B1615,#7F7F7F,#BABABA,#E87C87",
                         "exportEnabled": "1"
                     },
                     "data":[ {
@@ -314,7 +314,7 @@
                         //"plottooltext": "<b>$percentValue $label</b>",
                         "centerlabel": "$value เคส",
                         "theme": "hulk-light",
-                        "palettecolors": "#E14455,#2B1615,#7F7F7F,#F2F2F2,#E87C87",
+                        "palettecolors": "#E14455,#2B1615,#7F7F7F,#BABABA,#E87C87",
                         "exportEnabled": "1"
                     },
 
