@@ -1,12 +1,12 @@
 @charset "utf-8";
 
-#mask,
-#mask2 {
+#mask_intro,#mask_home,
+#mask_confirm {
   position: absolute;
   left: 0;
   top: 0;
   z-index: 9000;
-  background-color: #000;
+  background-color: #000000;
   display: none;
 }
 

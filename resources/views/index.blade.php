@@ -28,7 +28,7 @@
 
     {{--@extends('layout.officer')--}}
 
-    @extends('layout.PPL')
+    @extends('layout.PPL2')
 
 </body>
 
