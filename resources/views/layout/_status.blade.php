@@ -27,7 +27,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
         <div class="timeline-content">
             <h2> {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}}{{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}  </h2>
             <p>
-                ส่งเรื่องสำเร็จ
+                {{ trans('message.tx_status1') }}
             </p>
 
         </div>
@@ -38,7 +38,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
             <div class="timeline-content">
                 <h2>  </h2>
                 <p>
-                ส่งเรื่องสำเร็จ
+                {{ trans('message.tx_status1') }}
                 </p>
             </div>
         @endif
@@ -60,7 +60,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                 <div class="timeline-content right">
                     <h2> {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}}{{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}} </h2>
                     <p>
-                    เจ้าหน้าที่รับเรื่องแล้ว
+                    {{ trans('message.tx_status2_1') }}
                     </p>
                 </div>
         @else
@@ -70,7 +70,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                     <div class="timeline-content right">
                         <h2>  </h2>
                         <p>
-                        เจ้าหน้าที่รับเรื่องแล้ว
+                        {{ trans('message.tx_status2_1') }}
                         </p>
                     </div>
                     
@@ -92,7 +92,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
         <div class="timeline-content">
             <h2> {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}}{{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}} </h2>
             <p>
-            เจ้าหน้าที่สอบถามข้อมูลเพิ่มเติมแล้ว
+            {{ trans('message.tx_status3_1') }}
             </p>
         </div>
         @else
@@ -102,7 +102,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
         <div class="timeline-content">
             <h2> - </h2>
             <p>
-            เจ้าหน้าที่สอบถามข้อมูลเพิ่มเติมแล้ว
+            {{ trans('message.tx_status3_1') }}
             </p>
         </div>
        
@@ -122,7 +122,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
         <div class="timeline-content">
             <h2> {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}}{{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}} </h2>
             <p>
-            อยู่ระหว่างดำเนินการช่วยเหลือ
+            {{ trans('message.tx_status4_1') }}
             </p>
         </div>
         @else
@@ -132,7 +132,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
         <div class="timeline-content">
             <h2>  - </h2>
             <p>
-            อยู่ระหว่างดำเนินการช่วยเหลือ
+            {{ trans('message.tx_status4_1') }}
             </p>
         </div>
        
@@ -152,7 +152,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
         <div class="timeline-content">
             <h2> {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}}{{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}} </h2>
             <p>
-             ดำเนินการเสร็จสิ้น
+            {{ trans('message.tx_status5_1') }}
             </p>
         </div>
         @else
@@ -162,7 +162,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
         <div class="timeline-content">
             <h2>  - </h2>
             <p>
-                ดำเนินการเสร็จสิ้น
+            {{ trans('message.tx_status5_1') }}
             </p>
         </div>
        
@@ -184,7 +184,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
         <div class="timeline-content">
             <h2>  - </h2>
             <p>
-            ส่งเรื่องสำเร็จ
+            {{ trans('message.tx_status1') }}
             </p>
         </div>
 @endif
@@ -197,7 +197,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
             <div class="timeline-content">
                 <h2> - </h2>
                 <p>
-                เจ้าหน้าที่รับเรื่องแล้ว
+                {{ trans('message.tx_status2_1') }}
                 </p>
             </div>
 @endif
@@ -211,7 +211,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
             <div class="timeline-content">
                 <h2> - </h2>
                 <p>
-                 เจ้าหน้าที่ยังไม่ได้สอบถามข้อมูลเพิ่มเติม
+                {{ trans('message.tx_status3_1') }}
                 </p>
         
         </div>
@@ -225,7 +225,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
             <div class="timeline-content">
                 <h2> - </h2>
                 <p>
-                อยู่ระหว่างดำเนินการช่วยเหลือ
+                {{ trans('message.tx_status4_1') }}
                 </p>
         </div>
 @endif
@@ -238,7 +238,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
             <div class="timeline-content">
                 <h2> - </h2>
                 <p>
-                ดำเนินการเสร็จสิ้น
+                {{ trans('message.tx_status5_1') }}
                 </p>
         </div>
 @endif
