@@ -145,13 +145,18 @@
                             <label class="label">เพศกำเนิด *</label>
                         </div>
                         <div class="field-body">
-                            <div class="field is-narrow">
-                                <div class="control ">
-
-                                    {{ Form::radio('biosex', '1' , true) }} ชาย
-                                    &nbsp
+                            <div class="field">
+                                <label class="radio">
+                                {{ Form::radio('biosex', '1' , true) }} ชาย
+                                </label>
+                                &nbsp;
+                                <label class="radio">
                                     {{ Form::radio('biosex', '2' , false) }} หญิง
-                                </div>
+                                </label>
+                                &nbsp;
+                                <label class="radio">
+                                    {{ Form::radio('biosex', '0' , false) }} ไม่ประสงค์ตอบ
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -329,6 +334,7 @@
                                             <option value="4">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง
                                             </option>
                                             <option value="5">อื่นๆ ที่เกี่ยวข้องกับ HIV</option>
+                                            <option value="6">อื่นๆ</option>
                                         </select>
 
                                     </span>
