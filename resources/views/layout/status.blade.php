@@ -8,8 +8,8 @@
 	<meta name="theme-color" content="#cc99cc"/>
 	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/base.css') }}" rel="stylesheet">
-	<!--link href="{{ asset('css/font-awesome/css/font-awesome.css') }}" rel="stylesheet"-->
-	<link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
 	<script src="{{ asset('css/jquery.min.js') }}"></script>
 	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
@@ -34,20 +34,53 @@
 		</div>
 	</section>
 
+	<div class="navbar has-background-light">
+            <div class="navbar-end has-text-right">
+                <div class="navbar-item">
 
-	<section class="section">
+                    @if(Config::get('app.locale') == 'en')
+
+                    <a class="button is-danger is-inverted is-rounded is-small" href="{{ URL::to('change/th') }}"> Thai
+                        Site&nbsp;
+                        <span class="fa-stack fa-1x">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+
+                    @elseif(Config::get('app.locale') == 'th')
+
+                    <a class="button is-danger is-inverted is-rounded is-small" href="{{ URL::to('change/en') }}">
+                        English
+                        Site&nbsp;
+                        <span class="fa-stack fa-1x">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+
+                    @endif
+
+                </div>
+            </div>
+        </div>
+
+
+	
 		<div class="container">
 
 			<nav class="breadcrumb">
-				<ul>
-					<li><a href="{{ 'index.php' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span> หน้าหลัก </span></a>
-					</li>
-					<li class="is-active"><a><span class="icon is-small"><i class="fa fa-search"></i></span><span> ตรวจสอบสถานะ </span></a>
-					</li>
-				</ul>
-			</nav>
-			
-			<h1 class="title"> ตรวจสอบสถานะ </h1>
+                <ul>
+                    <li><a href="{{ 'index.php' }}"><span class="icon is-small"><i class="fa fa-home"></i></span><span>
+                        {{ trans('message.nav_home') }} </span></a>
+                    </li>
+                    <li class="is-active"><a><span class="icon is-small"><i class="fa fa-search"></i></span><span>
+                    {{ trans('message.tx_head_status') }} </span></a>
+                    </li>
+                </ul>
+            </nav>
+
+            <h1 class="title"> {{ trans('message.tx_head_status') }} </h1>
 			
 			
 			<!-- Main container -->
@@ -55,7 +88,7 @@
 			  <!-- Left side -->
 			    <div class="level-left">
 					<div class="level-item">
-						<p class="subtitle is-5"> ใส่รหัสเพื่อตรวจสอบ </p>
+						<p class="subtitle is-5"> {{ trans('message.tx_track_status') }} </p>
 					</div>
 					<div class="level-item">
 						<div class="field has-addons">
@@ -63,7 +96,7 @@
 								<input class="input" type="text" id="case_search">
 							</p>
 							<p class="control">
-								<button class="button" onclick="report_status();"> ค้นหา </button>
+								<button class="button" onclick="report_status();"> {{ trans('message.bt_search_status') }} </button>
 							</p>
 						</div>
 					</div>
@@ -76,7 +109,7 @@
 							<span class="icon is-medium">
 								<i class="fa fa-smile"></i>
 							</span>
-							<span> ประเมินความพึงพอใจ </span>
+							<span> {{ trans('message.bt_rate_status') }} </span>
 						</a>
 					</div>
 			  	</div>
@@ -96,8 +129,6 @@
 		<!-- Timeline ends here -->
 		</div>
 
-
-	</section>
 
 
 	@extends('footer')
