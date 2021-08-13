@@ -6,8 +6,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#cc99cc"/>
-	<link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/base.css') }}" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300&display=swap" rel="stylesheet">
+
+	<link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
 	<script src="{{ asset('css/jquery.min.js') }}"></script>
@@ -34,37 +37,39 @@
 		</div>
 	</section>
 
+
 	<div class="navbar has-background-light">
-            <div class="navbar-end has-text-right">
-                <div class="navbar-item">
+		<div class="navbar-end has-text-right">
+			<div class="navbar-item">
 
-                    @if(Config::get('app.locale') == 'en')
+				@if(Config::get('app.locale') == 'en')
 
-                    <a class="button is-danger is-inverted is-rounded is-small" href="{{ URL::to('change/th') }}"> Thai
-                        Site&nbsp;
-                        <span class="fa-stack fa-1x">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
+				<a class="button is-danger is-inverted is-rounded is-small" href="{{ URL::to('change/th') }}"> Thai
+					Site&nbsp;
+					<span class="fa-stack fa-1x">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
 
-                    @elseif(Config::get('app.locale') == 'th')
+				@elseif(Config::get('app.locale') == 'th')
 
-                    <a class="button is-danger is-inverted is-rounded is-small" href="{{ URL::to('change/en') }}">
-                        English
-                        Site&nbsp;
-                        <span class="fa-stack fa-1x">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
+				<a class="button is-danger is-inverted is-rounded is-small" href="{{ URL::to('change/en') }}">
+					English
+					Site&nbsp;
+					<span class="fa-stack fa-1x">
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-flag fa-stack fa-inverse"></i>
+					</span>
+				</a>
 
-                    @endif
+				@endif
 
-                </div>
-            </div>
-        </div>
+			</div>
+		</div>
+	</div>
 
+	<br>
 
 	
 		<div class="container">
@@ -137,54 +142,54 @@
 	<div id="modal-ter" class="modal">
 	  <div class="modal-background"></div>
 	  <div class="modal-card">
-		<header class="modal-card-head">
-		  <p class="modal-card-title"> ประเมินความพึงพอใจ </p>
-		  <button class="delete"></button>
-		</header>
-		<section class="modal-card-body">
-		  <div class="content">
-			<h4> ให้คะแนนตามความพอใจของท่าน </h4>
-			<table class="table">
-			  <thead>
-				<tr>
-				  <th><abbr title="Position"> ลำดับ </abbr></th>
-				  <th> หัวข้อ </th>
-				  <th><abbr title="Played"> น้อยที่สุด </abbr></th>
-				  <th><abbr title="Won"> น้อย </abbr></th>
-				  <th><abbr title="Drawn"> มาก </abbr></th>
-				  <th><abbr title="Lost">  มากที่สุด</abbr></th>
-				</tr>
-			  </thead>
-			  
-			  <tbody>
-				<tr>
-				  <th>1</th>
-				  <td><a href="#" > การรับเรื่องและติดต่อกลับ </a>
-				  </td>
-				  <td>{{ Form::radio('eval1', '1' , true) }}</td>
-				  <td>{{ Form::radio('eval1', '2' , false) }}</td>
-				  <td>{{ Form::radio('eval1', '3' , false) }}</td>
-				  <td>{{ Form::radio('eval1', '4' , false) }}</td>
-				</tr>
-				<tr>
-				  <th>2</th>
-				  <td><a href="#" > การให้การช่วยเหลือ </a></td>
-					<td>{{ Form::radio('eval2', '1' , true) }}</td>
-					<td>{{ Form::radio('eval2', '2' , false) }}</td>
-					<td>{{ Form::radio('eval2', '3' , false) }}</td>
-					<td>{{ Form::radio('eval2', '4' , false) }}</td>
+            <header class="modal-card-head">
+                <p class="modal-card-title"> {{ trans('message.bt_rate_status') }} </p>
+                <button class="delete"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="content">
+                    <h4> {{ trans('message.bt_rate_status_head') }} </h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><abbr title="Position"> {{ trans('message.bt_rate_status_id') }} </abbr></th>
+                                <th> {{ trans('message.bt_rate_status_topic') }} </th>
+                                <th><abbr title="Played"> {{ trans('message.bt_rate_status_sc1') }}  </abbr></th>
+                                <th><abbr title="Won"> {{ trans('message.bt_rate_status_sc2') }}  </abbr></th>
+                                <th><abbr title="Drawn"> {{ trans('message.bt_rate_status_sc3') }}  </abbr></th>
+                                <th><abbr title="Lost"> {{ trans('message.bt_rate_status_sc4') }} </abbr></th>
+                            </tr>
+                        </thead>
 
-				</tr>
+                        <tbody>
+                            <tr>
+                                <th>1</th>
+                                <td><a href="#"> {{ trans('message.bt_rate_status_topic1') }} </a>
+                                </td>
+                                <td>{{ Form::radio('eval1', '1' , true) }}</td>
+                                <td>{{ Form::radio('eval1', '2' , false) }}</td>
+                                <td>{{ Form::radio('eval1', '3' , false) }}</td>
+                                <td>{{ Form::radio('eval1', '4' , false) }}</td>
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <td><a href="#"> {{ trans('message.bt_rate_status_topic2') }} </a></td>
+                                <td>{{ Form::radio('eval2', '1' , true) }}</td>
+                                <td>{{ Form::radio('eval2', '2' , false) }}</td>
+                                <td>{{ Form::radio('eval2', '3' , false) }}</td>
+                                <td>{{ Form::radio('eval2', '4' , false) }}</td>
 
-			  </tbody>
-			</table>
-		  </div>
-		</section>
-		<footer class="modal-card-foot">
-		  <a class="button is-success" onclick="evaluate1();"> บันทึก </a>
-		  <a class="button"> ยกเลิก </a>
-		</footer>
-	  </div>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <a class="button is-success" onclick="evaluate1();"> {{ trans('message.bt_submit') }} </a>
+                <a class="button"> {{ trans('message.bt_cancle2') }}  </a>
+            </footer>
+        </div>
 	</div>
 
 
