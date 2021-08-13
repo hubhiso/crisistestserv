@@ -76,6 +76,8 @@ class case_controller extends Controller
             $biosex_name = 'ชาย';
         }else if ($request->input('biosex') == 2) {
             $biosex_name = 'หญิง';
+        }else if ($request->input('biosex') == 0) {
+            $biosex_name = 'ไม่ประสงค์ตอบ';
         }
 
         
