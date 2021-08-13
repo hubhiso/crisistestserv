@@ -20,15 +20,6 @@
             </div>
         </div>
     </div>
-    <div class="hero-foot">
-        <div class="container">
-            <nav class="tabs is-boxed">
-                <ul>
-                    <li class="is-active"> <a href="{{ url('/') }}">หน้าหลัก</a> </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
 
 </section>
 <div class="tile is-ancestor">
