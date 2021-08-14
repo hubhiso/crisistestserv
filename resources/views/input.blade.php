@@ -248,10 +248,17 @@
                         <div class="columns" data-provide="datepicker">
                             <div class="column ">
                                 {{ trans('message.txt_year') }}
+                                @if(Config::get('app.locale') == 'th')
                                 <input style="width: 100px;" type="number" min="2400" max="2570" maxlength="4"
                                     id="YearAct" name="YearAct" class="form-control input"
                                     placeholder="{{ trans('message.txt_year_h') }}" value="{{date('Y')+543}}"
                                     onchange="date_acc();">
+                                @elseif(Config::get('app.locale') == 'en')
+                                <input style="width: 100px;" type="number" min="1900" max="2070" maxlength="4"
+                                    id="YearAct" name="YearAct" class="form-control input"
+                                    placeholder="{{ trans('message.txt_year_h') }}" value="{{date('Y')}}"
+                                    onchange="date_acc();">
+                                @endif
                             </div>
                             <div class="column ">
 
@@ -301,6 +308,8 @@
                             <div class="column  is-3">
                                 <input type="hidden" id="DateAct" name="DateAct" class="form-control"
                                     value="{{date('m/d/Y')}}">
+                                <input type="hidden" id="year_hidden" name="year_hidden" class="form-control"
+                                    value="{{date('Y')}}">
                             </div>
                         </div>
                     </div>

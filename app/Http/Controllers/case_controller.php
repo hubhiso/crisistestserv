@@ -68,7 +68,7 @@ class case_controller extends Controller
         //
         //$input = Request::all();
         //case_input::create($request->all());
-        $YearAct = $request->input('YearAct')-543;
+        $YearAct = $request->input('year_hidden');
 
         $accident_date = $YearAct."-".$request->input('MonthAct')."-".$request->input('DayAct');
         
