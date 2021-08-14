@@ -11,6 +11,10 @@ use App\timeline;
 class OfficerUpdateController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth:officer');
+    }
 
     public function accept_case(Request $request)
     {
@@ -438,5 +442,15 @@ class OfficerUpdateController extends Controller
         $html = view('officer._Case',compact('cases','username'))->render();
         return response()->json(compact('html','text_search'));
 
+    }
+
+    public function printcase($case_id)
+    {
+
+        $show_data = case_input::where('case_id','=',$case_id)->first();
+        $show_timeline = timeline::where('case_id',$case_id)->where('operate_status',2)->first();
+        $activities = operate_detail::where('case_id','=',$case_id)->orderBy('operate_date', 'asc')->get();
+
+        return view('officer.printpage',compact('show_data', 'show_timeline', 'activities'));
     }
 }
