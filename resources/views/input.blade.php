@@ -729,7 +729,7 @@
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
-            getsuccess.innerHTML = "กรุณารอสักครู่...";
+            getsuccess.innerHTML = "{{ trans('message.tx_location_wait') }}";
         } else {
             latlon.innerHTML = "Geolocation is not supported by this browser.";
         }
@@ -737,7 +737,7 @@
 
     function showPosition(position) {
 
-        getsuccess.innerHTML = "บันทึกตำแหน่งในปัจจุบันสำเร็จ";
+        getsuccess.innerHTML = "{{ trans('message.tx_location_ss') }}";
 
         document.getElementById('glat').value = position.coords.latitude;
         document.getElementById('glon').value = position.coords.longitude;

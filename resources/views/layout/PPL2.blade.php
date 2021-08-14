@@ -169,8 +169,8 @@
             <img src="images/seo.png">
         </figure>
         <br>
-        <h1 class="title"> แหล่งข้อมูลความรู้เรื่องสิทธิในประเด็นต่างๆ </h1>
-        <h2 class="subtitle">สามารถสืบค้นได้ตาม Link ข้อมูลด้านล่างนี้</h2>
+        <h1 class="title"> {{ trans('message.tx_h_knowledge') }} </h1>
+        <h2 class="subtitle">{{ trans('message.tx_sh_knowledge') }}</h2>
         <br>
     </div>
     <div class="columns">
@@ -277,13 +277,13 @@
             </figure>
             <br>
             <h1 class="title">
-                ต้องการเข้าไปแจ้งเหตุที่หน่วยงานโดยตรง
+                {{ trans('message.tx_h_table') }}
             </h1>
             <h2 class="subtitle">
-                สามารถแจ้งเหตุได้ที่หน่วยงานตามข้อมูลด้านล่างนี้
+                {{ trans('message.tx_sh_table') }}
             </h2>
             <a class="button is-primary  is-rounded is-danger" href="{{ 'orgmap' }}"> <i
-                    class="fas fa-thumbtack"></i>&nbsp แสดงบนแผนที่ </a>
+                    class="fas fa-thumbtack"></i>&nbsp; {{ trans('message.bt_map') }} </a>
             <br><br>
             <div class="panel table-container">
 

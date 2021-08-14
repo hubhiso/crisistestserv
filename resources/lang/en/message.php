@@ -13,6 +13,12 @@ return [
     "Link" => "https://www.youtube.com/embed/6pEIk5pN9mI",
     "bt_popup" => "Close",
 
+    "tx_h_knowledge" =>"Resources for Knowledge of Human Rights",
+    "tx_sh_knowledge" =>"You can search by the information below.",
+    "tx_h_table" =>"Report a compliant agency directly",
+    "tx_sh_table" =>"You can Report a compliant by the information below.",
+    "bt_map" =>"Map",
+
     //Compliant Page
 
     "txt_head_popup" => "Please review and accept to continue:",
@@ -74,6 +80,8 @@ return [
     "txt_amphur" => "District of incident",
 
     "bt_location" => "Click to use current location",
+    "tx_location_wait" => "Please waiting...",
+    "tx_location_ss" => "Get current location successfully!",
 
     "tx_problem" => "Types of violations",
 
