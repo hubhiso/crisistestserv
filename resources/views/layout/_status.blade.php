@@ -3,9 +3,18 @@ $step=1;
 
 //$step=2;
 //$step=3;
-$thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
 
 ?>
+@if(Config::get('app.locale') == 'en') 
+<?php 
+    $thaimonth = ["","Jan.","Feb.","Mar.","Apr.","May","Jun.","Jul.","Jul.","Sep.","Oct.","Nov.","Dec."];
+?>
+@elseif(Config::get('app.locale') == 'th')
+<?php 
+    $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+?>
+@endif
+
 {{-- @foreach($data as $Semidata)
  {{ $Semidata }} 
 @endforeach --}}
