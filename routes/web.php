@@ -39,6 +39,9 @@ Route::prefix('officer')->group(function () {
     Route::get('/add_activities/{case_id}', 'OfficerInputController@add_activities')->name('officer.add_activities');
     Route::get('/load_activities/{case_id}', 'OfficerInputController@load_activities_table')->name('officer.load_activities');
     Route::get('/load_edit_operate/{operate_id}', 'OfficerInputController@edit_operate')->name('officer.edit_operate');
+
+    Route::get('/load_view_operate/{operate_id}', 'OfficerInputController@view_operate')->name('officer.view_operate');
+
     Route::get('/load_edit_detail2/{case_id}', 'OfficerInputController@edit_detail2')->name('officer.edit_detail2');
 
   //  Route::post('/password/email', 'UserForgotPasswordController@sendResetLinkEmail')->name('officer.password.email');
@@ -57,6 +60,13 @@ Route::prefix('officer')->group(function () {
     Route::post('/logout', 'Auth\OfficerLoginController@logout')->name('officer.logout');
     Route::resource('input_case','OfficerInputController');
     Route::get('ajax-amphur/{prov_id}','OfficerInputController@ajax_amphur');
+
+    Route::get('/contact', 'ContactController@contact');
+    
+    Route::get('/guide_t', 'ContactController@guide_t')->name('officer.guide_t');
+    Route::post('/update_count', 'ContactController@update_count')->name('officer.update_count');
+
+    Route::get('/printcase/{case_id}', 'OfficerUpdateController@printcase')->name('officer.printpage');
 
 });
 
@@ -84,6 +94,8 @@ Route::get('activities', function () {
     return view('officer.activities');
 })->name('data.detail3');
 
+
+
 Route::get('ajax-amphur/{prov_id}','case_controller@ajax_amphur');
 
 Route::resource('case_inputs','case_controller');
@@ -96,10 +108,17 @@ Route::get('/support', function () {
 Route::get('support2', function () {
     return view('support');
 });
+Route::get('manageu', function () {
+    return view('officer.manageuser');
+});
+
 Route::get('/orgmap', function () {
     return view('orgmap');
 });
+
 Route::get('change/{locale}', function ($locale) {
     Session::put('locale', $locale);
     return Redirect::back();
 });
+
+Route::get('check-model','ContactController@getIndex');

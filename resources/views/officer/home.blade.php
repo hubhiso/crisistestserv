@@ -14,7 +14,9 @@
     {{ Html::script('js/jquery.min.js') }}
 
 
-    <meta name="theme-color" content="#cc99cc" />
+    <meta name="theme-color" content="#ab3c3c" />
+
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
     <!--script src="http://bulma.io/javascript/jquery-2.2.0.min.js"></script>
     <script src="http://bulma.io/javascript/clipboard.min.js"></script>
     <script src="http://bulma.io/javascript/bulma.js"></script>
@@ -41,10 +43,11 @@
         </div>
     </div>
 
-    <section class="hero is-medium has-text-centered">
+    <section class="hero  has-text-centered">
 
         <div class="hero-body">
             <div class="container">
+                <!--img src="../public/images/PokPong Logo with Nametag.png" alt=""-->
                 <h1 id="bulma" class="title"> Crisis Response System (CRS) </h1>
                 <h2 id="modern-framework" class="subtitle"> ระบบรับเรื่องร้องเรียนและคุ้มครองการละเมิดสิทธิด้านเอดส์<br>
                     เพศภาวะ และความเป็นกลุ่มประชากรเปราะบางต่อการถูกเลือกปฏิบัติ </h2>
@@ -53,19 +56,23 @@
                     href="{{ route('officer.show',['mode_id' => "0"]) }}">จัดการเหตุ</a>
                 <a id="btn_new1" class="button ft1 i-margin" href="../php/dashboard3.blade.php">รายงาน</a>
 
+                <br>
+                <br><br>
+                <a  class="button btn_sub i-margin" href="{{ 'officer/guide_t' }}"><i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;เครื่องมือ</a>
+                <a  class="button btn_sub i-margin" href="{{ 'officer/contact' }}"><i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;ทำเนียบเครือข่าย</a>
+                
+
             </div>
         </div>
     </section>
-    <br>
+    <br><br><br><br>
 
     <footer class="footer " style="background-color: #EEE;">
-        <div class="container  ">
             <div class="content has-text-centered  ">
                 <p>Crisis Response System (CRS)
                 </p>
                 <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>. </small> </p>
             </div>
-        </div>
     </footer>
 
 
