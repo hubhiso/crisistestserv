@@ -478,7 +478,7 @@
             <div class="column">
                 <div class="videoWrapper is-parent">
 
-                    <iframe width="560" height="315" src="{{ trans('message.Link') }}" title="CRISIS" frameborder="0"
+                    <iframe id="clip" width="560" height="315" src="{{ trans('message.Link') }}" title="CRISIS" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
 

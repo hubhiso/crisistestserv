@@ -43,6 +43,7 @@ $(document).ready(function () {
 		$('#mask_home').hide();
 		$('#mask_confirm').hide();
 		$('.window').hide();
+		$('#clip').attr("src", $("#clip").attr("src"));
 	});
 
 	//if mask is clicked
@@ -50,6 +51,7 @@ $(document).ready(function () {
 	$('#mask_home').click(function () {
 		$(this).hide();
 		$('.window').hide();
+		$('#clip').attr("src", $("#clip").attr("src"));
 	});
 	
 	
