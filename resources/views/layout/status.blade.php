@@ -5,22 +5,15 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#cc99cc"/>
 
-	<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300&display=swap" rel="stylesheet">
+	<meta name="theme-color" content="#ab3c3c" />
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
-	<link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
+    <link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/base.css') }}" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300&display=swap" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
     <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
-	<script src="{{ asset('css/jquery.min.js') }}"></script>
-	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	<script src="http://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="http://bulma.io/lib/main.js"></script-->
-	<script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
-	<script src="{{ asset('bulma/main.js') }}"></script>
 	<title> ปกป้อง (CRS) </title>
 </head>
 
