@@ -229,14 +229,16 @@
        // alert(case_id);
         var url = "{{route('case.status',['case_id' => ":case_id"]) }}";
         url = url.replace(':case_id', case_id);
-        console.log(url);
+        
+		console.log(url);
+		
         var $request = $.get(url); // make request
         var $container = $('#timeline');
+
         $request.done(function(data) { // success
             $container.html(data.html);
         }
-        )
-        ;
+        );
 
 	}
 
