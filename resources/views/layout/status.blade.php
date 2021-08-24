@@ -15,7 +15,9 @@
     <script src="js/jquery.min.js"></script>
     <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/base.css') }}" rel="stylesheet">
-	
+
+	<script src="{{ asset('bulma/main.js') }}"></script>
+
 	<title> ปกป้อง (CRS) </title>
 
 </head>

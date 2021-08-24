@@ -121,7 +121,7 @@ return [
 
     //ststus
     "tx_head_status" => "Check complaint status",
-    "tx_track_status" => "Enter Your Tracking Code",
+    "tx_track_status" => "Enter Your Tracking Code.",
     "bt_search_status" => "Search",
     "bt_rate_status" => "Rate our services",
 
@@ -132,15 +132,18 @@ return [
     "bt_rate_status_sc2" => "ittle",
     "bt_rate_status_sc3" => "well",
     "bt_rate_status_sc4" => "the most",
-    "bt_rate_status_topic1" => "Receiving and contacting",
+    "bt_rate_status_topic1" => "Receiving and contacting.",
     "bt_rate_status_topic2" => "Assistance",
 
     "tx_status1" => "Submitted",
-    "tx_status2_1" => "Agent received",
-    "tx_status3_1" => "Additional information is acquired",
-    "tx_status3_2" => "Additional information is not acquired",
+    "tx_status2_1" => "Agent received.",
+    "tx_status3_1" => "Additional information is acquired.",
+    "tx_status3_2" => "Additional information is not acquired.",
     "tx_status4_1" => "Supporting in process",
-    "tx_status5_1" => "Process completed"
+    "tx_status5_1" => "Process completed",
+
+    "tx_statuserror1" => "Your tracking code not found.",
+    "tx_statuserror2" => "Please contact to officer."
 
 ];
 

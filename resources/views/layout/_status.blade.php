@@ -23,205 +23,205 @@
     <br>
 </div>
 
-<div class="timeline-item">
-
-    @foreach($data as $Semidata)
+@foreach($data as $Semidata)
 
     <input type="hidden" id="fcase" value="{{$Semidata->case_id}}">
     {{-- @if ($step==1) --}}
    
     @if ($step == 1)
 
-        @if($Semidata->operate_status == 1 )
+    <div class="timeline-item">
 
-        <div class="timeline-icon">
-            <img src="images/markx40.png" alt="">
-        </div>
-        <div class="timeline-content">
-            <h2> 
-                @if(Config::get('app.locale') == 'en')
-                    {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
-                @elseif(Config::get('app.locale') == 'th')
-                    {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}
-                @endif
-            </h2>
-            <p>
-                {{ trans('message.tx_status1') }}
-            </p>
+            @if($Semidata->operate_status == 1 )
+                <div class="timeline-icon">
+                    <img src="images/markx40.png" alt="">
+                </div>
+                <div class="timeline-content">
+                    <h2> 
+                        @if(Config::get('app.locale') == 'en')
+                            {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
+                        @elseif(Config::get('app.locale') == 'th')
+                            {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}
+                        @endif
+                    </h2>
+                    <p>
+                        {{ trans('message.tx_status1') }}
+                    </p>
 
-        </div>
-    @else
+                </div>
+            @else
+                <div class="timeline-icon">
+                    <img src="images/minusx40.png" alt="">
+                </div>
+                <div class="timeline-content">
+                    <h2> </h2>
+                    <p>
+                        {{ trans('message.tx_status1') }}
+                    </p>
+                </div>
+            @endif
+
+        <? //$step++; ?>
+
+    </div>
+
+
+    @endif
+
+
+    @if ($step == 2)
+
+    <div class="timeline-item">
+
+        @if($Semidata->operate_status == 2 )
+        
+            <div class="timeline-icon">
+                <img src="images/markx40.png" alt="">
+            </div>
+            
+            <div class="timeline-content right">
+                <h2> 
+                    @if(Config::get('app.locale') == 'en')
+                        {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
+                    @elseif(Config::get('app.locale') == 'th')
+                        {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}
+                    @endif
+                </h2>
+                <p>
+                    {{ trans('message.tx_status2_1') }}
+                </p>
+            </div>
+        @else
         <div class="timeline-icon">
             <img src="images/minusx40.png" alt="">
         </div>
-        <div class="timeline-content">
-            <h2> </h2>
-            <p>
-                {{ trans('message.tx_status1') }}
-            </p>
-        </div>
-    @endif
-
-    <? //$step++; ?>
-
-</div>
-
-
-@endif
-
-
-@if ($step == 2)
-
-<div class="timeline-item">
-
-    @if($Semidata->operate_status == 2 )
-    
-        <div class="timeline-icon">
-            <img src="images/markx40.png" alt="">
-        </div>
-        
         <div class="timeline-content right">
-            <h2> 
-                @if(Config::get('app.locale') == 'en')
-                    {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
-                @elseif(Config::get('app.locale') == 'th')
-                    {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}
-                @endif
-            </h2>
+            <h2> </h2>
             <p>
                 {{ trans('message.tx_status2_1') }}
             </p>
         </div>
-    @else
-    <div class="timeline-icon">
-        <img src="images/minusx40.png" alt="">
+
+        @endif
+        <? //$step++; ?>
     </div>
-    <div class="timeline-content right">
-        <h2> </h2>
-        <p>
-            {{ trans('message.tx_status2_1') }}
-        </p>
+
+
+    @endif
+
+    {{-- @if ($step==3) --}}
+
+    @if ($step==3)
+    <div class="timeline-item">
+        @if($Semidata->operate_status == 3 )
+        <div class="timeline-icon">
+            <img src="images/markx40.png" alt="">
+        </div>
+        <div class="timeline-content">
+            <h2> 
+                @if(Config::get('app.locale') == 'en')
+                    {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
+                @elseif(Config::get('app.locale') == 'th')
+                    {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}
+                @endif
+            </h2>
+            <p>
+                {{ trans('message.tx_status3_1') }}
+            </p>
+        </div>
+        @else
+        <div class="timeline-icon">
+            <img src="images/minusx40.png" alt="">
+        </div>
+        <div class="timeline-content">
+            <h2> - </h2>
+            <p>
+                {{ trans('message.tx_status3_1') }}
+            </p>
+        </div>
+
+        @endif
+        <? //$step++; ?>
     </div>
 
     @endif
-    <? //$step++; ?>
-</div>
 
 
+    @if ($step==4)
+    <div class="timeline-item">
+        @if($Semidata->operate_status == 4 )
+        <div class="timeline-icon">
+            <img src="images/markx40.png" alt="">
+        </div>
+        <div class="timeline-content">
+            <h2> 
+                @if(Config::get('app.locale') == 'en')
+                    {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
+                @elseif(Config::get('app.locale') == 'th')
+                    {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}
+                @endif
+            </h2>
+            <p>
+                {{ trans('message.tx_status4_1') }}
+            </p>
+        </div>
+        @else
+        <div class="timeline-icon">
+            <img src="images/minusx40.png" alt="">
+        </div>
+        <div class="timeline-content">
+            <h2> - </h2>
+            <p>
+                {{ trans('message.tx_status4_1') }}
+            </p>
+        </div>
 
-@endif
-
-{{-- @if ($step==3) --}}
-@if ($step==3)
-<div class="timeline-item">
-    @if($Semidata->operate_status == 3 )
-    <div class="timeline-icon">
-        <img src="images/markx40.png" alt="">
-    </div>
-    <div class="timeline-content">
-        <h2> 
-            @if(Config::get('app.locale') == 'en')
-                {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
-            @elseif(Config::get('app.locale') == 'th')
-                {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}
-            @endif
-        </h2>
-        <p>
-            {{ trans('message.tx_status3_1') }}
-        </p>
-    </div>
-    @else
-    <div class="timeline-icon">
-        <img src="images/minusx40.png" alt="">
-    </div>
-    <div class="timeline-content">
-        <h2> - </h2>
-        <p>
-            {{ trans('message.tx_status3_1') }}
-        </p>
+        @endif
+        <? //$step++; ?>
     </div>
 
     @endif
-    <? //$step++; ?>
-</div>
-
-@endif
 
 
-@if ($step==4)
-<div class="timeline-item">
-    @if($Semidata->operate_status == 4 )
-    <div class="timeline-icon">
-        <img src="images/markx40.png" alt="">
-    </div>
-    <div class="timeline-content">
-        <h2> 
-            @if(Config::get('app.locale') == 'en')
-                {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
-            @elseif(Config::get('app.locale') == 'th')
-                {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}
-            @endif
-        </h2>
-        <p>
-            {{ trans('message.tx_status4_1') }}
-        </p>
-    </div>
-    @else
-    <div class="timeline-icon">
-        <img src="images/minusx40.png" alt="">
-    </div>
-    <div class="timeline-content">
-        <h2> - </h2>
-        <p>
-            {{ trans('message.tx_status4_1') }}
-        </p>
-    </div>
+    @if ($step==5)
+    <div class="timeline-item">
+        @if($Semidata->operate_status == 5 or $Semidata->operate_status == 6 )
+        <div class="timeline-icon">
+            <img src="images/markx40.png" alt="">
+        </div>
+        <div class="timeline-content">
+            <h2> 
+                @if(Config::get('app.locale') == 'en')
+                    {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
+                @elseif(Config::get('app.locale') == 'th')
+                    {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}
+                @endif        
+            </h2>
+            <p>
+                {{ trans('message.tx_status5_1') }}
+            </p>
+        </div>
+        @else
+        <div class="timeline-icon">
+            <img src="images/minusx40.png" alt="">
+        </div>
+        <div class="timeline-content">
+            <h2> - </h2>
+            <p>
+                {{ trans('message.tx_status5_1') }}
+            </p>
+        </div>
 
-    @endif
-    <? //$step++; ?>
-</div>
-
-@endif
-
-
-@if ($step==5)
-<div class="timeline-item">
-    @if($Semidata->operate_status == 5 or $Semidata->operate_status == 6 )
-    <div class="timeline-icon">
-        <img src="images/markx40.png" alt="">
-    </div>
-    <div class="timeline-content">
-        <h2> 
-            @if(Config::get('app.locale') == 'en')
-                {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
-            @elseif(Config::get('app.locale') == 'th')
-                {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))+543}}
-            @endif        
-        </h2>
-        <p>
-            {{ trans('message.tx_status5_1') }}
-        </p>
-    </div>
-    @else
-    <div class="timeline-icon">
-        <img src="images/minusx40.png" alt="">
-    </div>
-    <div class="timeline-content">
-        <h2> - </h2>
-        <p>
-            {{ trans('message.tx_status5_1') }}
-        </p>
-    </div>
-
-    @endif
-    <? //$step++; ?>
+        @endif
+        <? //$step++; ?>
 
     @endif
 
 
     <?php $step++; ?>
 
-    @endforeach
+@endforeach
+
     <div class="timeline-item">
 
         @if ($step==1)
