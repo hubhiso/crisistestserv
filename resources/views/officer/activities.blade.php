@@ -776,7 +776,7 @@
     //////////////////////////////////////
     </script>
 
-    @extends('footer')
+    @extends('officer.footer_m')
 
 </body>
 
@@ -799,5 +799,6 @@ $.ajax({
     }
 });
 
+</script>
 
 </html>
