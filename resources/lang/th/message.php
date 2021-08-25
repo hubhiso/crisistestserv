@@ -124,7 +124,7 @@ return [
     //ststus
     "tx_head_status" => "ตรวจสอบสถานะ",
     "tx_track_status" => "ใส่รหัสเพื่อตรวจสอบ",
-    "br_search_status" => "ค้นหา",
+    "bt_search_status" => "ค้นหา",
     "bt_rate_status" => "ประเมินความพึงพอใจ",
 
     "bt_rate_status_head" => "ให้คะแนนตามความพอใจของท่าน",
