@@ -153,7 +153,7 @@
         <div class="timeline-icon">
             <img src="images/markx40.png" alt="">
         </div>
-        <div class="timeline-content">
+        <div class="timeline-content right">
             <h2> 
                 @if(Config::get('app.locale') == 'en')
                     {{date('d',strtotime(str_replace('-','/', $Semidata->operate_time)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $Semidata->operate_time)))]}} {{date("Y",strtotime(str_replace('-','/', $Semidata->operate_time)))}}
