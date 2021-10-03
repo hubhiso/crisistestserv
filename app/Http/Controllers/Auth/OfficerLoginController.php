@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\officer;
+use Carbon\Carbon;
 
 
 class OfficerLoginController extends Controller
@@ -28,11 +30,12 @@ class OfficerLoginController extends Controller
             'password' => 'required|string',
         ]);
 
-       if( Auth::guard('officer')->attempt(['username' => $request->username , 'password' => $request->password ]
+        if( Auth::guard('officer')->attempt(['username' => $request->username , 'password' => $request->password ]
            , $request->remember)){
 
-           return redirect()->intended(route('officer.main'));
-       }
+            officer::where('username','=', $request->username)->update(['last_login_at' => Carbon::now()]);
+            return redirect()->intended(route('officer.main'));
+        }
 
        return redirect()->back()->withInput($request->only('username','remember'));
     }
