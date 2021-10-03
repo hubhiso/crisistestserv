@@ -1,23 +1,23 @@
-<table class="table paginated hideextra" id="table_show">
+<table class="table is-fullwidth panel paginated hideextra " id="table_show" >
     <thead style="text-align: center;">
         <tr>
-            <th style="text-align: center;"><abbr title="Date"> วันที่ </abbr>
+            <th > วันที่ </abbr>
             </th>
-            <th style="text-align: center;"><abbr title="ID"> รหัส </abbr>
+            <th > รหัส </abbr>
             </th>
-            <th style="text-align: center;"><abbr title="Date"> วันที่เกิดเหตุ<br>(ตามแจ้ง) </abbr>
+            <th > วันที่เกิดเหตุ<br>(ตามแจ้ง) </abbr>
             </th>
-            <th><abbr title="PR"> จังหวัด </abbr>
+            <th> จังหวัด </abbr>
             </th>
-            <th style="text-align: center;"><abbr title="Type"> ประเภท </abbr>
+            <th style="text-align: center;">ประเภท </abbr>
             </th>
-            <th style="text-align: center;"><abbr title="Status"> สถานะ </abbr>
+            <th > สถานะ </abbr>
             </th>
-            <th><abbr title="Activities"> ดำเนินการ </abbr>
+            <th> ดำเนินการ </abbr>
             </th>
-            <th><abbr title="Username"> ประเภทของผู้แจ้ง </abbr>
+            <th> ประเภทของผู้แจ้ง </abbr>
             </th>
-            <th><abbr title="Username"> ผู้รับเรื่อง </abbr>
+            <th> ผู้รับเรื่อง </abbr>
             </th>
         </tr>
     </thead>
@@ -33,7 +33,7 @@
             <th>{{date('d',strtotime(str_replace('-','/', $case->created_at)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->created_at)))]}}{{date("Y",strtotime(str_replace('-','/', $case->created_at)))+543}}
             </th>
             @if($case->emergency == "yes" )
-            <th>เร่งด่วน<br> <a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}"
+            <th>เร่งด่วน <br> <a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}"
                     title='ID'>{{ $case->case_id }}</a></th>
             @elseif($case->emergency <> "yes" )
                 <th><a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}"
@@ -64,7 +64,7 @@
                 @if($case->status == 99)
                 <td>ปฏิเสธการรับเรื่อง</td>
                 <td><a class='button is-primary' href="{{ route('officer.open_dt', $case->case_id) }}">
-                        <span>ดูรายละเอียด</span> </a> </td>
+                        <span>ดูรายละเอียด </span> </a> </td>
                 @elseif( $case->status == 1)
                 <td>ยังไม่ได้รับเรื่อง</td>
                 <td><a class='button is-primary' href="{{ route('officer.open_cfm', $case->case_id) }}">
@@ -147,7 +147,7 @@ $('table.paginated').each(function() {
 
     $pager.insertBefore($table);
 
-
+    
     $page_area1.appendTo($pager).find('span.pagination-link:first').addClass('is-current');;
     $previous.insertBefore($page_area1);
     $next.insertBefore($page_area1);
