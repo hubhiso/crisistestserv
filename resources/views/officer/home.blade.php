@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> CRS </title>
+    
+    <title> ปกป้อง (CRS) </title>
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300&display=swap" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
 
     <link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
     {{ Html::script('js/jquery.min.js') }}
-
 
     <meta name="theme-color" content="#ab3c3c" />
 
@@ -33,20 +33,34 @@
         </div>
     </div>
 
-    <div class="columns is-mobile">
-        <div class="column is-4 is-offset-10">
-            @if( Auth::user()->position == "manager" or Auth::user()->position == "admin" )
-            <a class="button is-primary is-rounded is-small" href="{{ route('manager.register') }}">
-                <i class="fas fa-user-plus"></i>&nbsp
-                ลงทะเบียนผู้ดูแลเพิ่มเติม </a>
-            @endif
-        </div>
+    <div class="container is-fluid">
+        <nav class="breadcrumb has-text-left" aria-label="breadcrumbs">
+            <ul>
+                <li>
+                    <a href="{{ route('guest_home') }}">
+                        <span class="icon is-small">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                        </span>
+                        <span>หน้าแรก</span>
+                    </a>
+                </li>
+                <li class="is-active">
+                    <a href="#">
+                        <span class="icon is-small">
+                            <i class="fas fa-lock" aria-hidden="true"></i>
+                        </span>
+                        <span>ส่วนเจ้าหน้าที่</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 
-    <section class="hero  has-text-centered">
+    <section class="hero is-medium ">
 
         <div class="hero-body">
-            <div class="container">
+
+            <div class="container has-text-centered">
                 <!--img src="../public/images/PokPong Logo with Nametag.png" alt=""-->
                 <h1 id="bulma" class="title"> Crisis Response System (CRS) </h1>
                 <h2 id="modern-framework" class="subtitle"> ระบบรับเรื่องร้องเรียนและคุ้มครองการละเมิดสิทธิด้านเอดส์<br>
@@ -57,23 +71,20 @@
                 <a id="btn_new1" class="button ft1 i-margin" href="../php/dashboard3.blade.php">รายงาน</a>
 
                 <br>
-                <br><br>
-                <a  class="button btn_sub i-margin" href="{{ 'officer/guide_t' }}"><i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;เครื่องมือ</a>
-                <a  class="button btn_sub i-margin" href="{{ 'officer/contact' }}"><i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;ทำเนียบเครือข่าย</a>
-                
+                <br>
+                <br>
 
+                <a class="button btn_sub i-margin" href="{{ 'officer/guide_t' }}"><i class="fa fa-cogs"
+                        aria-hidden="true"></i>&nbsp;เครื่องมือ</a>
+                <a class="button btn_sub i-margin" href="{{ 'officer/contact' }}"><i class="fa fa-share-alt"
+                        aria-hidden="true"></i>&nbsp;ทำเนียบเครือข่าย</a>
             </div>
         </div>
     </section>
+
     <br><br><br><br>
 
-    <footer class="footer " style="background-color: #EEE;">
-            <div class="content has-text-centered  ">
-                <p>Crisis Response System (CRS)
-                </p>
-                <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>. </small> </p>
-            </div>
-    </footer>
+    @extends('officer.footer_m')
 
 
     <script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
