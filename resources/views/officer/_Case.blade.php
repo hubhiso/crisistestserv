@@ -146,6 +146,8 @@ $('table.paginated').each(function() {
     }
 
     $pager.insertBefore($table);
+
+
     $page_area1.appendTo($pager).find('span.pagination-link:first').addClass('is-current');;
     $previous.insertBefore($page_area1);
     $next.insertBefore($page_area1);
