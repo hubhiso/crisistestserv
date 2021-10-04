@@ -160,7 +160,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                                         <input class="input" type="text"
                                             value="{{date('d',strtotime(str_replace('-','/', $show_data->created_at)))}} {{$thaimonth[date('n',strtotime(str_replace('-','/', $show_data->created_at)))]}} {{date("Y",strtotime(str_replace('-','/', $show_data->created_at)))+543}}"
                                             disabled>
-                                        <span class="icon is-small is-left"> <i class="far fa-calendar"></i> </span>
+                                        <span class="icon is-small is-left"> </span>
                                     </p>
                                 </div>
                             </div>
@@ -173,7 +173,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                                 <div class="field is-grouped">
                                     <p class="control is-expanded has-icons-left ">
                                         <input class="input" type="text" value="{{ $show_data->name }}" disabled>
-                                        <span class="icon is-small is-left"> <i class="fa fa-user"></i> </span>
+                                        <span class="icon is-small is-left">  </span>
                                     </p>
                                 </div>
                                 <div class="field-label is-normal">
@@ -196,7 +196,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                                     <p class="control has-icons-left">
 
                                         <input class="input" type="text" value="{{ $show_data->victim_tel }}" disabled>
-                                        <span class="icon  is-left"> <i class="fa fa-mobile-alt"></i> </span>
+                                        <span class="icon  is-left"> </span>
                                     </p>
                                 </div>
                             </div>

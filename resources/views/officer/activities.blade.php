@@ -7,27 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="{{ asset('css/jquery.min.js') }}"></script>
 
-    <title> CRS </title>
-	<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300&display=swap" rel="stylesheet">
+    <title> ปกป้อง (CRS) </title>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300&display=swap" rel="stylesheet">
 
     {{--{{ Html::style('bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}--}}
     {{--{{ Html::style('bootstrap/css/bootstrap.css') }}--}}
     <!--link href="{{ asset('bulma/css/bulma.css') }}" rel="stylesheet"-->
-	<link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
+    <link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
 
-	<link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
-	
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
+
     {{ Html::script('js/jquery.min.js') }}
     {{--{{ Html::script('bootstrap/js/bootstrap.min.js') }}--}}
     {{--{{ Html::script('bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}--}}
 
     <meta name="theme-color" content="#ab3c3c" />
 
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+
 </head>
 
-<body class="layout-default" onload="renderTable()">
+<body class="layout-default has-background-light" onload="renderTable(); createoperate();">
 
     <div class="hero-head ">
         <div class=" ">
@@ -35,7 +37,7 @@
             @endcomponent
         </div>
     </div>
-	<br>
+    <br>
 
     <section class=" is-medium ">
 
@@ -43,72 +45,81 @@
 
         <div class="container">
 
-			<nav class="breadcrumb" aria-label="breadcrumbs">
-				<ul>
-					<li>
-						<a href="{{ route('guest_home') }}">
-							<span class="icon is-small">
-								<i class="fas fa-home" aria-hidden="true"></i>
-							</span>
-							<span>หน้าหลัก</span>
-						</a>
-					</li>
-					<li>
-						<a href="{{ route('officer.main') }}">
-							<span class="icon is-small">
-								<i class="fas fa-lock" aria-hidden="true"></i>
-							</span>
-							<span>ส่วนเจ้าหน้าที่</span>
-						</a>
-					</li>
-					<li class="is-active">
-						<a href="#">
-							<span class="icon is-small">
-								<i class="fas fa-cog" aria-hidden="true"></i>
-							</span>
-							<span>การดำเนินการ</span>
-						</a>
-					</li>
-				</ul>
-			</nav>
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li>
+                        <a href="{{ route('guest_home') }}">
+                            <span class="icon is-small">
+                                <i class="fas fa-home" aria-hidden="true"></i>
+                            </span>
+                            <span>หน้าหลัก</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('officer.main') }}">
+                            <span class="icon is-small">
+                                <i class="fas fa-lock" aria-hidden="true"></i>
+                            </span>
+                            <span>ส่วนเจ้าหน้าที่</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="{{ route('officer.show',['mode_id' => "0"]) }}">
+                            <span class="icon is-small">
+                            <i class="fas fa-list" aria-hidden="true"></i>
+                            </span>
+                            <span>จัดการเหตุ</span>
+                        </a>
+                    </li>
+                    <li class="is-active">
+                        <a href="#">
+                            <span class="icon is-small">
+                                <i class="fas fa-cog" aria-hidden="true"></i>
+                            </span>
+                            <span>การดำเนินการ</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-			<section>
-				<div class="tabs is-centered is-toggle">
-					<ul>
-						<li>
-							<a href="{{ route('officer.edit_detail2' , $show_data->case_id) }}">
-								<span class="icon is-small"><i class="fa fa-image"></i></span>
-								<span> ข้อมูลเพิ่มเติม </span>
-							</a>
+            <section>
+                <div class="tabs is-white is-centered is-toggle is-toggle-rounded">
+                    <ul>
+                        <li class="">
+                            <a href="{{ route('officer.edit_detail2' , $show_data->case_id) }}">
+                                <span class="icon is-small"><i class="far fa-address-card"></i></span>
+                                <span> ข้อมูลเพิ่มเติม </span>
+                            </a>
 
-						</li>
-						<li class="is-active">
-							<a>
-								<span class="icon is-small"><i class="fa fa-cog"></i></span>
-								<span> การดำเนินการ </span>
-							</a>
+                        </li>
+                        <li class="is-active">
+                            <a>
+                                <span class="icon is-small"><i class="fa fa-cog"></i></span>
+                                <span> การดำเนินการ </span>
+                            </a>
 
-						</li>
+                        </li>
 
-					</ul>
-				</div>
-			</section>
-		
-        	<br>
+                    </ul>
+                </div>
+            </section>
+
+            <br>
             <div class="has-text-right">
-                <a class="button is-primary" href="{{ route('officer.printpage' , $show_data->case_id) }}"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;พิมพ์รายละเอียดการดำเนินการ</a>
+                <a class="button is-primary" href="{{ route('officer.printpage' , $show_data->case_id) }}"><i
+                        class="fa fa-print" aria-hidden="true"></i>&nbsp;พิมพ์รายละเอียดการดำเนินการ</a>
             </div>
             <br>
-        	<!--h1 id="title" class="title"> การดำเนินการ </!--h1-->
+            <!--h1 id="title" class="title"> การดำเนินการ </!--h1-->
 
-            <div class="notification">
+            <div class="box">
                 <!--This container is <strong>centered</strong> on desktop. -->
                 <div class="field is-horizontal">
                     <div class="field-label">
                         <!-- Left empty for spacing -->
                     </div>
                 </div>
-                <div class="field is-horizontal">
+                <div class="field is-horizontal ">
                     <div class="field-label is-normal">
                         <label class="label">ชื่อผู้ถูกกระทำ</label>
                     </div>
@@ -139,7 +150,8 @@
             </div>
 
             <div class="field is-normal">
-                <p class="subtitle is-5"><i class="fa fa-folder-open has-text-primary"></i>&nbsp;การดำเนินการที่ผ่านมา</p>
+                <p class="subtitle is-5"><i class="fa fa-folder-open has-text-primary"></i>&nbsp;การดำเนินการที่ผ่านมา
+                </p>
             </div>
 
             <!--This container is <strong>centered</strong> on desktop. -->
@@ -151,319 +163,328 @@
                 <div class="field-label">
                     <!-- Left empty for spacing -->
                     <p class="control">
-                        <button class="button is-primary" id="btn_add" onclick="open_add_form()"> <i class="fas fa-plus "></i>&nbsp;เพิ่มการดำเนินการ
+                        <button class="button is-primary" id="btn_add" onclick="open_add_form()"> <i
+                                class="fas fa-plus "></i>&nbsp;เพิ่มการดำเนินการ
                         </button>
                     </p>
                 </div>
             </div>
-            <div class="notification" id="current_operate">
+            <div class="box" id="current_operate">
                 <div class="field is-normal">
                     <p class="subtitle is-5">การดำเนินการในครั้งนี้</p>
                 </div>
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label"> วันที่ดำเนินการ </label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-grouped">
-                            <p class="control  has-icons-left">
-                            <div class="input-group date" data-provide="datepicker">
-                                ปี พ.ศ. : <input type="number" min="2400" max="2570" value="{{ date("Y")+543 }}"
-                                    maxlength="4" id="Yearoperate" name="Yearoperate" class="form-control"
-                                    placeholder="ปปปป" onchange="createoperate();">
 
-                                เดือน : <select id="Monthoperate" name="Monthoperate"
+            <div class="field is-horizontal">
+                <div class="field-label ">
+                    <label class="label"> วันที่ดำเนินการ </label>
+                </div>
+                <div class="field-body">
+                    <div class="columns" data-provide="datepicker">
+                        <div class="column ">
+                            ปี พ.ศ.
+                            <input type="number" style="width: 100px;" min="2400" max="2570" value='{{ date("Y")+543 }}'
+                                maxlength="4" id="Yearoperate" name="Yearoperate" class="form-control input"
+                                placeholder="ปปปป" onchange="createoperate();">
+                        </div>
+                        <div class="column ">
+                            เดือน
+                            <div class="select">
+                                <select id="Monthoperate" name="Monthoperate"
                                     onchange="date_operate();createoperate();">
-                                    <option value="1"> มกราคม </option>
-                                    <option value="2"> กุมภาพันธ์ </option>
-                                    <option value="3"> มีนาคม </option>
-                                    <option value="4"> เมษายน </option>
-                                    <option value="5"> พฤษภาคม </option>
-                                    <option value="6"> มิถุนายน </option>
-                                    <option value="7"> กรกฎาคม </option>
-                                    <option value="8"> สิงหาคม </option>
-                                    <option value="9"> กันยายน </option>
-                                    <option value="10"> ตุลาคม </option>
-                                    <option value="11"> พฤศจิกายน </option>
-                                    <option value="12"> ธันวาคม </option>
+                                    <option value="1" @if(date('m')==1){ selected } @endif> มกราคม </option>
+                                    <option value="2" @if(date('m')==2){ selected } @endif> กุมภาพันธ์ </option>
+                                    <option value="3" @if(date('m')==3){ selected } @endif> มีนาคม </option>
+                                    <option value="4" @if(date('m')==4){ selected } @endif> เมษายน </option>
+                                    <option value="5" @if(date('m')==5){ selected } @endif> พฤษภาคม </option>
+                                    <option value="6" @if(date('m')==6){ selected } @endif> มิถุนายน </option>
+                                    <option value="7" @if(date('m')==7){ selected } @endif> กรกฎาคม </option>
+                                    <option value="8" @if(date('m')==8){ selected } @endif> สิงหาคม </option>
+                                    <option value="9" @if(date('m')==9){ selected } @endif> กันยายน </option>
+                                    <option value="10" @if(date('m')==10){ selected } @endif> ตุลาคม </option>
+                                    <option value="11" @if(date('m')==11){ selected } @endif> พฤศจิกายน </option>
+                                    <option value="12" @if(date('m')==12){ selected } @endif> ธันวาคม </option>
                                 </select>
-                                วันที่ : <select id="Dayoperate" name="Dayoperate" onchange="createoperate();">
-                                    @for ($i = 1; $i <= 31; $i++) <option value="{{$i}}">{{$i}}</option>
+                            </div>
+                        </div>
+
+                        <div class="column  ">
+                            วันที่
+                            <div class="select">
+                                <select id="Dayoperate" name="Dayoperate" onchange="createoperate();">
+                                    @for ($i = 1; $i <= 31; $i++) <option value="{{$i}}" @if(date('d')==$i){ selected }
+                                        @endif>{{$i}}</option>
                                         @endfor
                                 </select>
-
-
-                                <input type="hidden" name="operate_date" id="operate_date" class="form-control">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
-                            </div>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="field is-horizontal">
-                    <div class="field-label">
-                        <label class="label"> วิธีการดำเนินการ </label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-grouped">
-                            <div class="control">
-                                <label>
-                                    <input type="checkbox" name="investigate" id="investigate">
-                                    สืบหาข้อเท๊จจริง
-                                </label>
-                            </div>
-                            <div class="control">
-                                <label>
-                                    <input type="checkbox" name="advice" id="advice">
-                                    ให้คำปรึกษา
-                                </label>
-                            </div>
-                            <div class="control">
-                                <label>
-                                    <input type="checkbox" name="negotiate_individual" id="negotiate_individual">
-                                    เจรจาเป็นรายบุคคล
-                                </label>
-                            </div>
-                            <div class="control">
-                                <label>
-                                    <input type="checkbox" name="negotiate_policy" id="negotiate_policy">
-                                    เจรจาระดับนโยบายขององค์กร
-                                </label>
-                            </div>
-                            <div class="control">
-                                <label>
-                                    <input type="checkbox" name="prosecution" id="prosecution">
-                                    ดำเนินคดี
-                                </label>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">รายละเอียดการดำเนินการ</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <div class="control">
-                                <textarea class="textarea" name="operate_detail" id="operate_detail"
-                                    placeholder="กรอกรายละเอียด"></textarea>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">ผลการดำเนินการ</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <div class="control">
-                                <textarea class="textarea" name="operate_result" id="operate_result"
-                                    placeholder="กรอกรายละเอียด"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label"></label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-grouped">
-                            <div class="control">
-                                @if (Auth::user()->p_receive == 'no')
-                                @elseif (Auth::user()->p_receive == 'yes')
-                                <p class="control"> <a class="button is-primary" id="operate_send"> ยืนยัน </a> </p>
-                                @endif
 
-                            </div>
-                            <div class="control">
-                                <p class="control"> <a class="button" onclick="clear_input()"> ยกเลิก </a> </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="field is-horizontal">
-                    <div class="field-label">
-                        <!-- Left empty for spacing -->
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="notification">
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label"> สถานะการดำเนินการ </label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-grouped">
-                            <p class="control is-expanded  ">
-                                <span class="select">
-                                    <select name="status" id="status_operate">
-                                        <option value="4" @if($show_data->status == 4 ) selected @endif>
-                                            อยู่ระหว่างการดำเนินการ </option>
-                                        <option value="5" @if($show_data->status == 5 ) selected @endif>
-                                            ดำเนินการเสร็จสิ้น </option>
-                                        <option value="6" @if($show_data->status == 6 ) selected @endif>
-                                            ดำเนินการแล้วส่งต่อ </option>
-                                    </select> </span>
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="field is-horizontal" id="result_form" @if($show_data->status != 5 ) style="display: none"
-                    @endif>
-                    <div class="field-label is-normal">
-                        <label class="label"> ผลการดำเนินการ </label>
-                    </div>
-                    <div class="field-body">
-                        <div class="columns">
-                            <p class="column">
-                                <span class="select">
-                                    <select name="operate_result_status" id="operate_result_status">
-                                        <option value="1" @if($show_data->operate_result_status == 1 ) selected @endif>
-                                            สำเร็จ </option>
-                                        <option value="2" @if($show_data->operate_result_status == 2 ) selected @endif>
-                                            ไม่สำเร็จ </option>
-                                        <option value="3" @if($show_data->operate_result_status == 3 ) selected @endif>
-                                            ตาย </option>
-                                        <option value="4" @if($show_data->operate_result_status == 4 ) selected @endif>
-                                            ย้ายที่อยู่ </option>
-                                    </select>
-                                </span>
-                            </p>
-
-
-                        </div>
-                    </div>
-
-                </div>
-                <!--- resulte group !-->
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label"> </label>
-                    </div>
-                    <div class="field-body">
-                        <p id="chk_result" @if($show_data->operate_result_status != 1 ) style="display: none" @endif>
-                            <label class="checkbox">
-                                <input type="checkbox" name="problemfix" id="problemfix" @if($show_data->problemfix == 1
-                                ) checked @endif>
-                                ปัญหาได้รับการแก้ไข
-                            </label>
-                            <label class="checkbox">
-                                <input type="checkbox" name="compensation" id="compensation"
-                                    @if($show_data->compensation == 1 ) checked @endif>
-                                บุคคลได้รับการเยียวยา
-                            </label>
-                            <label class="checkbox">
-                                <input type="checkbox" name="change_policy" id="change_policy"
-                                    @if($show_data->change_policy == 1 ) checked @endif>
-                                องค์กรเปลี่ยนนโยบาย
-                            </label>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="field is-horizontal" id="refer_form" @if($show_data->status != 6 ) style="display: none"
-                    @endif >
-                    <div class="field-label is-normal">
-                        <label class="label"> ส่งต่อไปยัง </label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-grouped">
-                            <p class="control">
-                                <span class="select">
-                                    <select name="refer_type" id="refer_type">
-                                        <option value="1" @if($show_data->refer_type == 1 ) selected @endif>
-                                            หน่วยงานในเครือข่าย </option>
-                                        <option value="2" @if($show_data->refer_type == 2 ) selected @endif>
-                                            หน่วยงานนอกเครือข่าย </option>
-                                    </select> </span>
-                            </p>
-                            <p class="control">
-                                <span class="select">
-                                    <select id="prov_refer">
-                                        @foreach($provinces as $province)
-                                        <option @if($show_data->prov_refer == $province->PROVINCE_CODE ) selected @endif
-                                            value="{{ $province->PROVINCE_CODE }}"
-                                            style="width:250px">{{ $province->PROVINCE_NAME }}</option>
-                                        @endforeach
-                                    </select> </span>
-                            </p>
-                            <p class="control  has-icons-left">
-                                <input class="input" type="text" name="refer_name" id="refer_name"
-                                    placeholder="ชื่อหน่วยงาน" value="{{$show_data->refer_name}}">
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label"></label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-grouped">
-                            <div class="control">
-                                @if (Auth::user()->p_receive == 'no')
-                                @elseif (Auth::user()->p_receive == 'yes')
-                                <p class="control"> <a class="button is-primary" onclick="update_operate_case()"> ยืนยัน
-                                    </a> </p>
-                                @endif
-                            </div>
-                            <div class="control">
-                                <p class="control"> <a class="button"
-                                        href="{{ route('officer.show',['mode_id' => "0"]) }}"> ยกเลิก </a> </p>
-                            </div>
+                        <div class="column  is-3">
+                            <input type="hidden" name="operate_date" id="operate_date" class="form-control">
+                            <span class="glyphicon glyphicon-th"></span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {{--<div class="box">--}}
-            {{--<div class="field is-horizontal">--}}
-            {{--<div class="field-label is-normal">--}}
-            {{--<label class="label"> ผลการดำเนินการที่ส่งต่อ </label>--}}
-            {{--</div>--}}
-            {{--<div class="field-body">--}}
-            {{--<div class="field is-grouped">--}}
-            {{--<p class="control  ">--}}
-            {{--<input class="input" type="text" placeholder="" value="ยังไม่ได้รับเรื่อง" disabled>--}}
-            {{--</p>--}}
-            {{--</div>--}}
-            {{--<div class="field-label is-normal">--}}
-            {{--<label class="label"> ดำเนินการเสร็จสิ้น </label>--}}
-            {{--</div>--}}
-            {{--<div class="field">--}}
-            {{--<p class="control  has-icons-left ">--}}
-            {{--<input class="input" type="text" placeholder="" value="" disabled>--}}
-            {{--</p>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
+            <div class="field is-horizontal ">
+                <div class="field-label">
+                    <label class="label"> วิธีการดำเนินการ </label>
+                </div>
+                <div class="field-body ">
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <label>
+                                <input type="checkbox" name="investigate" id="investigate">
+                                สืบหาข้อเท๊จจริง
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label>
+                                <input type="checkbox" name="advice" id="advice">
+                                ให้คำปรึกษา
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label>
+                                <input type="checkbox" name="negotiate_individual" id="negotiate_individual">
+                                เจรจาเป็นรายบุคคล
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label>
+                                <input type="checkbox" name="negotiate_policy" id="negotiate_policy">
+                                เจรจาระดับนโยบายขององค์กร
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label>
+                                <input type="checkbox" name="prosecution" id="prosecution">
+                                ดำเนินคดี
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">รายละเอียดการดำเนินการ</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <textarea class="textarea" name="operate_detail" id="operate_detail"
+                                placeholder="กรอกรายละเอียด"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">ผลการดำเนินการ</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <textarea class="textarea" name="operate_result" id="operate_result"
+                                placeholder="กรอกรายละเอียด"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label"></label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-grouped">
+                        <div class="control">
+                            @if (Auth::user()->p_receive == 'no')
+                            @elseif (Auth::user()->p_receive == 'yes')
+                            <p class="control"> <a class="button is-primary" id="operate_send"> ยืนยัน </a> </p>
+                            @endif
+
+                        </div>
+                        <div class="control">
+                            <p class="control"> <a class="button" onclick="clear_input()"> ยกเลิก </a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="field is-horizontal">
                 <div class="field-label">
                     <!-- Left empty for spacing -->
                 </div>
             </div>
+        </div>
+
+
+        <div class="box">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label"> สถานะการดำเนินการ </label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-grouped">
+                        <p class="control is-expanded  ">
+                            <span class="select">
+                                <select name="status" id="status_operate">
+                                    <option value="4" @if($show_data->status == 4 ) selected @endif>
+                                        อยู่ระหว่างการดำเนินการ </option>
+                                    <option value="5" @if($show_data->status == 5 ) selected @endif>
+                                        ดำเนินการเสร็จสิ้น </option>
+                                    <option value="6" @if($show_data->status == 6 ) selected @endif>
+                                        ดำเนินการแล้วส่งต่อ </option>
+                                </select> </span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="field is-horizontal" id="result_form" @if($show_data->status != 5 ) style="display: none"
+                @endif>
+                <div class="field-label is-normal">
+                    <label class="label"> ผลการดำเนินการ </label>
+                </div>
+                <div class="field-body">
+                    <div class="columns">
+                        <p class="column">
+                            <span class="select">
+                                <select name="operate_result_status" id="operate_result_status">
+                                    <option value="1" @if($show_data->operate_result_status == 1 ) selected @endif>
+                                        สำเร็จ </option>
+                                    <option value="2" @if($show_data->operate_result_status == 2 ) selected @endif>
+                                        ไม่สำเร็จ </option>
+                                    <option value="3" @if($show_data->operate_result_status == 3 ) selected @endif>
+                                        ตาย </option>
+                                    <option value="4" @if($show_data->operate_result_status == 4 ) selected @endif>
+                                        ย้ายที่อยู่ </option>
+                                </select>
+                            </span>
+                        </p>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <!--- resulte group !-->
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label"> </label>
+                </div>
+                <div class="field-body">
+                    <p id="chk_result" @if($show_data->operate_result_status != 1 ) style="display: none" @endif>
+                        <label class="checkbox">
+                            <input type="checkbox" name="problemfix" id="problemfix" @if($show_data->problemfix == 1
+                            ) checked @endif>
+                            ปัญหาได้รับการแก้ไข
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="compensation" id="compensation" @if($show_data->compensation ==
+                            1 ) checked @endif>
+                            บุคคลได้รับการเยียวยา
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="change_policy" id="change_policy" @if($show_data->change_policy
+                            == 1 ) checked @endif>
+                            องค์กรเปลี่ยนนโยบาย
+                        </label>
+                    </p>
+                </div>
+            </div>
+
+            <div class="field is-horizontal" id="refer_form" @if($show_data->status != 6 ) style="display: none"
+                @endif >
+                <div class="field-label is-normal">
+                    <label class="label"> ส่งต่อไปยัง </label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <span class="select">
+                                <select name="refer_type" id="refer_type">
+                                    <option value="1" @if($show_data->refer_type == 1 ) selected @endif>
+                                        หน่วยงานในเครือข่าย </option>
+                                    <option value="2" @if($show_data->refer_type == 2 ) selected @endif>
+                                        หน่วยงานนอกเครือข่าย </option>
+                                </select> </span>
+                        </p>
+                        <p class="control">
+                            <span class="select">
+                                <select id="prov_refer">
+                                    @foreach($provinces as $province)
+                                    <option @if($show_data->prov_refer == $province->PROVINCE_CODE ) selected @endif
+                                        value="{{ $province->PROVINCE_CODE }}"
+                                        style="width:250px">{{ $province->PROVINCE_NAME }}</option>
+                                    @endforeach
+                                </select> </span>
+                        </p>
+                        <p class="control  has-icons-left">
+                            <input class="input" type="text" name="refer_name" id="refer_name"
+                                placeholder="ชื่อหน่วยงาน" value="{{$show_data->refer_name}}">
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label"></label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-grouped">
+                        <div class="control">
+                            @if (Auth::user()->p_receive == 'no')
+                            @elseif (Auth::user()->p_receive == 'yes')
+                            <p class="control"> <a class="button is-primary" onclick="update_operate_case()"> ยืนยัน
+                                </a> </p>
+                            @endif
+                        </div>
+                        <div class="control">
+                            <p class="control"> <a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}">
+                                    ยกเลิก </a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{--<div class="box">--}}
+        {{--<div class="field is-horizontal">--}}
+        {{--<div class="field-label is-normal">--}}
+        {{--<label class="label"> ผลการดำเนินการที่ส่งต่อ </label>--}}
+        {{--</div>--}}
+        {{--<div class="field-body">--}}
+        {{--<div class="field is-grouped">--}}
+        {{--<p class="control  ">--}}
+        {{--<input class="input" type="text" placeholder="" value="ยังไม่ได้รับเรื่อง" disabled>--}}
+        {{--</p>--}}
+        {{--</div>--}}
+        {{--<div class="field-label is-normal">--}}
+        {{--<label class="label"> ดำเนินการเสร็จสิ้น </label>--}}
+        {{--</div>--}}
+        {{--<div class="field">--}}
+        {{--<p class="control  has-icons-left ">--}}
+        {{--<input class="input" type="text" placeholder="" value="" disabled>--}}
+        {{--</p>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <!-- Left empty for spacing -->
+            </div>
+        </div>
 
         </div>
         </div>
@@ -798,7 +819,6 @@ $.ajax({
         $('#i-process').text(data.NotOp);
     }
 });
-
 </script>
 
 </html>
