@@ -296,6 +296,12 @@
             $('#sub_filter_search').append(
                 '<option value="4" style="width:250px">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>'
             );
+            $('#sub_filter_search').append(
+                '<option value="5" style="width:250px">อื่นๆ ที่เกี่ยวข้องกับเอชไอวี</option>'
+            );
+            $('#sub_filter_search').append(
+                '<option value="6" style="width:250px">อื่นๆ</option>'
+            );
         } else if (search_type == 3) {
             $('#sub_filter_search').empty();
             $('#sub_filter_search').removeAttr('disabled');

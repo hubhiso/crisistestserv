@@ -372,7 +372,7 @@
                                             ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง
                                         </option>
                                         <option value="5">อื่นๆ ที่เกี่ยวข้องกับ HIV</option>
-                                        <option value="5">อื่นๆ</option>
+                                        <option value="6">อื่นๆ</option>
                                     </select>
 
                                 </span>

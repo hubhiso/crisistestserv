@@ -58,7 +58,7 @@
                 @elseif($case->problem_case == 5)
                 <td>อื่นๆ ที่เกี่ยวข้องกับเอชไอวี</td>
                 @elseif($case->problem_case == 6)
-                <td>อื่นๆ ที่ไม่เกี่ยวข้องกับเอชไอวี</td>
+                <td>อื่นๆ </td>
                 @endif
                 @if(($case->receiver == $username )||($case->status == 1)||($username == "Adminfar"))
                 @if($case->status == 99)
