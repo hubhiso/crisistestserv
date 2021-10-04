@@ -82,7 +82,9 @@ class OfficerInputController extends Controller
             $biosex_name = 'ชาย';
         }else if ($request->input('biosex') == 2) {
             $biosex_name = 'หญิง';
-        }
+        }else if ($request->input('biosex') == 0) {
+            $biosex_name = 'ไม่ประสงค์ตอบ';
+        }  
 
         case_input::create([
             'emergency'=>$request->input('emergency'),
@@ -93,10 +95,12 @@ class OfficerInputController extends Controller
             'case_id'=>$request->input('case_id'),
             'name'=>$request->input('name'),
             'victim_tel'=>$request->input('victim_tel'),
+
             'sex'=>$request->input('biosex'),
             'sex_name'=>$biosex_name,
             'biosex'=>$request->input('biosex'),
             'biosex_name'=>$biosex_name,
+            
             'nation'=>$request->input('nation'),
             'nation_etc'=>$request->input('nation_etc'),
 
@@ -219,6 +223,15 @@ class OfficerInputController extends Controller
         $html = view('officer._edit_operate',compact('operate_datas'))->render();
         return response()->json(compact('html'));
     }
+
+    public function view_operate($operate_id)
+    {
+        $operate_datas = operate_detail::where('id','=',$operate_id)->get();
+        $html = view('officer._view_operate',compact('operate_datas'))->render();
+        return response()->json(compact('html'));
+    }
+
+
     public function load_activities_table($case_id)
     {
         $activities = operate_detail::where('case_id','=',$case_id)->orderBy('operate_date', 'asc')->get();
