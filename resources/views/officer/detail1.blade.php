@@ -332,9 +332,8 @@
                             <div class="field-body">
                                 <div class="field is-grouped">
                                     <p class="control has-icons-left ">
-                                        <input class="input" type="text" value="{{ $show_data->receiver }}" disabled>
-                                        <input id="receive" name="receiver" type="text"
-                                            value="{{ $show_data->receiver_id }}" hidden>
+                                    <input  class="input" type="text" value="{{  Auth::user()->name }}" disabled >
+									<input id="receive" name="receiver"  type="text" value="{{  Auth::user()->name }}" hidden >
 
                                     </p>
                                 </div>
