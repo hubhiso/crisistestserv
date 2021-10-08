@@ -213,6 +213,16 @@
                                         @endif
                                         สาวประเภทสอง
                                     </label>
+                                    &nbsp;
+
+                                    <label class="radio">
+                                        @if( $show_data->sex == 0 )
+                                        {{ Form::radio('sex', '0' , true) }}
+                                        @else
+                                        {{ Form::radio('sex', '0' , false) }}
+                                        @endif
+                                        ไม่ประสงค์ตอบ
+                                    </label>
                                     <br>
 
                                     <label class="radio">
