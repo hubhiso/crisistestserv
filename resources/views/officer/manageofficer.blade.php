@@ -514,7 +514,7 @@
                                         <br>
                                         <div class="columns">
                                             <div class="column ">
-                                                <label class="label" for="group">ดูเทศทั้งหมด</label>
+                                                <label class="label" for="group">ดูเศสทั้งหมด</label>
                                                 <div class=" select is-fullwidth">
                                                     <select name="e_viewall" id="e_viewall">
                                                         <option value="no"> ไม่ใช่ </option>
