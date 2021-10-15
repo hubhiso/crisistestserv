@@ -117,6 +117,7 @@
 
                                 <?php if($show->prov_id == $prov->PROVINCE_CODE)
                                     $se_prov = $prov->PROVINCE_NAME;
+                                    else $se_prov = "";
                                 ?>
                                 @endforeach
 

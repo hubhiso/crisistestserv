@@ -20,7 +20,7 @@ class ManageofficerController extends Controller
     public function m_officer()
     {
        
-        $show_list = officer::where('username','LIKE','%crisistest%')->leftJoin('officer_groups', 'officers.group', '=', 'officer_groups.code')->orderBy('officers.id')->get();
+        $show_list = officer::select('officers.*')->leftJoin('officer_groups', 'officers.group', '=', 'officer_groups.code')->orderBy('officers.id')->get();
         
         $nowdate =  Carbon::now();
         $show_group = officer_group::all();
