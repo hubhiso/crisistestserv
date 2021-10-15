@@ -10,11 +10,8 @@ use App\case_input;
 use App\timeline;
 use App\officer;
 use App\province;
-
-
+use App\casetransfer;
 use Auth;
-
-
 
 class ManagerController extends Controller
 {
@@ -44,16 +41,22 @@ class ManagerController extends Controller
     public  function transfer_cfm(Request $request){
         $case_id = $request->input('case_id');
         $officer_id = $request->input('officer');
+        $prov_id = $request->input('prev_provid');
+        $prev_provid = $request->input('prev_provid');
         $officer = $officers = officer::where('id','=',$officer_id)->first();
+
         case_input::where('case_id','=',$case_id)->update(['receiver_id' => "$officer_id" , 'receiver' => $officer->name]);
+        casetransfer::create(['case_id'=>$case_id,'provid'=>$prov_id,'prev_provid'=>$prev_provid]);
 
         return redirect('officer/show/0');
     }
 
     function  load_register(){
         $provinces = province::orderBy('PROVINCE_NAME', 'asc')->get();
-        return view('Manager.create_officer',compact('provinces'));
+        $ck_officer = officer::all();
+        return view('Manager.create_officer',compact('provinces','ck_officer'));
     }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -67,6 +70,7 @@ class ManagerController extends Controller
     {
 
         return officer::create([
+            'active' => 'yes',
             'username' => $data['username'],
             'name' => $data['name'],
             'nameorg' => $data['nameorg'],
@@ -83,6 +87,7 @@ class ManagerController extends Controller
     }
      function create_officer(Request $request)
     {
+
         $this->validator($request->all())->validate();
         $this->create($request->all());
         return redirect('officer/show/0');

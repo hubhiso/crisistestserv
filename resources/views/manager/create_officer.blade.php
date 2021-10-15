@@ -79,6 +79,7 @@
                         action="{{ route('manager.register_cfm') }}">
                         {{ csrf_field() }}
 
+
                         <div class="field {{ $errors->has('username') ? ' has-error' : '' }}">
                             <label class="label" for="username">Username</label>
                             <div class="control">
@@ -127,7 +128,7 @@
                             <label class="label">Email</label>
                             <div class="control">
                                 <input id="email" type="email" class="form-control input" name="email"
-                                    value="{{ old('email') }}" onchange="ck_email(email.value)" required>
+                                    value="{{ old('email') }}" onchange="ck_email(email.value)" placeholder="ใช้ Email จริงและไม่ซ้ำกับที่เคยลงทะเบียนแล้ว" required>
 
                                 @if ($errors->has('email'))
                                 <span class="help-block">
@@ -141,7 +142,7 @@
                             <label class="label">เบอร์ติดต่อ</label>
                             <div class="control">
                                 <input id="tel" type="text" class="form-control input" name="tel"
-                                    value="{{ old('tel') }}" required>
+                                    value="{{ old('tel') }}" minlength="9" maxlength="10" placeholder="เบอร์มือถือ 9-10 หลัก" required>
 
                                 @if ($errors->has('tel'))
                                 <span class="help-block">
@@ -155,7 +156,7 @@
                             <label class="label">Password</label>
                             <div class="control">
                                 <input id="password" type="password" class="form-control input" name="password"
-                                    required>
+                                placeholder="ใช้ตัวเลขภาษาอังกฤษ หรือตัวเลข" required>
 
                                 @if ($errors->has('password'))
                                 <span class="help-block">
@@ -169,7 +170,7 @@
                             <label class="label" for="password-confirm">Confirm Password</label>
                             <div class="control">
                                 <input id="password-confirm" type="password" class="form-control input"
-                                    name="password_confirmation" required>
+                                    name="password_confirmation"  required>
                             </div>
                         </div>
 
@@ -179,10 +180,10 @@
                                 <div class="select">
                                     <select id="position" name="position" onchange="swcase_x()" required>
                                         <option value="">เลือกตำแหน่ง</option>
-                                        <option value="officer">เจ้าหน้าที่</option>
+                                        <option value="officer">เจ้าหน้าที่ระดับจังหวัด</option>
                                         @if( Auth::user()->position == "admin")
-                                        <option value="manager">เจ้าหน้าที่ประจำจังหวัด</option>
-                                        <option value="manager_area">เจ้าหน้าที่ประจำเขต</option>
+                                        <option value="manager">ผู้จัดการระดับจังหวัด</option>
+                                        <option value="manager_area">ผู้จัดการระดับเขต</option>
                                         @endif
                                     </select>
                                 </div>
@@ -292,7 +293,7 @@
             document.getElementById("prov_id").hidden = false;
             document.getElementById("area_id").value = "0";
             document.getElementById("p_view_all").value = "no";
-            document.getElementById("p_receive").value = "yes";
+            document.getElementById("p_receive").value = "no";
 
             $("#select-area").addClass("is-hidden");
             $("#select-pr").removeClass("is-hidden");

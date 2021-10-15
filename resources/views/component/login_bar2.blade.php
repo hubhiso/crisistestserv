@@ -55,7 +55,7 @@
                                 ลงทะเบียนเจ้าหน้าที่เพิ่มเติม
                             </a>
                             <hr class="navbar-divider">
-                            <a class="navbar-item  has-text-info" href="#">
+                            <a class="navbar-item  has-text-info" href="{{ route('officer.m_officer') }}">
                                 <i class="fa fa-users"></i>&nbsp;
                                 จัดการรายชื่อเจ้าหน้าที่ </a>
                         </div>

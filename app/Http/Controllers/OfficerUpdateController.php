@@ -245,6 +245,7 @@ class OfficerUpdateController extends Controller
         );
         return \Response::json($response);
     }
+
     public function update_operate_case(Request $request)
     {
         $case_id = $request->input('case_id');
@@ -290,10 +291,12 @@ class OfficerUpdateController extends Controller
         }
 
     }
+
     public function update_operate(Request $request)
     {
         $Operate_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('Operate_date'))));
         $id = $request->input('id');
+        
         operate_detail::where('id','=',$id)->update([
             'operate_date' => $Operate_date,
             'advice' => $request->input('advice'),
@@ -453,4 +456,6 @@ class OfficerUpdateController extends Controller
 
         return view('officer.printpage',compact('show_data', 'show_timeline', 'activities'));
     }
+
+    
 }
