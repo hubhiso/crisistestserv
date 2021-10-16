@@ -370,8 +370,7 @@ class OfficerUpdateController extends Controller
         }
         else{
             if($request->input('Filter')==1){
-                $matchThese = ['prov_id'=>$pid ];
-                $test = "->orWhere('prov_id'=> '11' )";
+                $matchThese = ['prov_id'=>$pid];
                 $cases = case_input::where($matchThese);
                 $filter ++;
             }else if ($request->input('Filter')==2){
@@ -462,7 +461,7 @@ class OfficerUpdateController extends Controller
             $cases = case_input::Where('prov_id','=',$pid);
         }
 
-        $html = view('officer._Case',compact('cases','username',))->render();
+        $html = view('officer._Case',compact('cases','username'))->render();
         return response()->json(compact('html','text_search'));
 
     }
