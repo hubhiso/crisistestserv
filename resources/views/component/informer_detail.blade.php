@@ -2,12 +2,9 @@
 <div id="tabradio" class="field is-grouped">
     <p class="control is-expanded has-icons-left ">
         กรุณาระบุสถานะของท่าน
-        <label class="radio">
-            {{ Form::radio('sender_case', '1' , true) }}  <a >ผู้ถูกกระทำ</a>
-        </label>
-        <label class="radio">
-            {{ Form::radio('sender_case', '2' , false) }} <a >ผู้แจ้งแทน</a>
-        </label>
+        <input type="radio" id="case1" name="sender_case" value="1"><a >ผู้ถูกกระทำ</a>
+            
+        <input type="radio" id="case2" name="sender_case" value="2"><a >ผู้แจ้งแทน</a>
     </p>
 </div>
 

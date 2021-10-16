@@ -80,11 +80,19 @@ class case_controller extends Controller
             $biosex_name = 'ไม่ประสงค์ตอบ';
         }
 
-        
+        if($request->input('sender_case')==""){
+            $sender_case = 1;
+        }elseif($request->input('sender_case')== 1){
+            $sender_case = 1;
+        }elseif($request->input('sender_case')== 2){
+            $sender_case = 2;
+        }elseif($request->input('sender_case')== 3 ){
+            $sender_case = 3;
+        }
 
         case_input::create([
             'emergency'=>$request->input('emergency'),
-            'sender_case'=>$request->input('sender_case'),
+            'sender_case'=>$sender_case,
             'sender'=>$request->input('sender'),
             'agent_tel'=>$request->input('agent_tel'),
 

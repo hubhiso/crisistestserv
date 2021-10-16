@@ -635,22 +635,26 @@
         console.log("chk : " + val);
 
         if (val == 2) {
+            //แจ้งเอง
             srcElement.style.display = 'none';
             document.getElementById("form_sender").style.display = 'none';
-            $('input[name="sender_case"][value=2]').attr('checked', false);
 
+            document.getElementById("case1").checked = true;
+
+            $('input[name="sender"]').val("");
             $('input[name="sender"]').prop('disabled', true);
+            $('input[name="agent_tel"]').val("");
             $('input[name="agent_tel"]').prop('disabled', true);
             val = 1;
             console.log("chk-val-loop1 : " + val);
         } else {
+            // แจ้งแทน
             srcElement.style.display = 'block';
             document.getElementById("form_sender").style.display = 'block';
-            $('input[name="sender_case"][value=2]').attr('checked', true);
+            document.getElementById("case2").checked = true;
 
             $('input[name="sender"]').prop('disabled', false);
             $('input[name="agent_tel"]').prop('disabled', false);
-            $('input[name="test12"]').prop('disabled', false);
             val = 2;
             console.log("chk-val-loop2 : " + val);
         }
@@ -747,7 +751,7 @@
 
     $(document).ready(function() {
 
-        $('input[name="sender_case"][value="1"]').attr('checked', true);
+        document.getElementById("case1").checked = true;
         //  loadinput(val);
         document.getElementById("data-agent").style.display = 'none';
         document.getElementById("tabradio").style.display = 'none';
