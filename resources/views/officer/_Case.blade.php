@@ -1,17 +1,18 @@
-<table class="table is-fullwidth panel paginated hideextra " id="table_show" >
+<table class="table is-fullwidth panel paginated hideextra " id="table_show">
     <thead style="text-align: center;">
         <tr>
-            <th > วันที่ </abbr>
+
+            <th> วันที่</abbr>
             </th>
-            <th > รหัส </abbr>
+            <th> รหัส </abbr>
             </th>
-            <th > วันที่เกิดเหตุ<br>(ตามแจ้ง) </abbr>
+            <th> วันที่เกิดเหตุ<br>(ตามแจ้ง) </abbr>
             </th>
             <th> จังหวัด </abbr>
             </th>
             <th style="text-align: center;">ประเภท </abbr>
             </th>
-            <th > สถานะ </abbr>
+            <th> สถานะ </abbr>
             </th>
             <th> ดำเนินการ </abbr>
             </th>
@@ -30,91 +31,157 @@
 
         @foreach($cases as $case)
         <tr>
-            <th>{{date('d',strtotime(str_replace('-','/', $case->created_at)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->created_at)))]}}{{date("Y",strtotime(str_replace('-','/', $case->created_at)))+543}}
+            <th>
+                {{date('d',strtotime(str_replace('-','/', $case->created_at)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->created_at)))]}}{{date("Y",strtotime(str_replace('-','/', $case->created_at)))+543}}
             </th>
-            @if($case->emergency == "yes" )
-            <th>เร่งด่วน <br> <a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}"
-                    title='ID'>{{ $case->case_id }}</a></th>
-            @elseif($case->emergency <> "yes" )
-                <th><a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}"
-                        title='ID'>{{ $case->case_id }}</a></th>
-                @endif
-                @if($case->accident_date != "")
-                <td>{{date('d',strtotime(str_replace('-','/', $case->accident_date)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->accident_date)))]}}{{date("Y",strtotime(str_replace('-','/', $case->accident_date)))+543}}
-                </td>
-                @else
-                <td>ไม่มีข้อมูล</td>
-                @endif
-                <td>{{$case->Provinces->PROVINCE_NAME}}</td>
 
+            <th>
+                @if($case->emergency == "yes" )
+                <span class="has-text-danger">เร่งด่วน</span><br>
+                @endif
+                <a target="_blank" href="{{ route('officer.open_dt', $case->case_id) }}"
+                    title='ID'>{{ $case->case_id }}</a>
+            </th>
+
+            <td>
+                @if($case->accident_date != "")
+                {{date('d',strtotime(str_replace('-','/', $case->accident_date)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->accident_date)))]}}{{date("Y",strtotime(str_replace('-','/', $case->accident_date)))+543}}
+                @else
+                ไม่มีข้อมูล
+                @endif
+            </td>
+
+            <td>{{$case->Provinces->PROVINCE_NAME}}</td>
+
+            <td>
                 @if($case->problem_case == 1 )
-                <td>บังคับตรวจเอชไอวี</td>
+                บังคับตรวจเอชไอวี
                 @elseif($case->problem_case == 2)
-                <td>เปิดเผยสถานะการติดเชื้อเอชไอวี</td>
+                เปิดเผยสถานะการติดเชื้อเอชไอวี
                 @elseif($case->problem_case == 3)
-                <td>ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</td>
+                ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี
                 @elseif($case->problem_case == 4)
-                <td>ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</td>
+                ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง
                 @elseif($case->problem_case == 5)
-                <td>อื่นๆ ที่เกี่ยวข้องกับเอชไอวี</td>
+                อื่นๆ ที่เกี่ยวข้องกับเอชไอวี
                 @elseif($case->problem_case == 6)
-                <td>อื่นๆ </td>
+                อื่นๆ
                 @endif
-                @if(($case->receiver == $username )||($case->status == 1)||($username == "Adminfar"))
-                @if($case->status == 99)
-                <td>ปฏิเสธการรับเรื่อง</td>
-                <td><a class='button is-primary' href="{{ route('officer.open_dt', $case->case_id) }}">
-                        <span>ดูรายละเอียด </span> </a> </td>
-                @elseif( $case->status == 1)
-                <td>ยังไม่ได้รับเรื่อง</td>
-                <td><a class='button is-primary' href="{{ route('officer.open_cfm', $case->case_id) }}">
-                        <span>รับเรื่อง</span> </a> </td>
-                @elseif( $case->status == 2)
-                <td> รับเรื่องแล้ว </td>
-                <td><a class='button is-primary' href="{{ route('officer.add_detail' , $case->case_id) }}"> <span>
-                            บันทึกข้อมูล </span> </a> </td>
-                @elseif( $case->status >= 3)
-                @if($case->status == 3)
-                <td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
-                @elseif($case->status == 4)
-                <td> อยู่ระหว่างการดำเนินการ </td>
-                @elseif($case->status == 5)
-                <td> ดำเนินการเสร็จสิ้น </td>
-                @elseif($case->status == 6)
-                <td> ดำเนินการแล้วส่งต่อ </td>
-                @endif
-                <td><a class='button is-primary' href="{{ route('officer.add_activities' , $case->case_id) }}"> <span>
-                            ดำเนินการ </span> </a> </td>
-                @else
-                <td> รับเรื่องแล้ว </td>
-                <td><a class='button is-primary' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล </span> </a>
-                </td>
-                @endif
-                @else
-                @if($case->status == 99)
-                <td>ปฏิเสธการรับเรื่อง</td>
-                @elseif( $case->status == 2)
-                <td> รับเรื่องแล้ว </td>
-                @elseif($case->status == 3)
-                <td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
-                @elseif($case->status == 4)
-                <td> อยู่ระหว่างการดำเนินการ </td>
-                @elseif($case->status == 5)
-                <td> ดำเนินการเสร็จสิ้น </td>
-                @elseif($case->status == 6)
-                <td> ดำเนินการแล้วส่งต่อ </td>
-                @endif
-                <td><a class='button is-primary' href="{{ route('officer.open_dt', $case->case_id) }}">
-                        <span>ดูรายละเอียด</span> </a> </td>
-                @endif
-                @if($case->sender_case == 1 )
-                <td>แจ้งด้วยตนเอง</td>
-                @elseif($case->sender_case == 2)
-                <td>มีผู้แจ้งแทน</td>
-                @elseif($case->sender_case == 3)
-                <td>เจ้าหน้าที่แจ้ง</td>
-                @endif
-                <td><a href='#' title='Receiver'>{{ $case->receiver }}</a></td>
+            </td>
+
+            @if(($case->receiver == $username )||($case->status == 1)||($username == "Adminfar"))
+
+            @if($case->status == 99)
+            <td>ปฏิเสธการรับเรื่อง</td>
+            <td><a class='button is-primary' href="{{ route('officer.open_dt', $case->case_id) }}">
+                    <span>ดูรายละเอียด </span> </a> </td>
+            @elseif( $case->status == 1)
+            <td>ยังไม่ได้รับเรื่อง</td>
+            <td><a class='button is-primary' href="{{ route('officer.open_cfm', $case->case_id) }}">
+                    <span>รับเรื่อง</span> </a> </td>
+            @elseif( $case->status == 2)
+            <td> รับเรื่องแล้ว </td>
+            <td><a class='button is-primary' href="{{ route('officer.add_detail' , $case->case_id) }}"> <span>
+                        บันทึกข้อมูล </span> </a> </td>
+            @elseif( $case->status >= 3)
+
+            @if($case->status == 3)
+            <td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
+            @elseif($case->status == 4)
+            <td> อยู่ระหว่างการดำเนินการ </td>
+            @elseif($case->status == 5)
+            <td> ดำเนินการเสร็จสิ้น </td>
+            @elseif($case->status == 6)
+            <td> ดำเนินการแล้วส่งต่อ </td>
+            @endif
+
+            <td><a class='button is-primary' href="{{ route('officer.add_activities' , $case->case_id) }}"> <span>
+                        ดำเนินการ </span> </a> </td>
+            @else
+            <td> รับเรื่องแล้ว </td>
+            <td><a class='button is-primary' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล </span> </a>
+            </td>
+            @endif
+
+            @else
+
+            @if($case->status == 99)
+            <td>ปฏิเสธการรับเรื่อง</td>
+            <td>
+                <a class='button is-primary'
+                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+            </td>
+            @elseif( $case->status == 2)
+            <td> รับเรื่องแล้ว </td>
+            <td>
+                <a class='button is-primary'
+                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+            </td>
+            @elseif($case->status == 3)
+            <td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
+            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes')
+            <td>
+                <a class='button is-primary'
+                    href="{{ route('officer.view_detail2', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+            </td>
+            @else
+            <td>
+                <a class='button is-primary'
+                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+            </td>
+            @endif
+            @elseif($case->status == 4)
+            <td> อยู่ระหว่างการดำเนินการ </td>
+            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes')
+            <td>
+                <a class='button is-primary'
+                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+            </td>
+            @else
+            <td>
+                <a class='button is-primary'
+                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+            </td>
+            @endif
+            @elseif($case->status == 5)
+            <td> ดำเนินการเสร็จสิ้น </td>
+            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes')
+            <td>
+                <a class='button is-primary'
+                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+            </td>
+            @else
+            <td>
+                <a class='button is-primary'
+                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+            </td>
+            @endif
+            @elseif($case->status == 6)
+            <td> ดำเนินการแล้วส่งต่อ </td>
+            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes')
+            <td>
+                <a class='button is-primary'
+                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+            </td>
+            @else
+            <td>
+                <a class='button is-primary'
+                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+            </td>
+            @endif
+            @endif
+
+            @endif
+
+            @if($case->sender_case == 1 )
+            <td>แจ้งด้วยตนเอง</td>
+            @elseif($case->sender_case == 2)
+            <td>มีผู้แจ้งแทน</td>
+            @elseif($case->sender_case == 3)
+            <td>เจ้าหน้าที่แจ้ง</td>
+            @endif
+
+            <td><a href='#' title='Receiver'>{{ $case->receiver }}</a></td>
         </tr>
         @endforeach
     </tbody>
@@ -147,7 +214,7 @@ $('table.paginated').each(function() {
 
     $pager.insertBefore($table);
 
-    
+
     $page_area1.appendTo($pager).find('span.pagination-link:first').addClass('is-current');;
     $previous.insertBefore($page_area1);
     $next.insertBefore($page_area1);

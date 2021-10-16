@@ -9,6 +9,7 @@ use Mail;
 use App\log_officer;
 use App\officer_group;
 use App\province;
+use Auth;
 
 class ManageofficerController extends Controller
 {
@@ -19,20 +20,28 @@ class ManageofficerController extends Controller
 
     public function m_officer()
     {
-       
-        $show_list = officer::select('officers.*')->leftJoin('officer_groups', 'officers.group', '=', 'officer_groups.code')->orderBy('officers.id')->get();
+        if(Auth::user()->position != "admin"){
+
+            return back()->with(['message' => 'ไม่มีสิทธิ์เข้าถึง']);
+
+        }else{
+
+        $show_list = officer::leftJoin('officer_groups', 'officers.group', '=', 'officer_groups.code')->orderBy('officers.id')->get();
         
         $nowdate =  Carbon::now();
         $show_group = officer_group::all();
         $show_prov = province::all();
 
         return view('officer.manageofficer',compact('show_list','nowdate','show_group','show_prov'));
+        }
+
+
     }
 
     public function view_log()
     {
         /*$show_list = officer::all(); */
-        $show_list = log_officer::select('log_officers.*')->leftJoin('officer_groups', 'log_officers.group', '=', 'officer_groups.code')->orderBy('log_officers.id')->get();
+        $show_list = log_officer::leftJoin('officer_groups', 'log_officers.group', '=', 'officer_groups.code')->orderBy('log_officers.id')->get();
         $nowdate =  Carbon::now();
         $show_group = officer_group::all();
 

@@ -56,10 +56,10 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                             <span>ส่วนเจ้าหน้าที่</span>
                         </a>
                     </li>
-					<li >
+                    <li>
                         <a href="{{ route('officer.show',['mode_id' => "0"]) }}">
                             <span class="icon is-small">
-                            <i class="fas fa-list" aria-hidden="true"></i>
+                                <i class="fas fa-list" aria-hidden="true"></i>
                             </span>
                             <span>จัดการเหตุ</span>
                         </a>
@@ -173,7 +173,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                                 <div class="field is-grouped">
                                     <p class="control is-expanded has-icons-left ">
                                         <input class="input" type="text" value="{{ $show_data->name }}" disabled>
-                                        <span class="icon is-small is-left">  </span>
+                                        <span class="icon is-small is-left"> </span>
                                     </p>
                                 </div>
                                 <div class="field-label is-normal">
@@ -216,16 +216,18 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                                         <input class="input" type="text" placeholder="ประเภท3" value="สาวประเภทสอง"
                                             disabled> @elseif($show_data->sex == 4)
                                         <input class="input" type="text" placeholder="ประเภท4" value="อื่นๆ" disabled>
-										@elseif($show_data->sex == 0)
-                                        <input class="input" type="text" placeholder="ประเภท4" value="ไม่ประสงค์ตอบ" disabled>
+                                        @elseif($show_data->sex == 0)
+                                        <input class="input" type="text" placeholder="ประเภท4" value="ไม่ประสงค์ตอบ"
+                                            disabled>
                                         @endif
 
                                 </div>
-								@if($show_data->sex == 4)
-								<div class="field is-narrow is-grouped">
-									<input class="input" type="text" placeholder="ประเภท4" value="{{ $show_data->sex_etc }}" disabled>
-								</div>
-								@endif
+                                @if($show_data->sex == 4)
+                                <div class="field is-narrow is-grouped">
+                                    <input class="input" type="text" placeholder="ประเภท4"
+                                        value="{{ $show_data->sex_etc }}" disabled>
+                                </div>
+                                @endif
                             </div>
                         </div>
                         <div class="field is-horizontal">
@@ -297,12 +299,11 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                                         @elseif($show_data->problem_case == 4)
                                         <input class="input" type="text" placeholder="ประเภท4"
                                             value="ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง" disabled>
-                                            @elseif($show_data->problem_case == 5)
+                                        @elseif($show_data->problem_case == 5)
                                         <input class="input" type="text" placeholder="ประเภท5"
                                             value="อื่นๆ ที่เกี่ยวข้องกับเอชไอวี" disabled>
-                                            @elseif($show_data->problem_case == 6)
-                                        <input class="input" type="text" placeholder="ประเภท6"
-                                            value="อื่นๆ" disabled>
+                                        @elseif($show_data->problem_case == 6)
+                                        <input class="input" type="text" placeholder="ประเภท6" value="อื่นๆ" disabled>
 
                                         @endif
 
@@ -390,7 +391,7 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                             </div>
                             <div class="field-body">
                                 <div class="field is-grouped">
-                                    <p class="control has-icons-left ">
+                                    <p class="control is-expanded has-icons-left ">
                                         <input class="input" type="text" value="{{ $show_data->receiver }}" disabled>
                                         <input id="receive" name="receiver" type="text"
                                             value="{{ $show_data->receiver_id }}" hidden>
@@ -493,17 +494,18 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                             <!-- @if( ($show_data->status  != 99) &&   (Auth::user()->position  == "admin")) -->
                         </div>
                         <div class="control">
-                            <a class="button is-info is-focused"
-                                href="{{ route('manager.transfer_frm',['case_id' => $show_data->case_id]) }}">เปลี่ยนผู้รับผิดชอบ</a>
+                            <a class="button is-info "
+                                href="{{ route('manager.transfer_frm',['case_id' => $show_data->case_id]) }}"><i
+                        class="fa fa-exchange-alt" aria-hidden="true"></i>&nbsp;เปลี่ยนผู้รับผิดชอบ</a>
                         </div>
                         <div class="control">
-                            <a class="button is-danger is-focused"
+                            <a class="button is-danger  "
                                 href="{{ route('manager.reject_frm',['case_id' => $show_data->case_id]) }}">
                                 ปฎิเสธการรับเคส</a>
                             <!-- @endif -->
                         </div>
                         <p class="control">
-                            <a class="button" href="{{ route('officer.show',['mode_id' => "0"]) }}"> กลับ </a>
+                            <a class="button " href="{{ route('officer.show',['mode_id' => "0"]) }}"> กลับหน้าจัดการเหตุ </a>
                         </p>
                     </div>
 

@@ -388,7 +388,7 @@
                                             <div class="column ">
                                                 <div class="notification">
                                                     <label class="label"> * เมื่อเปิดใช้อีกครั้งหลัง "ระงับ" User
-                                                        จะเครียร์วันที่ login เป็นปัจจุบัน </label>
+                                                        จะเคลียร์วันที่ login เป็นปัจจุบัน </label>
 
                                                 </div>
                                             </div>

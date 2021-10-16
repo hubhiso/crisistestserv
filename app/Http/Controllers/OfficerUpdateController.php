@@ -7,10 +7,13 @@ use App\case_input;
 use App\add_detail;
 use App\operate_detail;
 use App\timeline;
+use App\officer;
+
 
 class OfficerUpdateController extends Controller
 {
     //
+
     public function __construct()
     {
         $this->middleware('auth:officer');
@@ -29,6 +32,7 @@ class OfficerUpdateController extends Controller
         return redirect('officer/show/0');
 
     }
+
     public function add_detail(Request $request)
     {
         //var_dump($request->input('birthdate'));
@@ -123,86 +127,87 @@ class OfficerUpdateController extends Controller
         return redirect('officer/show/0');
     }
     public function update_detail(Request $request)
-{
-    //var_dump($request->input('age'));
-    foreach ($request->input() as $key => $value) {
-        if (empty($value)) {
-            $request->request->set($key, null);
+    {
+        //var_dump($request->input('age'));
+        foreach ($request->input() as $key => $value) {
+            if (empty($value)) {
+                $request->request->set($key, null);
+            }
         }
-    }
-    $case_id = $request->input('case_id');
-    $birth_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('birthdate'))));
-    $interview_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateInterview'))));
-    $accident_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateAct'))));
+        $case_id = $request->input('case_id');
+        $birth_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('birthdate'))));
+        $interview_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateInterview'))));
+        $accident_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('DateAct'))));
 
-    $temp_chk1 = $request->input('law');
-    $temp_chk2 = $request->input('aids');
-    $temp_chk3 = $request->input('attitude');
-    $temp_chk4 = $request->input('policy');
-    $temp_chk5 = $request->input('etc');
-    $chk1=1;
-    $chk2=1;
-    $chk3=1;
-    $chk4=1;
-    $chk5=1;
-    if(!isset($temp_chk1)){
-        $chk1 = 0;
-    }
-    if(!isset($temp_chk2)){
-        $chk2 = 0;
-    }
-    if(!isset($temp_chk3)){
-        $chk3 = 0;
-    }
-    if(!isset($temp_chk4)){
-        $chk4 = 0;
-    }
-    if(!isset($temp_chk5)){
-        $chk5 = 0;
+        $temp_chk1 = $request->input('law');
+        $temp_chk2 = $request->input('aids');
+        $temp_chk3 = $request->input('attitude');
+        $temp_chk4 = $request->input('policy');
+        $temp_chk5 = $request->input('etc');
+        $chk1=1;
+        $chk2=1;
+        $chk3=1;
+        $chk4=1;
+        $chk5=1;
+        if(!isset($temp_chk1)){
+            $chk1 = 0;
+        }
+        if(!isset($temp_chk2)){
+            $chk2 = 0;
+        }
+        if(!isset($temp_chk3)){
+            $chk3 = 0;
+        }
+        if(!isset($temp_chk4)){
+            $chk4 = 0;
+        }
+        if(!isset($temp_chk5)){
+            $chk5 = 0;
+        }
+
+        case_input::where('case_id','=',$case_id)->update([ 'status' => 3,
+            'name' => $request->input('name'),
+            'victim_tel' => $request->input('tel'),
+            'sex' => $request->input('sex'),
+            'sex_etc' => $request->input('sex_etc'),
+            'nation' => $request->input('nation'),
+            'nation_etc' => $request->input('nation_etc'),
+            'problem_case' => $request->input('problem_case'),
+            'sub_problem' => $request->input('sub_problem'),
+            'group_code' => $request->input('group_code'),
+            'detail' => $request->input('detail'),
+            'need' => $request->input('need')]);
+        add_detail::where('case_id','=',$case_id)->update(
+            [
+                'interview_date'=>$interview_date,
+                'birth_date'=>$birth_date,
+                'age'=>$request->input('age'),
+                'current_status'=>$request->input('marital-status'),
+                'occupation'=>$request->input('occupation'),
+                'occupation_detail'=>$request->input('occupation_detail'),
+                'address'=>$request->input('address'),
+                'card_type'=>$request->input('card_type'),
+                'card_number'=>$request->input('card_num'),
+                'type_offender'=>$request->input('offender_type'),
+                'subtype_offender'=>$request->input('offender_subtype'),
+                'violator_name'=>$request->input('violator_name'),
+                'violator_organization'=>$request->input('violator_organization'),
+                'offender_organization'=>$request->input('offender_organization'),
+                'accident_location'=>$request->input('accident_location'),
+                'accident_date'=>$accident_date,
+                'accident_time'=>$request->input('accident_time'),
+                'violation_characteristics'=>$request->input('violation_characteristics'),
+                'effect'=>$request->input('effect'),
+                'cause_type1'=>$chk1,
+                'cause_type2'=>$chk2,
+                'cause_type3'=>$chk3,
+                'cause_type4'=>$chk4,
+                'etc'=>$chk5,
+                'etc_detail'=>$request->input('etc_detail')]
+        );
+        return redirect('officer/show/0');
     }
 
-    case_input::where('case_id','=',$case_id)->update([ 'status' => 3,
-        'name' => $request->input('name'),
-        'victim_tel' => $request->input('tel'),
-        'sex' => $request->input('sex'),
-        'sex_etc' => $request->input('sex_etc'),
-        'nation' => $request->input('nation'),
-        'nation_etc' => $request->input('nation_etc'),
-        'problem_case' => $request->input('problem_case'),
-        'sub_problem' => $request->input('sub_problem'),
-        'group_code' => $request->input('group_code'),
-        'detail' => $request->input('detail'),
-        'need' => $request->input('need')]);
-    add_detail::where('case_id','=',$case_id)->update(
-        [
-            'interview_date'=>$interview_date,
-            'birth_date'=>$birth_date,
-            'age'=>$request->input('age'),
-            'current_status'=>$request->input('marital-status'),
-            'occupation'=>$request->input('occupation'),
-            'occupation_detail'=>$request->input('occupation_detail'),
-            'address'=>$request->input('address'),
-            'card_type'=>$request->input('card_type'),
-            'card_number'=>$request->input('card_num'),
-            'type_offender'=>$request->input('offender_type'),
-            'subtype_offender'=>$request->input('offender_subtype'),
-            'violator_name'=>$request->input('violator_name'),
-            'violator_organization'=>$request->input('violator_organization'),
-            'offender_organization'=>$request->input('offender_organization'),
-            'accident_location'=>$request->input('accident_location'),
-            'accident_date'=>$accident_date,
-            'accident_time'=>$request->input('accident_time'),
-            'violation_characteristics'=>$request->input('violation_characteristics'),
-            'effect'=>$request->input('effect'),
-            'cause_type1'=>$chk1,
-            'cause_type2'=>$chk2,
-            'cause_type3'=>$chk3,
-            'cause_type4'=>$chk4,
-            'etc'=>$chk5,
-            'etc_detail'=>$request->input('etc_detail')]
-    );
-    return redirect('officer/show/0');
-}
     public function add_activities(Request $request){
         $activities_num = operate_detail::where('case_id','=',$request->input('case_id'))->orderBy('operate_date', 'asc')->count();
         $operate_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('operate_date'))));
@@ -296,7 +301,7 @@ class OfficerUpdateController extends Controller
     {
         $Operate_date = date('Y-m-d',strtotime(str_replace('-','/', $request->input('Operate_date'))));
         $id = $request->input('id');
-        
+
         operate_detail::where('id','=',$id)->update([
             'operate_date' => $Operate_date,
             'advice' => $request->input('advice'),
@@ -322,6 +327,8 @@ class OfficerUpdateController extends Controller
         $pid = $request->input('pid');
         $pposition = $request->input('pposition');
         $parea = $request->input('parea');
+        
+
 
         if($pposition  == "admin" && $pid == 0){
             if($request->input('Filter')==1){
@@ -363,7 +370,8 @@ class OfficerUpdateController extends Controller
         }
         else{
             if($request->input('Filter')==1){
-                $matchThese = ['prov_id'=>$pid];
+                $matchThese = ['prov_id'=>$pid ];
+                $test = "->orWhere('prov_id'=> '11' )";
                 $cases = case_input::where($matchThese);
                 $filter ++;
             }else if ($request->input('Filter')==2){
@@ -435,6 +443,19 @@ class OfficerUpdateController extends Controller
             }
         }
 
+        $linkgroups = officer::where('username', '=', $request->input('username'))->first();
+
+        if($linkgroups->group != null && $linkgroups->g_view_all == 'yes'){
+            $groups = officer::where('group','=', $linkgroups->group)->get();
+
+            foreach ($groups as $group) {
+                //$cases =  $cases->orWhere('prov_id', '=', $group->prov_id );
+                $cases =  $cases->orWhere('receiver', '=', $group->name );
+                $filter++;
+            }
+        }
+
+        
         if($filter > 0){
             $cases = $cases->get();
           //var_dump($cases);
@@ -442,7 +463,7 @@ class OfficerUpdateController extends Controller
             $cases = case_input::Where('prov_id','=',$pid);
         }
 
-        $html = view('officer._Case',compact('cases','username'))->render();
+        $html = view('officer._Case',compact('cases','username',))->render();
         return response()->json(compact('html','text_search'));
 
     }

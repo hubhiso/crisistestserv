@@ -55,6 +55,7 @@
                                 ลงทะเบียนเจ้าหน้าที่เพิ่มเติม
                             </a>
                             <hr class="navbar-divider">
+                            
                             <a class="navbar-item  has-text-info" href="{{ route('officer.m_officer') }}">
                                 <i class="fa fa-users"></i>&nbsp;
                                 จัดการรายชื่อเจ้าหน้าที่ </a>
@@ -83,5 +84,6 @@
     </div>
     <input type="hidden" id="p_id" value="{{ Auth::user()->prov_id }}">
     <input type="hidden" id="user_name" value="{{ Auth::user()->name }}">
+    <input type="hidden" id="user_username" value="{{ Auth::user()->username }}">
     <input type="hidden" id="p_position" value="{{ Auth::user()->position }}">
     <input type="hidden" id="p_area" value="{{ Auth::user()->area_id }}">
