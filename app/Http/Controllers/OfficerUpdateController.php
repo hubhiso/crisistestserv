@@ -449,7 +449,6 @@ class OfficerUpdateController extends Controller
             $groups = officer::where('group','=', $linkgroups->group)->get();
 
             foreach ($groups as $group) {
-                //$cases =  $cases->orWhere('prov_id', '=', $group->prov_id );
                 $cases =  $cases->orWhere('receiver', '=', $group->name );
                 $filter++;
             }
