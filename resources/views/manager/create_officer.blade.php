@@ -297,7 +297,7 @@
                 } else if (data == 0) {
                     console.log(data);
 
-                    $ck = "email นี้มีการลงทะเบียนในบบแล้ว";
+                    $ck = "email นี้มีการลงทะเบียนในระบบแล้ว";
 
                     $("#ckemail").removeClass("is-success");
                     $("#ckemail").addClass("is-danger");
@@ -343,7 +343,7 @@
                 } else if (data == 0) {
                     console.log(data);
 
-                    $ck = "เบอร์ติดต่อนี้มีการลงทะเบียนในบบแล้ว";
+                    $ck = "เบอร์ติดต่อนี้มีการลงทะเบียนในระบบแล้ว";
 
                     $("#cktel").removeClass("is-success");
                     $("#cktel").addClass("is-danger");
