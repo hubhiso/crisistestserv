@@ -70,7 +70,7 @@
 
             <div class="box column is-4 is-offset-4">
                 <div class="panel-heading has-background-primary has-text-white">
-                    สร้างผู้ใช้ระบบ 
+                    สร้างผู้ใช้ระบบ
                 </div>
                 <br>
 
@@ -128,7 +128,8 @@
                             <label class="label">Email</label>
                             <div class="control">
                                 <input id="email" type="email" class="form-control input" name="email"
-                                    value="{{ old('email') }}" onchange="ck_email(email.value)" placeholder="ใช้ Email จริงและไม่ซ้ำกับที่เคยลงทะเบียนแล้ว" required>
+                                    value="{{ old('email') }}"
+                                    placeholder="ใช้ Email จริงและไม่ซ้ำกับที่เคยลงทะเบียนแล้ว" required>
 
                                 @if ($errors->has('email'))
                                 <span class="help-block">
@@ -136,13 +137,15 @@
                                 </span>
                                 @endif
                             </div>
+                            <p id="ckemail" class="help is-success"></p>
                         </div>
 
                         <div class="field {{ $errors->has('tel') ? ' has-error' : '' }}">
                             <label class="label">เบอร์ติดต่อ</label>
                             <div class="control">
                                 <input id="tel" type="text" class="form-control input" name="tel"
-                                    value="{{ old('tel') }}" minlength="9" maxlength="10" placeholder="เบอร์มือถือ 9-10 หลัก" required>
+                                    value="{{ old('tel') }}" minlength="9" maxlength="10"
+                                    placeholder="เบอร์ 9-10 หลักและไม่ซ้ำกับที่เคยลงทะเบียนแล้ว" required>
 
                                 @if ($errors->has('tel'))
                                 <span class="help-block">
@@ -150,13 +153,14 @@
                                 </span>
                                 @endif
                             </div>
+                            <p id="cktel" class="help is-success"></p>
                         </div>
 
                         <div class="field {{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="label">Password</label>
                             <div class="control">
                                 <input id="password" type="password" class="form-control input" name="password"
-                                placeholder="ใช้ตัวเลขภาษาอังกฤษ หรือตัวเลข" required>
+                                    placeholder="ใช้ตัวเลขภาษาอังกฤษ หรือตัวเลข" required>
 
                                 @if ($errors->has('password'))
                                 <span class="help-block">
@@ -170,7 +174,7 @@
                             <label class="label" for="password-confirm">Confirm Password</label>
                             <div class="control">
                                 <input id="password-confirm" type="password" class="form-control input"
-                                    name="password_confirmation"  required>
+                                    name="password_confirmation" required>
                             </div>
                         </div>
 
@@ -180,10 +184,10 @@
                                 <div class="select">
                                     <select id="position" name="position" onchange="swcase_x()" required>
                                         <option value="">เลือกตำแหน่ง</option>
-                                        <option value="officer">เจ้าหน้าที่ระดับจังหวัด</option>
+                                        <option value="officer">เจ้าหน้าที่</option>
                                         @if( Auth::user()->position == "admin")
-                                        <option value="manager">ผู้จัดการระดับจังหวัด</option>
-                                        <option value="manager_area">ผู้จัดการระดับเขต</option>
+                                        <option value="manager">เจ้าหน้าที่ระดับจังหวัด</option>
+                                        <option value="manager_area">เจ้าหน้าที่ระดับเขต</option>
                                         @endif
                                     </select>
                                 </div>
@@ -273,11 +277,100 @@
     </script>
 
     <script>
+    $('#email').on('change', function(e) {
+        // console.log(e);
+        var email = e.target.value;
+
+        if (email) {
+
+            $.get('ajax-email/' + email, function(data) {
+
+                if (data == 1) {
+                    console.log(data);
+
+                    $ck = "email นี้ใช้งานได้";
+
+                    $("#ckemail").removeClass("is-danger");
+                    $("#ckemail").addClass("is-success");
+
+                    $('#ckemail').text($ck);
+                } else if (data == 0) {
+                    console.log(data);
+
+                    $ck = "email นี้มีการลงทะเบียนในบบแล้ว";
+
+                    $("#ckemail").removeClass("is-success");
+                    $("#ckemail").addClass("is-danger");
+
+                    $('#ckemail').text($ck);
+                } else if (data == 2) {
+                    console.log(data);
+
+                    $ck = "รูปแบบ email ไม่ถูกต้อง";
+
+                    $("#ckemail").removeClass("is-success");
+                    $("#ckemail").addClass("is-danger");
+
+                    $('#ckemail').text($ck);
+                }
+            });
+        } else {
+
+            $ck = "";
+            $('#ckemail').text($ck);
+        }
+
+
+    });
+
+    $('#tel').on('change', function(e) {
+        // console.log(e);
+        var tel = e.target.value;
+
+        if (tel) {
+
+            $.get('ajax-tel/' + tel, function(data) {
+
+                if (data == 1) {
+                    console.log(data);
+
+                    $ck = "เบอร์ติดต่อนี้ใช้งานได้";
+
+                    $("#cktel").removeClass("is-danger");
+                    $("#cktel").addClass("is-success");
+
+                    $('#cktel').text($ck);
+                } else if (data == 0) {
+                    console.log(data);
+
+                    $ck = "เบอร์ติดต่อนี้มีการลงทะเบียนในบบแล้ว";
+
+                    $("#cktel").removeClass("is-success");
+                    $("#cktel").addClass("is-danger");
+
+                    $('#cktel').text($ck);
+                } else if (data == 2) {
+                    console.log(data);
+
+                    $ck = "ต้องใส่ตัวเลข 9 - 10 หลัก";
+
+                    $("#cktel").removeClass("is-success");
+                    $("#cktel").addClass("is-danger");
+
+                    $('#cktel').text($ck);
+                }
+            });
+
+        } else {
+            $ck = "";
+            $('#cktel').text($ck);
+        }
+    });
 
 
     function swcase_x() {
         var x = document.getElementById("position").value;
-        
+
         if (x == 'officer') {
             document.getElementById("area_id").hidden = true;
             document.getElementById("prov_id").hidden = false;
@@ -319,7 +412,6 @@
         }
     }
     </script>
-
 
 </body>
 

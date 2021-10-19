@@ -8,6 +8,7 @@ use App\add_detail;
 use App\operate_detail;
 use App\timeline;
 use App\officer;
+use Auth;
 
 
 class OfficerUpdateController extends Controller
@@ -330,7 +331,9 @@ class OfficerUpdateController extends Controller
         
 
 
-        if($pposition  == "admin" && $pid == 0){
+        //if($pposition  == "admin" && $pid == 0){
+        if(Auth::user()->position == "admin" || Auth::user()->p_view_all == "yes"){
+
             if($request->input('Filter')==1){
                 $cases = case_input::where('prov_id', '>', '0');
                 $filter ++;
@@ -442,7 +445,7 @@ class OfficerUpdateController extends Controller
             }
         }
 
-        $linkgroups = officer::where('username', '=', $request->input('username'))->first();
+        $linkgroups = officer::where('name', '=', $request->input('username'))->first();
 
         if($linkgroups->group != null && $linkgroups->g_view_all == 'yes'){
             $groups = officer::where('group','=', $linkgroups->group)->get();

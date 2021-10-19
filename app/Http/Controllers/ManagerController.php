@@ -10,6 +10,7 @@ use App\case_input;
 use App\timeline;
 use App\officer;
 use App\province;
+use App\amphur;
 use App\casetransfer;
 use Auth;
 
@@ -24,10 +25,23 @@ class ManagerController extends Controller
         $show_data = case_input::where('case_id','=',$case_id)->first();
         return view('Manager.reject_frm',compact('show_data'));
     }
+
+    public function ajax_amphur($prov_id) {
+        $prov_code    = $prov_id;
+        $new_prov_id = province::where('PROVINCE_CODE', '=', $prov_code)->first();
+        $category = amphur::where('PROVINCE_ID', '=', $new_prov_id->PROVINCE_ID)->get();
+        return response()->json($category);
+    }
+
     public  function transfer($case_id){
         $show_data = case_input::where('case_id','=',$case_id)->first();
+
+        $provinces = province::orderBy('PROVINCE_NAME', 'asc')->get();
+    
+        $of_receiver = officer::where('name','=',$show_data->receiver)->first();
         $officers = officer::where('prov_id','=',$show_data->prov_id)->get();
-        return view('Manager.transfer_frm',compact('show_data','officers'));
+
+        return view('Manager.transfer_frm',compact('show_data', 'of_receiver','officers', 'provinces' ));
     }
     public  function reject_cfm(Request $request){
         $case_id = $request->input('case_id');
@@ -39,14 +53,48 @@ class ManagerController extends Controller
         return redirect('officer/show/0');
     }
     public  function transfer_cfm(Request $request){
+        
         $case_id = $request->input('case_id');
-        $officer_id = $request->input('officer');
-        $prov_id = $request->input('prev_provid');
         $prev_provid = $request->input('prev_provid');
-        $officer = $officers = officer::where('id','=',$officer_id)->first();
 
-        case_input::where('case_id','=',$case_id)->update(['receiver_id' => "$officer_id" , 'receiver' => $officer->name]);
-        casetransfer::create(['case_id'=>$case_id,'provid'=>$prov_id,'prev_provid'=>$prev_provid]);
+        $prev_o_username = $request->input('prev_o_username');
+
+        $o_username = $request->input('o_username');
+
+        $officer_id = $request->input('officer');
+
+        $prov_id = $request->input('province');
+
+
+        if($officer_id != ""){
+            $officer = $officers = officer::where('id','=',$officer_id)->first();
+
+            case_input::where('case_id','=',$case_id)->update([
+                'receiver_id' => "$officer_id" , 
+                'receiver' => $officer->name
+            ]);
+            $officername = $officer->name;
+        }else{
+
+            case_input::where('case_id','=',$case_id)->update([
+                'status' => 1 , 
+                'prov_id' => $prov_id , 
+                'amphur_id' => $prov_id."01" , 
+                'receiver_id' => NULL , 
+                'receiver' => ""
+            ]);
+
+            $officername = NULL;
+
+        }
+
+        casetransfer::create([
+            'case_id'=>$case_id,
+            'provid'=>$prov_id,
+            'prev_provid'=>$prev_provid,
+            'ousername'=>$officername,
+            'prev_ousername'=>$prev_o_username
+        ]);
 
         return redirect('officer/show/0');
     }
@@ -66,6 +114,50 @@ class ManagerController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
+
+    public function ajax_email($email) {
+        
+        
+        $regex = "/^([a-zA-Z0-9\.]+@+[a-zA-Z]+(\.)+[a-zA-Z]{2,3})$/";
+
+        if(preg_match($regex,$email)){
+
+            $ck_officer = officer::where('email', '=', $email)->first();
+
+            if(!$ck_officer){
+                $ck_email = 1;
+            }else{
+                $ck_email = 0;
+            }
+        }else{
+            $ck_email = 2;
+        }
+        return response()->json($ck_email);
+       
+    }
+
+    public function ajax_tel($tel) {
+
+        $len_tel = strlen($tel);
+
+        $regex = '/^[0-9]*$/';
+
+        if($len_tel >= 9 and $len_tel <= 10 and preg_match($regex,$tel)){
+        
+            $ck_officer = officer::where('tel', '=', $tel)->first();
+
+            if(!$ck_officer){
+                $ck_tel = 1;
+            }else{
+                $ck_tel = 0;
+            }
+        }else{
+            $ck_tel = 2;
+        }
+       
+        return response()->json($ck_tel);
+    }
+
     protected function create(array $data)
     {
 
