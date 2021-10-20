@@ -928,7 +928,7 @@
                                                 ==
                                                 null){ disabled } @endif>
                                                 @if(($show_data->problem_case == 1)||($show_data->problem_case ==
-                                                5))
+                                                5)||($show_data->problem_case == 6))
                                                 <option value="1" style="width:250px" @if($show_data->sub_problem ==
                                                     1){
                                                     selected } @endif>ผู้ติดเชื้อเอชไอวี</option>
@@ -985,6 +985,9 @@
                                                 <option value="6" style="width:250px" @if($show_data->group_code ==
                                                     6){
                                                     selected } @endif>กลุ่มชนเผ่า</option>
+                                                <option value="7" style="width:250px" @if($show_data->group_code ==
+                                                    7){
+                                                    selected } @endif> ผู้พิการ</option>
                                                 @endif
 
                                             </select>
