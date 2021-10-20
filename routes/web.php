@@ -27,6 +27,10 @@ Route::prefix('manager')->group(function (){
     Route::post('/reject_cfm', 'ManagerController@reject_cfm')->name('manager.reject_cfm');
     Route::post('/transfer_cfm', 'ManagerController@transfer_cfm')->name('manager.transfer_cfm');
     Route::post('/register_cfm', 'ManagerController@create_officer')->name('manager.register_cfm');
+
+    Route::prefix('transfer_case')->group(function (){
+        Route::get('ajax-amphur/{prov_id}','ManagerController@ajax_amphur');
+    });
 });
 Route::prefix('officer')->group(function () {
     Route::get('/', 'OfficerController@index')->name('officer.main');

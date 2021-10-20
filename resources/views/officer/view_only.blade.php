@@ -493,11 +493,14 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                             {{--{!! Form::submit('ยืนยันการรับเรื่อง',['class'=>'button is-primary']) !!}--}}
                             <!-- @if( ($show_data->status  != 99) &&   (Auth::user()->position  == "admin")) -->
                         </div>
+                        @if($show_data->receiver != "")
                         <div class="control">
                             <a class="button is-info "
-                                href="{{ route('manager.transfer_frm',['case_id' => $show_data->case_id]) }}"><i
-                        class="fa fa-exchange-alt" aria-hidden="true"></i>&nbsp;เปลี่ยนผู้รับผิดชอบ</a>
+                                href="{{ route('manager.transfer_frm',['case_id' => $show_data->case_id]) }}">
+                                <i class="fa fa-exchange-alt" aria-hidden="true"></i>&nbsp;เปลี่ยนผู้รับผิดชอบ
+                            </a>
                         </div>
+                        @endif
                         <div class="control">
                             <a class="button is-danger  "
                                 href="{{ route('manager.reject_frm',['case_id' => $show_data->case_id]) }}">

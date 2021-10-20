@@ -334,6 +334,7 @@
                                     <p class="control has-icons-left ">
                                     <input  class="input" type="text" value="{{  Auth::user()->name }}" disabled >
 									<input id="receive" name="receiver"  type="text" value="{{  Auth::user()->name }}" hidden >
+                                    <input id="receive_username" name="receive_username"  type="text" value="{{  Auth::user()->username }}" hidden >
 
                                     </p>
                                 </div>

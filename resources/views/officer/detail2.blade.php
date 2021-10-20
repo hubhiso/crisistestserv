@@ -81,10 +81,18 @@
                 </nav>
 
                 <div class="content">
-                    <h1>
+                    <h2>
                         <sapn class="has-text-danger"><i class="far fa-address-card"></i></sapn>
                         &nbsp;ข้อมูลเพิ่มเติม
-                    </h1>
+                    </h2>
+
+                    @if(Auth::user()->position != "officer")
+                    <div class="has-text-right">
+                        <a class="button is-info is-rounded" href="{{ route('manager.transfer_frm',['case_id' => $show_data->case_id]) }}"><i
+                                class="fa fa-exchange-alt" aria-hidden="true"></i>&nbsp;เปลี่ยนผู้รับผิดชอบ</a>
+                    </div>
+                    <br>
+                    @endif
 
                     <div class="box">
                         <!--This container is <strong>centered</strong> on desktop. -->

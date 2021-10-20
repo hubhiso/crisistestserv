@@ -9,6 +9,7 @@ use App\operate_detail;
 use App\timeline;
 use App\officer;
 use Auth;
+use App\casetransfer;
 
 
 class OfficerUpdateController extends Controller
@@ -25,11 +26,43 @@ class OfficerUpdateController extends Controller
 
         $case_id = $request->input('case_id');
         $receiver_name = $request->input('receiver');
-        case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 2]);
-        timeline::create(['case_id'=>$case_id,
-            'operate_status'=>2,
-            'operate_time'=> date("Y-m-d")
+
+        $ck_status1 = timeline::where('case_id','=',$case_id)->orderBy('id','desc')->first();
+
+        if($ck_status1->operate_status == 1){
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 2]);
+
+            timeline::create(['case_id'=>$case_id,
+                'operate_status'=>2,
+                'operate_time'=> date("Y-m-d")
             ]);
+        }else if($ck_status1->operate_status == 2){
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 2]);
+
+            casetransfer::where('case_id','=',$case_id)->orderBy('id','desc')->take(1)->update(['ousername' => $request->input('receive_username')]);
+        }else if($ck_status1->operate_status == 3){
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 3]);
+
+            casetransfer::where('case_id','=',$case_id)->orderBy('id','desc')->take(1)->update(['ousername' => $request->input('receive_username')]);
+
+        }else if($ck_status1->operate_status == 4){
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 4]);
+
+            casetransfer::where('case_id','=',$case_id)->orderBy('id','desc')->take(1)->update(['ousername' => $request->input('receive_username')]);
+
+        }else if($ck_status1->operate_status == 5){
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 5]);
+
+            casetransfer::where('case_id','=',$case_id)->orderBy('id','desc')->take(1)->update(['ousername' => $request->input('receive_username')]);
+
+        }else if($ck_status1->operate_status == 6){
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 6]);
+
+            casetransfer::where('case_id','=',$case_id)->orderBy('id','desc')->take(1)->update(['ousername' => $request->input('receive_username')]);
+
+        }
+
+        
         return redirect('officer/show/0');
 
     }
@@ -328,12 +361,9 @@ class OfficerUpdateController extends Controller
         $pid = $request->input('pid');
         $pposition = $request->input('pposition');
         $parea = $request->input('parea');
-        
+       
 
-
-        //if($pposition  == "admin" && $pid == 0){
         if(Auth::user()->position == "admin" || Auth::user()->p_view_all == "yes"){
-
             if($request->input('Filter')==1){
                 $cases = case_input::where('prov_id', '>', '0');
                 $filter ++;
@@ -373,7 +403,8 @@ class OfficerUpdateController extends Controller
         }
         else{
             if($request->input('Filter')==1){
-                $matchThese = ['prov_id'=>$pid];
+                $matchThese = ['prov_id'=>$pid ];
+                $test = "->orWhere('prov_id'=> '11' )";
                 $cases = case_input::where($matchThese);
                 $filter ++;
             }else if ($request->input('Filter')==2){
@@ -445,15 +476,24 @@ class OfficerUpdateController extends Controller
             }
         }
 
-        $linkgroups = officer::where('name', '=', $request->input('username'))->first();
+        $joinofficer = officer::where('name', $username)->first();
 
-        if($linkgroups->group != null && $linkgroups->g_view_all == 'yes'){
-            $groups = officer::where('group','=', $linkgroups->group)->get();
+        if($joinofficer->group != null && $joinofficer->g_view_all == 'yes'){
+            $groups = officer::where('group','=', $joinofficer->group)->get();
 
             foreach ($groups as $group) {
+                //$cases =  $cases->orWhere('prov_id', '=', $group->prov_id );
                 $cases =  $cases->orWhere('receiver', '=', $group->name );
                 $filter++;
             }
+        }
+
+        $join_transfers = casetransfer::where('prev_ousername' ,'=', $joinofficer->username)->distinct()->get();
+
+        foreach ($join_transfers as $join_transfer) {
+
+            $cases =  $cases->orWhere('case_id', '=', $join_transfer->case_id );
+            $filter++;
         }
 
         
@@ -464,7 +504,7 @@ class OfficerUpdateController extends Controller
             $cases = case_input::Where('prov_id','=',$pid);
         }
 
-        $html = view('officer._Case',compact('cases','username'))->render();
+        $html = view('officer._Case',compact('cases','username','join_transfers'))->render();
         return response()->json(compact('html','text_search'));
 
     }

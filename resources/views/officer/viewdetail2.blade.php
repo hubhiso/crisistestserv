@@ -98,11 +98,7 @@
             </div>
 
             <div class="content">
-            <br>
-            <div class="has-text-right">
-                <a class="button is-info is-rounded" href="{{ route('manager.transfer_frm',['case_id' => $show_data->case_id]) }}"><i
-                        class="fa fa-exchange-alt" aria-hidden="true"></i>&nbsp;เปลี่ยนผู้รับผิดชอบ</a>
-            </div>
+            
             <div>
                 <p>* หน้าสำหรับผู้ดูแลเพื่อดูรายละเอียดข้อมูลเพิ่มเติม</p>
             </div>

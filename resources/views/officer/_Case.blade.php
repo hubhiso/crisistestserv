@@ -2,7 +2,7 @@
     <thead style="text-align: center;">
         <tr>
 
-            <th> วันที่</abbr>
+            <th> วันที่ </abbr>
             </th>
             <th> รหัส </abbr>
             </th>
@@ -30,6 +30,19 @@
         @endphp
 
         @foreach($cases as $case)
+
+
+        <?php
+                $ck_prev_transfer = 0;
+
+                foreach ($join_transfers as $join_transfer) {
+
+                   if( $join_transfer->case_id == $case->case_id){
+                       $ck_prev_transfer = 1;
+                    }
+                }
+        ?>
+
         <tr>
             <th>
                 {{date('d',strtotime(str_replace('-','/', $case->created_at)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->created_at)))]}}{{date("Y",strtotime(str_replace('-','/', $case->created_at)))+543}}
@@ -118,8 +131,12 @@
                     href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
             </td>
             @elseif($case->status == 3)
+
             <td> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
-            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes')
+
+            
+
+            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1)
             <td>
                 <a class='button is-primary'
                     href="{{ route('officer.view_detail2', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
@@ -131,8 +148,10 @@
             </td>
             @endif
             @elseif($case->status == 4)
+
+            
             <td> อยู่ระหว่างการดำเนินการ </td>
-            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes')
+            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes'  || $ck_prev_transfer == 1)
             <td>
                 <a class='button is-primary'
                     href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
@@ -144,8 +163,9 @@
             </td>
             @endif
             @elseif($case->status == 5)
+
             <td> ดำเนินการเสร็จสิ้น </td>
-            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes')
+            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1 )
             <td>
                 <a class='button is-primary'
                     href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
@@ -158,7 +178,7 @@
             @endif
             @elseif($case->status == 6)
             <td> ดำเนินการแล้วส่งต่อ </td>
-            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes')
+            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1 )
             <td>
                 <a class='button is-primary'
                     href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>

@@ -26,13 +26,6 @@ class ManagerController extends Controller
         return view('Manager.reject_frm',compact('show_data'));
     }
 
-    public function ajax_amphur($prov_id) {
-        $prov_code    = $prov_id;
-        $new_prov_id = province::where('PROVINCE_CODE', '=', $prov_code)->first();
-        $category = amphur::where('PROVINCE_ID', '=', $new_prov_id->PROVINCE_ID)->get();
-        return response()->json($category);
-    }
-
     public  function transfer($case_id){
         $show_data = case_input::where('case_id','=',$case_id)->first();
 
@@ -65,6 +58,9 @@ class ManagerController extends Controller
 
         $prov_id = $request->input('province');
 
+        $amphur_id = $request->input('amphur_id');
+
+
 
         if($officer_id != ""){
             $officer = $officers = officer::where('id','=',$officer_id)->first();
@@ -79,7 +75,7 @@ class ManagerController extends Controller
             case_input::where('case_id','=',$case_id)->update([
                 'status' => 1 , 
                 'prov_id' => $prov_id , 
-                'amphur_id' => $prov_id."01" , 
+                'amphur_id' => $amphur_id , 
                 'receiver_id' => NULL , 
                 'receiver' => ""
             ]);
@@ -113,6 +109,13 @@ class ManagerController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
+    }
+
+    public function ajax_amphur($prov_id) {
+        $prov_code    = $prov_id;
+        $new_prov_id = province::where('PROVINCE_CODE', '=', $prov_code)->first();
+        $category = amphur::where('PROVINCE_ID', '=', $new_prov_id->PROVINCE_ID)->get();
+        return response()->json($category);
     }
 
     public function ajax_email($email) {
