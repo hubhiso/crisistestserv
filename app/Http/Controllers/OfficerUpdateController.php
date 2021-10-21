@@ -26,37 +26,39 @@ class OfficerUpdateController extends Controller
 
         $case_id = $request->input('case_id');
         $receiver_name = $request->input('receiver');
+        $receiver_id = $request->input('id_officer');
+
 
         $ck_status1 = timeline::where('case_id','=',$case_id)->orderBy('id','desc')->first();
 
         if($ck_status1->operate_status == 1){
-            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 2]);
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name ,'receiver_id' => $receiver_id , 'status' => 2]);
 
             timeline::create(['case_id'=>$case_id,
                 'operate_status'=>2,
                 'operate_time'=> date("Y-m-d")
             ]);
         }else if($ck_status1->operate_status == 2){
-            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 2]);
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name ,'receiver_id' => $receiver_id, 'status' => 2]);
 
             casetransfer::where('case_id','=',$case_id)->orderBy('id','desc')->take(1)->update(['ousername' => $request->input('receive_username')]);
         }else if($ck_status1->operate_status == 3){
-            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 3]);
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name ,'receiver_id' => $receiver_id, 'status' => 3]);
 
             casetransfer::where('case_id','=',$case_id)->orderBy('id','desc')->take(1)->update(['ousername' => $request->input('receive_username')]);
 
         }else if($ck_status1->operate_status == 4){
-            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 4]);
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name ,'receiver_id' => $receiver_id, 'status' => 4]);
 
             casetransfer::where('case_id','=',$case_id)->orderBy('id','desc')->take(1)->update(['ousername' => $request->input('receive_username')]);
 
         }else if($ck_status1->operate_status == 5){
-            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 5]);
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name ,'receiver_id' => $receiver_id, 'status' => 5]);
 
             casetransfer::where('case_id','=',$case_id)->orderBy('id','desc')->take(1)->update(['ousername' => $request->input('receive_username')]);
 
         }else if($ck_status1->operate_status == 6){
-            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name , 'status' => 6]);
+            case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name ,'receiver_id' => $receiver_id, 'status' => 6]);
 
             casetransfer::where('case_id','=',$case_id)->orderBy('id','desc')->take(1)->update(['ousername' => $request->input('receive_username')]);
 

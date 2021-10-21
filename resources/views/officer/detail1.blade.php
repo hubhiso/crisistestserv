@@ -34,6 +34,9 @@
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+        <input type="hidden" name="id_officer" value="{{ Auth::user()->id }}">
+
+
         <div class="container">
 
             <div class="section">
@@ -335,6 +338,7 @@
                                     <input  class="input" type="text" value="{{  Auth::user()->name }}" disabled >
 									<input id="receive" name="receiver"  type="text" value="{{  Auth::user()->name }}" hidden >
                                     <input id="receive_username" name="receive_username"  type="text" value="{{  Auth::user()->username }}" hidden >
+
 
                                     </p>
                                 </div>
