@@ -147,6 +147,7 @@
                                         <option value="2"> ประเภท </option>
                                         <option value="3"> สถานะ </option>
                                         <option value="4"> ประเภทของผู้แจ้ง </option>
+                                        <option value="5"> เคสส่งต่อ </option>
 
                                     </select>
                                 </span>

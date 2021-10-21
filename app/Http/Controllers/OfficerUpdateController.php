@@ -361,7 +361,11 @@ class OfficerUpdateController extends Controller
         $pid = $request->input('pid');
         $pposition = $request->input('pposition');
         $parea = $request->input('parea');
-       
+
+        $joinofficer = officer::where('name', $username)->first();
+
+        $join_transfers = casetransfer::where('prev_ousername' ,'=', $joinofficer->username)->distinct()->get();
+
 
         if(Auth::user()->position == "admin" || Auth::user()->p_view_all == "yes"){
             if($request->input('Filter')==1){
@@ -381,6 +385,18 @@ class OfficerUpdateController extends Controller
                 $matchThese = ['sender_case' => $value_sub];
                 $cases = case_input::where($matchThese);
                 $filter ++;
+            }else if ($request->input('Filter')==5){
+                $loop_case = 0;
+                foreach ($join_transfers as $join_transfer) {
+                    if($loop_case == 0){
+                        $cases =  case_input::where('case_id', '=', $join_transfer->case_id );
+                    }else{
+                        $cases =  $cases->orWhere('case_id', '=', $join_transfer->case_id );
+                    }
+                    $loop_case++;
+                }
+
+                $filter ++;
             }
 
         }else if($pposition  == "manager_area" && $pid == 0){
@@ -398,14 +414,32 @@ class OfficerUpdateController extends Controller
             }else if ($request->input('Filter')==4){
                 $cases = case_input::join('prov_geo', 'prov_id', '=', 'prov_geo.code')->where([['sender_case','=', $value_sub],['prov_geo.nhso','=',$parea]]);
                 $filter ++;
+            }else if ($request->input('Filter')==5){
+
+                $loop_case = 0;
+                foreach ($join_transfers as $join_transfer) {
+                    if($loop_case == 0){
+                        $cases =  case_input::where('case_id', '=', $join_transfer->case_id );
+                    }else{
+                        $cases =  $cases->orWhere('case_id', '=', $join_transfer->case_id );
+                    }
+                    $loop_case++;
+                }
+
+                $filter ++;
             }
 
         }
         else{
             if($request->input('Filter')==1){
                 $matchThese = ['prov_id'=>$pid ];
-                $test = "->orWhere('prov_id'=> '11' )";
+                //$test = "->orWhere('prov_id'=> '11' )";
                 $cases = case_input::where($matchThese);
+
+                foreach ($join_transfers as $join_transfer) {
+
+                    $cases =  $cases->orWhere('case_id', '=', $join_transfer->case_id );
+                }
                 $filter ++;
             }else if ($request->input('Filter')==2){
                 $matchThese = ['problem_case' => $value_sub,'prov_id'=>$pid];
@@ -420,6 +454,19 @@ class OfficerUpdateController extends Controller
             }else if ($request->input('Filter')==4){
                 $matchThese = ['sender_case' => $value_sub,'prov_id'=>$pid];
                 $cases = case_input::where($matchThese);
+                $filter ++;
+            }else if ($request->input('Filter')==5){
+                
+                $loop_case = 0;
+                foreach ($join_transfers as $join_transfer) {
+                    if($loop_case == 0){
+                        $cases =  case_input::where('case_id', '=', $join_transfer->case_id );
+                    }else{
+                        $cases =  $cases->orWhere('case_id', '=', $join_transfer->case_id );
+                    }
+                    $loop_case++;
+                }
+
                 $filter ++;
             }
         }
@@ -476,8 +523,6 @@ class OfficerUpdateController extends Controller
             }
         }
 
-        $joinofficer = officer::where('name', $username)->first();
-
         if($joinofficer->group != null && $joinofficer->g_view_all == 'yes'){
             $groups = officer::where('group','=', $joinofficer->group)->get();
 
@@ -486,14 +531,6 @@ class OfficerUpdateController extends Controller
                 $cases =  $cases->orWhere('receiver', '=', $group->name );
                 $filter++;
             }
-        }
-
-        $join_transfers = casetransfer::where('prev_ousername' ,'=', $joinofficer->username)->distinct()->get();
-
-        foreach ($join_transfers as $join_transfer) {
-
-            $cases =  $cases->orWhere('case_id', '=', $join_transfer->case_id );
-            $filter++;
         }
 
         
