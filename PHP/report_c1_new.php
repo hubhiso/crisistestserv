@@ -299,7 +299,6 @@
                 position = 'officer' or o.name = 'adminfar'
                 order by prov_id";
 
-                echo $sql1;
                 $result1 = mysqli_query($conn, $sql1); 
                 $row1 = mysqli_num_rows($result1); 
                 $i = '0';
@@ -316,7 +315,7 @@
                         inner join case_inputs ca on c.case_id = ca.case_id
                         where f.name = '".$row1['name']."' 
 						and ca.created_at >= '".date("Y/m/d", strtotime($date_start))."' and ca.created_at <= '".date("Y/m/d", strtotime($date_end))."' ";
-                        //echo $sqlt;
+                        echo $sqlt;
                         $ousername = 0;
                         
                         $result_t = mysqli_query($conn, $sqlt); 
