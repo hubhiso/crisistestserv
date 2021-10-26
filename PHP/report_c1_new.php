@@ -42,7 +42,6 @@
     { 
         echo "Database connection failed."; 
     }
-		// Change character set to utf8
 		mysqli_set_charset($conn,"utf8");
 
 
@@ -57,8 +56,6 @@
 	   if($p_case > '0'){
 		$sub_q = ' and problem_case = '.$p_case.' ';
 	   }
-
-       
 
 	?>
 
@@ -301,6 +298,8 @@
                 where
                 position = 'officer' or o.name = 'adminfar'
                 order by prov_id";
+
+                echo $sql1;
                 $result1 = mysqli_query($conn, $sql1); 
                 $row1 = mysqli_num_rows($result1); 
                 $i = '0';
