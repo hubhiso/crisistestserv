@@ -318,7 +318,7 @@
                 </a>
 
                 <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
-                    href="report_perfomance_new.php">
+                    href="report_performance_new.php">
                     <div class=" icon-left d-flex align-items-center justify-content-center h4">
                         <i class="far fa-file-alt" aria-hidden="true"></i>
                     </div>
