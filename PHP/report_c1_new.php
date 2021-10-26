@@ -307,42 +307,42 @@
                 while($row1 = $result1->fetch_assoc()) {
 
                     $sqlt = "SELECT count(c.case_id) as total
-                        FROM casetransfer c
-                        INNER JOIN 
-                        (SELECT MAX(id) as id FROM casetransfer c2 where ousername = '".$row1[username]."'  GROUP BY c2.case_id) last_update 
-                        ON last_update.id = c.id
-                        inner join officers f on c.ousername = f.username
-                        inner join case_inputs ca on c.case_id = ca.case_id
-                        where f.name = '".$row1['name']."' 
-						and ca.created_at >= '".date("Y/m/d", strtotime($date_start))."' and ca.created_at <= '".date("Y/m/d", strtotime($date_end))."' ";
-                        echo $sqlt;
-                        $ousername = 0;
-                        
-                        $result_t = mysqli_query($conn, $sqlt); 
-						$rowt = mysqli_num_rows($result_t); 
-                        while($rowt = $result_t->fetch_assoc()) {
-                            $ousername = $rowt['total'];
-                            $sum_t += $rowt['total'];
-                        }
+                    FROM casetransfer c
+                    INNER JOIN 
+                    (SELECT MAX(id) as id FROM casetransfer c2 where ousername = '".$row1[username]."'  GROUP BY c2.case_id) last_update 
+                    ON last_update.id = c.id
+                    inner join officers f on c.ousername = f.username
+                    inner join case_inputs ca on c.case_id = ca.case_id
+                    where f.name = '".$row1['name']."' 
+                    and ca.created_at >= '".date("Y/m/d", strtotime($date_start))."' and ca.created_at <= '".date("Y/m/d", strtotime($date_end))."' ";
+                    
+                    $ousername = 0;
+                    
+                    $result_t = mysqli_query($conn, $sqlt); 
+                    $rowt = mysqli_num_rows($result_t); 
+                    while($rowt = $result_t->fetch_assoc()) {
+                        $ousername = $rowt['total'];
+                        $sum_t += $rowt['total'];
+                    }
 
-                        $sqlt2 = "SELECT count(c.case_id) as total
-                        FROM casetransfer c
-                        INNER JOIN 
-                        (SELECT MAX(id) as id FROM casetransfer c2 where prev_ousername = '".$row1[username]."'  GROUP BY c2.case_id) last_update 
-                        ON last_update.id = c.id
-                        inner join officers f on c.prev_ousername = f.username
-                        inner join case_inputs ca on c.case_id = ca.case_id
-                        where f.name = '".$row1['name']."' 
-						and ca.created_at >= '".date("Y/m/d", strtotime($date_start))."' and ca.created_at <= '".date("Y/m/d", strtotime($date_end))."' ";
-                        //echo $sqlt;
-                        $prev_ousername = 0;
-                        
-                        $result_t2 = mysqli_query($conn, $sqlt2); 
-						$rowt2 = mysqli_num_rows($result_t2); 
-                        while($rowt2 = $result_t2->fetch_assoc()) {
-                            $prev_ousername = $rowt2['total'];
-                            $sum_t2 += $rowt2['total'];
-                        }
+                    $sqlt2 = "SELECT count(c.case_id) as total
+                    FROM casetransfer c
+                    INNER JOIN 
+                    (SELECT MAX(id) as id FROM casetransfer c2 where prev_ousername = '".$row1[username]."'  GROUP BY c2.case_id) last_update 
+                    ON last_update.id = c.id
+                    inner join officers f on c.prev_ousername = f.username
+                    inner join case_inputs ca on c.case_id = ca.case_id
+                    where f.name = '".$row1['name']."' 
+                    and ca.created_at >= '".date("Y/m/d", strtotime($date_start))."' and ca.created_at <= '".date("Y/m/d", strtotime($date_end))."' ";
+                    
+                    $prev_ousername = 0;
+                    
+                    $result_t2 = mysqli_query($conn, $sqlt2); 
+                    $rowt2 = mysqli_num_rows($result_t2); 
+                    while($rowt2 = $result_t2->fetch_assoc()) {
+                        $prev_ousername = $rowt2['total'];
+                        $sum_t2 += $rowt2['total'];
+                    }
 
                     $sql2 = "SELECT receiver,
                     sum(CASE WHEN status = '1' THEN 1 ELSE 0 END) as case1,
@@ -358,7 +358,6 @@
                     $sub_q
                     group by receiver";
 
-                    //echo $sql2,'<br>';
 
                     $result2 = mysqli_query($conn, $sql2); 
                     $row2 = mysqli_num_rows($result2); 
@@ -366,16 +365,13 @@
                     
                     if ($result2->num_rows > 0) {
                         
-                        // output data of each row
-                        
-
                         while($row2 = $result2->fetch_assoc()) {
                             
                             $sql3 = "SELECT username,officers.nameorg, prov_geo.code, prov_geo.name as provname, prov_geo.nhso 
                             FROM officers left join prov_geo 
                             on officers.prov_id = prov_geo.code
                             WHERE officers.name = '".$row2['receiver']."'";
-                            //echo $sql2;
+
                             $result3 = mysqli_query($conn, $sql3); 
 
                             $row3 = mysqli_num_rows($result3);
@@ -389,7 +385,6 @@
                             $c_s6 = $c_s6 + $row2["case6"];
                             $c_as = $c_as + $row2["sum"];
 
-                            //echo $row2["prov_id"];
                             
                             echo "<tr>";
                             echo "<th>".$i."</th>";
