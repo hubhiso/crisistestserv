@@ -1,7 +1,7 @@
 <?
 $username="root";
 $password="hiso";
-$database="crisis";
+$database="crisistest";
 $hostname = "localhost";
 
 $connection=mysql_connect ($hostname, $username, $password);
