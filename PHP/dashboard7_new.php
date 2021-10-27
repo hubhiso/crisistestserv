@@ -143,12 +143,12 @@
         <nav aria-label="breadcrumb ">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#"><span class="icon is-small">
+                    <a href="../public/"><span class="icon is-small">
                             <i class="fas fa-home" aria-hidden="true"></i>
                         </span>หน้าหลัก</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#"><span class="icon is-small">
+                    <a href="../public/officer"><span class="icon is-small">
                             <i class="fas fa-lock" aria-hidden="true"></i>
                         </span>ส่วนเจ้าหน้าที่</a>
                 </li>
@@ -528,7 +528,7 @@
                 dataSource: {
                     "chart": {
                         "caption": "การบันทึกข้อมูลการถูกละเมิดสิทธิในระบบ CRS ตั้งแต่เปิดใช้ระบบ ",
-                        "subCaption": "เปรียบเทียบตามกรณี จำแนกรายเดือน",
+                        "subCaption": "เปรียบเทียบตามหน่วยงาน จำแนกรายเดือน",
                         "placeValuesInside": "0",
                         "yAxisName": "จำนวนการถูกละเมิดสิทธิ",
                         "yAxisMinValue": "0",

@@ -75,10 +75,10 @@
 
     <div class="container-fluid p-4">
 
-        <nav aria-label="breadcrumb ">
+    <nav aria-label="breadcrumb ">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="../public"><span class="icon is-small">
+                    <a href="../public/"><span class="icon is-small">
                             <i class="fas fa-home" aria-hidden="true"></i>
                         </span>หน้าหลัก</a>
                 </li>
