@@ -187,36 +187,36 @@
 
         <table id='crisisc1' width="100%"
             class=" dt-responsive nowrap table table-responsive table-bordered table-striped table-hover">
-            <thead>
+            <thead class="bgcolor1">
 
-                <tr class="bg-danger">
-                    <th class="bg-danger" style="vertical-align: middle; color: white;" rowspan=2 width='$cel_width'>
+                <tr class="">
+                    <th class="" style="vertical-align: middle; color: white;" rowspan=2 width='$cel_width'>
                         ลำดับ</th>
-                    <th class="bg-danger" style="vertical-align: middle; color: white;" rowspan=2 width='$cel_width'>
+                    <th class="" style="vertical-align: middle; color: white;" rowspan=2 width='$cel_width'>
                         เจ้าหน้าที่</th>
-                    <th class="bg-danger" style="vertical-align: middle; color: white;" rowspan=2 width='$cel_width'>
+                    <th class="" style="vertical-align: middle; color: white;" rowspan=2 width='$cel_width'>
                         จังหวัด</th>
-                    <th class="bg-danger" style="vertical-align: middle; color: white;" rowspan=2 align='center'
+                    <th class="" style="vertical-align: middle; color: white;" rowspan=2 align='center'
                         width='$cel_width'>รวม
                     </th>
-                    <th class="bg-danger" style="vertical-align: middle; color: white;" colspan=4 align='center'
+                    <th class="" style="vertical-align: middle; color: white;" colspan=4 align='center'
                         width='$cel_width'>
                         จำนวนเคสที่ดำเนินการ (ราย) : เวลาเฉลี่ย (วัน)</th>
                 </tr>
                 <tr>
-                    <th class="bg-danger" style="vertical-align: middle; color: white;" align='center'
+                    <th class="" style="vertical-align: middle; color: white;" align='center'
                         width='$cel_width'>แจ้งเหตุ ->
                         รับเรื่อง
                     </th>
-                    <th class="bg-danger" style="vertical-align: middle; color: white;" align='center'
+                    <th class="" style="vertical-align: middle; color: white;" align='center'
                         width='$cel_width'>รับเรื่อง ->
                         บันทึกข้อมูล
                     </th>
-                    <th class="bg-danger" style="vertical-align: middle; color: white;" align='center'
+                    <th class="" style="vertical-align: middle; color: white;" align='center'
                         width='$cel_width'>บันทึกข้อมูล ->
                         ดำเนินการ
                     </th>
-                    <th class="bg-danger" style="vertical-align: middle; color: white;" align='center'
+                    <th class="" style="vertical-align: middle; color: white;" align='center'
                         width='$cel_width'>ดำเนินการ ->
                         เสร็จสิ้น
                     </th>

@@ -499,7 +499,7 @@
 
                                     
                                         if( $ch2_sex[$j] == 2){
-                                            echo '"value": "'.$count[$j].'"';
+                                            echo '"value": "'.$ch2_count[$j].'"';
                                         }
                                         
                                     }
@@ -522,7 +522,7 @@
 
                                     
                                         if( $ch2_sex[$j] == 3){
-                                            echo '"value": "'.$count[$j].'"';
+                                            echo '"value": "'.$ch2_count[$j].'"';
                                         }
                                         
                                     }
@@ -548,7 +548,7 @@
 
                                     
                                         if( $ch2_sex[$j] == 1){
-                                            echo '"value": "'.$count[$j].'"';
+                                            echo '"value": "'.$ch2_count[$j].'"';
                                         }
                                         
                                     }

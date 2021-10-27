@@ -49,13 +49,13 @@
                 <div class="tabs is-centered  is-toggle is-toggle-rounded">
                     <ul>
                         <li>
-                            <a href="dashboard3.blade.php">
+                            <a href="dashboard3_new.php">
                                 <span class="icon is-small"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
                                 <span> กราฟแสดงข้อมูล<br>แยกตามประเด็น </span>
                             </a>
                         </li>
                         <li>
-                            <a href="mapcrisis.blade.php">
+                            <a href="mapcrisis_new.php">
                                 <span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
                                 <span>พิกัด<br>การละเมิดสิทธิ์</span>
                             </a>
@@ -69,19 +69,19 @@
 
                         </li>
                         <li>
-                            <a href="report_c1.blade.php">
+                            <a href="report_c1_new.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>ตารางสรุปการ<br>จัดการเหตุรายหน่วย</span>
                             </a>
                         </li>
                         <li>
-                            <a href="report_c2.blade.php">
+                            <a href="report_c2_new.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
                             </a>
                         </li>
                         <li>
-                            <a href="report_perfomance.blade.php">
+                            <a href="report_performance_new.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
                                 <span>ตารางสรุป<br>การให้บริการ</span>
                             </a>
