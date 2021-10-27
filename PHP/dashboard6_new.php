@@ -322,6 +322,7 @@
                         "placeValuesInside": "0",
                         "yAxisName": "จำนวนการถูกละเมิดสิทธิ",
                         "yAxisMinValue": "0",
+                        "showValues": "0",
                         "basefontsize": "14",
                         "captionFontSize": "16",
                         "subcaptionFontSize": "16",
@@ -397,7 +398,7 @@
                                         
                                     }
                                     if($ck1 == 0){
-                                        echo '"value": ""';
+                                        echo '"value": "0"';
                                     }
 
 

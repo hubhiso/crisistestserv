@@ -58,7 +58,7 @@
 
 
         if($years == ''){$years = $last_year;}
-        if($area == ''){$area = '1';}
+        if($area == ''){$area = '13';}
         
 
         $sql_a = "select * from prov_geo where nhso = $area";
@@ -414,6 +414,7 @@
                         "captionFontSize": "16",
                         "subcaptionFontSize": "16",
                         "showAxisLines": "1",
+                        "showValues": "0",
                         "axisLineAlpha": "25",
                         "alignCaptionWithCanvas": "0",
                         "showAlternateVGridColor": "1",
