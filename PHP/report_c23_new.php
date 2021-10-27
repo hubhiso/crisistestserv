@@ -304,6 +304,8 @@
                 </th>
                 <th class="" style="vertical-align: middle; color: white;" rowspan="2">
                     กลุ่มชาติพันธุ์และชนเผ่า</th>
+                    <th class="" style="vertical-align: middle; color: white;" rowspan="2">
+                    ผู้พิการ</th>
                 <th class="" style="vertical-align: middle; color: white;" rowspan="2">รวม</th>
                 </tr>
                 <tr>
@@ -338,6 +340,7 @@
                             sum(CASE WHEN problem_case = '4' and group_code = '4' THEN 1 ELSE 0 END) as case4_4,
                             sum(CASE WHEN problem_case = '4' and group_code = '5' THEN 1 ELSE 0 END) as case4_5,
                             sum(CASE WHEN problem_case = '4' and group_code = '6' THEN 1 ELSE 0 END) as case4_6,
+                            sum(CASE WHEN problem_case = '4' and group_code = '7' THEN 1 ELSE 0 END) as case4_7,
                             sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as sum
                             FROM case_inputs
                             where receiver='".$row1['name']."'
@@ -365,6 +368,7 @@
                                     $c_s44 = $c_s44 + $row2["case4_4"];
                                     $c_s45 = $c_s45 + $row2["case4_5"];
                                     $c_s46 = $c_s46 + $row2["case4_6"];
+                                    $c_s47 = $c_s47 + $row2["case4_7"];
                                     $c_as = $c_as + $row2["sum"];
                                     
                                     //echo $row['receiver'];
@@ -394,6 +398,7 @@
                                                         echo "<td>".$row2["case4_4"]."</td>";
                                                         echo "<td>".$row2["case4_5"]."</td>";
                                                         echo "<td>".$row2["case4_6"]."</td>";
+                                                        echo "<td>".$row2["case4_7"]."</td>";
                                                         echo "<td>".$row2["sum"]."</td>";
                                     echo "</tr>";
                                                             
@@ -404,6 +409,7 @@
                                     echo "<td>".$row1["nameorg"]."</td>";
                                     echo "<td>".$row1["provname"]."</td>";
                                     echo "<td>".$row1["nhso"]."</td>";
+                                    echo "<td>0</td>";
                                     echo "<td>0</td>";
                                     echo "<td>0</td>";
                                     echo "<td>0</td>";
@@ -432,6 +438,7 @@
                                     echo "<td>".$c_s44."</td>";
                                     echo "<td>".$c_s45."</td>";
                                     echo "<td>".$c_s46."</td>";
+                                    echo "<td>".$c_s47."</td>";
                                     echo "<td>".$c_as."</td>";
 							    echo "</tr>";
                                 echo "</tbody>";

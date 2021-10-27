@@ -1026,7 +1026,7 @@
                             </div>
                         </div>
 
-                        <div class="field is-horizontal">
+                        <!--div class="field is-horizontal">
                             <div class="field-label is-normal">
                                 <label class="label">สาเหตุ</label>
                             </div>
@@ -1065,7 +1065,7 @@
                                         style="display: none">
                                 </div>
                             </div>
-                        </div>
+                        </!--div-->
 
                         <div class="field is-horizontal">
                             <div class="field-label is-normal">
