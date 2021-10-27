@@ -216,6 +216,10 @@
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>สัดส่วนกลุ่มเปราะบาง</span>
                 </a>
+                <a class="btn btn-white btn-rounded border" href="dashboard9_new.php">
+                    <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
+                    <span>สัดส่วนกลุ่มเปราะบางเทียบประชากรข้ามชาติ</span>
+                </a>
             </div>
 
         </div>

@@ -79,6 +79,26 @@
         }
 
 
+        for($j =1; $j <= $last_i; $j++){
+            if( $g_code[$j] == 1){
+                $lgbtq =  $count[$j];
+            }
+            if( $ch2_sex[$j] == 2){
+                $sex2 = $ch2_count[$j];
+            }
+            if( $ch2_sex[$j] == 1){
+                $sex1 = $ch2_count[$j];
+            }
+            if( $ch2_sex[$j] == 3){
+                $sex3 = $ch2_count[$j];
+            }
+            if( $g_code[$j] == 4){
+                $foreign = $count[$j];
+            }
+        }
+
+
+
     ?>
 
 </head>
@@ -96,7 +116,7 @@
 
     <div class="container-fluid p-4">
 
-        <nav aria-label="breadcrumb ">
+    <nav aria-label="breadcrumb ">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="../public/"><span class="icon is-small">
@@ -116,7 +136,7 @@
 
         <div class="text-center ">
 
-            <div div class="btn-group flex-wrap">
+            <div class="btn-group flex-wrap">
                 <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
                     href="dashboard3_new.php">
                     <div class=" icon-left d-flex align-items-center justify-content-center h4">
@@ -223,11 +243,11 @@
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>ข้อมูลกลุ่มเปราะบางรายเดือน</span>
                 </a>
-                <a class="btn btn-primary btn-rounded" href="dashboard4_new.php">
+                <a class="btn btn-white btn-rounded border" href="dashboard4_new.php">
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>สัดส่วนกลุ่มเปราะบาง</span>
                 </a>
-                <a class="btn btn-white btn-rounded border" href="dashboard9_new.php">
+                <a class="btn btn-primary btn-rounded" href="dashboard9_new.php">
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>สัดส่วนกลุ่มเปราะบางเทียบประชากรข้ามชาติ</span>
                 </a>
@@ -248,153 +268,23 @@
 
             <br>
 
-            <div class="row text-right p-2">
+            <div class="bg-white mb-3  text-center p-3 chart-rounded">
+                <span > สัดส่วนการรายงานข้อร้องเรียนการถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</span>
+                <br>
+                <br>
+                <div class="row ">
+                    <div class="col ">
+                        <div id="chart-container-b1">
+                            FusionCharts XT will load here!
+                        </div>
 
-
-
-                <div name="chart" class="">
-                    <div id="chart-container-b1" class="bg-white mb-3  text-center p-2 chart-rounded">
-                        FusionCharts XT will load here!
                     </div>
-
-                    <div id="table" class="bg-white p-3 mb-3 text-center chart-rounded">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <td>กลุ่มเปราะบาง</td>
-                                    <td>จำนวน (เรื่อง)</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-start">กลุ่มชาติพันธิ์และชนเผ่า</td>
-                                    <?php
-
-                                        $ck = 0;
-
-                                        for($j =1; $j <= $last_i; $j++){
-
-                                            if( $g_code[$j] == 6){
-                                                echo '<td style="color: #df4591;">'.$count[$j].'</td>';
-                                                $ck = 1;
-                                            }
-                                        }
-
-                                        if($ck == 0){
-                                            echo '<td >0</td>';
-                                        }
-
-                                        ?>
-                                </tr>
-                                <tr>
-                                    <td class="text-start">กลุ่มหลากหลายทางเพศ</td>
-                                    <?php
-                                    
-                                    $ck = 0;
-
-                                    for($j =1; $j <= $last_i; $j++){
-
-                                        if( $g_code[$j] == 1){
-                                            echo '<td style="color: #df4591;">'.$count[$j].'</td>';
-                                            $ck = 1;
-                                        }
-                                    }
-                                    if($ck == 0){
-                                        echo '<td >0</td>';
-                                    }
-
-                                    ?>
-                                </tr>
-                                <tr>
-                                    <td class="text-start">&nbsp;&nbsp;&nbsp;- หญิง</td>
-                                    <?php
-                                     $ck = 0;
-                                        for($j =1; $j <= 3; $j++){
-
-                                            if( $ch2_sex[$j] == 2){
-                                                echo '<td style="color: #8455d3;">'.$ch2_count[$j].'</td>';
-                                                $ck = 1;
-                                            }
-                                        }
-                                        if($ck == 0){
-                                            echo '<td >0</td>';
-                                        }
-                                    ?>
-                                </tr>
-                                <tr>
-                                    <td class="text-start">&nbsp;&nbsp;&nbsp;- สาวประเภทสอง</td>
-                                    <?php
-                                     $ck = 0;
-                                        for($j =1; $j <= 3; $j++){
-
-                                            if( $ch2_sex[$j] == 3){
-                                                echo '<td style="color: #F8DF8B;">'.$ch2_count[$j].'</td>';
-                                                $ck = 1;
-                                            }
-                                        }
-                                        if($ck == 0){
-                                            echo '<td >0</td>';
-                                        }
-                                    ?>
-                                </tr>
-                                <tr>
-                                    <td class="text-start">&nbsp;&nbsp;&nbsp;- ชาย (ชายมีเพศสัมพันธ์กับชาย)</td>
-                                    <?php
-                                     $ck = 0;
-                                        for($j =1; $j <= 3; $j++){
-
-                                            if( $ch2_sex[$j] == 1){
-                                                echo '<td style="color: #B85C38;">'.$ch2_count[$j].'</td>';
-                                                $ck = 1;
-                                            }
-                                        }
-                                        if($ck == 0){
-                                            echo '<td >0</td>';
-                                        }
-                                    ?>
-                                </tr>
-                                <tr>
-                                    <td class="text-start">ประชากรข้ามชาติ</td>
-                                    <?php
-                                     $ck = 0;
-
-                                    for($j =1; $j <= $last_i; $j++){
-
-                                        if( $g_code[$j] == 4){
-                                            echo '<td style="color: #df4591;">'.$count[$j].'</td>';
-                                            $ck = 1;
-                                        }
-                                    }
-                                    if($ck == 0){
-                                        echo '<td >0</td>';
-                                    }
-
-                                    ?>
-                                </tr>
-                                <tr>
-                                    <td class="text-start">ผู้ใช้สารเสพติด</td>
-                                    <?php
-                                     $ck = 0;
-
-                                    for($j =1; $j <= $last_i; $j++){
-
-                                        if( $g_code[$j] == 3){
-                                            echo '<td style="color: #df4591;">'.$count[$j].'</td>';
-                                            $ck = 1;
-                                        }
-                                    }
-                                    if($ck == 0){
-                                        echo '<td >0</td>';
-                                    }
-
-                                    ?>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="col">
+                        <div id="chart-container-a2" class=" p-3 " style="border: 1px solid #df4591;border-radius: 20px; ">
+                            FusionCharts XT will load here!
+                        </div>
                     </div>
-
                 </div>
-
             </div>
 
         </div>
@@ -440,20 +330,20 @@
         </script>
 
         <script type="text/javascript">
-        /*  Tab 2 Chart */
-
         FusionCharts.ready(function() {
 
             var salesChart = new FusionCharts({
-                    type: 'stackedcolumn2d',
+                    type: 'doughnut2d',
                     renderAt: 'chart-container-b1',
                     width: '100%',
                     height: '400',
                     dataFormat: 'json',
                     dataSource: {
                         "chart": {
-                            "caption": "สัดส่วนการรายงานข้อร้องเรียนการถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง",
+                            "caption": "",
                             "subCaption": "",
+                            "animateClockwise" :"0",
+                            "defaultCenterLabel": " <?php echo $lgbtq+$foreign; ?> เรื่อง",
                             "placeValuesInside": "0",
                             "yAxisName": "จำนวน (เรื่อง)",
                             "basefontsize": "14",
@@ -470,138 +360,139 @@
 
                         },
 
+                        "data": [{
+                                "label": "กลุ่มหลากหลายทางเพศ",
+                                "value": "<?php echo $lgbtq; ?>"
+                            },
+                            {
+                                "label": "ประชากรข้ามชาติ",
+                                "value": "<?php echo $foreign; ?>"
+                            }
+                        ]
+
+                    }
+                })
+                .render();
+        });
+        </script>
+
+        <script type="text/javascript">
+        FusionCharts.ready(function() {
+
+            var salesChart = new FusionCharts({
+                    type: 'stackedcolumn2d',
+                    renderAt: 'chart-container-a1',
+                    width: '100%',
+                    height: '400',
+                    dataFormat: 'json',
+                    dataSource: {
+                        "chart": {
+                            "caption": "",
+                            "subCaption": "",
+                            "placeValuesInside": "0",
+                            
+                            "yAxisName": "",
+                            "basefontsize": "14",
+                            "captionFontSize": "16",
+                            "subcaptionFontSize": "16",
+                            "showAxisLines": "1",
+                            "axisLineAlpha": "25",
+                            "alignCaptionWithCanvas": "0",
+                            "showAlternateVGridColor": "1",
+                            "showValues": "1",
+                            "plotBorderThickness": "5",
+                            "numberScaleValue": "0",
+                            "showYAxisValues": "0",
+                            "theme": "hulk-light",
+                            "palettecolors": "#df4591,#8455d3,#F8DF8B,#B85C38,#334756,#31112C,#32E0C4",
+                            "exportEnabled": "1"
+
+                        },
+
                         "categories": [{
                             "category": [{
-                                "label": "กลุ่มชาติพันธิ์และชนเผ่า"
-                            }, {
-                                "label": "กลุ่มหลากหลายทางเพศ	"
-                            }, {
-                                "label": "ประชากรข้ามชาติ	"
-                            }, {
-                                "label": "ผู้ใช้สารเสพติด	"
+                                "label": "Q1"
                             }]
                         }],
 
                         "dataset": [{
-                            "seriesname": "กลุ่มเปราะบาง",
-                            "data": [
+                            "seriesname": "Food Products",
+                            "data": [{
+                                "value": "11000"
+                            }]
+                        }, {
+                            "seriesname": "Non-Food Products",
+                            "data": [{
+                                "value": "11400"
+                            }]
+                        }]
 
-                                <?php
-                                    echo '{';
-                                    for($j =1; $j <= $last_i; $j++){
+                    }
+                })
+                .render();
+        });
+        </script>
 
-                                    
-                                        if( $g_code[$j] == 6){
-                                            echo '"value": "'.$count[$j].'"';
-                                        }
-                                        
-                                    }
-                                    echo '},';
+        <script type="text/javascript">
+        FusionCharts.ready(function() {
 
-                                ?> {
-                                    "value": ""
-                                },
+            var salesChart = new FusionCharts({
+                    type: 'stackedcolumn2d',
+                    renderAt: 'chart-container-a2',
+                    width: '100%',
+                    height: '400',
+                    dataFormat: 'json',
+                    dataSource: {
+                        "chart": {
+                            "caption": "",
+                            "subCaption": "",
+                            "placeValuesInside": "0",
+                            "yAxisName": "",
+                            "basefontsize": "14",
+                            "captionFontSize": "16",
+                            "subcaptionFontSize": "16",
+                            "axisLineAlpha": "0",
+                            "alignCaptionWithCanvas": "0",
+                            "showAlternateVGridColor": "0",
+                            "showValues": "1",
+                            "numberScaleValue": "0",
+                            "showYAxisValues": "0",
+                            "showPlotBorder" : "1",
+                            "plotBorderColor" : "#df4591",
+                            "plotBorderThickness" : "5",
+                            "alternateHGridColor": "#ffffff",
+                            "showBorder": "0",
+                            "bgAlpha": "0",
+                            "canvasBgColor": "#FFFFFF",
+                            "divLineColor": "#ffffff",
+                            "theme": "hulk-light",
 
-                                <?php
-                                    echo '{';
-                                    for($j =1; $j <= $last_i; $j++){
+                            "palettecolors": "#de0867,#df4591,#fba3e0,#334756,#31112C,#32E0C4",
+                            "exportEnabled": "1"
 
-                                    
-                                        if( $g_code[$j] == 4){
-                                            echo '"value": "'.$count[$j].'"';
-                                        }
-                                        
-                                    }
-                                    echo '},';
+                        },
 
-                                ?>
+                        "categories": [{
+                            "category": [{
+                                "label": "กลุ่มหลากหลายทางเพศ"
+                            }]
+                        }],
 
-                                <?php
-                                    echo '{';
-                                    for($j =1; $j <= $last_i; $j++){
-
-                                    
-                                        if( $g_code[$j] == 3){
-                                            echo '"value": "'.$count[$j].'"';
-                                        }
-                                        
-                                    }
-                                    echo '}';
-
-                                ?>
-                            ]
+                        "dataset": [{
+                            "seriesname": "ชาย (ชายมีเพศสัมพันธ์กับชาย)",
+                            "data": [{
+                                "value": "<?php echo $sex1; ?>"
+                            }]
+                        }, {
+                            "seriesname": "สาวประเภทสอง (TG)",
+                            "data": [{
+                                "value": "<?php echo $sex3; ?>"
+                            }]
                         }, {
                             "seriesname": "หญิง",
                             "data": [{
-                                    "value": ""
-                                },
-                                <?php
-                                    echo '{';
-                                    for($j =1; $j <= $last_i; $j++){
-
-                                    
-                                        if( $ch2_sex[$j] == 2){
-                                            echo '"value": "'.$ch2_count[$j].'"';
-                                        }
-                                        
-                                    }
-                                    echo '},';
-
-                            ?> {
-                                    "value": ""
-                                }, {
-                                    "value": ""
-                                }
-                            ]
-                        }, {
-                            "seriesname": "สาวประเภทสอง",
-                            "data": [{
-                                    "value": ""
-                                },
-                                <?php
-                                    echo '{';
-                                    for($j =1; $j <= $last_i; $j++){
-
-                                    
-                                        if( $ch2_sex[$j] == 3){
-                                            echo '"value": "'.$ch2_count[$j].'"';
-                                        }
-                                        
-                                    }
-                                    echo '},';
-
-                            ?>
-
-                                {
-                                    "value": ""
-                                },
-                                {
-                                    "value": ""
-                                }
-                            ]
-                        }, {
-                            "seriesname": "ชายมีเพศสัมพันธ์กับชาย",
-                            "data": [{
-                                    "value": ""
-                                },
-                                <?php
-                                    echo '{';
-                                    for($j =1; $j <= $last_i; $j++){
-
-                                    
-                                        if( $ch2_sex[$j] == 1){
-                                            echo '"value": "'.$ch2_count[$j].'"';
-                                        }
-                                        
-                                    }
-                                    echo '},';
-
-                            ?> {
-                                    "value": ""
-                                }, {
-                                    "value": ""
-                                }
-                            ]
+                                "value": "<?php echo $sex2; ?>"
+                            }]
                         }]
 
                     }

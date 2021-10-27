@@ -26,9 +26,6 @@
 
     <link href="report.css" rel="stylesheet">
 
-    <script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
-    <script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
-
     <title> ปกป้อง (CRS) </title>
 
     <?php
@@ -264,8 +261,9 @@
                     </div>
                     <div class="col-auto">
                         <div class="select">
-                        <select id="years" name="years" class="form-select" onChange="location.href='dashboard6_new.php?y='+this.value;">
-                            <?php
+                            <select id="years" name="years" class="form-select"
+                                onChange="location.href='dashboard6_new.php?y='+this.value;">
+                                <?php
                                 for($i = $y[1]; $i <= $last_year; $i++){
                                     if ($years == $i) { $se =  "selected";}
                                     echo "<option value='$i' $se> ".($i+543)." </option>";
@@ -278,7 +276,7 @@
                 </div>
 
                 <div id="chart-container-c2" class="bg-white mb-3 text-center p-2 chart-rounded">
-                FusionCharts XT will load here!
+                    FusionCharts XT will load here!
                 </div>
 
             </div>
@@ -305,12 +303,14 @@
 
     <script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
     <script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
+    <script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.fint.js"></script>
+
 
     <script type="text/javascript">
     FusionCharts.ready(function() {
 
         var salesChart = new FusionCharts({
-                type: 'msspline',
+                type: 'msline',
                 renderAt: 'chart-container-b1',
                 width: '100%',
                 height: '400',
@@ -319,19 +319,17 @@
                     "chart": {
                         "caption": "การบันทึกข้อมูลการถูกละเมิดสิทธิในระบบ CRS ตั้งแต่เปิดใช้ระบบ ",
                         "subCaption": "เปรียบเทียบตามปี จำแนกรายเดือน",
-                        "placeValuesInside": "0",
                         "yAxisName": "จำนวนการถูกละเมิดสิทธิ",
                         "yAxisMinValue": "0",
-                        "showValues": "0",
                         "basefontsize": "14",
                         "captionFontSize": "16",
                         "subcaptionFontSize": "16",
-                        "showAxisLines": "1",
-                        "axisLineAlpha": "25",
-                        "alignCaptionWithCanvas": "0",
-                        "showAlternateVGridColor": "1",
-                        "numberScaleValue": "0",
-                        "legendIconBorderThickness": "3",
+
+                        "showhovereffect": "1",
+                        "showValues": "0",
+                        "numbersuffix": "",
+                        "drawcrossline": "1",
+
                         "theme": "hulk-light",
                         "palettecolors": "#8455d3,#df4591,#c41cac,#b13825,#f8b4cd,#F8DF8B,#B85C38,#334756,#31112C,#32E0C4",
                         "exportEnabled": "1"
@@ -339,7 +337,9 @@
                     },
 
                     "categories": [{
+
                         "category": [{
+
                                 "label": "ม.ค."
                             },
                             {
@@ -429,7 +429,7 @@
     FusionCharts.ready(function() {
 
         var salesChart = new FusionCharts({
-                type: 'msspline',
+                type: 'msline',
                 renderAt: 'chart-container-c2',
                 width: '100%',
                 height: '400',
@@ -444,12 +444,10 @@
                         "basefontsize": "14",
                         "captionFontSize": "16",
                         "subcaptionFontSize": "16",
-                        "showAxisLines": "1",
+                        "showhovereffect": "1",
                         "showValues": "0",
-                        "axisLineAlpha": "25",
-                        "alignCaptionWithCanvas": "0",
-                        "showAlternateVGridColor": "1",
-                        "numberScaleValue": "0",
+                        "numbersuffix": "",
+                        "drawcrossline": "1",
                         "legendIconBorderThickness": "3",
                         "theme": "hulk-light",
                         "palettecolors": "#8455d3,#df4591,#c41cac,#b13825,#f8b4cd,#F8DF8B,#B85C38,#334756,#31112C,#32E0C4",

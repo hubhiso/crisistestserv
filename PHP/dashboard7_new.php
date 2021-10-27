@@ -319,7 +319,7 @@
                     </div>
 
                     <div class="col-auto ">
-                        <input type="submit" class="btn btn-danger" id="submit" name="submit" value="ตกลง">
+                        <input type="submit" class="btn bgcolor1" id="submit" name="submit" value="ตกลง">
 
                     </div>
                 </div>
@@ -398,7 +398,7 @@
     FusionCharts.ready(function() {
 
         var salesChart = new FusionCharts({
-                type: 'msspline',
+                type: 'msline',
                 renderAt: 'chart-container-b1',
                 width: '100%',
                 height: '400',
@@ -413,12 +413,10 @@
                         "basefontsize": "14",
                         "captionFontSize": "16",
                         "subcaptionFontSize": "16",
-                        "showAxisLines": "1",
+                        "showhovereffect": "1",
                         "showValues": "0",
-                        "axisLineAlpha": "25",
-                        "alignCaptionWithCanvas": "0",
-                        "showAlternateVGridColor": "1",
-                        "numberScaleValue": "0",
+                        "numbersuffix": "",
+                        "drawcrossline": "1",
                         "legendIconBorderThickness": "3",
                         "theme": "hulk-light",
                         "palettecolors": "#8455d3,#df4591,#c41cac,#b13825,#f8b4cd,#F8DF8B,#B85C38,#334756,#31112C,#32E0C4",
@@ -520,7 +518,7 @@
     FusionCharts.ready(function() {
 
         var salesChart = new FusionCharts({
-                type: 'msspline',
+                type: 'msline',
                 renderAt: 'chart-container-c2',
                 width: '100%',
                 height: '400',
@@ -535,13 +533,11 @@
                         "basefontsize": "14",
                         "captionFontSize": "16",
                         "subcaptionFontSize": "16",
-                        "showAxisLines": "1",
+                        "showhovereffect": "1",
                         "showValues": "0",
-                        "axisLineAlpha": "25",
-                        "alignCaptionWithCanvas": "0",
-                        "showAlternateVGridColor": "1",
-                        "numberScaleValue": "0",
-                        "legendIconBorderThickness": "5",
+                        "numbersuffix": "",
+                        "drawcrossline": "1",
+                        "legendIconBorderThickness": "3",
                         "theme": "hulk-light",
                         "palettecolors": "#8455d3,#df4591,#c41cac,#b13825,#f8b4cd,#F8DF8B,#B85C38,#334756,#31112C,#32E0C4",
                         "exportEnabled": "1"
