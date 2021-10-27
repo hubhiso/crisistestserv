@@ -266,11 +266,18 @@
                                     <td class="text-start">กลุ่มชาติพันธิ์และชนเผ่า</td>
                                     <?php
 
+                                        $ck = 0;
+
                                         for($j =1; $j <= $last_i; $j++){
 
                                             if( $g_code[$j] == 6){
                                                 echo '<td style="color: #df4591;">'.$count[$j].'</td>';
+                                                $ck = 1;
                                             }
+                                        }
+
+                                        if($ck == 0){
+                                            echo '<td >0</td>';
                                         }
 
                                         ?>
@@ -278,12 +285,18 @@
                                 <tr>
                                     <td class="text-start">กลุ่มหลากหลายทางเพศ</td>
                                     <?php
+                                    
+                                    $ck = 0;
 
                                     for($j =1; $j <= $last_i; $j++){
 
                                         if( $g_code[$j] == 1){
                                             echo '<td style="color: #df4591;">'.$count[$j].'</td>';
+                                            $ck = 1;
                                         }
+                                    }
+                                    if($ck == 0){
+                                        echo '<td >0</td>';
                                     }
 
                                     ?>
@@ -291,45 +304,65 @@
                                 <tr>
                                     <td class="text-start">&nbsp;&nbsp;&nbsp;- หญิง</td>
                                     <?php
+                                     $ck = 0;
                                         for($j =1; $j <= 3; $j++){
 
                                             if( $ch2_sex[$j] == 2){
                                                 echo '<td style="color: #8455d3;">'.$ch2_count[$j].'</td>';
+                                                $ck = 1;
                                             }
+                                        }
+                                        if($ck == 0){
+                                            echo '<td >0</td>';
                                         }
                                     ?>
                                 </tr>
                                 <tr>
                                     <td class="text-start">&nbsp;&nbsp;&nbsp;- สาวประเภทสอง</td>
                                     <?php
+                                     $ck = 0;
                                         for($j =1; $j <= 3; $j++){
 
                                             if( $ch2_sex[$j] == 3){
                                                 echo '<td style="color: #F8DF8B;">'.$ch2_count[$j].'</td>';
+                                                $ck = 1;
                                             }
+                                        }
+                                        if($ck == 0){
+                                            echo '<td >0</td>';
                                         }
                                     ?>
                                 </tr>
                                 <tr>
                                     <td class="text-start">&nbsp;&nbsp;&nbsp;- ชาย (ชายมีเพศสัมพันธ์กับชาย)</td>
                                     <?php
+                                     $ck = 0;
                                         for($j =1; $j <= 3; $j++){
 
                                             if( $ch2_sex[$j] == 1){
                                                 echo '<td style="color: #B85C38;">'.$ch2_count[$j].'</td>';
+                                                $ck = 1;
                                             }
+                                        }
+                                        if($ck == 0){
+                                            echo '<td >0</td>';
                                         }
                                     ?>
                                 </tr>
                                 <tr>
                                     <td class="text-start">ประชากรข้ามชาติ</td>
                                     <?php
+                                     $ck = 0;
 
                                     for($j =1; $j <= $last_i; $j++){
 
                                         if( $g_code[$j] == 4){
                                             echo '<td style="color: #df4591;">'.$count[$j].'</td>';
+                                            $ck = 1;
                                         }
+                                    }
+                                    if($ck == 0){
+                                        echo '<td >0</td>';
                                     }
 
                                     ?>
@@ -337,12 +370,17 @@
                                 <tr>
                                     <td class="text-start">ผู้ใช้สารเสพติด</td>
                                     <?php
+                                     $ck = 0;
 
                                     for($j =1; $j <= $last_i; $j++){
 
                                         if( $g_code[$j] == 3){
                                             echo '<td style="color: #df4591;">'.$count[$j].'</td>';
+                                            $ck = 1;
                                         }
+                                    }
+                                    if($ck == 0){
+                                        echo '<td >0</td>';
                                     }
 
                                     ?>
