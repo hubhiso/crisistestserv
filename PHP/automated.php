@@ -157,7 +157,7 @@
 
     <?php
 
-	require("phpsql_dbinfo.php");
+	require("phpsql_dbinfo_automated.php");
 	require("format_date.php");
 
 	$conn = mysqli_connect($hostname, $username, $password, $database);
