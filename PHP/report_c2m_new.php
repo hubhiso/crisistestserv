@@ -135,6 +135,18 @@
                 </a>
 
                 <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
+                    href="automated.php">
+                    <div class=" icon-left d-flex align-items-center justify-content-center h4">
+                        <i class="far fa-file-alt" aria-hidden="true"></i>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="text text-right ">
+                        <h6>รายงาน</h6>
+                        <span>การละเมิดสิทธิ์</span>
+                    </div>
+                </a>
+
+                <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
                     href="mapcrisis_new.php">
                     <div class=" icon-left d-flex align-items-center justify-content-center h4">
                         <i class="far fa-map" aria-hidden="true"></i>

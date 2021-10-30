@@ -71,7 +71,7 @@
                 </a>
 
 				<a type="button" class="btn btn-primary btn-rounded align-items-stretch d-flex"
-                    href="dashboard3_new.php">
+                    href="automated.php">
                     <div class=" icon-left d-flex align-items-center justify-content-center h4">
                         <i class="far fa-file-alt" aria-hidden="true"></i>
                     </div>
@@ -82,7 +82,7 @@
                     </div>
                 </a>
 
-                <a type="button" class="btn btn-white btn-rounded  align-items-stretch d-flex border"
+                <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
                     href="mapcrisis_new.php">
                     <div class=" icon-left d-flex align-items-center justify-content-center h4">
                         <i class="far fa-map" aria-hidden="true"></i>
@@ -95,7 +95,7 @@
                 </a>
 
                 <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
-                    href="dashboard3.blade.php">
+                    href="table.blade.php">
                     <div class=" icon-left d-flex align-items-center justify-content-center h4">
                         <i class="far fa-file-alt" aria-hidden="true"></i>
                     </div>
@@ -107,7 +107,7 @@
                 </a>
 
                 <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
-                    href="dashboard3.blade.php">
+                    href="report_c1_new.php">
                     <div class=" icon-left d-flex align-items-center justify-content-center h4">
                         <i class="far fa-file-alt" aria-hidden="true"></i>
                     </div>
@@ -120,7 +120,7 @@
 
 
                 <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
-                    href="dashboard3.blade.php">
+                    href="report_c2_new.php">
                     <div class=" icon-left d-flex align-items-center justify-content-center h4">
                         <i class="far fa-file-alt" aria-hidden="true"></i>
                     </div>
@@ -132,7 +132,7 @@
                 </a>
 
                 <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
-                    href="dashboard3.blade.php">
+                    href="report_performance_new.php">
                     <div class=" icon-left d-flex align-items-center justify-content-center h4">
                         <i class="far fa-file-alt" aria-hidden="true"></i>
                     </div>
