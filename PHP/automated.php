@@ -162,6 +162,8 @@
 
 	$conn = mysqli_connect($hostname, $username, $password, $database);
 
+    $conn -> set_charset("utf8");
+
 	$years = $_POST["years"];
 	$type = $_POST["type"];
 	$month = $_POST["month"];
