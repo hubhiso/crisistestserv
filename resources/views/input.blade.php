@@ -114,6 +114,8 @@
                     </div>
                 </div>
 
+                
+
                 @component('component.informer_detail') @endcomponent
 
                 <div class="field is-horizontal">
@@ -122,8 +124,10 @@
                     </div>
                 </div>
             </div>
+
             <input id="case_id" name="case_id" type="text" value="{{  $new_id }}" hidden>
             <div class="box" id="data-person">
+
                 <div class="field is-horizontal">
                     <div class="field-label ">
                         <!-- Left empty for spacing -->
@@ -402,7 +406,7 @@
 
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label">{{ trans('message.tx_group') }} *</label>
+                        <label class="label">{{ trans('message.tx_problem') }} *</label>
                     </div>
                     <div class="field-body">
                         <div class="field is-grouped">
@@ -427,7 +431,7 @@
 
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label"> {{ trans('message.tx_sub_group') }} </label>
+                        <label class="label"> {{ trans('message.tx_group') }} </label>
                     </div>
                     <div class="field-body">
                         <div class="field is-grouped">
@@ -445,7 +449,7 @@
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label"> {{ trans('message.tx_group') }} </label>
+                        <label class="label"> {{ trans('message.tx_sub_group') }} </label>
                     </div>
                     <div class="field-body">
                         <div class="field is-grouped">
@@ -750,14 +754,13 @@
 
 
     $(document).ready(function() {
-
+        
         document.getElementById("case1").checked = true;
         //  loadinput(val);
         document.getElementById("data-agent").style.display = 'none';
         document.getElementById("tabradio").style.display = 'none';
 
         document.getElementById("form_sender").style.display = 'none';
-
 
 
         $('#submitBtn').click(function() {
