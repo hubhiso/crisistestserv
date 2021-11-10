@@ -59,14 +59,14 @@
                         <li>
                             <a href="automated.php">
                                 <span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
-                                <span>รายงาน<br>การละเมิดสิทธิ์</span>
+                                <span>รายงาน<br>การละเมิดสิทธิ</span>
                             </a>
 
                         </li>
                         <li>
                             <a href="mapcrisis_new.php">
                                 <span class="icon is-small"><i class="far fa-map" aria-hidden="true"></i></span>
-                                <span>พิกัด<br>การละเมิดสิทธิ์</span>
+                                <span>พิกัด<br>การละเมิดสิทธิ</span>
                             </a>
 
                         </li>
@@ -80,13 +80,13 @@
                         <li>
                             <a href="report_c1_new.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-                                <span>สรุปกรณี<br>ละเมิดสิทธิ์</span>
+                                <span>สรุปกรณี<br>ละเมิดสิทธิ</span>
                             </a>
                         </li>
                         <li>
                             <a href="report_c2_new.php">
                                 <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-                                <span>ตารางสรุป<br>การละเมิดสิทธิ์</span>
+                                <span>ตารางสรุป<br>การละเมิดสิทธิ</span>
                             </a>
                         </li>
                         <li>

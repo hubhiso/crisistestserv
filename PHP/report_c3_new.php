@@ -110,7 +110,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right ">
                         <h6>รายงาน</h6>
-                        <span>การละเมิดสิทธิ์</span>
+                        <span>การละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -122,7 +122,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right ">
                         <h6>พิกัดการ</h6>
-                        <span>ละเมิดสิทธิ์</span>
+                        <span>ละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -146,7 +146,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right">
                         <h6>สรุปกรณี</h6>
-                        <span>ละเมิดสิทธิ์</span>
+                        <span>ละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -159,7 +159,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right">
                         <h6>ตารางสรุป</h6>
-                        <span>การละเมิดสิทธิ์</span>
+                        <span>การละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -248,7 +248,7 @@
             class=" dt-responsive nowrap table table-responsive table-bordered table-striped table-hover">
             <thead class="bgcolor1">
                 <th> ลำดับ </th>
-                <th> กรณีละเมิดสิทธิ์ </th>
+                <th> กรณีละเมิดสิทธิ </th>
                 <th> เจ้าหน้าที่แจ้ง </th>
                 <th> แจ้งด้วยตนเอง </th>
                 <th> มีผู้แจ้งแทน </th>

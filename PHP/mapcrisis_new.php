@@ -91,7 +91,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right ">
                         <h6>รายงาน</h6>
-                        <span>การละเมิดสิทธิ์</span>
+                        <span>การละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -103,7 +103,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right ">
                         <h6>พิกัดการ</h6>
-                        <span>ละเมิดสิทธิ์</span>
+                        <span>ละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -126,7 +126,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right">
                         <h6>สรุปกรณี</h6>
-                        <span>ละเมิดสิทธิ์</span>
+                        <span>ละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -139,7 +139,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right">
                         <h6>ตารางสรุป</h6>
-                        <span>การละเมิดสิทธิ์</span>
+                        <span>การละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -158,7 +158,7 @@
             </div>
 
             <div class="p-3">
-                <p class="h3">พิกัดการละเมิดสิทธิ์</p>
+                <p class="h3">พิกัดการละเมิดสิทธิ</p>
                 <p class="h5">คลิกที่ตัวเลขบนแผนที่เพื่อขยายแผนที่ และแสดงพิกัดในบริเวณดังกล่าว</p>
             </div>
         </div>

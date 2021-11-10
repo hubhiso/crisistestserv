@@ -134,7 +134,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right ">
                         <h6>รายงาน</h6>
-                        <span>การละเมิดสิทธิ์</span>
+                        <span>การละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -146,7 +146,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right ">
                         <h6>พิกัดการ</h6>
-                        <span>ละเมิดสิทธิ์</span>
+                        <span>ละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -169,7 +169,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right">
                         <h6>สรุปกรณี</h6>
-                        <span>ละเมิดสิทธิ์</span>
+                        <span>ละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -182,7 +182,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right">
                         <h6>ตารางสรุป</h6>
-                        <span>การละเมิดสิทธิ์</span>
+                        <span>การละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -209,7 +209,7 @@
             <div class="btn-group flex-wrap">
                 <a class="btn btn-white  btn-rounded border" href="dashboard3_new.php">
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
-                    <span>สถานการณ์การละเมิดสิทธิ์</span>
+                    <span>สถานการณ์การละเมิดสิทธิ</span>
                 </a>
                 <a class="btn btn-white btn-rounded border" href="dashboard5_new.php">
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>

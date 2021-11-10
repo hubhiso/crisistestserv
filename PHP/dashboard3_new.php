@@ -276,7 +276,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right ">
                         <h6>รายงาน</h6>
-                        <span>การละเมิดสิทธิ์</span>
+                        <span>การละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -288,7 +288,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right ">
                         <h6>พิกัดการ</h6>
-                        <span>ละเมิดสิทธิ์</span>
+                        <span>ละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -312,7 +312,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right">
                         <h6>สรุปกรณี</h6>
-                        <span>ละเมิดสิทธิ์</span>
+                        <span>ละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -325,7 +325,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <div class="text text-right">
                         <h6>ตารางสรุป</h6>
-                        <span>การละเมิดสิทธิ์</span>
+                        <span>การละเมิดสิทธิ</span>
                     </div>
                 </a>
 
@@ -352,7 +352,7 @@
             <div class="btn-group flex-wrap">
                 <a class="btn btn-primary btn-rounded" href="dashboard3_new.php">
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
-                    <span>สถานการณ์การละเมิดสิทธิ์</span>
+                    <span>สถานการณ์การละเมิดสิทธิ</span>
                 </a>
                 <a class="btn btn-white btn-rounded border" href="dashboard5_new.php">
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
@@ -627,7 +627,7 @@
                 dataFormat: 'json',
                 dataSource: {
                     "chart": {
-                        "caption": "การบันทึกข้อมูลการถูกละเมิดสิทธิ์ในระบบ CRS ",
+                        "caption": "การบันทึกข้อมูลการถูกละเมิดสิทธิในระบบ CRS ",
                         "subCaption": "จำแนกตามประเภท ",
                         "placeValuesInside": "0",
                         "yAxisName": "จำนวน",
@@ -683,7 +683,7 @@
                 dataSource: {
                     "chart": {
 
-                        "caption": "สาเหตุการละเมิดสิทธิ์",
+                        "caption": "สาเหตุการละเมิดสิทธิ",
                         "subcaption": "",
                         "showpercentvalues": "1",
                         "defaultcenterlabel": "<?php echo 'ทั้งหมด '.$sumcase2_all.' เคส'; ?>",
