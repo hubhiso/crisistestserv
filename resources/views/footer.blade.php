@@ -17,10 +17,8 @@
 
                 </div>
             </div>
-            <div class="column is-4 has-text-right">
-                <!-- Histats.com  (div with counter) -->
+            <!--div class="column is-4 has-text-right">
                 <div id="histats_counter"></div>
-                <!-- Histats.com  START  (aync)-->
                 <script type="text/javascript">
                 var _Hasync = _Hasync || [];
                 _Hasync.push(['Histats.start', '1,4574557,4,306,118,60,00011001']);
@@ -37,8 +35,7 @@
                 </script>
                 <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4574557&101" alt=""
                             border="0"></a></noscript>
-                <!-- Histats.com  END  -->
-            </div>
+            </!--div-->
             <!--p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>.  </small> </p-->
         </div>
 </footer>
