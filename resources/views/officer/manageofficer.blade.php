@@ -107,6 +107,9 @@
                     <table id="table_m" class="table is-fullwidth is-striped is-hoverable panel"
                         style="white-space: nowrap;">
                         <thead>
+                        <tr>
+                            <th class="has-text-danger has-text-centered" colspan="22">จัดการายชื่อเจ้าหน้าที่</th>
+                        </tr>
                             <tr>
                                 <th class="has-text-danger">ลำดับ</th>
                                 <th style="display:none;"></th>
@@ -114,8 +117,8 @@
                                 <th class="has-text-danger"></th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">เข้าใช้</th>
-                                <th class="has-text-danger">ชื่อ</th>
-                                <th class="has-text-danger">หน่วยงาน</th>
+                                <th class="has-text-danger" style="white-space: nomal; max-width: 60px">ชื่อ</th>
+                                <th class="has-text-danger" style="white-space: nomal; max-width: 60px">หน่วยงาน</th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">ตำแหน่ง</th>
                                 <th style="display:none;"></th>
@@ -127,7 +130,7 @@
                                 <th class="has-text-danger">จังหวัด</th>
                                 
                                 <th class="has-text-danger">Login ล่าสุด</th>
-                                <th class="has-text-danger">ไม่ได้ Login</th>
+                                <th class="has-text-danger" style="white-space: nomal; max-width: 60px">ไม่ได้ Login</th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">ดูเคสทั้งหมด</th>
                                 <th style="display:none;"></th>
