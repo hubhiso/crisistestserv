@@ -116,17 +116,16 @@
                                 <th class="has-text-danger">เข้าใช้</th>
                                 <th class="has-text-danger">ชื่อ</th>
                                 <th class="has-text-danger">หน่วยงาน</th>
-                                <th class="has-text-danger">เบอร์ติดต่อ</th>
-                                <th class="has-text-danger">Email</th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">ตำแหน่ง</th>
-                                <th class="has-text-danger">เขต</th>
-                                <th style="display:none;"></th>
-                                <th class="has-text-danger">จังหวัด</th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">กลุ่ม</th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">ดูทั้งหมดในกลุ่ม</th>
+                                <th class="has-text-danger">เขต</th>
+                                <th style="display:none;"></th>
+                                <th class="has-text-danger">จังหวัด</th>
+                                
                                 <th class="has-text-danger">Login ล่าสุด</th>
                                 <th class="has-text-danger">ไม่ได้ Login</th>
                                 <th style="display:none;"></th>
@@ -171,8 +170,6 @@
 
                                 <td>{{$show->name}}</td>
                                 <td>{{$show->nameorg}}</td>
-                                <td>{{$show->tel}}</td>
-                                <td>{{$show->email}}</td>
                                 <td style="display:none;">{{$show->position}}</td>
 
                                 <td>
@@ -188,17 +185,6 @@
                                         }
                                     ?>
                                 </td>
-
-                                <td>
-                                    @if($show->area_id < 1) <p class="has-text-secondary"><i
-                                            class="fas fa-minus-circle"></i></p>
-                                        @else
-                                        {{$show->area_id}}
-                                        @endif
-                                </td>
-
-                                <td style="display:none;">{{$show->prov_id}}</td>
-                                <td><?php echo $se_prov ?></td>
 
                                 <td style="display:none;">{{$show->group}}</td>
 
@@ -220,6 +206,20 @@
                                     <p class="has-text-secondary"><i class="fas fa-minus-circle"></i></p>
                                     @endif
                                 </td>
+                                
+
+                                <td>
+                                    @if($show->area_id < 1) <p class="has-text-secondary"><i
+                                            class="fas fa-minus-circle"></i></p>
+                                        @else
+                                        {{$show->area_id}}
+                                        @endif
+                                </td>
+
+                                <td style="display:none;">{{$show->prov_id}}</td>
+                                <td><?php echo $se_prov ?></td>
+
+                                
 
                                 <td>
                                     @if( $show->last_login_at == '')
