@@ -114,8 +114,6 @@ Route::get('activities', function () {
     return view('officer.activities');
 })->name('data.detail3');
 
-
-
 Route::get('ajax-amphur/{prov_id}','case_controller@ajax_amphur');
 
 Route::resource('case_inputs','case_controller');
