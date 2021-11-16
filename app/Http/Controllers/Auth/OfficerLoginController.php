@@ -37,6 +37,12 @@ class OfficerLoginController extends Controller
             return redirect()->intended(route('officer.main'));
         }
 
+        if( Auth::guard('officer')->attempt(['username' => $request->username , 'password' => $request->password , 'active' => 'no']))
+        {
+            Auth::guard('officer')->logout();
+            return redirect()->back()->with(['message' => 'ID นี้ถูกระงับชั่วคราวจากการที่ไม่ได้ login เป็นเวลานาน โปรดแจ้งผู้ดูแลเพื่อเข้าใช้งาน']);
+        }
+
        return redirect()->back()->withInput($request->only('username','remember'));
     }
 
