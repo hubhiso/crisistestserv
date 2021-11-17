@@ -174,7 +174,10 @@
 		$quarter_detail = ($years+543);
 		$quarter_text = $quarter_get.$quarter_detail;
 		
-		$query_date_range = " and (year(c.created_at) = '".$years."')";
+		//$query_date_range = " and (year(c.created_at) = '".$years."')";
+
+        $query_date_range = " and (date(c.created_at) between '".($years-1)."-10-01' and '".($years)."-09-30') ";
+
 		
 		$quarter_title = "ปี ";
 		
@@ -190,27 +193,45 @@
 		
 	}else if ($type == "2"){
 		$quarter_get = "ไตรมาสที่ ".$quarter;
-		if ($quarter == "1"){
-			$quarter_detail = "(มกราคม – มีนาคม ".($years+543).")";
-			$mstart = "01";
-			$mstop = "03";
-		}else if ($quarter == "2"){
-			$quarter_detail = "(เมษายน – มิถุนายน ".($years+543).")";
-			$mstart = "04";
-			$mstop = "06";
-		}else if ($quarter == "3"){
-			$quarter_detail = "(กรกฎาคม – กันยายน ".($years+543).")";
-			$mstart = "07";
-			$mstop = "09";
-		}else if ($quarter == "4"){
+        if ($quarter == "1"){
 			$quarter_detail = "(ตุลาคม – ธันวาคม ".($years+543).")";
 			$mstart = "10";
 			$mstop = "12";
-		}
+            $years_q = ($years-1);
+		}else if ($quarter == "2"){
+			$quarter_detail = "(มกราคม – มีนาคม ".($years+543).")";
+			$mstart = "01";
+			$mstop = "03";
+            $years_q = $years;
+		}else if ($quarter == "3"){
+			$quarter_detail = "(เมษายน – มิถุนายน ".($years+543).")";
+			$mstart = "04";
+			$mstop = "06";
+            $years_q = $years;
+		}else if ($quarter == "4"){
+			$quarter_detail = "(กรกฎาคม – กันยายน ".($years+543).")";
+			$mstart = "07";
+			$mstop = "09";
+            $years_q = $years;
+		} 
 		$quarter_text = $quarter_get;
-		$query_date_range = " and ((month(c.created_at) between '".$mstart."' and  '".$mstop."') and (year(c.created_at) = '".$years."'))";
+		$query_date_range = " and ((month(c.created_at) between '".$mstart."' and  '".$mstop."') and (year(c.created_at) = '".$years_q."'))";
 		$quarter_title = "ระหว่างเดือน";
-	}
+	}else{
+
+        $years = date("Y");
+        $quarter_get = "ปี ";	
+		$quarter_detail = ($years+543);
+		$quarter_text = $quarter_get.$quarter_detail;
+		
+		//$query_date_range = " and (year(c.created_at) = '".$years."')";
+
+        $query_date_range = " and (date(c.created_at) between '".($years-1)."-10-01' and '".($years)."-09-30') ";
+
+		
+		$quarter_title = "ปี ";
+
+    }
 
 	if ($years == ""){
 		$years = date("Y");	
