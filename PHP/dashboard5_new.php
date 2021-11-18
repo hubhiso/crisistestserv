@@ -80,9 +80,8 @@
 
     $sql_q1  = "SELECT count(*) as ccase
 	FROM case_inputs
-	where date_format(created_at, '%Y') = '".($years-1)."' 
-    and date_format(created_at, '%m') > 9 
-    and date_format(created_at, '%m') <= 12
+	where 
+    created_at BETWEEN '".($years-1)."-10-01' and '".($years-1)."-12-31'
 	group by prov_id order by ccase desc";
 
 	$result = mysqli_query($conn, $sql_q1); 
