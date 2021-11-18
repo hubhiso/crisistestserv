@@ -51,8 +51,6 @@
         $year_now++;
     }
 
-    echo $year_now;
-
     if($years == ''){$years = $year_now;}
 
     $sql = "SELECT prov_id, prov_geo.prov_name_en, prov_geo.name, count(*) as ccase
