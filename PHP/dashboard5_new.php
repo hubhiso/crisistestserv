@@ -47,6 +47,10 @@
 
     $year_now =  date("Y");
 
+    if(date("m")>9){
+        $year_now++;
+    }
+
     if($years == ''){$years = $year_now;}
 
     $sql = "SELECT prov_id, prov_geo.prov_name_en, prov_geo.name, count(*) as ccase
@@ -94,9 +98,8 @@
 
     $sql_q2  = "SELECT count(*) as ccase
 	FROM case_inputs
-	where date_format(created_at, '%Y') = '$years' 
-    and date_format(created_at, '%m') > 1 
-    and date_format(created_at, '%m') <= 3
+	where 
+    created_at BETWEEN '".$years."-01-01' and '".$years."-03-31'
 	group by prov_id order by ccase desc";
 
 	$result = mysqli_query($conn, $sql_q2); 
@@ -109,9 +112,8 @@
 
     $sql_q3  = "SELECT count(*) as ccase
 	FROM case_inputs
-	where date_format(created_at, '%Y') = '$years' 
-    and date_format(created_at, '%m') > 4 
-    and date_format(created_at, '%m') <= 6
+	where 
+    created_at BETWEEN '".$years."-04-01' and '".$years."-06-30'
 	group by prov_id order by ccase desc";
 
 	$result = mysqli_query($conn, $sql_q3); 
@@ -124,9 +126,8 @@
 
     $sql_q4  = "SELECT count(*) as ccase
 	FROM case_inputs
-	where date_format(created_at, '%Y') = '$years' 
-    and date_format(created_at, '%m') > 7 
-    and date_format(created_at, '%m') <= 9
+	where 
+    created_at BETWEEN '".$years."-07-01' and '".$years."-09-30'
 	group by prov_id order by ccase desc";
 
 	$result = mysqli_query($conn, $sql_q4); 

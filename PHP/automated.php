@@ -221,7 +221,7 @@
 
         $years = date("Y");
 
-        if(date("m")>0){
+        if(date("m")>9){
             $years++;
         }
 
