@@ -351,13 +351,29 @@
                                     ?>
                                 </tr>
                                 <tr>
+                                    <td class="text-start">&nbsp;&nbsp;&nbsp;- ชาย (ชายมีเพศสัมพันธ์กับชาย)</td>
+                                    <?php
+                                     $ck = 0;
+                                        for($j =1; $j <= 3; $j++){
+
+                                            if( $ch2_sex[$j] == 1){
+                                                echo '<td style="color: #8455d3;">'.$ch2_count[$j].'</td>';
+                                                $ck = 1;
+                                            }
+                                        }
+                                        if($ck == 0){
+                                            echo '<td >0</td>';
+                                        }
+                                    ?>
+                                </tr>
+                                <tr>
                                     <td class="text-start">&nbsp;&nbsp;&nbsp;- หญิง</td>
                                     <?php
                                      $ck = 0;
                                         for($j =1; $j <= 3; $j++){
 
                                             if( $ch2_sex[$j] == 2){
-                                                echo '<td style="color: #8455d3;">'.$ch2_count[$j].'</td>';
+                                                echo '<td style="color: #F8DF8B;">'.$ch2_count[$j].'</td>';
                                                 $ck = 1;
                                             }
                                         }
@@ -373,22 +389,6 @@
                                         for($j =1; $j <= 3; $j++){
 
                                             if( $ch2_sex[$j] == 3){
-                                                echo '<td style="color: #F8DF8B;">'.$ch2_count[$j].'</td>';
-                                                $ck = 1;
-                                            }
-                                        }
-                                        if($ck == 0){
-                                            echo '<td >0</td>';
-                                        }
-                                    ?>
-                                </tr>
-                                <tr>
-                                    <td class="text-start">&nbsp;&nbsp;&nbsp;- ชาย (ชายมีเพศสัมพันธ์กับชาย)</td>
-                                    <?php
-                                     $ck = 0;
-                                        for($j =1; $j <= 3; $j++){
-
-                                            if( $ch2_sex[$j] == 1){
                                                 echo '<td style="color: #B85C38;">'.$ch2_count[$j].'</td>';
                                                 $ck = 1;
                                             }
