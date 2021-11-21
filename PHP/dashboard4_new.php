@@ -599,7 +599,7 @@
                     dataSource: {
                         "chart": {
                             "caption": "สัดส่วนการรายงานข้อร้องเรียนการถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง",
-                            "subCaption": "จำแนกรายเดือน ตามปีงบ <?php echo ($years+543) ?>",
+                            "subCaption": "จำแนกตามปีงบ <?php echo ($years+543) ?>",
                             "placeValuesInside": "0",
                             "yAxisName": "จำนวน (เรื่อง)",
                             "basefontsize": "14",
