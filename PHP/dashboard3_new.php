@@ -516,6 +516,17 @@
                 </div>
             </div>
 
+            <div class="col-lg-1 col-md-4 col-sm-4 col-6 boxstatus">
+                <div class="text-center  ">
+                    <div class="text-white p-4 box-top bgcolor1">
+                        <span class="h6">ส่งต่อ</span>
+                    </div>
+                    <div class="text-dark bg-white border box-buttom p-3 h4">
+                        <span><?php echo $n_status[6];if($status[6] ==''){echo '0';} ?></span>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div name="who" class="row">
