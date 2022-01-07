@@ -451,7 +451,7 @@
         </form>
 
         <div class="row p-3 ">
-            <div class=" col-lg-2 col-md-4 col-sm-4 col-6">
+            <div class=" col-lg-2 col-md-4 col-sm-4 col-6 boxstatus">
                 <div class="text-center  ">
                     <div class="text-white p-4 box-top bgcolor1">
                         <span class="h4">ทั้งหมด</span>
@@ -461,7 +461,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+            <div class="col-lg-2 col-md-4 col-sm-4 col-6 boxstatus">
                 <div class="text-center  ">
                     <div class="text-white p-4 box-top bgcolor1">
                         <span class="h6">ยังไม่ได้รับเรื่อง</span>
@@ -472,7 +472,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4  col-sm-4 col-6">
+            <div class="col-lg-2 col-md-4  col-sm-4 col-6 boxstatus">
                 <div class="text-center  ">
                     <div class="text-white p-4 box-top bgcolor1">
                         <span class="h6">รับเรื่องแล้ว</span>
@@ -483,7 +483,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+            <div class="col-lg-2 col-md-4 col-sm-4 col-6 boxstatus">
                 <div class="text-center  ">
                     <div class="text-white p-4 box-top bgcolor1">
                         <span class="h6">บันทึกข้อมูลเพิ่มแล้ว</span>
@@ -494,7 +494,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+            <div class="col-lg-2 col-md-4 col-sm-4 col-6 boxstatus">
                 <div class="text-center  ">
                     <div class="text-white p-4 box-top bgcolor1">
                         <span class="h6">อยู่ระหว่างดำเนินการ</span>
@@ -505,7 +505,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+            <div class="col-lg-2 col-md-4 col-sm-4 col-6 boxstatus">
                 <div class="text-center  ">
                     <div class="text-white p-4 box-top bgcolor1">
                         <span class="h6">ดำเนินการเสร็จสิ้น</span>
