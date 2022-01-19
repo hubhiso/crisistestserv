@@ -11,9 +11,7 @@
     <link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
     <script src="{{ asset('css/jquery.min.js') }}"></script>
-
-    <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
 
     {{ Html::script('js/jquery.min.js') }}
 
@@ -81,6 +79,17 @@
                         </script>
                     @endif
                     <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <div class=" box_text">
+                                
+                                <div class="videoWrapper is-parent">
+
+                                <iframe width="100%" height="530" src="https://www.youtube.com/embed/OJfDiar6LYg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                </div>
+                                
+                            </div>
+                        </div>
                         <div class="column is-4">
 
                             <div class="box_text">
@@ -118,8 +127,8 @@
                         </div>
                         <div class="column is-4">
                             <div class=" box_text">
-                                <img src="../images/guide/crsprogram_cover.png" alt="Avatar" class="image_cover">
-                                <a href="../contents/guide/crsprogram.pdf" onclick="update_count(103)" target="_blank">
+                                <img src="../images/guide/คู่มือCRSversionปี2564(new)_cover.jpg" alt="Avatar" class="image_cover">
+                                <a href="../contents/guide/คู่มือCRSversionปี2564(new).pdf" onclick="update_count(103)" target="_blank">
                                     <div class="overlay_cover">
                                         คู่มือการใช้งานข้อมูลละเมิดสิทธิ(ฉบับสมบูรณ์)
                                         <div class="buttons is-right">
@@ -178,15 +187,7 @@
     <br><br><br><br><br><br>
 
 
-    <footer class="footer " style="background-color: #EEE;">
-        <div class="container  ">
-            <div class="content has-text-centered  ">
-                <p>Crisis Response System (CRS)
-                </p>
-                <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>. </small> </p>
-            </div>
-        </div>
-    </footer>
+    @extends('officer.footer_m')
 
     <script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
     <script src="{{ asset('bulma/main.js') }}"></script>
