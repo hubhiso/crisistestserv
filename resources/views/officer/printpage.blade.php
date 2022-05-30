@@ -506,7 +506,7 @@
                                             @else
                                             <i class="far fa-square fa-lg"></i>
                                             @endif
-                                            สืบหาข้อเท็จจริง &nbsp;
+                                            ไม่รู้กฎหมาย &nbsp;
                                         </span>
                                     </label>
                                     <label>
