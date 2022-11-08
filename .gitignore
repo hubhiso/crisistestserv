@@ -11,3 +11,4 @@ npm-debug.log
 .env
 /public/uploads
 /PHP/phpsql_dbinfo.php
+PHP/phpsql_dbinfo.php
