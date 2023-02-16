@@ -210,7 +210,7 @@
                                             @else
                                             <i class="far fa-square fa-lg "></i>
                                             @endif
-                                            สืบหาข้อเท็จจริง
+                                            สืบหาข้อเท๊จจริง
                                         </span>
                                     </label>
                                     &nbsp;
@@ -424,6 +424,20 @@
                                     <input class="input" type="text" name="refer_name" id="refer_name"
                                         placeholder="ชื่อหน่วยงาน" value="{{$show_data->refer_name}}">
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label"></label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <textarea class="textarea" name="final_operate_result" id="final_operate_result"
+                                        placeholder="กรอกรายละเอียด" disabled>{{$show_data->final_operate_result}}</textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
