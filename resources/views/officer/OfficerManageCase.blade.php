@@ -20,6 +20,8 @@
     <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
     <link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bm/dt-1.13.1/datatables.min.css" />
+
     <title> ปกป้อง (CRS) </title>
 
     <style>
@@ -185,10 +187,57 @@
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
                 เพื่อเลื่อนดูข้อมูล
             </p>
+
+            @if(Auth::user()->position == 'admin' )
+            <br>
+            <div class="body field">
+                <div class="control field-label is-normal">
+                    <label style=" white-space:nowrap;">Download ข้อมูลรายเคส </label>
+                </div>
+            </div>
+            <div class="body columns">
+                <form class="box column is-narrow" role="form" method="POST" action="{{ route('officer.Export_Excel') }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <div class="field is-grouped">
+                        <div class="control field-label is-normal">
+                            <label style=" white-space:nowrap;">เลือกวันที่ </label>
+                        </div>
+                        <div class="control input-daterange">
+                            <input type="text" class="input bulmaCalendar form-control" name="date_start2" id="date_start2">
+                        </div>
+                        <div class="control field-label is-normal has-text-centered">
+                            <label>ถึง </label>
+                        </div>
+                        <div class="control input-daterange">
+                            <input type="text" class=" input bulmaCalendar form-control" name="date_end2" id="date_end2">
+                        </div>
+                        <div class="control field-label is-normal">
+                            <label style=" white-space:nowrap;">เลือกข้อมูล </label>
+                        </div>
+                        <div class="control">
+                            <div class="select">
+                                <select name="type_export">
+                                    <option value="1">ทั้งหมด</option>
+                                    <option value="2">รายเคส</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control ">
+                            <button type="submit" id="btn_submit" class="button is-primary is-rounded" formtarget="_blank">ส่งข้อมูล</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            @endif
         </div>
     </div>
 
     @extends('officer.footer_m')
+
+    <!-- datatable core JS-->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bm/dt-1.13.1/datatables.min.js"></script>
 
     <script src="{{ asset('bulma/clipboard-1.7.1.min.js') }}"></script>
     <script src="{{ asset('bulma/main.js') }}"></script>

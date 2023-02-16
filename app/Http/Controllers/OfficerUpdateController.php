@@ -38,6 +38,7 @@ class OfficerUpdateController extends Controller
                 'operate_status'=>2,
                 'operate_time'=> date("Y-m-d")
             ]);
+            return redirect('officer/add_detail/'.$case_id);
         }else if($ck_status1->operate_status == 2){
             case_input::where('case_id','=',$case_id)->update(['receiver' => $receiver_name ,'receiver_id' => $receiver_id, 'status' => 2]);
 
@@ -160,8 +161,11 @@ class OfficerUpdateController extends Controller
             'etc'=>$chk5,
             'etc_detail'=>$request->input('etc_detail')]
         );
-        return redirect('officer/show/0');
+        //return redirect('officer/show/0');
+
+        return redirect('officer/add_activities/'.$case_id);
     }
+
     public function update_detail(Request $request)
     {
         //var_dump($request->input('age'));
@@ -241,7 +245,8 @@ class OfficerUpdateController extends Controller
                 'etc'=>$chk5,
                 'etc_detail'=>$request->input('etc_detail')]
         );
-        return redirect('officer/show/0');
+        
+        return redirect('officer/add_activities/'.$case_id);
     }
 
     public function add_activities(Request $request){
@@ -294,6 +299,7 @@ class OfficerUpdateController extends Controller
             case_input::where('case_id','=',$case_id)->update([
                 'status' => $request->input('status'),
                 'operate_result_status' => null,
+                'final_operate_result' => null,
                 'problemfix' => null,
                 'compensation' => null,
                 'change_policy' => null,
@@ -305,6 +311,7 @@ class OfficerUpdateController extends Controller
             case_input::where('case_id','=',$case_id)->update([
                 'status' => $request->input('status'),
                 'operate_result_status' => $request->input('operate_result_status'),
+                'final_operate_result' => $request->input('final_operate_result'),
                 'problemfix' => $request->input('problemfix'),
                 'compensation' => $request->input('compensation'),
                 'change_policy' => $request->input('change_policy'),
@@ -319,6 +326,7 @@ class OfficerUpdateController extends Controller
             case_input::where('case_id','=',$case_id)->update([
                 'status' => $request->input('status'),
                 'operate_result_status' => null,
+                'final_operate_result' => null,
                 'problemfix' => null,
                 'compensation' => null,
                 'change_policy' => null,
@@ -557,6 +565,54 @@ class OfficerUpdateController extends Controller
         $activities = operate_detail::where('case_id','=',$case_id)->orderBy('operate_date', 'asc')->get();
 
         return view('officer.printpage',compact('show_data', 'show_timeline', 'activities', 'show_detail'));
+    }
+
+    public function exportexcel(Request $request){
+
+        //$show_data = case_input::all();
+
+        $date_start = date('Y-m-d',strtotime(str_replace('-','/', $request->input('date_start2'))));
+        $date_end = date('Y-m-d',strtotime(str_replace('-','/', $request->input('date_end2')). "+1 day"));
+        $type_export = $request->input('type_export');
+
+        if($type_export == 1){
+            $show_data = case_input::leftJoin('provinces AS b', 'case_inputs.prov_id', '=', 'b.province_code')
+            ->leftJoin('r_sub_problem AS c', 'case_inputs.sub_problem', '=', 'c.id')
+            ->leftJoin('r_sex AS d', 'case_inputs.sex', '=', 'd.code')
+            ->leftJoin('r_group_code AS e', 'case_inputs.group_code', '=', 'e.code')
+            ->leftJoin('prov_geo AS h', 'case_inputs.prov_id', '=', 'h.code')
+            ->leftJoin('r_problem_case AS f', 'case_inputs.problem_case', '=', 'f.code')
+            ->leftJoin('r_status AS g', 'case_inputs.status', '=', 'g.id')
+            ->leftJoin('operate_details AS o', 'case_inputs.case_id', '=', 'o.case_id')
+            ->leftJoin('timelines AS t', 'case_inputs.case_id', '=', 't.case_id')
+            ->select('case_inputs.problem_case','case_inputs.group_code','b.PROVINCE_NAME','h.nhso','case_inputs.case_id', 'case_inputs.sender_case', 'g.name as gname', 'case_inputs.receiver', 'e.name AS ename', 'd.name AS dname', 'c.name AS cname', 'f.name AS fname', 'case_inputs.accident_date AS accident_date', 'case_inputs.created_at AS created_at', 'case_inputs.detail', 'case_inputs.need', 'case_inputs.nation' ,'t.operate_status' ,'t.operate_time','o.operate_result','o.operate_date','o.operate_detail','case_inputs.operate_result_status')
+            ->whereBetween('case_inputs.created_at', [$date_start, $date_end])
+            ->orderBy('case_inputs.created_at', 'asc')
+            ->orderBy('t.operate_status', 'asc')
+            ->orderBy('case_inputs.case_id', 'asc')
+            ->get();
+        }else{
+        
+            $show_data = case_input::leftJoin('provinces AS b', 'case_inputs.prov_id', '=', 'b.province_code')
+            ->leftJoin('r_sub_problem AS c', 'case_inputs.sub_problem', '=', 'c.id')
+            ->leftJoin('r_sex AS d', 'case_inputs.sex', '=', 'd.code')
+            ->leftJoin('r_group_code AS e', 'case_inputs.group_code', '=', 'e.code')
+            ->leftJoin('prov_geo AS h', 'case_inputs.prov_id', '=', 'h.code')
+            ->leftJoin('r_problem_case AS f', 'case_inputs.problem_case', '=', 'f.code')
+            ->leftJoin('r_status AS g', 'case_inputs.status', '=', 'g.id')
+            ->leftJoin('timelines AS t', 'case_inputs.case_id', '=', 't.case_id')
+            ->leftJoin('operate_details AS o', 'case_inputs.case_id', '=', 'o.case_id')
+            ->select('case_inputs.problem_case','case_inputs.group_code','b.PROVINCE_NAME','h.nhso','case_inputs.case_id as case_id1', 'case_inputs.sender_case', 'g.name as gname', 'case_inputs.receiver', 'e.name AS ename', 'd.name AS dname', 'c.name AS cname', 'f.name AS fname', 'case_inputs.accident_date AS accident_date', 'case_inputs.created_at AS created_at', 'case_inputs.detail', 'case_inputs.need', 'case_inputs.nation' ,'t.operate_status' ,'t.operate_time','o.operate_result','o.operate_date','o.operate_detail','case_inputs.operate_result_status')
+            ->whereBetween('case_inputs.created_at', [$date_start, $date_end])
+            ->orderBy('case_inputs.created_at', 'asc')
+            ->orderBy('t.operate_status', 'desc')
+            ->orderBy('case_inputs.case_id', 'desc')
+            ->get();
+        }
+
+        //->groupBy('b.PROVINCE_NAME')
+
+        return view('officer.ExportExcel',compact('show_data','date_start','date_end','type_export'));
     }
 
     
