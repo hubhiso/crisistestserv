@@ -53,10 +53,11 @@
     if ( $ck_group <> ''){
         $query_group = "and o.group = '".$ck_group."' ";
     }else{
-        $query_group = " or o.name = 'adminfar' or o.Name = 'adminhatc'";
+        $query_group = " or o.name = 'adminfar' or o.name = 'adminhatc' ";
     }
     
-    $se_time = $_POST["se_time"];
+ 
+	$se_time = $_POST["se_time"];
        $se_year = $_POST["se_year"];
        $se_quarter = $_POST["se_quarter"];
        $se_month = $_POST["se_month"];
@@ -183,7 +184,7 @@
 
     <div class="container-fluid p-4">
 
-    <nav aria-label="breadcrumb ">
+        <nav aria-label="breadcrumb ">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="../public/"><span class="icon is-small">
@@ -266,7 +267,7 @@
 
 
                 <a type="button" class="btn btn-primary btn-rounded align-items-stretch d-flex "
-                    href="report_c2_new.php">
+                    href="report_c43.php">
                     <div class=" icon-left d-flex align-items-center justify-content-center h4">
                         <i class="far fa-file-alt" aria-hidden="true"></i>
                     </div>
@@ -306,7 +307,8 @@
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>แยกกรณีละเมิดสิทธิ</span>
                 </a>
-                <a class="btn btn-primary btn-rounded  " href="report_c2_new.php">
+                
+                <a class="btn btn-white btn-rounded border " href="report_c2_new.php">
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>รวมทุกกรณี</span>
                 </a>
@@ -342,7 +344,7 @@
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>สัดส่วนประเภทหน่วยงาน</span>
                 </a>
-                <a class="btn btn-white btn-rounded border" href="report_c43.php">
+                <a class="btn btn-primary btn-rounded" href="report_c43.php">
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>สัดส่วนการดำเนินการ</span>
                 </a>
@@ -356,11 +358,8 @@
 
 
         <div class=" p-4">
-            <div class="text-center p-3">
-                <p class="h5">สรุปข้อมูลการร้องเรียนในระบบ CRS ข้อมูลในระบบ</p>
-            </div>
 
-            <form name="form_menu" method="post" action="report_c2_new.php">
+            <form name="form_menu" method="post" action="report_c43.php">
 
                 <div class="row g-3 align-items-center mb-3">
                     <div class="col-auto">
@@ -397,7 +396,7 @@
                     </div>
                     <div class="col-auto se_time_g1">
                         <select class="form-select form-control" id="se_year" name="se_year">
-                        <?php
+                            <?php
                                 for($y = 2019; $y <= $year_now; $y++){
                                     if ($se_year == $y) { $se =  "selected";}
                                     echo "<option value='$y' $se> ".($y+543)." </option>";
@@ -408,13 +407,16 @@
                     </div>
                     <div class="col-auto se_time_g1">
                         <select class="form-select form-control" id="se_quarter" name="se_quarter">
-                            <option value='0'  <?php if($se_quarter == 0){ echo "selected"; } ?>> ทั้งปีงบประมาณ </option>
+                            <option value='0' <?php if($se_quarter == 0){ echo "selected"; } ?>> ทั้งปีงบประมาณ
+                            </option>
                             <option value='1' <?php if($se_quarter == 1){ echo "selected"; } ?>> ไตรมาส 1 </option>
                             <option value='2' <?php if($se_quarter == 2){ echo "selected"; } ?>> ไตรมาส 2 </option>
                             <option value='3' <?php if($se_quarter == 3){ echo "selected"; } ?>> ไตรมาส 3 </option>
                             <option value='4' <?php if($se_quarter == 4){ echo "selected"; } ?>> ไตรมาส 4 </option>
-                            <option value='12' <?php if($se_quarter == 12){ echo "selected"; } ?>> สะสมไตรมาส 1-2 </option>
-                            <option value='13' <?php if($se_quarter == 13){ echo "selected"; } ?>> สะสมไตรมาส 1-3 </option>
+                            <option value='12' <?php if($se_quarter == 12){ echo "selected"; } ?>> สะสมไตรมาส 1-2
+                            </option>
+                            <option value='13' <?php if($se_quarter == 13){ echo "selected"; } ?>> สะสมไตรมาส 1-3
+                            </option>
                             <option value='99' <?php if($se_quarter == 99){ echo "selected"; } ?>> เลือกเดือน </option>
                         </select>
                     </div>
@@ -482,25 +484,108 @@
                     <th class="" style="vertical-align: middle; color: white;" rowspan="2">จังหวัด</th>
                     <th class=" " style="vertical-align: middle; color: white;" rowspan="2">เขต</th>
 
-                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">กรณีร้องเรียน 
+                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">1.
+                        บังคับตรวจเอชไอวี
+                    </th>
+                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">2.
+                        เปิดเผยสถานะการติดเชื้อเอชไอวี
+                    </th>
+                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">3.
+                        ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี
+                    </th>
+                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">4.
+                        ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง
+                    </th>
+                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">5.
+                        กรณีอื่นๆ ที่เกี่ยวข้องกับเอชไอวี
+                    </th>
+                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">6.
+                        กรณีอื่นๆ ที่ไม่เกี่ยวข้องกับเอชไอวี
                     </th>
 
                     <th class="" style="vertical-align: middle; color: white;" rowspan="2">ทั้งหมด</th>
                 </tr>
                 <tr>
-                    <th class="" style="vertical-align: middle; color: white;">1. บังคับตรวจเอชไอวี</th>
                     <th class="" style="vertical-align: middle; color: white;">
-                        2. เปิดเผยสถานะ<br>การติดเชื้อเอชไอวี </th>
+                        สืบหาข้อเท็จจริง</th>
                     <th class="" style="vertical-align: middle; color: white;">
-                        3. ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากกการติดเชื้อเอชไอวี</th>
+                        ให้คำปรึกษา </th>
                     <th class="" style="vertical-align: middle; color: white;">
-                        4. ถูกกีดกันหรือถูกเลือกปฏิบัติ<br>เนื่องมาจากเป็นกลุ่มเปราะบาง</th>
+                        เจรจาเป็นรายบุคคล</th>
                     <th class="" style="vertical-align: middle; color: white;">
-                        5. กรณีที่อื่นๆ<br>ที่เกี่ยวข้องกับเอชไอวี</th>
+                        เจรจาระดับนโยบายขององค์กร</th>
                     <th class="" style="vertical-align: middle; color: white;">
-                        6. กรณีที่อื่นๆ<br>ที่ไม่เกี่ยวข้องกับเอชไอวี</th>
+                        ดำเนินคดี</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        รวม</th>
+
+                    <th class="" style="vertical-align: middle; color: white;">
+                        สืบหาข้อเท็จจริง</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        ให้คำปรึกษา </th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        เจรจาเป็นรายบุคคล</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        เจรจาระดับนโยบายขององค์กร</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        ดำเนินคดี</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        รวม</th>
+
+                    <th class="" style="vertical-align: middle; color: white;">
+                        สืบหาข้อเท็จจริง</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        ให้คำปรึกษา </th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        เจรจาเป็นรายบุคคล</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        เจรจาระดับนโยบายขององค์กร</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        ดำเนินคดี</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        รวม</th>
+
+                    <th class="" style="vertical-align: middle; color: white;">
+                        สืบหาข้อเท็จจริง</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        ให้คำปรึกษา </th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        เจรจาเป็นรายบุคคล</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        เจรจาระดับนโยบายขององค์กร</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        ดำเนินคดี</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        รวม</th>
+
+                    <th class="" style="vertical-align: middle; color: white;">
+                        สืบหาข้อเท็จจริง</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        ให้คำปรึกษา </th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        เจรจาเป็นรายบุคคล</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        เจรจาระดับนโยบายขององค์กร</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        ดำเนินคดี</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        รวม</th>
+
+                    <th class="" style="vertical-align: middle; color: white;">
+                        สืบหาข้อเท็จจริง</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        ให้คำปรึกษา </th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        เจรจาเป็นรายบุคคล</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        เจรจาระดับนโยบายขององค์กร</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        ดำเนินคดี</th>
+                    <th class="" style="vertical-align: middle; color: white;">
+                        รวม</th>
 
                 </tr>
+
             </thead>
             <?php
                     
@@ -518,19 +603,90 @@
                     
 					while($row1 = $result1->fetch_assoc()) {
 
+                        $c_s1_1 = 0;
+                        $c_s1_2 = 0;
+                        $c_s1_3 = 0;
+                        $c_s1_4 = 0;
+                        $c_s1_5 = 0;
+                        $c_s1 = 0;
+
+                        $c_s2_1 = 0;
+                        $c_s2_2 = 0;
+                        $c_s2_3 = 0;
+                        $c_s2_4 = 0;
+                        $c_s2_5 = 0;
+                        $c_s2 = 0;
+
+                        $c_s3_1 = 0;
+                        $c_s3_2 = 0;
+                        $c_s3_3 = 0;
+                        $c_s3_4 = 0;
+                        $c_s3_5 = 0;
+                        $c_s3 = 0;
+
+                        $c_s4_1 = 0;
+                        $c_s4_2 = 0;
+                        $c_s4_3 = 0;
+                        $c_s4_4 = 0;
+                        $c_s4_5 = 0;
+                        $c_s4 = 0;
+
+                        $c_s5_1 = 0;
+                        $c_s5_2 = 0;
+                        $c_s5_3 = 0;
+                        $c_s5_4 = 0;
+                        $c_s5_5 = 0;
+                        $c_s5 = 0;
+
+                        $c_s6_1 = 0;
+                        $c_s6_2 = 0;
+                        $c_s6_3 = 0;
+                        $c_s6_4 = 0;
+                        $c_s6_5 = 0;
+                        $c_s6 = 0;
+
+                        $c_as = 0;
+
 
 						$sql2 = "SELECT receiver,
-						sum(CASE WHEN problem_case = '1' THEN 1 ELSE 0 END) as case1,
-						sum(CASE WHEN problem_case = '2' THEN 1 ELSE 0 END) as case2,
-						sum(CASE WHEN problem_case = '3' THEN 1 ELSE 0 END) as case3,
-						sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as case4,
-						sum(CASE WHEN problem_case = '5' THEN 1 ELSE 0 END) as case5,
-                        sum(CASE WHEN problem_case = '6' THEN 1 ELSE 0 END) as case6,
-						count(problem_case) as sum
-						FROM case_inputs
+                        sum( CASE WHEN problem_case = '1'  AND o.investigate = '1' THEN 1 ELSE 0 END ) AS case1_1,
+                        sum( CASE WHEN problem_case = '1'  AND o.advice = '1' THEN 1 ELSE 0 END ) AS case1_2,
+                        sum( CASE WHEN problem_case = '1'  AND o.negotiate_individual = '1' THEN 1 ELSE 0 END ) AS case1_3,
+                        sum( CASE WHEN problem_case = '1'  AND o.negotiate_policy = '1' THEN 1 ELSE 0 END ) AS case1_4,
+                        sum( CASE WHEN problem_case = '1'  AND o.prosecution = '1' THEN 1 ELSE 0 END ) AS case1_5,
+                        sum( CASE WHEN problem_case = '2'  AND o.investigate = '1' THEN 1 ELSE 0 END ) AS case2_1,
+                        sum( CASE WHEN problem_case = '2'  AND o.advice = '1' THEN 1 ELSE 0 END ) AS case2_2,
+                        sum( CASE WHEN problem_case = '2'  AND o.negotiate_individual = '1' THEN 1 ELSE 0 END ) AS case2_3,
+                        sum( CASE WHEN problem_case = '2'  AND o.negotiate_policy = '1' THEN 1 ELSE 0 END ) AS case2_4,
+                        sum( CASE WHEN problem_case = '2'  AND o.prosecution = '1' THEN 1 ELSE 0 END ) AS case2_5,
+                        sum( CASE WHEN problem_case = '3'  AND o.investigate = '1' THEN 1 ELSE 0 END ) AS case3_1,
+                        sum( CASE WHEN problem_case = '3'  AND o.advice = '1' THEN 1 ELSE 0 END ) AS case3_2,
+                        sum( CASE WHEN problem_case = '3'  AND o.negotiate_individual = '1' THEN 1 ELSE 0 END ) AS case3_3,
+                        sum( CASE WHEN problem_case = '3'  AND o.negotiate_policy = '1' THEN 1 ELSE 0 END ) AS case3_4,
+                        sum( CASE WHEN problem_case = '3'  AND o.prosecution = '1' THEN 1 ELSE 0 END ) AS case3_5,
+                        sum( CASE WHEN problem_case = '4'  AND o.investigate = '1' THEN 1 ELSE 0 END ) AS case4_1,
+                        sum( CASE WHEN problem_case = '4'  AND o.advice = '1' THEN 1 ELSE 0 END ) AS case4_2,
+                        sum( CASE WHEN problem_case = '4'  AND o.negotiate_individual = '1' THEN 1 ELSE 0 END ) AS case4_3,
+                        sum( CASE WHEN problem_case = '4'  AND o.negotiate_policy = '1' THEN 1 ELSE 0 END ) AS case4_4,
+                        sum( CASE WHEN problem_case = '4'  AND o.prosecution = '1' THEN 1 ELSE 0 END ) AS case4_5,
+                        sum( CASE WHEN problem_case = '5'  AND o.investigate = '1' THEN 1 ELSE 0 END ) AS case5_1,
+                        sum( CASE WHEN problem_case = '5'  AND o.advice = '1' THEN 1 ELSE 0 END ) AS case5_2,
+                        sum( CASE WHEN problem_case = '5'  AND o.negotiate_individual = '1' THEN 1 ELSE 0 END ) AS case5_3,
+                        sum( CASE WHEN problem_case = '5'  AND o.negotiate_policy = '1' THEN 1 ELSE 0 END ) AS case5_4,
+                        sum( CASE WHEN problem_case = '5'  AND o.prosecution = '1' THEN 1 ELSE 0 END ) AS case5_5,
+                        sum( CASE WHEN problem_case = '6'  AND o.investigate = '1' THEN 1 ELSE 0 END ) AS case6_1,
+                        sum( CASE WHEN problem_case = '6'  AND o.advice = '1' THEN 1 ELSE 0 END ) AS case6_2,
+                        sum( CASE WHEN problem_case = '6'  AND o.negotiate_individual = '1' THEN 1 ELSE 0 END ) AS case6_3,
+                        sum( CASE WHEN problem_case = '6'  AND o.negotiate_policy = '1' THEN 1 ELSE 0 END ) AS case6_4,
+                        sum( CASE WHEN problem_case = '6'  AND o.prosecution = '1' THEN 1 ELSE 0 END ) AS case6_5
+                        
+						FROM case_inputs c
+                        LEFT JOIN operate_details o ON c.case_id = o.case_id 
 						where receiver='".$row1['name']."'
-						and created_at >= '".date("Y/m/d", strtotime($date_start))."' and created_at <= '".date("Y/m/d", strtotime($date_end))."'
+						and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
 						group by receiver";
+
+                        //echo $sql2."<br><BR><BR>";
 
 						$result2 = mysqli_query($conn, $sql2); 
 						$row2 = mysqli_num_rows($result2); 
@@ -540,13 +696,93 @@
 							// output data of each row
 							while($row2 = $result2->fetch_assoc()) {
 
-								$c_s1 = $c_s1 + $row2["case1"];
-                                $c_s2 = $c_s2 + $row2["case2"];
-                                $c_s3 = $c_s3 + $row2["case3"];
-                                $c_s4 = $c_s4 + $row2["case4"];
-                                $c_s5 = $c_s5 + $row2["case5"];
-                                $c_s6 = $c_s6 + $row2["case6"];
-                                $c_as = $c_as + $row2["sum"];
+                                $c_s1_1 = $row2["case1_1"];
+                                $c_s1_2 = $row2["case1_2"];
+                                $c_s1_3 = $row2["case1_3"];
+                                $c_s1_4 = $row2["case1_4"];
+                                $c_s1_5 = $row2["case1_5"];
+                                $c_s1 = $c_s1_1 + $c_s1_2 + $c_s1_3 + $c_s1_4 + $c_s1_5;
+
+                                $c_s2_1 = $row2["case2_1"];
+                                $c_s2_2 = $row2["case2_2"];
+                                $c_s2_3 = $row2["case2_3"];
+                                $c_s2_4 = $row2["case2_4"];
+                                $c_s2_5 = $row2["case2_5"];
+                                $c_s2 = $c_s2_1 + $c_s2_2 + $c_s2_3 + $c_s2_4 + $c_s2_5;
+
+                                $c_s3_1 = $row2["case3_1"];
+                                $c_s3_2 = $row2["case3_2"];
+                                $c_s3_3 = $row2["case3_3"];
+                                $c_s3_4 = $row2["case3_4"];
+                                $c_s3_5 = $row2["case3_5"];
+                                $c_s3 = $c_s3_1 + $c_s3_2 + $c_s3_3 + $c_s3_4 + $c_s3_5;
+
+                                $c_s4_1 = $row2["case4_1"];
+                                $c_s4_2 = $row2["case4_2"];
+                                $c_s4_3 = $row2["case4_3"];
+                                $c_s4_4 = $row2["case4_4"];
+                                $c_s4_5 = $row2["case4_5"];
+                                $c_s4 = $c_s4_1 + $c_s4_2 + $c_s4_3 + $c_s4_4 + $c_s4_5;
+
+                                $c_s5_1 = $row2["case5_1"];
+                                $c_s5_2 = $row2["case5_2"];
+                                $c_s5_3 = $row2["case5_3"];
+                                $c_s5_4 = $row2["case5_4"];
+                                $c_s5_5 = $row2["case5_5"];
+                                $c_s5 = $c_s5_1 + $c_s5_2 + $c_s5_3 + $c_s5_4 + $c_s5_5;
+
+                                $c_s6_1 = $row2["case6_1"];
+                                $c_s6_2 = $row2["case6_2"];
+                                $c_s6_3 = $row2["case6_3"];
+                                $c_s6_4 = $row2["case6_4"];
+                                $c_s6_5 = $row2["case6_5"];
+                                $c_s6 = $c_s6_1 + $c_s6_2 + $c_s6_3 + $c_s6_4 + $c_s6_5;
+                                
+                                $c_as = $c_s1 + $c_s2 + $c_s3 + $c_s4 + $c_s5 + $c_s6 ;
+
+                                $sum_c_s1_1 = $sum_c_s1_1 + $c_s1_1;
+                                $sum_c_s1_2 = $sum_c_s1_2 + $c_s1_2;
+                                $sum_c_s1_3 = $sum_c_s1_3 + $c_s1_3;
+                                $sum_c_s1_4 = $sum_c_s1_4 + $c_s1_4;
+                                $sum_c_s1_5 = $sum_c_s1_5 + $c_s1_5;
+                                $sum_c_s1 = $sum_c_s1_1 + $sum_c_s1_2 + $sum_c_s1_3 + $sum_c_s1_4 + $sum_c_s1_5;
+
+                                $sum_c_s2_1 = $sum_c_s2_1 + $c_s2_1;
+                                $sum_c_s2_2 = $sum_c_s2_2 + $c_s2_2;
+                                $sum_c_s2_3 = $sum_c_s2_3 + $c_s2_3;
+                                $sum_c_s2_4 = $sum_c_s2_4 + $c_s2_4;
+                                $sum_c_s2_5 = $sum_c_s2_5 + $c_s2_5;
+                                $sum_c_s2 = $sum_c_s2_1 + $sum_c_s2_2 + $sum_c_s2_3 + $sum_c_s2_4 + $sum_c_s2_5;
+
+                                $sum_c_s3_1 = $sum_c_s3_1 + $c_s3_1;
+                                $sum_c_s3_2 = $sum_c_s3_2 + $c_s3_2;
+                                $sum_c_s3_3 = $sum_c_s3_3 + $c_s3_3;
+                                $sum_c_s3_4 = $sum_c_s3_4 + $c_s3_4;
+                                $sum_c_s3_5 = $sum_c_s3_5 + $c_s3_5;
+                                $sum_c_s3 = $sum_c_s3_1 + $sum_c_s3_2 + $sum_c_s3_3 + $sum_c_s3_4 + $sum_c_s3_5;
+
+                                $sum_c_s4_1 = $sum_c_s4_1 + $c_s4_1;
+                                $sum_c_s4_2 = $sum_c_s4_2 + $c_s4_2;
+                                $sum_c_s4_3 = $sum_c_s4_3 + $c_s4_3;
+                                $sum_c_s4_4 = $sum_c_s4_4 + $c_s4_4;
+                                $sum_c_s4_5 = $sum_c_s4_5 + $c_s4_5;
+                                $sum_c_s4 = $sum_c_s4_1 + $sum_c_s4_2 + $sum_c_s4_3 + $sum_c_s4_4 + $sum_c_s4_5;
+
+                                $sum_c_s5_1 = $sum_c_s5_1 + $c_s5_1;
+                                $sum_c_s5_2 = $sum_c_s5_2 + $c_s5_2;
+                                $sum_c_s5_3 = $sum_c_s5_3 + $c_s5_3;
+                                $sum_c_s5_4 = $sum_c_s5_4 + $c_s5_4;
+                                $sum_c_s5_5 = $sum_c_s5_5 + $c_s5_5;
+                                $sum_c_s5 = $sum_c_s5_1 + $sum_c_s5_2 + $sum_c_s5_3 + $sum_c_s5_4 + $sum_c_s5_5;
+
+                                $sum_c_s6_1 = $sum_c_s6_1 + $c_s6_1;
+                                $sum_c_s6_2 = $sum_c_s6_2 + $c_s6_2;
+                                $sum_c_s6_3 = $sum_c_s6_3 + $c_s6_3;
+                                $sum_c_s6_4 = $sum_c_s6_4 + $c_s6_4;
+                                $sum_c_s6_5 = $sum_c_s6_5 + $c_s6_5;
+                                $sum_c_s6 = $sum_c_s6_1 + $sum_c_s6_2 + $sum_c_s6_3 + $sum_c_s6_4 + $sum_c_s6_5;
+
+                                $sum_c_as = $sum_c_s1 + $sum_c_s2 + $sum_c_s3 + $sum_c_s4 + $sum_c_s5 + $sum_c_s6;
 								
 								//echo $row['receiver'];
 								$sql3 = "SELECT username,officers.nameorg, prov_geo.code, prov_geo.name as provname, prov_geo.nhso 
@@ -566,13 +802,49 @@
                                 echo "<td>".$row1["nameorg"]."</td>";
                                 echo "<td>".$row3["provname"]."</td>";
                                 echo "<td>".$row3["nhso"]."</td>";
-                                echo "<td>".$row2["case1"]."</td>";
-                                echo "<td>".$row2["case2"]."</td>";
-                                echo "<td>".$row2["case3"]."</td>";
-                                echo "<td>".$row2["case4"]."</td>";
-                                echo "<td>".$row2["case5"]."</td>";
-                                echo "<td>".$row2["case6"]."</td>";
-                                echo "<td>".$row2["sum"]."</td>";
+                                echo "<td>".$c_s1_1."</td>";
+                                echo "<td>".$c_s1_2."</td>";
+                                echo "<td>".$c_s1_3."</td>";
+                                echo "<td>".$c_s1_4."</td>";
+                                echo "<td>".$c_s1_5."</td>";
+                                echo "<td>".$c_s1."</td>";
+
+                                echo "<td>".$c_s2_1."</td>";
+                                echo "<td>".$c_s2_2."</td>";
+                                echo "<td>".$c_s2_3."</td>";
+                                echo "<td>".$c_s2_4."</td>";
+                                echo "<td>".$c_s2_5."</td>";
+                                echo "<td>".$c_s2."</td>";
+
+                                echo "<td>".$c_s3_1."</td>";
+                                echo "<td>".$c_s3_2."</td>";
+                                echo "<td>".$c_s3_3."</td>";
+                                echo "<td>".$c_s3_4."</td>";
+                                echo "<td>".$c_s3_5."</td>";
+                                echo "<td>".$c_s3."</td>";
+
+                                echo "<td>".$c_s4_1."</td>";
+                                echo "<td>".$c_s4_2."</td>";
+                                echo "<td>".$c_s4_3."</td>";
+                                echo "<td>".$c_s4_4."</td>";
+                                echo "<td>".$c_s4_5."</td>";
+                                echo "<td>".$c_s4."</td>";
+
+                                echo "<td>".$c_s5_1."</td>";
+                                echo "<td>".$c_s5_2."</td>";
+                                echo "<td>".$c_s5_3."</td>";
+                                echo "<td>".$c_s5_4."</td>";
+                                echo "<td>".$c_s5_5."</td>";
+                                echo "<td>".$c_s5."</td>";
+
+                                echo "<td>".$c_s6_1."</td>";
+                                echo "<td>".$c_s6_2."</td>";
+                                echo "<td>".$c_s6_3."</td>";
+                                echo "<td>".$c_s6_4."</td>";
+                                echo "<td>".$c_s6_5."</td>";
+                                echo "<td>".$c_s6."</td>";
+
+                                echo "<td>".$c_as."</td>";
 								echo "</tr>";
 														
 							}
@@ -588,6 +860,42 @@
 								echo "<td>0</td>";
 								echo "<td>0</td>";
                                 echo "<td>0</td>";
+
+                                echo "<td>0</td>";
+								echo "<td>0</td>";
+								echo "<td>0</td>";
+								echo "<td>0</td>";
+                                echo "<td>0</td>";
+                                echo "<td>0</td>";
+
+                                echo "<td>0</td>";
+								echo "<td>0</td>";
+								echo "<td>0</td>";
+								echo "<td>0</td>";
+                                echo "<td>0</td>";
+                                echo "<td>0</td>";
+
+                                echo "<td>0</td>";
+								echo "<td>0</td>";
+								echo "<td>0</td>";
+								echo "<td>0</td>";
+                                echo "<td>0</td>";
+                                echo "<td>0</td>";
+
+                                echo "<td>0</td>";
+								echo "<td>0</td>";
+								echo "<td>0</td>";
+								echo "<td>0</td>";
+                                echo "<td>0</td>";
+                                echo "<td>0</td>";
+
+                                echo "<td>0</td>";
+								echo "<td>0</td>";
+								echo "<td>0</td>";
+								echo "<td>0</td>";
+                                echo "<td>0</td>";
+                                echo "<td>0</td>";
+
                                 echo "<td>0</td>";
 								echo "</tr>";
 						}
@@ -598,13 +906,49 @@
 							echo "<td style='display: none;'></td>";
 							echo "<td style='display: none;'></td>";
 							echo "<td style='display: none;'></td>";
-							echo "<td>".$c_s1."</td>";
-							echo "<td>".$c_s2."</td>";
-							echo "<td>".$c_s3."</td>";
-							echo "<td>".$c_s4."</td>";
-                            echo "<td>".$c_s5."</td>";
-                            echo "<td>".$c_s6."</td>";
-                            echo "<td>".$c_as."</td>";
+							echo "<td>".$sum_c_s1_1."</td>";
+							echo "<td>".$sum_c_s1_2."</td>";
+							echo "<td>".$sum_c_s1_3."</td>";
+							echo "<td>".$sum_c_s1_4."</td>";
+                            echo "<td>".$sum_c_s1_5."</td>";
+                            echo "<td>".$sum_c_s1."</td>";
+
+                            echo "<td>".$sum_c_s2_1."</td>";
+							echo "<td>".$sum_c_s2_2."</td>";
+							echo "<td>".$sum_c_s2_3."</td>";
+							echo "<td>".$sum_c_s2_4."</td>";
+                            echo "<td>".$sum_c_s2_5."</td>";
+                            echo "<td>".$sum_c_s2."</td>";
+
+                            echo "<td>".$sum_c_s3_1."</td>";
+							echo "<td>".$sum_c_s3_2."</td>";
+							echo "<td>".$sum_c_s3_3."</td>";
+							echo "<td>".$sum_c_s3_4."</td>";
+                            echo "<td>".$sum_c_s3_5."</td>";
+                            echo "<td>".$sum_c_s3."</td>";
+
+                            echo "<td>".$sum_c_s4_1."</td>";
+							echo "<td>".$sum_c_s4_2."</td>";
+							echo "<td>".$sum_c_s4_3."</td>";
+							echo "<td>".$sum_c_s4_4."</td>";
+                            echo "<td>".$sum_c_s4_5."</td>";
+                            echo "<td>".$sum_c_s4."</td>";
+
+                            echo "<td>".$sum_c_s5_1."</td>";
+							echo "<td>".$sum_c_s5_2."</td>";
+							echo "<td>".$sum_c_s5_3."</td>";
+							echo "<td>".$sum_c_s5_4."</td>";
+                            echo "<td>".$sum_c_s5_5."</td>";
+                            echo "<td>".$sum_c_s5."</td>";
+
+                            echo "<td>".$sum_c_s6_1."</td>";
+							echo "<td>".$sum_c_s6_2."</td>";
+							echo "<td>".$sum_c_s6_3."</td>";
+							echo "<td>".$sum_c_s6_4."</td>";
+                            echo "<td>".$sum_c_s6_5."</td>";
+                            echo "<td>".$sum_c_s6."</td>";
+
+                            echo "<td>".$sum_c_as."</td>";
 							echo "</tr>";
 							echo "</tbody>";
 							echo "</table>";
