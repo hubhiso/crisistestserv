@@ -75,6 +75,8 @@
             $a_loop = $i;
         }
 
+        
+
         if($pr == ''){$pr = $a_code[1];}
 
         $sql_o = "select * from officers where prov_id = $pr or username = 'adminfar' or username = 'adminhatc'";
