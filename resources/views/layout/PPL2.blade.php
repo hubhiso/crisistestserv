@@ -4,14 +4,20 @@
         <div class="navbar">
             <div class="navbar-end has-text-right">
                 <div class="navbar-item">
+
+                    <a class=" button is-danger is-inverted is-rounded is-small  " href="contents/แบบฟอร์ม_ขอสถานะผู้ใช้งานโปรแกรมCRS.docx.pdf" target="_blank">
+                        แบบฟอร์มขอรหัสผู้ใช้งาน&nbsp; <span class="fa-stack fa-1x">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-download fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+
                     <a class=" button is-danger is-inverted is-rounded is-small  " href="{{ 'officer' }}">
                         {{ trans('message.bt_admin') }}&nbsp; <span class="fa-stack fa-1x">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
-
-                    &nbsp;&nbsp;
 
                     @if(Config::get('app.locale') == 'en')
 
@@ -121,6 +127,8 @@
                                 <p> {{ trans('message.txt_status') }} </p><br>
                                 <a class="button is-danger  is-rounded" href="{{ 'status' }}"> <i class="fa fa-search"
                                         aria-hidden="true"></i>&nbsp;{{ trans('message.bt_status') }} </a>
+                                <!--a class="button is-danger  is-rounded" href="../php/dashboard_public.php" target="_blank"> <i class="fa fa-chart-bar"
+                                        aria-hidden="true"></i>&nbsp;{{ trans('message.bt_report_public') }} </a-->
                             </div>
                         </div>
 
@@ -181,7 +189,7 @@
         </div>
         <div class="column">
             <article class="tile is-child box">
-                <a href="contents/CRSmannual.pdf"><img src="contents/CRSmannualCV.png" height="360"></a>
+                <a href="contents/guide/คู่มือแนวทางการจัดการรับเรื่องร้องเรียน.pdf"><img src="contents/cover2-คู่มือแนวทางการจัดการรับเรื่องร้องเรียน.png" height="360"></a>
             </article>
         </div>
     </div>
@@ -310,6 +318,25 @@
                             <th>FAR</th>
                             <td>กรุงเทพฯ</td>
                             <td>เลขที133/235 หมู่บ้านรื่นฤดี 3 ถนนหทัยราษฎร์ แขวง/เขตมีนบุรี กรุงเทพฯ 10510</td>
+                        </tr>
+                        <tr>
+                            <th>SWING (มูลนิธิเพื่อนพนักงานบริการ สีลม)</th>
+                            <td>กรุงเทพฯ</td>
+                            <td>อาคารเลขที่ 3 ชั้น 5 ซอยพัฒน์พงศ์ 1 ถนนสุรวงศ์ แขวงสุริยวงศ์ เขตบางรัก กรุงเทพมหานคร 10500<br>
+                            <a class='tag is-medium is-primary is-rounded' href="https://goo.gl/maps/E9kgmrb6SmocuTUp7">แสดงบนแผนที่</a> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>SWING (มูลนิธิเพื่อนพนักงานบริการ สะพานควาย)</th>
+                            <td>กรุงเทพฯ</td>
+                            <td>1417/31 ถนนประดิพัทธ์ แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400<br>
+                            <a class='tag is-medium is-primary is-rounded' href="https://goo.gl/maps/f35cKX4pwg3gPFX19">แสดงบนแผนที่</a> </td>
+                        </tr>
+                        <tr>
+                            <th>SWING (มูลนิธิเพื่อนพนักงานบริการ พัทยา)</th>
+                            <td>ชลบุรี</td>
+                            <td>45/54 หมู่ 10 ตำบลหนองปรือ อำเภอบางละมุง จังหวัดชลบุรี<br>
+                            <a class='tag is-medium is-primary is-rounded' href="https://goo.gl/maps/nN1s84HcZRaRzEbe7">แสดงบนแผนที่</a> </td>
                         </tr>
                         <tr>
                             <th>RSAT(สมาคมฟ้าสีรุ้ง)</th>
