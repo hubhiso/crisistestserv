@@ -150,7 +150,7 @@
                                         <option value="3"> สถานะ </option>
                                         <option value="4"> ประเภทของผู้แจ้ง </option>
                                         <option value="5"> เคสส่งต่อ </option>
-
+                                        <option value="6"> จังหวัด </option>
                                     </select>
                                 </span>
                             </p>
@@ -367,6 +367,15 @@
             $('#sub_filter_search').append('<option value="1" style="width:250px">แจ้งด้วยตนเอง</option>');
             $('#sub_filter_search').append('<option value="2" style="width:250px">มีผู้แจ้งแทน</option>');
             $('#sub_filter_search').append('<option value="3" style="width:250px">เจ้าหน้าที่แจ้ง</option>');
+        } else if (search_type == 6) {
+            $('#sub_filter_search').empty();
+            $('#sub_filter_search').removeAttr('disabled');
+
+            @foreach($provinces as $province)
+
+            $('#sub_filter_search').append('<option value="{{ $province->PROVINCE_CODE }}" style="width:250px" > {{ $province->PROVINCE_NAME }} </option>');
+            
+            @endforeach
         }
     }
     $('#filter_search').on('change', function(e) {

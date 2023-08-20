@@ -407,6 +407,14 @@ class OfficerUpdateController extends Controller
                 }
 
                 $filter ++;
+            }else if($request->input('Filter')==6){
+
+                //$cases = case_input::where('prov_id', '=', $request->input('Sub_Filter'));
+
+                $matchThese = ['prov_id' =>  $request->input('Sub_Filter')];
+                $cases = case_input::where($matchThese);
+
+                $filter ++;
             }
 
         }else if($pposition  == "manager_area" && $pid == 0){
