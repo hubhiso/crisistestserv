@@ -445,6 +445,14 @@ class OfficerUpdateController extends Controller
                 }
 
                 $filter ++;
+            }else if($request->input('Filter')==6){
+
+                //$cases = case_input::where('prov_id', '=', $request->input('Sub_Filter'));
+
+                $matchThese = ['prov_id' => $value_sub];
+                $cases = case_input::where($matchThese);
+
+                $filter ++;
             }
 
         }
@@ -484,6 +492,14 @@ class OfficerUpdateController extends Controller
                     }
                     $loop_case++;
                 }
+
+                $filter ++;
+            }else if($request->input('Filter')==6){
+
+                //$cases = case_input::where('prov_id', '=', $request->input('Sub_Filter'));
+
+                $matchThese = ['prov_id' => $value_sub];
+                $cases = case_input::where($matchThese);
 
                 $filter ++;
             }
@@ -541,16 +557,17 @@ class OfficerUpdateController extends Controller
             }
         }
 
-        if($joinofficer->group != null && $joinofficer->g_view_all == 'yes'){
-            $groups = officer::where('group','=', $joinofficer->group)->get();
-
-            foreach ($groups as $group) {
-                //$cases =  $cases->orWhere('prov_id', '=', $group->prov_id );
-                $cases =  $cases->orWhere('receiver', '=', $group->name );
-                $filter++;
+        if($request->input('Filter')<>6){
+            if($joinofficer->group != null && $joinofficer->g_view_all == 'yes'){
+                $groups = officer::where('group','=', $joinofficer->group)->get();
+    
+                foreach ($groups as $group) {
+                    //$cases =  $cases->orWhere('prov_id', '=', $group->prov_id );
+                    $cases =  $cases->orWhere('receiver', '=', $group->name );
+                    $filter++;
+                }
             }
         }
-
         
         if($filter > 0){
             $cases = $cases->get();
