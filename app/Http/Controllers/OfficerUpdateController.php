@@ -411,7 +411,7 @@ class OfficerUpdateController extends Controller
 
                 //$cases = case_input::where('prov_id', '=', $request->input('Sub_Filter'));
 
-                $matchThese = ['prov_id' =>  $request->input('Sub_Filter')];
+                $matchThese = ['prov_id' => $value_sub];
                 $cases = case_input::where($matchThese);
 
                 $filter ++;
