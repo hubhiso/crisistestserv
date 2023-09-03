@@ -168,7 +168,66 @@ return [
     "tx_status5_1" => "Process completed",
 
     "tx_statuserror1" => "Your tracking code not found.",
-    "tx_statuserror2" => "Please contact to officer."
+    "tx_statuserror2" => "Please contact to officer.",
+
+    "tx_agency_name" => "Agency Name",
+    "tx_province" => "Province",
+    "tx_address" => "Address",
+    "tx_location" => "Location",
+    "tx_contact" => "Contact",
+    "tx_website" => "Website",
+
+    "tx_rsat" => "Rainbow Sky Association Of Thailand (RSAT)",
+    "tx_tnp_plus" => "Thai Plus Network (TNP+)",
+    "tx_far" => "Foundation for AIDS Rights THAILAND (FAR)",
+    "tx_swing_silom" => "Service Workers in Group Foundation (SWING)",
+    "tx_swing_saphankhwa" => "Service Workers in Group Foundation (SWING)",
+    "tx_swing_pattaya" => "Service Workers in Group Foundation (SWING)",
+    "tx_rtf" => "Raks Thai Foundation (RTF)",
+    "tx_hon" => "Health and Opportunity Network (HON)",
+    "tx_nam_kwan_sirung" => "Nam Kwan Sirung",
+    "tx_stm" => "Stella Maris Songkla",
+
+    "tx_rsat_add_bkk" => "1 And 3 Ram Kam Heng 97/2 Alley, Hua Mak, Bangkrabi District, Bangkok Province  10240",
+    "tx_tnp_add_bkk" => "494 Ladpao101 Aelly, Klong-Jan, Bangkrabi District, Bangkok Province 10240",
+    "tx_far_add_bkk" => "133/235 Ruenruedee 3 Village, Hathairach Road, Minburi District, Bangkok Province 10510",
+    "tx_swing_silom_add" => "Buliding 3, 5'th Floor Pathpong1 Alley, Surawong Road, Suriyawong, Bangrak District, Bangkok 10500",
+    "tx_swing_saphankhwa_add" => "1417/31 Padhipat Road, Samsen-nai,  Phayathai District, Bangkok Province 10400",
+    "tx_swing_pattaya_add" => "45/54 Number Village 10, Nongpue,  Bangla-Mung District,  Chon Buri",
+    "tx_rsat_add_chon" => "94/6 Number Village 4, BanSuan, Maung District,  Chon Buri",
+    "tx_rtf_add_chon" => "79/16 Number Village 3, Surasak, Sriracha District, Chon Buri 20110",
+    "tx_hon_add_chon" => "75 Sukhumvit Road, Muang Pattaya, Bang Lamung District, Chon Buri 20150",
+    "tx_nam_kwan_sirung_add_phayao" => "414/12 Number Village 11, Tom, Muang District, Phayao",
+    "tx_rtf_add_cgm" => "113/9  ChiangMai-Lumpang Road, Thasala, Muang District, ChiangMai 50000",
+    "tx_rtf_add_trat" => "1140/35 Number Village 12, Wang Ka Jae, Muang District, Trad 23000",
+    "tx_rtf_add_nakornpathom" => "9,71  Monthathip Road,Tha Tamnak, Nakhon Chai Si District, Nakhon Pathom 73120",
+    "tx_rtf_add_nakornsri" => "11 Chonlaprathan Road 4 Right 2 Nakein, Muang District, Nakorn Si Thammarat",
+    "tx_rtf_add_rayong" => "25/65 Wutthisan Road, Cheng-nern, Muang, Rayong",
+    "tx_far_add_rayong" => "5/79 Termsub Private Home Village, Nern-Phra, Muang Rayong 21000",
+    "tx_rsat_add_songkra" => "79 Nipat-Songkorh 2 Hatyai, Hatyai District Songkla 90110",
+    "tx_stm_add_songkra" => "33 Rach Udhis 2, 1 Alley Boyang, Muang, Songkla 90000",
+    "tx_rtf_add_samut_sakhon" => "25/21 Mahachai-Muang Thong 1, Number Village 3, Sahakorn Road, Bangya Preak, Muang, Sumut Sakorn 74000",
+    "tx_rtf_add_surat" => "200/3-4 Aek Thani Number Village 5, Leang Muang Road, Makham Tae, Muang, Surat Thani",
+    "tx_rsat_add_ubon" => "542 Pichit Rangsan, Nai Muang, Muang, Ubonratthani",
+    "tx_rtf_add_udon" => "273 Makkang, Muang, Udonthani 41000",
+
+    "tx_bkk" => "Bangkok", 
+    "tx_chonburi" => "Chonburi",
+    "tx_cnx" => "Chiang Mai",
+    "tx_phayao" => "Phayao",
+    "tx_trat" => "Trat",
+    "tx_nakhonpathom" => "Nakhon Pathom",
+    "tx_nakhon_si" => "Nakhon Si Thammarat",
+    "tx_rayong" => "Rayong",
+    "tx_songkhla" => "Songkhla",
+    "tx_samut_sakhon" => "Samut Sakhon",
+    "tx_surat_thani" => "Surat Thani",
+    "tx_ubon" => "Ubon Ratchathani",
+    "tx_udon" => "Udon Thani",
+
+    "link_loadjson" => "loadjson_en.php",
+
+    "tx_user_regis" => "User registration"
 
 ];
 

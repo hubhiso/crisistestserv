@@ -1,3 +1,22 @@
+<?php 
+
+$lang = $_GET['lang'];
+
+if($lang == 'th'){
+  $link = "loadjson.php";
+  $name = "หน่วยงาน";
+  $add = "ที่อยู่";
+}else if($lang == 'en'){
+  $link = "loadjson_en.php";
+  $name = "Agency";
+  $add = "Address";
+}else{
+  $link = "";
+  $name = "";
+  $add = "";
+}
+
+?>
 <html>
 <head>
   <title>Crisis cluster</title>
@@ -31,7 +50,7 @@
     }).addTo(map);
 
 
-  $.getJSON("loadjson.php",function(data){
+  $.getJSON('<?php echo $link; ?>',function(data){
     var ratIcon = L.icon({
       iconUrl: 'crisispinx45.png',
       iconSize: [45,45]
@@ -39,7 +58,7 @@
     var rodents = L.geoJson(data,{
       pointToLayer: function(feature,latlng){
         var marker = L.marker(latlng,{icon: ratIcon});
-        marker.bindPopup('<b>หน่วยงาน : '+feature.id + '</b><br/>'+'ที่อยู่ : '+feature.properties.receiver);
+        marker.bindPopup('<b><?php echo $name; ?> : '+feature.id + '</b><br/>'+'<?php echo $add; ?> : '+feature.properties.receiver);
         return marker;
       }
     });

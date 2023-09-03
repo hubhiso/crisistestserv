@@ -292,6 +292,8 @@
         var p_ar = $('#p_area').val();
 
         var status_url = "{{route('officer.load_status',['prov_id' => ':p_id']) }}";
+
+        //alert(Sub_Filter);
         status_url = status_url.replace(':p_id', p_id + ' ' + p_po + ' ' + p_ar);
         console.log(status_url);
         $.ajax({

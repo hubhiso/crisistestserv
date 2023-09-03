@@ -6,9 +6,10 @@
                 <div class="navbar-item">
 
                     <a class=" button is-danger is-inverted is-rounded is-small  " href="contents/แบบฟอร์ม_ขอสถานะผู้ใช้งานโปรแกรมCRS.pdf" target="_blank">
-                        แบบฟอร์มขอรหัสผู้ใช้งาน&nbsp; <span class="fa-stack fa-1x">
+                    {{ trans('message.tx_user_regis') }}&nbsp; <span class="fa-stack fa-1x">
                             <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-download fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-user-plus fa-stack-1x fa-inverse"></i>
+                            
                         </span>
                     </a>
 
@@ -290,7 +291,7 @@
             <h2 class="subtitle">
                 {{ trans('message.tx_sh_table') }}
             </h2>
-            <a class="button is-primary  is-rounded is-danger" href="{{ 'orgmap' }}"> <i
+            <a class="button is-primary  is-rounded is-danger" href="{{ 'orgmap' }}" target="_blank"> <i
                     class="fas fa-thumbtack"></i>&nbsp; {{ trans('message.bt_map') }} </a>
             <br><br>
             <div class="panel table-container">
@@ -298,153 +299,190 @@
                 <table class="table  is-striped is-hoverable">
                     <thead>
                         <tr>
-                            <th class="has-text-danger">ชื่อหน่วยงาน</abbr></th>
-                            <th class="has-text-danger">จังหวัด</th>
-                            <th class="has-text-danger">ที่อยู่</abbr></th>
+                            <th class="has-text-danger">{{ trans('message.tx_agency_name') }}</th>
+                            <th class="has-text-danger">{{ trans('message.tx_province') }}</th>
+                            <th class="has-text-danger">{{ trans('message.tx_address') }}</th>
+                            <th class="has-text-danger">{{ trans('message.tx_location') }}</th>
+                            <th class="has-text-danger" style=" white-space:nowrap;">{{ trans('message.tx_contact') }}</th>
+                            <th class="has-text-danger has-text-centered">{{ trans('message.tx_website') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th>RSAT(สมาคมฟ้าสีรุ้ง)</th>
-                            <td>กรุงเทพฯ</td>
-                            <td>เลขที 1 และ 3 ซอยรามคำแหง 97/2 ถนนรามคำแหง แขวงหัวหมาก เขตบางกะปิ กรุงเทพฯ 10240</td>
+                            <th>{{ trans('message.tx_rsat') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_bkk') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rsat_add_bkk') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium is-rounded color1' href="https://goo.gl/maps/w8muJ6eguspFFtWf9" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded ' href="https://www.facebook.com/rsat.info" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="http://www.rsat.info" target="_blank">http://www.rsat.info</a></td>
                         </tr>
                         <tr>
-                            <th>TNP+ (เครือข่ายผู้ติดเชื้อ)</th>
-                            <td>กรุงเทพฯ</td>
-                            <td>494 ซอย 14 ลาดพร้าว 101 แขวงคลองจั่น เขตบางกะปิ กรุงเทพฯ 10240</td>
+                            <th>{{ trans('message.tx_tnp_plus') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_bkk') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_tnp_add_bkk') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/iEnbqA2m4voWK6Hk7" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/TNPplus" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://thaiplus.net" target="_blank">https://thaiplus.net</a></td>
                         </tr>
                         <tr>
-                            <th>FAR</th>
-                            <td>กรุงเทพฯ</td>
-                            <td>เลขที133/235 หมู่บ้านรื่นฤดี 3 ถนนหทัยราษฎร์ แขวง/เขตมีนบุรี กรุงเทพฯ 10510</td>
+                            <th>{{ trans('message.tx_far') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_bkk') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_far_add_bkk') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/YbqZjooMDQ3oohMU9" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/foundationforaidsrights" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.aidsrightsthailand.com" target="_blank">https://www.aidsrightsthailand.com</a></td>
                         </tr>
                         <tr>
-                            <th>SWING (มูลนิธิเพื่อนพนักงานบริการ สีลม)</th>
-                            <td>กรุงเทพฯ</td>
-                            <td>อาคารเลขที่ 3 ชั้น 5 ซอยพัฒน์พงศ์ 1 ถนนสุรวงศ์ แขวงสุริยวงศ์ เขตบางรัก กรุงเทพมหานคร 10500<br>
-                            <a class='tag is-medium is-primary is-rounded' href="https://goo.gl/maps/E9kgmrb6SmocuTUp7">แสดงบนแผนที่</a> 
-                            </td>
+                            <th>{{ trans('message.tx_swing_silom') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_bkk') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_swing_silom_add') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/pbvGNNrEykZ3pn4m8" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/SWINGThailandTH" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.swingthailand.org" target="_blank">https://www.swingthailand.org</a></td>
                         </tr>
                         <tr>
-                            <th>SWING (มูลนิธิเพื่อนพนักงานบริการ สะพานควาย)</th>
-                            <td>กรุงเทพฯ</td>
-                            <td>1417/31 ถนนประดิพัทธ์ แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400<br>
-                            <a class='tag is-medium is-primary is-rounded' href="https://goo.gl/maps/f35cKX4pwg3gPFX19">แสดงบนแผนที่</a> </td>
+                            <th>{{ trans('message.tx_swing_saphankhwa') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_bkk') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_swing_saphankhwa_add') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/LPsHRc3TroaNdEry8" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/SWINGThailandTH" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.swingthailand.org" target="_blank">https://www.swingthailand.org</a></td>
                         </tr>
                         <tr>
-                            <th>SWING (มูลนิธิเพื่อนพนักงานบริการ พัทยา)</th>
-                            <td>ชลบุรี</td>
-                            <td>45/54 หมู่ 10 ตำบลหนองปรือ อำเภอบางละมุง จังหวัดชลบุรี<br>
-                            <a class='tag is-medium is-primary is-rounded' href="https://goo.gl/maps/nN1s84HcZRaRzEbe7">แสดงบนแผนที่</a> </td>
+                            <th>{{ trans('message.tx_swing_pattaya') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_chonburi') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_swing_pattaya_add') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/ERF2dMkxUPHvUnhh9" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/SWINGThailandTH" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.swingthailand.org" target="_blank">https://www.swingthailand.org</a></td>
                         </tr>
                         <tr>
-                            <th>RSAT(สมาคมฟ้าสีรุ้ง)</th>
-                            <td>ชลบุรี</td>
-                            <td>94/6 ม.4 ต.บ้านสวน อ.เมือง จ.ชลบุรี เทศบาลเมืองชลบุรี</td>
+                            <th>{{ trans('message.tx_rsat') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_chonburi') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rsat_add_chon') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/omvoYzEqLwDbhaH27" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/rsat.info" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="http://www.rsat.info" target="_blank">http://www.rsat.info</a></td>
                         </tr>
                         <tr>
-                            <th>RTF (มูลนิธิรักษ์ไทย)</th>
-                            <td>ชลบุรี</td>
-                            <td></td>
+                            <th>{{ trans('message.tx_rtf') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_chonburi') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rtf_add_chon') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/TX221Jyo55Jy4ffN8" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/raksthaifoundation" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.raksthai.org" target="_blank">https://www.raksthai.org</a></td>
                         </tr>
                         <tr>
-                            <th>HON</th>
-                            <td>ชลบุรี</td>
-                            <td></td>
+                            <th>{{ trans('message.tx_hon') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_chonburi') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_hon_add_chon') }}</td>
+                            <td>-</td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/hon.house/" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td>-</td>
                         </tr>
                         <tr>
-                            <th>กลุ่มน้ำกว๊านสีรุ้ง</th>
-                            <td>ลำพูน</td>
-                            <td></td>
+                            <th>{{ trans('message.tx_nam_kwan_sirung') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_phayao') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_nam_kwan_sirung_add_phayao') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/5Q6KgTCYS17GYiUW8" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/profile.php?id=100087218064343" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td>-</td>
                         </tr>
                         <tr>
-                            <th>กลุ่มน้ำกว๊านสีรุ้ง</th>
-                            <td>พะเยา</td>
-                            <td>414/12 หมู่11 ต.ต๋อม เทศบาลเมืองพะเยา 56000</td>
+                            <th>{{ trans('message.tx_rtf') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_cnx') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rtf_add_cgm') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/fZP2nQWbAqqcGfZ89" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/raksthaifoundation" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.raksthai.org">https://www.raksthai.org</a></td>
                         </tr>
                         <tr>
-                            <th>RTF (มูลนิธิรักษ์ไทย)</th>
-                            <td>เชียงใหม่</td>
-                            <td>113/9 ถ. เชียงใหม่ – ลำปาง ต. ท่าศาลา อ. เมือง จ. เชียงใหม่ 50000</td>
+                            <th>{{ trans('message.tx_rtf') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_trat') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rtf_add_trat') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/1s4w2AXo4HnrTP8U6" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/raksthaifoundation" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.raksthai.org" target="_blank">https://www.raksthai.org</a></td>
                         </tr>
                         <tr>
-                            <th>RTF (มูลนิธิรักษ์ไทย)</th>
-                            <td>ตราด</td>
-                            <td>1140/35 ม.12 ต.วังกระแจะ อ.เมือง จ.ตราด 23000</td>
+                            <th>{{ trans('message.tx_rtf') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_nakhonpathom') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rtf_add_nakornpathom') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/5pNQTEsw1jwbHNtb8" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/raksthaifoundation" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.raksthai.org" target="_blank">https://www.raksthai.org</a></td>
                         </tr>
                         <tr>
-                            <th>RTF (มูลนิธิรักษ์ไทย)</th>
-                            <td>นครปฐม</td>
-                            <td></td>
+                            <th>{{ trans('message.tx_rtf') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_nakhon_si') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rtf_add_nakornsri') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/84qovGq28ZB4ymxV6" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/raksthaifoundation" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.raksthai.org" target="_blank"></a>https://www.raksthai.org</td>
                         </tr>
                         <tr>
-                            <th>RTF (มูลนิธิรักษ์ไทย)</th>
-                            <td>นครศรีธรรมราช</td>
-                            <td>11 ถนนชลประทาน 4 ขวา 2 ตำบลนาเคียน อ.เมือง จ.นครศรีธรรมราช 80000</td>
+                            <th>{{ trans('message.tx_rtf') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_rayong') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rtf_add_rayong') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/U8eDGmoifbdtotZg8" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/raksthaifoundation" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.raksthai.org" target="_blank">https://www.raksthai.org</a></td>
                         </tr>
                         <tr>
-                            <th>RSAT(สมาคมฟ้าสีรุ้ง)</th>
-                            <td>นนทบุรี</td>
-                            <td>ถนนรัตนาธิเบต22 หรือ ซอยโรงแรมพาราไดซ์ ตรงข้าม บิ๊กซี รัตนาธิเบต นนทบุรี</td>
+                            <th>{{ trans('message.tx_far') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_rayong') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_far_add_rayong') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/tkRxH77i196Y3kNW7" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/foundationforaidsrights" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.aidsrightsthailand.com" target="_blank">https://www.aidsrightsthailand.com</a></td>
                         </tr>
                         <tr>
-                            <th>RSAT(สมาคมฟ้าสีรุ้ง)</th>
-                            <td>ปทุมธานี</td>
-                            <td>315/61 ซอยพหลโยธิน 62 ตำบล คูคต อำเภอลำลูกกา เทศบาลเมืองปทุมธานี 12130</td>
+                            <th>{{ trans('message.tx_rsat') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_songkhla') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rsat_add_songkra') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/eBZo4jGYRbAFqesA9" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/rsat.info" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="http://www.rsat.info" target="_blank">http://www.rsat.info</a></td>
                         </tr>
                         <tr>
-                            <th>RTF (มูลนิธิรักษ์ไทย)</th>
-                            <td>ระยอง</td>
-                            <td></td>
+                            <th>{{ trans('message.tx_stm') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_songkhla') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_stm_add_songkra') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/Smpyf3sFBcY923856" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/profile.php?id=100064430270367&ref" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://stellamariscenter.org/songkhla" target="_blank">https://stellamariscenter.org/songkhla</a></td>
                         </tr>
                         <tr>
-                            <th>FAR</th>
-                            <td>ระยอง</td>
-                            <td>เลขที5/79 หมู่บ้านเติมทรัพย์ไพรเวทโฮม ตำบลเนินพระ อำเภอเมือง จังหวัดระยอง, 21000</td>
+                            <th>{{ trans('message.tx_rtf') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_samut_sakhon') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rtf_add_samut_sakhon') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/PNCVqMj4GtXpjA6o7" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/raksthaifoundation" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.raksthai.org" target="_blank">https://www.raksthai.org</a></td>
                         </tr>
                         <tr>
-                            <th>RSAT(สมาคมฟ้าสีรุ้ง)</th>
-                            <td>สงขลา</td>
-                            <td>79 ถนน นิพัทธิ์สงเคราะห์ 2, หาดใหญ่, หาดใหญ่ 90110</td>
+                            <th>{{ trans('message.tx_rtf') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_surat_thani') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rtf_add_surat') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/kGvr9b1NXN6XSuMJ9" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/raksthaifoundation" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.raksthai.org" target="_blank">https://www.raksthai.org</a></td>
                         </tr>
                         <tr>
-                            <th>STM(บ้านสุขสันต์)</th>
-                            <td>สงขลา</td>
-                            <td>33 ราษฎร์อุทิศ 2 ซอย 1 ตำบลบ่อยาง อำเภอเมืองสงขลา สงขลา 90000</td>
+                            <th>{{ trans('message.tx_rsat') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_ubon') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rsat_add_ubon') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/ukQ2TbkmosL8vp8e7" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded has-text-centered' href="https://www.facebook.com/rsat.info" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="http://www.rsat.info" target="_blank">http://www.rsat.info</a></td>
                         </tr>
                         <tr>
-                            <th>RTF (มูลนิธิรักษ์ไทย)</th>
-                            <td>สมุทรสาคร</td>
-                            <td>25/21 มหาชัยเมืองทองโครงการ1 หมู่ 3 ถ สหกรณ์ ต บางหญ้าแพรก อ เมือง ตำบล บางหญ้าแพรก
-                                อำเภอเมืองสมุทรสาคร สมุทรสาคร 74000</td>
-                        </tr>
-                        <tr>
-                            <th>RSAT(สมาคมฟ้าสีรุ้ง)</th>
-                            <td>สมุทรปราการ</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>RSAT(มูลนิธิรักษ์ไทย)</th>
-                            <td>สมุทรปราการ</td>
-                            <td>80/403 หมู่บ้านทิพวัลย์ 1 ซอย 45 ถนนเทพารักษ์ บางเมืองใหม่ เมือง สมุทรปราการ 10270</td>
-                        </tr>
-                        <tr>
-                            <th>RTF (มูลนิธิรักษ์ไทย)</th>
-                            <td>สุราษฎร์ธานี</td>
-                            <td>200/3-4 หมู่ 5 หมู่บ้าน เอกธานี ถ. เลี่ยงเมือง ต. มะขามเตี้ย อ. เมือง จ. สุราษฎร์ธานี
-                                84000
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>RSAT(สมาคมฟ้าสีรุ้ง)</th>
-                            <td>อุบลราชธานี</td>
-                            <td>542 ถนนพิชิตรังสรรค์ ตำบลในเมือง อำเภอเมือง จังหวัดอุบลราชธานี  34000</td>
-                        </tr>
-                        <tr>
-                            <th>RTF (มูลนิธิรักษ์ไทย)</th>
-                            <td>อุดรธานี</td>
-                            <td>273 ถนน อำเภอ ตำบลหมากแข้ง อำเภอเมืองอุดรธานี อุดรธานี 41000</td>
+                            <th>{{ trans('message.tx_rtf') }}</th>
+                            <td class="has-text-left">{{ trans('message.tx_udon') }}</td>
+                            <td class="has-text-left">{{ trans('message.tx_rtf_add_udon') }}</td>
+                            <td class="has-text-left"><a class='tag is-medium color1 is-rounded' href="https://goo.gl/maps/U4CupwV4mD8x1Rn78" target="_blank">{{ trans('message.bt_map') }}</a></td>
+                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded' href="https://www.facebook.com/raksthaifoundation" target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
+                            <td class="has-text-left"><a href="https://www.raksthai.org" target="_blank">https://www.raksthai.org</a></td>
                         </tr>
                     </tbody>
                 </table>

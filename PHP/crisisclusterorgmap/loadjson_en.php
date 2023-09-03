@@ -27,9 +27,9 @@ while ($row = $result1->fetch_assoc()){
 	//echo $row["FEATURES"].",\"dname2\": \"". $row["dname"]." -\",\"color2\": \"black\",\"total\": \"\" },"."\"".$row["GEOMETRY"].",";
 	
 		if ($count_i < $count_row){
-		echo "{\"type\": \"Feature\", \"id\": \"".$row["name"]."\", \"properties\": { \"receiver\": \"".$row["address"]."\"},\"geometry\": { \"type\":\"Point\", \"coordinates\": [".$row["geolon"].",".$row["geolat"]."] } },";
+		echo "{\"type\": \"Feature\", \"id\": \"".$row["name_en"]."\", \"properties\": { \"receiver\": \"".$row["address_en"]."\"},\"geometry\": { \"type\":\"Point\", \"coordinates\": [".$row["geolon"].",".$row["geolat"]."] } },";
 		}else{
-		echo "{\"type\": \"Feature\", \"id\": \"".$row["name"]."\", \"properties\": { \"receiver\": \"".$row["address"]."\"},\"geometry\": { \"type\":\"Point\", \"coordinates\": [".$row["geolon"].",".$row["geolat"]."] } }";
+		echo "{\"type\": \"Feature\", \"id\": \"".$row["name_en"]."\", \"properties\": { \"receiver\": \"".$row["address_en"]."\"},\"geometry\": { \"type\":\"Point\", \"coordinates\": [".$row["geolon"].",".$row["geolat"]."] } }";
 		
 		}
 		
