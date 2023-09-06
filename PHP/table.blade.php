@@ -74,7 +74,7 @@
                         </li>
                         <li class="is-active">
                             <a href="table.blade.php">
-                            <h6><i class="far fa-file-alt is-size-4 " aria-hidden="true"></i> สรุปข้อมูลภาพรวม</h6>
+                            <h6><i class="fa fa-table  is-size-4 " aria-hidden="true"></i> สรุปข้อมูลภาพรวม</h6>
                             </a>
 
                         </li>
@@ -85,25 +85,25 @@
                     <ul>
                         <li class="is-active">
                             <a href="dashboard3_new.php">
-                                <h6><i class="far fa-file-alt " aria-hidden="true"></i> ภาพรวม </h6>
+                                <h6><i class="fa fa-table  " aria-hidden="true"></i> ภาพรวม </h6>
                             </a>
                         </li>
 
                         <li>
                             <a href="report_c1_new.php">
-                                <h6><i class="far fa-file-alt is-size-4 " aria-hidden="true"></i> สรุปกรณีละเมิดสิทธิ</h6>
+                                <h6><i class="fa fa-table  " aria-hidden="true"></i> สรุปกรณีละเมิดสิทธิ</h6>
                             </a>
 
                         </li>
                         <li>
                             <a href="report_c2_new.php">
-                                <h6><i class="far fa-map is-size-4 " aria-hidden="true"></i> ตารางสรุปการละเมิดสิทธิ</h6>
+                                <h6><i class="fa fa-table   " aria-hidden="true"></i> ตารางสรุปการละเมิดสิทธิ</h6>
                             </a>
 
                         </li>
                         <li >
                             <a href="report_performance_new.php">
-                            <h6><i class="far fa-file-alt is-size-4 " aria-hidden="true"></i> ระยะเวลาการดำเนินการ</h6>
+                            <h6><i class="fa fa-table   " aria-hidden="true"></i> ระยะเวลาการดำเนินการ</h6>
                             </a>
 
                         </li>
