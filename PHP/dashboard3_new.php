@@ -26,8 +26,6 @@
 
     <link href="report.css" rel="stylesheet">
 
-    <script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
-    <script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
 
     <title> ปกป้อง (CRS) </title>
 
@@ -339,6 +337,80 @@
             
             $prloop = $i;
         }
+
+        $sql = "SELECT count(*) as count_pr, code, prov_geo.prov_name_en, prov_geo.name as prname from case_inputs c left join prov_geo on prov_id = code where  c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
+        $pr_q group by code";
+        $result1 = mysqli_query($conn, $sql); 
+        
+        $i = 0;
+
+        while($row = $result1->fetch_assoc()) {
+            $i++;
+
+            $count_pr[$i] = $row["count_pr"];
+            $prov_name[$i] = $row["prname"];
+
+            $i_nameen[$i] = substr($row['prov_name_en'],3);
+            
+            $case_pr_loop = $i;
+        }
+
+        
+
+        if($nhso != 0){
+
+            if($pr != 0){
+                $strSQL = "SELECT count(c.amphur_id) as total , c.amphur_id as DISTRICTID, d.DISTRICTTH as area_name from case_inputs c left join prov_geo on prov_id = code left join distambon d on amphur_id = d.DISTRICTID where prov_id and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' $pr_q group by amphur_id, d.DISTRICTTH order by amphur_id asc; ";
+            }else{
+                /*
+                $strSQL = "SELECT
+                        count(*) AS total,
+                        c.prov_id AS province ,
+                        p.nhso
+                        FROM
+                        case_inputs c
+                        inner join prov_geo p ON p.code = c.prov_id 
+                        WHERE  c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
+                        $pr_q 
+                        GROUP BY
+                        c.prov_id ";*/
+
+                $strSQL = " SELECT count(*) AS total, c.prov_id AS province , p.nhso , p.name as area_name FROM case_inputs c inner join prov_geo p ON p.code = c.prov_id WHERE c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' $pr_q  GROUP BY c.prov_id;";
+
+            }
+        }else{
+            if($pr != 0){
+
+                /*$strSQL = "SELECT count(*) as total , amphur_id as DISTRICTID from case_inputs c left join prov_geo on prov_id = code where prov_id = '$pr' and  c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
+                            $pr_q group by amphur_id order by amphur_id asc; ";*/
+
+                $strSQL = "SELECT count(*) as total , amphur_id as DISTRICTID, d.DISTRICTTH as area_name from case_inputs c left join prov_geo on prov_id = code left join distambon d on amphur_id = d.DISTRICTID where prov_id = '$pr' and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' $pr_q group by amphur_id, d.DISTRICTTH order by amphur_id asc; ";
+
+            }else{
+                /*$strSQL = "SELECT count(*) as count_pr, code, prov_geo.prov_name_en, prov_geo.name as prname from case_inputs c left join prov_geo on prov_id = code where  c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."'
+                $pr_q group by code";*/
+
+                $strSQL = "SELECT count(*) as total, code, prov_geo.prov_name_en, prov_geo.name as area_name from case_inputs c left join prov_geo on prov_id = code where c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' group by code order by total desc ;";
+
+            }
+        }
+
+        echo $strSQL;
+
+        $result1 = mysqli_query($conn, $strSQL); 
+        
+        $i = 0;
+
+        while($row = $result1->fetch_assoc()) {
+            $i++;
+
+            $area_total[$i] = $row["total"];
+
+            $area_name[$i] = $row["area_name"];
+
+            
+            $selectarea_loop = $i;
+        }
     ?>
 
 </head>
@@ -454,7 +526,7 @@
                         <div class="">
                             <div class="input-group">
                                 <select name="nhso" id="nhso" class="form-select rounded"
-                                    onchange="setprov(nhso.value);">
+                                    onchange="setprov(nhso.value,1);">
                                     <option value="0" <?php if ($nhso == "0"){ echo "selected";} ?>> ทุกเขต </option>
                                     <option value="1" <?php if ($nhso == "1"){ echo "selected";} ?>>
                                         เขต 1
@@ -769,6 +841,40 @@
                 </div>
             </div>
 
+            <div class="col-12 col-md-6 p-3">
+                <div id="chart-map" class="bg-white  text-center p-3 chart-rounded ratio ratio-1x1">
+
+                    <?php
+
+                        if($pr == 0 and $nhso != 0){
+                            $map1 = "map_crs/map_region_auto_crs.php?province=$nhso&pr=$pr&ds=$date_start&de=$date_end";
+
+                            echo "<iframe class='responsive-iframe' src='$map1'> </iframe> ";
+                        }else if($pr == 0 and $nhso == 0){
+                            ?>
+                    <div id="chartdiv31" class="bg-white  text-center p-3 chart-rounded">
+                        FusionCharts XT will load here!
+                    </div>
+                    <?php
+                        }else{
+                            $map1 = "map_crs/map_province_auto_crs.php?province=$pr&nhso=$nhso&ds=$date_start&de=$date_end";
+                            echo "<iframe class='responsive-iframe' src='$map1'> </iframe> ";
+                        }
+                    
+                    ?>
+
+
+
+
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 p-3">
+                <div id="chart-container-6" class="bg-white  text-center p-3 chart-rounded">
+                    FusionCharts XT will load here!
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -792,13 +898,17 @@
     <script type="text/javascript" src="../public/NewFusionChart/js/fusioncharts.js"></script>
     <script type="text/javascript" src="../public/NewFusionChart/js/themes/fusioncharts.theme.hulk-light.js"></script>
 
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/th/th-all.js"></script>
+
+
     <script>
     $(document).ready(function() {
 
 
         var set_nhso = $('#nhso').val();
 
-        setprov(set_nhso);
+        setprov(set_nhso, 0);
 
         $('.se_time_g11').hide();
         $('.se_time_g2').hide();
@@ -1092,7 +1202,9 @@
                     "decimals": "2",
                     "numberSuffix": "%",
                     "palettecolors": "#de0867",
-                    "exportEnabled": "1"
+                    "exportEnabled": "1",
+                    "labelDisplay": "rotate",
+                    "slantLabel": "1"
                 },
 
                 "data": [
@@ -1151,7 +1263,9 @@
                     "numberScaleValue": "0",
                     "theme": "hulk-light",
                     "palettecolors": "#de0867",
-                    "exportEnabled": "1"
+                    "exportEnabled": "1",
+                    "labelDisplay": "rotate",
+                    "slantLabel": "1"
 
                 },
 
@@ -1211,7 +1325,9 @@
                         "numberScaleValue": "0",
                         "theme": "hulk-light",
                         "palettecolors": "#de0867",
-                        "exportEnabled": "1"
+                        "exportEnabled": "1",
+                        "labelDisplay": "rotate",
+                        "slantLabel": "1"
 
                     },
 
@@ -1278,7 +1394,7 @@
     </script>
 
     <script>
-    function setprov(se) {
+    function setprov(se, ck1) {
 
         var pr_code = <?php echo json_encode($pr_code); ?>;
         var pr_name = <?php echo json_encode($pr_name); ?>;
@@ -1297,9 +1413,12 @@
 
                 $("#pr").append($("<option></option>").attr("value", pr_code[i]).text(pr_name[i]));
 
-                if ('<?php echo $pr; ?>' == pr_code[i]) {
-                    $("#pr option[value='" + pr_code[i] + "']").attr("selected", "selected");
+                if (ck1 == 0) {
+                    if ('<?php echo $pr; ?>' == pr_code[i]) {
+                        $("#pr option[value='" + pr_code[i] + "']").attr("selected", "selected");
+                    }
                 }
+
 
             }
 
@@ -1325,6 +1444,137 @@
         }
     }
     </script>
-</body>
 
-</html>
+
+    <script>
+    var data = [
+
+        <?php
+        for($i =1; $i <= $case_pr_loop; $i++){
+            echo '{';
+            echo '"hc-key" : "th-'.strtolower($i_nameen[$i]).'",';
+            echo '"code" : "'.$prov_name[$i].'",';
+            echo '"id" : "'.$prov_name[$i].'",';
+            echo '"value" : '.$count_pr[$i];
+
+            if($i <> $case_pr_loop){
+                echo '},';
+            }else{
+                echo '}';
+            }
+        }
+    ?>
+
+
+    ];
+
+    // Create the chart
+    const chart31 = Highcharts.mapChart('chartdiv31', {
+
+        chart: {
+            map: 'countries/th/th-all',
+            backgroundColor: 'transparent',
+            height: 650
+        },
+        title: {
+            text: 'การบันทึกข้อมูลการถูกละเมิดสิทธิในระบบ CRS'
+        },
+        subtitle: {
+            text: 'แยกรายจังหวัด',
+            style: {
+                fontSize: '15px'
+            }
+        },
+
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+
+
+        colorAxis: {
+            min: 0,
+            minColor: '#fff',
+            maxColor: '#de0867'
+        },
+
+        series: [{
+            data: data,
+            tooltip: {
+                headerFormat: '',
+                pointFormat: '{point.code}: {point.value}'
+            },
+            states: {
+                hover: {
+                    color: '#98b2d1'
+                }
+            },
+            dataLabels: {
+                //enabled: true,
+                format: '{point.code}'
+            }
+        }]
+    });
+    </script>
+
+    <script type="text/javascript">
+    /*  Chart6 */
+    FusionCharts.ready(function() {
+
+        var salesChart = new FusionCharts({
+                type: 'bar2d',
+                renderAt: 'chart-container-6',
+                width: '100%',
+                height: '650',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "caption": "การบันทึกข้อมูลการถูกละเมิดสิทธิในระบบ CRS ",
+                        "subCaption": "จำแนกตามพื้นที่ ",
+                        "placeValuesInside": "0",
+                        "yAxisName": "จำนวน",
+                        "basefontsize": "14",
+                        "captionFontSize": "16",
+                        "subcaptionFontSize": "16",
+                        "showAxisLines": "1",
+                        "axisLineAlpha": "25",
+                        "alignCaptionWithCanvas": "0",
+                        "showAlternateVGridColor": "1",
+                        "numberScaleValue": "0",
+                        "theme": "hulk-light",
+                        "numVisiblePlot": "12",
+                        "scrollheight": "10",
+                        "flatScrollBars": "1",
+                        "scrollShowButtons": "1",
+                        "scrollColor": "#cccccc",
+                        "exportEnabled": "1"
+                    },
+
+                    "data": [
+
+                        <?php
+                        
+                            for($i=1;$i<=$selectarea_loop;$i++){
+                                echo "{";
+                                echo "'label': '$area_name[$i]',";
+                                echo "'value': '$area_total[$i]',";
+                                echo "'color': '#de0867'";
+                                echo "}";
+                                if($i <> $selectarea_loop){
+                                    echo ",";
+                                }
+                            }
+                        ?>
+
+                    ]
+                }
+            })
+            .render();
+    }); 
+
+    </script>
+    </body>
+
+    </html>

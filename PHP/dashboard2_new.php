@@ -335,7 +335,7 @@
                         <div class="">
                             <div class="input-group">
                                 <select name="nhso" id="nhso" class="form-select rounded"
-                                    onchange="setprov(nhso.value);">
+                                    onchange="setprov(nhso.value,1);">
                                     <option value="0" <?php if ($nhso == "0"){ echo "selected";} ?>> ทุกเขต </option>
                                     <option value="1" <?php if ($nhso == "1"){ echo "selected";} ?>>
                                         เขต 1
@@ -555,7 +555,7 @@
 
         var set_nhso = $('#nhso').val();
 
-        setprov(set_nhso);  
+        setprov(set_nhso,0);  
 
         $('.se_time_g11').hide();
         $('.se_time_g2').hide();
@@ -853,7 +853,7 @@
     </script>
 
 <script>
-    function setprov(se) {
+    function setprov(se,ck1) {
 
         var pr_code = <?php echo json_encode($pr_code); ?>;
         var pr_name = <?php echo json_encode($pr_name); ?>;
@@ -872,8 +872,10 @@
 
                 $("#pr").append($("<option></option>").attr("value", pr_code[i]).text(pr_name[i]));
 
-                if ('<?php echo $pr; ?>' == pr_code[i]) {
+                if(ck1 == 0){
+                    if ('<?php echo $pr; ?>' == pr_code[i]) {
                     $("#pr option[value='" + pr_code[i] + "']").attr("selected", "selected");
+                    }
                 }
 
             }
