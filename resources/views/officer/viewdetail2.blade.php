@@ -84,15 +84,13 @@
                         </a>
 
                     </li>
-                    @if($show_data->status > 3)
+                    
                     <li>
                         <a href="{{ route('officer.view_activities' , $show_data->case_id) }}">
                         <span class="icon is-small"><i class="fa fa-cog"></i></span>
                         <span> การดำเนินการ </span>
                     </a>
                     </li>
-
-                    @endif
 
                 </ul>
             </div>
@@ -323,6 +321,18 @@
                                         <i class="far fa-circle  "></i>
                                         @endif
                                         กัมพูชา &nbsp;
+                                    </span>
+                                </label>
+                                &nbsp;
+
+                                <label >
+                                    <span>
+                                        @if($show_data->nation == 7 )
+                                        <i class="far fa-check-circle  has-text-info"></i>
+                                        @else
+                                        <i class="far fa-circle  "></i>
+                                        @endif
+                                        ไร้สัญชาติ/ไม่มีสถานะบุคคล &nbsp;
                                     </span>
                                 </label>
                                 &nbsp;

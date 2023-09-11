@@ -5,7 +5,7 @@
             <div class="navbar-end has-text-right">
                 <div class="navbar-item">
 
-                    <a class=" button is-danger is-inverted is-rounded is-small  " href="contents/แบบฟอร์ม_ขอสถานะผู้ใช้งานโปรแกรมCRS.pdf" target="_blank">
+                    <a class=" button is-danger is-inverted is-rounded is-small  "  href="{{ route('register') }}" target="_blank">
                     {{ trans('message.tx_user_regis') }}&nbsp; <span class="fa-stack fa-1x">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fas fa-user-plus fa-stack-1x fa-inverse"></i>
@@ -175,7 +175,7 @@
 
         <br><br>
         <figure class="image is-128x128 container">
-            <img src="images/seo.png">
+            <a href="{{ 'resource' }}" target="_blank"><img src="images/seo.png"></a>
         </figure>
         <br>
         <h1 class="title"> {{ trans('message.tx_h_knowledge') }} </h1>

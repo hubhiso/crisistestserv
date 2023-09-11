@@ -21,6 +21,7 @@ class ManagerController extends Controller
     {
         $this->middleware('auth:officer');
     }
+
     public  function reject($case_id){
         $show_data = case_input::where('case_id','=',$case_id)->first();
         return view('Manager.reject_frm',compact('show_data'));
@@ -165,7 +166,7 @@ class ManagerController extends Controller
     {
 
         return officer::create([
-            'active' => 'yes',
+            'active' => 'no',
             'username' => $data['username'],
             'name' => $data['name'],
             'nameorg' => $data['nameorg'],
@@ -177,15 +178,62 @@ class ManagerController extends Controller
             'position' => $data['position'],
             'p_view_all' => $data['p_view_all'],
             'p_receive' => $data['p_receive'],
+            'fileupload1' => $data['fileupload1'],
+            'fileupload2' => $data['fileupload2']
 
         ]);
+
+
     }
      function create_officer(Request $request)
     {
 
+        $username = $request->input('username');
+
         $this->validator($request->all())->validate();
-        $this->create($request->all());
-        return redirect('officer/show/0');
+        //$this->create($request->all());
+
+        officer::create([
+
+            'active' => 'no',
+            'approv' => 'no',
+            'username'=>$request->input('username'),
+            'name'=>$request->input('name'),
+            'nameorg'=>$request->input('nameorg'),
+            'email'=>$request->input('email'),
+            'tel'=>$request->input('tel'),
+            'password'=> bcrypt($request->input('password')),
+            'area_id'=>$request->input('area_id'),
+            'prov_id'=>$request->input('prov_id'),
+            'position'=>$request->input('position'),
+            'p_view_all'=>$request->input('p_view_all'),
+            'p_receive'=>$request->input('p_receive'),
+
+            'fileupload1'=>$request->input('fileupload1'),
+            'fileupload2'=>$request->input('fileupload2')
+
+
+        ]);
+
+        $pathfile = "upload_officers/".$username;
+        $fileupload1 = "";
+
+        if ($request->file('fileupload1') != null) {
+           $fileupload1 =  time() . $request->file('fileupload1').'.'.$request->file('fileupload1')->getClientOriginalExtension();
+           $request->file('fileupload1')->move(public_path($pathfile), $fileupload1);
+        }
+
+        $fileupload2 = "";
+
+        if ($request->file('fileupload2') != null) {
+           $fileupload2 =  time() . $request->file('fileupload2').'.'.$request->file('fileupload2')->getClientOriginalExtension();
+           $request->file('fileupload2')->move(public_path($pathfile), $fileupload2);
+        }
+
+
+        officer::where('username','=',$username)->update([ 'fileupload1' => $fileupload1, 'fileupload2' => $fileupload2]);
+
+        return redirect('createusersuccess');
     }
 
 

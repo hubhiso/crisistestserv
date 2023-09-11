@@ -293,3 +293,20 @@ body {
   .box_text:hover .overlay_cover {
     opacity: 1;
   }
+
+  .wall1 {
+    background-image: url("../images/wall-n1.jpg");
+    background-size: cover;
+  
+  }
+  
+  .wall2 {
+    background-image: url("../images/wall-n2.jpg");
+    background-size: cover;
+  
+  }
+  
+  .wall3 {
+    background-image: url("../images/wall-n3.jpg");
+    background-size: cover;
+  }

@@ -8,7 +8,7 @@
                     <a class="button is-outlined" href="support">ภาคีเครือข่าย</a>
                 </div>
                 <div class="content">
-                    <p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>. </small> </p>
+                    <!--p id="tsp"> <small> Source code licensed <a href="http://www.hiso.or.th">HISO</a>. </small> </p-->
                 </div>
 
             </div>

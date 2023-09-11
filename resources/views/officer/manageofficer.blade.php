@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/v/bm/jq-3.6.0/dt-1.11.3/datatables.min.css" />
 
-    <link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
+    <link href="{{ asset('bulma-0.9.0/css/bulma.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
     <script src="{{ asset('css/jquery.min.js') }}"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
@@ -78,13 +78,13 @@
 
                 <div class="level">
                     <div class="level-left">
-                        <a class="button is-primary is-rounded" onClick="creategroup()">
+                        <a class="button is-danger is-rounded" onClick="creategroup()">
                             <i class="fas fa-plus"></i>
                             &nbsp;เพิ่มกลุ่มใหม่</a>
 
                     </div>
                     <div class="level-right">
-                        <a class="button is-primary is-rounded" href="{{ route('officer.view_log') }}"><i
+                        <a class="button is-danger is-rounded" href="{{ route('officer.view_log') }}"><i
                                 class="fa fa-history" aria-hidden="true"></i>&nbsp;ประวัติการการจัดการ</a>
                     </div>
                 </div>
@@ -103,18 +103,59 @@
                 </div>
                 @endif
 
+                @if( Auth::user()->position == "admin" )
+                <form role="form" class="mb-5" method="POST" action="{{ route('m_officer') }}">
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <div class="level">
+                        <!-- Left side -->
+                        <div class="level-left">
+                            <div class="level-item">
+                                <label class="label">เลือกจังหวัด</label>
+                            </div>
+                            <div class="level-item">
+                                <div class="select">
+                                    <select name="prov_id" id="prov_id">
+                                        <option value="0" style="width:250px">ทั้งประเทศ</option>
+                                        @foreach($show_prov as $province)
+                                        <option value="{{ $province->PROVINCE_CODE }}"
+                                            <?php if($province->PROVINCE_CODE == $prov_id_se){ echo "selected";} ?>
+                                            style="width:250px">
+                                            {{ $province->PROVINCE_NAME }}
+                                        </option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="level-item">
+                                <button class="button is-danger">
+                                    ยืนยัน
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right side -->
+                        <div class="level-right">
+
+                        </div>
+                    </div>
+                </form>
+
+                @endif
+
+
                 <div class=" table-container">
                     <table id="table_m" class="table is-fullwidth is-striped is-hoverable panel"
                         style="white-space: nowrap;">
                         <thead>
-                        <tr>
-                            <th class="has-text-danger has-text-centered" colspan="24">จัดการายชื่อเจ้าหน้าที่</th>
-                        </tr>
                             <tr>
                                 <th class="has-text-danger">ลำดับ</th>
                                 <th style="display:none;"></th>
-
-                                <th class="has-text-danger"></th>
+                                <th class="has-text-danger">Action</th>
+                                <th style="display:none;"></th>
+                                <th class="has-text-danger">การอนุมัติ</th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">เข้าใช้</th>
                                 <th class="has-text-danger" style="white-space: nomal; max-width: 60px">ชื่อ</th>
@@ -130,13 +171,16 @@
                                 <th class="has-text-danger">เขต</th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">จังหวัด</th>
-                                
+
                                 <th class="has-text-danger">Login ล่าสุด</th>
-                                <th class="has-text-danger" style="white-space: nomal; max-width: 60px">ไม่ได้ Login</th>
+                                <th class="has-text-danger" style="white-space: nomal; max-width: 60px">ไม่ได้ Login
+                                </th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">ดูเคสทั้งหมด</th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">รับเคส</th>
+                                <th style="display:none;"></th>
+                                <th style="display:none;"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -160,6 +204,17 @@
                                     <a class="tag is-info edit_form" href="#" id="" onClick="editmanage()"><i
                                             class="fas fa-edit">&nbsp;แก้ไข</i>
                                     </a>
+                                </td>
+
+                                <td style="display:none;">{{$show->approv}}</td>
+                                <td>
+                                    @if($show->approv == 'no')
+                                    <p class="has-text-danger">รอการอนุมัติ</p>
+                                    @elseif($show->approv == 'yes')
+                                    <p class="has-text-success"><i class="fas fa-check-circle"></i></p>
+                                    @else
+                                    <p class="has-text-secondary"><i class="fas fa-minus-circle"></i></p>
+                                    @endif
                                 </td>
 
                                 <td style="display:none;">{{$show->active}}</td>
@@ -213,7 +268,7 @@
                                     <p class="has-text-secondary"><i class="fas fa-minus-circle"></i></p>
                                     @endif
                                 </td>
-                                
+
 
                                 <td>
                                     @if($show->area_id < 1) <p class="has-text-secondary"><i
@@ -226,7 +281,7 @@
                                 <td style="display:none;">{{$show->prov_id}}</td>
                                 <td><?php echo $se_prov ?></td>
 
-                                
+
 
                                 <td>
                                     @if( $show->last_login_at == '')
@@ -277,7 +332,8 @@
                                     @endif
                                 </td>
 
-
+                                <td style="display:none;">{{$show->fileupload1}}</td>
+                                <td style="display:none;">{{$show->fileupload2}}</td>
 
                             </tr>
 
@@ -360,7 +416,7 @@
                         <a class="delete closetop" aria-label="close"></a>
                         <div class="content has-text-left">
 
-                            <div class="panel-heading has-background-primary has-text-white">
+                            <div class="panel-heading has-background-danger has-text-white">
                                 แก้ไขข้อมูลเจ้าหน้าที่
                             </div>
                             <br>
@@ -371,6 +427,8 @@
                                     action="/e_officer">
                                     {{ csrf_field() }}
                                     {{ method_field('PUT') }}
+
+                                    <input type="hidden" name="e_approv" val="">
 
                                     <div class="field ">
                                         <label class="label" for="username">Username</label>
@@ -396,17 +454,21 @@
                                                 <div class="notification">
                                                     <label class="label"> * เมื่อเปิดใช้อีกครั้งหลัง "ระงับ" User
                                                         จะเคลียร์วันที่ login เป็นปัจจุบัน </label>
+                                                    <label class="label has-text-danger"> * เป็นการอนุมัติให้ user
+                                                        เข้าใช้งานระบบในครั้งแรกด้วย </label>
 
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
                                     <div class="box">
                                         <div class="field ">
                                             <label class="label" for="name">ชื่อผู้ใช้งาน</label>
                                             <div class="control">
                                                 <input id="e_name" name="e_name" type="text" class="form-control input"
-                                                    value="">
+                                                    value="555">
 
                                             </div>
                                         </div>
@@ -545,7 +607,25 @@
 
                                     </div>
 
-                                    <button type="submit" class="button is-danger">ยืนยันแก้ไข</button>
+                                    <div class="field box is-bordered">
+                                        <label class="content"> Download เอกสารที่ผู้ลงทะเบียนได้ upload ขึ้นมา </label>
+                                        <br>
+                                        <br>
+                                        <div class="columns">
+                                            <div class="column ">
+                                                <a id="e_upload1" class="button is-primary" target="_blank"
+                                                    href="#">แบบฟอร์มขอใช้งานโปรแกรม</a>
+                                            </div>
+                                            <div class="column">
+                                                <a id="e_upload2" class="button is-primary" target="_blank"
+                                                    href="#">สำเนาบัตรประจำตัวประชาชน</a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <button type="submit" class="button is-danger" onclick="ck_mail_approv(e_name.value,e_approv.value);">ยืนยันแก้ไข</button>
                                     <a class="button is-secondary closebtn">
                                         ยกเลิก </a>
                                 </form>
@@ -700,53 +780,68 @@
             var data = o_table.row($tr).data();
 
             $('#e_username').val(data[1]);
-            $('#e_active').val(data[3]);
-            $('#e_name').val(data[5]);
-            $('#e_nameorg').val(data[6]);
-            $('#e_tel').val(data[7]);
-            $('#e_email').val(data[8]);
-            $('#e_position').val(data[10]);
+
+            $('#e_approv').val(data[3]);
+
+            $('#e_active').val(data[5]);
+            $('#e_name').val(data[7]);
+            $('#e_nameorg').val(data[8]);
+            $('#e_tel').val(data[9]);
+            $('#e_email').val(data[10]);
+            $('#e_position').val(data[12]);
 
 
-            if (data[15] == '<p class="has-text-secondary"><i class="fas fa-minus-circle"></i></p>') {
+            if (data[17] == '<p class="has-text-secondary"><i class="fas fa-minus-circle"></i></p>') {
                 $('#e_area').val('0');
                 $('#e_area').prop('disabled', true);
             } else {
-                $('#e_area').val(data[15]);
+                $('#e_area').val(data[17]);
                 $('#e_area').prop('disabled', false);
             }
 
-            if (data[17] == '<p class="has-text-secondary"><i class="fas fa-minus-circle"></i></p>') {
+            if (data[19] == '<p class="has-text-secondary"><i class="fas fa-minus-circle"></i></p>') {
                 $('#e_prov').val('0');
                 $('#e_prov').prop('disabled', true);
             } else {
-                $('#e_prov').val(data[16]);
+                $('#e_prov').val(data[18]);
                 $('#e_prov').prop('disabled', false);
 
             }
 
 
-            $('#e_group').val(data[11]);
-            if (data[13] == "yes") {
-                $('#e_v_group').val(data[13]);
+            $('#e_group').val(data[13]);
+            if (data[15] == "yes") {
+                $('#e_v_group').val(data[15]);
             } else {
                 $('#e_v_group').val('no');
             }
 
-            if (data[20] == "yes") {
-                $('#e_viewall').val(data[20]);
+            if (data[22] == "yes") {
+                $('#e_viewall').val(data[22]);
             } else {
                 $('#e_viewall').val('no');
             }
-            
 
-            if (data[22] == "yes") {
-                $('#e_receiver').val(data[22]);
+
+            if (data[24] == "yes") {
+                $('#e_receiver').val(data[24]);
             } else {
                 $('#e_receiver').val('no');
             }
 
             $('#edit_officer').attr('action', 'e_officer/' + data[1]);
+
+            if (data[26] != "") {
+                $('#e_upload1').attr("href", '../upload_officers/' + data[1] + '/' + data[26]);
+            } else {
+                $('#e_upload1').attr("disabled", 'disabled');
+            }
+
+            if (data[27] != "") {
+                $('#e_upload2').attr("href", '../upload_officers/' + data[1] + '/' + data[27]);
+            } else {
+                $('#e_upload2').attr("disabled", 'disabled');
+            }
         });
 
 
@@ -787,6 +882,12 @@
     $(".closetop").click(function() {
         $(".modal").removeClass("is-active");
     });
+
+   
+
+    function ck_mail_approv(id, approv) {
+        alert(id);
+    }
     </script>
 
 

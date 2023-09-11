@@ -304,6 +304,16 @@
                                     </label>
                                     &nbsp;
 
+                                    <label class="radio">
+                                        @if( $show_data->nation == 7 )
+                                        {{ Form::radio('nation', '7' , true) }}
+                                        @else
+                                        {{ Form::radio('nation', '7' , false) }}
+                                        @endif
+                                        ไร้สัญชาติ/ไม่มีสถานะบุคคล
+                                    </label>
+                                    &nbsp;
+
 
                                     <label class="radio">
                                         @if( $show_data->nation == 6 )

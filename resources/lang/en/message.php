@@ -16,7 +16,7 @@ return [
     "bt_popup" => "Close",
 
     "tx_h_knowledge" =>"Resources for Knowledge of Human Rights",
-    "tx_sh_knowledge" =>"You can search by the information below.",
+    "tx_sh_knowledge" =>"You can search by the information here.",
     "tx_h_table" =>"Report a compliant agency directly",
     "tx_sh_table" =>"You can Report a compliant by the information below.",
     "bt_map" =>"Map",
@@ -62,7 +62,8 @@ return [
     "txt_inf_tel" => "Tel",
     "bt_inf_tel" => "Number 9 - 10 Digits",
 
-    "txt_head2_rc" => "Victim information (Please fill all the blank with * )",
+    "txt_head2_rc" => "Victim information",
+    "txt_head2_rc_2" => "(Please fill all the blank with * )",
     "txt_name" => "Name",
     "bt_name" => "Name or pseudonym",
     "txt_tel" => "Phone number",
@@ -81,6 +82,7 @@ return [
     "txt_nat5" => "Cambodian",
     "txt_nat6" => "Others, specify",
     "txt_nat6_sp" => "Specify nationality",
+    "txt_nat7" => "Stateless",
 
     "txt_DateofIncident" => "Date of Incident",
     "txt_year" => "Year (A.D.)",
@@ -227,7 +229,14 @@ return [
 
     "link_loadjson" => "loadjson_en.php",
 
-    "tx_user_regis" => "User registration"
+    "tx_user_regis" => "User registration",
+
+    "tx_thankyou" => "Thank you for reporting a complaint.",
+    "tx_thankyou2" => "The staff team will proceed to the next step.",
+    "tx_keep_id" => "Please keep your ID to track the status of your complaint.",
+    "tx_id" => "ID to be used to track your status is",
+
+    "tx_des1" => "Please explain easily what happens."
 
 ];
 
