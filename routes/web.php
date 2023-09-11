@@ -104,9 +104,9 @@ Route::post('evaluate', 'case_controller@up_evaluate')->name('case.update');
 
 Route::post('/store', 'case_controller@store')->name('store');
 
-Route::get('/register', 'ManagerController@load_register')->name('register');
+Route::get('/register', 'RegisterController@load_register')->name('register');
 
-Route::post('/register_cfm', 'ManagerController@create_officer')->name('register_cfm');
+Route::post('/register_cfm', 'RegisterController@create_officer')->name('register_cfm');
 
 
 

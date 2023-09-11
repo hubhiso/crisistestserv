@@ -208,7 +208,7 @@
 
                                 <td style="display:none;">{{$show->approv}}</td>
                                 <td>
-                                    @if($show->approv == 'no')
+                                    @if($show->approv == 'no' or $show->approv == '')
                                     <p class="has-text-danger">รอการอนุมัติ</p>
                                     @elseif($show->approv == 'yes')
                                     <p class="has-text-success"><i class="fas fa-check-circle"></i></p>
