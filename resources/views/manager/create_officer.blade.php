@@ -71,7 +71,7 @@
 
                     <div class="control  ">
                         <!--p>คลิกเพื่อระบุตำแหน่งในปัจจุบัน </p-->
-                        <a class="button is-link" href="../contents/แบบฟอร์ม_ขอสถานะผู้ใช้งานโปรแกรมCRS.pdf" target="_blank">
+                        <a class="button is-link" href="{{ asset('/contents/แบบฟอร์ม_ขอสถานะผู้ใช้งานโปรแกรมCRS.pdf') }}" target="_blank">
                             <span class="icon is-left">
                                 <i class="fa fa-download"></i>
                             </span>
