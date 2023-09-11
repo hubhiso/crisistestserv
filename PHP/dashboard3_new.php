@@ -360,7 +360,7 @@
         if($nhso != 0){
 
             if($pr != 0){
-                $strSQL = "SELECT count(c.amphur_id) as total , c.amphur_id as DISTRICTID, d.DISTRICTTH as area_name from case_inputs c left join prov_geo on prov_id = code left join distambon d on amphur_id = d.DISTRICTID where prov_id and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' $pr_q group by amphur_id, d.DISTRICTTH order by amphur_id asc; ";
+                $strSQL = "SELECT count(*) as total , c.amphur_id as DISTRICTID, a.AMPHUR_NAME as area_name from case_inputs c left join prov_geo on c.prov_id = code left join amphurs a on c.amphur_id = a.AMPHUR_CODE where  c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' $pr_q group by c.amphur_id, a.AMPHUR_NAME order by c.amphur_id asc; ";
             }else{
 
                 $strSQL = " SELECT count(*) AS total, c.prov_id AS province , p.nhso , p.name as area_name FROM case_inputs c inner join prov_geo p ON p.code = c.prov_id WHERE c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' $pr_q  GROUP BY c.prov_id;";
@@ -369,7 +369,7 @@
         }else{
             if($pr != 0){
 
-                $strSQL = "SELECT count(*) as total , amphur_id as DISTRICTID, d.DISTRICTTH as area_name from case_inputs c left join prov_geo on prov_id = code left join distambon d on amphur_id = d.DISTRICTID where prov_id = '$pr' and c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' $pr_q group by amphur_id, d.DISTRICTTH order by amphur_id asc; ";
+                $strSQL = "SELECT count(*) as total , c.amphur_id as DISTRICTID, a.AMPHUR_NAME as area_name from case_inputs c left join prov_geo on c.prov_id = code left join amphurs a on c.amphur_id = a.AMPHUR_CODE where  c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' $pr_q group by c.amphur_id, a.AMPHUR_NAME order by c.amphur_id asc; ";
 
             }else{
 
