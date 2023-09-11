@@ -364,7 +364,6 @@
             }else{
 
                 $strSQL = " SELECT count(*) AS total, c.prov_id AS province , p.nhso , p.name as area_name FROM case_inputs c inner join prov_geo p ON p.code = c.prov_id WHERE c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' $pr_q  GROUP BY c.prov_id;";
-
             }
         }else{
             if($pr != 0){
@@ -373,7 +372,7 @@
 
             }else{
 
-                $strSQL = "SELECT count(*) as total, code, prov_geo.prov_name_en, prov_geo.name as area_name from case_inputs c left join prov_geo on prov_id = code where c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' group by code order by total desc ;";
+                $strSQL = "SELECT count(*) as total, nhso AS area_name from case_inputs c left join prov_geo on prov_id = code where c.created_at >= '".date("Y/m/d", strtotime($date_start))."' and c.created_at <= '".date("Y/m/d", strtotime($date_end))."' group by nhso order by total desc ;";
 
             }
         }
@@ -389,7 +388,23 @@
 
             $area_total[$i] = $row["total"];
 
-            $area_name[$i] = $row["area_name"];
+            if($nhso != 0){
+                if($pr != 0){
+                    $area_name[$i] = $row["area_name"];
+                    $txt_area = "อำเภอในจังหวัด".$area_name[$i];
+                }else{
+                    $area_name[$i] = $row["area_name"];
+                    $txt_area = "จังหวัดในเขต ".$area_name[$i];
+                }
+            }else{
+                if($pr != 0){
+                    $area_name[$i] = $row["area_name"];
+                    $txt_area = "อำเภอในจังหวัด".$area_name[$i];
+                }else{
+                    $area_name[$i] = "เขต ".$row["area_name"];
+                    $txt_area = "เขตสุขภาพ";
+                }
+            }
 
             
             $selectarea_loop = $i;
@@ -1515,7 +1530,7 @@
                 dataSource: {
                     "chart": {
                         "caption": "การบันทึกข้อมูลการถูกละเมิดสิทธิในระบบ CRS ",
-                        "subCaption": "จำแนกตามพื้นที่ ",
+                        "subCaption": "จำแนกตามพื้นที่ <?php echo $txt_area; ?>",
                         "placeValuesInside": "0",
                         "yAxisName": "จำนวน",
                         "basefontsize": "14",
