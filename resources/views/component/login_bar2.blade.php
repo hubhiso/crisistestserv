@@ -67,11 +67,6 @@
                                 รายชื่อเจ้าหน้าที่ </a>
 
                             @endif
-                            <hr class="navbar-divider">
-                            <a class="navbar-item has-text-primary" href="{{ route('officer.verifydata') }}">
-                                <i class="fas fa-user-plus"></i>&nbsp;
-                                verifydata
-                            </a>
                         </div>
                     </div>
 
