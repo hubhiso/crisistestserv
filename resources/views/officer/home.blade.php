@@ -79,6 +79,13 @@
                         aria-hidden="true"></i>&nbsp;เครื่องมือ</a>
                 <a class="button btn_sub i-margin" href="{{ 'officer/contact' }}"><i class="fa fa-share-alt"
                         aria-hidden="true"></i>&nbsp;ทำเนียบเครือข่าย</a>
+
+                @if( Auth::user()->position == "admin" )
+                <br>
+                <br>
+                <a class="button btn_sub i-margin" href="{{ route('officer.verifydata') }}">
+                <i class="fas fa-database"></i></i>&nbsp;จัดการข้อมูลรายเคส</a>
+                @endif
             </div>
         </div>
     </section>

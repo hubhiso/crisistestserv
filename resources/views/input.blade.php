@@ -894,7 +894,7 @@
     <!-- popup box -->
     <div id="boxes">
         <!--div style="top: 250px; left: 551.5px; display: none; " id="dialog" class="window sizebox2"-->
-        <div style="top: 250px; left: 551.5px; display: none; " id="dialog_xxx" class="window sizebox2">
+        <div style="top: 250px; left: 551.5px; display: none; " id="dialog" class="window sizebox2">
             <div class="box">
                 <p>{{ trans('message.txt_head_popup') }}
                 </p>

@@ -628,8 +628,7 @@
                                         <div class="select">
                                             <select id="dayInput" name="birthdate" onchange="createbirthdate();">
                                                 @for ($i = 1; $i <= 31; $i++) <option value="{{$i}}"
-                                                    @if(date('d',strtotime(str_replace('-','/', $show_detail->
-                                                    birth_date))) == $i){ selected } @endif>{{$i}}</option>
+                                                    @if(date('d',strtotime(str_replace('-','/', $show_detail->birth_date))) == $i){ selected } @endif>{{$i}}</option>
                                                     @endfor
                                             </select>
                                         </div>

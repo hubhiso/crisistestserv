@@ -57,7 +57,7 @@
                             define("LINE_API","https://notify-api.line.me/api/notify");
 
                         $token = "uPdwaZeYi0GeGFqXscofeQqsw9vISFuzFfTIcSxASkk"; //ใส่Token ที่ copy เอาไว้
-                        $message = " $case_id $emer_tx เกิดเหตุร้องเรียน \nจังหวัด $provname->PROVINCE_NAME \nปัญหาที่แจ้ง : $problem_case_names_ss\n🌐 https://crs.ddc.moph.go.th"; //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
+                        $message = " $case_id $emer_tx เกิดเหตุร้องเรียน \nจังหวัด $provname->PROVINCE_NAME \nปัญหาที่แจ้ง : $problem_case_names_ss\n🌐 https://crs.ddc.moph.go.th/crisistest2021/public/"; //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
 
                         $queryData = array("message" => $message);
                         $queryData = http_build_query($queryData,"","&");

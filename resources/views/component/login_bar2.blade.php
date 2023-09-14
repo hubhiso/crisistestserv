@@ -55,12 +55,23 @@
                                 ลงทะเบียนเจ้าหน้าที่เพิ่มเติม
                             </a>
                             <hr class="navbar-divider">
-                            @if( Auth::user()->position == "manager" or Auth::user()->position == "admin" )
+                            @if( Auth::user()->position == "admin" )
                             <a class="navbar-item  has-text-info" href="{{ route('officer.m_officer') }}">
                                 <i class="fa fa-users"></i>&nbsp;
                                 จัดการรายชื่อเจ้าหน้าที่ </a>
 
                             @endif
+                            @if( Auth::user()->position == "manager"  )
+                            <a class="navbar-item  has-text-info" href="{{ route('officer.view_officer') }}">
+                                <i class="fa fa-users"></i>&nbsp;
+                                รายชื่อเจ้าหน้าที่ </a>
+
+                            @endif
+                            <hr class="navbar-divider">
+                            <a class="navbar-item has-text-primary" href="{{ route('officer.verifydata') }}">
+                                <i class="fas fa-user-plus"></i>&nbsp;
+                                verifydata
+                            </a>
                         </div>
                     </div>
 

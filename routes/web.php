@@ -31,6 +31,9 @@ Route::prefix('manager')->group(function (){
     Route::prefix('transfer_case')->group(function (){
         Route::get('ajax-amphur/{prov_id}','ManagerController@ajax_amphur');
     });
+
+    Route::get('/share_case/{case_id}', 'ManagerController@share_case')->name('manager.share_case');
+    Route::post('/manage_sharecase', 'ManagerController@manage_sharecase')->name('manager.manage_sharecase');
 });
 
 
@@ -93,6 +96,10 @@ Route::prefix('officer')->group(function () {
     Route::post('/email', 'EmailController@sendEmail')->name('send.email');
 
     Route::post('/exportexcel', 'OfficerUpdateController@exportexcel')->name('officer.Export_Excel');
+
+    Route::get('/verifydata', 'OfficerUpdateController@showverifydata')->name('officer.verifydata');
+
+    Route::get('/view_officer', 'ManageofficerController@view_officer')->name('officer.view_officer');
 
 });
 

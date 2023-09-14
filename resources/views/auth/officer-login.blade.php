@@ -7,6 +7,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">เข้าใช้ระบบ Crisis Response System </div>
                 <div class="panel-body">
+
+                @if(\Session::has('message'))
+                <div class="notification is-danger">
+                    <button class="delete noti-close " onclick="this.parentElement.style.display='none'"></button>
+                    <strong>{{ \Session::get('message') }}</strong>
+                </div>
+                @endif
+
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('officer.login.submit') }}">
                         {{ csrf_field() }}
 

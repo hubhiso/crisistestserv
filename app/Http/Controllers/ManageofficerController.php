@@ -48,6 +48,36 @@ class ManageofficerController extends Controller
 
     }
 
+    public function view_officer(Request $request)
+    {
+        if(Auth::user()->position != "admin" and Auth::user()->position != "manager"){
+
+            return back()->with(['message' => 'ไม่มีสิทธิ์เข้าถึง']);
+
+        }else{
+
+            if(Auth::user()->position == "manager"){
+                $prov_id_se = Auth::user()->prov_id;
+            }else{
+                $prov_id_se = $request->input('prov_id');
+            }
+            
+        if($prov_id_se == "" || $prov_id_se == "0"){
+            $show_list = officer::leftJoin('officer_groups', 'officers.group', '=', 'officer_groups.code')->orderBy('officers.id')->get();
+        }else{
+            $show_list = officer::leftJoin('officer_groups', 'officers.group', '=', 'officer_groups.code')->where('prov_id','=',$prov_id_se)->orderBy('officers.id')->get();
+        }
+
+        $nowdate =  Carbon::now();
+        $show_group = officer_group::all();
+        $show_prov = province::orderBy('PROVINCE_NAME')->get();
+
+        return view('officer.viewofficer',compact('show_list','nowdate','show_group','show_prov','prov_id_se'));
+        }
+
+
+    }
+
     public function view_log()
     {
         if(Auth::user()->position == "manager"){

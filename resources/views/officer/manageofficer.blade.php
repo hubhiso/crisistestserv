@@ -65,11 +65,12 @@
                             <span class="icon is-small">
                                 <i class="fa fa-users"></i>
                             </span>
-                            <span>จัดการรายชื่อ</span>
+                            <span>จัดการรายชื่อเจ้าหน้าที่</span>
                         </a>
                     </li>
                 </ul>
             </nav>
+            
             <div class="content">
                 <h3>
                     <sapn class="has-text-danger"><i class="fa fa-users"></i></sapn>
@@ -85,7 +86,7 @@
                     </div>
                     <div class="level-right">
                         <a class="button is-danger is-rounded" href="{{ route('officer.view_log') }}"><i
-                                class="fa fa-history" aria-hidden="true"></i>&nbsp;ประวัติการการจัดการ</a>
+                                class="fa fa-history" aria-hidden="true"></i>&nbsp;ประวัติการจัดการ</a>
                     </div>
                 </div>
 
@@ -886,7 +887,7 @@
    
 
     function ck_mail_approv(id, approv) {
-        alert(id);
+        //alert(id);
     }
     </script>
 
