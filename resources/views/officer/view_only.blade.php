@@ -509,9 +509,9 @@ $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","�
                         </div>
 
                         <div class="control">
-                            <a class="button is-info "
+                            <a class="button is-primary "
                                 href="{{ route('manager.share_case',['case_id' => $show_data->case_id]) }}">
-                                <i class="fa fa-exchange-alt" aria-hidden="true"></i>&nbsp;เชิญทีมร่วมจัดการเคส
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;เชิญทีมร่วมจัดการเคส
                             </a>
                         </div>
 

@@ -60,8 +60,8 @@
                                 <i class="fa fa-users"></i>&nbsp;
                                 จัดการรายชื่อเจ้าหน้าที่ </a>
 
-                            @endif
-                            @if( Auth::user()->position == "manager"  )
+                            @else
+                            
                             <a class="navbar-item  has-text-info" href="{{ route('officer.view_officer') }}">
                                 <i class="fa fa-users"></i>&nbsp;
                                 รายชื่อเจ้าหน้าที่ </a>
