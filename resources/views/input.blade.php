@@ -13,7 +13,7 @@
     <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/modal/modal.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('css/font-awesome5.0.6/css/fontawesome-all.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     {{ Html::script('js/jquery.min.js') }}
     <link href="{{ asset('/css/uploadicon/new3.css') }}" rel="stylesheet">
 
@@ -110,8 +110,8 @@
                 <!-- Right side -->
                 <div class="level-right">
                     <div class="level-item">
-                        <a class="button is-danger" id="showModal"><i
-                                class="fas fa-exclamation-triangle">&nbsp;</i>{{ trans('message.bt_urgent_rc') }}</a>
+                        <a class="button is-danger button_addshadow btn_colorred" style="margon: 30px;" id="showModal"><i
+                                class="fas fa-exclamation-triangle fa-shake" style="--fa-animation-duration: 3s;">&nbsp;</i>{{ trans('message.bt_urgent_rc') }}</a>
                     </div>
                 </div>
             </div>

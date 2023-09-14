@@ -6,6 +6,13 @@ body {
     background-color: #f14668 !important; 
     color: #FFFFFF !important; 
 }
+.button_addshadow{
+    box-shadow: 2px 3px 3px 1px #ccc !important; 
+
+}
+.btn_colorred{
+    background-color: #C70039 !important; 
+}
 
 #btn_new1 {
     font-size: 30px;
