@@ -429,12 +429,19 @@
                                     {{ csrf_field() }}
                                     {{ method_field('PUT') }}
 
-                                    <input type="hidden" name="e_approv" val="">
+                                    <input type="hidden" id="username_send" name="email" class="form-control input" placeholder="Enter Email">
+                                    <input type="hidden" name="subject" class="input" value="แจ้งเข้าใช้ระบบ ปกป้อง(CRS)">
+                                    <input type="hidden" id="mailusername_id" name="mailusername_id" class="input">
+
+                                    <textarea name="content" rows="5" class=" textarea" placeholder="Enter Your Message"
+                                        style="display:none;">ถ้าได้รับ Email นี้ ต้องขออภัยจากความผิดพลาดในการส่งด้วยครับ</textarea>
+
+                                    <input type="hidden" id="e_approv" name="e_approv" val="">
 
                                     <div class="field ">
                                         <label class="label" for="username">Username</label>
                                         <div class="control">
-                                            <input id="e_username" name="e_name" type="text" class="form-control input"
+                                            <input id="e_username" name="e_username" type="text" class="form-control input"
                                                 value="" disabled>
 
                                         </div>
@@ -626,7 +633,7 @@
 
                                     </div>
 
-                                    <button type="submit" class="button is-danger" onclick="ck_mail_approv(e_name.value,e_approv.value);">ยืนยันแก้ไข</button>
+                                    <button type="submit" class="button is-danger" onclick="ck_mail_approv(e_username.value,e_active.value,e_approv.value,e_email.value);">ยืนยันแก้ไข</button>
                                     <a class="button is-secondary closebtn">
                                         ยกเลิก </a>
                                 </form>
@@ -886,8 +893,15 @@
 
    
 
-    function ck_mail_approv(id, approv) {
-        //alert(id);
+    function ck_mail_approv(user, active, approv, email) {
+        
+        //alert(user+active+approv);
+
+        if(approv != "yes"){
+            alert("ระบบจะอนุมัติผู้ใช้นี้และจะแจ้ง Email ให้ผู้ใช้ทราบ");
+
+            confirmmailapprov('email','user');
+        }
     }
     </script>
 

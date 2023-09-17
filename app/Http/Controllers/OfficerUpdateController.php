@@ -701,7 +701,9 @@ class OfficerUpdateController extends Controller
         'case_inputs.nation',
         'case_inputs.problem_case as id_problem_case',
         'r_problem_case.name as problem_case',
+        'case_inputs.sub_problem as id_sub_problem',
         'r_sub_problem.name as sub_problem',
+        'case_inputs.group_code as id_group_code',
         'r_group_code.name as group_code',
         'case_inputs.receiver',
         'case_inputs.accident_date')

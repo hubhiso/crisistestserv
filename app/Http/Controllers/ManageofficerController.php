@@ -171,6 +171,8 @@ class ManageofficerController extends Controller
             $ck_mailwarning_at = NULL;
 
             $ck_lastlogin = Carbon::now();
+
+            $ck_approv = "yes";
         }else{
             $ck_mailwarning = $o_mailwarning;
             $ck_mailwarning_at = $o_mailwarning_at;
@@ -181,6 +183,8 @@ class ManageofficerController extends Controller
         officer::where('username','=',$id)->update([
 
             'active' => $request->input('e_active'),
+
+            'approv' => $ck_approv,
 
             'mailwarning' => $ck_mailwarning,
             'mailwarning_at' => $ck_mailwarning_at,
@@ -207,6 +211,23 @@ class ManageofficerController extends Controller
             officer::where('username','=',$id)->update([
                 'approv' => 'yes'
             ]);
+        }
+
+        if($ck_approv == "yes"){
+            $img_url = "https://crs.ddc.moph.go.th/crisistest2021/public/images/seo.png";
+
+            $data = [
+            'subject' => $request->subject,
+            'email' => $request->email,
+            'content' => $request->content,
+            'url_img' => $img_url
+            ];
+
+
+            Mail::send('officer.email-template', $data , function($message) use ($data) {
+            $message->to($data['email'])
+            ->subject($data['subject']);
+            });
         }
 
         return back()->with('success','อัพเดตรายละเอียดเจ้าหน้าที่เรียบร้อย');

@@ -101,6 +101,8 @@ Route::prefix('officer')->group(function () {
 
     Route::get('/view_officer', 'ManageofficerController@view_officer')->name('officer.view_officer');
 
+    //Route::post('/emailapprov', 'EmailController@sendEmailapprov')->name('send.emailapprov');
+
 });
 
 Route::get('status', function () {
