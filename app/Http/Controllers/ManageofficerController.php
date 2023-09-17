@@ -167,9 +167,6 @@ class ManageofficerController extends Controller
 
         $active = $request->input('e_active');
 
-        
-
-        $ck_approv = "yes";
 
         if($active == 'yes' and $o_active == 'no'){
             $ck_mailwarning = NULL;
@@ -177,7 +174,15 @@ class ManageofficerController extends Controller
 
             $ck_lastlogin = Carbon::now();
 
-            $ck_approv = "yes";
+            if($o_approv != 'yes'){
+                $ck_approv = "yes";
+
+                officer::where('username','=',$id)->update(['approv' => 'yes']);
+                
+            }else{
+                $ck_approv = "";
+            }
+            
         }else{
             $ck_mailwarning = $o_mailwarning;
             $ck_mailwarning_at = $o_mailwarning_at;
@@ -188,8 +193,6 @@ class ManageofficerController extends Controller
         officer::where('username','=',$id)->update([
 
             'active' => $request->input('e_active'),
-
-            'approv' => $ck_approv,
 
             'mailwarning' => $ck_mailwarning,
             'mailwarning_at' => $ck_mailwarning_at,
