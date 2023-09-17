@@ -281,13 +281,9 @@
                                                             <div class="control">
                                                                 <span class="select">
                                                                     <select id="sub_problem<?php echo $i; ?>"
-                                                                        name="sub_problem" @if($show->id_sub_problem ==
-                                                                        null){ disabled } @endif >
-                                                                        @if(($show->id_problem_case ==
-                                                                        1)||($show->id_problem_case ==
-                                                                        5)||($show->id_problem_case == 6))
-                                                                        <option value="1" @if($show->id_sub_problem ==
-                                                                            1){ selected } @endif>ผู้ติดเชื้อเอชไอวี
+                                                                        name="sub_problem" @if($show->id_sub_problem == null){ disabled } @endif >
+                                                                        @if(($show->id_problem_case == 1)||($show->id_problem_case == 5)||($show->id_problem_case == 6))
+                                                                        <option value="1" @if($show->id_sub_problem == 1){ selected } @endif>ผู้ติดเชื้อเอชไอวี
                                                                         </option>
                                                                         <option value="2" @if($show->id_sub_problem ==
                                                                             2){ selected } @endif>กลุ่มเปราะบาง
@@ -367,7 +363,7 @@
                                                         <div class="field">
                                                             <label class="label">ลักษณะการละเมิด</label>
                                                             <div class="control">
-                                                                <pclass="control is-expanded has-icons-left
+                                                                <p class="control is-expanded has-icons-left
                                                                     has-icons-right">
                                                                     <textarea class="textarea"
                                                                         disabled>{{$show->violation_characteristics}}</textarea>
@@ -382,7 +378,7 @@
                                                         <div class="field">
                                                             <label class="label">ผลกระทบ</label>
                                                             <div class="control">
-                                                                <pclass="control is-expanded has-icons-left
+                                                                <p class="control is-expanded has-icons-left
                                                                     has-icons-right">
                                                                     <textarea class="textarea"
                                                                         disabled>{{$show->effect}}</textarea>
@@ -397,7 +393,7 @@
                                                         <div class="field">
                                                             <label class="label">รายละเอียดของปัญหา</label>
                                                             <div class="control">
-                                                                <pclass="control is-expanded has-icons-left
+                                                                <p class="control is-expanded has-icons-left
                                                                     has-icons-right">
                                                                     <textarea class="textarea"
                                                                         disabled>{{$show->detail}}</textarea>
@@ -412,7 +408,7 @@
                                                         <div class="field">
                                                             <label class="label">ความต้องการความช่วยเหลือ</label>
                                                             <div class="control">
-                                                                <pclass="control is-expanded has-icons-left
+                                                                <p class="control is-expanded has-icons-left
                                                                     has-icons-right">
                                                                     <textarea class="textarea"
                                                                         disabled>{{$show->need}}</textarea>
@@ -430,77 +426,51 @@
                                                                 <div class="columns" data-provide="datepicker">
                                                                     <div class="column ">
                                                                         ปี พ.ศ.
-                                                                        <input class=" input form-control" type="number"
-                                                                            min="2561" max="2570" maxlength="4"
-                                                                            id="YearAct" name="YearAct"
-                                                                            placeholder="ปปปป"
+                                                                        <input class=" input form-control" type="number"  min="2561" max="2570" maxlength="4"
+                                                                            id="YearAct{{$i}}" name="YearAct" placeholder="ปปปป"
                                                                             value="{{date('Y',strtotime(str_replace('-','/', $show->accident_date))) + 543 }}"
-                                                                            onchange="date_acc();createaccidentdate();">
+                                                                            onchange="//date_acc();createaccidentdate();">
                                                                     </div>
                                                                     <div class="column ">
                                                                         เดือน
                                                                         <div class="select">
-                                                                            <select id="MonthAct" name="MonthAct"
-                                                                                onchange="date_acc();createaccidentdate();">
-                                                                                <option value="1"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 1){ selected }
-                                                                                    @endif> มกราคม
+                                                                            <select id="MonthAct{{$i}}" name="MonthAct"
+                                                                                onchange="//date_acc();createaccidentdate();">
+                                                                                <option value="1" 
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 1){ selected } @endif> มกราคม
                                                                                 </option>
-                                                                                <option value="2"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 2){ selected }
-                                                                                    @endif> กุมภาพันธ์
+                                                                                <option value="2" 
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 2){ selected } @endif> กุมภาพันธ์
                                                                                 </option>
                                                                                 <option value="3"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 3){ selected }
-                                                                                    @endif> มีนาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 3){ selected } @endif> มีนาคม
                                                                                 </option>
                                                                                 <option value="4"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 4){ selected }
-                                                                                    @endif> เมษายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 4){ selected } @endif> เมษายน
                                                                                 </option>
                                                                                 <option value="5"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 5){ selected }
-                                                                                    @endif> พฤษภาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 5){ selected } @endif> พฤษภาคม
                                                                                 </option>
                                                                                 <option value="6"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 6){ selected }
-                                                                                    @endif> มิถุนายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 6){ selected } @endif> มิถุนายน
                                                                                 </option>
                                                                                 <option value="7"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 7){ selected }
-                                                                                    @endif> กรกฎาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 7){ selected } @endif> กรกฎาคม
                                                                                 </option>
                                                                                 <option value="8"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 8){ selected }
-                                                                                    @endif> สิงหาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 8){ selected } @endif> สิงหาคม
                                                                                 </option>
                                                                                 <option value="9"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 9){ selected }
-                                                                                    @endif> กันยายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 9){ selected } @endif> กันยายน
                                                                                 </option>
                                                                                 <option value="10"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 10){ selected }
-                                                                                    @endif> ตุลาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 10){ selected } @endif> ตุลาคม
                                                                                 </option>
                                                                                 <option value="11"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 11){ selected }
-                                                                                    @endif> พฤศจิกายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 11){ selected } @endif> พฤศจิกายน
                                                                                 </option>
                                                                                 <option value="12"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    accident_date))) == 12){ selected }
-                                                                                    @endif> ธันวาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->accident_date))) == 12){ selected } @endif> ธันวาคม
                                                                                 </option>
                                                                             </select>
                                                                         </div>
@@ -509,21 +479,18 @@
                                                                     <div class="column  ">
                                                                         วันที่<br>
                                                                         <div class="select">
-                                                                            <select id="DayAct" name="DayAct"
+                                                                            <select id="DayAct{{$i}}" name="DayAct"
                                                                                 onchange="createaccidentdate();">
-                                                                                @for ($i = 1; $i <= 31; $i++) <option
-                                                                                    value="{{$i}}"
-                                                                                    @if(date('d',strtotime(str_replace('-','/',
-                                                                                    $show->
-                                                                                    accident_date))) == $i){ selected }
-                                                                                    @endif>{{$i}}</option>
-                                                                                    @endfor
+                                                                                @for ($j = 1; $j <= 31; $j++) 
+                                                                                    <option value="{{$j}}"
+                                                                                    @if(date('d',strtotime(str_replace('-','/',$show->accident_date))) == $j){ selected } @endif>{{$j}}</option>
+                                                                                @endfor
                                                                             </select>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="column  is-3">
-                                                                        <input type="hidden" id="DateAct" name="DateAct"
+                                                                        <input type="hidden" id="DateAct{{$i}}" name="DateAct"
                                                                             class="form-control"
                                                                             value="{{date('m/d/Y',strtotime(str_replace('-','/', $show->accident_date)))}}">
                                                                         <span class="glyphicon glyphicon-th"></span>
@@ -544,7 +511,7 @@
                                                                         ปี พ.ศ.
                                                                         <input class=" input form-control" type="number"
                                                                             min="2561" max="2570" maxlength="4"
-                                                                            id="YearCre" name="YearCre"
+                                                                            id="YearCre{{$i}}" name="YearCre"
                                                                             placeholder="ปปปป"
                                                                             value="{{date('Y',strtotime(str_replace('-','/', $show->datecreate))) + 543 }}"
                                                                             disabled>
@@ -552,67 +519,42 @@
                                                                     <div class="column ">
                                                                         เดือน
                                                                         <div class="select">
-                                                                            <select id="MonthCre" name="MonthCre"
-                                                                                disabled>
-                                                                                <option value="1"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 1){ selected }
-                                                                                    @endif> มกราคม
+                                                                            <select id="MonthCre{{$i}}" name="MonthCre" disabled>
+                                                                                <option value="1" 
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 1){ selected } @endif> มกราคม
                                                                                 </option>
-                                                                                <option value="2"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 2){ selected }
-                                                                                    @endif> กุมภาพันธ์
+                                                                                <option value="2" 
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 2){ selected } @endif> กุมภาพันธ์
                                                                                 </option>
                                                                                 <option value="3"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 3){ selected }
-                                                                                    @endif> มีนาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 3){ selected } @endif> มีนาคม
                                                                                 </option>
                                                                                 <option value="4"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 4){ selected }
-                                                                                    @endif> เมษายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 4){ selected } @endif> เมษายน
                                                                                 </option>
                                                                                 <option value="5"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 5){ selected }
-                                                                                    @endif> พฤษภาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 5){ selected } @endif> พฤษภาคม
                                                                                 </option>
                                                                                 <option value="6"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 6){ selected }
-                                                                                    @endif> มิถุนายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 6){ selected } @endif> มิถุนายน
                                                                                 </option>
                                                                                 <option value="7"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 7){ selected }
-                                                                                    @endif> กรกฎาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 7){ selected } @endif> กรกฎาคม
                                                                                 </option>
                                                                                 <option value="8"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 8){ selected }
-                                                                                    @endif> สิงหาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 8){ selected } @endif> สิงหาคม
                                                                                 </option>
                                                                                 <option value="9"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 9){ selected }
-                                                                                    @endif> กันยายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 9){ selected } @endif> กันยายน
                                                                                 </option>
                                                                                 <option value="10"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 10){ selected }
-                                                                                    @endif> ตุลาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 10){ selected } @endif> ตุลาคม
                                                                                 </option>
                                                                                 <option value="11"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 11){ selected }
-                                                                                    @endif> พฤศจิกายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 11){ selected } @endif> พฤศจิกายน
                                                                                 </option>
                                                                                 <option value="12"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    datecreate))) == 12){ selected }
-                                                                                    @endif> ธันวาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->datecreate))) == 12){ selected } @endif> ธันวาคม
                                                                                 </option>
                                                                             </select>
                                                                         </div>
@@ -621,19 +563,17 @@
                                                                     <div class="column  ">
                                                                         วันที่<br>
                                                                         <div class="select">
-                                                                            <select id="DayCre" name="DayCre" disabled>
-                                                                                @for ($i = 1; $i <= 31; $i++) <option
-                                                                                    value="{{$i}}"
-                                                                                    @if(date('d',strtotime(str_replace('-','/',
-                                                                                    $show->datecreate))) == $i){
-                                                                                    selected } @endif>{{$i}}</option>
-                                                                                    @endfor
+                                                                            <select id="DayCre{{$i}}" name="DayCre" disabled>
+                                                                                @for ($j = 1; $j <= 31; $j++) 
+                                                                                    <option value="{{$j}}"
+                                                                                    @if(date('d',strtotime(str_replace('-','/',$show->datecreate))) == $j){ selected } @endif>{{$j}}</option>
+                                                                                @endfor
                                                                             </select>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="column  is-3">
-                                                                        <input type="hidden" id="DateCre" name="DateCre"
+                                                                        <input type="hidden" id="DateCre{{$i}}" name="DateCre"
                                                                             class="form-control"
                                                                             value="{{date('m/d/Y',strtotime(str_replace('-','/', $show->datecreate)))}}">
                                                                         <span class="glyphicon glyphicon-th"></span>
@@ -669,75 +609,53 @@
                                                                         ปี พ.ศ.
                                                                         <input class=" input form-control" type="number"
                                                                             min="2561" max="2570" maxlength="4"
-                                                                            id="YearOp" name="YearOp" placeholder="ปปปป"
+                                                                            id="YearOp{{$i}}" name="YearOp" placeholder="ปปปป"
                                                                             value="{{date('Y',strtotime(str_replace('-','/', $show->operatedate))) + 543 }}"
-                                                                            onchange="date_op();createaccidentdate();">
+                                                                            onchange="//date_op();createaccidentdate();">
                                                                     </div>
                                                                     <div class="column ">
                                                                         เดือน
                                                                         <div class="select">
-                                                                            <select id="MonthOp" name="MonthOp"
-                                                                                onchange="date_op();createaccidentdate();">
-                                                                                <option value="1"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 1){ selected }
-                                                                                    @endif> มกราคม
+                                                                            <select id="MonthOp{{$i}}" name="MonthOp" onchange="//date_op();createaccidentdate();">
+
+                                                                                <option value="1" 
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 1){ selected } @endif> มกราคม
                                                                                 </option>
-                                                                                <option value="2"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 2){ selected }
-                                                                                    @endif> กุมภาพันธ์
+                                                                                <option value="2" 
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 2){ selected } @endif> กุมภาพันธ์
                                                                                 </option>
                                                                                 <option value="3"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 3){ selected }
-                                                                                    @endif> มีนาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 3){ selected } @endif> มีนาคม
                                                                                 </option>
                                                                                 <option value="4"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 4){ selected }
-                                                                                    @endif> เมษายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 4){ selected } @endif> เมษายน
                                                                                 </option>
                                                                                 <option value="5"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 5){ selected }
-                                                                                    @endif> พฤษภาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 5){ selected } @endif> พฤษภาคม
                                                                                 </option>
                                                                                 <option value="6"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 6){ selected }
-                                                                                    @endif> มิถุนายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 6){ selected } @endif> มิถุนายน
                                                                                 </option>
                                                                                 <option value="7"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 7){ selected }
-                                                                                    @endif> กรกฎาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 7){ selected } @endif> กรกฎาคม
                                                                                 </option>
                                                                                 <option value="8"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 8){ selected }
-                                                                                    @endif> สิงหาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 8){ selected } @endif> สิงหาคม
                                                                                 </option>
                                                                                 <option value="9"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 9){ selected }
-                                                                                    @endif> กันยายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 9){ selected } @endif> กันยายน
                                                                                 </option>
                                                                                 <option value="10"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 10){ selected }
-                                                                                    @endif> ตุลาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 10){ selected } @endif> ตุลาคม
                                                                                 </option>
                                                                                 <option value="11"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 11){ selected }
-                                                                                    @endif> พฤศจิกายน
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 11){ selected } @endif> พฤศจิกายน
                                                                                 </option>
                                                                                 <option value="12"
-                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->
-                                                                                    operatedate))) == 12){ selected }
-                                                                                    @endif> ธันวาคม
+                                                                                    @if(date('m',strtotime(str_replace('-','/',$show->operatedate))) == 12){ selected } @endif> ธันวาคม
                                                                                 </option>
+
+                                                                                
                                                                             </select>
                                                                         </div>
                                                                     </div>
@@ -745,21 +663,19 @@
                                                                     <div class="column  ">
                                                                         วันที่<br>
                                                                         <div class="select">
-                                                                            <select id="DayOp" name="DayOp"
+                                                                            <select id="DayOp{{$i}}" name="DayOp"
                                                                                 onchange="createaccidentdate();">
-                                                                                @for ($i = 1; $i <= 31; $i++) <option
-                                                                                    value="{{$i}}"
-                                                                                    @if(date('d',strtotime(str_replace('-','/',
-                                                                                    $show->
-                                                                                    operatedate))) == $i){ selected }
-                                                                                    @endif>{{$i}}</option>
-                                                                                    @endfor
+                                                                                @for ($j = 1; $j <= 31; $j++) <option
+                                                                                    value="{{$j}}"
+                                                                                    @if(date('d',strtotime(str_replace('-','/',$show->operatedate))) == $j){ selected }
+                                                                                    @endif>{{$j}}</option>
+                                                                                @endfor
                                                                             </select>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="column  is-3">
-                                                                        <input type="hidden" id="Dateop" name="DateOp"
+                                                                        <input type="hidden" id="Dateop{{$i}}" name="DateOp"
                                                                             class="form-control"
                                                                             value="{{date('m/d/Y',strtotime(str_replace('-','/', $show->operatedate)))}}">
                                                                         <span class="glyphicon glyphicon-th"></span>
