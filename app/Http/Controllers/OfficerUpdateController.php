@@ -705,7 +705,22 @@ class OfficerUpdateController extends Controller
         'r_sub_problem.name as sub_problem',
         'case_inputs.group_code as id_group_code',
         'r_group_code.name as group_code',
+        'add_details.violation_characteristics',
+        'add_details.effect',
+        'case_inputs.detail',
+        'case_inputs.need',
+        'case_inputs.created_at as datecreate',
         'case_inputs.receiver',
+        'operate_details.operate_date as operatedate',
+        'add_details.type_offender',
+        'add_details.subtype_offender',
+        'add_details.violator_name',
+        'add_details.offender_organization',
+        'operate_details.operate_detail',
+        'operate_details.operate_result',
+        'case_inputs.status',
+        'case_inputs.operate_result_status',
+        'case_inputs.reject_reason',
         'case_inputs.accident_date')
         ->orderBy('case_inputs.id')
         ->get();
