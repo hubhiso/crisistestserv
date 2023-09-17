@@ -129,6 +129,7 @@ class ManageofficerController extends Controller
         foreach($officer_prev as $off_prev)
         {
            $o_active = $off_prev->active;
+           $o_approv = $off_prev->approv;
            $o_name = $off_prev->name;
            $o_nameorg = $off_prev->nameorg;
            $o_tel = $off_prev->tel;
@@ -165,6 +166,10 @@ class ManageofficerController extends Controller
 
 
         $active = $request->input('e_active');
+
+        
+
+        $ck_approv = "yes";
 
         if($active == 'yes' and $o_active == 'no'){
             $ck_mailwarning = NULL;
