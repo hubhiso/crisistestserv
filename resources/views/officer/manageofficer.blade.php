@@ -429,9 +429,9 @@
                                     {{ csrf_field() }}
                                     {{ method_field('PUT') }}
 
-                                    <input type="hidden" id="username_send" name="email" class="form-control input" placeholder="Enter Email">
+                                    <input type="hidden" id="e_username_send_approv" name="email" class="form-control input" placeholder="Enter Email">
                                     <input type="hidden" name="subject" class="input" value="แจ้งเข้าใช้ระบบ ปกป้อง(CRS)">
-                                    <input type="hidden" id="mailusername_id" name="mailusername_id" class="input">
+                                    <input type="hidden" id="e_mailusername_id_approv" name="mailusername_id" class="input">
 
                                     <textarea name="content" rows="5" class=" textarea" placeholder="Enter Your Message"
                                         style="display:none;">ถ้าได้รับ Email นี้ ต้องขออภัยจากความผิดพลาดในการส่งด้วยครับ</textarea>
@@ -786,6 +786,9 @@
 
             $tr = $(this).closest('tr');
             var data = o_table.row($tr).data();
+
+            $('#e_username_send_approv').val(data[10]);
+            $('#e_mailusername_id_approv').val(data[10]);
 
             $('#e_username').val(data[1]);
 

@@ -230,8 +230,7 @@ class ManageofficerController extends Controller
 
 
             Mail::send('officer.email-template', $data , function($message) use ($data) {
-            $message->to($data['email'])
-            ->subject($data['subject']);
+            $message->to($data['email'])->subject($data['subject']);
             });
         }
 
