@@ -135,7 +135,7 @@
                                                                 style="padding-bottom:20px;padding-left:10px;padding-right:10px;padding-top:20px;text-align:center;">
                                                                 <div align="center">
                                                                     <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://www.example.com/" style="height:48px;width:143px;v-text-anchor:middle;" arcsize="34%" stroke="false" fillcolor="#ec5075"><w:anchorlock/><v:textbox inset="5px,0px,0px,0px"><center style="color:#ffffff; font-family:Arial, sans-serif; font-size:15px"><![endif]--><a
-                                                                        href="https://crs.ddc.moph.go.th/"
+                                                                        href="https://crs.ddc.moph.go.th/crisistest2021/public/"
                                                                         style="text-decoration:none;display:inline-block;color:#ffffff;background-color:#ec5075;border-radius:16px;width:auto;border-top:0px solid TRANSPARENT;border-right:0px solid TRANSPARENT;border-bottom:0px solid TRANSPARENT;border-left:0px solid TRANSPARENT;padding-top:8px;padding-bottom:8px;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;text-align:center;mso-border-alt:none;word-break:keep-all;"
                                                                         target="_blank"><span
                                                                             style="padding-left:15px;padding-right:15px;font-size:15px;display:inline-block;letter-spacing:normal;"><span
