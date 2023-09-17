@@ -158,13 +158,13 @@
                     <!-- Right side -->
                     <div class="level-right">
                         <div class="level-item">
-                            <p>สถานะการขอความช่วยเหลือ <span id="tag_alert"
+                            <p>{{ trans('message.tag_help_status') }} <span id="tag_alert"
                                     class="tag is-medium is-rounded is-success is-light has-tooltip-multiline"
-                                    data-tooltip="เจ้าหน้าที่จะติดต่อกลับภายใน 1 - 7 วัน"><b>ไม่เร่งด่วน</b></span>
+                                    data-tooltip="{{ trans('message.txt_short_urgenthelp') }}"><b>{{ trans('message.btn_nourgent') }}</b></span>
                                 <span id="tag_notalert"
                                     class="tag is-medium is-rounded is-danger is-light has-tooltip-multiline"
-                                    data-tooltip="เจ้าหน้าที่จะติดต่อกลับภายใน 24 ชั่วโมง"><i
-                                        class="fas fa-exclamation-triangle">&nbsp;</i><b>เร่งด่วน</b></span>
+                                    data-tooltip="{{ trans('message.txt_short_urgenthelp_7day') }}"><i
+                                        class="fas fa-exclamation-triangle">&nbsp;</i><b>{{ trans('message.btn_urgent') }}</b></span>
                             </p>
                         </div>
                     </div>
@@ -1175,28 +1175,28 @@
                             <thead>
                                 <tr>
                                     <th class="has-text-danger">{{ trans('message.tx_agency_name') }}</th>
-                                    <th class="has-text-danger">{{ trans('message.tx_address') }}</th>
+                                    <th class="has-text-danger">{{ trans('message.txt_inf_tel') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th>RSAT(สมาคมฟ้าสีรุ้ง)</th>
+                                    <th>{{ trans('message.tx_rsat') }}</th>
                                     <td class="has-text-left">02-7316533</td>
                                 </tr>
                                 <tr>
-                                    <th>TNP+ (เครือข่ายผู้ติดเชื้อ)</th>
+                                    <th>{{ trans('message.tx_tnp_plus') }}</th>
                                     <td class="has-text-left">02-3775065</td>
                                 </tr>
                                 <tr>
-                                    <th>FAR มูลนิธิศูนย์คุ้มครองสิทธิด้านเอดส์</th>
+                                    <th>{{ trans('message.tx_far') }}</th>
                                     <td class="has-text-left">097-2194393</td>
                                 </tr>
                                 <tr>
-                                    <th>SWING (มูลนิธิเพื่อนพนักงานบริการ)</th>
+                                    <th>{{ trans('message.tx_swing') }}</th>
                                     <td class="has-text-left">02-6329502 </td>
                                 </tr>
                                 <tr>
-                                    <th>RTF (มูลนิธิรักษ์ไทย)</th>
+                                    <th>{{ trans('message.tx_rtf') }}</th>
                                     <td class="has-text-left">063-2057188</td>
                                 </tr>
                                 <tr>
@@ -1204,11 +1204,11 @@
                                     <td class="has-text-left">038-425808</td>
                                 </tr>
                                 <tr>
-                                    <th>กลุ่มน้ำกว๊านสีรุ้ง</th>
+                                    <th>{{ trans('message.tx_nam_kwan_sirung') }}</th>
                                     <td class="has-text-left">054-070599</td>
                                 </tr>
                                 <tr>
-                                    <th>STM(บ้านสุขสันต์)</th>
+                                    <th>{{ trans('message.tx_stm') }}</th>
                                     <td class="has-text-left">074-313409</td>
                                 </tr>
 
@@ -1216,14 +1216,13 @@
                         </table>
 
                     </div>
-                    <p class="is-size-5">ท่านต้องการขอความช่วยเหลือเร่งด่วนผ่านปกป้องหรือไม่</p>
-                    <p class="is-size-6 has-text-danger">* การช่วยเหลือเร่งด่วนผ่านปกป้องเจ้าหน้าที่จะติดต่อกลับภายใน 24
-                        ชม.</p>
+                    <p class="is-size-5">{{ trans('message.txt_ask_urgenthelp') }}</p>
+                    <p class="is-size-6 has-text-danger">{{ trans('message.txt_tell_urgenthelp') }}</p>
 
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-danger modalclose_alert" onclick="sitwch_alert('on')">ต้องการ</button>
-                    <button class="button is-info modalclose_notalert" onclick="sitwch_alert('off')">ไม่ต้องการ</button>
+                    <button class="button is-danger modalclose_alert" onclick="sitwch_alert('on')">{{ trans('message.btn_need') }}</button>
+                    <button class="button is-info modalclose_notalert" onclick="sitwch_alert('off')">{{ trans('message.btn_noneed') }}</button>
                 </footer>
             </div>
         </div>

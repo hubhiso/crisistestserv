@@ -12,13 +12,17 @@ return [
     "bt_status" => "Check complaint status",
     "bt_report_public" => "Report",
 
+    "txt_head_typecheck" => "What kind of help do you need?",
+    "bt_report_complaint" => "Click to report a complaint on human rights.",
+    "bt_link_far" => "Click to inquire/ask for advice about HIV.",
+
     "Link" => "https://www.youtube.com/embed/6pEIk5pN9mI",
     "bt_popup" => "Close",
 
     "tx_h_knowledge" =>"Resources for Knowledge of Human Rights",
     "tx_sh_knowledge" =>"You can search by the information here.",
-    "tx_h_table" =>"Report a compliant agency directly",
-    "tx_sh_table" =>"You can Report a compliant by the information below.",
+    "tx_h_table" =>"Report a complaint agency directly",
+    "tx_sh_table" =>"You can Report a complaint by the information below.",
     "bt_map" =>"Map",
 
     "ck_infection_status" =>"HIV Infection status",
@@ -41,7 +45,20 @@ return [
     "ck_group11" =>"Elderly",
     "ck_group12" =>"Etc",
 
-    //Compliant Page
+    //complaint Page
+
+    "txt_ask_urgenthelp" => "Do you want to request urgent help through Pokpong?",
+    "txt_tell_urgenthelp" => "* Urgent help through Pokpong, officials will contact you within 24 hours.",
+
+    "btn_need" => "Need help",
+    "btn_noneed" => "Do not need",
+
+    "txt_short_urgenthelp" => "officials will contact you within 24 hours.",
+    "txt_short_urgenthelp_7day" => "officials will contact you within 1-7 days.",
+
+    "tag_help_status" => "Help request status.",
+    "btn_urgent" => "Urgent",
+    "btn_nourgent" => "Not Urgent",
 
     "txt_head_popup" => "Please review and accept to continue:",
     "bt_agree_popup" => "I agree to the terms and conditions for the disclosure of personal information.",
@@ -189,6 +206,8 @@ return [
     "tx_hon" => "Health and Opportunity Network (HON)",
     "tx_nam_kwan_sirung" => "Nam Kwan Sirung",
     "tx_stm" => "Stella Maris Songkla",
+
+    "tx_swing" => "Service Workers in Group Foundation (SWING)",
 
     "tx_rsat_add_bkk" => "1 And 3 Ram Kam Heng 97/2 Alley, Hua Mak, Bangkrabi District, Bangkok Province  10240",
     "tx_tnp_add_bkk" => "494 Ladpao101 Aelly, Klong-Jan, Bangkrabi District, Bangkok Province 10240",

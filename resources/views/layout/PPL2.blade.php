@@ -644,7 +644,7 @@
 
     <div class="modal-content">
         <header class="modal-card-head">
-            <p class="modal-card-title">ท่านต้องการความช่วยเหลือทางด้านไหน ?</p>
+            <p class="modal-card-title">{{ trans('message.txt_head_typecheck') }}</p>
             <button class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
@@ -653,11 +653,11 @@
                 <p class="control mb-5">
                     <a class="button is-danger is-focused is-medium is-fullwidth is-rounded"
                         href="{{ 'case_inputs' }}"><i
-                                class="fas fa-exclamation-triangle">&nbsp;</i>คลิกเพื่อร้องเรียนกรณีถูกละเมิดสิทธิ</a>
+                                class="fas fa-exclamation-triangle">&nbsp;</i>{{ trans('message.bt_report_complaint') }}</a>
                 </p>
                 <p class="control">
                     <a class="button is-info is-focused is-medium is-fullwidth  is-rounded"
-                        href="https://www.facebook.com/foundationforaidsrights"> <i class="fa fa-comment-dots">&nbsp;</i>คลิกเพื่อสอบถาม/ขอคำปรึกษาเรื่องเอชไอวี</a>
+                        href="https://www.facebook.com/foundationforaidsrights"> <i class="fa fa-comment-dots">&nbsp;</i>{{ trans('message.bt_link_far') }}</a>
                 </p>
             </div>
             <div class="field is-grouped">
