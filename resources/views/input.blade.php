@@ -138,7 +138,7 @@
 
             <input id="case_id" name="case_id" type="text" value="{{  $new_id }}" hidden>
 
-            <div class="box 	" id="data-person">
+            <div class="box " id="data-person">
 
                 <div class="field is-horizontal">
                     <div class="field-label ">
@@ -160,10 +160,10 @@
                         <div class="level-item">
                             <p>{{ trans('message.tag_help_status') }} <span id="tag_alert"
                                     class="tag is-medium is-rounded is-success is-light has-tooltip-multiline"
-                                    data-tooltip="{{ trans('message.txt_short_urgenthelp') }}"><b>{{ trans('message.btn_nourgent') }}</b></span>
+                                    data-tooltip="{{ trans('message.txt_short_urgenthelp_7day') }}"><b>{{ trans('message.btn_nourgent') }}</b></span>
                                 <span id="tag_notalert"
                                     class="tag is-medium is-rounded is-danger is-light has-tooltip-multiline"
-                                    data-tooltip="{{ trans('message.txt_short_urgenthelp_7day') }}"><i
+                                    data-tooltip="{{ trans('message.txt_short_urgenthelp') }}"><i
                                         class="fas fa-exclamation-triangle">&nbsp;</i><b>{{ trans('message.btn_urgent') }}</b></span>
                             </p>
                         </div>
@@ -1175,7 +1175,7 @@
                             <thead>
                                 <tr>
                                     <th class="has-text-danger">{{ trans('message.tx_agency_name') }}</th>
-                                    <th class="has-text-danger">{{ trans('message.txt_inf_tel') }}</th>
+                                    <th class="has-text-danger">{{ trans('message.txt_tel') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
