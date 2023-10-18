@@ -31,19 +31,21 @@
 
     </section>
 
-    <div class="container mt-5">
-        <div class="has-text-centered mb-5">
-            <p class="is-size-3">{{ trans('message.tx_thankyou') }}</p>
-            <p>{{ trans('message.tx_thankyou2') }}</p>
-            <p class="has-text-danger is-size-2"><i class="fas fa-exclamation-triangle">&nbsp;</i></p>
-            <p class="has-text-danger is-size-4">{{ trans('message.tx_keep_id') }}</p>
-        </div>
-        <div class="box mb-5">
-            <div class="notification is-primary has-text-centered is-light">
-                <h1>{{ trans('message.tx_id') }}</h1>
-                <h1 class="title has-text-danger"><b>{{ $case_id }}</b></h1>
+    <div id="html2canvas" class="p-3 mb-3">
+        <div class="container mt-5">
+            <div class="has-text-centered mb-5">
+                <p class="is-size-3">{{ trans('message.tx_thankyou') }}</p>
+                <p>{{ trans('message.tx_thankyou2') }}</p>
+                <p class="has-text-danger is-size-2"><i class="fas fa-exclamation-triangle">&nbsp;</i></p>
+                <p class="has-text-danger is-size-4">{{ trans('message.tx_keep_id') }}</p>
+            </div>
+            <div class="box mb-5">
+                <div class="notification is-primary has-text-centered is-light">
+                    <h1>{{ trans('message.tx_id') }}</h1>
+                    <h1 class="title has-text-danger"><b>{{ $case_id }}</b></h1>
 
-                <?php
+                    <?php
+                        /*
 
                         if($emergency == 1){
                             $emer_tx = '❗เคสเร่งด่วน❗';
@@ -76,11 +78,16 @@
                         //return $res;
                         //}
                         }
+
+                        */
                         
                         
                     ?>
+                </div>
             </div>
+
         </div>
+
 
     </div>
 
@@ -90,17 +97,71 @@
 
                 <div class="has-text-centered ">
                     @if(Auth::guard('officer')->check())
-                    <a class="button is-danger" href="{{ route('officer.main') }}"><i class="fa fa-home">&nbsp;</i>{{ trans('message.bt_cancle') }}</a>
+                    <a class="button is-danger button_addshadow" href="{{ route('officer.main') }}"><i
+                            class="fa fa-home">&nbsp;</i>{{ trans('message.bt_cancle') }}</a>
                     @else
-                    <a class="button is-danger" href="{{ route('guest_home') }}"><i class="fa fa-home">&nbsp;</i>{{ trans('message.bt_cancle') }}</a>
+                    <a class="button is-danger button_addshadow" href="{{ route('guest_home') }}"><i
+                            class="fa fa-home">&nbsp;</i>{{ trans('message.bt_cancle') }}</a>
                     @endif
+                        &nbsp;&nbsp;&nbsp;
+                    <button class="button is-primary button_addshadow" onclick="downloadByHtml2Canvas()"> <i class="fa fa-download">&nbsp;</i>&nbsp;บันทึกรหัสติดตาม</button>
                 </div>
 
             </div>
+
+            
         </div>
     </div>
 
+    
+
+
     @extends('footer')
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <script>
+    function downloadByHtml2Canvas() {
+        html2canvas(document.querySelector('#html2canvas')).then((canvas) => {
+            const name = 'anya_forger';
+            let today = new Date();
+            let dd = today.getDate();
+            let mm = today.getMonth() + 1;
+            let yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            today = yyyy + '-' + mm + '-' + dd;
+            let img = canvas.toDataURL('image/png');
+            downloadImage(img, `${name}_${today}`);
+        });
+    }
+
+    function downloadImage(blob, fileName) {
+        const fakeLink = window.document.createElement('a');
+        fakeLink.style = 'display:none;';
+        fakeLink.download = fileName;
+        fakeLink.href = blob;
+        document.body.appendChild(fakeLink);
+        fakeLink.click();
+        document.body.removeChild(fakeLink);
+        fakeLink.remove();
+    }
+    </script>
+
 </body>
 
 </html>

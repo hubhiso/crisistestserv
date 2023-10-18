@@ -53,7 +53,7 @@
 
                     @if(Config::get('app.locale') == 'en')
 
-                    <a class="button is-danger is-inverted is-rounded is-small" href="{{ URL::to('change/th') }}"> Thai
+                    <a class="button is-danger is-inverted is-rounded is-small button_addshadow" href="{{ URL::to('change/th') }}"> Thai
                         Site&nbsp;
                         <span class="fa-stack fa-1x">
                             <i class="fa fa-circle fa-stack-2x"></i>
@@ -63,7 +63,7 @@
 
                     @elseif(Config::get('app.locale') == 'th')
 
-                    <a class="button is-danger is-inverted is-rounded is-small" href="{{ URL::to('change/en') }}">
+                    <a class="button is-danger is-inverted is-rounded is-small button_addshadow" href="{{ URL::to('change/en') }}">
                         English
                         Site&nbsp;
                         <span class="fa-stack fa-1x">
@@ -98,7 +98,7 @@
                 <!-- Left side -->
                 <div class="level-left">
                     <div class="level-item">
-                        <button id="chk_agent" id="chk_agent" type="button" class="button is-info" value="1"
+                        <button  id="chk_agent" type="button" class="button is-info button_addshadow" value="1"
                             onclick="showHideDiv('data-agent')"><i class="fa fa-user-plus"
                                 aria-hidden="true"></i>&nbsp;{{ trans('message.bt_victim_rc') }}</button>
                     </div>
@@ -162,7 +162,7 @@
                                     class="tag is-medium is-rounded is-success is-light has-tooltip-multiline"
                                     data-tooltip="{{ trans('message.txt_short_urgenthelp_7day') }}"><b>{{ trans('message.btn_nourgent') }}</b></span>
                                 <span id="tag_notalert"
-                                    class="tag is-medium is-rounded is-danger is-light has-tooltip-multiline"
+                                    class="tag is-medium is-rounded is-danger is-light has-tooltip-multiline "
                                     data-tooltip="{{ trans('message.txt_short_urgenthelp') }}"><i
                                         class="fas fa-exclamation-triangle">&nbsp;</i><b>{{ trans('message.btn_urgent') }}</b></span>
                             </p>
@@ -195,7 +195,7 @@
 
                         <div class="control  ">
                             <!--p>คลิกเพื่อระบุตำแหน่งในปัจจุบัน </p-->
-                            <a class="button is-danger" onclick="getLocation()">
+                            <a class="button is-danger button_addshadow" onclick="getLocation()">
                                 <span class="icon is-left">
                                     <i class="fas fa-location-arrow"></i>
                                 </span>
@@ -602,15 +602,15 @@
             <div class="field is-grouped">
                 <p class="control">
                     <!--{!! Form::submit('ส่งข้อมูล',['class'=>'button is-primary']) !!}-->
-                    <button type="submit" class="button is-danger" form="RegForm"
+                    <button type="submit" class="button is-danger button_addshadow" form="RegForm"
                         onsubmit="return validateForm();">{{ trans('message.bt_submit') }}</button>
 
                     <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal"
-                        data-target="#confirm-submit" class="btn btn-default" style="display:none" />
+                        data-target="#confirm-submit" class="btn btn-default button_addshadow" style="display:none" />
 
                 </p>
                 <p class="control">
-                    <a><a class="button is-outlined"
+                    <a><a class="button is-outlined button_addshadow"
                             href="{{ route('guest_home') }}">{{ trans('message.bt_cancle') }}</a></a>
                 </p>
             </div>
@@ -1221,8 +1221,8 @@
 
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-danger modalclose_alert" onclick="sitwch_alert('on')">{{ trans('message.btn_need') }}</button>
-                    <button class="button is-info modalclose_notalert" onclick="sitwch_alert('off')">{{ trans('message.btn_noneed') }}</button>
+                    <button class="button is-danger modalclose_alert button_addshadow" onclick="sitwch_alert('on')">{{ trans('message.btn_need') }}</button>
+                    <button class="button is-info modalclose_notalert button_addshadow" onclick="sitwch_alert('off')">{{ trans('message.btn_noneed') }}</button>
                 </footer>
             </div>
         </div>
