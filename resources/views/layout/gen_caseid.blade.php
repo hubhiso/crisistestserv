@@ -45,7 +45,7 @@
                     <h1 class="title has-text-danger"><b>{{ $case_id }}</b></h1>
 
                     <?php
-                        /*
+                        
 
                         if($emergency == 1){
                             $emer_tx = '❗เคสเร่งด่วน❗';
@@ -79,15 +79,12 @@
                         //}
                         }
 
-                        */
-                        
                         
                     ?>
                 </div>
             </div>
 
         </div>
-
 
     </div>
 
