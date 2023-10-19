@@ -182,9 +182,10 @@
     <div class="container ">
 
         <br><br>
-        <figure class="image is-128x128 container  box p-3">
-            <a href="{{ 'resource' }}" target="_blank"><img src="images/seo.png"></a>
+        <a class="p-3" href="{{ 'resource' }}" target="_blank">
+        <figure class="image is-128x128 container  box p-3"><img src="images/seo.png">
         </figure>
+        </a>
         <h1 class="title"> {{ trans('message.tx_h_knowledge') }} </h1>
         <h2 class="subtitle">{{ trans('message.tx_sh_knowledge') }}</h2>
         <br>

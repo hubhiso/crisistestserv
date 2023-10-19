@@ -103,27 +103,6 @@
 
             <div class="content">
 
-                <div class="columns is-gapless">
-
-                    <div class="column ">
-
-                    </div>
-                    <div class="column ">
-                        <div class="field has-addons has-addons-right">
-                            <p class="control is-expanded">
-                                <input class="input " type="text"
-                                    value="{{ route('officer.view_detail2' , $show_data->case_id) }}"
-                                    id="url_view_detail" readonly>
-                            </p>
-                            <p class="control">
-                                <a class="button is-primary" onclick="copyurl()">
-                                    คัดลอก URL สำหรับดูเท่านั้น
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
                 <form class="form-horizontal" role="form" method="POST" action="{{ route('officer.update_detail') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input id="case_id" name="case_id" type="text" value="{{  $show_data->case_id }}" hidden>
