@@ -130,7 +130,10 @@
                 <div class="field is-grouped">
                     <p class="control is-expanded has-icons-left ">
                         <label class="radio">
-                            {{ Form::radio('sender_case', '3' , true) }} <a>เจ้าหน้าที่แจ้ง</a>
+
+                            <input class="is-checkradio is-info" type="radio" id="sender_case" name="sender_case" value="_"
+                                    checked="checked">
+                            <label for="sender_case">เจ้าหน้าที่แจ้ง</label>
                         </label>
                     </p>
                 </div>
@@ -629,7 +632,7 @@
                             <thead>
                                 <tr>
                                     <th class="has-text-danger">{{ trans('message.tx_agency_name') }}</th>
-                                    <th class="has-text-danger">{{ trans('message.tx_address') }}</th>
+                                    <th class="has-text-danger">{{ trans('message.txt_tel') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

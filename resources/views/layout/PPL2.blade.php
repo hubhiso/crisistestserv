@@ -134,7 +134,8 @@
                                 </a>
                                 <br><br>
                                 <p> {{ trans('message.txt_status') }} </p><br>
-                                <a class="button is-danger  is-rounded button_addshadow" href="{{ 'status' }}"> <i class="fa fa-search"
+                                <a class="button is-danger  is-rounded button_addshadow" href="{{ 'status' }}"> <i
+                                        class="fa fa-search"
                                         aria-hidden="true"></i>&nbsp;{{ trans('message.bt_status') }} </a>
                                 <!--a class="button is-danger  is-rounded" href="../php/dashboard_public.php" target="_blank"> <i class="fa fa-chart-bar"
                                         aria-hidden="true"></i>&nbsp;{{ trans('message.bt_report_public') }} </a-->
@@ -179,16 +180,17 @@
 </section>
 
 <div class="container  has-text-centered">
-    <div class="container ">
-
-        <br><br>
-        <a class="p-3" href="{{ 'resource' }}" target="_blank">
-        <figure class="image is-128x128 container  box p-3"><img src="images/seo.png">
-        </figure>
-        </a>
-        <h1 class="title"> {{ trans('message.tx_h_knowledge') }} </h1>
-        <h2 class="subtitle">{{ trans('message.tx_sh_knowledge') }}</h2>
-        <br>
+    <div class="columns is-centered mt-5">
+        <div class="column is-narrow">
+            <a class="" href="{{ 'resource' }}" target="_blank"> <img class="image is-128x128  box p-3"
+                    src="images/seo.png"> </a>
+        </div>
+    </div>
+    <div class="columns is-centered  mb-5">
+        <div class="column is-narrow">
+            <h1 class="title"> {{ trans('message.tx_h_knowledge') }} </h1>
+            <h2 class="subtitle">{{ trans('message.tx_sh_knowledge') }}</h2>
+        </div>
     </div>
     <div class="columns">
         <div class="column is-two-thirds">
@@ -300,8 +302,8 @@
             <h2 class="subtitle">
                 {{ trans('message.tx_sh_table') }}
             </h2>
-            <a class="button is-primary  is-rounded is-danger button_addshadow" href="{{ 'orgmap' }}" target="_blank"> <i
-                    class="fas fa-thumbtack"></i>&nbsp; {{ trans('message.bt_map') }} </a>
+            <a class="button is-primary  is-rounded is-danger button_addshadow" href="{{ 'orgmap' }}" target="_blank">
+                <i class="fas fa-thumbtack"></i>&nbsp; {{ trans('message.bt_map') }} </a>
             <br><br>
             <div class="panel table-container">
 
@@ -325,7 +327,8 @@
                             <td class="has-text-left"><a class='tag is-medium is-rounded color1 button_addshadow'
                                     href="https://goo.gl/maps/w8muJ6eguspFFtWf9"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/rsat.info" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="http://www.rsat.info"
@@ -338,7 +341,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/iEnbqA2m4voWK6Hk7"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/TNPplus" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://thaiplus.net"
@@ -351,7 +355,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/YbqZjooMDQ3oohMU9"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/foundationforaidsrights" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.aidsrightsthailand.com"
@@ -364,7 +369,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/pbvGNNrEykZ3pn4m8"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/SWINGThailandTH" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.swingthailand.org"
@@ -377,7 +383,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/LPsHRc3TroaNdEry8"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/SWINGThailandTH" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.swingthailand.org"
@@ -390,7 +397,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/ERF2dMkxUPHvUnhh9"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/SWINGThailandTH" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.swingthailand.org"
@@ -403,7 +411,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/omvoYzEqLwDbhaH27"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/rsat.info" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="http://www.rsat.info"
@@ -416,7 +425,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/TX221Jyo55Jy4ffN8"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/raksthaifoundation" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.raksthai.org"
@@ -427,7 +437,8 @@
                             <td class="has-text-left">{{ trans('message.tx_chonburi') }}</td>
                             <td class="has-text-left">{{ trans('message.tx_hon_add_chon') }}</td>
                             <td>-</td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/hon.house/" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td>-</td>
@@ -439,7 +450,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/5Q6KgTCYS17GYiUW8"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/profile.php?id=100087218064343" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td>-</td>
@@ -451,7 +463,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/fZP2nQWbAqqcGfZ89"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/raksthaifoundation" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.raksthai.org">https://www.raksthai.org</a>
@@ -464,7 +477,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/1s4w2AXo4HnrTP8U6"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/raksthaifoundation" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.raksthai.org"
@@ -477,7 +491,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/5pNQTEsw1jwbHNtb8"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/raksthaifoundation" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.raksthai.org"
@@ -490,7 +505,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/84qovGq28ZB4ymxV6"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/raksthaifoundation" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.raksthai.org"
@@ -503,7 +519,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/U8eDGmoifbdtotZg8"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/raksthaifoundation" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.raksthai.org"
@@ -516,7 +533,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/tkRxH77i196Y3kNW7"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/foundationforaidsrights" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.aidsrightsthailand.com"
@@ -529,7 +547,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/eBZo4jGYRbAFqesA9"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/rsat.info" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="http://www.rsat.info"
@@ -542,7 +561,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/Smpyf3sFBcY923856"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/profile.php?id=100064430270367&ref"
                                     target="_blank"><i class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://stellamariscenter.org/songkhla"
@@ -555,7 +575,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/PNCVqMj4GtXpjA6o7"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/raksthaifoundation" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.raksthai.org"
@@ -568,7 +589,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/kGvr9b1NXN6XSuMJ9"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/raksthaifoundation" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.raksthai.org"
@@ -595,7 +617,8 @@
                             <td class="has-text-left"><a class='tag is-medium color1 is-rounded button_addshadow'
                                     href="https://goo.gl/maps/U4CupwV4mD8x1Rn78"
                                     target="_blank">{{ trans('message.bt_map') }}</a></td>
-                            <td class="has-text-centered"><a class='tag is-medium btn_facebook is-rounded button_addshadow'
+                            <td class="has-text-centered"><a
+                                    class='tag is-medium btn_facebook is-rounded button_addshadow'
                                     href="https://www.facebook.com/raksthaifoundation" target="_blank"><i
                                         class="fab fa-facebook-f">&nbsp;</i></a></td>
                             <td class="has-text-left"><a href="https://www.raksthai.org"
@@ -653,11 +676,12 @@
                 <p class="control mb-5">
                     <a class="button is-danger is-focused is-medium is-fullwidth is-rounded"
                         href="{{ 'case_inputs' }}"><i
-                                class="fas fa-exclamation-triangle">&nbsp;</i>{{ trans('message.bt_report_complaint') }}</a>
+                            class="fas fa-exclamation-triangle">&nbsp;</i>{{ trans('message.bt_report_complaint') }}</a>
                 </p>
                 <p class="control">
                     <a class="button is-info is-focused is-medium is-fullwidth  is-rounded"
-                        href="https://www.facebook.com/foundationforaidsrights"> <i class="fa fa-comment-dots">&nbsp;</i>{{ trans('message.bt_link_far') }}</a>
+                        href="https://www.facebook.com/foundationforaidsrights"> <i
+                            class="fa fa-comment-dots">&nbsp;</i>{{ trans('message.bt_link_far') }}</a>
                 </p>
             </div>
             <div class="field is-grouped">

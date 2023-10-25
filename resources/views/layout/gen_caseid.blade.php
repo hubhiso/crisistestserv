@@ -130,7 +130,7 @@
     <script>
     function downloadByHtml2Canvas() {
         html2canvas(document.querySelector('#html2canvas')).then((canvas) => {
-            const name = 'anya_forger';
+            const name = 'รหัสติดตาม ปกป้อง';
             let today = new Date();
             let dd = today.getDate();
             let mm = today.getMonth() + 1;
