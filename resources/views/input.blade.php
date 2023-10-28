@@ -1082,10 +1082,8 @@
                 </div>
             </div>
         </div>
-        <!--div style="width: 1478px; font-size: 32pt; color:white; height: 602px; display: none; opacity: 0.8;"
-            id="mask_intro"-->
         <div style="width: 1478px; font-size: 32pt; color:white; height: 602px; display: none; opacity: 0.8;"
-            id="mask_intro_xx">
+            id="mask_intro">
         </div>
     </div>
 
