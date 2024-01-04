@@ -898,6 +898,8 @@
 
     <script src="https://code.highcharts.com/maps/highmaps.js"></script>
     <script src="https://code.highcharts.com/mapdata/countries/th/th-all.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+
 
 
     <script>
@@ -1491,11 +1493,32 @@
             }
         },
 
+        legend: {
+            verticalAlign: 'middle',
+            align: 'right',
+            layout: 'vertical',
+               
+        },
 
-        colorAxis: {
-            min: 0,
-            minColor: '#fff',
-            maxColor: '#de0867'
+
+        colorAxis: {	
+            dataClasses: [{
+                from :0,
+                to: 0,
+                name: "ไม่มีข้อมูล",
+                color: '#ddd',
+            }, {
+                from :1,
+                to: 2,
+                name: "1 - 2 เรื่อง",
+                color: '#e046a2',
+            }, {
+                from :3,
+                to: 10000,
+                name: "3 เรื่องขึ้นไป",
+                color: '#de0867',
+            }
+            ]
         },
 
         series: [{
