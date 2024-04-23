@@ -617,8 +617,8 @@ class OfficerUpdateController extends Controller
 
         //$show_data = case_input::all();
 
-        $date_start = date('Y-m-d',strtotime(str_replace('-','/', $request->input('date_start2'))));
-        $date_end = date('Y-m-d',strtotime(str_replace('-','/', $request->input('date_end2')). "+1 day"));
+        $date_start = date('Y-m-d H:i:s',strtotime(str_replace('-','/', $request->input('date_start2'))));
+        $date_end = date('Y-m-d H:i:s',strtotime(str_replace('-','/', $request->input('date_end2')). "+1 day"));
         $type_export = $request->input('type_export');
 
         if($type_export == 1){
