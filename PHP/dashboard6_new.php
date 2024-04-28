@@ -46,7 +46,7 @@
         $list_pb = array("บังคับตรวจเอชไอวี","เปิดเผยสถานะการติดเชื้อเอชไอวี","ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี","ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง","อื่นๆ ที่เกี่ยวข้องกับ HIV","อื่นๆ");
 
 
-        $sql = "select year(created_at) as y ,month(created_at) as m,count(*) as count
+        $sql = "SELECT year(created_at) as y ,month(created_at) as m,count(*) as count
         from case_inputs
         
         group by year(created_at), month(created_at)";
@@ -62,7 +62,7 @@
             $last_i += $i;
         }
 
-        $sql2 = "select month(created_at) as month, 
+        $sql2 = "SELECT month(created_at) as month, 
         sum(case when problem_case = 1 THEN 1 ELSE 0 END) as case1, 
         sum(case when problem_case = 2 THEN 1 ELSE 0 END) as case2, 
         sum(case when problem_case = 3 THEN 1 ELSE 0 END) as case3, 
@@ -70,7 +70,7 @@
         sum(case when problem_case = 5 THEN 1 ELSE 0 END) as case5, 
         sum(case when problem_case = 6 THEN 1 ELSE 0 END) as case6 
         from case_inputs 
-        where created_at BETWEEN '".($years-1)."-10-01' and '".$years."-09-30' 
+        where date(created_at) BETWEEN '".($years-1)."-10-01' and '".$years."-09-30' 
         group by month";
 
         
@@ -193,7 +193,7 @@
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>รายปี</span>
                 </a>
-                <a class="btn btn-primary btn-rounded " href="dashboard6_new.php">
+                <a class="btn btn-primary btn-rounded" href="dashboard6_new.php">
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>รายเดือน</span>
                 </a>
