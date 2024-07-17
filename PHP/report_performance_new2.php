@@ -443,489 +443,211 @@
         <table id='crisisc1' width="100%"
             class=" dt-responsive nowrap table table-responsive table-bordered table-striped table-hover">
             <thead class="bgcolor1">
-                <tr class="hideextra  ">
-                    <th class="" style="vertical-align: middle; color: white;" rowspan="2">ลำดับ</th>
-                    <th class="" style="vertical-align: middle; color: white;" rowspan="2">ชื่อ</th>
-                    <th class="" style="vertical-align: middle; color: white;" rowspan="2">จังหวัด</th>
-                    <th class=" " style="vertical-align: middle; color: white;" rowspan="2">เขต</th>
 
-                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">1.
-                        บังคับตรวจเอชไอวี
+                <tr class="">
+                    <th class="" style="vertical-align: middle; color: white;" rowspan=2 width='$cel_width'>
+                        ลำดับ</th>
+                    <th class="" style="vertical-align: middle; color: white;" rowspan=2 width='$cel_width'>
+                        เจ้าหน้าที่</th>
+                    <th class="" style="vertical-align: middle; color: white;" rowspan=2 width='$cel_width'>
+                        จังหวัด</th>
+                    <th class="" style="vertical-align: middle; color: white;" rowspan=2 align='center'
+                        width='$cel_width'>รวม
                     </th>
-                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">2.
-                        เปิดเผยสถานะการติดเชื้อเอชไอวี
-                    </th>
-                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">3.
-                        ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี
-                    </th>
-                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">4.
-                        ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง
-                    </th>
-                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">5.
-                        กรณีอื่นๆ ที่เกี่ยวข้องกับเอชไอวี
-                    </th>
-                    <th class=" text-center" style="vertical-align: middle; color: white;" colspan="6">6.
-                        กรณีอื่นๆ ที่ไม่เกี่ยวข้องกับเอชไอวี
-                    </th>
-
-                    <th class="" style="vertical-align: middle; color: white;" rowspan="2">ทั้งหมด</th>
+                    <th class="" style="vertical-align: middle; color: white;" colspan=4 align='center'
+                        width='$cel_width'>
+                        จำนวนเคสที่ดำเนินการ (ราย) : เวลาเฉลี่ย (วัน)</th>
                 </tr>
                 <tr>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        สำเร็จ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ไม่สำเร็จ </th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ตาย</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ย้ายที่อยู่</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ส่งต่อ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        รวม</th>
-
-                    <th class="" style="vertical-align: middle; color: white;">
-                        สำเร็จ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ไม่สำเร็จ </th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ตาย</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ย้ายที่อยู่</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ส่งต่อ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        รวม</th>
-
-                    <th class="" style="vertical-align: middle; color: white;">
-                        สำเร็จ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ไม่สำเร็จ </th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ตาย</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ย้ายที่อยู่</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ส่งต่อ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        รวม</th>
-
-                    <th class="" style="vertical-align: middle; color: white;">
-                        สำเร็จ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ไม่สำเร็จ </th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ตาย</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ย้ายที่อยู่</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ส่งต่อ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        รวม</th>
-
-                    <th class="" style="vertical-align: middle; color: white;">
-                        สำเร็จ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ไม่สำเร็จ </th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ตาย</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ย้ายที่อยู่</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ส่งต่อ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        รวม</th>
-
-                    <th class="" style="vertical-align: middle; color: white;">
-                        สำเร็จ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ไม่สำเร็จ </th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ตาย</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ย้ายที่อยู่</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        ส่งต่อ</th>
-                    <th class="" style="vertical-align: middle; color: white;">
-                        รวม</th>
-
+                    <th class="" style="vertical-align: middle; color: white;" align='center'
+                        width='$cel_width'>แจ้งเหตุ ->
+                        รับเรื่อง
+                    </th>
+                    <th class="" style="vertical-align: middle; color: white;" align='center'
+                        width='$cel_width'>รับเรื่อง ->
+                        บันทึกข้อมูล
+                    </th>
+                    <th class="" style="vertical-align: middle; color: white;" align='center'
+                        width='$cel_width'>บันทึกข้อมูล ->
+                        ดำเนินการ
+                    </th>
+                    <th class="" style="vertical-align: middle; color: white;" align='center'
+                        width='$cel_width'>ดำเนินการ ->
+                        เสร็จสิ้น
+                    </th>
                 </tr>
 
+
             </thead>
-            <?php
-                    
-					$sql1 = "SELECT o.id, o.name, o.nameorg, o.prov_id, p.name as provname, nhso
-					FROM officers o left join prov_geo p
-					on p.code = o.prov_id 
-					where
-					position = 'officer' $query_group
-					order by prov_id";
 
-					$result1 = mysqli_query($conn, $sql1); 
-					$row1 = mysqli_num_rows($result1); 
-					$i = '0';
-                    
-					while($row1 = $result1->fetch_assoc()) {
+            <tbody>
 
-                        $c_s1_1 = 0;
-                        $c_s1_2 = 0;
-                        $c_s1_3 = 0;
-                        $c_s1_4 = 0;
-                        $c_s1_5 = 0;
-                        $c_s1 = 0;
+                <?php
 
-                        $c_s2_1 = 0;
-                        $c_s2_2 = 0;
-                        $c_s2_3 = 0;
-                        $c_s2_4 = 0;
-                        $c_s2_5 = 0;
-                        $c_s2 = 0;
-
-                        $c_s3_1 = 0;
-                        $c_s3_2 = 0;
-                        $c_s3_3 = 0;
-                        $c_s3_4 = 0;
-                        $c_s3_5 = 0;
-                        $c_s3 = 0;
-
-                        $c_s4_1 = 0;
-                        $c_s4_2 = 0;
-                        $c_s4_3 = 0;
-                        $c_s4_4 = 0;
-                        $c_s4_5 = 0;
-                        $c_s4 = 0;
-
-                        $c_s5_1 = 0;
-                        $c_s5_2 = 0;
-                        $c_s5_3 = 0;
-                        $c_s5_4 = 0;
-                        $c_s5_5 = 0;
-                        $c_s5 = 0;
-
-                        $c_s6_1 = 0;
-                        $c_s6_2 = 0;
-                        $c_s6_3 = 0;
-                        $c_s6_4 = 0;
-                        $c_s6_5 = 0;
-                        $c_s6 = 0;
-
-                        $c_as = 0;
-
-						$sql2 = "SELECT receiver,
-                        sum( CASE WHEN problem_case = '1' AND status = '5' AND operate_result_status = '1' THEN 1 ELSE 0 END ) AS case1_1,
-                        sum( CASE WHEN problem_case = '1' AND status = '5' AND operate_result_status = '2' THEN 1 ELSE 0 END ) AS case1_2,
-                        sum( CASE WHEN problem_case = '1' AND status = '5' AND operate_result_status = '3' THEN 1 ELSE 0 END ) AS case1_3,
-                        sum( CASE WHEN problem_case = '1' AND status = '5' AND operate_result_status = '4' THEN 1 ELSE 0 END ) AS case1_4,
-                        sum( CASE WHEN problem_case = '1' AND status = '6' THEN 1 ELSE 0 END ) AS case1_5,
-                        sum( CASE WHEN problem_case = '2' AND status = '5' AND operate_result_status = '1' THEN 1 ELSE 0 END ) AS case2_1,
-                        sum( CASE WHEN problem_case = '2' AND status = '5' AND operate_result_status = '2' THEN 1 ELSE 0 END ) AS case2_2,
-                        sum( CASE WHEN problem_case = '2' AND status = '5' AND operate_result_status = '3' THEN 1 ELSE 0 END ) AS case2_3,
-                        sum( CASE WHEN problem_case = '2' AND status = '5' AND operate_result_status = '4' THEN 1 ELSE 0 END ) AS case2_4,
-                        sum( CASE WHEN problem_case = '2' AND status = '6' THEN 1 ELSE 0 END ) AS case2_5,
-                        sum( CASE WHEN problem_case = '3' AND status = '5' AND operate_result_status = '1' THEN 1 ELSE 0 END ) AS case3_1,
-                        sum( CASE WHEN problem_case = '3' AND status = '5' AND operate_result_status = '2' THEN 1 ELSE 0 END ) AS case3_2,
-                        sum( CASE WHEN problem_case = '3' AND status = '5' AND operate_result_status = '3' THEN 1 ELSE 0 END ) AS case3_3,
-                        sum( CASE WHEN problem_case = '3' AND status = '5' AND operate_result_status = '4' THEN 1 ELSE 0 END ) AS case3_4,
-                        sum( CASE WHEN problem_case = '3' AND status = '6' THEN 1 ELSE 0 END ) AS case3_5,
-                        sum( CASE WHEN problem_case = '4' AND status = '5' AND operate_result_status = '1' THEN 1 ELSE 0 END ) AS case4_1,
-                        sum( CASE WHEN problem_case = '4' AND status = '5' AND operate_result_status = '2' THEN 1 ELSE 0 END ) AS case4_2,
-                        sum( CASE WHEN problem_case = '4' AND status = '5' AND operate_result_status = '3' THEN 1 ELSE 0 END ) AS case4_3,
-                        sum( CASE WHEN problem_case = '4' AND status = '5' AND operate_result_status = '4' THEN 1 ELSE 0 END ) AS case4_4,
-                        sum( CASE WHEN problem_case = '4' AND status = '6' THEN 1 ELSE 0 END ) AS case4_5,
-                        sum( CASE WHEN problem_case = '5' AND status = '5' AND operate_result_status = '1' THEN 1 ELSE 0 END ) AS case5_1,
-                        sum( CASE WHEN problem_case = '5' AND status = '5' AND operate_result_status = '2' THEN 1 ELSE 0 END ) AS case5_2,
-                        sum( CASE WHEN problem_case = '5' AND status = '5' AND operate_result_status = '3' THEN 1 ELSE 0 END ) AS case5_3,
-                        sum( CASE WHEN problem_case = '5' AND status = '5' AND operate_result_status = '4' THEN 1 ELSE 0 END ) AS case5_4,
-                        sum( CASE WHEN problem_case = '5' AND status = '6' THEN 1 ELSE 0 END ) AS case5_5,
-                        sum( CASE WHEN problem_case = '6' AND status = '5' AND operate_result_status = '1' THEN 1 ELSE 0 END ) AS case6_1,
-                        sum( CASE WHEN problem_case = '6' AND status = '5' AND operate_result_status = '2' THEN 1 ELSE 0 END ) AS case6_2,
-                        sum( CASE WHEN problem_case = '6' AND status = '5' AND operate_result_status = '3' THEN 1 ELSE 0 END ) AS case6_3,
-                        sum( CASE WHEN problem_case = '6' AND status = '5' AND operate_result_status = '4' THEN 1 ELSE 0 END ) AS case6_4,
-                        sum( CASE WHEN problem_case = '6' AND status = '6' THEN 1 ELSE 0 END ) AS case6_5
-                        
-						FROM case_inputs c
-                        left join add_details a on c.case_id = a.case_id
-						where receiver='".$row1['name']."'
-						and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
-						group by receiver";
-
-                        //echo $sql2."<br><BR><BR>";
-
-						$result2 = mysqli_query($conn, $sql2); 
-						$row2 = mysqli_num_rows($result2); 
-						$i++;
-						if ($result2->num_rows > 0) {
-							
-							// output data of each row
-							while($row2 = $result2->fetch_assoc()) {
-
-                                //$c_s1 = $c_s1 + $row2["case1"];
-                                $c_s1_1 = $row2["case1_1"];
-                                $c_s1_2 = $row2["case1_2"];
-                                $c_s1_3 = $row2["case1_3"];
-                                $c_s1_4 = $row2["case1_4"];
-                                $c_s1_5 = $row2["case1_5"];
-                                $c_s1 = $c_s1_1 + $c_s1_2 + $c_s1_3 + $c_s1_4 + $c_s1_5;
-
-                                //$c_s2 = $c_s2 + $row2["case2"];
-                                $c_s2_1 = $row2["case2_1"];
-                                $c_s2_2 = $row2["case2_2"];
-                                $c_s2_3 = $row2["case2_3"];
-                                $c_s2_4 = $row2["case2_4"];
-                                $c_s2_5 = $row2["case2_5"];
-                                $c_s2 = $c_s2_1 + $c_s2_2 + $c_s2_3 + $c_s2_4 + $c_s2_5;
-
-                                //$c_s3 = $c_s3 + $row2["case3"];
-                                $c_s3_1 = $row2["case3_1"];
-                                $c_s3_2 = $row2["case3_2"];
-                                $c_s3_3 = $row2["case3_3"];
-                                $c_s3_4 = $row2["case3_4"];
-                                $c_s3_5 = $row2["case3_5"];
-                                $c_s3 = $c_s3_1 + $c_s3_2 + $c_s3_3 + $c_s3_4 + $c_s3_5;
-
-                                //$c_s4 = $c_s4 + $row2["case4"];
-                                $c_s4_1 = $row2["case4_1"];
-                                $c_s4_2 = $row2["case4_2"];
-                                $c_s4_3 = $row2["case4_3"];
-                                $c_s4_4 = $row2["case4_4"];
-                                $c_s4_5 = $row2["case4_5"];
-                                $c_s4 = $c_s4_1 + $c_s4_2 + $c_s4_3 + $c_s4_4 + $c_s4_5;
-
-                                //$c_s5 = $c_s5 + $row2["case5"];
-                                $c_s5_1 = $row2["case5_1"];
-                                $c_s5_2 = $row2["case5_2"];
-                                $c_s5_3 = $row2["case5_3"];
-                                $c_s5_4 = $row2["case5_4"];
-                                $c_s5_5 = $row2["case5_5"];
-                                $c_s5 = $c_s5_1 + $c_s5_2 + $c_s5_3 + $c_s5_4 + $c_s5_5;
-
-                                //$c_s6 = $c_s6 + $row2["case6"];
-                                $c_s6_1 = $row2["case6_1"];
-                                $c_s6_2 = $row2["case6_2"];
-                                $c_s6_3 = $row2["case6_3"];
-                                $c_s6_4 = $row2["case6_4"];
-                                $c_s6_5 = $row2["case6_5"];
-                                $c_s6 = $c_s6_1 + $c_s6_2 + $c_s6_3 + $c_s6_4 + $c_s6_5;
+                        function DateDiff($strDate1,$strDate2,$case_id)
+                        {
+                            return (strtotime($strDate2) - strtotime($strDate1))/  ( 60 * 60 * 24 );  // 1 day = 60*60*24
+                        }
                                 
-                                $c_as = $c_s1 + $c_s2 + $c_s3 + $c_s4 + $c_s5 + $c_s6 ;
+                        $strSQL_office = "SELECT p.name,o.nameorg as nameorg,p.name as prov_name,o.prov_id,count(c.receiver) as total FROM officers o left join  case_inputs c on o.name = c.receiver left join prov_geo p on o.prov_id = p.code  where (position ='officer' or o.Name = 'adminfar' or o.Name = 'adminhatc') group by o.prov_id,o.nameorg order by p.code;";
 
-                                $sum_c_s1_1 = $sum_c_s1_1 + $c_s1_1;
-                                $sum_c_s1_2 = $sum_c_s1_2 + $c_s1_2;
-                                $sum_c_s1_3 = $sum_c_s1_3 + $c_s1_3;
-                                $sum_c_s1_4 = $sum_c_s1_4 + $c_s1_4;
-                                $sum_c_s1_5 = $sum_c_s1_5 + $c_s1_5;
-                                $sum_c_s1 = $sum_c_s1_1 + $sum_c_s1_2 + $sum_c_s1_3 + $sum_c_s1_4 + $sum_c_s1_5;
+                        $count_no = 0;
 
-                                $sum_c_s2_1 = $sum_c_s2_1 + $c_s2_1;
-                                $sum_c_s2_2 = $sum_c_s2_2 + $c_s2_2;
-                                $sum_c_s2_3 = $sum_c_s2_3 + $c_s2_3;
-                                $sum_c_s2_4 = $sum_c_s2_4 + $c_s2_4;
-                                $sum_c_s2_5 = $sum_c_s2_5 + $c_s2_5;
-                                $sum_c_s2 = $sum_c_s2_1 + $sum_c_s2_2 + $sum_c_s2_3 + $sum_c_s2_4 + $sum_c_s2_5;
+                        $result_office = mysqli_query($conn, $strSQL_office); 
 
-                                $sum_c_s3_1 = $sum_c_s3_1 + $c_s3_1;
-                                $sum_c_s3_2 = $sum_c_s3_2 + $c_s3_2;
-                                $sum_c_s3_3 = $sum_c_s3_3 + $c_s3_3;
-                                $sum_c_s3_4 = $sum_c_s3_4 + $c_s3_4;
-                                $sum_c_s3_5 = $sum_c_s3_5 + $c_s3_5;
-                                $sum_c_s3 = $sum_c_s3_1 + $sum_c_s3_2 + $sum_c_s3_3 + $sum_c_s3_4 + $sum_c_s3_5;
+                        while($row_office = $result_office->fetch_assoc())
+                        {
+                            $count_no++;
+                            echo "<tr>";
+                            echo " <td>".$count_no."</td>";
+                            echo " <td>".$row_office["nameorg"]."</td>";
+                            echo " <td>".$row_office["prov_name"]."</td>";
+                            echo " <td align='center' >".$row_office["total"]."</td>";		
+                                
+                            
+                            $strSQL = "SELECT o.name,c.case_id from case_inputs c inner join officers o on c.receiver = o.name where o.nameorg = '".$row_office["nameorg"]."' and o.prov_id = '".$row_office["prov_id"]."' limit 1;";
 
-                                $sum_c_s4_1 = $sum_c_s4_1 + $c_s4_1;
-                                $sum_c_s4_2 = $sum_c_s4_2 + $c_s4_2;
-                                $sum_c_s4_3 = $sum_c_s4_3 + $c_s4_3;
-                                $sum_c_s4_4 = $sum_c_s4_4 + $c_s4_4;
-                                $sum_c_s4_5 = $sum_c_s4_5 + $c_s4_5;
-                                $sum_c_s4 = $sum_c_s4_1 + $sum_c_s4_2 + $sum_c_s4_3 + $sum_c_s4_4 + $sum_c_s4_5;
+                            $count_find_case_id_total = 0;
+                            
+                            $count_status1_total = 0;
+                            $count_status2_total = 0;
+                            $count_status3_total = 0;
+                            $count_status4_total = 0;
+                            $count_status5_total = 0;
+                            
+                            $datediff_status1_total = 0;
+                            $datediff_status2_total = 0;
+                            $datediff_status3_total = 0;
+                            $datediff_status4_total = 0;
+                            $datediff_status5_total = 0;
+                            
 
-                                $sum_c_s5_1 = $sum_c_s5_1 + $c_s5_1;
-                                $sum_c_s5_2 = $sum_c_s5_2 + $c_s5_2;
-                                $sum_c_s5_3 = $sum_c_s5_3 + $c_s5_3;
-                                $sum_c_s5_4 = $sum_c_s5_4 + $c_s5_4;
-                                $sum_c_s5_5 = $sum_c_s5_5 + $c_s5_5;
-                                $sum_c_s5 = $sum_c_s5_1 + $sum_c_s5_2 + $sum_c_s5_3 + $sum_c_s5_4 + $sum_c_s5_5;
+                            $result = mysqli_query($conn, $strSQL); 
+                            while($row = $result->fetch_assoc())
 
-                                $sum_c_s6_1 = $sum_c_s6_1 + $c_s6_1;
-                                $sum_c_s6_2 = $sum_c_s6_2 + $c_s6_2;
-                                $sum_c_s6_3 = $sum_c_s6_3 + $c_s6_3;
-                                $sum_c_s6_4 = $sum_c_s6_4 + $c_s6_4;
-                                $sum_c_s6_5 = $sum_c_s6_5 + $c_s6_5;
-                                $sum_c_s6 = $sum_c_s6_1 + $sum_c_s6_2 + $sum_c_s6_3 + $sum_c_s6_4 + $sum_c_s6_5;
+                            {
+                                //echo "loop action";
+                                $strSQL_find_case_id = "SELECT  receiver,case_id  from case_inputs where receiver = '".$row["name"]."' ;";
+                            
 
-                                $sum_c_as = $sum_c_s1 + $sum_c_s2 + $sum_c_s3 + $sum_c_s4 + $sum_c_s5 + $sum_c_s6;
-								
-								//echo $row['receiver'];
-								$sql3 = "SELECT username,officers.nameorg, prov_geo.code, prov_geo.name as provname, prov_geo.nhso 
-								FROM officers left join prov_geo 
-								on officers.prov_id = prov_geo.code
-								WHERE officers.name = '".$row2['receiver']."'";
-								//echo $sql2;
-								$result3 = mysqli_query($conn, $sql3); 
+                                $result_find_case_id = mysqli_query($conn, $strSQL_find_case_id); 
+                                $count_find_case_id = 0;
+                                $row_find_case_id = mysqli_num_rows($result_find_case_id); 
+                                while($row_find_case_id = $result_find_case_id->fetch_assoc())
+                                {
+                                    //echo "loop action1";
+                                    $strSQL_status1 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '1' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
+                                    
 
-								$row3 = mysqli_num_rows($result3);
-								$row3 = $result3->fetch_assoc();
+                                    $result_status1 = mysqli_query($conn, $strSQL_status1); 
+                                    $count_status1 = 0;
+                                    $count_status1 = mysqli_num_rows($result_status1); 
+                                    while($row_status1 = $result_status1->fetch_assoc())
+                                    {
+                                        //echo "loop action1-1";
+                                        $date_status1 = $row_status1["operate_time"];		
+                                    }
+                                            
+                                                    
+                                    $strSQL_status2 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '2' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
+                                    
 
-								//echo $row2["prov_id"];
-								
-								echo "<tr>";
-								echo "<th >".$i."</th>";
-                                echo "<td>".$row1["nameorg"]."</td>";
-                                echo "<td>".$row3["provname"]."</td>";
-                                echo "<td>".$row3["nhso"]."</td>";
-                                echo "<td>".$c_s1_1."</td>";
-                                echo "<td>".$c_s1_2."</td>";
-                                echo "<td>".$c_s1_3."</td>";
-                                echo "<td>".$c_s1_4."</td>";
-                                echo "<td>".$c_s1_5."</td>";
-                                echo "<td>".$c_s1."</td>";
+                                    $result_status2 = mysqli_query($conn, $strSQL_status2); 
+                                    $count_status2 = 0;
+                                    $count_status2 = mysqli_num_rows($result_status2); 
+                                    while($row_status2 = $result_status2->fetch_assoc())
+                                    {
+                                        //echo "loop action1-2";
+                                        $date_status2 = $row_status2["operate_time"];
+                                    }
+                                                
+                                    $strSQL_status3 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '3' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
+                                    
 
-                                echo "<td>".$c_s2_1."</td>";
-                                echo "<td>".$c_s2_2."</td>";
-                                echo "<td>".$c_s2_3."</td>";
-                                echo "<td>".$c_s2_4."</td>";
-                                echo "<td>".$c_s2_5."</td>";
-                                echo "<td>".$c_s2."</td>";
+                                    $result_status3 = mysqli_query($conn, $strSQL_status3); 
+                                    $count_status3 = 0;
+                                    $count_status3 = mysqli_num_rows($result_status3); 
+                                    while($count_status3 = $result_status3->fetch_assoc())
+                                    {
+                                        //echo "loop action1-3";
+                                        $date_status3 = $row_status3["operate_time"];
+                                    }
+                                                
+                                    $strSQL_status4 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '4' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
+                                    
 
-                                echo "<td>".$c_s3_1."</td>";
-                                echo "<td>".$c_s3_2."</td>";
-                                echo "<td>".$c_s3_3."</td>";
-                                echo "<td>".$c_s3_4."</td>";
-                                echo "<td>".$c_s3_5."</td>";
-                                echo "<td>".$c_s3."</td>";
+                                    $result_status4 = mysqli_query($conn, $strSQL_status4); 
+                                    $count_status4 = 0;
+                                    $count_status4 = mysqli_num_rows($result_status4); 
+                                    while($row_status4 = $result_status4->fetch_assoc())
+                                    {
+                                        //echo "loop action1-4";
+                                        $date_status4 = $row_status4["operate_time"];
+                                    }
 
-                                echo "<td>".$c_s4_1."</td>";
-                                echo "<td>".$c_s4_2."</td>";
-                                echo "<td>".$c_s4_3."</td>";
-                                echo "<td>".$c_s4_4."</td>";
-                                echo "<td>".$c_s4_5."</td>";
-                                echo "<td>".$c_s4."</td>";
+                                    $strSQL_status5 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '5' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
+                    
 
-                                echo "<td>".$c_s5_1."</td>";
-                                echo "<td>".$c_s5_2."</td>";
-                                echo "<td>".$c_s5_3."</td>";
-                                echo "<td>".$c_s5_4."</td>";
-                                echo "<td>".$c_s5_5."</td>";
-                                echo "<td>".$c_s5."</td>";
+                                    $result_status5 = mysqli_query($conn, $strSQL_status5); 
+                                    $count_status5 = 0;
+                                    $count_status5 = mysqli_num_rows($result_status5); 
+                                    while($row_status5 = $result_status5->fetch_assoc())
+                                    {
+                                        //echo "loop action1-5";
+                                        $date_status5 = $row_status5["operate_time"];
+                                    }
+                                                    
+                                    // 1
+                                    if (($date_status2 >= $date_status1) and ($count_status1 != 0)){
+                                        $count_status2_total++;
+                                        $datediff_status2_total += DateDiff($date_status1,$date_status2);
+                                        
+                                    }
+                                    // 2
+                                    if (($date_status3 >= $date_status2) and ($count_status2 == 1)){
+                                        $count_status3_total++;
+                                        $datediff_status3_total += DateDiff($date_status2,$date_status3);
+                                    }
+                                    // 3
+                                    if (($date_status4 >= $date_status3) and ($count_status3 == 1)){
+                                        $count_status4_total++;
+                                        $datediff_status4_total += DateDiff($date_status3,$date_status4);
+                                    }
+                                    // 4
+                                    if (($date_status5 >= $date_status4) and ($count_status4 == 1)){
+                                        $count_status5_total++;
+                                        $datediff_status5_total += DateDiff($date_status4,$date_status5);	
+                                    }
+                                                        
+                                }		
+                                
+                            }
+                            echo "<td  align='center' >".$count_status2_total." : ".round($datediff_status2_total/$count_status2_total,0)."</td><td  align='center' >".$count_status3_total." : ".round($datediff_status3_total/$count_status3_total,0)."</td><td  align='center' >".$count_status4_total." : ".round($datediff_status4_total/$count_status4_total,0)."</td><td  align='center' >".$count_status5_total." : ".round($datediff_status5_total/$count_status5_total,0)."</td></tr>";
+                            
+                    
+                            $count_status1 = 0;
+                            $count_status2 = 0;
+                            $count_status3 = 0;
+                            $count_status4 = 0;
+                            $count_status5 = 0;
+            
+                            $count_status1_total = 0;
+                            $count_status2_total = 0;
+                            $count_status3_total = 0;
+                            $count_status4_total = 0;
+                            $count_status5_total = 0;
+                            
+                            $datediff_status1_total = 0;
+                            $datediff_status2_total = 0;
+                            $datediff_status3_total = 0;
+                            $datediff_status4_total = 0;
+                            $datediff_status5_total = 0;
+                            
+                        }
+                    ?>
 
-                                echo "<td>".$c_s6_1."</td>";
-                                echo "<td>".$c_s6_2."</td>";
-                                echo "<td>".$c_s6_3."</td>";
-                                echo "<td>".$c_s6_4."</td>";
-                                echo "<td>".$c_s6_5."</td>";
-                                echo "<td>".$c_s6."</td>";
-
-                                echo "<td>".$c_as."</td>";
-								echo "</tr>";
-														
-							}
-						} else {
-							echo "<tr>";
-								echo "<th >".$i."</th>";
-								echo "<td>".$row1["nameorg"]."</td>";
-								echo "<td>".$row1["provname"]."</td>";
-								echo "<td>".$row1["nhso"]."</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-                                echo "<td>0</td>";
-								echo "<td>0</td>";
-
-                                echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-                                echo "<td>0</td>";
-                                echo "<td>0</td>";
-
-                                echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-                                echo "<td>0</td>";
-                                echo "<td>0</td>";
-
-                                echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-                                echo "<td>0</td>";
-                                echo "<td>0</td>";
-
-                                echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-                                echo "<td>0</td>";
-                                echo "<td>0</td>";
-
-                                echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-								echo "<td>0</td>";
-                                echo "<td>0</td>";
-                                echo "<td>0</td>";
-
-                                echo "<td>0</td>";
-								echo "</tr>";
-						}
-					}
-
-							echo "<tr>";
-							echo "<td colspan='4' style='vertical-align: center; color: white; background: #de0867' >รวม</td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td>".$sum_c_s1_1."</td>";
-							echo "<td>".$sum_c_s1_2."</td>";
-							echo "<td>".$sum_c_s1_3."</td>";
-							echo "<td>".$sum_c_s1_4."</td>";
-                            echo "<td>".$sum_c_s1_5."</td>";
-                            echo "<td>".$sum_c_s1."</td>";
-
-                            echo "<td>".$sum_c_s2_1."</td>";
-							echo "<td>".$sum_c_s2_2."</td>";
-							echo "<td>".$sum_c_s2_3."</td>";
-							echo "<td>".$sum_c_s2_4."</td>";
-                            echo "<td>".$sum_c_s2_5."</td>";
-                            echo "<td>".$sum_c_s2."</td>";
-
-                            echo "<td>".$sum_c_s3_1."</td>";
-							echo "<td>".$sum_c_s3_2."</td>";
-							echo "<td>".$sum_c_s3_3."</td>";
-							echo "<td>".$sum_c_s3_4."</td>";
-                            echo "<td>".$sum_c_s3_5."</td>";
-                            echo "<td>".$sum_c_s3."</td>";
-
-                            echo "<td>".$sum_c_s4_1."</td>";
-							echo "<td>".$sum_c_s4_2."</td>";
-							echo "<td>".$sum_c_s4_3."</td>";
-							echo "<td>".$sum_c_s4_4."</td>";
-                            echo "<td>".$sum_c_s4_5."</td>";
-                            echo "<td>".$sum_c_s4."</td>";
-
-                            echo "<td>".$sum_c_s5_1."</td>";
-							echo "<td>".$sum_c_s5_2."</td>";
-							echo "<td>".$sum_c_s5_3."</td>";
-							echo "<td>".$sum_c_s5_4."</td>";
-                            echo "<td>".$sum_c_s5_5."</td>";
-                            echo "<td>".$sum_c_s5."</td>";
-
-                            echo "<td>".$sum_c_s6_1."</td>";
-							echo "<td>".$sum_c_s6_2."</td>";
-							echo "<td>".$sum_c_s6_3."</td>";
-							echo "<td>".$sum_c_s6_4."</td>";
-                            echo "<td>".$sum_c_s6_5."</td>";
-                            echo "<td>".$sum_c_s6."</td>";
-
-                            echo "<td>".$sum_c_as."</td>";
-							echo "</tr>";
-							echo "</tbody>";
-							echo "</table>";
-
-						$conn->close();
-
-
-					?>
+            </tbody>
+        </table>
     </div>
 
     <!-- Footer -->
