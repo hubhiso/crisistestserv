@@ -302,12 +302,12 @@
                                 </a>
                                 <a class="dropdown-item " href="report_c43.php">สัดส่วนการดำเนินการ
                                 </a>
-                                <a class="dropdown-item active" href="report_c42.php">สัดส่วนผลการดำเนินการ
+                                <a class="dropdown-item " href="report_c42.php">สัดส่วนผลการดำเนินการ
                                 </a>
                             </div>
                         </div>
 
-                        <a class="dropdown-item " id="dropdown-layouts" href="report_performance_new.php">
+                        <a class="dropdown-item active" id="dropdown-layouts" href="report_performance_new2.php">
                             ระยะเวลาการดำเนินการ</a>
 
                     </div>
