@@ -36,16 +36,13 @@
     <?php
 		
 		require("phpsqli_dbinfo.php");
-        require("setdateformat.php");
-        date_default_timezone_set("Asia/Bangkok");
 
-        /*
 		$conn = mysqli_connect($hostname, $username, $password, $database);
 		if (mysqli_connect_errno()) 
         { 
             echo "Database connection failed."; 
         }
-        // Change character set to utf8*/
+        // Change character set to utf8
 		mysqli_set_charset($conn,"utf8");
         $date_start = $_POST["date_start"];
 		$date_end = $_POST["date_end"];
