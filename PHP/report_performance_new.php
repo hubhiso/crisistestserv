@@ -36,13 +36,16 @@
     <?php
 		
 		require("phpsqli_dbinfo.php");
+        require("setdateformat.php");
+        date_default_timezone_set("Asia/Bangkok");
 
+        /*
 		$conn = mysqli_connect($hostname, $username, $password, $database);
 		if (mysqli_connect_errno()) 
         { 
             echo "Database connection failed."; 
         }
-        // Change character set to utf8
+        // Change character set to utf8*/
 		mysqli_set_charset($conn,"utf8");
         $date_start = $_POST["date_start"];
 		$date_end = $_POST["date_end"];
@@ -331,23 +334,23 @@
                                     // 1
                                     if (($date_status2 >= $date_status1) and ($count_status1 != 0)){
                                         $count_status2_total++;
-                                        $datediff_status2_total += DateDiff($date_status1,$date_status2);
+                                        $datediff_status2_total += date_diff($date_status1,$date_status2);
                                         
                                     }
                                     // 2
                                     if (($date_status3 >= $date_status2) and ($count_status2 == 1)){
                                         $count_status3_total++;
-                                        $datediff_status3_total += DateDiff($date_status2,$date_status3);
+                                        $datediff_status3_total += date_diff($date_status2,$date_status3);
                                     }
                                     // 3
                                     if (($date_status4 >= $date_status3) and ($count_status3 == 1)){
                                         $count_status4_total++;
-                                        $datediff_status4_total += DateDiff($date_status3,$date_status4);
+                                        $datediff_status4_total += date_diff($date_status3,$date_status4);
                                     }
                                     // 4
                                     if (($date_status5 >= $date_status4) and ($count_status4 == 1)){
                                         $count_status5_total++;
-                                        $datediff_status5_total += DateDiff($date_status4,$date_status5);	
+                                        $datediff_status5_total += date_diff($date_status4,$date_status5);	
                                     }
                                                         
                                 }		
