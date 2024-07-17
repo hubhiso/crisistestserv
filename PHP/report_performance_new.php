@@ -36,11 +36,17 @@
     <?php
 		
 		require("phpsqli_dbinfo.php");
+
+		$conn = mysqli_connect($hostname, $username, $password, $database);
+		if (mysqli_connect_errno()) 
+        { 
+            echo "Database connection failed."; 
+        }
+        // Change character set to utf8
+		mysqli_set_charset($conn,"utf8");
+
         require("setdateformat.php");
         date_default_timezone_set("Asia/Bangkok");
-
-        // Change character set to utf8
-        mysqli_set_charset($conn,"utf8");
 
         $date_start = $_POST["date_start"];
 		$date_end = $_POST["date_end"];
@@ -552,7 +558,7 @@
                                         $date_status4 = $row_status4["operate_time"];
                                     }
 
-                                    $strSQL_status5 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '5' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."'  and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."';";
+                                    $strSQL_status5 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '5' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."'  ;";
                     
 
                                     $result_status5 = mysqli_query($conn, $strSQL_status5); 
@@ -567,7 +573,7 @@
                                     // 1
                                     if (($date_status2 >= $date_status1) and ($count_status1 != 0)){
                                         $count_status2_total++;
-                                        $datediff_status2_total += date_d($date_status1,$date_status2);
+                                        $datediff_status2_total += DateDiff($date_status1,$date_status2);
                                         
                                     }
                                     // 2
