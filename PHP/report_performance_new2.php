@@ -325,7 +325,7 @@
                 <p class="h5">สรุปข้อมูลการร้องเรียนในระบบ CRS ข้อมูลในระบบ สัดส่วนผลการดำเนินการ</p>
             </div>
 
-            <form name="form_menu" method="post" action="report_c42.php">
+            <form name="form_menu" method="post" action="report_performance_new2.php">
 
                 <div class="row g-3 align-items-center mb-3">
                     <div class="col-auto">
