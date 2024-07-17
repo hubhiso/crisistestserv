@@ -44,12 +44,139 @@
         }
         // Change character set to utf8
 		mysqli_set_charset($conn,"utf8");
+
+        require("setdateformat.php");
+        date_default_timezone_set("Asia/Bangkok");
+
         $date_start = $_POST["date_start"];
 		$date_end = $_POST["date_end"];
 	
 		if($date_end==''){
 		$date_end = date("m/d/Y");
 		}	
+
+        $se_time = $_POST["se_time"];
+    $se_year = $_POST["se_year"];
+    $se_quarter = $_POST["se_quarter"];
+    $se_month = $_POST["se_month"];
+
+    
+    $year_now =  date("Y");
+
+    if(date("m")>9){
+        $year_now++;
+    }
+
+    if($years == ''){$years = $year_now;}
+
+    
+    if($se_year == ''){
+        $se_year = $year_now;
+    }
+
+    if($se_time == ''){
+        $se_time = 1;
+
+        $date_start = "01/10/".($se_year-1);
+        $date_end = "30/09/".$se_year;
+    }
+
+    if($se_time== 1){
+
+        if($se_quarter== 0){
+            $date_start = "01/10/".($se_year-1);
+            $date_end = "30/09/".$se_year;
+        }else if($se_quarter== 1){
+            $date_start = "01/10/".($se_year-1);
+            $date_end = "31/12/".($se_year-1);
+        }else if($se_quarter== 2){
+            $date_start = "01/01/".$se_year;
+            $date_end = "31/03/".$se_year;
+        }else if($se_quarter== 3){
+            $date_start = "01/04/".$se_year;
+            $date_end = "30/06/".$se_year;
+        }else if($se_quarter== 4){
+            $date_start = "01/07/".$se_year;
+            $date_end = "30/09/".$se_year;
+        }else if($se_quarter== 12){
+            $date_start = "01/10/".($se_year-1);
+            $date_end = "31/03/".$se_year;
+        }else if($se_quarter== 13){
+            $date_start = "01/10/".($se_year-1);
+            $date_end = "30/06/".$se_year;
+        }else if($se_quarter== 99){
+            if($se_month== 10){
+                $date_start = "01/10/".($se_year-1);
+                $date_end = "31/10/".($se_year-1);
+            }else if($se_month== 11){
+                $date_start = "01/11/".($se_year-1);
+                $date_end = "30/11/".($se_year-1);
+            }else if($se_month== 12){
+                $date_start = "01/12/".($se_year-1);
+                $date_end = "31/12/".($se_year-1);
+            }else if($se_month== 1){
+                $date_start = "01/01/".$se_year;
+                $date_end = "31/01/".$se_year;
+            }else if($se_month== 2){
+                $date_start = "01/02/".$se_year;
+                $date_end = strtotime("3/1/".$se_year)-1;
+                $date_end = date("d/m/Y",$date_end);
+
+            }else if($se_month== 3){
+                $date_start = "01/03/".$se_year;
+                $date_end = "31/03/".$se_year;
+            }else if($se_month== 4){
+                $date_start = "01/04/".$se_year;
+                $date_end = "30/04/".$se_year;
+            }else if($se_month== 5){
+                $date_start = "01/05/".$se_year;
+                $date_end = "31/05/".$se_year;
+            }else if($se_month== 6){
+                $date_start = "01/06/".$se_year;
+                $date_end = "30/06/".$se_year;
+            }else if($se_month== 7){
+                $date_start = "01/07/".$se_year;
+                $date_end = "31/07/".$se_year;
+            }else if($se_month== 8){
+                $date_start = "01/08/".$se_year;
+                $date_end = "31/08/".$se_year;
+            }else if($se_month== 9){
+                $date_start = "01/09/".$se_year;
+                $date_end = "30/09/".$se_year;
+            }
+        }
+
+    }else if($se_time== 2){
+
+        $date_start = $_POST["date_start"];
+        $date_end = $_POST["date_end"];
+        
+        if($date_end==''){
+            $date_end = date("D/M/Y");
+        }
+
+    }
+    
+    if($date_start != "" ){
+        $yyyymmdd = substr($date_start,6,4)."/".substr($date_start,3,2)."/".substr($date_start,0,2);
+        $date_s =  $yyyymmdd;
+    }
+
+    if($date_end != "" ){
+        $yyyymmdd = substr($date_end,6,4)."/".substr($date_end,3,2)."/".substr($date_end,0,2);
+        $date_e =  $yyyymmdd;
+    }
+
+    $sql = "select * from officer_groups";
+    $result = mysqli_query($conn, $sql); 
+    $i = 0;
+    while($row1 = $result->fetch_assoc()) {
+        $i++;
+        $g_code[$i] = $row1[code];
+        $g_name[$i] = $row1[groupname];
+        $loop_group = $i;
+
+    }
 		
 		
 	?>
@@ -161,7 +288,122 @@
             <p class="h5">รายงานการสรุปเวลาเฉลี่ยในการดำเนินการในแต่ละขั้นตอน<br>จำแนกรายหน่วยจัดการเหตุ</p>
         </div>
 
+        
+
         <div class=" p-2">
+
+        <form name="form_menu" method="post" action="report_performance_new.php">
+
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label class="col-form-label"><strong> หน่วยงานหลัก </strong> </label>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select form-control" id="group" name="group">
+                            <option value=''>ทั้งหมด</option>
+                            <?php
+                                    for($i = 1; $i <= $loop_group ; $i++){
+                                        if ($ck_group == $g_code[$i]) { $se_g = "selected";}
+                                        echo "<option value='$g_code[$i]' $se_g > $g_name[$i] </option>";
+                                        $se_g = "";
+                                    }
+                                ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center">
+
+                    <div class="col-auto">
+                        <label class="col-form-label">ช่วงเวลา</label>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select form-control" id="se_time" name="se_time">
+                            <option value='1' <?php if($se_time == 1){ echo "selected"; } ?>> ตามตัวเลือก </option>
+                            <option value='2' <?php if($se_time == 2){ echo "selected"; } ?>> ระบุวันที่ </option>
+                        </select>
+                    </div>
+
+                    <div class="col-auto se_time_g1">
+                        <label class="col-form-label">ปีงบประมาณ</label>
+                    </div>
+                    <div class="col-auto se_time_g1">
+                        <select class="form-select form-control" id="se_year" name="se_year">
+                            <?php
+                                for($y = 2019; $y <= $year_now; $y++){
+                                    if ($se_year == $y) { $se =  "selected";}
+                                    echo "<option value='$y' $se> ".($y+543)." </option>";
+                                    $se = '';
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-auto se_time_g1">
+                        <select class="form-select form-control" id="se_quarter" name="se_quarter">
+                            <option value='0' <?php if($se_quarter == 0){ echo "selected"; } ?>> ทั้งปีงบประมาณ
+                            </option>
+                            <option value='1' <?php if($se_quarter == 1){ echo "selected"; } ?>> ไตรมาส 1 </option>
+                            <option value='2' <?php if($se_quarter == 2){ echo "selected"; } ?>> ไตรมาส 2 </option>
+                            <option value='3' <?php if($se_quarter == 3){ echo "selected"; } ?>> ไตรมาส 3 </option>
+                            <option value='4' <?php if($se_quarter == 4){ echo "selected"; } ?>> ไตรมาส 4 </option>
+                            <option value='12' <?php if($se_quarter == 12){ echo "selected"; } ?>> สะสมไตรมาส 1-2
+                            </option>
+                            <option value='13' <?php if($se_quarter == 13){ echo "selected"; } ?>> สะสมไตรมาส 1-3
+                            </option>
+                            <option value='99' <?php if($se_quarter == 99){ echo "selected"; } ?>> เลือกเดือน </option>
+                        </select>
+                    </div>
+                    <div class="col-auto se_time_g11">
+                        <select class="form-select form-control" id="se_month" name="se_month">
+                            <option value='1' <?php if($se_month == 1){ echo "selected"; } ?>> มกราคม </option>
+                            <option value='2' <?php if($se_month == 2){ echo "selected"; } ?>> กุมภาพันธ์ </option>
+                            <option value='3' <?php if($se_month == 3){ echo "selected"; } ?>> มีนาคม </option>
+                            <option value='4' <?php if($se_month == 4){ echo "selected"; } ?>> เมษายน </option>
+                            <option value='5' <?php if($se_month == 5){ echo "selected"; } ?>> พฤษภาคม </option>
+                            <option value='6' <?php if($se_month == 6){ echo "selected"; } ?>> มิถุนายน </option>
+                            <option value='7' <?php if($se_month == 7){ echo "selected"; } ?>> กรกฎาคม </option>
+                            <option value='8' <?php if($se_month == 8){ echo "selected"; } ?>> สิงหาคม </option>
+                            <option value='9' <?php if($se_month == 9){ echo "selected"; } ?>> กันยายน </option>
+                            <option value='10' <?php if($se_month == 10){ echo "selected"; } ?>> ตุลาคม </option>
+                            <option value='11' <?php if($se_month == 11){ echo "selected"; } ?>> พฤศจิกายน </option>
+                            <option value='12' <?php if($se_month == 12){ echo "selected"; } ?>> ธันวาคม </option>
+                        </select>
+                    </div>
+
+                    <div class="col-auto se_time_g2">
+                        <strong> วันที่ </strong>
+
+                    </div>
+
+                    <div class="col-auto se_time_g2 input-daterange">
+                        <input type="text" class="form-control" id="date_start" name="date_start"
+                            value='<?php echo $date_start; ?>'>
+                    </div>
+
+                    <div class="col-auto se_time_g2">
+                        ถึง
+                    </div>
+
+                    <div class="col-auto se_time_g2 input-daterange">
+                        <input type="text" class="form-control" id="date_end" name="date_end"
+                            value='<?php echo $date_end; ?>'>
+                    </div>
+
+                    <div class="col-auto ">
+                        <input type="submit" class="btn bgcolor1" id="submit" name="submit" value="ตกลง">
+
+                    </div>
+
+                    <br>
+
+                    <p class="subtitle ">
+                        <strong> ข้อมูล ณ วันที่ (ว/ด/ป) : </strong>
+                        <?php echo thai_date_short_number_time(strtotime(date("Y-m-d H:i:s"))); ?>
+                    </p>
+
+                </div>
+
+            </form>
 
             <p class="subtitle ">
                 <strong> ข้อมูล ณ วันที่ (ด/ว/ป) </strong>
@@ -267,7 +509,7 @@
                                 while($row_find_case_id = $result_find_case_id->fetch_assoc())
                                 {
                                     //echo "loop action1";
-                                    $strSQL_status1 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '1' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
+                                    $strSQL_status1 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '1' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."' and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."';";
                                     
 
                                     $result_status1 = mysqli_query($conn, $strSQL_status1); 
@@ -280,7 +522,7 @@
                                     }
                                             
                                                     
-                                    $strSQL_status2 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '2' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
+                                    $strSQL_status2 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '2' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."' and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' ;";
                                     
 
                                     $result_status2 = mysqli_query($conn, $strSQL_status2); 
@@ -292,7 +534,7 @@
                                         $date_status2 = $row_status2["operate_time"];
                                     }
                                                 
-                                    $strSQL_status3 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '3' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
+                                    $strSQL_status3 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '3' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."'  and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' ;";
                                     
 
                                     $result_status3 = mysqli_query($conn, $strSQL_status3); 
@@ -304,7 +546,7 @@
                                         $date_status3 = $row_status3["operate_time"];
                                     }
                                                 
-                                    $strSQL_status4 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '4' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
+                                    $strSQL_status4 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '4' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."'  and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."';";
                                     
 
                                     $result_status4 = mysqli_query($conn, $strSQL_status4); 
@@ -316,7 +558,7 @@
                                         $date_status4 = $row_status4["operate_time"];
                                     }
 
-                                    $strSQL_status5 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '5' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
+                                    $strSQL_status5 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '5' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."'  and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."';";
                     
 
                                     $result_status5 = mysqli_query($conn, $strSQL_status5); 
@@ -331,7 +573,7 @@
                                     // 1
                                     if (($date_status2 >= $date_status1) and ($count_status1 != 0)){
                                         $count_status2_total++;
-                                        $datediff_status2_total += DateDiff($date_status1,$date_status2);
+                                        $datediff_status2_total += date_d($date_status1,$date_status2);
                                         
                                     }
                                     // 2
@@ -394,12 +636,137 @@
 
     <script src="../public/js/jquery.min.js"></script>
     <script src="../public/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+    </script>
+
     <script type="text/javascript"
         src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-html5-2.0.1/b-print-2.0.1/datatables.min.js">
+    </script>
+
+    <script src="../public/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <script type="text/javascript">
+    $.fn.dropdown = (function() {
+        var $bsDropdown = $.fn.dropdown;
+        return function(config) {
+            if (typeof config === 'string' && config === 'toggle') { // dropdown toggle trigged
+                $('.has-child-dropdown-show').removeClass('has-child-dropdown-show');
+                $(this).closest('.dropdown').parents('.dropdown').addClass(
+                    'has-child-dropdown-show');
+            }
+            var ret = $bsDropdown.call($(this), config);
+            $(this).off(
+                'click.bs.dropdown'
+            ); // Turn off dropdown.js click event, it will call 'this.toggle()' internal
+            return ret;
+        }
+    })();
+    </script>
+
+    <script type="text/javascript">
+    $(function() {
+        $('.dropdown [data-toggle="dropdown"]').on('click', function(e) {
+            $(this).dropdown('toggle');
+            e
+                .stopPropagation(); // do not fire dropdown.js click event, it will call 'this.toggle()' internal
+        });
+        $('.dropdown').on('hide.bs.dropdown', function(e) {
+            if ($(this).is('.has-child-dropdown-show')) {
+                $(this).removeClass('has-child-dropdown-show');
+                e.preventDefault();
+            }
+            e.stopPropagation(); // do not need pop in multi level mode
+        });
+    });
+
+    // for hover
+    $('.dropdown-hover').on('mouseenter', function() {
+        if (!$(this).hasClass('show')) {
+            $('>[data-toggle="dropdown"]', this).dropdown('toggle');
+        }
+    });
+    $('.dropdown-hover').on('mouseleave', function() {
+        if ($(this).hasClass('show')) {
+            $('>[data-toggle="dropdown"]', this).dropdown('toggle');
+        }
+    });
+    $('.dropdown-hover-all').on('mouseenter', '.dropdown', function() {
+        if (!$(this).hasClass('show')) {
+            $('>[data-toggle="dropdown"]', this).dropdown('toggle');
+        }
+    });
+    $('.dropdown-hover-all').on('mouseleave', '.dropdown', function() {
+        if ($(this).hasClass('show')) {
+            $('>[data-toggle="dropdown"]', this).dropdown('toggle');
+        }
+    });
+    </script>
+
+    <script>
+        $('.input-daterange input').datepicker({
+            format: 'dd/mm/yyyy'
+        });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('.se_time_g11').hide();
+        $('.se_time_g2').hide();
+
+        <?php 
+        if($se_time == 1){
+            echo "$('.se_time_g1').show();";
+            echo "$('.se_time_g11').hide();";
+            echo "$('.se_time_g2').hide();";
+            if($se_quarter == 99){
+                echo "$('.se_time_g11').show();";
+            }
+        }else if($se_time == 2){
+            echo "$('.se_time_g1').hide();";
+            echo "$('.se_time_g11').hide();";
+            echo "$('.se_time_g2').show();";
+        }else{
+            echo "$('.se_time_g1').show();";
+            echo "$('.se_time_g11').hide();";
+            echo "$('.se_time_g2').hide();";
+        }
+        ?>
+    });
+
+    $('#se_quarter').on('change', function(e) {
+
+        var se_quarter = $('#se_quarter').val();
+
+        if (se_quarter == '99') {
+            $('.se_time_g11').show();
+        } else {
+            $('.se_time_g11').hide();
+        }
+    });
+
+    $('#se_time').on('change', function(e) {
+
+        if ($('#se_time').val() == '1') {
+            $('.se_time_g1').show();
+            $('.se_time_g2').hide();
+            $('.se_time_g11').hide();
+        } else {
+            $('.se_time_g1').hide();
+            $('.se_time_g2').show();
+            $('.se_time_g11').hide();
+        }
+    });
     </script>
 
     <script>
