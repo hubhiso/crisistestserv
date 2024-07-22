@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\officer;
 use Carbon\Carbon;
+use App\officer_evaluate;
+use Auth;
+use Illuminate\Support\Facades\Session;
 
 class OfficerController extends Controller
 {
@@ -23,9 +26,13 @@ class OfficerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $user = Auth::user()->username; 
+
         $show_list = officer::all();
+
+        $ck_evaluate = officer::all();
 
         foreach($show_list as $show)
         {
@@ -39,13 +46,72 @@ class OfficerController extends Controller
 
                 if($dd_mailwarning > "7"){
                     officer::where('username','=',$o_username)->update([
+                        'approv' => "no",
                         'active' => "no"
                     ]);
                 }
 
             }
+
+            $o_datecreate = $show->created_at;
+            $dd_datecreate = date_diff(new \DateTime($o_datecreate), new \DateTime())->format("%d");
+
+            //$q = auth::get('login_eva');
+
+            if(Session::has('login_eva') == 'yes'){
+                if($dd_datecreate >= "1"){
+                    $show_eva = "yes";
+                }else{
+                    $show_eva = "no";
+                }
+            }else{
+                $show_eva = "no";
+            }
+
+                
+            
         }
 
-        return view('officer.home');
+        
+        $ck_date = officer_evaluate::where('username','=', $user )->get();
+        $today = date("Y-m-d");
+
+        foreach($ck_date as $date)
+        {
+            $listdate = date($date->date_notshow);
+
+            if($today == $listdate){
+                $show_eva = "no";
+            }
+        }
+
+        return view('officer.home',compact('show_eva'));
+    }
+
+    public function office_eva( Request $request ) {
+
+        $user = Auth::user()->username; 
+
+        $ck_notshow = $request->input('ck_notshow');
+
+        if($ck_notshow  == "yes"){
+            $date_notshow = date("Y-m-d");
+        }
+
+            officer_evaluate::create([
+                'username'=>$user,
+                'eva1'=>$request->input('score1'),
+                'eva2'=>$request->input('score2'),
+                'eva3'=>$request->input('score3'),
+                'eva4'=>$request->input('score4'),
+                'eva5'=>$request->input('score5'),
+                'eva_comment'=>$request->input('s_comment'),
+                'date_notshow'=>$date_notshow
+                
+            ]);
+
+
+        return response()->json( [ 'success' => 'บันทึกการประเมินตนเองสำเร็จ!' ] );
+
     }
 }

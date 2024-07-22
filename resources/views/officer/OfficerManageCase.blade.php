@@ -17,8 +17,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+    <!--link href="{{ asset('bulma-0.9.0/css/bulma.css') }}" rel="stylesheet"-->
+    <!--link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet"-->
     <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
-    <link href="{{ asset('bulma-0.8.0/css/bulma.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bm/dt-1.13.1/datatables.min.css" />
 
@@ -69,9 +71,9 @@
                         </a>
                     </li>
                     <li class="is-active">
-                        <a href="#">
+                        <a href="#" class="has-text-dark">
                             <span class="icon is-small">
-                            <i class="fas fa-list" aria-hidden="true"></i>
+                                <i class="fas fa-list" aria-hidden="true"></i>
                             </span>
                             <span>จัดการเหตุ</span>
                         </a>
@@ -127,7 +129,7 @@
                                     </select>
                                 </span>
                             </p>
-                            <p class="control"> <button class="button is-primary" onclick="load_case()"> ตกลง </button>
+                            <p class="control"> <button class="button is-danger has-text-white" onclick="load_case()"> ตกลง </button>
                             </p>
                         </div>
                     </div>
@@ -196,7 +198,8 @@
                 </div>
             </div>
             <div class="body columns">
-                <form class="box column is-narrow" role="form" method="POST" action="{{ route('officer.Export_Excel') }}">
+                <form class="box column is-narrow" role="form" method="POST"
+                    action="{{ route('officer.Export_Excel') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="field is-grouped">
@@ -204,13 +207,15 @@
                             <label style=" white-space:nowrap;">เลือกวันที่ </label>
                         </div>
                         <div class="control input-daterange">
-                            <input type="text" class="input bulmaCalendar form-control" name="date_start2" id="date_start2">
+                            <input type="text" class="input bulmaCalendar form-control" name="date_start2"
+                                id="date_start2">
                         </div>
                         <div class="control field-label is-normal has-text-centered">
                             <label>ถึง </label>
                         </div>
                         <div class="control input-daterange">
-                            <input type="text" class=" input bulmaCalendar form-control" name="date_end2" id="date_end2">
+                            <input type="text" class=" input bulmaCalendar form-control" name="date_end2"
+                                id="date_end2">
                         </div>
                         <div class="control field-label is-normal">
                             <label style=" white-space:nowrap;">เลือกข้อมูล </label>
@@ -224,7 +229,8 @@
                             </div>
                         </div>
                         <div class="control ">
-                            <button type="submit" id="btn_submit" class="button is-primary is-rounded" formtarget="_blank">ส่งข้อมูล</button>
+                            <button type="submit" id="btn_submit" class="button is-primary is-rounded"
+                                formtarget="_blank">ส่งข้อมูล</button>
                         </div>
                     </div>
                 </form>
@@ -243,6 +249,56 @@
     <script src="{{ asset('bulma/main.js') }}"></script>
 
     <script>
+    $(document).ready(function() {
+    });
+
+    //js modal
+    document.addEventListener('DOMContentLoaded', () => {
+        // Functions to open and close a modal
+        function openModal($el) {
+            $el.classList.add('is-active');
+        }
+
+        function closeModal($el) {
+            $el.classList.remove('is-active');
+        }
+
+        function closeAllModals() {
+            (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                closeModal($modal);
+            });
+        }
+
+        // Add a click event on buttons to open a specific modal
+        (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+            const modal = $trigger.dataset.target;
+            const $target = document.getElementById(modal);
+
+            $trigger.addEventListener('click', () => {
+                openModal($target);
+            });
+        });
+
+        // Add a click event on various child elements to close the parent modal
+        (document.querySelectorAll(
+            '.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || [])
+        .forEach((
+            $close) => {
+            const $target = $close.closest('.modal');
+
+            $close.addEventListener('click', () => {
+                closeModal($target);
+            });
+        });
+
+        // Add a keyboard event to close all modals
+        document.addEventListener('keydown', (event) => {
+            if (event.key === "Escape") {
+                closeAllModals();
+            }
+        });
+    });
+
     $('.input-daterange input').each(function() {
         $(this).datepicker('clearDates');
         $('#date_end').datepicker("setDate", new Date());
@@ -363,6 +419,8 @@
             $('#sub_filter_search').append('<option value="4" style="width:250px">อยู่ระหว่างดำเนินการ</option>');
             $('#sub_filter_search').append('<option value="5" style="width:250px">ดำเนินการเสร็จสิ้น</option>');
             $('#sub_filter_search').append('<option value="6" style="width:250px">ดำเนินการแล้วส่งต่อ</option>');
+            $('#sub_filter_search').append('<option value="99" style="width:250px">ปฏิเสธรับเรื่อง</option>');
+            $('#sub_filter_search').append('<option value="98" style="width:250px">ยุติการดำเนินการ</option>');
         } else if (search_type == 4) {
             $('#sub_filter_search').empty();
             $('#sub_filter_search').removeAttr('disabled');
@@ -375,8 +433,10 @@
 
             @foreach($provinces as $province)
 
-            $('#sub_filter_search').append('<option value="{{ $province->PROVINCE_CODE }}" style="width:250px" > {{ $province->PROVINCE_NAME }} </option>');
-            
+            $('#sub_filter_search').append(
+                '<option value="{{ $province->PROVINCE_CODE }}" style="width:250px" > {{ $province->PROVINCE_NAME }} </option>'
+            );
+
             @endforeach
         }
     }

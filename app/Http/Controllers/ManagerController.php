@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 use App\case_input;
+use App\add_detail;
+use App\operate_detail;
 use App\timeline;
 use App\officer;
 use App\province;
@@ -46,6 +48,31 @@ class ManagerController extends Controller
         timeline::create(['case_id'=>$case_id,
             'operate_status'=>99,
         ]);
+        return redirect('officer/show/0');
+    }
+
+    public  function endcase_cfm(Request $request){
+        $case_id = $request->input('case_id');
+        $reason = $request->input('reason');
+        case_input::where('case_id','=',$case_id)->update(['reject_reason' => "$reason" , 'status' => 98]);
+        timeline::create(['case_id'=>$case_id,
+            'operate_status'=>98,
+        ]);
+        return redirect('officer/show/0');
+    }
+
+    public  function deletecase_cfm(Request $request){
+
+        $case_id = $request->input('idcase_delete');
+        
+        echo $case_id;
+        
+        case_input::where('case_id','=',$case_id)->delete();
+        add_detail::where('case_id','=',$case_id)->delete();
+        operate_detail::where('case_id','=',$case_id)->delete();
+        timeline::where('case_id','=',$case_id)->delete();
+
+
         return redirect('officer/show/0');
     }
 

@@ -203,7 +203,8 @@ class OfficerInputController extends Controller
         //  return view('officer.OfficerManageCase',compact('cases'));
         //  return View::make('officer.OfficerManageCase', $mode_id);
         //  return view('officer.OfficerManageCase')->withMode($mode_id);
-        $provinces = province::orderBy('PROVINCE_NAME', 'asc')->get();
+
+        $provinces = province::join('prov_geo', 'PROVINCE_CODE', '=', 'prov_geo.code')->orderBy('PROVINCE_NAME', 'asc')->get();
 
         return view('officer.OfficerManageCase',compact('mode_id', 'provinces'));
     }
@@ -223,7 +224,6 @@ class OfficerInputController extends Controller
     {
         $show_data = case_input::where('case_id','=',$case_id)->first();
         
-
         return view('officer.detail2',compact('show_data'));
     }
 

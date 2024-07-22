@@ -11,6 +11,7 @@ use App\officer;
 use Auth;
 use App\casetransfer;
 use App\sharecase;
+use App\province;
 
 
 class OfficerUpdateController extends Controller
@@ -71,8 +72,8 @@ class OfficerUpdateController extends Controller
 
     }
 
-    public function add_detail(Request $request)
-    {
+    public function add_detail(Request $request){
+
         //var_dump($request->input('birthdate'));
         foreach ($request->input() as $key => $value) {
             if (empty($value)) {
@@ -119,24 +120,25 @@ class OfficerUpdateController extends Controller
         }
 
         case_input::where('case_id','=',$case_id)->update([ 'status' => 3,
-                                                            'name' => $request->input('name'),
-                                                            'victim_tel' => $request->input('tel'),
-                                                            'sex' => $request->input('sex'),
-                                                            'sex_etc' => $request->input('sex_etc'),
-                                                            'nation' => $request->input('nation'),
-                                                            'nation_etc' => $request->input('nation_etc'),
-                                                            'problem_case' => $request->input('problem_case'),
-                                                            'sub_problem' => $request->input('sub_problem'),
-                                                            'group_code' => $request->input('group_code'),
-                                                            'detail' => $request->input('detail'),
-                                                            'need' => $request->input('need')]);
+            'name' => $request->input('name'),
+            'victim_tel' => $request->input('tel'),
+            'sex' => $request->input('sex'),
+            'sex_etc' => $request->input('sex_etc'),
+            'nation' => $request->input('nation'),
+            'nation_etc' => $request->input('nation_etc'),
+            'problem_case' => $request->input('problem_case'),
+            'sub_problem' => $request->input('sub_problem'),
+            'group_code' => $request->input('group_code'),
+            'detail' => $request->input('detail'),
+            'need' => $request->input('need')]);
         timeline::create(['case_id'=>$case_id,
             'operate_status'=>3,
             'operate_time'=> $interview_date
         ]);
-        add_detail::create(
-            ['case_id'=>$case_id,
-             'interview_date'=>$interview_date,
+        add_detail::create( 
+        ['case_id'=>$case_id,
+            'interview_date'=>$interview_date,
+            'check_birthdate'=>$request->input('check_birthdate'),
             'birth_date'=>$birth_date,
             'age'=>$request->input('age'),
             'current_status'=>$request->input('marital-status'),
@@ -221,6 +223,7 @@ class OfficerUpdateController extends Controller
         add_detail::where('case_id','=',$case_id)->update(
             [
                 'interview_date'=>$interview_date,
+                'check_birthdate'=>$request->input('check_birthdate'),
                 'birth_date'=>$birth_date,
                 'age'=>$request->input('age'),
                 'current_status'=>$request->input('marital-status'),
@@ -595,8 +598,6 @@ class OfficerUpdateController extends Controller
             $cases = case_input::Where('prov_id','=',$pid);
         }
 
-        
-
         $html = view('officer._Case',compact('cases','username','join_transfers','sharecases'))->render();
         return response()->json(compact('html','text_search'));
 
@@ -621,6 +622,10 @@ class OfficerUpdateController extends Controller
         $date_end = date('Y-m-d H:i:s',strtotime(str_replace('-','/', $request->input('date_end2')). "+1 day"));
         $type_export = $request->input('type_export');
 
+        //echo "<br> date_start $date_start";
+        //echo "<br> date_start $date_end";
+        //echo "<br> date_start $type_export";
+
         if($type_export == 1){
             $show_data = case_input::leftJoin('provinces AS b', 'case_inputs.prov_id', '=', 'b.province_code')
             ->leftJoin('r_sub_problem AS c', 'case_inputs.sub_problem', '=', 'c.id')
@@ -632,7 +637,7 @@ class OfficerUpdateController extends Controller
             ->leftJoin('operate_details AS o', 'case_inputs.case_id', '=', 'o.case_id')
             ->leftJoin('timelines AS t', 'case_inputs.case_id', '=', 't.case_id')
             ->select('case_inputs.problem_case','case_inputs.group_code','b.PROVINCE_NAME','h.nhso','case_inputs.case_id', 'case_inputs.sender_case', 'g.name as gname', 'case_inputs.receiver', 'e.name AS ename', 'd.name AS dname', 'c.name AS cname', 'f.name AS fname', 'case_inputs.accident_date AS accident_date', 'case_inputs.created_at AS created_at', 'case_inputs.detail', 'case_inputs.need', 'case_inputs.nation' ,'t.operate_status' ,'t.operate_time','o.operate_result','o.operate_date','o.operate_detail','case_inputs.operate_result_status')
-            ->whereBetween(date('case_inputs.created_at'), [$date_start, $date_end])
+            ->whereBetween('case_inputs.created_at', [$date_start, $date_end])
             ->orderBy('case_inputs.created_at', 'asc')
             ->orderBy('t.operate_status', 'asc')
             ->orderBy('case_inputs.case_id', 'asc')
@@ -649,19 +654,22 @@ class OfficerUpdateController extends Controller
             ->leftJoin('timelines AS t', 'case_inputs.case_id', '=', 't.case_id')
             ->leftJoin('operate_details AS o', 'case_inputs.case_id', '=', 'o.case_id')
             ->select('case_inputs.problem_case','case_inputs.group_code','b.PROVINCE_NAME','h.nhso','case_inputs.case_id as case_id1', 'case_inputs.sender_case', 'g.name as gname', 'case_inputs.receiver', 'e.name AS ename', 'd.name AS dname', 'c.name AS cname', 'f.name AS fname', 'case_inputs.accident_date AS accident_date', 'case_inputs.created_at AS created_at', 'case_inputs.detail', 'case_inputs.need', 'case_inputs.nation' ,'t.operate_status' ,'t.operate_time','o.operate_result','o.operate_date','o.operate_detail','case_inputs.operate_result_status')
-            ->whereBetween(date('case_inputs.created_at'), [$date_start, $date_end])
+            ->whereBetween('case_inputs.created_at', [$date_start, $date_end])
             ->orderBy('case_inputs.created_at', 'asc')
             ->orderBy('t.operate_status', 'desc')
             ->orderBy('case_inputs.case_id', 'desc')
             ->get();
         }
 
+        //echo "<br> $show_data";
+
+
         //->groupBy('b.PROVINCE_NAME')
 
         return view('officer.ExportExcel',compact('show_data','date_start','date_end','type_export'));
     }
 
-    public function showverifydata(){
+    public function showverifydata(Request $request){
 
 
         /*
@@ -669,8 +677,8 @@ class OfficerUpdateController extends Controller
         ->leftjoin('operate_details', 'case_inputs.case_id', '=', 'operate_details.case_id')
         ->where('operate_details.id', \DB::raw("(select max(operate_details.id) from operate_details)"))
         ->get();
-*/
-/*
+        */
+        /*
         $show_data = case_input::leftjoin('add_details', 'case_inputs.case_id', '=', 'add_details.case_id')
         ->leftjoin('operate_details', 'case_inputs.case_id', '=', 'operate_details.case_id')
         ->select('case_inputs.id','case_inputs.receiver','case_inputs.case_id','operate_details.id', \DB::raw("(select max(operate_details.id) from operate_details)"))
@@ -680,11 +688,18 @@ class OfficerUpdateController extends Controller
         ->groupBy('operate_details.id')
         ->orderBy('case_inputs.id')
         ->get();*/
-/*
+        /*
         $show_data = case_input::leftjoin('add_details', 'case_inputs.case_id', '=', 'add_details.case_id')
         ->leftjoin('operate_details', 'case_inputs.case_id', '=', 'operate_details.case_id')
         ->orderBy('case_inputs.id')
         ->get();*/
+
+        $nhso_se = $request->input('nhso');
+        $prov_id_se = $request->input('prov_id');
+
+        $problem_case_se = $request->input('problem_case');
+        $pcase_se = $request->input('pcase');
+    
 
         $show_data = case_input::leftjoin('add_details', 'case_inputs.case_id', '=', 'add_details.case_id')
         ->leftjoin('operate_details', 'case_inputs.case_id', '=', 'operate_details.case_id')
@@ -721,12 +736,32 @@ class OfficerUpdateController extends Controller
         'case_inputs.status',
         'case_inputs.operate_result_status',
         'case_inputs.reject_reason',
-        'case_inputs.accident_date')
-        ->orderBy('case_inputs.id')
-        ->get();
+        'case_inputs.accident_date');
         
         
-        return view('officer.verifydata',compact('show_data'));
+        if (isset($nhso_se) && $nhso_se != "0") {
+            $show_data =  $show_data->Where('prov_geo.nhso','=',$nhso_se);
+        }
+
+        if (isset($prov_id_se) && $prov_id_se != "0") {
+            $show_data =  $show_data->Where('case_inputs.prov_id','=',$prov_id_se);
+        }
+
+        if (isset($problem_case_se) && $problem_case_se != "0") {
+            $show_data =  $show_data->Where('r_problem_case.code','=',$problem_case_se);
+        }
+
+        if (isset($pcase_se) && $pcase_se != "0") {
+            $show_data =  $show_data->Where('case_inputs.status','=',$pcase_se);
+        }
+
+
+        $show_data =  $show_data->orderBy('case_inputs.id')->get();
+
+       
+        $show_prov = province::join('prov_geo', 'PROVINCE_CODE', '=', 'prov_geo.code')->orderBy('PROVINCE_NAME', 'asc')->get();
+        
+        return view('officer.verifydata2',compact('show_data','show_prov','prov_id_se','nhso_se','problem_case_se','pcase_se'));
 
     }
 

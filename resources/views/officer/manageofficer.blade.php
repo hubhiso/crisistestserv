@@ -26,6 +26,21 @@
 
     <title> ปกป้อง (CRS) </title>
 
+    <?php 
+        $i = 0;
+    ?>
+    @foreach($show_prov as $province)
+    <?php 
+        $i++;
+
+        $pr_name[$i] = $province->PROVINCE_NAME;
+        $pr_code[$i] = $province->PROVINCE_CODE;
+        $nhso_code[$i] = $province->nhso;
+        
+        $prloop = $i;
+    ?>
+    @endforeach
+
 
 </head>
 
@@ -81,7 +96,7 @@
                     <div class="level-left">
                         <a class="button is-danger is-rounded" onClick="creategroup()">
                             <i class="fas fa-plus"></i>
-                            &nbsp;เพิ่มกลุ่มใหม่</a>
+                            &nbsp;เพิ่มรายชื่อหน่วยงานหลักที่มีการใช้งาน</a>
 
                     </div>
                     <div class="level-right">
@@ -117,8 +132,59 @@
                             </div>
                             <div class="level-item">
                                 <div class="select">
+                                <select name="nhso" id="nhso" class="form-select rounded"
+                                    onchange="setprov(nhso.value,1);">
+                                    <option value="0" <?php if ($nhso_se == "0"){ echo "selected";} ?>> ทุกเขต </option>
+                                    <option value="1" <?php if ($nhso_se == "1"){ echo "selected";} ?>>
+                                        เขต 1
+                                    </option>
+                                    <option value="2" <?php if ($nhso_se == "2"){ echo "selected";} ?>>
+                                        เขต 2
+                                    </option>
+                                    <option value="3" <?php if ($nhso_se == "3"){ echo "selected";} ?>>
+                                        เขต 3
+                                    </option>
+                                    <option value="4" <?php if ($nhso_se == "4"){ echo "selected";} ?>>
+                                        เขต 4
+                                    </option>
+                                    <option value="5" <?php if ($nhso_se == "5"){ echo "selected";} ?>>
+                                        เขต 5
+                                    </option>
+                                    <option value="6" <?php if ($nhso_se == "6"){ echo "selected";} ?>>
+                                        เขต 6
+                                    </option>
+                                    <option value="7" <?php if ($nhso_se == "7"){ echo "selected";} ?>>
+                                        เขต 7
+                                    </option>
+                                    <option value="8" <?php if ($nhso_se == "8"){ echo "selected";} ?>>
+                                        เขต 8
+                                    </option>
+                                    <option value="9" <?php if ($nhso_se == "9"){ echo "selected";} ?>>
+                                        เขต 9
+                                    </option>
+                                    <option value="10" <?php if ($nhso_se == "10"){ echo "selected";} ?>>
+                                        เขต 10
+                                    </option>
+                                    <option value="11" <?php if ($nhso_se == "11"){ echo "selected";} ?>>
+                                        เขต 11
+                                    </option>
+                                    <option value="12" <?php if ($nhso_se == "12"){ echo "selected";} ?>>
+                                        เขต 12
+                                    </option>
+                                    <option value="13" <?php if ($nhso_se == "13"){ echo "selected";} ?>>
+                                        เขต 13
+                                    </option>
+
+                                </select>
+                                </div>
+                            </div>
+                            <div class="level-item">
+                                <label class="label">เลือกจังหวัด</label>
+                            </div>
+                            <div class="level-item">
+                                <div class="select">
                                     <select name="prov_id" id="prov_id">
-                                        <option value="0" style="width:250px">ทั้งประเทศ</option>
+                                        <option value="0" style="width:250px">ทุกจังหวัด</option>
                                         @foreach($show_prov as $province)
                                         <option value="{{ $province->PROVINCE_CODE }}"
                                             <?php if($province->PROVINCE_CODE == $prov_id_se){ echo "selected";} ?>
@@ -158,17 +224,17 @@
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">การอนุมัติ</th>
                                 <th style="display:none;"></th>
-                                <th class="has-text-danger">เข้าใช้</th>
+                                <th class="has-text-danger">การเข้าใช้งาน</th>
                                 <th class="has-text-danger" style="white-space: nomal; max-width: 60px">ชื่อ</th>
-                                <th class="has-text-danger" style="white-space: nomal; max-width: 60px">หน่วยงาน</th>
+                                <th class="has-text-danger" style="white-space: nomal; max-width: 60px">หน่วยงานย่อย</th>
                                 <th class="has-text-danger" style="display:none;">เบอร์ติดต่อ</th>
                                 <th class="has-text-danger" style="display:none;">Email</th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">ตำแหน่ง</th>
                                 <th style="display:none;"></th>
-                                <th class="has-text-danger">กลุ่ม</th>
+                                <th class="has-text-danger">หน่วยงานหลัก</th>
                                 <th style="display:none;"></th>
-                                <th class="has-text-danger">ดูทั้งหมดในกลุ่ม</th>
+                                <th class="has-text-danger">ดูทั้งหมดในหน่วยงานหลัก</th>
                                 <th class="has-text-danger">เขต</th>
                                 <th style="display:none;"></th>
                                 <th class="has-text-danger">จังหวัด</th>
@@ -209,23 +275,27 @@
 
                                 <td style="display:none;">{{$show->approv}}</td>
                                 <td>
-                                    @if($show->approv == 'no' or $show->approv == '')
-                                    <p class="has-text-danger">รอการอนุมัติ</p>
+                                    @if($show->approv == 'no')
+                                    <p class="has-text-danger">ปิดการใช้งาน</p>
                                     @elseif($show->approv == 'yes')
-                                    <p class="has-text-success"><i class="fas fa-check-circle"></i></p>
+                                    <p class="has-text-success">อนุมัติ</p>
+                                    @elseif($show->approv == 'wait')
+                                    <p class="has-text-secondary">รอการอนุมัติ</p>
                                     @else
-                                    <p class="has-text-secondary"><i class="fas fa-minus-circle"></i></p>
+                                    <p class="has-text-secondary"></p>
                                     @endif
                                 </td>
 
                                 <td style="display:none;">{{$show->active}}</td>
                                 <td>
                                     @if($show->active == 'no')
-                                    <p class="has-text-secondary"><i class="fas fa-minus-circle"></i></p>
+                                    <p ><span class="has-text-secondary"><i class="fas fa-minus-circle">&nbsp;</i></span>Inactive</p>
                                     @elseif($show->active == 'yes')
-                                    <p class="has-text-success"><i class="fas fa-check-circle"></i></p>
+                                    <p ><span class="has-text-success"><i class="fas fa-check-circle"></i>&nbsp;</span>Active</p>
+                                    @elseif($show->active == 'wait')
+                                    <p ><span class="has-text-secondary"><i class="fa-solid fa-clock-rotate-left fa-flip-horizontal "></i> &nbsp;</span>Waiting</p>
                                     @else
-                                    <p class="has-text-secondary"><i class="fas fa-minus-circle"></i></p>
+                                    <p class="has-text-secondary"></p>
                                     @endif
                                 </td>
 
@@ -436,7 +506,7 @@
                                     <textarea name="content" rows="5" class=" textarea" placeholder="Enter Your Message"
                                         style="display:none;">ถ้าได้รับ Email นี้ ต้องขออภัยจากความผิดพลาดในการส่งด้วยครับ</textarea>
 
-                                    <input type="hidden" id="e_approv" name="e_approv" val="">
+                                    <!--input type="hidden" id="e_approv" name="e_approv" val=""-->
 
                                     <div class="field ">
                                         <label class="label" for="username">Username</label>
@@ -449,11 +519,21 @@
                                     <div class="field">
                                         <div class="columns">
                                             <div class="column ">
-                                                <label class="label" for="group"> ID เข้าใช้ระบบได้ </label>
-                                                <div class=" select is-fullwidth">
-                                                    <select name="e_active" id="e_active">
-                                                        <option value="no"> ไม่ใช่ </option>
-                                                        <option value="yes"> ใช่ </option>
+                                                <label class="label" for="group"> สถานะการอนุมัติ </label>
+                                                <div class=" select is-fullwidth mb-3">
+                                                    <select name="e_approv" id="e_approv">
+                                                        <option value="yes"> อนุมัติ </option>
+                                                        <option value="wait"> รอการอนุมัติ </option>
+                                                        <option value="no"> ปิดการใช้งานบัญชี </option>
+                                                    </select>
+
+                                                </div>
+                                                <label class="label" for="group"> สถานะการเข้าใช้งาน </label>
+                                                <div class=" select is-fullwidth" >
+                                                    <select name="e_active" id="e_active" disabled>
+                                                        <option value="yes"> Active </option>
+                                                        <option value="wait"> Waiting </option>
+                                                        <option value="no"> Inactive </option>
                                                     </select>
 
                                                 </div>
@@ -462,8 +542,7 @@
                                                 <div class="notification">
                                                     <label class="label"> * เมื่อเปิดใช้อีกครั้งหลัง "ระงับ" User
                                                         จะเคลียร์วันที่ login เป็นปัจจุบัน </label>
-                                                    <label class="label has-text-danger"> * เป็นการอนุมัติให้ user
-                                                        เข้าใช้งานระบบในครั้งแรกด้วย </label>
+                                                    <label class="label has-text-danger"> * สถานะการเข้าใช้งานจะสอดคล้องกับสถานะการอนุมัติ </label>
 
                                                 </div>
                                             </div>
@@ -509,10 +588,13 @@
                                     <div class="box">
                                         <div class="field ">
                                             <label class="label" for="name">ตำแหน่ง</label>
-                                            <div class="control">
-                                                <input id="e_position" name="e_position" type="text"
-                                                    class="form-control input" value="" disabled>
-
+                                            <div class=" select is-fullwidth">
+                                                <select name="e_position" id="e_position" onchange="setposition(e_position.value);">
+                                                    <option value="admin"> admin </option>
+                                                    <option value="ผู้ดูแลระดับเขต"> ผู้ดูแลระดับเขต </option>
+                                                    <option value="ผู้ดูแลระดับจังหวัด"> ผู้ดูแลระดับจังหวัด </option>
+                                                    <option value="เจ้าหน้าที่"> เจ้าหน้าที่ </option>
+                                                </select>
                                             </div>
                                         </div>
 
@@ -555,12 +637,12 @@
 
                                     <div class="field box is-bordered">
                                         <label class="content">
-                                            จัดกลุ่มเพื่อให้ผู้ดูแลระดับพื้นที่เข้าถึงพื้นที่ในสามาชิกได้ </label>
+                                        ผู้ดูแลระดับพื้นที่สามารถเข้าถึงรายชื่อหน่วยงานหลักของสมาชิกในพื้นที่ได้ </label>
                                         <br>
                                         <br>
                                         <div class="columns">
                                             <div class="column ">
-                                                <label class="label" for="group">กลุ่ม</label>
+                                                <label class="label" for="group">หน่วยงานหลัก</label>
                                                 <div class=" select is-fullwidth">
                                                     <select name="e_group" id="e_group">
                                                         <option value=""> ไม่เลือก </option>
@@ -569,7 +651,7 @@
                                                 </div>
                                             </div>
                                             <div class="column">
-                                                <label class="label" for="group"> ดูได้ทุกเคสในกลุ่ม</label>
+                                                <label class="label" for="group"> ดูได้ทุกเคสในหน่วยงานหลัก</label>
                                                 <div class=" select is-fullwidth">
                                                     <select name="e_v_group" id="e_v_group">
                                                         <option value="no"> ไม่ใช่ </option>
@@ -660,7 +742,7 @@
                             <a class="delete closetop" aria-label="close"></a>
                         </div>
                         <h5 class="has-text-info">
-                            <i class="fas fa-history">&nbsp;รายชื่อกลุ่มที่มีการใช้งาน</i>
+                            <i class="fas fa-history">&nbsp;รายชื่อหน่วยงานหลักที่มีการใช้งาน</i>
                         </h5>
                         <div class=" table-container">
                             <table id="table_g" class="table is-bordered is-fullwidth is-striped is-hoverable panel"
@@ -669,7 +751,7 @@
                                     <tr>
                                         <th class="has-text-danger">ลำดับ</th>
                                         <th class="has-text-danger">รหัส</th>
-                                        <th class="has-text-danger">ชื่อกลุ่ม</th>
+                                        <th class="has-text-danger">ชื่อหน่วยงานหลัก</th>
                                         <th class="has-text-danger">วันที่สร้าง</th>
                                     </tr>
                                 </thead>
@@ -691,7 +773,7 @@
 
                         <br>
                         <h5 class="has-text-info">
-                            <i class="fas fa-plus">&nbsp;เพิ่มกลุ่มใหม่</i>
+                            <i class="fas fa-plus">&nbsp;เพิ่มหน่วยงานหลักใหม่</i>
                         </h5>
                         <div class=" table-container">
                             <form id="creategroup" class="form-horizontal" role="form" method="POST"
@@ -704,7 +786,7 @@
                                         <tr>
                                             <th class="has-text-danger">ลำดับ</th>
                                             <th class="has-text-danger">รหัส</th>
-                                            <th class="has-text-danger">ชื่อกลุ่ม</th>
+                                            <th class="has-text-danger">ชื่อหน่วยงานหลัก</th>
                                         </tr>
                                     </thead>
 
@@ -759,6 +841,26 @@
 
     $(document).ready(function() {
 
+        @if( Auth::user()->position == "admin" )
+            $('#e_position').prop('disabled', false);
+        @else
+            $('#e_position').prop('disabled', true);
+        @endif
+
+        $('#e_approv').on('change', function() {
+            if( $('#e_approv').val() == 'yes' ){
+                $('#e_active').val('yes');
+            }else if( $('#e_approv').val() == 'wait' ){
+                $('#e_active').val('wait');
+            }else if( $('#e_approv').val() == 'no' ){
+                $('#e_active').val('no');
+            }
+        });
+
+        var set_nhso = $('#nhso').val();
+
+        setprov(set_nhso,0);
+
         var o_table = $('#table_m').DataTable({
             language: {
                 searchPlaceholder: "",
@@ -780,6 +882,8 @@
             '<?php echo $group->groupname ?>'));
 
         <?php } ?>
+
+        
 
 
         o_table.on('click', '.edit_form', function() {
@@ -894,16 +998,92 @@
         $(".modal").removeClass("is-active");
     });
 
+    function setposition(level){
+        if(level == 'admin'){
+            $('#e_area').val('0');
+            $('#e_area').prop('disabled', true);
+            $('#e_prov').val('0');
+            $('#e_prov').prop('disabled', true);
+        }else if(level == 'ผู้ดูแลระดับเขต'){
+            $('#e_area').val('0')
+            $('#e_area').prop('disabled', false);
+            $('#e_prov').val('0');
+            $('#e_prov').prop('disabled', true);
+        }else if(level == 'ผู้ดูแลระดับจังหวัด'){
+            $('#e_area').val('0')
+            $('#e_area').prop('disabled', true);
+            $('#e_prov').val('0');
+            $('#e_prov').prop('disabled', false);
+        }else if(level == 'เจ้าหน้าที่'){
+            $('#e_area').val('0')
+            $('#e_area').prop('disabled', true);
+            $('#e_prov').val('0');
+            $('#e_prov').prop('disabled', false);
+        }
+    }
+
    
 
     function ck_mail_approv(user, active, approv, email) {
         
         //alert(user+active+approv);
 
+        /*
         if(approv != "yes"){
             alert("ระบบจะอนุมัติผู้ใช้นี้และจะแจ้ง Email ให้ผู้ใช้ทราบ");
 
             confirmmailapprov('email','user');
+        }*/
+    }
+    </script>
+
+    <script>
+    function setprov(se,ck1) {
+
+        var pr_code = <?php echo json_encode($pr_code); ?>;
+        var pr_name = <?php echo json_encode($pr_name); ?>;
+        var nhso_code = <?php echo json_encode($nhso_code); ?>;
+
+        if (se == 0) {
+            //alert("test"); 
+
+            //$('#prov11').prop('disabled', 'disabled');
+            //$('#prov11').val(0);
+
+            $("#prov_id").empty();
+            $("#prov_id").append($("<option></option>").attr("value", '0').text('ทุกจังหวัด'));
+
+            for (let i = 1; i <= <?php echo $prloop; ?>; i++) {
+
+                $("#prov_id").append($("<option></option>").attr("value", pr_code[i]).text(pr_name[i]));
+
+                if(ck1 == 0){
+                    if ('<?php echo $prov_id_se; ?>' == pr_code[i]) {
+                    $("#prov_id option[value='" + pr_code[i] + "']").attr("selected", "selected");
+                    }
+                }
+
+            }
+
+        } else {
+
+
+            $("#prov_id").empty();
+            $("#prov_id").append($("<option></option>").attr("value", '0').text("ทุกจังหวัด"));
+
+            for (let i = 1; i <= <?php echo $prloop; ?>; i++) {
+
+                if (nhso_code[i] == se) {
+                    $("#prov_id").append($("<option></option>")
+                        .attr("value", pr_code[i]).text(pr_name[i]));
+                }
+
+                if ('<?php echo $prov_id_se; ?>' == pr_code[i]) {
+
+                    $("#prov_id option[value='" + pr_code[i] + "']").attr("selected", "selected");
+                }
+            }
+
         }
     }
     </script>
