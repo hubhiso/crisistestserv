@@ -31,6 +31,8 @@
     <?php
         
         require("phpsqli_dbinfo.php");
+        require("setdateformat.php");
+        date_default_timezone_set("Asia/Bangkok");
 
         $last_year = date("Y");
         $last_month = date("M");
