@@ -529,12 +529,13 @@
 
                                                 </div>
                                                 <label class="label" for="group"> สถานะการเข้าใช้งาน </label>
-                                                <div class=" select is-fullwidth" >
-                                                    <select name="e_active" id="e_active" disabled>
+                                                <div class="  control" >
+                                                    <!--select name="e_active" id="e_active" >
                                                         <option value="yes"> Active </option>
                                                         <option value="wait"> Waiting </option>
                                                         <option value="no"> Inactive </option>
-                                                    </select>
+                                                    </select-->
+                                                    <input type="text" name="e_active" id="e_active" class="form-control input" value="" readonly>
 
                                                 </div>
                                             </div>
@@ -849,11 +850,11 @@
 
         $('#e_approv').on('change', function() {
             if( $('#e_approv').val() == 'yes' ){
-                $('#e_active').val('yes');
+                $('#e_active').val('Active');
             }else if( $('#e_approv').val() == 'wait' ){
-                $('#e_active').val('wait');
+                $('#e_active').val('Waiting');
             }else if( $('#e_approv').val() == 'no' ){
-                $('#e_active').val('no');
+                $('#e_active').val('Inactive');
             }
         });
 
@@ -898,7 +899,14 @@
 
             $('#e_approv').val(data[3]);
 
-            $('#e_active').val(data[5]);
+            if(data[5] == "yes"){
+                $('#e_active').val('Active');
+            }else if(data[5] == "wait"){
+                $('#e_active').val('Waiting');
+            }else if(data[5] == "no"){
+                $('#e_active').val('Inactive');
+            }
+
             $('#e_name').val(data[7]);
             $('#e_nameorg').val(data[8]);
             $('#e_tel').val(data[9]);

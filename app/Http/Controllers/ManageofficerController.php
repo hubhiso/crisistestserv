@@ -187,8 +187,17 @@ class ManageofficerController extends Controller
         ]);
 
 
-        $active = $request->input('e_active');
         $approv = $request->input('e_approv');
+
+        $active = "";
+
+        if($request->input('e_active') == 'Active'){
+            $active = "yes";
+        }else if($request->input('e_active') == 'Waiting'){
+            $active = "wait";
+        }else if($request->input('e_active') == 'Inactive'){
+            $active = "no";
+        }
 
 
         if($active == 'yes' and ($o_active == 'no' or $o_active == 'wait')){
@@ -218,7 +227,7 @@ class ManageofficerController extends Controller
 
         officer::where('username','=',$id)->update([
 
-            'active' => $request->input('e_active'),
+            'active' => $active,
 
             'mailwarning' => $ck_mailwarning,
             'mailwarning_at' => $ck_mailwarning_at,
@@ -281,7 +290,7 @@ class ManageofficerController extends Controller
 
         }
 
-        if($request->input('e_active') == 'yes'){
+        if($active == 'yes'){
             officer::where('username','=',$id)->update([
                 'approv' => 'yes'
             ]);
@@ -310,7 +319,7 @@ class ManageofficerController extends Controller
             });
         }
 
-        echo "อัพเดตรายละเอียดเจ้าหน้าที่เรียบร้อย";
+        echo "<br>อัพเดตรายละเอียดเจ้าหน้าที่เรียบร้อย";
 
         return back()->with('success','อัพเดตรายละเอียดเจ้าหน้าที่เรียบร้อย');
 
