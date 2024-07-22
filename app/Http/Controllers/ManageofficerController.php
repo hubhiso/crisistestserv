@@ -303,6 +303,13 @@ class ManageofficerController extends Controller
             ]);
         }
 
+        if($approv == 'wait'){
+            officer::where('username','=',$id)->update([
+                'approv' => 'wait',
+                'active' => 'wait'
+            ]);
+        }
+
         if($ck_approv == "yes"){
             $img_url = "https://crs.ddc.moph.go.th/crisistest2021/public/images/seo.png";
 
