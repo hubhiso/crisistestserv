@@ -96,6 +96,8 @@ class OfficerController extends Controller
 
         if($ck_notshow  == "yes"){
             $date_notshow = date("Y-m-d");
+        }else{
+            $date_notshow = NULL;
         }
 
             officer_evaluate::create([
