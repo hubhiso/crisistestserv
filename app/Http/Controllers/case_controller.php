@@ -94,7 +94,7 @@ class case_controller extends Controller
         }elseif($request->input('sender_case')== 3 ){
             $sender_case = 3;
         }
-
+        
         case_input::create([
             'emergency'=>$request->input('emergency'),
             'sender_case'=>$sender_case,
@@ -126,7 +126,12 @@ class case_controller extends Controller
             'file1'=>$request->input('file1'),
             'file2'=>$request->input('file2'),
             'file3'=>$request->input('file3'),
-            
+
+            'evaluate1'=>$request->input('eva1'),
+            'evaluate2'=>$request->input('eva2'),
+            'evaluate3'=>$request->input('eva3'),
+            'evaluate_comment'=>$request->input('eva_comment'),
+
             'accident_date'=>$accident_date
 
         ]);

@@ -34,12 +34,12 @@
   opacity: 1;
 }
 
-.sizebox1,
-#confirm-submit {
-  width: 50%;
+.sizebox1 {
+  width: 70%;
 }
 
-.sizebox2 {
+.sizebox2,
+#confirm-submit, #modal_alert_eva {
   width: 70%;
 }
 
