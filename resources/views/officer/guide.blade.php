@@ -94,24 +94,24 @@
 
                 <input type="hidden" id="token" value="{{ csrf_token() }}">
 
-                <div class="tabs is-toggle is-fullwidth is-danger">
+                <div class="tabs is-toggle is-fullwidth is-medium">
                     <ul>
                         <li class="is-active ">
                             <a id="menu1" class="is-danger">
                                 <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
-                                <span>คู่มือ</span>
+                                <span class="fs-4">คู่มือ</span>
                             </a>
                         </li>
                         <li>
                             <a id="menu2">
                                 <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
-                                <span>เอกสารที่เกี่ยวข้องอื่นๆ</span>
+                                <span class="fs-4">เอกสารที่เกี่ยวข้องอื่นๆ</span>
                             </a>
                         </li>
                         <li>
-                            <a id="menu3">
+                            <a id="menu3" >
                                 <span class="icon is-small"><i class="fa fa-film"></i></span>
-                                <span>สื่อวิดีทัศน์</span>
+                                <span >สื่อวิดีทัศน์</span>
                             </a>
                         </li>
                     </ul>

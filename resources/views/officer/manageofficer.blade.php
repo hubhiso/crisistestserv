@@ -16,7 +16,7 @@
     <link href="{{ asset('bulma-0.9.0/css/bulma.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mystyles.css') }}" rel="stylesheet">
     <script src="{{ asset('css/jquery.min.js') }}"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
     {{ Html::script('js/jquery.min.js') }}
 
@@ -280,7 +280,7 @@
                                     @elseif($show->approv == 'yes')
                                     <p class="has-text-success">อนุมัติ</p>
                                     @elseif($show->approv == 'wait')
-                                    <p class="has-text-secondary">รอการอนุมัติ</p>
+                                    <p class="text-warning">รอการอนุมัติ</p>
                                     @else
                                     <p class="has-text-secondary"></p>
                                     @endif
@@ -293,7 +293,7 @@
                                     @elseif($show->active == 'yes')
                                     <p ><span class="has-text-success"><i class="fas fa-check-circle"></i>&nbsp;</span>Active</p>
                                     @elseif($show->active == 'wait')
-                                    <p ><span class="has-text-secondary"><i class="fa-solid fa-clock-rotate-left fa-flip-horizontal "></i> &nbsp;</span>Waiting</p>
+                                    <p ><span class="text-warning"><i class="fa-solid fa-clock-rotate-left fa-flip-horizontal "></i> &nbsp;</span>Waiting</p>
                                     @else
                                     <p class="has-text-secondary"></p>
                                     @endif

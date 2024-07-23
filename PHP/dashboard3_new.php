@@ -499,70 +499,7 @@
             </ol>
         </nav>
 
-        <!--div class="text-center ">
 
-            <div class="btn-group flex-wrap">
-                <a type="button" class="btn btn-primary btn-rounded align-items-stretch d-flex "
-                    href="dashboard3_new.php">
-                    <div class="text text-right ">
-                        <h6><i class="fas fa-chart-bar fs-4 " aria-hidden="true"></i> Dashboard สรุปสถานการณ์</h6>
-                    </div>
-                </a>
-
-                <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
-                    href="automated.php">
-                    <div class="text text-right ">
-                        <h6><i class="far fa-file-alt fs-4 " aria-hidden="true"></i> รายงานการละเมิดสิทธิ</h6>
-                    </div>
-                </a>
-
-                <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
-                    href="mapcrisis_new.php">
-                    <div class="text text-right ">
-                        <h6><i class="far fa-map fs-4 " aria-hidden="true"></i> พิกัดจุดเกิดเหตุ</h6>
-                    </div>
-                </a>
-
-                <a type="button" class="btn btn-white btn-rounded   align-items-stretch d-flex border"
-                    href="table.blade.php">
-                    <div class="text text-right">
-                        <h6><i class="fa fa-table fs-4 " aria-hidden="true"></i> สรุปข้อมูลภาพรวม</h6>
-                    </div>
-                </a>
-
-            </div>
-
-        </div-->
-
-        <!--br-->
-
-        <!--div class="text-center ">
-
-            <div class="btn-group flex-wrap">
-                <a class="btn btn-primary btn-rounded" href="dashboard3_new.php">
-                    <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
-                    <span>ภาพรวม</span>
-                </a>
-                <a class="btn btn-white btn-rounded border" href="dashboard5_new.php">
-                    <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
-                    <span>ช่วงเวลา (รายปี/รายเดือน)</span>
-                </a>
-                <a class="btn btn-white btn-rounded border" href="dashboard7_new.php">
-                    <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
-                    <span>รายพื้นที่ (เขต/จังหวัด)</span>
-                </a>
-                <a class="btn btn-white btn-rounded border" href="dashboard1_new.php">
-                    <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
-                    <span>จำแนกสถานะการดำเนินงาน</span>
-                </a>
-                <a class="btn btn-white btn-rounded border" href="dashboard2_new.php">
-                    <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
-                    <span>จำแนกปัญหา</span>
-                </a>
-            </div>
-
-        </div-->
-        <!--br-->
 
         <div class="text-center p-4">
             <div class="btn-group btn-group-toggle my-auto flex-wrap  ">
@@ -594,7 +531,7 @@
 
                 <a href="automated.php" class="btn tabtype">
                     <div class="p-1">
-                        <i class="fas fa-file-alt">&nbsp;</i> รายงานการละเมิดลิขสิทธิ์
+                        <i class="fas fa-file-alt">&nbsp;</i> รายงานการละเมิดสิทธิ
                     </div>
                 </a>
 
@@ -613,8 +550,8 @@
                         <a class="dropdown-item " id="dropdown-layouts" href="table_new.php">
                             ภาพรวม</a>
 
-                        <div class="dropdown dropright">
-                            <a class="dropdown-item dropdown-toggle " id="dropdown-layouts" data-toggle="dropdown"
+                        <div class="dropdown dropright ">
+                            <a class="dropdown-item dropdown-toggle custom-dropdown " id="dropdown-layouts" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">สรุปกรณีการละเมิดสิทธิ</a>
                             <div class="dropdown-menu color-h3" aria-labelledby="dropdown-layouts">
                                 <a class="dropdown-item " href="report_c3_new.php">แยกตามกรณี
@@ -627,7 +564,7 @@
                         </div>
 
                         <div class="dropdown dropright">
-                            <a class="dropdown-item dropdown-toggle " id="dropdown-layouts" data-toggle="dropdown"
+                            <a class="dropdown-item dropdown-toggle custom-dropdown" id="dropdown-layouts" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">ตารางสรุปการละเมิดสิทธิ</a>
                             <div class="dropdown-menu color-h3" aria-labelledby="dropdown-layouts">
                                 <a class="dropdown-item " href="mapreport1.php">แผนที่
@@ -857,26 +794,24 @@
 
         </form>
 
-        <div class="row p-3  gap-3 justify-content-center">
-            <div class="col-auto text-center border border-danger rounded-3 ">
-                <div class="  ">
-                    <div class=" row  rounded-top-3 bgcolor1">
-                        <div class="col align-middle p-2">
-                            &nbsp;&nbsp;&nbsp;&nbsp;ทั้งหมด&nbsp;&nbsp;&nbsp;&nbsp;
-                        </div>
+        <div class="row gap-3 mb-3 justify-content-md-center">
+            <div class="col-lg-1 text-center border border-danger rounded-3">
+                <div class=" row  rounded-top-3 bgcolor1">
+                    <div class="col align-middle p-1 mt-2 mb-2">
+                    ทั้งหมด
                     </div>
-                    <div class="row ">
-                        <div class="col border-warning align-middle p-3 ">
-                            <span><?php echo $sumall; if($sumall ==''){echo '0';}?></span>
-                        </div>
+                </div>
+                <div class="row ">
+                    <div class="col border-warning align-middle p-3 ">
+                        <span><?php echo $sumall; if($sumall ==''){echo '0';}?></span>
                     </div>
                 </div>
             </div>
-            <div class="col-auto text-center border border-secondary rounded-3 ">
+            <div class="col-lg-1 text-center border border-secondary rounded-3">
                 <div class="  ">
                     <div class=" row  rounded-top-3 bg-secondary">
-                        <div class="col align-middle p-2 text-white">
-                            &nbsp;ปฏิเสธรับเรื่อง&nbsp;
+                        <div class="col align-middle p-1 mt-2 mb-2 text-white">
+                        ปฏิเสธรับเรื่อง
                         </div>
                     </div>
                     <div class="row ">
@@ -886,12 +821,11 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-auto text-center border  border-warning rounded-3 ">
+            <div class="col-lg-1 text-center border border-warning rounded-3">
                 <div class="  ">
                     <div class=" row  rounded-top-3 orange ">
-                        <div class="col align-middle p-2">
-                            &nbsp;ยังไม่ได้รับเรื่อง&nbsp;
+                        <div class="col align-middle p-1 mt-2 mb-2">
+                        ยังไม่ได้รับเรื่อง
                         </div>
                     </div>
                     <div class="row ">
@@ -902,7 +836,7 @@
                 </div>
             </div>
 
-            <div class="col-auto text-center border border-warning rounded-3 ">
+            <div class="col-lg-4 text-center border  border-warning rounded-3">
                 <div class="  ">
                     <div class=" row  rounded-top-3 bg-warning">
                         <div class="col align-middle p-2">
@@ -910,13 +844,13 @@
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-auto border-end border-warning align-middle p-2">
+                        <div class="col-5 border-end border-warning align-middle p-2">
                             <p class=" mb-0">รอการบันทึกข้อมูลเพิ่มเติม</p>
                             <p class=" mb-0">
                                 <span><?php echo $status_code_2;if($status_code_2 ==''){echo '0';} ?></span>
                             </p>
                         </div>
-                        <div class="col-auto  border-warning align-middle p-2">
+                        <div class="col-7  border-warning align-middle p-2">
                             <p class=" mb-0">บันทึกข้อมูลแล้ว&nbsp;รอดำเนินการช่วยเหลือ</p>
                             <p class=" mb-0">
                                 <span><?php echo $status_code_3;if($status_code_3 ==''){echo '0';} ?></span>
@@ -926,7 +860,7 @@
                 </div>
             </div>
 
-            <div class="col-auto text-center border border-success rounded-3 ">
+            <div class="col-lg-3 text-center border border-success rounded-3">
                 <div class="  ">
                     <div class=" row  rounded-top-3 bg-success text-white">
                         <div class="col align-middle p-2">
@@ -934,36 +868,41 @@
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-auto border-end border-success align-middle p-2">
+                        <div class="col-6 border-end border-success align-middle p-2">
                             <p class=" mb-0">อยู่ระหว่างดำเนินการ</p>
                             <p class=" mb-0">
                                 <span><?php echo $status_code_4;if($status_code_4 ==''){echo '0';} ?></span>
                             </p>
                         </div>
-                        <div class="col-auto border-end border-success align-middle p-2">
+                        <div class="col-3 border-end border-success align-middle p-2">
                             <p class=" mb-0">เสร็จสิ้น</p>
                             <p class=" mb-0">
                                 <span><?php echo $status_code_5;if($status_code_5 ==''){echo '0';} ?></span>
                             </p>
                         </div>
-                        <div class="col-auto border-end border-success align-middle p-2">
+                        <div class="col-3  border-success align-middle p-2">
                             <p class=" mb-0">ส่งต่อ</p>
                             <p class=" mb-0">
                                 <span><?php echo $status_code_6;if($status_code_6 ==''){echo '0';} ?></span>
-                            </p>
-                        </div>
-                        <div class="col-auto align-middle p-2">
-                            <p class=" mb-0">ยุติการดำเนินการ</p>
-                            <p class=" mb-0">
-                                <span><?php echo $status_code_98;if($status_code_98 ==''){echo '0';} ?></span>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div class="col-lg-1 text-center border border-primary rounded-3">
+                <div class=" row  rounded-top-3 bg-primary">
+                    <div class="col align-middle p-1 mt-2 mb-2 text-white ">
+                        ยุติการดำเนินการ
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col border-warning align-middle p-3 ">
+                        <span><?php echo $status_code_98;if($status_code_98 ==''){echo '0';} ?></span>
+                    </div>
+                </div>
+            </div>
         </div>
-
 
         <div name="who" class="row">
             <div class="col-xl-8 col-lg-6 col-sm-5 col-xs-5"></div>
@@ -1217,9 +1156,9 @@
     </script>
 
     <script>
-        $('.input-daterange input').datepicker({
-            format: 'dd/mm/yyyy'
-        });
+    $('.input-daterange input').datepicker({
+        format: 'dd/mm/yyyy'
+    });
     </script>
 
     <script type="text/javascript">

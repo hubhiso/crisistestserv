@@ -142,27 +142,27 @@
                                             การเข้าใช้งานฟังก์ชั่นต่างๆในระบบ สามารถทำได้ง่าย ไม่ซับซ้อน</td>
                                         <td class="colorbg1">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score11" name="score1" value="5" checked>
+                                                id="score11" name="score1" value="5" <?php if($ck_datetoday_eva == 1){ if($eva1 == 5){ echo "checked";}}else{ echo "checked";} ?>>
                                             <label for="score11"></label>
                                         </td>
                                         <td class="colorbg2">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score12" name="score1" value="4">
+                                                id="score12" name="score1" value="4" <?php if($ck_datetoday_eva == 1){ if($eva1 == 4){ echo "checked";}} ?>>
                                             <label for="score12"></label>
                                         </td>
                                         <td class="colorbg3">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score13" name="score1" value="3">
+                                                id="score13" name="score1" value="3" <?php if($ck_datetoday_eva == 1){ if($eva1 == 3){ echo "checked";}} ?>>
                                             <label for="score13"></label>
                                         </td>
                                         <td class="colorbg4">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score14" name="score1" value="2">
+                                                id="score14" name="score1" value="2" <?php if($ck_datetoday_eva == 1){ if($eva1 == 2){ echo "checked";}} ?>>
                                             <label for="score14"></label>
                                         </td>
                                         <td class="colorbg5">
                                             <input class="is-checkradio has-background-color is-white is-size-4	" type="radio"
-                                                id="score15" name="score1" value="1">
+                                                id="score15" name="score1" value="1" <?php if($ck_datetoday_eva == 1){ if($eva1 == 1){ echo "checked";}} ?>>
                                             <label for="score15 is-size-4	"></label>
                                         </td>
                                     </tr>
@@ -171,27 +171,27 @@
                                         <td class="has-text-left" style="white-space:nowrap;">สามารถค้นหาหรือเข้าถึงข้อมูลที่ต้องการได้ง่าย</td>
                                         <td class="colorbg1">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score21" name="score2" value="5" checked>
+                                                id="score21" name="score2" value="5" <?php if($ck_datetoday_eva == 1){ if($eva2 == 5){ echo "checked";}}else{ echo "checked";} ?>>
                                             <label for="score21"></label>
                                         </td>
                                         <td class="colorbg2">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score22" name="score2" value="4">
+                                                id="score22" name="score2" value="4" <?php if($ck_datetoday_eva == 1){ if($eva2 == 4){ echo "checked";}} ?>>
                                             <label for="score22"></label>
                                         </td>
                                         <td class="colorbg3">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score23" name="score2" value="3">
+                                                id="score23" name="score2" value="3" <?php if($ck_datetoday_eva == 1){ if($eva2 == 3){ echo "checked";}} ?>>
                                             <label for="score23"></label>
                                         </td>
                                         <td class="colorbg4">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score24" name="score2" value="2">
+                                                id="score24" name="score2" value="2" <?php if($ck_datetoday_eva == 1){ if($eva2 == 2){ echo "checked";}} ?>>
                                             <label for="score24"></label>
                                         </td>
                                         <td class="colorbg5">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score25" name="score2" value="1">
+                                                id="score25" name="score2" value="1" <?php if($ck_datetoday_eva == 1){ if($eva2 == 1){ echo "checked";}} ?>>
                                             <label for="score25"></label>
                                         </td>
                                     </tr>
@@ -204,28 +204,28 @@
                                         <td class="colorbg1">
                                             <div class="control">
                                                 <input class="is-checkradio has-background-color is-white" type="radio"
-                                                    id="score31" name="score3" value="5" checked>
+                                                    id="score31" name="score3" value="5" <?php if($ck_datetoday_eva == 1){ if($eva3 == 5){ echo "checked";}}else{ echo "checked";} ?>>
                                                 <label for="score31"></label>
                                             </div>
                                         </td>
                                         <td class="colorbg2">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score32" name="score3" value="4">
+                                                id="score32" name="score3" value="4" <?php if($ck_datetoday_eva == 1){ if($eva3 == 4){ echo "checked";}} ?>>
                                             <label for="score32"></label>
                                         </td>
                                         <td class="colorbg3">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score33" name="score3" value="3">
+                                                id="score33" name="score3" value="3" <?php if($ck_datetoday_eva == 1){ if($eva3 == 3){ echo "checked";}} ?>>
                                             <label for="score33"></label>
                                         </td>
                                         <td class="colorbg4">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score34" name="score3" value="2">
+                                                id="score34" name="score3" value="2" <?php if($ck_datetoday_eva == 1){ if($eva3 == 2){ echo "checked";}} ?>>
                                             <label for="score34"></label>
                                         </td>
                                         <td class="colorbg5">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score35" name="score3" value="1">
+                                                id="score35" name="score3" value="1" <?php if($ck_datetoday_eva == 1){ if($eva3 == 1){ echo "checked";}} ?>>
                                             <label for="score35"></label>
                                         </td>
                                     </tr>
@@ -238,61 +238,61 @@
                                         <td class="colorbg1">
                                             <div class="control">
                                                 <input class="is-checkradio has-background-color is-white" type="radio"
-                                                    id="score41" name="score4" value="5" checked>
+                                                    id="score41" name="score4" value="5" <?php if($ck_datetoday_eva == 1){ if($eva4 == 5){ echo "checked";}}else{ echo "checked";} ?>>
                                                 <label for="score41"></label>
                                             </div>
                                         </td>
                                         <td class="colorbg2">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score42" name="score4" value="4">
+                                                id="score42" name="score4" value="4" <?php if($ck_datetoday_eva == 1){ if($eva4 == 4){ echo "checked";}} ?>>
                                             <label for="score42"></label>
                                         </td>
                                         <td class="colorbg3">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score43" name="score4" value="3">
+                                                id="score43" name="score4" value="3" <?php if($ck_datetoday_eva == 1){ if($eva4 == 3){ echo "checked";}} ?>>
                                             <label for="score43"></label>
                                         </td>
                                         <td class="colorbg4">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score44" name="score4" value="2">
+                                                id="score44" name="score4" value="2" <?php if($ck_datetoday_eva == 1){ if($eva4 == 2){ echo "checked";}} ?>>
                                             <label for="score44"></label>
                                         </td>
                                         <td class="colorbg5">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score45" name="score4" value="1">
+                                                id="score45" name="score4" value="1" <?php if($ck_datetoday_eva == 1){ if($eva4 == 1){ echo "checked";}} ?>>
                                             <label for="score45"></label>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>3</td>
+                                        <td>5</td>
                                         <td class="has-text-left" style="white-space:nowrap;">
                                         สามารถนำข้อมูลการรายงานไปใช้ประโยชน์
                                         </td>
                                         <td class="colorbg1">
                                             <div class="control">
                                                 <input class="is-checkradio has-background-color is-white" type="radio"
-                                                    id="score51" name="score5" value="5" checked>
+                                                    id="score51" name="score5" value="5" <?php if($ck_datetoday_eva == 1){ if($eva5 == 5){ echo "checked";}}else{ echo "checked";} ?>>
                                                 <label for="score51"></label>
                                             </div>
                                         </td>
                                         <td class="colorbg2">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score52" name="score5" value="4">
+                                                id="score52" name="score5" value="4" <?php if($ck_datetoday_eva == 1){ if($eva5 == 4){ echo "checked";}} ?>>
                                             <label for="score52"></label>
                                         </td>
                                         <td class="colorbg3">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score53" name="score5" value="3">
+                                                id="score53" name="score5" value="3" <?php if($ck_datetoday_eva == 1){ if($eva5 == 3){ echo "checked";}} ?>>
                                             <label for="score53"></label>
                                         </td>
                                         <td class="colorbg4">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score54" name="score5" value="2">
+                                                id="score54" name="score5" value="2" <?php if($ck_datetoday_eva == 1){ if($eva5 == 2){ echo "checked";}} ?>>
                                             <label for="score54"></label>
                                         </td>
                                         <td class="colorbg5">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
-                                                id="score55" name="score5" value="1">
+                                                id="score55" name="score5" value="1" <?php if($ck_datetoday_eva == 1){ if($eva5 == 1){ echo "checked";}} ?>>
                                             <label for="score55"></label>
                                         </td>
                                     </tr>

@@ -72,20 +72,38 @@ class OfficerController extends Controller
             
         }
 
-        
         $ck_date = officer_evaluate::where('username','=', $user )->get();
         $today = date("Y-m-d");
+
+        $ck_datetoday_eva = 0;
+        $eva1 = 0;
+        $eva2 = 0;
+        $eva3 = 0;
+        $eva4 = 0;
+        $eva5 = 0;
 
         foreach($ck_date as $date)
         {
             $listdate = date($date->date_notshow);
 
+            $cratedate = date_format($date->created_at, "Y-m-d");
+
             if($today == $listdate){
                 $show_eva = "no";
             }
+
+            if($today == $cratedate){
+                $ck_datetoday_eva = 1;
+                $eva1 = $date->eva1;
+                $eva2 = $date->eva2;
+                $eva3 = $date->eva3;
+                $eva4 = $date->eva4;
+                $eva5 = $date->eva5;
+            }
         }
 
-        return view('officer.home',compact('show_eva'));
+
+        return view('officer.home',compact('show_eva','ck_datetoday_eva','eva1','eva2','eva3','eva4','eva5'));
     }
 
     public function office_eva( Request $request ) {

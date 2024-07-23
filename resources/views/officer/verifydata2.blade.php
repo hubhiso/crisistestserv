@@ -96,7 +96,7 @@
                         <!-- Left side -->
                         <div class="level-left">
                             <div class="level-item">
-                                <label class="label">เลือกจังหวัด</label>
+                                <label class="label">เลือกเขต</label>
                             </div>
                             <div class="level-item">
                                 <div class="select">

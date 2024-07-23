@@ -52,12 +52,12 @@ class OfficerLoginController extends Controller
         if( Auth::guard('officer')->attempt(['username' => $request->username , 'password' => $request->password , 'active' => 'wait' , 'approv' => 'wait'])  ){
 
             Auth::guard('officer')->logout();
-            return redirect()->back()->with(['status'=> 'warning', 'message' => 'Username นี้กำลังรอการอนุมัติจากเจ้าหน้าที่ดูแลระบบ']);
+            return redirect()->back()->with(['status'=> 'warning', 'message' => 'Username นี้กำลังรอการอนุมัติจากเจ้าหน้าที่ผู้ดูแลระบบ']);
 
         }else if( Auth::guard('officer')->attempt(['username' => $request->username , 'password' => $request->password , 'active' => 'no', 'approv' => 'no']) ){
 
             Auth::guard('officer')->logout();
-            return redirect()->back()->with(['status'=> 'danger', 'message' => 'Username นี้ถูกปิดการใช้งานบัญชีผู้ใช้ โปรดแจ้งผู้ดูแลเพื่อเข้าใช้งาน']);
+            return redirect()->back()->with(['status'=> 'danger', 'message' => 'Username นี้ถูกปิดการใช้งานบัญชีผู้ใช้ โปรดแจ้งผู้ดูแลระบบหากต้องการเข้าใช้งาน']);
 
         }else if(Auth::guard('officer')->attempt(['username' => $request->username , 'password' => $request->password ] , $request->remember)){
 

@@ -8,6 +8,10 @@ body {
     size:14px
 }
 
+.custom-dropdown.dropdown-toggle::after {
+    rotate: 270deg !important; 
+}
+
 .indent1 {
 	text-indent: 50px;
 	width:800px;

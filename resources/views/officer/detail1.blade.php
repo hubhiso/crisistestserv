@@ -434,7 +434,7 @@
                         </div-->
                         <div class="control">
                             <a type="button" id="btn_reject" class="button btn_color2">
-                                ปฎิเสธการรับเคส
+                                ปฏิเสธการรับเรื่อง
                             </a>
                         </div>
                         <div class="control">
@@ -463,7 +463,7 @@
                 <section class="modal-card-body">
 
                     <div class="field">
-                        <label class="label">ระบุเหตุผลที่ปฏิเสธไม่รับเรื่อง</label>
+                        <label class="label">ระบุเหตุผลที่ปฏิเสธการรับเรื่อง</label>
                         <div class="control">
                             <textarea class="textarea" name="reason" ></textarea>
                         </div>

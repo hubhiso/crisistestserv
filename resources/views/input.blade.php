@@ -689,8 +689,7 @@
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td class="has-text-left" style="white-space:nowrap;">การเข้าใช้งานระบบ
-                                            สามารถทำได้ ง่ายและรวด</td>
+                                        <td class="has-text-left" style="white-space:nowrap;">การเข้าใช้งานระบบ สามารถทำได้ง่ายและรวดเร็ว</td>
                                         <td class="colorbg1">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
                                                 id="score21" name="score2" value="5" checked>
@@ -721,7 +720,7 @@
                                     <tr>
                                         <td>3</td>
                                         <td class="has-text-left" style="white-space:nowrap;">
-                                            ระบบมีการจัดการระดับความปลอดภัยหรือการกำหนดสิทธิ์<br>การเข้าถึงอย่างเหมาะสม
+                                            ระบบมีการจัดการระดับความปลอดภัยหรือการกำหนดสิทธิ์<br>การเข้าถึงข้อมูลได้อย่างเหมาะสม 
                                         </td>
                                         <td class="colorbg1">
                                             <div class="control">

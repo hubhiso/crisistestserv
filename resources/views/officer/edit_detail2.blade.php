@@ -688,14 +688,14 @@
 
                         </div>
 
-                        <div class="field is-horizontal mt-4">
+                        <div id="div_age" class="field is-horizontal mt-4">
                             <div class="field-label is-normal">
                                 <label class="label">อายุ</label>
                             </div>
                             <div class="field-body">
                                 <div class="field has-addons">
                                     <div class="control">
-                                        <input class="input" name="age" id="age" value="{{$show_detail->age}}" readonly>
+                                        <input class="input" name="age" id="age" value="{{$show_detail->age}}" maxlength="3" readonly>
                                     </div>
                                     <label for="addons" class=" p-2">
                                         ปี
@@ -1479,18 +1479,21 @@ $('input[type=radio][name=check_birthdate]').change(function() {
 if (this.value == 'มี') {
 
     $("#input_birthdate").show();
+    $('#div_age').show();
     $('#age').val('');
     $('#age').attr('readonly', true);
 
 } else if (this.value == 'ไม่มี') {
 
     $("#input_birthdate").hide();
+    $('#div_age').show();
     $('#age').val('');
     $('#age').attr('readonly', false);
 
 } else if (this.value == 'ไม่ระบุ') {
 
     $("#input_birthdate").hide();
+    $('#div_age').hide();
     $('#age').val('');
     $('#age').attr('readonly', false);
 }

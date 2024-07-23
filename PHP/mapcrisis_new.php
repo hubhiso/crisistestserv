@@ -105,7 +105,7 @@ date_default_timezone_set("Asia/Bangkok");
 
                 <a href="automated.php" class="btn tabtype">
                     <div class="p-1">
-                        <i class="fas fa-file-alt">&nbsp;</i> รายงานการละเมิดลิขสิทธิ์
+                        <i class="fas fa-file-alt">&nbsp;</i> รายงานการละเมิดสิทธิ
                     </div>
                 </a>
 
@@ -125,7 +125,7 @@ date_default_timezone_set("Asia/Bangkok");
                             ภาพรวม</a>
 
                         <div class="dropdown dropright">
-                            <a class="dropdown-item dropdown-toggle " id="dropdown-layouts" data-toggle="dropdown"
+                            <a class="dropdown-item dropdown-toggle custom-dropdown" id="dropdown-layouts" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">สรุปกรณีการละเมิดสิทธิ</a>
                             <div class="dropdown-menu color-h3" aria-labelledby="dropdown-layouts">
                                 <a class="dropdown-item " href="report_c3_new.php">แยกตามกรณี
@@ -138,7 +138,7 @@ date_default_timezone_set("Asia/Bangkok");
                         </div>
 
                         <div class="dropdown dropright">
-                            <a class="dropdown-item dropdown-toggle " id="dropdown-layouts" data-toggle="dropdown"
+                            <a class="dropdown-item dropdown-toggle custom-dropdown" id="dropdown-layouts" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">ตารางสรุปการละเมิดสิทธิ</a>
                             <div class="dropdown-menu color-h3" aria-labelledby="dropdown-layouts">
                                 <a class="dropdown-item " href="mapreport1.php">แผนที่
