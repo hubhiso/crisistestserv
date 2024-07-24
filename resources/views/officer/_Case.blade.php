@@ -358,8 +358,8 @@
 
                 <input type="hidden" id="idcase_delete" name="idcase_delete" value="">
 
-                <p class="is-size-5">ต้องการลบเคส <span id="txt_idcase_delete" class="has-text-danger"></span> ใช่ไหม</p>
-                <p >กรุณาตรวจสอบความถูกต้องข้อมูลก่อนยืนยันการลบเคส</p>
+                <p class="is-size-5">ต้องการลบข้อมูล <span id="txt_idcase_delete" class="has-text-danger"></span> ใช่ไหม</p>
+                <p >กรุณาตรวจสอบความถูกต้องข้อมูลก่อนยืนยันการลบข้อมูล</p>
 
             </section>
             <footer class="modal-card-foot">
