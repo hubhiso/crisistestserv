@@ -293,7 +293,7 @@
                                     @elseif($show->active == 'yes')
                                     <p ><span class="has-text-success"><i class="fas fa-check-circle"></i>&nbsp;</span>Active</p>
                                     @elseif($show->active == 'wait')
-                                    <p ><span class="text-warning"><i class="fa-solid fa-clock-rotate-left fa-flip-horizontal "></i> &nbsp;</span>Waiting</p>
+                                    <p ><span class="text-warning"><i class="fa-solid fa-clock-rotate-left fa-flip-horizontal "></i>&nbsp;</span>Waiting</p>
                                     @else
                                     <p class="has-text-secondary"></p>
                                     @endif
