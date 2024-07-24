@@ -376,9 +376,9 @@ class OfficerUpdateController extends Controller
         $pposition = $request->input('pposition');
         $parea = $request->input('parea');
 
-        
+        $iduser = Auth::user()->username;
 
-        $joinofficer = officer::where('name', $username)->first();
+        $joinofficer = officer::where(['username'=> $iduser])->first();
 
         $sharecases = sharecase::where('user_share','=', $joinofficer->username)->get();
 
@@ -526,8 +526,6 @@ class OfficerUpdateController extends Controller
             }
             */
         }
-
-        //$cases = case_input::where(['activecase' => 'yes']);
         
 
         if($Date_start != null){
@@ -581,16 +579,16 @@ class OfficerUpdateController extends Controller
             }
         }
 
-        if($request->input('Filter')<>6){
-            if($joinofficer->group != null && $joinofficer->g_view_all == 'yes'){
-                $groups = officer::where('group','=', $joinofficer->group)->get();
+        if($request->input('Filter') != 6 and $joinofficer->group != NULL and $joinofficer->g_view_all == "yes"){
+
+                $groups = officer::where(['group' => $joinofficer->group])->get();
     
                 foreach ($groups as $group) {
                     //$cases =  $cases->orWhere('prov_id', '=', $group->prov_id );
-                    $cases =  $cases->orWhere('receiver', '=', $group->name );
+                    $cases =  $cases->orWhere(['receiver' =>  $group->name] );
                     $filter++;
                 }
-            }
+
         }
 
         $activecase = "yes";
