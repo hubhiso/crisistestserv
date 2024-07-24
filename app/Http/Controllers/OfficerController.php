@@ -59,7 +59,7 @@ class OfficerController extends Controller
             //$q = auth::get('login_eva');
 
             if(Session::has('login_eva') == 'yes'){
-                if($dd_datecreate >= "1"){
+                if($dd_datecreate >= "31"){
                     $show_eva = "yes";
                 }else{
                     $show_eva = "no";
