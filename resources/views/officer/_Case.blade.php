@@ -21,8 +21,10 @@
             </th>
             <th> ผู้รับเรื่อง </abbr>
             </th>
+            @if($username == "HisoDev")
             <th> ลบข้อมูล </abbr>
             </th>
+            @endif
         </tr>
     </thead>
     <tbody>
@@ -330,11 +332,14 @@
             @endif
 
             <td style=" white-space:nowrap;"><a href='#' title='Receiver'>{{ $case->receiver }}</a></td>
+
+            @if($username == "HisoDev")
             <td>
                 <!--button type="button" class='tag is-medium is-danger is-rounded ' onclick="confirm_delete({{ $case->case_id }},1)" ><span>ลบข้อมูล</span> </button-->
                 <button type="button" class='tag is-medium is-danger is-rounded '
                     onclick="confirm_delete(caseid{{$i}}.value)"><span>ลบข้อมูล</span> </button>
             </td>
+            @endif
         </tr>
         @endforeach
     </tbody>
