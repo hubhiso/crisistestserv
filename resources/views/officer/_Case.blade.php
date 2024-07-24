@@ -104,221 +104,220 @@
 
             @if(($case->receiver == $username )||($case->status == 1)||($username == "Adminfar")||($username == 'adminhatc'))
 
-            @if($case->status == 99)
-            <td class="has-text-left" style=" white-space:nowrap;">ปฏิเสธการรับเรื่อง</td>
-            <td style=" white-space:nowrap;"><a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.open_dt', $case->case_id) }}">
-                    <span>ดูรายละเอียด </span> </a> </td>
-            @elseif( $case->status == 98)
-            <td class="has-text-left" style=" white-space:nowrap;">ยุติการดำเนินการ</td>
-            <td style=" white-space:nowrap;"><a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.open_dt', $case->case_id) }}">
-                    <span>ดูรายละเอียด</span> </a> </td>
-            @elseif( $case->status == 1)
-            <td class="has-text-left" style=" white-space:nowrap;">ยังไม่ได้รับเรื่อง</td>
-            <td style=" white-space:nowrap;"> <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.open_cfm', $case->case_id) }}">
-                    <span>รับเรื่อง</span> </a> </td>
-            @elseif( $case->status == 2)
-            <td class="has-text-left" style=" white-space:nowrap;"> รับเรื่องแล้ว </td>
-            <td style=" white-space:nowrap;">
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.add_detail' , $case->case_id) }}">บันทึกข้อมูล</a>
-            </td>
-            @elseif( $case->status >= 3)
+                @if($case->status == 99)
+                    <td class="has-text-left" style=" white-space:nowrap;">ปฏิเสธการรับเรื่อง</td>
+                    <td style=" white-space:nowrap;"><a class='tag is-medium is-danger has-text-white is-rounded'
+                            href="{{ route('officer.open_dt', $case->case_id) }}">
+                        <span>ดูรายละเอียด </span> </a> </td>
+                @elseif( $case->status == 98)
+                    <td class="has-text-left" style=" white-space:nowrap;">ยุติการดำเนินการ</td>
+                    <td style=" white-space:nowrap;"><a class='tag is-medium is-danger has-text-white is-rounded'
+                            href="{{ route('officer.open_dt', $case->case_id) }}">
+                            <span>ดูรายละเอียด</span> </a> </td>
+                @elseif( $case->status == 1)
+                    <td class="has-text-left" style=" white-space:nowrap;">ยังไม่ได้รับเรื่อง</td>
+                    <td style=" white-space:nowrap;"> <a class='tag is-medium is-danger has-text-white is-rounded'
+                            href="{{ route('officer.open_cfm', $case->case_id) }}">
+                            <span>รับเรื่อง</span> </a> </td>
+                @elseif( $case->status == 2)
+                    <td class="has-text-left" style=" white-space:nowrap;"> รับเรื่องแล้ว </td>
+                    <td style=" white-space:nowrap;">
+                        <a class='tag is-medium is-danger has-text-white is-rounded'
+                            href="{{ route('officer.add_detail' , $case->case_id) }}">บันทึกข้อมูล</a>
+                    </td>
+                @elseif( $case->status >= 3)
 
-            @if($case->status == 3)
-            <td class="has-text-left"> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
-            @elseif($case->status == 4)
-            <td class="has-text-left"> อยู่ระหว่างการดำเนินการ </td>
-            @elseif($case->status == 5)
-            <td class="has-text-left"> ดำเนินการเสร็จสิ้น </td>
-            @elseif($case->status ==6)
-            <td class="has-text-left">  ดำเนินการแล้วส่งต่อ </td>
-            @endif
+                    @if($case->status == 3)
+                        <td class="has-text-left"> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
+                    @elseif($case->status == 4)
+                        <td class="has-text-left"> อยู่ระหว่างการดำเนินการ </td>
+                    @elseif($case->status == 5)
+                        <td class="has-text-left"> ดำเนินการเสร็จสิ้น </td>
+                    @elseif($case->status ==6)
+                        <td class="has-text-left">  ดำเนินการแล้วส่งต่อ </td>
+                    @endif
 
-            <td><a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.add_activities' , $case->case_id) }}"> <span>
-                        ดำเนินการ </span> </a> </td>
-            @else
+                    <td><a class='tag is-medium is-danger has-text-white is-rounded'
+                            href="{{ route('officer.add_activities' , $case->case_id) }}"> <span>
+                                ดำเนินการ </span> </a> </td>
+                @else
 
-            <td class="has-text-left"> รับเรื่องแล้ว </td>
-            <td class="has-text-left"><a class='tag is-medium is-danger has-text-white is-rounded' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล
-                    </span> </a>
-            </td>
-            @endif
-
-            @else
-
-            @if($case->status == 99)
-            <td class="has-text-left">ปฏิเสธการรับเรื่อง</td>
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
-            @elseif( $case->status == 98)
-            <td class="has-text-left">ยุติการดำเนินการ</td>
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
-            @elseif( $case->status == 2)
-            <td class="has-text-left"> รับเรื่องแล้ว </td>
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
-            @elseif($case->status == 3)
-
-            <td class="has-text-left"> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
-
-            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1)
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.view_detail2', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
-            @else
-
-            <?php $ck_share = 0; ?>
-            @foreach($sharecases as $sharecase)
-
-            @if($case->case_id == $sharecase->case_id)
-            <?php $ck_share++; ?>
-            @endif
-
-
-
-            <?php  ?>
-
-            @endforeach
-
-            @if($ck_share >0)
-
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.view_detail2', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
+                    <td class="has-text-left"> รับเรื่องแล้ว </td>
+                    <td class="has-text-left"><a class='tag is-medium is-danger has-text-white is-rounded' href="{{ route('data.detail2') }}"> <span> บันทึกข้อมูล
+                            </span> </a>
+                    </td>
+                @endif
 
             @else
 
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด </span> </a>
-            </td>
+                @if($case->status == 99)
+                    <td class="has-text-left">ปฏิเสธการรับเรื่อง</td>
+                    <td>
+                        <a class='tag is-medium is-danger has-text-white is-rounded'
+                            href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                    </td>
+                @elseif( $case->status == 98)
+                    <td class="has-text-left">ยุติการดำเนินการ</td>
+                    <td>
+                        <a class='tag is-medium is-danger has-text-white is-rounded'
+                            href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                    </td>
+                @elseif( $case->status == 2)
+                    <td class="has-text-left"> รับเรื่องแล้ว </td>
+                    <td>
+                        <a class='tag is-medium is-danger has-text-white is-rounded'
+                            href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                    </td>
+                @elseif($case->status == 3)
 
-            @endif
+                    <td class="has-text-left"> บันทึกข้อมูลเพิ่มเติมแล้ว </td>
 
-            @endif
-            @elseif($case->status == 4)
+                    @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1)
+                        <td>
+                            <a class='tag is-medium is-danger has-text-white is-rounded'
+                                href="{{ route('officer.view_detail2', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                        </td>
+                    @else
 
-            <td> อยู่ระหว่างการดำเนินการ </td>
-            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1)
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
-            @else
+                        <?php $ck_share = 0; ?>
+                        @foreach($sharecases as $sharecase)
 
-            <?php $ck_share = 0; ?>
-            @foreach($sharecases as $sharecase)
+                            @if($case->case_id == $sharecase->case_id)
+                            <?php $ck_share++; ?>
+                            @endif
 
-            @if($case->case_id == $sharecase->case_id)
-            <?php $ck_share++; ?>
-            @endif
+                        @endforeach
 
-            @endforeach
+                        @if($ck_share >0)
 
-            @if($ck_share > 0)
+                            <td>
+                                <a class='tag is-medium is-danger has-text-white is-rounded'
+                                    href="{{ route('officer.view_detail2', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                            </td>
 
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
+                        @else
 
-            @else
+                            <td>
+                                <a class='tag is-medium is-danger has-text-white is-rounded'
+                                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด </span> </a>
+                            </td>
 
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
+                        @endif
 
-            @endif
+                    @endif
+                @elseif($case->status == 4)
+
+                    <td> อยู่ระหว่างการดำเนินการ </td>
+                    @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1)
+                        <td>
+                            <a class='tag is-medium is-danger has-text-white is-rounded'
+                                href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                        </td>
+                    @else
+
+                        <?php $ck_share = 0; ?>
+                        @foreach($sharecases as $sharecase)
+
+                            @if($case->case_id == $sharecase->case_id)
+                            <?php $ck_share++; ?>
+                            @endif
+
+                        @endforeach
+
+                        @if($ck_share > 0)
+
+                            <td>
+                                <a class='tag is-medium is-danger has-text-white is-rounded'
+                                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                            </td>
+
+                        @else
+
+                            <td>
+                                <a class='tag is-medium is-danger has-text-white is-rounded'
+                                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                            </td>
+
+                        @endif
 
 
-            @endif
-            @elseif($case->status == 5)
+                    @endif
 
-            <td class="has-text-left"> ดำเนินการเสร็จสิ้น </td>
-            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1 )
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
-            @else
-            <?php $ck_share = 0; ?>
-            @foreach($sharecases as $sharecase)
+                @elseif($case->status == 5)
 
-            @if($case->case_id == $sharecase->case_id)
-            <?php $ck_share++; ?>
-            @endif
+                    <td class="has-text-left"> ดำเนินการเสร็จสิ้น </td>
+                    @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1 )
+                        <td>
+                            <a class='tag is-medium is-danger has-text-white is-rounded'
+                                href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                        </td>
+                    @else
+                        <?php $ck_share = 0; ?>
+                        @foreach($sharecases as $sharecase)
 
-            @endforeach
+                            @if($case->case_id == $sharecase->case_id)
+                            <?php $ck_share++; ?>
+                            @endif
 
-            @if($ck_share > 0)
+                        @endforeach
 
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
+                        @if($ck_share > 0)
 
-            @else
+                            <td>
+                                <a class='tag is-medium is-danger has-text-white is-rounded'
+                                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                            </td>
 
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
+                        @else
 
-            @endif
-            @endif
-            @elseif($case->status == 6)
-            <td class="has-text-left"> ดำเนินการแล้วส่งต่อ </td>
-            @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1 )
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
-            @else
-            <?php $ck_share = 0; ?>
-            @foreach($sharecases as $sharecase)
+                            <td>
+                                <a class='tag is-medium is-danger has-text-white is-rounded'
+                                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                            </td>
 
-            @if($case->case_id == $sharecase->case_id)
-            <?php $ck_share++; ?>
-            @endif
+                        @endif
+                    @endif
+            
+                @elseif($case->status == 6)
+                    <td class="has-text-left"> ดำเนินการแล้วส่งต่อ </td>
+                    @if(Auth::user()->position == 'admin' || Auth::user()->g_view_all == 'yes' || $ck_prev_transfer == 1 )
+                        <td>
+                            <a class='tag is-medium is-danger has-text-white is-rounded'
+                                href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                        </td>
+                    @else
+                        <?php $ck_share = 0; ?>
+                        @foreach($sharecases as $sharecase)
 
-            @endforeach
+                            @if($case->case_id == $sharecase->case_id)
+                            <?php $ck_share++; ?>
+                            @endif
 
-            @if($ck_share > 0)
+                        @endforeach
 
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
+                        @if($ck_share > 0)
 
-            @else
+                            <td>
+                                <a class='tag is-medium is-danger has-text-white is-rounded'
+                                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                            </td>
 
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
+                        @else
 
-            <td>
-                <a class='tag is-medium is-danger has-text-white is-rounded'
-                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
-            </td>
+                            <td>
+                                <a class='tag is-medium is-danger has-text-white is-rounded'
+                                    href="{{ route('officer.open_dt', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                            </td>
 
-            @endif
-            @endif
-            @endif
+                            <!--td>
+                                <a class='tag is-medium is-danger has-text-white is-rounded'
+                                    href="{{ route('officer.view_activities', $case->case_id) }}"><span>ดูรายละเอียด</span> </a>
+                            </td-->
+
+                        @endif
+                    @endif
+                @endif
+
             @endif
 
             @if($case->sender_case == 1 )
