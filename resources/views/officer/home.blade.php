@@ -161,9 +161,9 @@
                                             <label for="score14"></label>
                                         </td>
                                         <td class="colorbg5">
-                                            <input class="is-checkradio has-background-color is-white is-size-4	" type="radio"
+                                            <input class="is-checkradio has-background-color is-white" type="radio"
                                                 id="score15" name="score1" value="1" <?php if($ck_datetoday_eva == 1){ if($eva1 == 1){ echo "checked";}} ?>>
-                                            <label for="score15 is-size-4	"></label>
+                                            <label for="score15 is-size-4"></label>
                                         </td>
                                     </tr>
                                     <tr>
