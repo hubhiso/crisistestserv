@@ -527,7 +527,7 @@ class OfficerUpdateController extends Controller
             */
         }
 
-        $cases = case_input::where(['activecase' => 'yes']);
+        //$cases = case_input::where(['activecase' => 'yes']);
         
 
         if($Date_start != null){
@@ -592,12 +592,15 @@ class OfficerUpdateController extends Controller
                 }
             }
         }
+
+        $activecase = "yes";
         
         if($filter > 0){
+            $cases = $cases->Where(['activecase' => $activecase] );
             $cases = $cases->get();
           //var_dump($cases);
         }else{
-            $cases = case_input::Where('prov_id','=',$pid);
+            $cases = case_input::Where(['activecase' => $activecase],['prov_id','=',$pid]);
         }
 
         $html = view('officer._Case',compact('cases','username','join_transfers','sharecases'))->render();
