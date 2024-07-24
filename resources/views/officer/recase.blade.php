@@ -80,7 +80,7 @@
                             <span class="icon is-small">
                                 <i class="fa-solid fa-clock-rotate-left"></i>
                             </span>
-                            <span>กู้คืนเคส</span>
+                            <span>กู้คืนข้อมูล</span>
                         </a>
                     </li>
                 </ul>
@@ -89,7 +89,7 @@
             <div class="content">
                 <h3>
                     <sapn class="has-text-danger"><i class="fa-solid fa-clock-rotate-left "></i></sapn>
-                    กู้คืนเคส
+                    กู้คืนข้อมูล
                 </h3>
                 <br>
 
@@ -298,7 +298,7 @@
                             <input type="hidden" id="caseid{{$i}}" name="caseid" value="{{ $show->case_id }}">
                             <td style="text-align: center;">{{$i}}</td>
                             <td style="text-align: center;"> <button type="button" class='tag is-medium is-danger is-rounded '
-                            onclick="confirm_recover(caseid{{$i}}.value)"><span>กู้คืนเคส</span> </button> </td>
+                            onclick="confirm_recover(caseid{{$i}}.value)"><span>กู้คืนข้อมูล</span> </button> </td>
                             <td style=" white-space:nowrap;">
                                 {{date('d',strtotime(str_replace('-','/', $show->created_at)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $show->created_at)))]}}{{date("Y",strtotime(str_replace('-','/', $show->created_at)))+543}}
                             </td>
@@ -392,15 +392,15 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title">ยืนยันการกู้คืนเคส</p>
+                    <p class="modal-card-title">ยืนยันการกู้คืนข้อมูล</p>
                     <button type="button" class="delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
 
                     <input type="hidden" id="idcase_recover" name="idcase_recover" value="">
 
-                    <p class="is-size-5">ต้องการกู้คืนเคส <span id="txt_idcase_recover" class="has-text-danger"></span> ใช่ไหม</p>
-                    <p >กรุณาตรวจสอบความถูกต้องข้อมูลก่อนยืนยันการกู้คืนเคส</p>
+                    <p class="is-size-5">ต้องการกู้คืนข้อมูล <span id="txt_idcase_recover" class="has-text-danger"></span> ใช่ไหม</p>
+                    <p >กรุณาตรวจสอบความถูกต้องข้อมูลก่อนยืนยันการกู้คืนข้อมูล</p>
 
                 </section>
                 <footer class="modal-card-foot">

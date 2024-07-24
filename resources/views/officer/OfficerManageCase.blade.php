@@ -253,7 +253,7 @@
 
                     <!-- Right side -->
                     <div class="level-right">
-                        <a href="{{ route('officer.recase') }}" class="button is-danger">กู้คืนข้อมูลที่ลบไป</a>
+                        <a href="{{ route('officer.recase') }}" class="button is-danger">กู้คืนข้อมูล</a>
                     </div>
                 </div>
                     
