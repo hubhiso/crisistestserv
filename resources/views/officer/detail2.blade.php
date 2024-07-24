@@ -650,7 +650,7 @@
                             <div class="field-body">
                                 <div class="field has-addons">
                                     <div class="control">
-                                        <input class="input" type="text" name="age" id="age" maxlength="3" readonly>
+                                        <input class="input" type="number" type="text" name="age" id="age" maxlength="3" readonly>
                                     </div>
                                     <label for="addons" class=" p-2">
                                         ปี

@@ -695,7 +695,7 @@
                             <div class="field-body">
                                 <div class="field has-addons">
                                     <div class="control">
-                                        <input class="input" name="age" id="age" value="{{$show_detail->age}}" maxlength="3" readonly>
+                                        <input class="input" type="number" name="age" id="age" value="{{$show_detail->age}}" maxlength="3" readonly>
                                     </div>
                                     <label for="addons" class=" p-2">
                                         ปี
