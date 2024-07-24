@@ -43,7 +43,7 @@
         $sql = "SELECT group_code, r_group_code.name, count(group_code) as count
         from case_inputs
         left join r_group_code
-        on r_group_code.code = case_inputs.group_code
+        on r_group_code.code = case_inputs.group_code and case_inputs.activecase = 'yes'
         GROUP BY group_code";
 
         $result1 = mysqli_query($conn, $sql); 
@@ -61,7 +61,7 @@
         from case_inputs
         left join r_group_code
         on r_group_code.code = case_inputs.group_code
-        where group_code <> '' and group_code = '1'
+        where case_inputs.activecase = 'yes' and group_code <> '' and group_code = '1'
         GROUP BY group_code, case_inputs.sex";
 
         $result2 = mysqli_query($conn, $sql2); 

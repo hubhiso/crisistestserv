@@ -163,7 +163,7 @@
         $sql = "SELECT prov_id, prov_geo.prov_name_en, prov_geo.name,
         $sub_q
         FROM case_inputs c, prov_geo
-        where prov_geo.code = c.prov_id
+        where c.activecase = 'yes' and prov_geo.code = c.prov_id
         and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
         group by prov_id order by ccase desc";
 

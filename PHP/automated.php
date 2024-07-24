@@ -315,7 +315,8 @@
         $query = "select prov_id,p.name as provname,nhso,p.pilot_province,count(case_id) as total ";
         $query .= "from case_inputs c inner join prov_geo p on c.prov_id = p.code ";
         $query .=  $query_region;
-        $query .=  $query_date_range;
+        $query .=  $query_date_range; 
+        $query .= " and c.activecase = 'yes' ";
         $query .= " group by c.prov_id ";
         $query .= " order by cast(nhso as signed),prov_id asc;";
 
@@ -325,13 +326,12 @@
         $query .= "from case_inputs c inner join prov_geo p on c.prov_id = p.code inner join officers o on c.receiver_id = o.id ";
         $query .=  $query_date_range;
         $query .=  $query_region;
+        $query .= " and c.activecase = 'yes' ";
         $query .= " group by o.nameorg ";
         $query .= " order by cast(nhso as signed),c.prov_id asc;";
 
-
     }
 
-    //echo $query;
 			
 					$result = mysqli_query($conn,$query);
 
@@ -368,6 +368,7 @@
                                     $query_case .= "where (prov_id = '".$rows["prov_id"]."') and (sender_case is not null) ";
                                     $query_case .=  $query_region;
                                     $query_case .=  $query_date_range;
+                                    $query_case .= " and c.activecase = 'yes' ";
                                     $query_case .= "group by c.problem_case ";
                                     $query_case .= "order by problem_case asc;";
                                 }else{
@@ -377,6 +378,7 @@
                                     $query_case .= "where (c.prov_id = '".$rows["prov_id"]."') and (sender_case is not null) and (nameorg = '".$rows["nameorg"]."')  ";
                                     $query_case .=  $query_region;
                                     $query_case .=  $query_date_range;
+                                    $query_case .= " and c.activecase = 'yes' ";
                                     $query_case .= "group by c.problem_case ";
                                     $query_case .= "order by problem_case asc;";
 
@@ -514,6 +516,7 @@
 					$query .= "where problem_case = '4' ";
 					$query .=  $query_date_range;
                     $query .=  $query_region;
+                    $query .= " and c.activecase = 'yes' ";
 					$query .= "group by c.group_code;";
 
                     //echo $query;
@@ -554,6 +557,7 @@
                         $query .= "where (sender_case is not null) ";
                         $query .=  $query_date_range;
                         $query .=  $query_region;
+                        $query .= " and c.activecase = 'yes' ";
                     /*
                     
                     }else{
@@ -605,6 +609,7 @@
 					$query .= "where c.`status` = '5' and sender_case is not null ";
 					$query .=  $query_date_range;
                     $query .=  $query_region;
+                    $query .= " and c.activecase = 'yes' ";
 
 					//echo $query;
 		     		//mysqli_query($query);
@@ -660,6 +665,7 @@
 				$query .=  " where 1 ";
 				$query .=  $query_date_range;
                 $query .=  $query_region;
+                $query .= " and c.activecase = 'yes' ";
                 $query .= "GROUP BY problem_case order by problem_case;";
 				
 				//echo $query;
@@ -706,8 +712,9 @@
 					$query .= "subtype_offender,";
 					$query .= "count(subtype_offender) as total ";
 					$query .= "FROM case_inputs c inner join add_details a on c.case_id = a.case_id ";
-					$query .= "where sender_case is not null ";
+					$query .= "where c.activecase = 'yes' and sender_case is not null ";
 					$query .=  $query_date_range;
+                    $query .= " and c.activecase = 'yes' ";
 					$query .= " group by a.subtype_offender";
 					$query .= " order by total desc;";
 					

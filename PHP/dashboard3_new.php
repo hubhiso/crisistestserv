@@ -185,7 +185,7 @@
             
         $sql_of = "SELECT a.subtype_offender, count(a.subtype_offender) as suboff 
         FROM add_details a , case_inputs c , prov_geo
-        where c.case_id = a.case_id  and prov_geo.code = c.prov_id
+        where c.activecase = 'yes' and c.case_id = a.case_id  and prov_geo.code = c.prov_id
         and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
         $pr_q
         group by a.subtype_offender";
@@ -205,7 +205,7 @@
         
         $sql_c1 = "SELECT problem_case, r_problem_case.name,count(problem_case) as case1 
         FROM case_inputs c ,r_problem_case , prov_geo
-        WHERE r_problem_case.code = c.problem_case and prov_geo.code = c.prov_id
+        WHERE c.activecase = 'yes' and r_problem_case.code = c.problem_case and prov_geo.code = c.prov_id
         $pr_q
         and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
         group by problem_case order by case1 desc";
@@ -228,7 +228,7 @@
         sum(a.cause_type4) as cause4, 
         sum(a.etc) as cause5, sum(a.cause_type1 or a.cause_type2 or a.cause_type3 or a.cause_type4 or a.etc) as alls
         FROM add_details a , case_inputs c, prov_geo
-        where c.case_id = a.case_id and prov_geo.code = c.prov_id
+        where c.activecase = 'yes' and c.case_id = a.case_id and prov_geo.code = c.prov_id
         $pr_q
         and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'";
         
@@ -248,7 +248,7 @@
 
         $sql_c3 = "SELECT c.group_code, r.name, count(c.group_code) as c3 
         FROM case_inputs c, r_group_code r , prov_geo
-        WHERE  c.group_code = r.code and prov_geo.code = c.prov_id
+        WHERE c.activecase = 'yes' and  c.group_code = r.code and prov_geo.code = c.prov_id
         $pr_q and c.problem_case = '4'
         and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
         group by c.group_code ";
@@ -273,7 +273,7 @@
         
         $sql_c4 = "SELECT c.sub_problem, r.name,count(sub_problem) as c4 
         FROM case_inputs c ,r_sub_problem r , prov_geo
-        WHERE r.code = c.sub_problem and prov_geo.code = c.prov_id
+        WHERE c.activecase = 'yes' and r.code = c.sub_problem and prov_geo.code = c.prov_id
         and c.problem_case = '1' 
         $pr_q
         and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
@@ -306,7 +306,7 @@
         sum(CASE WHEN status = '98' THEN 1 ELSE 0 END) as casestep98,
         sum(CASE WHEN status = '99' THEN 1 ELSE 0 END) as casestep99
         FROM case_inputs c , prov_geo
-        where  prov_geo.code = c.prov_id and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
+        where c.activecase = 'yes' and  prov_geo.code = c.prov_id and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
 		$pr_q ";
 
         //echo $sql_c5;
@@ -331,7 +331,7 @@
     <?php
         $sql1 = "SELECT c.status,count(c.id) as n_status 
         FROM case_inputs c , prov_geo
-        WHERE prov_geo.code = c.prov_id and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
+        WHERE c.activecase = 'yes' and prov_geo.code = c.prov_id and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
         $pr_q
         group by c.status";
         
@@ -393,7 +393,7 @@
             $prloop = $i;
         }
 
-        $sql = "SELECT count(*) as count_pr, code, prov_geo.prov_name_en, prov_geo.name as prname from case_inputs c left join prov_geo on prov_id = code where date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
+        $sql = "SELECT count(*) as count_pr, code, prov_geo.prov_name_en, prov_geo.name as prname from case_inputs c left join prov_geo on prov_id = code where c.activecase = 'yes' and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
         $pr_q group by code";
         $result1 = mysqli_query($conn, $sql); 
         
@@ -415,19 +415,19 @@
         if($nhso != 0){
 
             if($pr != 0){
-                $strSQL = "SELECT count(*) as total , c.amphur_id as DISTRICTID, a.AMPHUR_NAME as area_name from case_inputs c left join prov_geo on c.prov_id = code left join amphurs a on c.amphur_id = a.AMPHUR_CODE where  date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' $pr_q group by c.amphur_id, a.AMPHUR_NAME order by c.amphur_id asc; ";
+                $strSQL = "SELECT count(*) as total , c.amphur_id as DISTRICTID, a.AMPHUR_NAME as area_name from case_inputs c left join prov_geo on c.prov_id = code left join amphurs a on c.amphur_id = a.AMPHUR_CODE where c.activecase = 'yes' and  date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' $pr_q group by c.amphur_id, a.AMPHUR_NAME order by c.amphur_id asc; ";
             }else{
 
-                $strSQL = " SELECT count(*) AS total, c.prov_id AS province , p.nhso , p.name as area_name FROM case_inputs c inner join prov_geo p ON p.code = c.prov_id WHERE date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' $pr_q  GROUP BY c.prov_id;";
+                $strSQL = " SELECT count(*) AS total, c.prov_id AS province , p.nhso , p.name as area_name FROM case_inputs c inner join prov_geo p ON p.code = c.prov_id WHERE c.activecase = 'yes' and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' $pr_q  GROUP BY c.prov_id;";
             }
         }else{
             if($pr != 0){
 
-                $strSQL = "SELECT count(*) as total , c.amphur_id as DISTRICTID, a.AMPHUR_NAME as area_name from case_inputs c left join prov_geo on c.prov_id = code left join amphurs a on c.amphur_id = a.AMPHUR_CODE where date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' $pr_q group by c.amphur_id, a.AMPHUR_NAME order by c.amphur_id asc; ";
+                $strSQL = "SELECT count(*) as total , c.amphur_id as DISTRICTID, a.AMPHUR_NAME as area_name from case_inputs c left join prov_geo on c.prov_id = code left join amphurs a on c.amphur_id = a.AMPHUR_CODE where c.activecase = 'yes' and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' $pr_q group by c.amphur_id, a.AMPHUR_NAME order by c.amphur_id asc; ";
 
             }else{
 
-                $strSQL = "SELECT count(*) as total, nhso AS area_name from case_inputs c left join prov_geo on prov_id = code where date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' group by nhso order by total desc ;";
+                $strSQL = "SELECT count(*) as total, nhso AS area_name from case_inputs c left join prov_geo on prov_id = code where c.activecase = 'yes' and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' group by nhso order by total desc ;";
 
             }
         }

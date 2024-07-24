@@ -569,7 +569,7 @@
                         
 						FROM case_inputs c
                         left join add_details a on c.case_id = a.case_id
-						where receiver='".$row1['name']."'
+						where c.activecase = 'yes' and receiver='".$row1['name']."'
 						and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
 						group by receiver";
 

@@ -177,7 +177,7 @@
 
 		$sql1 = "SELECT r.code,r.name,c.status,count(c.id) as n_status 
 		FROM r_status r left join case_inputs c on r.code = c.status  left join prov_geo on prov_geo.code = c.prov_id
-		where  date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
+		where c.activecase = 'yes' and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
 		$pr_q
 		group by r.code";
 		

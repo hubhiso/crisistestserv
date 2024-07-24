@@ -728,7 +728,7 @@
         }
         </script>
 
-    <script>
+        <script>
         function setprov(se,ck1) {
 
             var pr_code = <?php echo json_encode($pr_code); ?>;

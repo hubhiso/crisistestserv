@@ -181,7 +181,7 @@
 		sum(CASE WHEN problem_case = '4' THEN 1 ELSE 0 END) as case4,
 		sum(CASE WHEN problem_case = '5' THEN 1 ELSE 0 END) as case5,
 		count(problem_case) as sum
-		FROM case_inputs c left join prov_geo on prov_geo.code = c.prov_id where 
+		FROM case_inputs c left join prov_geo on prov_geo.code = c.prov_id where c.activecase = 'yes' and
         date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
 		$sub_q $pr_q
 		";

@@ -19,7 +19,7 @@
 
 
         $sql = "SELECT year(created_at) as y ,month(created_at) as m,count(*) as count
-        from case_inputs group by year(created_at), month(created_at)";
+        from case_inputs where activecase = 'yes'  group by year(created_at), month(created_at)";
 
         //echo "<br>".$sql;
 
@@ -34,7 +34,7 @@
             $last_i = $i;
         }
 
-        $sql = "SELECT year(created_at) as y  from case_inputs group by year(created_at) ORDER by y desc";
+        $sql = "SELECT year(created_at) as y  from case_inputs where activecase = 'yes'  group by year(created_at) ORDER by y desc";
         $result1 = mysqli_query($conn, $sql); 
         $row = mysqli_num_rows($result1); 
         $i = 0;        
@@ -55,7 +55,7 @@
             sum(case when problem_case = 5 THEN 1 ELSE 0 END) as case5, 
             sum(case when problem_case = 6 THEN 1 ELSE 0 END) as case6 
             from case_inputs 
-            where date(created_at) BETWEEN '".($y_count[$i]-1)."-10-01' and '".$y_count[$i]."-09-30' 
+            where activecase = 'yes' and  date(created_at) BETWEEN '".($y_count[$i]-1)."-10-01' and '".$y_count[$i]."-09-30' 
             group by month";
 
             $result2 = mysqli_query($conn, $sql2); 
@@ -251,7 +251,7 @@
                 <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                 <span>รายปี</span>
             </a>
-            <a class="btn btn-primary btn-rounded" href="dashboard6_new2.php">
+            <a class="btn btn_color1 btn-rounded" href="dashboard6_new2.php">
                 <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                 <span>รายเดือน</span>
             </a>

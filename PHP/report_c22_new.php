@@ -471,7 +471,7 @@
                     sum(CASE WHEN problem_case = '3' and sub_problem = '2' THEN 1 ELSE 0 END) as case3_2,
                     sum(CASE WHEN problem_case = '3' THEN 1 ELSE 0 END) as sum
                     FROM case_inputs c
-                    where receiver='".$row1['name']."'
+                    where c.activecase = 'yes' and receiver='".$row1['name']."'
                     and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
                     group by receiver";
 

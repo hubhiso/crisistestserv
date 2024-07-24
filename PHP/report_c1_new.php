@@ -482,7 +482,7 @@
                     ON last_update.id = c.id
                     inner join officers f on c.ousername = f.username
                     inner join case_inputs ca on c.case_id = ca.case_id
-                    where f.name = '".$row1['name']."' 
+                    where ca.activecase = 'yes' and f.name = '".$row1['name']."' 
                     and date(ca.created_at) >= '".date($date_s)."' and date(ca.created_at) <= '".date($date_e)."' ";
                     
                     $ousername = 0;
@@ -501,7 +501,7 @@
                     ON last_update.id = c.id
                     inner join officers f on c.prev_ousername = f.username
                     inner join case_inputs ca on c.case_id = ca.case_id
-                    where f.name = '".$row1['name']."' 
+                    where ca.activecase = 'yes' and f.name = '".$row1['name']."' 
                     and date(ca.created_at) >= '".date($date_s)."' and date(ca.created_at) <= '".date($date_e)."' ";
                     
                     $prev_ousername = 0;
@@ -522,7 +522,7 @@
                     sum(CASE WHEN status = '6' THEN 1 ELSE 0 END) as case6,
                     count(status) as sum
                     FROM case_inputs c
-                    where receiver='".$row1['name']."'
+                    where c.activecase = 'yes' and receiver='".$row1['name']."'
                     and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
                     $sub_q
                     group by receiver";

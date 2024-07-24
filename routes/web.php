@@ -26,6 +26,7 @@ Route::prefix('manager')->group(function (){
     Route::post('/transfer_cfm', 'ManagerController@transfer_cfm')->name('manager.transfer_cfm');
 
     Route::post('/deletecase_cfm', 'ManagerController@deletecase_cfm')->name('manager.deletecase_cfm');
+    Route::post('/recovercase_cfm', 'ManagerController@recovercase_cfm')->name('manager.recovercase_cfm');
    
     Route::prefix('transfer_case')->group(function (){
         Route::get('ajax-amphur/{prov_id}','ManagerController@ajax_amphur');
@@ -106,6 +107,9 @@ Route::prefix('officer')->group(function () {
     Route::get('/view_officer', 'ManageofficerController@view_officer')->name('officer.view_officer');
 
     //Route::post('/emailapprov', 'EmailController@sendEmailapprov')->name('send.emailapprov');
+
+    Route::get('/recase', 'OfficerUpdateController@recase')->name('officer.recase');
+    Route::post('recase', 'OfficerUpdateController@recase')->name('recase');
 
 });
 

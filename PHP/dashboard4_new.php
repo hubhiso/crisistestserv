@@ -57,7 +57,7 @@
         from case_inputs
         left join r_group_code
         on r_group_code.code = case_inputs.group_code
-        where 
+        where case_inputs.activecase = 'yes' and
         date(created_at) BETWEEN '".($years-1)."-10-01' and '".$years."-09-30'
         GROUP BY group_code";
 
@@ -77,7 +77,7 @@
         from case_inputs
         left join r_group_code
         on r_group_code.code = case_inputs.group_code
-        where group_code <> '' and group_code = '1'
+        where case_inputs.activecase = 'yes' and group_code <> '' and group_code = '1'
         and date(created_at) BETWEEN '".($years-1)."-10-01' and '".$years."-09-30'
         GROUP BY group_code, case_inputs.sex";
 

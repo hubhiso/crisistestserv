@@ -384,6 +384,7 @@ class OfficerUpdateController extends Controller
 
         $join_transfers = casetransfer::where('prev_ousername' ,'=', $joinofficer->username)->distinct()->get();
 
+        
 
         if(Auth::user()->position == "admin" || Auth::user()->p_view_all == "yes"){
             if($request->input('Filter')==1){
@@ -463,8 +464,7 @@ class OfficerUpdateController extends Controller
                 $filter ++;
             }
 
-        }
-        else{
+        }else{
             if($request->input('Filter')==1){
                 $matchThese = ['prov_id'=>$pid ];
                 //$test = "->orWhere('prov_id'=> '11' )";
@@ -526,6 +526,8 @@ class OfficerUpdateController extends Controller
             }
             */
         }
+
+        $cases = case_input::where(['activecase' => 'yes']);
         
 
         if($Date_start != null){
@@ -762,6 +764,49 @@ class OfficerUpdateController extends Controller
         $show_prov = province::join('prov_geo', 'PROVINCE_CODE', '=', 'prov_geo.code')->orderBy('PROVINCE_NAME', 'asc')->get();
         
         return view('officer.verifydata2',compact('show_data','show_prov','prov_id_se','nhso_se','problem_case_se','pcase_se'));
+
+    }
+
+    public function recase(Request $request){
+
+        $nhso_se = $request->input('nhso');
+        $prov_id_se = $request->input('prov_id');
+
+        $problem_case_se = $request->input('problem_case');
+        $pcase_se = $request->input('pcase');
+
+        $activecase = "no";
+
+        $show_activecase_no = case_input::leftjoin('prov_geo', 'prov_id', '=', 'prov_geo.code')
+        ->leftjoin('r_problem_case', 'problem_case', '=', 'r_problem_case.code')
+        ->leftjoin('r_sub_problem', 'sub_problem', '=', 'r_sub_problem.code')
+        ->leftjoin('r_group_code', 'group_code', '=', 'r_group_code.code');
+
+        if (isset($nhso_se) && $nhso_se != "0") {
+            $show_activecase_no =  $show_activecase_no->Where('prov_geo.nhso','=',$nhso_se);
+        }
+
+        if (isset($prov_id_se) && $prov_id_se != "0") {
+            $show_activecase_no =  $show_activecase_no->Where('case_inputs.prov_id','=',$prov_id_se);
+        }
+
+        if (isset($problem_case_se) && $problem_case_se != "0") {
+            $show_activecase_no =  $show_activecase_no->Where('r_problem_case.code','=',$problem_case_se);
+        }
+
+        if (isset($pcase_se) && $pcase_se != "0") {
+            $show_activecase_no =  $show_activecase_no->Where('case_inputs.status','=',$pcase_se);
+        }
+
+        $show_activecase_no =  $show_activecase_no->Where(['case_inputs.activecase' => $activecase]);
+
+        $show_activecase_no =  $show_activecase_no->orderBy('case_inputs.id')->get();
+
+        $show_prov = province::join('prov_geo', 'PROVINCE_CODE', '=', 'prov_geo.code')->orderBy('PROVINCE_NAME', 'asc')->get();
+
+        $username = $request->input('username');
+
+        return view('officer.recase',compact('show_activecase_no','show_prov','prov_id_se','nhso_se','problem_case_se','pcase_se'));
 
     }
 

@@ -20,7 +20,7 @@ echo "\"features\": [";
 
 
 
-$query = " select * from case_inputs where geolat <> '' limit 100;";
+$query = " select * from case_inputs where  activecase = 'yes' and geolat <> '' ;";
 $result1 = mysqli_query($conn, $query);
 $count_row = mysqli_num_rows($result1); 
 

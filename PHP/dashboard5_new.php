@@ -49,7 +49,7 @@
 
     $sql = "SELECT prov_id, prov_geo.prov_name_en, prov_geo.name, count(*) as ccase
 	FROM case_inputs, prov_geo
-	where prov_geo.code = case_inputs.prov_id
+	where case_inputs.activecase = 'yes' and prov_geo.code = case_inputs.prov_id
     and date(created_at) BETWEEN '".($years-1)."-10-01' and '".$years."-09-30'
 	group by prov_id order by ccase desc";
 
@@ -78,7 +78,7 @@
 
     $sql_q1  = "SELECT count(*) as ccase
 	FROM case_inputs
-	where 
+	where activecase = 'yes' and
     date(created_at) BETWEEN '".($years-1)."-10-01' and '".($years-1)."-12-31'
 	group by prov_id order by ccase desc";
 
@@ -92,7 +92,7 @@
 
     $sql_q2  = "SELECT count(*) as ccase
 	FROM case_inputs
-	where 
+	where activecase = 'yes' and
     date(created_at) BETWEEN '".$years."-01-01' and '".$years."-03-31'
 	group by prov_id order by ccase desc";
 
@@ -106,7 +106,7 @@
 
     $sql_q3  = "SELECT count(*) as ccase
 	FROM case_inputs
-	where 
+	where activecase = 'yes' and
     date(created_at) BETWEEN '".$years."-04-01' and '".$years."-06-30'
 	group by prov_id order by ccase desc";
 
@@ -120,7 +120,7 @@
 
     $sql_q4  = "SELECT count(*) as ccase
 	FROM case_inputs
-	where 
+	where activecase = 'yes' and
     date(created_at) BETWEEN '".$years."-07-01' and '".$years."-09-30'
 	group by prov_id order by ccase desc";
 
@@ -346,7 +346,7 @@
 
 
         <div class="text-center ">
-        <a class="btn btn-primary btn-rounded" href="dashboard5_new.php">
+        <a class="btn btn_color1 btn-rounded" href="dashboard5_new.php">
                     <span class="icon is-small"><i class="far fa-chart-bar" aria-hidden="true"></i></span>
                     <span>รายปี</span>
                 </a>

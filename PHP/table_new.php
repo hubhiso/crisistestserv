@@ -903,7 +903,7 @@
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where problem_case = '1'".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and problem_case = '1'".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY status order by r.code asc;";
 				}else if ($class == "4"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name";
@@ -911,19 +911,19 @@
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where problem_case = '1'".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and problem_case = '1'".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY sex order by r.code asc;";
 				}else if ($class == "6"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name ";
 					$strSQL.= " From add_details a left join case_inputs c on a.case_id = c.case_id ";
 					$strSQL.=" left join r_occupation r on  a.occupation = r.code ";
-					$strSQL.=" where problem_case = '1'".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and problem_case = '1'".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY occupation order by r.code asc;";
 				}else if ($class == "7"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name ";
 					$strSQL.= " From add_details a left join case_inputs c on a.case_id = c.case_id ";
 					$strSQL.=" left join r_type_offender r on  a.type_offender = r.code ";
-					$strSQL.=" where problem_case = '1'".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and  problem_case = '1'".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY type_offender order by r.code asc;";
 				}else if ($class == "2"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.nhso as code,r. nhso as name";
@@ -931,7 +931,7 @@
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where problem_case = '1'".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and problem_case = '1'".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY nhso order by r.code asc;";
 				}else if ($class == "5"){
 					$strSQL = "SELECT age_group.code, COUNT(*) AS total
@@ -960,7 +960,7 @@ FROM
         END AS code
     FROM add_details a left join case_inputs c on a.case_id = c.case_id";
 	
-					$strSQL .=" where problem_case = '1' ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL .=" where c.activecase = 'yes' and problem_case = '1' ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL .=") age_group GROUP BY age_group.code";
 					
 				}
@@ -1238,7 +1238,7 @@ FROM
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY status order by r.code asc;";
 				}else if ($class == "4"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name";
@@ -1246,20 +1246,20 @@ FROM
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY sex order by r.code asc;";
 					
 				}else if ($class == "6"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name ";
 					$strSQL.= " From add_details a left join case_inputs c on a.case_id = c.case_id ";
 					$strSQL.=" left join r_occupation r on  a.occupation = r.code ";
-					$strSQL.=" where ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY occupation order by r.code asc;";
 				}else if ($class == "7"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name ";
 					$strSQL.= " From add_details a left join case_inputs c on a.case_id = c.case_id ";
 					$strSQL.=" left join r_type_offender r on  a.type_offender = r.code ";
-					$strSQL.=" where ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY type_offender order by r.code asc;";
 				}else if ($class == "2"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.nhso as code,r. nhso as name";
@@ -1267,7 +1267,7 @@ FROM
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY nhso order by r.code asc;";
 				}else if ($class == "5"){
 					$strSQL = "SELECT age_group.code, COUNT(*) AS total
@@ -1507,7 +1507,7 @@ FROM
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY status order by r.code asc;";
 				}else if ($class == "4"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name";
@@ -1515,19 +1515,19 @@ FROM
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY sex order by r.code asc;";
 				}else if ($class == "6"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name ";
 					$strSQL.= " From add_details a left join case_inputs c on a.case_id = c.case_id ";
 					$strSQL.=" left join r_occupation r on  a.occupation = r.code ";
-					$strSQL.=" where ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY occupation order by r.code asc;";
 				}else if ($class == "7"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name ";
 					$strSQL.= " From add_details a left join case_inputs c on a.case_id = c.case_id ";
 					$strSQL.=" left join r_type_offender r on  a.type_offender = r.code ";
-					$strSQL.=" where ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY type_offender order by r.code asc;";
 				}else if ($class == "2"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.nhso as code,r. nhso as name";
@@ -1535,7 +1535,7 @@ FROM
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY nhso order by r.code asc;";
 				}else if ($class == "5"){
 					$strSQL = "SELECT age_group.code, COUNT(*) AS total
@@ -1802,7 +1802,7 @@ FROM
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where problem_case = '5'".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and problem_case = '5'".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY status order by r.code asc;";
 				}else if ($class == "4"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name";
@@ -1810,20 +1810,20 @@ FROM
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where problem_case = '5'".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and problem_case = '5'".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY sex order by r.code asc;";
 
 				}else if ($class == "6"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name ";
 					$strSQL.= " From add_details a left join case_inputs c on a.case_id = c.case_id ";
 					$strSQL.=" left join r_occupation r on  a.occupation = r.code ";
-					$strSQL.=" where problem_case = '5'".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and problem_case = '5'".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY occupation order by r.code asc;";
 				}else if ($class == "7"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.code,r.name ";
 					$strSQL.= " From add_details a left join case_inputs c on a.case_id = c.case_id ";
 					$strSQL.=" left join r_type_offender r on  a.type_offender = r.code ";
-					$strSQL.=" where problem_case = '5'".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and problem_case = '5'".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY type_offender order by r.code asc;";
 				}else if ($class == "2"){
 					$strSQL = "SELECT count(DISTINCT c.case_id) as total,r.nhso as code,r. nhso as name";
@@ -1831,7 +1831,7 @@ FROM
 					//if ($office != "00"){
 						$strSQL.=" left join add_details a on c.case_id = a.case_id ";
 					//}
-					$strSQL.=" where problem_case = '5'".$strSQLstatus[$i]." ".$fillter;
+					$strSQL.=" where c.activecase = 'yes' and problem_case = '5'".$strSQLstatus[$i]." ".$fillter;
 					$strSQL.=" GROUP BY nhso order by r.code asc;";
 				}else if ($class == "5"){
 					$strSQL = "SELECT age_group.code, COUNT(*) AS total
@@ -1860,7 +1860,7 @@ FROM
         END AS code
     FROM add_details a left join case_inputs c on a.case_id = c.case_id";
 	
-					$strSQL .=" where problem_case = '5' ".$strSQLstatus[$i]." ".$fillter;
+					$strSQL .=" where c.activecase = 'yes' and problem_case = '5' ".$strSQLstatus[$i]." ".$fillter;
 					$strSQL .=") age_group GROUP BY age_group.code";
 					
 				}

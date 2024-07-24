@@ -489,7 +489,7 @@
                             return (strtotime($strDate2) - strtotime($strDate1))/  ( 60 * 60 * 24 );  // 1 day = 60*60*24
                         }
                                 
-                        $strSQL_office = "SELECT p.name,o.nameorg as nameorg,p.name as prov_name,o.prov_id,count(c.receiver) as total FROM officers o left join  case_inputs c on o.name = c.receiver left join prov_geo p on o.prov_id = p.code  where (position ='officer' or o.Name = 'adminfar' or o.Name = 'adminhatc') group by o.prov_id,o.nameorg order by p.code;";
+                        $strSQL_office = "SELECT p.name,o.nameorg as nameorg,p.name as prov_name,o.prov_id,count(c.receiver) as total FROM officers o left join  case_inputs c on o.name = c.receiver left join prov_geo p on o.prov_id = p.code  where c.activecase = 'yes' and (position ='officer' or o.Name = 'adminfar' or o.Name = 'adminhatc') group by o.prov_id,o.nameorg order by p.code;";
 
                         $count_no = 0;
 
@@ -505,7 +505,7 @@
                             echo " <td align='center' >".$row_office["total"]."</td>";		
                                 
                             
-                            $strSQL = "SELECT o.name,c.case_id from case_inputs c inner join officers o on c.receiver = o.name where o.nameorg = '".$row_office["nameorg"]."' and o.prov_id = '".$row_office["prov_id"]."' limit 1;";
+                            $strSQL = "SELECT o.name,c.case_id from case_inputs c inner join officers o on c.receiver = o.name where c.activecase = 'yes' and o.nameorg = '".$row_office["nameorg"]."' and o.prov_id = '".$row_office["prov_id"]."' limit 1;";
 
                             $count_find_case_id_total = 0;
                             
@@ -527,7 +527,7 @@
 
                             {
                                 //echo "loop action";
-                                $strSQL_find_case_id = "SELECT  receiver,case_id  from case_inputs where receiver = '".$row["name"]."' ;";
+                                $strSQL_find_case_id = "SELECT  receiver,case_id  from case_inputs where activecase = 'yes' and receiver = '".$row["name"]."' ;";
                             
 
                                 $result_find_case_id = mysqli_query($conn, $strSQL_find_case_id); 

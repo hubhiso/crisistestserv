@@ -463,7 +463,7 @@
                 sum(CASE WHEN status = '6' THEN 1 ELSE 0 END) as case6,
                 count(status) as sum
                 FROM case_inputs c LEFT JOIN prov_geo ON c.prov_id = prov_geo.CODE
-                where  date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' 
+                where c.activecase = 'yes' and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' 
                 $sub_q
                 group by prov_id";
 
@@ -489,7 +489,7 @@
                         (SELECT MAX(id) as id FROM casetransfer c2 where provid = '".$row2[prov_id]."'  GROUP BY c2.case_id) last_update 
                         ON last_update.id = c.id
                         inner join case_inputs ca on c.case_id = ca.case_id
-                        where  prov_id = '".$row2[prov_id]."'
+                        where ca.activecase = 'yes' and prov_id = '".$row2[prov_id]."'
                         and date(ca.created_at) >= '".date($date_s)."' and date(ca.created_at) <= '".date($date_e)."'  ";
 
                         $ousername = 0;
@@ -508,7 +508,7 @@
                         (SELECT MAX(id) as id FROM casetransfer c2 where prev_provid = '".$row2[prov_id]."'  GROUP BY c2.case_id) last_update 
                         ON last_update.id = c.id
                         inner join case_inputs ca on c.case_id = ca.case_id
-                        where  prov_id = '".$row2[prov_id]."'
+                        where ca.activecase = 'yes' and prov_id = '".$row2[prov_id]."'
                         and date(ca.created_at) >= '".date($date_s)."' and date(ca.created_at) <= '".date($date_e)."'  ";
                         
                         $prev_ousername = 0;

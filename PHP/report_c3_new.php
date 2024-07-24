@@ -473,7 +473,7 @@
                 FROM case_inputs c
                 left join r_problem_case  on c.problem_case = r_problem_case.code
                 left join officers o on c.receiver_id = o.id
-                where 
+                where c.activecase = 'yes' and
                 date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
                  $query_group
                 GROUP BY problem_case order by problem_case";

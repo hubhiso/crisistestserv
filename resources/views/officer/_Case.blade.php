@@ -100,8 +100,7 @@
                 @endif
             </td>
 
-            @if(($case->receiver == $username )||($case->status == 1)||($username == "Adminfar")||($username ==
-            'adminhatc'))
+            @if(($case->receiver == $username )||($case->status == 1)||($username == "Adminfar")||($username == 'adminhatc'))
 
             @if($case->status == 99)
             <td class="has-text-left" style=" white-space:nowrap;">ปฏิเสธการรับเรื่อง</td>

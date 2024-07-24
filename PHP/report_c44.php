@@ -505,7 +505,7 @@
                         sum( CASE WHEN problem_case = '5' THEN 1 ELSE 0 END ) AS case1_5,
                         sum( CASE WHEN  problem_case = '6' THEN 1 ELSE 0 END ) AS case1_6
 						FROM case_inputs c
-						where receiver='".$row1['name']."'
+						where c.activecase = 'yes' and receiver='".$row1['name']."'
 						and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
 						group by receiver";
 

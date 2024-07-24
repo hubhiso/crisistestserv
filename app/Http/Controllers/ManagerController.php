@@ -66,14 +66,29 @@ class ManagerController extends Controller
         $case_id = $request->input('idcase_delete');
         
         echo $case_id;
+
+        case_input::where('case_id','=',$case_id)->update(['activecase' => "no"]);
         
+        /*
         case_input::where('case_id','=',$case_id)->delete();
         add_detail::where('case_id','=',$case_id)->delete();
         operate_detail::where('case_id','=',$case_id)->delete();
         timeline::where('case_id','=',$case_id)->delete();
+        */
 
 
         return redirect('officer/show/0');
+    }
+
+    public  function recovercase_cfm(Request $request){
+
+        $case_id = $request->input('idcase_recover');
+        
+        echo $case_id;
+
+        case_input::where('case_id','=',$case_id)->update(['activecase' => "yes"]);
+
+        return redirect('officer/recase');
     }
 
     public  function transfer_cfm(Request $request){
