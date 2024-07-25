@@ -50,7 +50,7 @@
         ?>
 
         <tr>
-            <td>{{$i}}</td>
+            <td>{{$i." ".$ck1}}</td>
 
             <th style=" white-space:nowrap;">
                 {{date('d',strtotime(str_replace('-','/', $case->created_at)))}}-{{$thaimonth[date('n',strtotime(str_replace('-','/', $case->created_at)))]}}{{date("Y",strtotime(str_replace('-','/', $case->created_at)))+543}}
