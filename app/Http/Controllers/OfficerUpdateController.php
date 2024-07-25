@@ -384,7 +384,7 @@ class OfficerUpdateController extends Controller
 
         $join_transfers = casetransfer::where('prev_ousername' ,'=', $joinofficer->username)->distinct()->get();
 
-        
+        $activecase = "yes";
 
         if(Auth::user()->position == "admin" || Auth::user()->p_view_all == "yes"){
             if($request->input('Filter')==1){
@@ -425,6 +425,8 @@ class OfficerUpdateController extends Controller
 
                 $filter ++;
             }
+
+            $filter ++;
 
         }else if($pposition  == "manager_area" && $pid == 0){
             if($request->input('Filter')==1){
@@ -591,14 +593,14 @@ class OfficerUpdateController extends Controller
 
         }
 
-        $activecase = "yes";
+        
         
         if($filter > 0){
             $cases = $cases->Where(['activecase' => $activecase] );
             $cases = $cases->get();
           //var_dump($cases);
         }else{
-            $cases = case_input::Where(['activecase' => $activecase],['prov_id','=',$pid]);
+            $cases = case_input::Where([['activecase' => $activecase],['prov_id','=',$pid]]);
         }
 
         $html = view('officer._Case',compact('cases','username','join_transfers','sharecases'))->render();
