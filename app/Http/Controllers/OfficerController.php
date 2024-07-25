@@ -36,9 +36,9 @@ class OfficerController extends Controller
 
         foreach($show_list as $show)
         {
-           $o_username = $show->username;
-           $o_mailwarning = $show->mailwarning;
-           $o_mailwarning_at = $show->mailwarning_at;
+            $o_username = $show->username;
+            $o_mailwarning = $show->mailwarning;
+            $o_mailwarning_at = $show->mailwarning_at;
 
             if($o_mailwarning == "yes"){
 
@@ -52,14 +52,18 @@ class OfficerController extends Controller
                 }
 
             }
+        }
 
-            $o_datecreate = $show->created_at;
-            $dd_datecreate = date_diff(new \DateTime($o_datecreate), new \DateTime())->format("%d");
+        $officereva = officer::where('username','=', $user )->get();
 
-            //$q = auth::get('login_eva');
+        foreach($officereva as $eva){
+
+            $officer_datecreate = $eva->created_at;
+            $mm_datecreate = date_diff(new \DateTime($officer_datecreate), new \DateTime())->format("%m");
+            $yy_datecreate = date_diff(new \DateTime($officer_datecreate), new \DateTime())->format("%y");
 
             if(Session::has('login_eva') == 'yes'){
-                if($dd_datecreate >= "31"){
+                if($yy_datecreate >= "1" or $mm_datecreate >= "1"){
                     $show_eva = "yes";
                 }else{
                     $show_eva = "no";
@@ -67,10 +71,8 @@ class OfficerController extends Controller
             }else{
                 $show_eva = "no";
             }
-
-                
-            
         }
+        
 
         $ck_date = officer_evaluate::where('username','=', $user )->get();
         $today = date("Y-m-d");
