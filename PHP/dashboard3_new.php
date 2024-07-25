@@ -795,8 +795,8 @@
         </form>
 
         <div class="row gap-3 mb-3 justify-content-md-center">
-            <div class="col-lg-1 text-center border border-danger rounded-3">
-                <div class=" row  rounded-top-3 bgcolor1">
+            <div class="col-lg-1 text-center  boxborder1 rounded-3">
+                <div class=" row  boxcolor1">
                     <div class="col align-middle p-1 mt-2 mb-2">
                     ทั้งหมด
                     </div>
@@ -807,9 +807,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1 text-center border border-secondary rounded-3">
+            <div class="col-lg-1 text-center boxborder2 border-secondary rounded-3">
                 <div class="  ">
-                    <div class=" row  rounded-top-3 bg-secondary">
+                    <div class=" row   boxcolor2">
                         <div class="col align-middle p-1 mt-2 mb-2 text-white">
                         ปฏิเสธรับเรื่อง
                         </div>
@@ -821,9 +821,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1 text-center border border-warning rounded-3">
+            <div class="col-lg-1 text-center boxborder3  rounded-3">
                 <div class="  ">
-                    <div class=" row  rounded-top-3 orange ">
+                    <div class=" row boxcolor3 ">
                         <div class="col align-middle p-1 mt-2 mb-2">
                         ยังไม่ได้รับเรื่อง
                         </div>
@@ -836,22 +836,22 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 text-center border  border-warning rounded-3">
+            <div class="col-lg-4 text-center boxborder4 rounded-3">
                 <div class="  ">
-                    <div class=" row  rounded-top-3 bg-warning">
+                    <div class=" row boxcolor4">
                         <div class="col align-middle p-2">
                             รับเรื่องแล้ว
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-5 border-end border-warning align-middle p-2">
+                        <div class="col-5 boxborder_end4  align-middle p-2">
                             <p class=" mb-0">รอการบันทึกข้อมูลเพิ่มเติม</p>
                             <p class=" mb-0">
                                 <span><?php echo $status_code_2;if($status_code_2 ==''){echo '0';} ?></span>
                             </p>
                         </div>
-                        <div class="col-7  border-warning align-middle p-2">
-                            <p class=" mb-0">บันทึกข้อมูลแล้ว&nbsp;รอดำเนินการช่วยเหลือ</p>
+                        <div class="col-7   align-middle p-2">
+                            <p class=" mb-0">บันทึกข้อมูลแล้วรอดำเนินการช่วยเหลือ</p>
                             <p class=" mb-0">
                                 <span><?php echo $status_code_3;if($status_code_3 ==''){echo '0';} ?></span>
                             </p>
@@ -860,27 +860,27 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 text-center border border-success rounded-3">
+            <div class="col-lg-3 text-center boxborder5 rounded-3">
                 <div class="  ">
-                    <div class=" row  rounded-top-3 bg-success text-white">
+                    <div class=" row  boxcolor5 text-white">
                         <div class="col align-middle p-2">
                             ดำเนินการ
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-6 border-end border-success align-middle p-2">
+                        <div class="col-6 boxborder_end5  align-self-center mx-auto  p-2">
                             <p class=" mb-0">อยู่ระหว่างดำเนินการ</p>
                             <p class=" mb-0">
                                 <span><?php echo $status_code_4;if($status_code_4 ==''){echo '0';} ?></span>
                             </p>
                         </div>
-                        <div class="col-3 border-end border-success align-middle p-2">
+                        <div class="col-3 boxborder_end5 align-self-center mx-auto   p-2">
                             <p class=" mb-0">เสร็จสิ้น</p>
                             <p class=" mb-0">
                                 <span><?php echo $status_code_5;if($status_code_5 ==''){echo '0';} ?></span>
                             </p>
                         </div>
-                        <div class="col-3  border-success align-middle p-2">
+                        <div class="col-3 align-self-center mx-auto  p-2">
                             <p class=" mb-0">ส่งต่อ</p>
                             <p class=" mb-0">
                                 <span><?php echo $status_code_6;if($status_code_6 ==''){echo '0';} ?></span>
@@ -890,8 +890,8 @@
                 </div>
             </div>
 
-            <div class="col-lg-1 text-center border border-primary rounded-3">
-                <div class=" row  rounded-top-3 bg-primary">
+            <div class="col-lg-1 text-center boxborder6 rounded-3">
+                <div class=" row  boxcolor6">
                     <div class="col align-middle p-1 mt-2 mb-2 text-white ">
                         ยุติการดำเนินการ
                     </div>

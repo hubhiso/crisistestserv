@@ -105,7 +105,7 @@
                         <li>
                             <a id="menu2">
                                 <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
-                                <span class="fs-4">เอกสารที่เกี่ยวข้องอื่นๆ</span>
+                                <span class="fs-4">เอกสารอื่นๆ ที่เกี่ยวข้อง</span>
                             </a>
                         </li>
                         <li>

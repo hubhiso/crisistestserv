@@ -22,7 +22,7 @@
             <th> ผู้รับเรื่อง </abbr>
             </th>
             @if($username == "HisoDev")
-            <th> ลบข้อมูล </abbr>
+            <th> จัดการ </abbr>
             </th>
             @endif
         </tr>
@@ -333,10 +333,10 @@
             <td style=" white-space:nowrap;"><a href='#' title='Receiver'>{{ $case->receiver }}</a></td>
 
             @if($username == "HisoDev")
-            <td>
+            <td class="has-text-centered">
                 <!--button type="button" class='tag is-medium is-danger is-rounded ' onclick="confirm_delete({{ $case->case_id }},1)" ><span>ลบข้อมูล</span> </button-->
-                <button type="button" class='tag is-medium is-danger is-rounded '
-                    onclick="confirm_delete(caseid{{$i}}.value)"><span>ลบข้อมูล</span> </button>
+                <button type="button" class='image is-32x32 '
+                    onclick="confirm_delete(caseid{{$i}}.value)"><span><img class="is-rounded" src="{{ asset('images/trash-bin.png') }}" /></span> </button>
             </td>
             @endif
         </tr>
