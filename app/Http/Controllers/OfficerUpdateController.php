@@ -596,17 +596,17 @@ class OfficerUpdateController extends Controller
         
         
         if($filter > 0){
-            $cases = $cases->Where(['activecase' => $activecase] );
+            $matchThesefinal = ['activecase' => $activecase];
+            $cases = case_input::where($matchThesefinal);
+            
             $cases = $cases->get();
 
-            $ck1 = "1";
           //var_dump($cases);
         }else{
             $cases = case_input::Where([['activecase' => $activecase],['prov_id','=',$pid]]);
-            $ck1 = "2";
         }
 
-        $html = view('officer._Case',compact('cases','username','join_transfers','sharecases','ck1'))->render();
+        $html = view('officer._Case',compact('cases','username','join_transfers','sharecases'))->render();
         return response()->json(compact('html','text_search'));
 
     }
