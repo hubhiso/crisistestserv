@@ -594,11 +594,11 @@ class OfficerUpdateController extends Controller
         $activecase = "yes";
         
         if($filter > 0){
-            $cases = $cases->Where('activecase', '=',"yes");
+            $cases = $cases->Where(['activecase' => $activecase] );
             $cases = $cases->get();
           //var_dump($cases);
         }else{
-            $cases = case_input::Where(['activecase', '=', "yes"],['prov_id','=',$pid]);
+            $cases = case_input::Where(['activecase' => $activecase],['prov_id','=',$pid]);
         }
 
         $html = view('officer._Case',compact('cases','username','join_transfers','sharecases'))->render();
