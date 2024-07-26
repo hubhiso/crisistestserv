@@ -588,7 +588,7 @@ class OfficerUpdateController extends Controller
     
                 foreach ($groups as $group) {
                     //$cases =  $cases->orWhere('prov_id', '=', $group->prov_id );
-                    $cases =  $cases->orWhere(['receiver' =>  $group->name] );
+                    $cases =  $cases->orWhere(['receiver' =>  $group->name],['activecase' => $activecase] );
                     $filter++;
                 }
 
