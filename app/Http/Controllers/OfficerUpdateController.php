@@ -597,7 +597,7 @@ class OfficerUpdateController extends Controller
         
         if($filter > 0){
             $matchThesefinal = ['activecase' => $activecase];
-            $cases = case_input::where($matchThesefinal);
+            $cases = $cases->where($matchThesefinal);
 
             $cases = $cases->get();
 
