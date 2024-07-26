@@ -426,8 +426,6 @@ class OfficerUpdateController extends Controller
                 $filter ++;
             }
 
-            $filter ++;
-
         }else if($pposition  == "manager_area" && $pid == 0){
             if($request->input('Filter')==1){
                 $cases = case_input::join('prov_geo', 'prov_id', '=', 'prov_geo.code')->where('prov_geo.nhso', '=', $parea);
@@ -528,6 +526,9 @@ class OfficerUpdateController extends Controller
             }
             */
         }
+
+        $matchThesefinal = ['activecase' => $activecase];
+        $cases = $cases->where($matchThesefinal);
         
 
         if($Date_start != null){
@@ -596,8 +597,6 @@ class OfficerUpdateController extends Controller
         
         
         if($filter > 0){
-            $matchThesefinal = ['activecase' => $activecase];
-            $cases = $cases->where($matchThesefinal);
 
             $cases = $cases->get();
 
