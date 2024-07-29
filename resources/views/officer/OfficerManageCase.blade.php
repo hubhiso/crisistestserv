@@ -43,7 +43,7 @@
     </style>
 </head>
 
-<body class="layout-default has-background-light" onload="auto_select_status({{ $mode_id}});load_case();">
+<body class="layout-default has-background-light theme-light light" onload="auto_select_status({{ $mode_id}});load_case();">
 
     @component('component.login_bar2')
     @endcomponent

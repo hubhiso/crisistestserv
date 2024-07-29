@@ -30,7 +30,7 @@
 $thaimonth = ["","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
 @endphp
 
-<body class="layout-default has-background-light">
+<body class="layout-default has-background-light theme-light light">
 
     <div class="hero-head ">
         <div class=" ">

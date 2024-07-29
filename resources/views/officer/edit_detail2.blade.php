@@ -28,7 +28,7 @@
 
 </head>
 
-<body class="layout-default has-background-light">
+<body class="layout-default has-background-light theme-light light">
 
     <div class="hero-head ">
         <div class=" ">

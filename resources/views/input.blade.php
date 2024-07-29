@@ -37,7 +37,7 @@
 
 </head>
 
-<body class="has-background-light">
+<body class="has-background-light theme-light light">
 
     <form name="RegForm" id="RegForm" class="form-horizontal" enctype="multipart/form-data" role="form" method="POST"
         onsubmit="return vali_case();" action="{{ route('store') }}">
@@ -168,8 +168,9 @@
                     </div>
                 </div>
 
-                <hr> @if($errors->any())
-
+                <hr> 
+                
+                @if($errors->any())
                 <ul class="notification is-warning">
                     @foreach($errors->all() as $error)
                     <li>{{ $error }}</li>
