@@ -515,7 +515,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <textarea name="need" class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+                                <textarea name="need" class="textarea" placeholder="{{ trans('message.bt_input_details') }}"></textarea>
                                 {{--<textarea name="detail" class="textarea" placeholder="กรอกรายละเอียด"></textarea>--}}
                             </div>
                         </div>
@@ -633,26 +633,25 @@
                     </header>
                     <section class="modal-card-body p-3">
 
-                        <label class="label p-3 has-text-left">แบบประเมินความพึงพอใจ
-                            และข้อเสนอแนะสำหรับผู้แจ้งเหตุ</label>
+                        <label class="label p-3 has-text-left">{{ trans('message.h_eva') }}</label>
 
                         <div class="table-container">
                             <table class="table is-bordered is-hoverable is-narrow is-fullwidth">
                                 <thead>
                                     <tr>
-                                        <th rowspan="2" class="has-text-centered" style="white-space:nowrap;">ลำดับ</th>
-                                        <th rowspan="2" class="has-text-centered" style="white-space:nowrap;">ประเด็น
+                                        <th rowspan="2" class="has-text-centered" style="white-space:nowrap;">{{ trans('message.bt_rate_status_id') }}</th>
+                                        <th rowspan="2" class="has-text-centered" style=" width:250px;" >{{ trans('message.tx_criteria') }}
                                         </th>
                                         <th colspan="5" class="has-text-centered" style="white-space:nowrap;">
-                                            ระดับความพึงพอใจ</th>
+                                        {{ trans('message.tx_level') }}</th>
                                     </tr>
                                     <tr>
-                                        <th class="has-text-centered colorbg1" style="white-space:nowrap;">มากที่สุด
+                                        <th class="has-text-centered colorbg1" style="white-space:nowrap;">{{ trans('message.tx_s_agree') }}
                                         </th>
-                                        <th class="has-text-centered colorbg2" style="white-space:nowrap;">มาก</th>
-                                        <th class="has-text-centered colorbg3" style="white-space:nowrap;">ปานกลาง</th>
-                                        <th class="has-text-centered colorbg4" style="white-space:nowrap;">น้อย</th>
-                                        <th class="has-text-centered colorbg5" style="white-space:nowrap;">น้อยที่สุด
+                                        <th class="has-text-centered colorbg2" style="white-space:nowrap;">{{ trans('message.tx_agree') }}</th>
+                                        <th class="has-text-centered colorbg3" style="white-space:nowrap;">{{ trans('message.tx_neutral') }}</th>
+                                        <th class="has-text-centered colorbg4" style="white-space:nowrap;">{{ trans('message.tx_disagree') }}</th>
+                                        <th class="has-text-centered colorbg5" style="white-space:nowrap;">{{ trans('message.tx_s_disagree') }}
                                         </th>
                                     </tr>
 
@@ -661,7 +660,7 @@
                                     <tr>
                                         <td>1</td>
                                         <td class="has-text-left" style="white-space:nowrap;">
-                                            ความสะดวกรวดเร็วในการแจ้งเหตุ</td>
+                                        {{ trans('message.tx_eva1') }}</td>
                                         <td class="colorbg1">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
                                                 id="score11" name="score1" value="5" checked>
@@ -690,7 +689,7 @@
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td class="has-text-left" style="white-space:nowrap;">การเข้าใช้งานระบบ สามารถทำได้ง่ายและรวดเร็ว</td>
+                                        <td class="has-text-left" style="white-space:nowrap;">{{ trans('message.tx_eva2') }}</td>
                                         <td class="colorbg1">
                                             <input class="is-checkradio has-background-color is-white" type="radio"
                                                 id="score21" name="score2" value="5" checked>
@@ -720,9 +719,8 @@
 
                                     <tr>
                                         <td>3</td>
-                                        <td class="has-text-left" style="white-space:nowrap;">
-                                            ระบบมีการจัดการระดับความปลอดภัยหรือการกำหนดสิทธิ์<br>การเข้าถึงข้อมูลได้อย่างเหมาะสม 
-                                        </td>
+                                        <td class="has-text-left" style="">
+                                        {{ trans('message.tx_eva3') }}</td>
                                         <td class="colorbg1">
                                             <div class="control">
                                                 <input class="is-checkradio has-background-color is-white" type="radio"
@@ -758,10 +756,10 @@
                         </div>
 
                         <div class="field has-text-left">
-                            <label class="label p-3">ข้อเสนอแนะเพิ่มเติม (ถ้ามี)</label>
+                            <label class="label p-3">{{ trans('message.tx_suggestion') }}</label>
                             <div class="control">
                                 <textarea id="s_comment" name="s_comment" class="textarea" rows="2"
-                                    placeholder="กรอกรายละเอียด"></textarea>
+                                    placeholder="{{ trans('message.bt_input_details') }}"></textarea>
                             </div>
                         </div>
 
