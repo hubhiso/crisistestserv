@@ -110,8 +110,8 @@
                             <div class="field {{ $errors->has('username') ? ' has-error' : '' }}">
                                 <label class="label" for="username">Username</label>
                                 <div class="control">
-                                    <input id="username" type="text" class="form-control input" name="username"
-                                        value="{{ old('username') }}" required autofocus>
+                                    <input id="username" type="text" class="form-control input" name="username" pattern="[A-Za-z0-9]{6,}"
+                                        value="{{ old('username') }}" title="กำหนดเป็นภาษาอังกฤษ หรือตัวเลขไม่น้อยกว่า 6 ตัว" placeholder="กำหนดเป็นภาษาอังกฤษ หรือตัวเลขไม่น้อยกว่า 6 ตัว" required autofocus>
 
                                     @if ($errors->has('username'))
                                     <span class="help-block">
@@ -211,7 +211,7 @@
                                 <label class="label">Password</label>
                                 <div class="control">
                                     <input id="password" type="password" class="form-control input" name="password"
-                                        placeholder="ใช้ตัวเลขภาษาอังกฤษ หรือตัวเลข" required>
+                                        placeholder="กำหนดเป็นภาษาอังกฤษ หรือตัวเลข" required>
 
                                     @if ($errors->has('password'))
                                     <span class="help-block">
@@ -583,7 +583,10 @@
 
     <script>
     function confirm_modal() {
-        $("#confirm_modal").addClass("is-active");
+
+        
+            $("#confirm_modal").addClass("is-active");
+        
     }
 
     $(".noti-close").click(function() {
