@@ -92,7 +92,10 @@ class OfficerInputController extends Controller
             $biosex_name = 'ไม่ประสงค์ตอบ';
         }    
 
+        $activecase = "yes";
+
         case_input::create([
+            'activecase'=> $activecase,
             'emergency'=>$request->input('emergency'),
             'sender_case'=>$request->input('sender_case'),
             'sender'=>$request->input('sender'),

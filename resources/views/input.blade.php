@@ -639,19 +639,18 @@
                             <table class="table is-bordered is-hoverable is-narrow is-fullwidth">
                                 <thead>
                                     <tr>
-                                        <th rowspan="2" class="has-text-centered" style="white-space:nowrap;">{{ trans('message.bt_rate_status_id') }}</th>
+                                        <th rowspan="2" class="has-text-centered" style="white-space:nowrap; width:5%;">{{ trans('message.bt_rate_status_id') }}</th>
                                         <th rowspan="2" class="has-text-centered" style=" width:250px;" >{{ trans('message.tx_criteria') }}
                                         </th>
                                         <th colspan="5" class="has-text-centered" style="white-space:nowrap;">
                                         {{ trans('message.tx_level') }}</th>
                                     </tr>
                                     <tr>
-                                        <th class="has-text-centered colorbg1" style="white-space:nowrap;">{{ trans('message.tx_s_agree') }}
-                                        </th>
-                                        <th class="has-text-centered colorbg2" style="white-space:nowrap;">{{ trans('message.tx_agree') }}</th>
-                                        <th class="has-text-centered colorbg3" style="white-space:nowrap;">{{ trans('message.tx_neutral') }}</th>
-                                        <th class="has-text-centered colorbg4" style="white-space:nowrap;">{{ trans('message.tx_disagree') }}</th>
-                                        <th class="has-text-centered colorbg5" style="white-space:nowrap;">{{ trans('message.tx_s_disagree') }}
+                                        <th class="has-text-centered colorbg1" style=" width:10%;">{{ trans('message.tx_s_agree') }}</th>
+                                        <th class="has-text-centered colorbg2" style=" width:10%;">{{ trans('message.tx_agree') }}</th>
+                                        <th class="has-text-centered colorbg3" style=" width:10%;">{{ trans('message.tx_neutral') }}</th>
+                                        <th class="has-text-centered colorbg4" style=" width:10%;">{{ trans('message.tx_disagree') }}</th>
+                                        <th class="has-text-centered colorbg5" style=" width:10%;">{{ trans('message.tx_s_disagree') }}
                                         </th>
                                     </tr>
 

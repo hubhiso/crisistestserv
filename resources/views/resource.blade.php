@@ -125,9 +125,9 @@
             </div>
             <div class="tile is-parent">
                 <article class="tile is-child box">
-                    <a href="http://www.aidsrightsthailand.com/all-article.php?lang=">
+                    <a href="http://fairthailand.org/">
                         <h4 class="subtitle is-4 ">"กรณีศึกษาที่น่าสนใจเกี่ยวกับกรณีการละเมิดสิทธิ"</h4>
-                        <p>มูลนิธิศูนย์คุ้มครองสิทธิด้านเอดส์<br>Foundation For AIDS Rights (FAR)</p>
+                        <p>มูลนิธิศูนย์คุ้มครองสิทธิด้านเอดส์<br>มูลนิธิเพื่อสิทธิความหลากหลาย (FAIR)</p>
                     </a>
                 </article>
             </div>

@@ -45,7 +45,7 @@
 
 </head>
 
-<body class="has-background-light">
+<body class="has-background-light theme-light">
     <div class="hero-head ">
         <div class=" ">
             @component('component.login_bar2')

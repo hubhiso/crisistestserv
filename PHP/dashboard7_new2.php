@@ -57,7 +57,8 @@
         from case_inputs ca
         left join prov_geo pr
         on ca.prov_id = pr.code
-        where ca.activecase = 'yes' and  date(created_at) BETWEEN '".($years-1)."-10-01' and '".$years."-09-30'  and pr.nhso = '$area'
+        left join officers f on f.name = ca.receiver
+        where ca.activecase = 'yes' and  date(ca.created_at) BETWEEN '".($years-1)."-10-01' and '".$years."-09-30'  and pr.nhso = '$area' and ca.receiver <> ''
         group by  year(ca.created_at),month(ca.created_at), ca.prov_id";
 
         $result1 = mysqli_query($conn, $sql); 
@@ -75,8 +76,7 @@
 
         $sql2 = "SELECT year(ca.created_at) as y, month(ca.created_at) as m, count(*) as count, ca.prov_id, ca.receiver, f.nameorg, f.username
         from case_inputs ca
-        left join officers f
-        on f.name = ca.receiver
+        left join officers f on f.name = ca.receiver
         where ca.activecase = 'yes' and date(ca.created_at) BETWEEN '".($years-1)."-10-01' and '".$years."-09-30' and ca.prov_id ='".$pr."'  and ca.receiver <> ''
         group by  year(ca.created_at),month(ca.created_at), prov_id, receiver, f.nameorg, f.username";
 

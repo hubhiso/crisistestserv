@@ -169,6 +169,42 @@ background-color: #de0867 !important;
     color: #ffffff;
 }
 
+.bgcolor2{
+    background: #f14668;
+    color: #ffffff;
+}
+
+.bgcolor2:hover{
+    background: #ee3157;
+    color: #ffffff;
+}
+
+.bgcolor3{
+    background: #ffaaaa;
+    color: #000;
+}
+
+.bgcolor3:hover{
+    background: #fa7575;
+    color: #000;
+}
+
+.bgcolor4{
+    background: #fffcea;
+    color: #000;
+}
+
+.bgcolor4:hover{
+    background: #ead9af;
+    color: #000;
+} 
+
+.bgcolor5{
+    background: #86adae;
+    color: #ffffff;
+}
+
+
 
 #table1 th {
     color: #ffffff;

@@ -94,8 +94,11 @@ class case_controller extends Controller
         }elseif($request->input('sender_case')== 3 ){
             $sender_case = 3;
         }
+
+        $activecase = "yes";
         
         case_input::create([
+            'activecase'=> $activecase,
             'emergency'=>$request->input('emergency'),
             'sender_case'=>$sender_case,
             'sender'=>$request->input('sender'),
