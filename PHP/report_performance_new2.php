@@ -489,7 +489,7 @@
                             return (strtotime($strDate2) - strtotime($strDate1))/  ( 60 * 60 * 24 );  // 1 day = 60*60*24
                         }
                                 
-                        $strSQL_office = "SELECT p.name,o.nameorg as nameorg,count(c.receiver) as total FROM officers o left join  case_inputs c on o.name = c.receiver left join prov_geo p on o.prov_id = p.code  where c.activecase = 'yes' and (position = 'officer' $query_group ) and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' group by o.nameorg order by p.code;";
+                        $strSQL_office = "SELECT p.name,o.nameorg as nameorg,p.name as prov_name,o.prov_id,count(c.receiver) as total FROM officers o left join  case_inputs c on o.name = c.receiver left join prov_geo p on o.prov_id = p.code  where c.activecase = 'yes' and (position = 'officer' $query_group ) and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' group by o.prov_id,o.nameorg order by p.code;";
 
                         //echo $strSQL_office;
 
@@ -509,7 +509,7 @@
                             
                             $strSQL = "SELECT o.name,c.case_id from case_inputs c inner join officers o on c.receiver = o.name where c.activecase = 'yes' and o.nameorg = '".$row_office["nameorg"]."' and o.prov_id = '".$row_office["prov_id"]."' limit 1;";
 
-                            echo "<br>".$strSQL;
+                            //echo "<br>".$strSQL;
 
                             $count_find_case_id_total = 0;
                             
@@ -532,7 +532,7 @@
                             {
                                 //echo "loop action";
                                 $strSQL_find_case_id = "SELECT  receiver,case_id  from case_inputs where activecase = 'yes' and receiver = '".$row["name"]."' and date(created_at) >= '".date($date_s)."' and date(created_at) <= '".date($date_e)."' ;";
-                                echo "<br>".$strSQL_find_case_id;
+                                //echo "<br>".$strSQL_find_case_id;
                             
 
                                 $result_find_case_id = mysqli_query($conn, $strSQL_find_case_id); 
@@ -543,7 +543,7 @@
                                     //echo "loop action1";
                                     $strSQL_status1 = "SELECT case_id,date(operate_time) as operate_time FROM timelines  INNER JOIN (SELECT MAX(id) as id FROM timelines where operate_status = '1' GROUP BY case_id) last_update ON last_update.id = timelines.id where case_id = '".$row_find_case_id["case_id"]."';";
                                     
-                                    echo "<br>".$strSQL_status1;
+                                    //echo "<br>".$strSQL_status1;
 
                                     $result_status1 = mysqli_query($conn, $strSQL_status1); 
                                     $count_status1 = 0;
