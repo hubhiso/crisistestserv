@@ -527,7 +527,7 @@
 
                             {
                                 //echo "loop action";
-                                $strSQL_find_case_id = "SELECT  receiver,case_id  from case_inputs where activecase = 'yes' and receiver = '".$row["name"]."' and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' ;";
+                                $strSQL_find_case_id = "SELECT  receiver,case_id  from case_inputs where activecase = 'yes' and receiver = '".$row["name"]."' and date(created_at) >= '".date($date_s)."' and date(created_at) <= '".date($date_e)."' ;";
                             
 
                                 $result_find_case_id = mysqli_query($conn, $strSQL_find_case_id); 
