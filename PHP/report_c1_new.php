@@ -40,18 +40,10 @@
         require("setdateformat.php");
         date_default_timezone_set("Asia/Bangkok");
 
-
         $date_start = $_POST["date_start"];
         $date_end = $_POST["date_end"];
 
-        $ck_group = $_POST["group"];
 
-        if ( $ck_group <> ''){
-            $query_group = "and o.group = '".$ck_group."' ";
-        }else{
-            $query_group = " or o.name = 'adminfar' or o.name = 'adminhatc' or o.name = 'hisoDev'";
-        }
-	
         $se_time = $_POST["se_time"];
         $se_year = $_POST["se_year"];
         $se_quarter = $_POST["se_quarter"];
@@ -530,11 +522,12 @@
                     sum(CASE WHEN status = '6' THEN 1 ELSE 0 END) as case6,
                     count(status) as sum
                     FROM case_inputs c
-                    where c.activecase = 'yes' and receiver='".$row1['name']."' $query_group
+                    where c.activecase = 'yes' and receiver='".$row1['name']."' 
                     and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
                     $sub_q
                     group by receiver";
 
+                    //echo "<br>".$sql2;
 
                     $result2 = mysqli_query($conn, $sql2); 
                     $row2 = mysqli_num_rows($result2); 
@@ -564,7 +557,7 @@
 
                             
                             echo "<tr>";
-                            echo "<th>".$i."</th>";
+                            echo "<td>".$i."</td>";
                             echo "<td>".$row3["nameorg"]."</td>";
                             echo "<td>".$row3["provname"]."</td>";
                             echo "<td>".$row3["nhso"]."</td>";
@@ -585,7 +578,7 @@
                         
                     } else {
                         echo "<tr>";
-                            echo "<th>".$i."</th>";
+                            echo "<td>".$i."</td>";
                             echo "<td>".$row1["nameorg"]."</td>";
                             echo "<td>".$row1["provname"]."</td>";
                             echo "<td>".$row1["nhso"]."</td>";
@@ -605,27 +598,27 @@
                 }
 
                 $i++;
-
-                echo "<tr>";
-                        echo "<th colspan='4' class='bg-danger' style='vertical-align: center; color: white;' >รวม</th>";
-                        echo "<td style='display: none;'></td>";
-                        echo "<td style='display: none;'></td>";
-                        echo "<td style='display: none;'></td>";
-                        echo "<td>".$c_s1."</td>";
-                        echo "<td>".$c_s2."</td>";
-                        echo "<td>".$c_s3."</td>";
-                        echo "<td>".$c_s4."</td>";
-                        echo "<td>".$c_s5."</td>";
-                        echo "<td>".$sum_t."</td>";
-                        echo "<td>".$sum_t2."</td>";
-                        echo "<td>".$c_s6."</td>";
-                        echo "<td>".$c_as."</td>";
-                echo "</tr>";
                 echo "</tbody>";
-                echo "</table>";
 
-                $conn->close();
-            ?>
+                ?>
+
+                    <tfoot>
+                        <tr>
+                            <th colspan='4' class='bgcolor1' style='vertical-align: middle; background: #de0867;' >รวม</th>
+                            
+                            <td><?php echo $c_s1; ?></td>
+                            <td><?php echo $c_s2; ?></td>
+                            <td><?php echo $c_s3; ?></td>
+                            <td><?php echo $c_s4; ?></td>
+                            <td><?php echo $c_s5; ?></td>
+                            <td><?php echo $sum_t; ?></td>
+                            <td><?php echo $sum_t2; ?></td>
+                            <td><?php echo $c_s6; ?></td>
+                            <td><?php echo $c_as; ?></td>
+                        </tr>
+                    </tfoot>
+                </table>
+
 
 
     </div>
@@ -793,10 +786,10 @@
             "dom": 'Bfrtip',
             "scrollX": true,
             "responsive": true,
+            "pageLength": 100,
             "buttons": [
                 'excel', 'copy', 'print'
-            ],
-            "paging": false
+            ]
         });
     });
     </script>
