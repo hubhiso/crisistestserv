@@ -489,7 +489,7 @@
                             return (strtotime($strDate2) - strtotime($strDate1))/  ( 60 * 60 * 24 );  // 1 day = 60*60*24
                         }
                                 
-                        $strSQL_office = "SELECT p.name,o.nameorg as nameorg,p.name as prov_name,o.prov_id,count(c.receiver) as total FROM officers o left join  case_inputs c on o.name = c.receiver left join prov_geo p on o.prov_id = p.code  where c.activecase = 'yes' and (position ='officer' or o.Name = 'adminfar' or o.Name = 'adminhatc') $query_group group by o.prov_id,o.nameorg order by p.code;";
+                        $strSQL_office = "SELECT p.name,o.nameorg as nameorg,p.name as prov_name,o.prov_id,count(c.receiver) as total FROM officers o left join  case_inputs c on o.name = c.receiver left join prov_geo p on o.prov_id = p.code  where c.activecase = 'yes' and (position ='officer' or o.Name = 'adminfar' or o.Name = 'adminhatc') $query_group and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."' group by o.prov_id,o.nameorg order by p.code;";
 
                         $count_no = 0;
 
