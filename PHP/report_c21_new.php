@@ -480,7 +480,7 @@
                 </tr>
                 </tr>
             </thead>
-            <?php
+                     <?php
 
 						$sql1 = "SELECT o.id, o.name, o.nameorg, o.prov_id, p.name as provname, nhso
 						FROM officers o left join prov_geo p
@@ -595,32 +595,29 @@
 									echo "</tr>";
 							}
 						}
-								echo "<tr>";
-								echo "<th colspan='4' style='vertical-align: center; color: white; background: #de0867;' >รวม</th>";
-								echo "<td style='display: none;'></td>";
-								echo "<td style='display: none;'></td>";
-								echo "<td style='display: none;'></td>";
-								echo "<td>".$c_s11."</td>";
-								echo "<td>".$c_s1211."</td>";
-								echo "<td>".$c_s1212."</td>";
-								echo "<td>".$c_s1213."</td>";
-								echo "<td>".$c_s1214."</td>";
-								echo "<td>".$c_s122."</td>";
-								echo "<td>".$c_s123."</td>";
-								echo "<td>".$c_s124."</td>";
-								echo "<td>".$c_s125."</td>";
-								echo "<td>".$c_s126."</td>";
-								echo "<td>".$c_s13."</td>";
-								echo "<td>".$c_s14."</td>";
-								echo "<td>".$c_as."</td>";
-								echo "</tr>";
 								echo "</tbody>";
-								echo "</table>";
-
-							$conn->close();
-
 
 						?>
+                    <tfoot>
+                        <tr>
+                            <th colspan='4' class='bgcolor1' style='vertical-align: middle; background: #de0867;' >รวม</th>
+                            
+                            <td><?php echo $c_s11; ?></td>
+                            <td><?php echo $c_s1211; ?></td>
+                            <td><?php echo $c_s1212; ?></td>
+                            <td><?php echo $c_s1213; ?></td>
+                            <td><?php echo $c_s1214; ?></td>
+                            <td><?php echo $c_s122; ?></td>
+                            <td><?php echo $c_s123; ?></td>
+                            <td><?php echo $c_s124; ?></td>
+                            <td><?php echo $c_s125; ?></td>
+                            <td><?php echo $c_s126; ?></td>
+                            <td><?php echo $c_s13; ?></td>
+                            <td><?php echo $c_s14; ?></td>
+                            <td><?php echo $c_as; ?></td>
+                        </tr>
+                    </tfoot>
+                </table>
     </div>
 
     <!-- Footer -->
@@ -781,15 +778,13 @@
     <script>
     $(document).ready(function() {
         $('#crisisc1').DataTable({
-            "bFilter": true,
             "dom": 'Bfrtip',
             "scrollX": true,
             "responsive": true,
+            "pageLength": 100,
             "buttons": [
                 'excel', 'copy', 'print'
-            ],
-            "paging": false,
-            "ordering": true
+            ]
         });
     });
     </script>

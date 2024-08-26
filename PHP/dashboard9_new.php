@@ -39,12 +39,12 @@
 
         // Change character set to utf8
         mysqli_set_charset($conn,"utf8");
-        
+
         $sql = "SELECT group_code, r_group_code.name, count(group_code) as count
         from case_inputs
         left join r_group_code
         on r_group_code.code = case_inputs.group_code and case_inputs.activecase = 'yes'
-        GROUP BY group_code";
+        GROUP BY group_code, r_group_code.NAME";
 
         $result1 = mysqli_query($conn, $sql); 
         $row1 = mysqli_num_rows($result1); 
@@ -52,11 +52,11 @@
         while($row1 = $result1->fetch_assoc()) {
             $i++;
             $g_code[$i] = $row1[group_code];
-            $name[$i] = $row1[name  ];
+            $name[$i] = $row1[name];
             $count[$i] = $row1[count];
             $last_i = $i;
         }
-
+        
         $sql2 = "SELECT group_code, r_group_code.name, count(group_code) as count, case_inputs.sex
         from case_inputs
         left join r_group_code
@@ -74,6 +74,7 @@
             $last_i2 = $i;
         }
 
+        echo "test";
 
         for($j =1; $j <= $last_i; $j++){
             if( $g_code[$j] == 1){

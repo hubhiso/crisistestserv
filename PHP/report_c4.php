@@ -967,75 +967,72 @@
 								echo "</tr>";
 						}
 					}
-
-							echo "<tr>";
-							echo "<td colspan='4' style='vertical-align: center; color: white; background: #de0867' >รวม</td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td>".$sum_c_s1_1."</td>";
-							echo "<td>".$sum_c_s1_2."</td>";
-							echo "<td>".$sum_c_s1_3."</td>";
-							echo "<td>".$sum_c_s1_4."</td>";
-                            echo "<td>".$sum_c_s1_5."</td>";
-                            echo "<td>".$sum_c_s1_6."</td>";
-                            echo "<td>".$sum_c_s1_7."</td>";
-                            echo "<td>".$sum_c_s1."</td>";
-
-                            echo "<td>".$sum_c_s2_1."</td>";
-							echo "<td>".$sum_c_s2_2."</td>";
-							echo "<td>".$sum_c_s2_3."</td>";
-							echo "<td>".$sum_c_s2_4."</td>";
-                            echo "<td>".$sum_c_s2_5."</td>";
-                            echo "<td>".$sum_c_s2_6."</td>";
-                            echo "<td>".$sum_c_s2_7."</td>";
-                            echo "<td>".$sum_c_s2."</td>";
-
-                            echo "<td>".$sum_c_s3_1."</td>";
-							echo "<td>".$sum_c_s3_2."</td>";
-							echo "<td>".$sum_c_s3_3."</td>";
-							echo "<td>".$sum_c_s3_4."</td>";
-                            echo "<td>".$sum_c_s3_5."</td>";
-                            echo "<td>".$sum_c_s3_6."</td>";
-                            echo "<td>".$sum_c_s3_7."</td>";
-                            echo "<td>".$sum_c_s3."</td>";
-
-                            echo "<td>".$sum_c_s4_1."</td>";
-							echo "<td>".$sum_c_s4_2."</td>";
-							echo "<td>".$sum_c_s4_3."</td>";
-							echo "<td>".$sum_c_s4_4."</td>";
-                            echo "<td>".$sum_c_s4_5."</td>";
-                            echo "<td>".$sum_c_s4_6."</td>";
-                            echo "<td>".$sum_c_s4_7."</td>";
-                            echo "<td>".$sum_c_s4."</td>";
-
-                            echo "<td>".$sum_c_s5_1."</td>";
-							echo "<td>".$sum_c_s5_2."</td>";
-							echo "<td>".$sum_c_s5_3."</td>";
-							echo "<td>".$sum_c_s5_4."</td>";
-                            echo "<td>".$sum_c_s5_5."</td>";
-                            echo "<td>".$sum_c_s5_6."</td>";
-                            echo "<td>".$sum_c_s5_7."</td>";
-                            echo "<td>".$sum_c_s5."</td>";
-
-                            echo "<td>".$sum_c_s6_1."</td>";
-							echo "<td>".$sum_c_s6_2."</td>";
-							echo "<td>".$sum_c_s6_3."</td>";
-							echo "<td>".$sum_c_s6_4."</td>";
-                            echo "<td>".$sum_c_s6_5."</td>";
-                            echo "<td>".$sum_c_s6_6."</td>";
-                            echo "<td>".$sum_c_s6_7."</td>";
-                            echo "<td>".$sum_c_s6."</td>";
-
-                            echo "<td>".$sum_c_as."</td>";
-							echo "</tr>";
 							echo "</tbody>";
-							echo "</table>";
-
-						$conn->close();
-
 
 					?>
+
+             <tfoot>
+                <tr>
+                    <td colspan='4' class='bgcolor1' style='vertical-align: middle; background: #de0867;' >รวม</td>
+                    
+                    <td><?php echo $sum_c_s1_1; ?></td>
+                    <td><?php echo $sum_c_s1_2; ?></td>
+                    <td><?php echo $sum_c_s1_3; ?></td>
+                    <td><?php echo $sum_c_s1_4; ?></td>
+                    <td><?php echo $sum_c_s2_5; ?></td>
+                    <td><?php echo $sum_c_s1_6; ?></td>
+                    <td><?php echo $sum_c_s1_7; ?></td>
+                    <td><?php echo $sum_c_s1; ?></td>
+
+                    <td><?php echo $sum_c_s2_1; ?></td>
+                    <td><?php echo $sum_c_s2_2; ?></td>
+                    <td><?php echo $sum_c_s2_3; ?></td>
+                    <td><?php echo $sum_c_s2_4; ?></td>
+                    <td><?php echo $sum_c_s2_5; ?></td>
+                    <td><?php echo $sum_c_s2_6; ?></td>
+                    <td><?php echo $sum_c_s2_7; ?></td>
+                    <td><?php echo $sum_c_s2; ?></td>
+
+                    <td><?php echo $sum_c_s3_1; ?></td>
+                    <td><?php echo $sum_c_s3_2; ?></td>
+                    <td><?php echo $sum_c_s3_3; ?></td>
+                    <td><?php echo $sum_c_s3_4; ?></td>
+                    <td><?php echo $sum_c_s3_5; ?></td>
+                    <td><?php echo $sum_c_s3_6; ?></td>
+                    <td><?php echo $sum_c_s3_7; ?></td>
+                    <td><?php echo $sum_c_s3; ?></td>
+
+                    <td><?php echo $sum_c_s4_1; ?></td>
+                    <td><?php echo $sum_c_s4_2; ?></td>
+                    <td><?php echo $sum_c_s4_3; ?></td>
+                    <td><?php echo $sum_c_s4_4; ?></td>
+                    <td><?php echo $sum_c_s4_5; ?></td>
+                    <td><?php echo $sum_c_s4_6; ?></td>
+                    <td><?php echo $sum_c_s4_7; ?></td>
+                    <td><?php echo $sum_c_s4; ?></td>
+
+                    <td><?php echo $sum_c_s5_1; ?></td>
+                    <td><?php echo $sum_c_s5_2; ?></td>
+                    <td><?php echo $sum_c_s5_3; ?></td>
+                    <td><?php echo $sum_c_s5_4; ?></td>
+                    <td><?php echo $sum_c_s5_5; ?></td>
+                    <td><?php echo $sum_c_s5_6; ?></td>
+                    <td><?php echo $sum_c_s5_7; ?></td>
+                    <td><?php echo $sum_c_s5; ?></td>
+
+                    <td><?php echo $sum_c_s6_1; ?></td>
+                    <td><?php echo $sum_c_s6_2; ?></td>
+                    <td><?php echo $sum_c_s6_3; ?></td>
+                    <td><?php echo $sum_c_s6_4; ?></td>
+                    <td><?php echo $sum_c_s6_5; ?></td>
+                    <td><?php echo $sum_c_s6_6; ?></td>
+                    <td><?php echo $sum_c_s6_7; ?></td>
+                    <td><?php echo $sum_c_s6; ?></td>
+
+                    <td><?php echo $sum_c_as; ?></td>
+                </tr>
+            </tfoot>
+        </table> 
     </div>
 
     <!-- Footer -->
@@ -1197,15 +1194,13 @@
     <script>
     $(document).ready(function() {
         $('#crisisc1').DataTable({
-            "bFilter": true,
             "dom": 'Bfrtip',
             "scrollX": true,
             "responsive": true,
+            "pageLength": 100,
             "buttons": [
                 'excel', 'copy', 'print'
-            ],
-            "paging": false,
-            "ordering": true
+            ]
         });
     });
     </script>

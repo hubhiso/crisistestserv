@@ -529,20 +529,18 @@
                     }
 
                 }
-                        echo "<tr>";
-                            echo "<th colspan='4'  style='vertical-align: center; color: white; background: #de0867;' >รวม</th>";
-                            echo "<td style='display: none;'></td>";
-                            echo "<td style='display: none;'></td>";
-                            echo "<td style='display: none;'></td>";
-                            echo "<td>".$c_s31."</td>";
-                            echo "<td>".$c_s32."</td>";
-                            echo "<td>".$c_as."</td>";
-                        echo "</tr>";
                         echo "</tbody>";
-                        echo "</table>";
-
-                    $conn->close();
             ?>
+            <tfoot>
+                <tr>
+                    <th colspan='4' class='bgcolor1' style='vertical-align: middle; background: #de0867;' >รวม</th>
+                    
+                    <td><?php echo $c_s31; ?></td>
+                    <td><?php echo $c_s32; ?></td>
+                    <td><?php echo $c_as; ?></td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 
     <!-- Footer -->
@@ -704,15 +702,13 @@
     <script>
     $(document).ready(function() {
         $('#crisisc1').DataTable({
-            "bFilter": true,
             "dom": 'Bfrtip',
             "scrollX": true,
             "responsive": true,
+            "pageLength": 100,
             "buttons": [
                 'excel', 'copy', 'print'
-            ],
-            "paging": false,
-            "ordering": true
+            ]
         });
     });
     </script>

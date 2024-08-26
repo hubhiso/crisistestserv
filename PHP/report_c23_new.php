@@ -578,30 +578,27 @@
                             }
 
                         }
-                                echo "<tr>";
-                                    echo "<th colspan='4' style='vertical-align: center; color: white; background: #de0867;' >รวม</th>";
-                                    echo "<td style='display: none;'></td>";
-                                    echo "<td style='display: none;'></td>";
-                                    echo "<td style='display: none;'></td>";
-                                    echo "<td>".$c_s411."</td>";
-                                    echo "<td>".$c_s412."</td>";
-                                    echo "<td>".$c_s413."</td>";
-                                    echo "<td>".$c_s414."</td>";
-                                    echo "<td>".$c_s42."</td>";
-                                    echo "<td>".$c_s43."</td>";
-                                    echo "<td>".$c_s44."</td>";
-                                    echo "<td>".$c_s45."</td>";
-                                    echo "<td>".$c_s46."</td>";
-                                    echo "<td>".$c_s47."</td>";
-                                    echo "<td>".$c_as."</td>";
-							    echo "</tr>";
                                 echo "</tbody>";
-                                echo "</table>";
-
-                            $conn->close();
-
 
                         ?>
+            <tfoot>
+                <tr>
+                    <th colspan='4' class='bgcolor1' style='vertical-align: middle; background: #de0867;' >รวม</th>
+                    
+                    <td><?php echo $c_s411; ?></td>
+                    <td><?php echo $c_s412; ?></td>
+                    <td><?php echo $c_s413; ?></td>
+                    <td><?php echo $c_s414; ?></td>
+                    <td><?php echo $c_s42; ?></td>
+                    <td><?php echo $c_s43; ?></td>
+                    <td><?php echo $c_s44; ?></td>
+                    <td><?php echo $c_s45; ?></td>
+                    <td><?php echo $c_s46; ?></td>
+                    <td><?php echo $c_s47; ?></td>
+                    <td><?php echo $c_as; ?></td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 
     <!-- Footer -->
@@ -764,15 +761,13 @@
     <script>
     $(document).ready(function() {
         $('#crisisc1').DataTable({
-            "bFilter": true,
             "dom": 'Bfrtip',
             "scrollX": true,
             "responsive": true,
+            "pageLength": 100,
             "buttons": [
                 'excel', 'copy', 'print'
-            ],
-            "paging": false,
-            "ordering": true
+            ]
         });
     });
     </script>

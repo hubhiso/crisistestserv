@@ -559,27 +559,25 @@
 								echo "</tr>";
 						}
 					}
-
-							echo "<tr>";
-							echo "<td colspan='4' style='vertical-align: center; color: white; background: #de0867' >รวม</td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td>".$c_s1."</td>";
-							echo "<td>".$c_s2."</td>";
-							echo "<td>".$c_s3."</td>";
-							echo "<td>".$c_s4."</td>";
-                            echo "<td>".$c_s5."</td>";
-                            echo "<td>".$c_s6."</td>";
-                            echo "<td>".$c_as."</td>";
-							echo "</tr>";
-							echo "</tbody>";
-							echo "</table>";
-
-						$conn->close();
+                    echo "</tbody>";
 
 
 					?>
+
+                    <tfoot>
+                        <tr>
+                            <th colspan='4' class='bgcolor1' style='vertical-align: middle; background: #de0867;' >รวม</th>
+                            
+                            <td><?php echo $c_s1; ?></td>
+                            <td><?php echo $c_s2; ?></td>
+                            <td><?php echo $c_s3; ?></td>
+                            <td><?php echo $c_s4; ?></td>
+                            <td><?php echo $c_s5; ?></td>
+                            <td><?php echo $c_s6; ?></td>
+                            <td><?php echo $c_as; ?></td>
+                        </tr>
+                    </tfoot>
+                </table>
     </div>
 
     <!-- Footer -->
@@ -741,15 +739,13 @@
     <script>
     $(document).ready(function() {
         $('#crisisc1').DataTable({
-            "bFilter": true,
             "dom": 'Bfrtip',
             "scrollX": true,
             "responsive": true,
+            "pageLength": 100,
             "buttons": [
                 'excel', 'copy', 'print'
-            ],
-            "paging": false,
-            "ordering": true
+            ]
         });
     });
     </script>

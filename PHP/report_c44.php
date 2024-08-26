@@ -581,27 +581,25 @@
 						}
 					}
 
-							echo "<tr>";
-							echo "<td colspan='4' style='vertical-align: center; color: white; background: #de0867' >รวม</td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td style='display: none;'></td>";
-							echo "<td>".$sum_c_s1_1."</td>";
-							echo "<td>".$sum_c_s1_2."</td>";
-							echo "<td>".$sum_c_s1_3."</td>";
-							echo "<td>".$sum_c_s1_4."</td>";
-                            echo "<td>".$sum_c_s1_5."</td>";
-                            echo "<td>".$sum_c_s1_6."</td>";
-                            echo "<td>".$sum_c_s1."</td>";
-
-							echo "</tr>";
-							echo "</tbody>";
-							echo "</table>";
-
-						$conn->close();
+                    echo "</tbody>";
 
 
 					?>
+
+                    <tfoot>
+                        <tr>
+                            <th colspan='4' class='bgcolor1' style='vertical-align: middle; background: #de0867;' >รวม</th>
+                            
+                            <td><?php echo $sum_c_s1_1; ?></td>
+                            <td><?php echo $sum_c_s1_2; ?></td>
+                            <td><?php echo $sum_c_s1_3; ?></td>
+                            <td><?php echo $sum_c_s1_4; ?></td>
+                            <td><?php echo $sum_c_s1_5; ?></td>
+                            <td><?php echo $sum_c_s1_6; ?></td>
+                            <td><?php echo $sum_c_s1; ?></td>
+                        </tr>
+                    </tfoot>
+                </table>
     </div>
 
     <!-- Footer -->
@@ -762,15 +760,13 @@
     <script>
     $(document).ready(function() {
         $('#crisisc1').DataTable({
-            "bFilter": true,
             "dom": 'Bfrtip',
             "scrollX": true,
             "responsive": true,
+            "pageLength": 100,
             "buttons": [
                 'excel', 'copy', 'print'
-            ],
-            "paging": false,
-            "ordering": true
+            ]
         });
     });
     </script>

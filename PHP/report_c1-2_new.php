@@ -551,27 +551,29 @@
 
                 }
 
-                echo "<tr>";
-                echo "<th colspan='4' class='bg-danger' style='vertical-align: center; color: white;' >รวม</th>";
-                echo "<td style='display: none;'></td>";
-                echo "<td style='display: none;'></td>";
-                echo "<td style='display: none;'></td>";
-                echo "<td>".$c_s1."</td>";
-                echo "<td>".$c_s2."</td>";
-                echo "<td>".$c_s3."</td>";
-                echo "<td>".$c_s4."</td>";
-                echo "<td>".$c_s5."</td>";
-                echo "<td>".$sum_t."</td>";
-                echo "<td>".$sum_t2."</td>";
-                echo "<td>".$c_s6."</td>";
-                echo "<td>".$c_as."</td>";
-                echo "</tr>";
 
+
+                $i++;
                 echo "</tbody>";
-                echo "</table>";
 
-            $conn->close();
-        ?>
+                ?>
+
+                    <tfoot>
+                        <tr>
+                            <th colspan='4' class='bgcolor1' style='vertical-align: middle; background: #de0867;' >รวม</th>
+                            
+                            <td><?php echo $c_s1; ?></td>
+                            <td><?php echo $c_s2; ?></td>
+                            <td><?php echo $c_s3; ?></td>
+                            <td><?php echo $c_s4; ?></td>
+                            <td><?php echo $c_s5; ?></td>
+                            <td><?php echo $sum_t; ?></td>
+                            <td><?php echo $sum_t2; ?></td>
+                            <td><?php echo $c_s6; ?></td>
+                            <td><?php echo $c_as; ?></td>
+                        </tr>
+                    </tfoot>
+                </table>
     </div>
 
     <!-- Footer -->
@@ -733,15 +735,13 @@
     <script>
     $(document).ready(function() {
         $('#crisisc1').DataTable({
-            "bFilter": true,
             "dom": 'Bfrtip',
             "scrollX": true,
             "responsive": true,
+            "pageLength": 100,
             "buttons": [
                 'excel', 'copy', 'print'
-            ],
-            "paging": false,
-            "ordering": true
+            ]
         });
     });
     </script>
