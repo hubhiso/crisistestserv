@@ -35,21 +35,29 @@
 
     <?php
 		
-		require("phpsqli_dbinfo.php");
+        require("phpsqli_dbinfo.php");
 
         require("setdateformat.php");
         date_default_timezone_set("Asia/Bangkok");
 
 
-	   $date_start = $_POST["date_start"];
-	   $date_end = $_POST["date_end"];
-	
-	   $se_time = $_POST["se_time"];
-       $se_year = $_POST["se_year"];
-       $se_quarter = $_POST["se_quarter"];
-       $se_month = $_POST["se_month"];
+        $date_start = $_POST["date_start"];
+        $date_end = $_POST["date_end"];
 
-       $year_now =  date("Y");
+        $ck_group = $_POST["group"];
+
+        if ( $ck_group <> ''){
+            $query_group = "and o.group = '".$ck_group."' ";
+        }else{
+            $query_group = " or o.name = 'adminfar' or o.name = 'adminhatc' or o.name = 'hisoDev'";
+        }
+	
+        $se_time = $_POST["se_time"];
+        $se_year = $_POST["se_year"];
+        $se_quarter = $_POST["se_quarter"];
+        $se_month = $_POST["se_month"];
+
+        $year_now =  date("Y");
 
         if(date("m")>9){
             $year_now++;
@@ -522,7 +530,7 @@
                     sum(CASE WHEN status = '6' THEN 1 ELSE 0 END) as case6,
                     count(status) as sum
                     FROM case_inputs c
-                    where c.activecase = 'yes' and receiver='".$row1['name']."'
+                    where c.activecase = 'yes' and receiver='".$row1['name']."' $query_group
                     and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
                     $sub_q
                     group by receiver";
@@ -788,8 +796,7 @@
             "buttons": [
                 'excel', 'copy', 'print'
             ],
-            "paging": false,
-            "ordering": true
+            "paging": false
         });
     });
     </script>
