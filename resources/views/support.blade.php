@@ -78,7 +78,7 @@
                 </div>
                 <div class="tile is-parent">
                     <article class="tile is-child box">
-                        <a href="http://www.aidsrightsthailand.com">
+                        <a href="http://fairthailand.org/">
                             <figure class="">
                                 <img src="images/logo/logo_fair-4.png" height="150">
                             </figure>

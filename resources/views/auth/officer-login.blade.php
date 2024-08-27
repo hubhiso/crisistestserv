@@ -123,7 +123,7 @@
 
                                         <a class="button is-info button_addshadow"
                                             href="{{ route('officer.password.request') }}">
-                                            ลืมหรัสผ่าน
+                                            ลืมรหัสผ่าน
                                         </a>
                                     </div>
                                 </div>
