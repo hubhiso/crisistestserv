@@ -693,21 +693,21 @@
                             <td>4</td>
                             <td class="text-start">
                             ความรวดเร็วในการตอบสนองของระบบ</td>
-                            <td><?php echo $count_eva3_5; ?></td>
-                            <td><?php echo $count_eva3_4; ?></td>
-                            <td><?php echo $count_eva3_3; ?></td>
-                            <td><?php echo $count_eva3_2; ?></td>
-                            <td><?php echo $count_eva3_1; ?></td>
+                            <td><?php echo $count_eva4_5; ?></td>
+                            <td><?php echo $count_eva4_4; ?></td>
+                            <td><?php echo $count_eva4_3; ?></td>
+                            <td><?php echo $count_eva4_2; ?></td>
+                            <td><?php echo $count_eva4_1; ?></td>
                         </tr>
                         <tr>
                             <td>5</td>
                             <td class="text-start">
                             สามารถนำข้อมูลการรายงานไปใช้ประโยชน์</td>
-                            <td><?php echo $count_eva3_5; ?></td>
-                            <td><?php echo $count_eva3_4; ?></td>
-                            <td><?php echo $count_eva3_3; ?></td>
-                            <td><?php echo $count_eva3_2; ?></td>
-                            <td><?php echo $count_eva3_1; ?></td>
+                            <td><?php echo $count_eva5_5; ?></td>
+                            <td><?php echo $count_eva5_4; ?></td>
+                            <td><?php echo $count_eva5_3; ?></td>
+                            <td><?php echo $count_eva5_2; ?></td>
+                            <td><?php echo $count_eva5_1; ?></td>
                         </tr>
                     </tbody>
                     <tfoot>
