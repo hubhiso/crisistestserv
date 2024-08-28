@@ -298,6 +298,12 @@
             $counteva = $i;
         }
 
+        $cal1 = $cal1/$count_user;
+        $cal2 = $cal2/$count_user;
+        $cal3 = $cal3/$count_user;
+        $cal4 = $cal4/$count_user;
+        $cal5 = $cal5/$count_user;
+
         $average = ($cal1 + $cal2 + $cal3 + $cal4 + $cal5)/5;
         $average_percent = ($average*100)/5;
 
