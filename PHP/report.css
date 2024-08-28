@@ -83,7 +83,7 @@ background-color: #de0867 !important;
 
 .boxcolor1{
     color: #fff;
-    background-color: #e60063; 
+    background-color: #e60063 !important; 
 }
 .boxborder1{
     border: 2px solid #e60063;
@@ -216,6 +216,32 @@ background-color: #de0867 !important;
     background: #f9e7f8;
     border: 1px solid #ffffff;
 }
+
+#tablescore1 th {
+    color: #ffffff;
+    background: #649494;
+    border: 0.5px solid #ccc;
+}
+
+#tablescore1 td {
+    background: #ffffff;
+    border: 0.5px solid #ccc;
+}
+#tablescore1 tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tablescore2 th {
+    color: #ffffff;
+    background: #649494;
+    border: 0.5px solid #ccc;
+}
+
+#tablescore2 td {
+    background: #fff;
+    border: 0.5px solid #cccc;
+}
+
 
 .div-h {
     height:80px;
