@@ -451,6 +451,96 @@
             $bar_icon5 = "../public/images/icon_score5.png";
         }
 
+        $sql2 = "SELECT
+            oe.username AS oe_username,
+            o.NAME AS oname,
+            DATE ( oe.created_at ) as dateadd, oe.*
+        FROM
+            officer_evaluates oe
+            LEFT JOIN officers o ON o.username = oe.username 
+        WHERE
+            date(oe.created_at) >= '".date($date_s)."' and date(oe.created_at) <= '".date($date_e)."' 
+        ORDER BY DATE (oe.created_at);";
+
+        $result = mysqli_query($conn, $sql2); 
+
+        $i = 0;
+        while($row = $result->fetch_assoc()) {
+            $i++;
+
+            $oe_username2[$i] = $row["oe_username"];
+            $oname2[$i] = $row["oname"];
+
+            $list_eva1[$i] = $row["eva1"];
+            $list_eva2[$i] = $row["eva2"];
+            $list_eva3[$i] = $row["eva3"];
+            $list_eva4[$i] = $row["eva4"];
+            $list_eva5[$i] = $row["eva5"];
+
+            $eva_comment[$i] = $row["eva_comment"];
+
+            $eva_date[$i] = $row["dateadd"];
+
+            if($list_eva1[$i] == "1"){
+                $list_eva_txt1[$i] = "น้อยที่สุด";
+            }else if($list_eva1[$i] == "2"){
+                $list_eva_txt1[$i] = "น้อย";
+            }else if($list_eva1[$i] == "3"){
+                $list_eva_txt1[$i] = "ปานกลาง";
+            }else if($list_eva1[$i] == "4"){
+                $list_eva_txt1[$i] = "มาก";
+            }else if($list_eva1[$i] == "5"){
+                $list_eva_txt1[$i] = "มากที่สุด";
+            }
+            if($list_eva2[$i] == "1"){
+                $list_eva_txt2[$i] = "น้อยที่สุด";
+            }else if($list_eva2[$i] == "2"){
+                $list_eva_txt2[$i] = "น้อย";
+            }else if($list_eva2[$i] == "3"){
+                $list_eva_txt2[$i] = "ปานกลาง";
+            }else if($list_eva2[$i] == "4"){
+                $list_eva_txt2[$i] = "มาก";
+            }else if($list_eva2[$i] == "5"){
+                $list_eva_txt2[$i] = "มากที่สุด";
+            }
+            if($list_eva3[$i] == "1"){
+                $list_eva_txt3[$i] = "น้อยที่สุด";
+            }else if($list_eva3[$i] == "2"){
+                $list_eva_txt3[$i] = "น้อย";
+            }else if($list_eva3[$i] == "3"){
+                $list_eva_txt3[$i] = "ปานกลาง";
+            }else if($list_eva3[$i] == "4"){
+                $list_eva_txt3[$i] = "มาก";
+            }else if($list_eva3[$i] == "5"){
+                $list_eva_txt3[$i] = "มากที่สุด";
+            }
+            if($list_eva4[$i] == "1"){
+                $list_eva_txt4[$i] = "น้อยที่สุด";
+            }else if($list_eva4[$i] == "2"){
+                $list_eva_txt4[$i] = "น้อย";
+            }else if($list_eva4[$i] == "3"){
+                $list_eva_txt4[$i] = "ปานกลาง";
+            }else if($list_eva4[$i] == "4"){
+                $list_eva_txt4[$i] = "มาก";
+            }else if($list_eva4[$i] == "5"){
+                $list_eva_txt4[$i] = "มากที่สุด";
+            }
+            if($list_eva5[$i] == "1"){
+                $list_eva_txt5[$i] = "น้อยที่สุด";
+            }else if($list_eva5[$i] == "2"){
+                $list_eva_txt5[$i] = "น้อย";
+            }else if($list_eva5[$i] == "3"){
+                $list_eva_txt5[$i] = "ปานกลาง";
+            }else if($list_eva5[$i] == "4"){
+                $list_eva_txt5[$i] = "มาก";
+            }else if($list_eva5[$i] == "5"){
+                $list_eva_txt5[$i] = "มากที่สุด";
+            }
+
+            $loop_q2 = $i;
+        }
+
+
     ?>
 
 </head>
@@ -746,14 +836,16 @@
                     </thead>
                     <tbody>
 
-                        <?php for($i=1;$i<=$loop1;$i++){ ?>
+                        <?php for($i=1;$i<=$loop_q2;$i++){ ?>
                         <tr>
                             <td><?php echo $i; ?></td>
-                            <td><?php echo $case_id[$i]; ?></td>
+                            <td><?php echo $oname2[$i]; ?></td>
                             <td><?php echo thai_date_short_number2($eva_date[$i]); ?></td>
-                            <td><?php echo $eva1[$i]; ?></td>
-                            <td><?php echo $eva2[$i]; ?></td>
-                            <td><?php echo $eva3[$i]; ?></td>
+                            <td><?php echo $list_eva_txt1[$i]; ?></td>
+                            <td><?php echo $list_eva_txt2[$i]; ?></td>
+                            <td><?php echo $list_eva_txt3[$i]; ?></td>
+                            <td><?php echo $list_eva_txt4[$i]; ?></td>
+                            <td><?php echo $list_eva_txt5[$i]; ?></td>
                             <td><?php echo $eva_comment[$i]; ?></td>
                         </tr>
                         <?php } ?>
