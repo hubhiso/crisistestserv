@@ -173,11 +173,29 @@
             $yyyymmdd = substr($date_end,6,4)."/".substr($date_end,3,2)."/".substr($date_end,0,2);
             $date_e =  $yyyymmdd;
         }
+
+        if($se1 != '0'){
+            $q_se1 = " and problem_case = '$se1' ";
+
+            if($se2 != '0'){
+                $q_se2 = " and sub_problem = '$se2' ";
+
+                if($se3 != '0'){
+
+                    $q_se2 = " and group_code = '$se3' ";
+                }
+            }
+
+        }else{
+            $q_se1 = "";
+            $q_se2 = "";
+            $q_se3 = "";
+        }
 	
 
 		$sql1 = "SELECT r.code,r.name,c.status,count(c.id) as n_status 
 		FROM r_status r left join case_inputs c on r.code = c.status  left join prov_geo on prov_geo.code = c.prov_id
-		where c.activecase = 'yes' and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
+		where c.activecase = 'yes' $q_se1 $q_se2 $q_se3 and date(c.created_at) >= '".date($date_s)."' and date(c.created_at) <= '".date($date_e)."'
 		$pr_q
 		group by r.code";
 		
@@ -359,14 +377,14 @@
                     </div>
                     <div class="col-auto">
                         <select id="problem_case" name="problem_case" class="form-select">
-                            <option value="0">โปรดเลือกประเภทปัญหาของท่าน</option>
-                            <option value="1">บังคับตรวจเอชไอวี</option>
+                            <option value="0">ทุกประเภทปัญหา</option>
+                            <option value="1" <?php if($se1 == '1' ){echo "selected";} ?>>บังคับตรวจเอชไอวี</option>
                             <option value="2" <?php if($se1 == '2' ){echo "selected";} ?>>เปิดเผยสถานะการติดเชื้อเอชไอวี
                             </option>
-                            <option value="3">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
-                            <option value="4">ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
-                            <option value="5">อื่นๆ ที่เกี่ยวข้องกับ HIV</option>
-                            <option value="6">อื่นๆ </option>
+                            <option value="3" <?php if($se1 == '3' ){echo "selected";} ?>>ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจาการติดเชื้อเอชไอวี</option>
+                            <option value="4" <?php if($se1 == '4' ){echo "selected";} ?>>ถูกกีดกันหรือถูกเลือกปฏิบัติเนื่องมาจากเป็นกลุ่มเปราะบาง</option>
+                            <option value="5" <?php if($se1 == '5' ){echo "selected";} ?>>อื่นๆ ที่เกี่ยวข้องกับ HIV</option>
+                            <option value="6" <?php if($se1 == '6' ){echo "selected";} ?>>อื่นๆ </option>
 
                         </select>
                     </div>
@@ -712,6 +730,77 @@
             echo "$('.se_time_g2').hide();";
         }
         ?>
+
+        //alert($('#group_code').val(););
+
+        if($('#problem_case').val() !== '0' ){
+            //alert("yes");
+
+            var prob_id = $('#problem_case').val();
+
+            $('#group_code').empty();
+            $('#group_code').attr('disabled', 'disabled');
+            if ((prob_id == 1) || (prob_id == 5)|| (prob_id == 6)) {
+                $('#sub_problem').empty();
+                $('#sub_problem').removeAttr('disabled');
+                $('#sub_problem').append(
+                    '<option value="0" <?php if($se2 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่ม</option>'
+                );
+                $('#sub_problem').append(
+                    '<option value="1" <?php if($se2 == '1' ){echo "selected";} ?> style="width:250px">ผู้ติดเชื้อเอชไอวี</option>'
+                );
+                $('#sub_problem').append(
+                    '<option value="2" <?php if($se2 == '2' ){echo "selected";} ?> style="width:250px">กลุ่มเปราะบาง</option>'
+                );
+                $('#sub_problem').append(
+                    '<option value="4" <?php if($se2 == '4' ){echo "selected";} ?>  style="width:250px">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
+                $('#sub_problem').append('<option value="3" style="width:250px">ประชาชนทั่วไป</option>');
+            } else if (prob_id == 2) {
+                $('#sub_problem').empty();
+                $('#sub_problem').removeAttr('disabled');
+                $('#sub_problem').append('<option value="0" <?php if($se2 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่ม</option>');
+                $('#sub_problem').append('<option value="1" <?php if($se2 == '1' ){echo "selected";} ?>>ผู้ติดเชื้อเอชไอวี</option>');
+            } else if (prob_id == 3) {
+                $('#sub_problem').empty();
+                $('#sub_problem').removeAttr('disabled');
+                $('#sub_problem').append('<option value="0" <?php if($se2 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่ม</option>');
+                $('#sub_problem').append('<option value="1" <?php if($se2 == '1' ){echo "selected";} ?>  >ผู้ติดเชื้อเอชไอวี</option>');
+                $('#sub_problem').append('<option value="4" <?php if($se2 == '4' ){echo "selected";} ?>  >ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
+            } else if (prob_id == 4) {
+                $('#sub_problem').empty();
+                $('#sub_problem').removeAttr('disabled');
+                $('#sub_problem').append('<option value="0" <?php if($se2 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่ม</option>');
+                $('#sub_problem').append('<option value="2" <?php if($se2 == '2' ){echo "selected";} ?>  style="width:250px">กลุ่มเปราะบาง</option>');
+                $('#group_code').empty();
+                $('#group_code').removeAttr('disabled');
+                $('#group_code').append('<option value="0" <?php if($se3 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่มย่อย</option>');
+                $('#group_code').append('<option value="1" <?php if($se3 == '1' ){echo "selected";} ?>  style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
+                $('#group_code').append('<option value="2" <?php if($se3 == '2' ){echo "selected";} ?>  style="width:250px">พนักงานบริการ </option>');
+                $('#group_code').append('<option value="3" <?php if($se3 == '3' ){echo "selected";} ?>  style="width:250px">ผู้ใช้สารเสพติด</option>');
+                $('#group_code').append('<option value="4" <?php if($se3 == '4' ){echo "selected";} ?>  style="width:250px">ประชากรข้ามชาติ</option>');
+                $('#group_code').append('<option value="5" <?php if($se3 == '5' ){echo "selected";} ?>  style="width:250px">ผู้ถูกคุมขัง</option>');
+                $('#group_code').append('<option value="6" <?php if($se3 == '6' ){echo "selected";} ?>  style="width:250px">กลุ่มชาติพันธุ์และชนเผ่า</option>');
+                $('#group_code').append('<option value="7" <?php if($se3 == '7' ){echo "selected";} ?>  style="width:250px">คนพิการ</option>');
+
+            } else {
+                $('#sub_problem').empty();
+                $('#sub_problem').attr('disabled', 'disabled');
+            }
+
+            if($('#group_code').val() != null ){
+                $('#group_code').empty();
+                $('#group_code').removeAttr('disabled');
+                $('#group_code').append('<option value="0" <?php if($se3 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่มย่อย</option>');
+                $('#group_code').append('<option value="1" <?php if($se3 == '1' ){echo "selected";} ?>  style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
+                $('#group_code').append('<option value="2" <?php if($se3 == '2' ){echo "selected";} ?>  style="width:250px">พนักงานบริการ </option>');
+                $('#group_code').append('<option value="3" <?php if($se3 == '3' ){echo "selected";} ?>  style="width:250px">ผู้ใช้สารเสพติด</option>');
+                $('#group_code').append('<option value="4" <?php if($se3 == '4' ){echo "selected";} ?>  style="width:250px">ประชากรข้ามชาติ</option>');
+                $('#group_code').append('<option value="5" <?php if($se3 == '5' ){echo "selected";} ?>  style="width:250px">ผู้ถูกคุมขัง</option>');
+                $('#group_code').append('<option value="6" <?php if($se3 == '6' ){echo "selected";} ?>  style="width:250px">กลุ่มชาติพันธุ์และชนเผ่า</option>');
+                $('#group_code').append('<option value="7" <?php if($se3 == '7' ){echo "selected";} ?>  style="width:250px">คนพิการ</option>');
+            }
+
+        }
     });
 
     $('#se_quarter').on('change', function(e) {
@@ -764,37 +853,45 @@
             $('#sub_problem').empty();
             $('#sub_problem').removeAttr('disabled');
             $('#sub_problem').append(
+                '<option value="0" <?php if($se2 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่ม</option>'
+            );
+            $('#sub_problem').append(
                 '<option value="1" <?php if($se2 == '1' ){echo "selected";} ?> style="width:250px">ผู้ติดเชื้อเอชไอวี</option>'
             );
             $('#sub_problem').append(
                 '<option value="2" <?php if($se2 == '2' ){echo "selected";} ?> style="width:250px">กลุ่มเปราะบาง</option>'
             );
             $('#sub_problem').append(
-                '<option value="4" style="width:250px">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
+                '<option value="4" <?php if($se2 == '4' ){echo "selected";} ?>  style="width:250px">ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
             $('#sub_problem').append('<option value="3" style="width:250px">ประชาชนทั่วไป</option>');
         } else if (prob_id == 2) {
             $('#sub_problem').empty();
             $('#sub_problem').removeAttr('disabled');
-            $('#sub_problem').append(
-                '<option value="1" <?php if($se2 == '1' ){echo "selected";} ?>>ผู้ติดเชื้อเอชไอวี</option>');
+            $('#sub_problem').append('<option value="0" <?php if($se2 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่ม</option>');
+            $('#sub_problem').append('<option value="1" <?php if($se2 == '1' ){echo "selected";} ?>>ผู้ติดเชื้อเอชไอวี</option>');
         } else if (prob_id == 3) {
             $('#sub_problem').empty();
             $('#sub_problem').removeAttr('disabled');
-            $('#sub_problem').append('<option value="1" >ผู้ติดเชื้อเอชไอวี</option>');
-            $('#sub_problem').append('<option value="4" >ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
+            $('#sub_problem').append('<option value="0" <?php if($se2 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่ม</option>');
+            $('#sub_problem').append('<option value="1" <?php if($se2 == '1' ){echo "selected";} ?>  >ผู้ติดเชื้อเอชไอวี</option>');
+            $('#sub_problem').append('<option value="4" <?php if($se2 == '4' ){echo "selected";} ?>  >ครอบครัวและผู้ใกล้ชิดผู้ติดเชื้อเอชไอวี</option>');
         } else if (prob_id == 4) {
             $('#sub_problem').empty();
             $('#sub_problem').removeAttr('disabled');
-            $('#sub_problem').append('<option value="2" style="width:250px">กลุ่มเปราะบาง</option>');
+            $('#sub_problem').append('<option value="0" <?php if($se2 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่ม</option>');
+            $('#sub_problem').append('<option value="2" <?php if($se2 == '2' ){echo "selected";} ?>  style="width:250px">กลุ่มเปราะบาง</option>');
             $('#group_code').empty();
             $('#group_code').removeAttr('disabled');
-            $('#group_code').append('<option value="1" style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
-            $('#group_code').append('<option value="2" style="width:250px">พนักงานบริการ </option>');
-            $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
-            $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
-            $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
-            $('#group_code').append('<option value="6" style="width:250px">กลุ่มชาติพันธุ์และชนเผ่า</option>');
-            $('#group_code').append('<option value="7" style="width:250px">คนพิการ</option>');
+            $('#group_code').append(
+                '<option value="0" <?php if($se3 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่มย่อย</option>'
+            );
+            $('#group_code').append('<option value="1" <?php if($se3 == '1' ){echo "selected";} ?>  style="width:250px">กลุ่มหลากหลายทางเพศ</option>');
+            $('#group_code').append('<option value="2" <?php if($se3 == '2' ){echo "selected";} ?>  style="width:250px">พนักงานบริการ </option>');
+            $('#group_code').append('<option value="3" <?php if($se3 == '3' ){echo "selected";} ?>  style="width:250px">ผู้ใช้สารเสพติด</option>');
+            $('#group_code').append('<option value="4" <?php if($se3 == '4' ){echo "selected";} ?>  style="width:250px">ประชากรข้ามชาติ</option>');
+            $('#group_code').append('<option value="5" <?php if($se3 == '5' ){echo "selected";} ?>  style="width:250px">ผู้ถูกคุมขัง</option>');
+            $('#group_code').append('<option value="6" <?php if($se3 == '6' ){echo "selected";} ?>  style="width:250px">กลุ่มชาติพันธุ์และชนเผ่า</option>');
+            $('#group_code').append('<option value="7" <?php if($se3 == '7' ){echo "selected";} ?>  style="width:250px">คนพิการ</option>');
 
         } else {
             $('#sub_problem').empty();
@@ -807,16 +904,19 @@
             $('#group_code').empty();
             $('#group_code').removeAttr('disabled');
             $('#group_code').append(
+                '<option value="0" <?php if($se3 == '0' ){echo "selected";} ?> style="width:250px">ทุกประเภทกลุ่มย่อย</option>'
+            );
+            $('#group_code').append(
                 '<option value="1" <?php if($se3 == '1' ){echo "selected";} ?> style="width:250px">กลุ่มหลากหลายทางเพศ</option>'
             );
             $('#group_code').append(
                 '<option value="2" <?php if($se3 == '2' ){echo "selected";} ?>style="width:250px">พนักงานบริการ</option>'
             );
-            $('#group_code').append('<option value="3" style="width:250px">ผู้ใช้สารเสพติด</option>');
-            $('#group_code').append('<option value="4" style="width:250px">ประชากรข้ามชาติ</option>');
-            $('#group_code').append('<option value="5" style="width:250px">ผู้ถูกคุมขัง</option>');
-            $('#group_code').append('<option value="6" style="width:250px">กลุ่มชาติพันธุ์และชนเผ่า</option>');
-            $('#group_code').append('<option value="7" style="width:250px">คนพิการ</option>');
+            $('#group_code').append('<option value="3" <?php if($se3 == '3' ){echo "selected";} ?> style="width:250px">ผู้ใช้สารเสพติด</option>');
+            $('#group_code').append('<option value="4" <?php if($se3 == '4' ){echo "selected";} ?> style="width:250px">ประชากรข้ามชาติ</option>');
+            $('#group_code').append('<option value="5" <?php if($se3 == '5' ){echo "selected";} ?> style="width:250px">ผู้ถูกคุมขัง</option>');
+            $('#group_code').append('<option value="6" <?php if($se3 == '6' ){echo "selected";} ?> style="width:250px">กลุ่มชาติพันธุ์และชนเผ่า</option>');
+            $('#group_code').append('<option value="7" <?php if($se3 == '7' ){echo "selected";} ?> style="width:250px">คนพิการ</option>');
 
 
 

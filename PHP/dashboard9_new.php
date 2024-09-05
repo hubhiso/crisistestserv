@@ -74,7 +74,7 @@
             $last_i2 = $i;
         }
 
-        echo "test";
+        //echo "test";
 
         for($j =1; $j <= $last_i; $j++){
             if( $g_code[$j] == 1){
