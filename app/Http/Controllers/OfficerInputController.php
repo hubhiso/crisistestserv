@@ -279,7 +279,7 @@ class OfficerInputController extends Controller
 
     public function load_activities_table($case_id)
     {
-        $activities = operate_detail::where('case_id','=',$case_id)->orderBy('id', 'asc')->get();
+        $activities = operate_detail::where('case_id','=',$case_id)->orderBy('operate_date', 'asc')->get();
         $html = view('officer._activities_table',compact('activities'))->render();
         return response()->json(compact('html'));
     }
