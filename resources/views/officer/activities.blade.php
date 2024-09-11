@@ -504,6 +504,14 @@
     <br>
 
     <script>
+    $(document).ready(function() {
+        $('#operate_date').val($('#Monthoperate').val() + "/" + $('#Dayoperate').val() + "/" + ($('#Yearoperate').val() - 543));
+        //var date = $('#operate_date').val();
+        //alert(date);
+    });
+    </script>
+
+    <script>
     ////////////////////////////// operate control /////////////////////////
     function edit_operate(operate_id) {
         var url = "{{route('officer.edit_operate',['operate_id' => ":operate_id"]) }}";
