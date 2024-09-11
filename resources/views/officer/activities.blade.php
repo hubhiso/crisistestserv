@@ -625,6 +625,11 @@
             success: function(data) {
                 //console.log(data);
                 clear_edit(operate_id)
+                renderTable();
+                clear_input();
+                //alert(data.cout)
+                $('#current_operate').hide();
+                $('#btn_add').show();
             }
         })
     }
