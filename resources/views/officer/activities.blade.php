@@ -732,6 +732,7 @@
                 $("#ajaxResponse").append("<div>" + data.msg + "</div>");
                 renderTable();
                 clear_input();
+                $('#operate_date').val($('#Monthoperate').val() + "/" + $('#Dayoperate').val() + "/" + ($('#Yearoperate').val() - 543));
                 //alert(data.cout)
                 $('#current_operate').hide();
                 $('#btn_add').show();
