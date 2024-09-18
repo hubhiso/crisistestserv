@@ -275,7 +275,7 @@
         <div class="tile is-parent">
             <article class="tile is-child box">
                 <a href="https://www.thaihealthreport.com/">
-                    <h4 class="subtitle is-4 ">"รายงานสุขภาพคนไทย 2562"</h4>
+                    <h4 class="subtitle is-4 ">"รายงานสุขภาพคนไทย"</h4>
                     <p>สถาบันวิจัยประชากรและสังคม <br>มหาวิทยาลัยมหิดล</p>
                 </a>
             </article>

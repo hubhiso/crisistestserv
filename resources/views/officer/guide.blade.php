@@ -123,8 +123,8 @@
 
                             <div class="column is-4">
                                 <div class="box_text">
-                                    <img src="../images/guide/CRSmannual_cover.png" alt="CRSmannual" class="image is-3by4">
-                                    <a href="../contents/guide/CRSmannual.pdf" onclick="update_count(101)" target="_blank">
+                                    <img src="../contents/cover2-คู่มือแนวทางการจัดการรับเรื่องร้องเรียน.png" alt="CRSmannual" class="image is-3by4">
+                                    <a href="../contents/guide/คู่มือแนวทางการจัดการรับเรื่องร้องเรียน.pdf" onclick="update_count(101)" target="_blank">
                                         <div class="overlay_cover">
                                             คู่มือแนวทางการจัดการเรื่องร้องเรียน CRS Manual
                                             <div class="buttons is-right">
@@ -141,7 +141,7 @@
                             <div class="column is-4">
                                 <div class=" box_text">
                                     <img src="../images/guide/crisis_cover_2.png" alt="guide_crisis" class="image is-3by4">
-                                    <a href="../contents/guide/crisis.pdf" onclick="update_count(102)" target="_blank">
+                                    <a href="../contents/Crisis.pdf" onclick="update_count(102)" target="_blank">
                                         <div class="overlay_cover">
                                             คู่มือการคุ้มครองสิทธิประชาชนเกี่ยวกับเอดส์
                                             <div class="buttons is-right">
@@ -156,9 +156,9 @@
                             </div>
                             <div class="column is-4">
                                 <div class=" box_text">
-                                    <img src="../images/guide/คู่มือCRSversionปี2564(new)_cover.jpg" alt="Avatar"
+                                    <img src="../contents/ปกคู่มือcrs-2567.png" alt="Avatar"
                                         class="image is-3by4">
-                                    <a href="../contents/guide/คู่มือCRSversionปี2564(new).pdf" onclick="update_count(103)"
+                                    <a href="../contents/guide/คู่มือCRSversionปี2567.pdf" onclick="update_count(103)"
                                         target="_blank">
                                         <div class="overlay_cover">
                                             คู่มือการใช้งานข้อมูลละเมิดสิทธิ(ฉบับสมบูรณ์)
