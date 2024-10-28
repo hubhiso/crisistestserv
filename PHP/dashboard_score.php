@@ -155,9 +155,10 @@
         }
 
         //echo "<br>date :".$date_s." ".$date_e."<br>";
-
-        $sql = "SELECT * from case_inputs where evaluate1 <> '' 
+        $sql = "SELECT * from case_inputs where (evaluate1 <> '' or evaluate2 <> '' or evaluate3 <> '')
         and date(created_at) >= '".date($date_s)."' and date(created_at) <= '".date($date_e)."'";
+        //echo $sql;
+
         $result = mysqli_query($conn, $sql); 
         $i = 0;
         $cal1 = 0;
@@ -315,6 +316,14 @@
             $txt_score = "<span style='color: #74a474'>ความพึงพอใจอยู่ในระดับมากที่สุด</span>";
         }
 
+        if($counteva == ''){
+            $counteva = 0;
+        }
+
+        if(is_nan($average) == true){
+            $average = 0;
+        }
+
         if($cal1 <= 1.49){
             $bar2_color1 = "#f0685a";
             $bar2_txt1 = "น้อยที่สุด";
@@ -435,7 +444,7 @@
                     <div class="col-auto se_time_g1">
                         <select class="form-select form-control" id="se_year" name="se_year">
                             <?php
-                                for($y = 2019; $y <= $year_now; $y++){
+                                for($y = 2024; $y <= $year_now; $y++){
                                     if ($se_year == $y) { $se =  "selected";}
                                     echo "<option value='$y' $se> ".($y+543)." </option>";
                                     $se = '';
@@ -546,11 +555,11 @@
                             style="border-radius: 50%; margin-top: -70px; border: 2px solid #86adae;">
 
                         <div class=" p-1 mt-3">
-                            <label for="">จำนวนผู้ประเมินความพึงพอใจ</label>
+                            <label>จำนวนผู้ประเมินความพึงพอใจ</label>
                         </div>
 
                         <div class="bg-white p-3 mt-3" style="color: #000;">
-                            <label for=""><?php echo $counteva; ?> ราย</label>
+                            <label><?php echo $counteva; ?> ราย</label>
                         </div>
 
                     </div>
@@ -573,7 +582,11 @@
         </div>
 
         <div class="mb-4 p-3 bg-white rounded-3 border shadow-sm">
-            <div class="table-responsive ">
+            <div class="text-center mb-3">
+                <b class="fs-5">สรุปผลการประเมินความพึงพอใจต่อการใช้งานระบบของผู้แจ้งเหตุ</b>
+            </div>
+            
+            <div class="table-responsive  border rounded-3 p-3">
                 <table id="tablescore1" class="table table-bordered table-striped" style="text-align: center;">
                     <thead>
                         <tr style="text-align: center;">
@@ -635,7 +648,22 @@
         </div>
 
         <div class="mb-4 p-3 bg-white rounded-3 border shadow-sm">
-            <div class="table-responsive">
+            <div class="text-center mb-3">
+                <b class="fs-5">ข้อมูลการประเมินความพึงพอใจต่อการใช้งานระบบของผู้แจ้งเหตุ</b>
+            </div>
+            <div class="row rounded-3 p-3">
+                <div class="col-md-3 offset-md-9 ">
+                    <div class="row text-center" >
+                        <div class="col-5 p-3">
+                            จำนวนผู้ประเมิน 
+                        </div>
+                        <div class="col-7 bg-light rounded-3 border p-3">
+                            <?php echo $counteva; ?> ราย
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive border rounded-3 p-3">
                 <table id="tablescore2" class="table table-bordered text-center table-striped">
                     <thead>
                         <tr>
@@ -704,7 +732,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+    <!--script src="js/scripts.js"></script-->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous">
     </script>
@@ -717,6 +745,7 @@
         var o_table = $('#tablescore1').DataTable({
             responsive: true,
             "pageLength": 25,
+            bLengthChange: false,
             dom: 'Bfrtip',
             buttons: [
                 'pageLength', 'copy', 'excel', 'pdf', 'print'
@@ -934,7 +963,7 @@
 
         series: [{
             name: 'คะแนนเฉลี่ย',
-            data: [<?php echo number_format($average_percent,2); ?>],
+            data: [<?php if(is_nan($average_percent) == true){ echo "0";}else{echo number_format($average_percent,2);} ?>],
             tooltip: {
                 valueSuffix: '%'
             },
@@ -943,7 +972,7 @@
                 align: 'center',
                 useHTML: true,
                 formatter: function() {
-                    return "<img src='<?php echo $path_icon; ?>' width='30'> คะแนนเฉลี่ย <?php echo number_format($average,2); ?> (<?php echo number_format($average_percent,2); ?>%) <br>  <?php echo $txt_score; ?> ";
+                    return "<img src='<?php echo $path_icon; ?>' width='30'> คะแนนเฉลี่ย <?php echo number_format($average,2); ?> (<?php if(is_nan($average_percent) == true){ echo "0";}else{echo number_format($average_percent,2);} ?>%) <br>  <?php echo $txt_score; ?> ";
                 },
                 //format: "<img src='../public/images/survey_icon2.png' width='20'> คะแนนเฉลี่ย 4.41 {y}%",
                 borderWidth: 0,
@@ -1017,21 +1046,21 @@
             name: 'คะแนนเฉลี่ย',
             data: [
                 {
-                    "y": <?php echo number_format($cal1,2); ?>,
+                    "y": <?php if(is_nan($cal1) == true){ echo "0";}else{echo number_format($cal1,2);} ?>,
                     "color": "<?php echo $bar2_color1; ?>",
                     "a": "<?php echo number_format($percentcal1,2); ?>",
                     "b": "<?php echo $bar2_txt1; ?>",
                     "c": "<?php echo $bar_icon1; ?>"
                 },
                 {
-                    "y": <?php echo number_format($cal2,2); ?>,
+                    "y": <?php if(is_nan($cal2) == true){ echo "0";}else{echo number_format($cal2,2);} ?>,
                     "color": "<?php echo $bar2_color2; ?>",
                      "a": "<?php echo number_format($percentcal2,2); ?>",
                     "b": "<?php echo $bar2_txt2; ?>",
                     "c": "<?php echo $bar_icon2; ?>"
                 },
                 {
-                    "y": <?php echo number_format($cal3,2); ?>,
+                    "y": <?php if(is_nan($cal3) == true){ echo "0";}else{echo number_format($cal3,2);} ?>,
                     "color": "<?php echo $bar2_color3; ?>",
                     "a": "<?php echo number_format($percentcal3,2); ?>",
                     "b": "<?php echo $bar2_txt3; ?>",

@@ -298,11 +298,21 @@
             $counteva = $i;
         }
 
-        $cal1 = $cal1/$count_user;
-        $cal2 = $cal2/$count_user;
-        $cal3 = $cal3/$count_user;
-        $cal4 = $cal4/$count_user;
-        $cal5 = $cal5/$count_user;
+        
+
+        if($cal1 == 0 and $cal2 == 0 and $cal3 == 0 and $cal4 == 0 and $cal5 == 0){
+            $average_percent = 0;
+        }else{
+
+            $cal1 = $cal1/$count_user;
+            $cal2 = $cal2/$count_user;
+            $cal3 = $cal3/$count_user;
+            $cal4 = $cal4/$count_user;
+            $cal5 = $cal5/$count_user;
+            
+            $average = ($cal1 + $cal2 + $cal3 + $cal4 + $cal5)/5;
+            $average_percent = ($average*100)/5;
+        }
 
         $average = ($cal1 + $cal2 + $cal3 + $cal4 + $cal5)/5;
         $average_percent = ($average*100)/5;
@@ -337,9 +347,6 @@
         $percentcal3 = ($avg3*100)/5;
         $percentcal4 = ($avg4*100)/5;
         $percentcal5 = ($avg5*100)/5;
-
-        
-
 
         if($avg1 <= 1.49){
             $bar2_color1 = "#f0685a";
@@ -460,7 +467,7 @@
             LEFT JOIN officers o ON o.username = oe.username 
         WHERE
             date(oe.created_at) >= '".date($date_s)."' and date(oe.created_at) <= '".date($date_e)."' 
-        ORDER BY DATE (oe.created_at);";
+        ORDER BY DATE (oe.created_at), oe.username ;";
 
         $result = mysqli_query($conn, $sql2); 
 
@@ -596,7 +603,7 @@
                     <div class="col-auto se_time_g1">
                         <select class="form-select form-control" id="se_year" name="se_year">
                             <?php
-                                for($y = 2019; $y <= $year_now; $y++){
+                                for($y = 2024; $y <= $year_now; $y++){
                                     if ($se_year == $y) { $se =  "selected";}
                                     echo "<option value='$y' $se> ".($y+543)." </option>";
                                     $se = '';
@@ -707,11 +714,11 @@
                             style="border-radius: 50%; margin-top: -70px; border: 2px solid #86adae;">
 
                         <div class=" p-1 mt-3">
-                            <label for="">จำนวนผู้ประเมินความพึงพอใจ</label>
+                            <label>จำนวนผู้ประเมินความพึงพอใจ</label>
                         </div>
 
                         <div class="bg-white p-3 mt-3" style="color: #000;">
-                            <label for=""><?php echo $count_user; ?> ราย</label>
+                            <label><?php echo $count_user; ?> ราย</label>
                         </div>
 
                     </div>
@@ -734,7 +741,10 @@
         </div>
 
         <div class="mb-4 p-3 bg-white rounded-3 border shadow-sm">
-            <div class="table-responsive ">
+            <div class="text-center mb-3">
+                <b class="fs-5">สรุปผลการประเมินความพึงพอใจต่อการใช้งานระบบของเจ้าหน้าที่</b>
+            </div>
+            <div class="table-responsive border rounded-3 p-3">
                 <table id="tablescore1" class="table table-bordered table-striped" style="text-align: center;">
                     <thead>
                         <tr style="text-align: center;">
@@ -816,13 +826,29 @@
         </div>
 
         <div class="mb-4 p-3 bg-white rounded-3 border shadow-sm">
-            <div class="table-responsive">
-                <table id="tablescore2" class="table table-bordered text-center table-striped">
+            <div class="text-center mb-3">
+                <b class="fs-5">ข้อมูลการประเมินความพึงพอใจต่อการใช้งานระบบของเจ้าหน้าที่</b>
+            </div>
+            <div class="row rounded-3 p-3">
+                <div class="col-md-3 offset-md-9 ">
+                    <div class="row text-center" >
+                        <div class="col-5 p-3">
+                            จำนวนผู้ประเมิน 
+                        </div>
+                        <div class="col-7 bg-light rounded-3 border p-3">
+                            <?php echo $count_user; ?> ราย
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive border rounded-3 p-3">
+                <table id="tablescore2" class="table table-bordered text-center ">
                     <thead>
                         <tr>
                             <th class="text-center" style="width: 5%;" rowspan="2">ลำดับ</th>
-                            <th class="text-center" style="width: 10%;" rowspan="2">รหัส</th>
+                            <th class="text-center" style="width: 10%;" rowspan="2">ชื่อผู้ใช้งาน (User)</th>
                             <th class="text-center" style="width: 10%;" rowspan="2">วันที่ประเมิน</th>
+                            <th class="text-center" style="width: 10%;" rowspan="2">ครั้งที่ประเมิน</th>
                             <th class="text-center" colspan="6">ผลการประเมิน</th>
                         </tr>
                         <tr >
@@ -836,17 +862,76 @@
                     </thead>
                     <tbody>
 
-                        <?php for($i=1;$i<=$loop_q2;$i++){ ?>
-                        <tr>
-                            <td><?php echo $i; ?></td>
-                            <td><?php echo $oname2[$i]; ?></td>
-                            <td><?php echo thai_date_short_number2($eva_date[$i]); ?></td>
-                            <td><?php echo $list_eva_txt1[$i]; ?></td>
-                            <td><?php echo $list_eva_txt2[$i]; ?></td>
-                            <td><?php echo $list_eva_txt3[$i]; ?></td>
-                            <td><?php echo $list_eva_txt4[$i]; ?></td>
-                            <td><?php echo $list_eva_txt5[$i]; ?></td>
-                            <td><?php echo $eva_comment[$i]; ?></td>
+                        <?php $j = 0; $order = 0; $color_change = "1"; for($i=1;$i<=$loop_q2;$i++){  ?>
+
+                        <?php 
+                            /*
+                            //$oname2_check_color = $oname2[$i];
+                            //$eva_date_check_color = $eva_date[$i];
+
+                            $color_change = "0";
+                            if(($oname2[$i-1] == $oname2[$i]) && ($eva_date[$i-1] == $eva_date[$i])){ 
+                                //$color = "style='background-color: #efefef; '";
+                            }else{
+                                //$color = "";
+                                $order++;
+                                $color_change = "1";
+                            }
+                            //$order_old =  $order;
+
+                            if ($color_change == "1" ){
+                                $color = "style='background-color: #efefef; '";
+                            }else{
+                                $color = "";
+                            }
+                            */
+
+                            if($eva_date[$i] <> $eva_date[$i-1]){
+
+                                if($color_change == "0"){
+                                    $color_change = "1";
+                                    $color = "style='background-color: #efefef; '";
+                                    $order++;
+                                }else if($color_change == "1"){
+                                    $color_change = "0";
+                                    $color = "";
+                                    $order++;
+                                }
+                            }else if ($oname2[$i-1] <> $oname2[$i]){
+                                if($color_change == "0"){
+                                    $color_change = "1";
+                                    $color = "style='background-color: #efefef; '";
+                                    $order++;
+                                }else if($color_change == "1"){
+                                    $color_change = "0";
+                                    $color = "";
+                                    $order++;
+                                }
+                            }
+                                
+                        ?>
+
+                        <tr >
+                            <td <?php echo $color; ?>><?php echo $order; ?></td>
+                            <td <?php echo $color; ?>><?php echo $oname2[$i]; ?></td>
+                            <td <?php echo $color; ?>><?php echo thai_date_short_number2($eva_date[$i]); ?></td>
+                            <td <?php echo $color; ?>><?php 
+                                    if(($oname2[$i-1] == $oname2[$i]) && ($eva_date[$i-1] == $eva_date[$i])){
+                                        $j++;
+                                        echo $j; 
+                                    }else{
+                                        $j = 1;
+                                        echo $j; 
+                                    }
+                                    
+                                ?>
+                            </td>
+                            <td <?php echo $color; ?>><?php echo $list_eva_txt1[$i]; ?></td>
+                            <td <?php echo $color; ?>><?php echo $list_eva_txt2[$i]; ?></td>
+                            <td <?php echo $color; ?>><?php echo $list_eva_txt3[$i]; ?></td>
+                            <td <?php echo $color; ?>><?php echo $list_eva_txt4[$i]; ?></td>
+                            <td <?php echo $color; ?>><?php echo $list_eva_txt5[$i]; ?></td>
+                            <td <?php echo $color; ?>><?php echo $eva_comment[$i]; ?></td>
                         </tr>
                         <?php } ?>
                     </tbody>
@@ -888,7 +973,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+    <!--script src="js/scripts.js"></script-->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" crossorigin="anonymous">
     </script>
@@ -946,8 +1031,7 @@
     $(function() {
         $('.dropdown [data-toggle="dropdown"]').on('click', function(e) {
             $(this).dropdown('toggle');
-            e
-                .stopPropagation(); // do not fire dropdown.js click event, it will call 'this.toggle()' internal
+            e.stopPropagation(); // do not fire dropdown.js click event, it will call 'this.toggle()' internal
         });
         $('.dropdown').on('hide.bs.dropdown', function(e) {
             if ($(this).is('.has-child-dropdown-show')) {
@@ -1202,35 +1286,35 @@
             name: 'คะแนนเฉลี่ย',
             data: [
                 {
-                    "y": <?php echo number_format($avg1,2); ?>,
+                    "y": <?php if(is_nan($avg1) == true){ echo "0";}else{echo number_format($avg1,2);} ?>,
                     "color": "<?php echo $bar2_color1; ?>",
                     "a": "<?php echo number_format($percentcal1,2); ?>",
                     "b": "<?php echo $bar2_txt1; ?>",
                     "c": "<?php echo $bar_icon1; ?>"
                 },
                 {
-                    "y": <?php echo number_format($avg2,2); ?>,
+                    "y": <?php if(is_nan($avg2) == true){ echo "0";}else{echo number_format($avg2,2);} ?>,
                     "color": "<?php echo $bar2_color2; ?>",
                      "a": "<?php echo number_format($percentcal2,2); ?>",
                     "b": "<?php echo $bar2_txt2; ?>",
                     "c": "<?php echo $bar_icon2; ?>"
                 },
                 {
-                    "y": <?php echo number_format($avg3,2); ?>,
+                    "y": <?php if(is_nan($avg3) == true){ echo "0";}else{echo number_format($avg3,2);} ?>,
                     "color": "<?php echo $bar2_color3; ?>",
                     "a": "<?php echo number_format($percentcal3,2); ?>",
                     "b": "<?php echo $bar2_txt3; ?>",
                     "c": "<?php echo $bar_icon3; ?>"
                 },
                 {
-                    "y": <?php echo number_format($avg4,2); ?>,
+                    "y": <?php if(is_nan($avg4) == true){ echo "0";}else{echo number_format($avg4,2);} ?>,
                     "color": "<?php echo $bar2_color4; ?>",
                     "a": "<?php echo number_format($percentcal4,2); ?>",
                     "b": "<?php echo $bar2_txt4; ?>",
                     "c": "<?php echo $bar_icon4; ?>"
                 },
                 {
-                    "y": <?php echo number_format($avg5,2); ?>,
+                    "y": <?php if(is_nan($avg5) == true){ echo "0";}else{echo number_format($avg5,2);} ?>,
                     "color": "<?php echo $bar2_color5; ?>",
                     "a": "<?php echo number_format($percentcal5,2); ?>",
                     "b": "<?php echo $bar2_txt5; ?>",
