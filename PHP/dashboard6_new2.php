@@ -34,7 +34,43 @@
             $last_i = $i;
         }
 
-        $sql = "SELECT year(created_at) as y  from case_inputs where activecase = 'yes'  group by year(created_at) ORDER by y desc";
+        //$sql = "SELECT year(created_at) as y  from case_inputs where activecase = 'yes'  group by year(created_at) ORDER by y desc";
+
+        $sql = "
+        SELECT 
+        CASE 
+                WHEN date(created_at) < '2019-10-01' THEN '2019'
+                WHEN date(created_at) BETWEEN '2019-10-01' and '2020-09-30' THEN '2020'
+                WHEN date(created_at) BETWEEN '2020-10-01' and '2021-09-30' THEN '2021'
+                WHEN date(created_at) BETWEEN '2021-10-01' and '2022-09-30' THEN '2022'
+                WHEN date(created_at) BETWEEN '2022-10-01' and '2023-09-30' THEN '2023'
+                WHEN date(created_at) BETWEEN '2023-10-01' and '2024-09-30' THEN '2024'
+                WHEN date(created_at) BETWEEN '2024-10-01' and '2025-09-30' THEN '2025'
+                WHEN date(created_at) BETWEEN '2025-10-01' and '2026-09-30' THEN '2026'
+                WHEN date(created_at) BETWEEN '2026-10-01' and '2027-09-30' THEN '2027'
+                ELSE '-'
+                
+        END as y_f
+        from 
+            case_inputs 
+        where activecase = 'yes'  
+        group by 
+
+        CASE 
+                WHEN date(created_at) < '2019-10-01' THEN '2019'
+                WHEN date(created_at) BETWEEN '2019-10-01' and '2020-09-30' THEN '2020'
+                WHEN date(created_at) BETWEEN '2020-10-01' and '2021-09-30' THEN '2021'
+                WHEN date(created_at) BETWEEN '2021-10-01' and '2022-09-30' THEN '2022'
+                WHEN date(created_at) BETWEEN '2022-10-01' and '2023-09-30' THEN '2023'
+                WHEN date(created_at) BETWEEN '2023-10-01' and '2024-09-30' THEN '2024'
+                WHEN date(created_at) BETWEEN '2024-10-01' and '2025-09-30' THEN '2025'
+                WHEN date(created_at) BETWEEN '2025-10-01' and '2026-09-30' THEN '2026'
+                WHEN date(created_at) BETWEEN '2026-10-01' and '2027-09-30' THEN '2027'
+                ELSE '-' 
+                
+        END ORDER BY y_f desc
+        ";
+
         $result1 = mysqli_query($conn, $sql); 
         $row = mysqli_num_rows($result1); 
         $i = 0;        
