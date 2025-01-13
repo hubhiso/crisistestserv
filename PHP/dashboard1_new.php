@@ -174,13 +174,13 @@
             $date_e =  $yyyymmdd;
         }
 
-        if($se1 != '0'){
+        if($se1 != '0' and $se1 != ''){
             $q_se1 = " and problem_case = '$se1' ";
 
-            if($se2 != '0'){
+            if($se2 != '0' and $se2 != ''){
                 $q_se2 = " and sub_problem = '$se2' ";
 
-                if($se3 != '0'){
+                if($se3 != '0' and $se3 != ''){
 
                     $q_se2 = " and group_code = '$se3' ";
                 }
