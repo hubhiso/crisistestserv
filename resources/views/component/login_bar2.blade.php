@@ -61,7 +61,7 @@
                                 จัดการรายชื่อเจ้าหน้าที่ </a>
 
                                 <hr class="navbar-divider">
-                            <a class="navbar-item  has-text-link" href="../php/dashboard_score.php">
+                            <a class="navbar-item  has-text-link" href="{{ route('dashboard_score') }}">
                             <i class="fas fa-chart-pie"></i>&nbsp;
                             Dashboard สรุปผลการประเมินความพึงพอใจ </a>
 
